@@ -19,7 +19,7 @@ module.exports = {
             const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
 
             if (!playerResponse.data || !playerResponse.data.id) {
-                return interaction.reply({ content: 'No player selected. Use the /selectPlayer command first.', ephemeral: true });
+                return interaction.reply({ content: 'No player selected. Use the /chooseCharacter command first.', ephemeral: true });
             }
 
             const playerId = playerResponse.data.id;

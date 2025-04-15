@@ -1,146 +1,98 @@
-/*const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config(); // Load environment variables
-
-module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('showstats')
-        .setDescription('Displays the stats of the player that runs the command.')
-        .addBooleanOption(option => option.setName('visible').setDescription('Make the response visible to everyone in the channel.')),
-    async execute(interaction) {
-        try {
-            const discordId = interaction.user.id;
-            const visible = interaction.options.getBoolean('visible', false);
-
-            // Fetch the selected player and their stats in one request
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-
-            if (!playerResponse.data || !playerResponse.data.id) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /selectPlayer command to select a player.', ephemeral: true });
-            }
-
-            const player = playerResponse.data;
-            const stats = player.stats;
-
-            if (!stats) {
-                return interaction.reply({ content: 'Your selected player does not have any stats.', ephemeral: true });
-            }
-
-            // Create a rich embed message
-            const statsEmbed = new EmbedBuilder()
-                .setColor(0x0099FF) // Choose a color for the embed
-                .setTitle(`${player.name}`)
-                .setDescription(`Here are the stats for your selected character.`)
-                .setThumbnail('http://localhost:3000/uploads/8-62923c97-44bc-42cb-8d24-23c30df3534b.png')
-                .addFields(
-                    { name: 'MU', value: `${stats.mu}`, inline: true },
-                    { name: 'KL', value: `${stats.kl}`, inline: true },
-                    { name: 'IN', value: `${stats.in}`, inline: true },
-                    { name: 'CH', value: `${stats.ch}`, inline: true },
-                    { name: 'FF', value: `${stats.ff}`, inline: true },
-                    { name: 'GE', value: `${stats.ge}`, inline: true },
-                    { name: 'KO', value: `${stats.ko}`, inline: true },
-                    { name: 'KK', value: `${stats.kk}`, inline: true },
-                    { name: 'Maximale LP', value: `${stats.le_max}`, inline: true },
-                    { name: 'Aktuelle LP', value: `${stats.le_current}`, inline: true },
-                    { name: 'Initiative', value: `${stats.initiative}`, inline: true },
-                    { name: 'Ausweichen', value: `${stats.ausweichen}`, inline: true }
-                )
-                .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() });
-
-            // If the player has an avatar, set it as the embed's thumbnail or image
-            if (player.avatar) {
-                // Assuming avatar is stored as a URL in the database
-                const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-                console.log('Avatar URL:', avatarUrl);
-                statsEmbed.setThumbnail(avatarUrl);
-            }
-
-            return interaction.reply({ embeds: [statsEmbed], ephemeral: !visible });
-        } catch (error) {
-            console.error('Error getting stats:', error);
-            if (error.response && error.response.status === 404) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /selectPlayer command to select a player.', ephemeral: true });
-            } else {
-                return interaction.reply({ content: 'There was an error while getting your stats.', ephemeral: true });
-            }
-        }
-    }
-};
-*/
-
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('showstats')
-        .setDescription('Displays the stats of the player that runs the command.')
-        .addBooleanOption(option => option.setName('visible').setDescription('Make the response visible to everyone in the channel.')),
+        .setDescription('Displays your character\'s current statistics')
+        .addBooleanOption(option => 
+            option.setName('visible')
+                .setDescription('Make the response visible to everyone')),
     async execute(interaction) {
         try {
             const discordId = interaction.user.id;
-            const visible = interaction.options.getBoolean('visible', false);
+            const visible = interaction.options.getBoolean('visible') || false;
 
-            // Fetch the selected player and their stats in one request
             const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-
-            if (!playerResponse.data || !playerResponse.data.id) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /selectPlayer command to select a player.', ephemeral: true });
-            }
-
             const player = playerResponse.data;
-            const stats = player.stats;
 
-            if (!stats) {
-                return interaction.reply({ content: 'Your selected player does not have any stats.', ephemeral: true });
+            if (!player?.stats) {
+                return interaction.reply({ 
+                    content: '❌ No character selected! Use `/choosecharacter` first.',
+                    ephemeral: true 
+                });
             }
+
+            // Health bar calculation
+            const maxLP = player.stats.le_max || 1;
+            const currentLP = player.stats.le_current;
+            const healthPercentage = Math.floor((currentLP / maxLP) * 100);
+            const healthBar = '■'.repeat(Math.round(currentLP / maxLP * 10)) + '□'.repeat(10 - Math.round(currentLP / maxLP * 10));
 
             const statsEmbed = new EmbedBuilder()
-                .setColor(0x0099FF) // Choose a color for the embed
-                .setTitle(`${player.name}`)
-                .setDescription(`Here are the stats for your selected character.`)
+                .setColor(0x2F3136) // Dark theme color
+                .setTitle(`🔰 ${player.name}'s Statistics`)
+                .setThumbnail(player.avatar ? `${process.env.BACKEND_URL}/uploads/${player.avatar}` : null)
+                .setDescription(`**Character Overview**\n${healthBar} **${healthPercentage}%** (${currentLP}/${maxLP} LP)`)
                 .addFields(
-                    { name: 'MU', value: `${stats.mu}`, inline: true },
-                    { name: 'KL', value: `${stats.kl}`, inline: true },
-                    { name: 'IN', value: `${stats.in}`, inline: true },
-                    { name: 'CH', value: `${stats.ch}`, inline: true },
-                    { name: 'FF', value: `${stats.ff}`, inline: true },
-                    { name: 'GE', value: `${stats.ge}`, inline: true },
-                    { name: 'KO', value: `${stats.ko}`, inline: true },
-                    { name: 'KK', value: `${stats.kk}`, inline: true },
-                    { name: 'Maximale LP', value: `${stats.le_max}`, inline: true },
-                    { name: 'Aktuelle LP', value: `${stats.le_current}`, inline: true },
-                    { name: 'Initiative', value: `${stats.initiative}`, inline: true },
-                    { name: 'Ausweichen', value: `${stats.ausweichen}`, inline: true }
+                    { 
+                        name: '🧠 Attributes',
+                        value: [
+                            `**MU:** \`${player.stats.mu}\``,
+                            `**KL:** \`${player.stats.kl}\``,
+                            `**IN:** \`${player.stats.in}\``,
+                            `**CH:** \`${player.stats.ch}\``
+                        ].join('\n'),
+                        inline: true
+                    },
+                    { 
+                        name: '⚔️ Combat Stats',
+                        value: [
+                            `**FF:** \`${player.stats.ff}\``,
+                            `**GE:** \`${player.stats.ge}\``,
+                            `**KO:** \`${player.stats.ko}\``,
+                            `**KK:** \`${player.stats.kk}\``
+                        ].join('\n'),
+                        inline: true
+                    },
+                    { 
+                        name: '🛡️ Defense',
+                        value: [
+                            `**Initiative:** \`${player.stats.initiative}\``,
+                            `**Ausweichen:** \`${player.stats.ausweichen}\``,
+                            `**Max LP:** \`${player.stats.le_max}\``,
+                            `**Current LP:** \`${player.stats.le_current}\``
+                        ].join('\n'),
+                        inline: true
+                    }
                 )
-                .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() });
+                .setFooter({ 
+                    text: `Requested by ${interaction.user.username}`,
+                    iconURL: interaction.user.avatarURL() 
+                });
 
-            // If the player has an avatar, attach it and set it as the thumbnail
+            // Avatar handling
+            let files = [];
             if (player.avatar) {
                 const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-
-                // Download the image and attach it
                 const imageResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-                const imageBuffer = Buffer.from(imageResponse.data, 'binary');
-                const attachment = new AttachmentBuilder(imageBuffer, { name: 'avatar.png' });
-
-                // Set the attached image as the thumbnail
+                files.push(new AttachmentBuilder(Buffer.from(imageResponse.data), { name: 'avatar.png' }));
                 statsEmbed.setThumbnail('attachment://avatar.png');
-
-                return interaction.reply({ embeds: [statsEmbed], files: [attachment], ephemeral: !visible });
-            } else {
-                return interaction.reply({ embeds: [statsEmbed], ephemeral: !visible });
             }
+
+            return interaction.reply({
+                embeds: [statsEmbed],
+                files: files,
+                ephemeral: !visible
+            });
 
         } catch (error) {
-            console.error('Error getting stats:', error);
-            if (error.response && error.response.status === 404) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /selectPlayer command to select a player.', ephemeral: true });
-            } else {
-                return interaction.reply({ content: 'There was an error while getting your stats.', ephemeral: true });
-            }
+            console.error('Showstats Error:', error);
+            return interaction.reply({
+                content: '❌ Failed to retrieve character stats!',
+                ephemeral: true
+            });
         }
     }
 };

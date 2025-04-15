@@ -17,7 +17,7 @@ module.exports = {
             const player = playerResponse.data;
 
             if (!player || !player.id) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /selectPlayer command to select a player.', ephemeral: true });
+                return interaction.reply({ content: 'You have not selected a player yet. Use the /chooseCharacter command to select a player.', ephemeral: true });
             }
 
             const weapons = player.weapons;

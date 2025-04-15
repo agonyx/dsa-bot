@@ -1,106 +1,129 @@
-const { SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
 const axios = require('axios');
 require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('equipweapon')
-        .setDescription('Equip a weapon for your selected character.')
-        .addBooleanOption(option => option.setName('visible').setDescription('Make the response visible to everyone in the channel.')),
+        .setDescription('Equip a weapon for your selected character'),
+    
     async execute(interaction) {
         try {
-            const discordId = interaction.user.id;
-            const visible = interaction.options.getBoolean('visible', false);
 
-            // Fetch the selected player and their weapons from the backend
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
+            
+            // Defer the initial response
+            await interaction.deferReply({ ephemeral: true });
+
+            // Fetch player data
+            const playerResponse = await axios.get(
+                `${process.env.BACKEND_URL}/player/selected/${interaction.user.id}`
+            );
+            
             const player = playerResponse.data;
-
-            if (!player || !player.id) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /selectPlayer command to select a player.', ephemeral: true });
+            if (!player?.weapons?.length) {
+                return interaction.editReply({ 
+                    content: player ? 'No weapons available!' : 'No selected character!',
+                    components: []
+                });
             }
 
-            const weapons = player.weapons;
-
-            if (!weapons || weapons.length === 0) {
-                return interaction.reply({ content: 'Your selected player does not have any weapons.', ephemeral: true });
-            }
-
-            // Create a dropdown menu for selecting a weapon
-            const weaponOptions = weapons.map(weapon => ({
-                label: weapon.name,
-                description: `Type: ${weapon.type}, Damage: ${weapon.tp}`,
-                value: `${weapon.id}`,
-            }));
-
+            // Weapon selection menu
             const weaponMenu = new StringSelectMenuBuilder()
-                .setCustomId('select_weapon')
-                .setPlaceholder('Select a weapon to equip')
-                .addOptions(weaponOptions);
+                .setCustomId('weapon_select')
+                .setPlaceholder('Select a weapon')
+                .addOptions(player.weapons.map(weapon => ({
+                    label: weapon.name,
+                    description: `${weapon.type} | TP: ${weapon.tp}`,
+                    value: weapon.id.toString()
+                })));
 
-            const row = new ActionRowBuilder().addComponents(weaponMenu);
-
-            const response = await interaction.reply({
-                content: 'Select a weapon to equip:',
-                components: [row],
-                ephemeral: !visible,
+            const message = await interaction.editReply({
+                content: 'Choose a weapon to equip:',
+                components: [new ActionRowBuilder().addComponents(weaponMenu)]
             });
 
-            const filter = i => i.customId === 'select_weapon' && i.user.id === interaction.user.id;
-            const collector = response.createMessageComponentCollector({ filter, time: 60000 });
+            // Weapon selection collector
+            const weaponCollector = message.createMessageComponentCollector({
+                filter: i => i.user.id === interaction.user.id && i.customId === 'weapon_select',
+                time: 60_000
+            });
 
-            collector.on('collect', async i => {
-                const selectedWeaponId = i.values[0];
+            weaponCollector.on('collect', async weaponInteraction => {
+                await weaponInteraction.deferUpdate();
+                const weaponId = weaponInteraction.values[0];
 
-                // Create a modal for selecting the slot to equip the weapon
-                const modal = new ModalBuilder()
-                    .setCustomId('equip_weapon_modal')
-                    .setTitle('Equip Weapon');
+                // Slot selection menu
+                const slotMenu = new StringSelectMenuBuilder()
+                    .setCustomId('slot_select')
+                    .setPlaceholder('Select equipment slot')
+                    .addOptions([
+                        { label: 'Adaptive', value: 'ADAPTIVE' },
+                        { label: 'Offense', value: 'OFFENSE' },
+                        { label: 'Defense', value: 'DEFENSE' }
+                    ]);
 
-                const slotInput = new TextInputBuilder()
-                    .setCustomId('equippedSlot')
-                    .setLabel('Enter the slot to equip the weapon (ADAPTIVE, OFFENSE, DEFENSE):')
-                    .setStyle(TextInputStyle.Short)
-                    .setRequired(true);
+                const slotMessage = await interaction.editReply({
+                    content: 'Choose equipment slot:',
+                    components: [new ActionRowBuilder().addComponents(slotMenu)]
+                });
 
-                const modalRow = new ActionRowBuilder().addComponents(slotInput);
-                modal.addComponents(modalRow);
+                // Slot selection collector
+                const slotCollector = slotMessage.createMessageComponentCollector({
+                    filter: i => i.user.id === interaction.user.id && i.customId === 'slot_select',
+                    time: 60_000
+                });
 
-                await i.showModal(modal);
+                slotCollector.on('collect', async slotInteraction => {
+                    await slotInteraction.deferUpdate();
+                    const slot = slotInteraction.values[0];
 
-                const modalSubmitFilter = (modalInteraction) => modalInteraction.customId === 'equip_weapon_modal' && modalInteraction.user.id === interaction.user.id;
-                i.awaitModalSubmit({ filter: modalSubmitFilter, time: 60000 })
-                    .then(async modalInteraction => {
-                        const equippedSlot = modalInteraction.fields.getTextInputValue('equippedSlot').toUpperCase();
+                    try {
+                        await axios.post(
+                            `${process.env.BACKEND_URL}/weapon/equip/${weaponId}`,
+                            { equippedSlot: slot }
+                        );
 
-                        if (!['ADAPTIVE', 'OFFENSE', 'DEFENSE'].includes(equippedSlot)) {
-                            return modalInteraction.reply({ content: 'Invalid slot type. Please use ADAPTIVE, OFFENSE, or DEFENSE.', ephemeral: true });
-                        }
+                        await interaction.editReply({
+                            content: `✅ Successfully equipped ${weaponInteraction.component.options.find(o => o.value === weaponId).label} in ${slot} slot!`,
+                            components: []
+                        });
+                    } catch (error) {
+                        console.error('Equip error:', error);
+                        await interaction.editReply({
+                            content: '❌ Failed to equip weapon!',
+                            components: []
+                        });
+                    } finally {
+                        weaponCollector.stop();
+                        slotCollector.stop();
+                    }
+                });
 
-                        // Send a request to the backend to equip the selected weapon
-                        try {
-                            const equipResponse = await axios.post(`${process.env.BACKEND_URL}/weapon/equip/${selectedWeaponId}`, { equippedSlot });
+                slotCollector.on('end', () => {
+                    if (!slotCollector.collected.size) {
+                        interaction.editReply({
+                            content: '⌛ Slot selection timed out',
+                            components: []
+                        });
+                    }
+                });
+            });
 
-                            await modalInteraction.reply({ content: equipResponse.data, ephemeral: !visible });
-                        } catch (error) {
-                            console.error('Error equipping weapon:', error);
-                            await modalInteraction.reply({ content: 'There was an error while equipping the weapon.', ephemeral: true });
-                        }
-                    })
-                    .catch(err => {
-                        console.error('Modal submission failed:', err);
-                        i.followUp({ content: 'You did not select a slot in time, the action has been cancelled.', ephemeral: true });
+            weaponCollector.on('end', () => {
+                if (!weaponCollector.collected.size) {
+                    interaction.editReply({
+                        content: '⌛ Weapon selection timed out',
+                        components: []
                     });
-            });
-
-            collector.on('end', collected => {
-                if (collected.size === 0) {
-                    interaction.followUp({ content: 'You did not select a weapon in time, the action has been cancelled.', ephemeral: true });
                 }
             });
+
         } catch (error) {
-            console.error('Error during equip weapon interaction:', error);
-            return interaction.reply({ content: 'There was an error while trying to equip the weapon.', ephemeral: true });
+            console.error('Equip command error:', error);
+            interaction.editReply({
+                content: '❌ An error occurred while processing your request',
+                components: []
+            });
         }
     }
 };
