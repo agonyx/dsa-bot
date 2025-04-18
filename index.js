@@ -1,6 +1,6 @@
 // Load environment variables and Discord client
 require('dotenv').config();
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+const { Client, Events, GatewayIntentBits, Collection, Partials } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -10,6 +10,12 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
     ],
+    partials: [
+        Partials.Channel,
+        Partials.GuildMember,
+        Partials.User,
+        Partials.Message,
+    ]
 });
 
 // Command handling
@@ -44,31 +50,71 @@ for (const file of eventFiles) {
     }
 }
 
-// Client ready
-client.once(Events.ClientReady, c => {
-    console.log(`Ready! Logged in as ${c.user.tag}`);
-});
+const combatHandler = require('./handlers/combatHandler'); // Assuming CommonJS
 
-// Command interaction handling
 client.on(Events.InteractionCreate, async interaction => {
-    if (!interaction.isChatInputCommand()) return;
-
-    const command = client.commands.get(interaction.commandName);
-
-    if (!command) return;
-
-    try {
-        await command.execute(interaction);
-    } catch (error) {
-        console.error(error);
-
-        if (interaction.replied || interaction.deferred) {
-            await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-        } else {
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+    // --- Handle Slash Commands ---
+    if (interaction.isChatInputCommand()) {
+        const command = interaction.client.commands.get(interaction.commandName);
+        if (!command) {
+            console.error(`No command matching ${interaction.commandName} was found.`);
+            try {
+               await interaction.reply({ content: `Command not found: ${interaction.commandName}`, ephemeral: true });
+            } catch (e) { console.error("Error replying about missing command:", e); }
+            return;
+        }
+        try {
+            await command.execute(interaction);
+        } catch (error) {
+           console.error(`Error executing command ${interaction.commandName}:`, error);
+            const replyOptions = { content: 'There was an error while executing this command!', ephemeral: true };
+            try {
+                 if (interaction.replied || interaction.deferred) { await interaction.followUp(replyOptions); }
+                 else { await interaction.reply(replyOptions); }
+            } catch (replyError) { console.error(`Failed to send error reply for command ${interaction.commandName}:`, replyError); }
         }
     }
+    // --- Handle Components (Buttons, Selects, Modals) ---
+    else if (interaction.isMessageComponent() || interaction.isModalSubmit()) { // Combined check for components/modals
+        const customId = interaction.customId;
+
+        // --- Check for Combat Prefixes ---
+        if (customId.startsWith('combat_') || customId.startsWith('join_combat_') ||
+            customId.startsWith('add_mob_') || // Catches modal trigger and submit
+            customId.startsWith('start_fight_') ||
+            customId.startsWith('cancel_combat_') ||
+            customId.startsWith('select_char_join_'))
+        {
+            // Route to appropriate combat handler function
+            console.log(`Routing combat interaction ${customId} to combatHandler`);
+            try {
+                if (interaction.isButton()) await combatHandler.handleCombatButton(interaction);
+                else if (interaction.isStringSelectMenu()) await combatHandler.handleCombatSelectMenu(interaction);
+                else if (interaction.isModalSubmit()) await combatHandler.handleCombatModalSubmit(interaction);
+            } catch (error) {
+                 console.error(`Error during combat interaction processing (${customId}):`, error);
+                 // Attempt to inform user if possible
+                  if (!interaction.replied && !interaction.deferred && interaction.isRepliable()) {
+                      try { await interaction.reply({ content: 'An error occurred processing this combat action.', ephemeral: true }); }
+                      catch(e) { console.error("Failed to send combat interaction error reply", e); }
+                  }
+            }
+        }
+        // --- Check for EditStats Prefixes/IDs (and DO NOTHING centrally) ---
+        else if (customId === 'stat_select' || customId === 'exit_editor' || customId.startsWith('edit_'))
+        {
+            // *** Explicitly ignore these IDs in the central handler ***
+            console.log(`Ignoring interaction ${customId} in central handler (handled by specific command).`);
+            // IMPORTANT: No reply, deferUpdate, or other acknowledgement here!
+            // Let the collector/listener in editStats.js handle it.
+        }
+        // --- Handle Other/Unknown Components ---
+        else {
+            console.warn(`Unhandled component interaction ID in central handler: ${customId}`);
+            // Do not acknowledge unless you have a specific reason for centrally handling unknown components.
+        }
+    }
+    // Add other top-level interaction type handlers if needed (e.g., Context Menus)
 });
 
-// Login to Discord
 client.login(process.env.DISCORD_TOKEN);
