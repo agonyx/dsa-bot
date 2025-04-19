@@ -20,6 +20,7 @@ const client = new Client({
 
 // Command handling
 client.commands = new Collection(); 
+client.activeCombats = new Map();
 
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -83,6 +84,12 @@ client.on(Events.InteractionCreate, async interaction => {
             customId.startsWith('add_mob_') || // Catches modal trigger and submit
             customId.startsWith('start_fight_') ||
             customId.startsWith('cancel_combat_') ||
+            customId.startsWith('caa_') ||
+
+            customId.startsWith('ctsa_') ||
+            customId.startsWith('leave_setup_') ||
+            customId.startsWith('manage_participants_') ||
+            customId.startsWith('remove_participant_select_') ||
             customId.startsWith('select_char_join_'))
         {
             // Route to appropriate combat handler function

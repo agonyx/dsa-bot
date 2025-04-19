@@ -4,7 +4,7 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Interaction, PermissionFlagsBits } = require('discord.js');
 const axios = require('axios');
 require('dotenv').config();
-
+const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents'); 
 // --- Constants ---
 const BACKEND_URL = process.env.BACKEND_URL;
 if (!BACKEND_URL) {
@@ -46,24 +46,15 @@ async function executeStartCombat(interaction) {
             sessionId = response.data.id;
             console.log(`Combat session created successfully. Session ID: ${sessionId}`);
 
-            // --- 2. Send Discord Setup Message ---
-            const setupEmbed = new EmbedBuilder()
-                .setColor('#0099ff')
-                .setTitle('⚔️ Combat Setup Initiated ⚔️')
-                .setDescription(`Combat initiated by **${dmUsername}**.\n\nPlayers, click "Join Combat" to participate!\nDM, use the "Add Mob" button or \`/addmob\` command.`)
-                .addFields({ name: 'Participants', value: 'None yet.' })
-                .setFooter({ text: `Session ID: ${sessionId}` });
+            const setupEmbed = createSetupEmbed(sessionId, dmUsername, []); // Initial empty participants
 
-            // --- Buttons (embedding correct sessionId) ---
-            const joinButton = new ButtonBuilder().setCustomId(`join_combat_${sessionId}`).setLabel('Join Combat').setStyle(ButtonStyle.Success).setEmoji('➕');
-            const addMobButton = new ButtonBuilder().setCustomId(`add_mob_modal_${sessionId}`).setLabel('Add Mob').setStyle(ButtonStyle.Secondary).setEmoji('👾');
-            const startButton = new ButtonBuilder().setCustomId(`start_fight_${sessionId}`).setLabel('Start Fight').setStyle(ButtonStyle.Primary).setEmoji('▶️').setDisabled(true);
-            const cancelButton = new ButtonBuilder().setCustomId(`cancel_combat_${sessionId}`).setLabel('Cancel Setup').setStyle(ButtonStyle.Danger).setEmoji('✖️');
-            const row = new ActionRowBuilder().addComponents(joinButton, addMobButton, startButton, cancelButton);
+            // *** Use the helper function ***
+            // Initially, combat cannot start (0 participants)
+            const initialActionRows = createSetupActionRows(sessionId, false);
 
             const setupMessage = await interaction.editReply({
                 embeds: [setupEmbed],
-                components: [row],
+                components: initialActionRows, // Use the rows from the helper
                 fetchReply: true
             });
 
