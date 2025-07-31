@@ -15,7 +15,7 @@ module.exports = {
             await interaction.deferReply({ ephemeral: true });
 
             // Send a POST request to your backend
-            const response = await axios.post('http://localhost:3000/player', {
+            const response = await axios.post(`${process.env.BACKEND_URL}/player`, {
                 name: name,
                 discordId: discordId,
             });

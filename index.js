@@ -85,12 +85,20 @@ client.on(Events.InteractionCreate, async interaction => {
             customId.startsWith('start_fight_') ||
             customId.startsWith('cancel_combat_') ||
             customId.startsWith('caa_') ||
-
+            customId.startsWith('cad_') ||
+            customId.startsWith('cas_') ||
+            customId.startsWith('cet_') ||
+            customId.startsWith('dmnpc_action') ||
             customId.startsWith('ctsa_') ||
+            customId.startsWith('cts_npc_') ||
             customId.startsWith('leave_setup_') ||
             customId.startsWith('manage_participants_') ||
             customId.startsWith('remove_participant_select_') ||
-            customId.startsWith('select_char_join_'))
+            customId.startsWith('select_char_join_') ||
+            customId.startsWith('park_combat_') ||
+            customId.startsWith('end_combat_') ||
+            customId.startsWith('resume_session_select') ||
+            customId.startsWith('show_full_log_'))
         {
             // Route to appropriate combat handler function
             console.log(`Routing combat interaction ${customId} to combatHandler`);
@@ -122,6 +130,11 @@ client.on(Events.InteractionCreate, async interaction => {
         }
     }
     // Add other top-level interaction type handlers if needed (e.g., Context Menus)
+});
+
+// Event listener for when the client is ready
+client.once(Events.ClientReady, readyClient => {
+    console.log(`✅ Ready! Logged in as ${readyClient.user.tag}`);
 });
 
 client.login(process.env.DISCORD_TOKEN);

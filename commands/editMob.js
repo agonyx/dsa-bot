@@ -4,9 +4,6 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBui
 const axios = require('axios');
 require('dotenv').config();
 
-const BACKEND_URL = process.env.BACKEND_URL;
-if (!BACKEND_URL) { console.error("FATAL: BACKEND_URL missing!"); }
-
 // Configuration for editable mob stats
 const MOB_STAT_CONFIG = [
     { key: 'hp', backendKey: 'baseMaxHP', label: 'Max HP', type: 'integer', min: 1, style: TextInputStyle.Short },
@@ -33,6 +30,8 @@ module.exports = {
             .setMaxLength(100)),
 
     async execute(interaction) {
+        const BACKEND_URL = process.env.BACKEND_URL;
+        if (!BACKEND_URL) { console.error("FATAL: BACKEND_URL missing!"); }
         const mobNameToEdit = interaction.options.getString('name');
         const instanceId = interaction.id;
 

@@ -4,12 +4,6 @@ const { SlashCommandBuilder, PermissionFlagsBits, Interaction } = require('disco
 const axios = require('axios');
 require('dotenv').config();
 
-const BACKEND_URL = process.env.BACKEND_URL;
-if (!BACKEND_URL) {
-    console.error("FATAL: BACKEND_URL environment variable is not set.");
-    // Handle missing env var appropriately
-}
-
 // Basic regex to validate DSA-style damage dice strings (e.g., 1w6, 2w6+4)
 const damageDiceRegex = /^\d+w\d+(\s*\+\s*\d+)?$/i;
 
@@ -66,6 +60,11 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        const BACKEND_URL = process.env.BACKEND_URL;
+        if (!BACKEND_URL) {
+            console.error("FATAL: BACKEND_URL environment variable is not set.");
+            // Handle missing env var appropriately
+        }
         // No need to defer usually, this should be quick unless backend is slow
 
         // --- Get Option Values ---

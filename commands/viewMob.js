@@ -3,9 +3,6 @@ const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js')
 const axios = require('axios');
 require('dotenv').config();
 
-const BACKEND_URL = process.env.BACKEND_URL;
-if (!BACKEND_URL) { console.error("FATAL: BACKEND_URL missing!"); }
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('viewmob')
@@ -21,6 +18,8 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        const BACKEND_URL = process.env.BACKEND_URL;
+        if (!BACKEND_URL) { console.error("FATAL: BACKEND_URL missing!"); }
         // Ephemeral reply is good for a specific lookup
         await interaction.deferReply({ ephemeral: true });
 

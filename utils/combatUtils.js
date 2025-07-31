@@ -41,6 +41,7 @@ function parseAndRollDamage(tpString) {
         throw new Error(`Invalid TP format: "${tpStringTrimmed}". Expected like "1w6", "2w6+4", or a plain number.`);
     }
 
+    console.log(`Parsing TP string: "${tpStringTrimmed}"`);
     const numDice = parseInt(match[1], 10);
     const numSides = parseInt(match[2], 10);
     const constant = parseInt(match[4]) || 0; // Use captured group 4 for constant
@@ -55,7 +56,7 @@ function parseAndRollDamage(tpString) {
         rolls.push(roll);
         total += roll;
     }
-    // console.log(`Rolled ${tpStringTrimmed}: ${rolls.join(', ')} + ${constant} = ${total}`);
+    console.log(`Rolled ${tpStringTrimmed}: ${rolls.join(', ')} + ${constant} = ${total}`);
     return total;
 }
 

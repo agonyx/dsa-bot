@@ -1,6 +1,6 @@
 // src/handlers/combatHandler.js -- CORRECTED
 
-const { Interaction, StringSelectMenuInteraction, ButtonInteraction, ModalSubmitInteraction, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, EmbedBuilder, ButtonStyle } = require('discord.js');
+const { Interaction, StringSelectMenuInteraction, ButtonInteraction, ModalSubmitInteraction, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, EmbedBuilder, ButtonStyle, AttachmentBuilder } = require('discord.js');
 const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents'); 
 const axios = require('axios');
 const { ButtonBuilder } = require('@discordjs/builders');
@@ -58,11 +58,71 @@ async function handleCombatButton(interaction) {
         if (parts.length === 3) { const sessionId = parts[1]; const actorId = parts[2]; await handleCombatActionAttack(interaction, sessionId, actorId); }
         else { console.error("Invalid caa button ID"); /* handle error */ }
     }
-    else if (customId.startsWith('cad_')) { /* ... Handle Defend ... */ await interaction.reply({content:'Defend WIP', ephemeral: true});}
-    else if (customId.startsWith('cas_')) { /* ... Handle Skill ... */ await interaction.reply({content:'Skill WIP', ephemeral: true});}
-    else if (customId.startsWith('cet_')) { /* ... Handle End Turn ... */ await interaction.reply({content:'End Turn WIP', ephemeral: true});}
-     else if (customId.startsWith('combat_action_')) {
+    else if (customId.startsWith('cas_')) { 
+        const parts = customId.split('_');
+        if (parts.length === 3) {
+            const sessionId = parts[1];
+            const actorId = parts[2];
+            await handleCombatActionSkill(interaction, sessionId, actorId);
+        } else {
+            console.error("Invalid cas_ button ID");
+            await interaction.reply({ content: 'Error: Invalid skill button data.', ephemeral: true });
+        }
+    }
+
+     else if (customId.startsWith('cet_')) { // Player end turn
+        const parts = customId.split('_');
+        if (parts.length === 3) {
+            const sessionId = parts[1];
+            const actorId = parts[2];
+            console.log(`[Combat Handler] Routing -> Player End Turn (Session: ${sessionId}, Actor: ${actorId})`);
+            await handleCombatEndTurnInteraction(interaction, sessionId, actorId);
+        } else {
+            console.error(`Invalid player end turn customId: ${customId}`);
+        }
+    } else if (customId.startsWith('dmnpc_action_endturn_')) { // DM NPC end turn
+        const parts = customId.split('_');
+        if (parts.length === 5) {
+            const sessionId = parts[3];
+            const actorId = parts[4];
+            console.log(`[Combat Handler] Routing -> DM NPC End Turn (Session: ${sessionId}, Actor: ${actorId})`);
+            await handleCombatEndTurnInteraction(interaction, sessionId, actorId);
+        } else {
+            console.error(`Invalid NPC end turn customId: ${customId}`);
+        }
+    } else if (customId.startsWith('dmnpc_action_attack_')) {
+        const parts = customId.split('_');
+        if (parts.length === 5) {
+            const sessionId = parts[3];
+            const actorId = parts[4];
+            console.log(`[Combat Handler] Routing -> DM NPC Attack Action (Session: ${sessionId}, Actor: ${actorId})`);
+            await handleDmNpcAttackAction(interaction, sessionId, actorId);
+        } else {
+            console.error(`Invalid dmnpc_action_attack_ customId: ${customId}`);
+            await interaction.reply({ content: "Error: Invalid NPC action button data.", ephemeral: true }).catch(console.error);
+        }
+    } else if (customId.startsWith('dmnpc_action_skill_')) {
+        const parts = customId.split('_');
+        if (parts.length === 5) {
+            const sessionId = parts[3];
+            const actorId = parts[4];
+            await handleDmNpcSkillAction(interaction, sessionId, actorId);
+        } else {
+            console.error(`Invalid dmnpc_action_skill_ customId: ${customId}`);
+            await interaction.reply({ content: "Error: Invalid NPC action button data.", ephemeral: true }).catch(console.error);
+        }
+    } else if (customId.startsWith('combat_action_')) {
         await interaction.reply({ content: 'Combat actions not implemented yet.', ephemeral: true }).catch(console.error);
+    }
+    else if (customId.startsWith('show_full_log_')) {
+        const sessionId = customId.substring('show_full_log_'.length);
+        await handleShowFullLogInteraction(interaction, sessionId);
+    } else if (customId.startsWith('park_combat_')) {
+        const sessionId = customId.substring('park_combat_'.length);
+        await handleParkCombatInteraction(interaction, sessionId);
+    } else if (customId.startsWith('end_combat_')) {
+        const sessionId = customId.substring('end_combat_'.length);
+        await handleEndCombatInteraction(interaction, sessionId);
     }
      else {
         console.log(`[Combat Handler] Ignoring button with unknown prefix: ${customId}`);
@@ -133,39 +193,146 @@ async function handleCombatActionAttack(interaction, sessionId, actorId) {
     }
 }
 
-async function handleCombatSelectMenu(interaction) {
-    const customId = interaction.customId;
-    console.log(`[Combat Handler] Select Menu Received: ${customId}`); // Consistent log message
+async function handleCombatActionAttack(interaction, sessionId, actorId) {
+    console.log(`[Attack Action ${sessionId}] Handling for Actor ${actorId} by User ${interaction.user.id}`);
+    await interaction.deferReply({ ephemeral: true });
 
-    // Check for Combat Target Selection (Attack) using the NEW prefix
-    if (customId.startsWith('ctsa_')) { // *** FIX: Check for 'ctsa_' prefix ***
-        // Format: ctsa_{sessionId}_{actorId}
-        const parts = customId.split('_');
-        // *** FIX: Check for 3 parts and correct indices ***
-        if (parts.length === 3) {
-            const sessionId = parts[1]; // Index 1 is sessionId
-            const actorId = parts[2];   // Index 2 is actorId
-            console.log(`[Combat Handler] Routing -> Attack Target Select (Session: ${sessionId}, Actor: ${actorId})`);
-            // Ensure handleCombatTargetSelectAttack function exists and is implemented
-            await handleCombatTargetSelectAttack(interaction, sessionId, actorId);
-        } else {
-            // Log error and try to update the interaction to prevent "Interaction Failed"
-            console.error(`Invalid ctsa_ customId format: ${customId}`);
-            await interaction.update({ content: 'Error: Invalid target selection data format.', components: [], ephemeral: true }).catch(console.error);
-        }
-    }
-    // Check for Remove Participant selection
-    else if (customId.startsWith('remove_participant_select_')) {
-        const sessionId = customId.substring('remove_participant_select_'.length);
-        console.log(`[Combat Handler] Routing -> Remove Participant Select`);
-        await handleRemoveParticipantSelectInteraction(interaction, sessionId); // Assumes this exists
-    }
-    // Ignore other / legacy select menus
-    else {
-        console.log(`[Combat Handler] Ignoring select menu with unknown prefix: ${customId}`);
-        // DO NOT acknowledge here - let command-specific handlers manage if needed
+    try {
+        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        if (!sessionData || sessionData.id !== sessionId) { return interaction.editReply({ content: '❌ Error: Could not find active combat data.' }); }
+        if (sessionData.state !== 'RUNNING') { return interaction.editReply({ content: `❌ Cannot attack: Combat is not running.` }); }
+
+        const actorCombatant = sessionData.combatants?.find(c => c.id === actorId);
+        if (!actorCombatant) { return interaction.editReply({ content: `❌ Error: Cannot find your combatant data.` }); }
+
+        const potentialTargets = sessionData.combatants?.filter(c => c.id !== actorId && c.currentHP > 0 && c.allegiance !== actorCombatant.allegiance);
+        if (!potentialTargets || potentialTargets.length === 0) { return interaction.editReply({ content: 'ℹ️ No valid targets available to attack!' }); }
+
+        const targetOptions = potentialTargets.map(target => ({
+            label: `${target.name} (${target.currentHP}/${target.maxHP} HP)`.substring(0, 100),
+            value: target.id,
+        }));
+
+        const targetSelectMenu = new StringSelectMenuBuilder()
+            .setCustomId(`ctsa_${sessionId}_${actorId}_null`) // Maneuver ID is null for a normal attack
+            .setPlaceholder('Choose a target to attack...')
+            .addOptions(targetOptions);
+
+        const row = new ActionRowBuilder().addComponents(targetSelectMenu);
+
+        await interaction.editReply({
+            content: `**${actorCombatant.name}'s Turn:** Choose a target for your attack!`,
+            components: [row],
+            ephemeral: true
+        });
+    } catch (error) {
+        console.error(`[Attack Action ${sessionId}] Error for Actor ${actorId}:`, error);
+        await interaction.editReply({ content: '❌ An error occurred while preparing your attack.' }).catch(console.error);
     }
 }
+
+async function resolveCombatAction(client, channelId, sessionId, actorId, targetId, maneuverId) {
+    const sessionData = client.activeCombats.get(channelId);
+    if (!sessionData) return;
+
+    const attacker = sessionData.combatants.find(c => c.id === actorId);
+    const target = sessionData.combatants.find(c => c.id === targetId);
+
+    try {
+        let maneuver = null;
+        if (maneuverId && maneuverId !== 'null') {
+            const response = await axios.get(`${process.env.BACKEND_URL}/action-modification/${maneuverId}`);
+            maneuver = response.data;
+        }
+
+        const [attackerStats, targetStats] = await Promise.all([
+            getEffectiveCombatStats(attacker),
+            getEffectiveCombatStats(target)
+        ]);
+
+        let atValue = attackerStats.currentAT;
+        let paValue = targetStats.currentPA;
+        let damageBonus = 0;
+        let logMessage = `${attacker.name} attacks ${target.name}.`;
+
+        if (maneuver) {
+            logMessage = `${attacker.name} uses **${maneuver.name}** to attack ${target.name}.`;
+            if (maneuver.rules.at_modifier) atValue += maneuver.rules.at_modifier;
+            if (maneuver.rules.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
+            if (maneuver.rules.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
+        }
+
+        const attackResult = resolveAttack(atValue);
+        logMessage += ` (Roll: ${attackResult.roll}/${atValue})`;
+        if (attackResult.confirmRoll !== null) logMessage += ` (Confirm: ${attackResult.confirmRoll})`;
+
+        let hitConnected = false;
+        if (attackResult.outcome === 'NORMAL_HIT' || attackResult.outcome === 'CRITICAL_SUCCESS') {
+            hitConnected = true;
+            const defenseResult = resolveDefense(paValue);
+            logMessage += ` | ${target.name} Parry: ${defenseResult.roll}/${paValue}.`;
+            if (defenseResult.success) {
+                logMessage += ` **Parried!**`;
+                hitConnected = false;
+            } else {
+                logMessage += ` Parry Failed.`;
+            }
+        } else {
+            logMessage += ` -> **Miss!**`;
+        }
+
+        if (hitConnected) {
+            let rolledDamage = parseAndRollDamage(attackerStats.currentTP);
+            if (attackResult.outcome === 'CRITICAL_SUCCESS') rolledDamage *= 2;
+            rolledDamage += damageBonus;
+            const finalDamage = applySoak(rolledDamage, targetStats.currentRS);
+            logMessage += ` | ${rolledDamage} TP - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`;
+            const newHP = Math.max(0, target.currentHP - finalDamage);
+            if (newHP !== target.currentHP) {
+                await axios.put(`${process.env.BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP });
+                target.currentHP = newHP;
+                logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
+                if (newHP <= 0) logMessage += ` **Defeated!**`;
+            }
+        }
+
+        await addLogEntry(client, channelId, sessionId, logMessage);
+        await nextTurn(client, channelId);
+
+    } catch (error) {
+        console.error(`Error resolving combat action:`, error);
+        // We need a way to report this back to the user.
+        const channel = await client.channels.fetch(channelId);
+        await channel.send('An error occurred while resolving the combat action.');
+    }
+}
+
+async function handleCombatTargetSelectAttack(interaction, sessionId, actorId, maneuverId) {
+    const targetId = interaction.values[0];
+    await interaction.update({ content: `⚔️ Attacking...`, components: [] });
+    await resolveCombatAction(interaction.client, interaction.channelId, sessionId, actorId, targetId, maneuverId);
+    await interaction.deleteReply();
+}
+
+async function handleCombatSelectMenu(interaction) {
+    const customId = interaction.customId;
+    console.log(`[Combat Handler] Select Menu Received: ${customId}`);
+
+    if (customId.startsWith('ctsa_')) {
+        const parts = customId.split('_');
+        if (parts.length === 4) {
+            const sessionId = parts[1];
+            const actorId = parts[2];
+            const maneuverId = parts[3];
+            await handleCombatTargetSelectAttack(interaction, sessionId, actorId, maneuverId);
+        } else {
+            console.error(`Invalid ctsa_ customId format: ${customId}`);
+            await interaction.update({ content: 'Error: Invalid target selection data.', components: [], ephemeral: true }).catch(console.error);
+        }
+    }
+    // ... other select menu handlers
+}
+
 /**
  * Creates Action Row with buttons for the DM to control an NPC's turn.
  * @param {string} sessionId - The combat session ID.
@@ -173,33 +340,88 @@ async function handleCombatSelectMenu(interaction) {
  * @returns {ActionRowBuilder}
  */
 function createNpcDmActionRow(sessionId, npcActorId) {
-    const npcAttackButton = new ButtonBuilder()
-        // Use a distinct prefix for DM controlling NPC actions
-        .setCustomId(`dmnpc_action_attack_${sessionId}_${npcActorId}`)
-        .setLabel("NPC Attack") // Clearly label it as NPC action
-        .setStyle(ButtonStyle.Danger)
-        .setEmoji({ name: "⚔️" });
+    const actionRow = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId(`dmnpc_action_attack_${sessionId}_${npcActorId}`)
+            .setLabel("NPC Attack")
+            .setStyle(ButtonStyle.Danger)
+            .setEmoji({ name: "⚔️" }),
+        new ButtonBuilder()
+            .setCustomId(`dmnpc_action_skill_${sessionId}_${npcActorId}`)
+            .setLabel("NPC Skill/Action")
+            .setStyle(ButtonStyle.Primary)
+            .setEmoji({ name: "✨" }),
+        new ButtonBuilder()
+            .setCustomId(`dmnpc_action_endturn_${sessionId}_${npcActorId}`)
+            .setLabel("NPC End Turn")
+            .setStyle(ButtonStyle.Secondary)
+            .setEmoji({ name: "⏩" })
+    );
 
-    const npcDefendButton = new ButtonBuilder()
-        .setCustomId(`dmnpc_action_defend_${sessionId}_${npcActorId}`)
-        .setLabel("NPC Defend")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji({ name: "🛡️" });
+    const managementRow = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId(`park_combat_${sessionId}`)
+            .setLabel("Park Session")
+            .setStyle(ButtonStyle.Secondary)
+            .setEmoji({ name: "🅿️" }),
+        new ButtonBuilder()
+            .setCustomId(`end_combat_${sessionId}`)
+            .setLabel("End Session")
+            .setStyle(ButtonStyle.Danger)
+            .setEmoji({ name: "🛑" })
+    );
 
-    const npcSkillButton = new ButtonBuilder()
-        .setCustomId(`dmnpc_action_skill_${sessionId}_${npcActorId}`)
-        .setLabel("NPC Skill/Action")
-        .setStyle(ButtonStyle.Primary)
-        .setEmoji({ name: "✨" });
-        // .setDisabled(true); // Example
+    return [actionRow, managementRow];
+}
+/**
+ * Handles the click on an "End Turn" button (Player or DM-controlled NPC).
+ * Verifies the action is valid for the current turn, then advances the turn.
+ * @param {ButtonInteraction} interaction - The button interaction.
+ * @param {string} sessionId - The combat session ID.
+ * @param {string} actorId - The combatant ID whose turn it is supposed to be.
+ */
+async function handleCombatEndTurnInteraction(interaction, sessionId, actorId) {
+    console.log(`[End Turn ${sessionId}] Handling for Actor ${actorId} by User ${interaction.user.id}`);
+    // Defer update - the main display will refresh after turn advances
+    await interaction.deferUpdate({ ephemeral: true });
 
-    const npcEndTurnButton = new ButtonBuilder()
-        .setCustomId(`dmnpc_action_endturn_${sessionId}_${npcActorId}`)
-        .setLabel("NPC End Turn")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji({ name: "⏩" });
+    // --- Get Current Combat State from Memory ---
+    if (!interaction.client.activeCombats?.has(interaction.channelId)) {
+        console.error(`[End Turn ${sessionId}] No active combat in map.`); return; // Silently fail? Or followUp?
+    }
+    const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+    if (!sessionData || sessionData.id !== sessionId || sessionData.state !== 'RUNNING') {
+        console.error(`[End Turn ${sessionId}] Session not running or ID mismatch.`); return;
+    }
 
-    return new ActionRowBuilder().addComponents(npcAttackButton, npcDefendButton, npcSkillButton, npcEndTurnButton);
+    // --- Verify Turn and Permissions ---
+    const activeCombatantId = sessionData.turnOrder?.[sessionData.currentTurnIndex];
+    const actorCombatant = sessionData.combatants?.find(c => c.id === actorId);
+
+    if (!actorCombatant) { console.error(`[End Turn ${sessionId}] Actor ${actorId} not found.`); return; }
+    if (actorId !== activeCombatantId) {
+        console.log(`[End Turn ${sessionId}] Failed: Actor ${actorId} tried to end turn, but active is ${activeCombatantId}`);
+        await interaction.followUp({ content: `❌ It's not your (${actorCombatant.name}'s) turn!`, ephemeral: true }).catch(console.error);
+        return;
+    }
+    // Check permissions: Player must control self, DM must control NPC
+    if (actorCombatant.type === 'PLAYER' && actorCombatant.discordUserId !== interaction.user.id) {
+        await interaction.followUp({ content: `❌ You cannot end the turn for ${actorCombatant.name}.`, ephemeral: true }).catch(console.error);
+        return;
+    }
+    if (actorCombatant.type === 'NPC' && sessionData.dmUserId !== interaction.user.id) {
+        await interaction.followUp({ content: `❌ Only the DM (${sessionData.dmUserId}) can end an NPC's turn.`, ephemeral: true }).catch(console.error);
+        return;
+    }
+
+    // --- If checks pass, advance the turn ---
+    try {
+        await nextTurn(interaction.client, interaction.channelId);
+        // Display update happens at the end of nextTurn
+    } catch (error) {
+         console.error(`[End Turn ${sessionId}] Error during nextTurn call:`, error);
+         await interaction.followUp({ content: `❌ An error occurred while trying to advance the turn.`, ephemeral: true }).catch(console.error);
+    }
 }
 /**
  * Handles the target selection for an attack action.
@@ -212,10 +434,80 @@ function createNpcDmActionRow(sessionId, npcActorId) {
 
 // (Ensure requires/imports/helpers like getEffectiveCombatStats, resolveAttack, resolveDefense, applySoak, addLogEntry, updateCombatDisplay are present)
 
+/**
+ * Handles the DM's click on the "NPC Attack" button.
+ * Verifies turn, then shows a target selection menu for the DM.
+ * @param {ButtonInteraction} interaction - The button interaction.
+ * @param {string} sessionId - The combat session ID.
+ * @param {string} actorId - The combatant ID of the NPC initiating the attack.
+ */
+async function handleDmNpcAttackAction(interaction, sessionId, actorId) {
+    console.log(`[DM NPC Attack Action ${sessionId}] Handling for Actor ${actorId} by DM ${interaction.user.id}`);
+    await interaction.deferReply({ ephemeral: true });
+
+    try {
+        // --- 1. Get Current Combat State & Verify DM ---
+        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        if (!sessionData || sessionData.id !== sessionId) { return interaction.editReply({ content: '❌ Error: Could not find active combat data.' }); }
+        if (sessionData.dmUserId !== interaction.user.id) { return interaction.editReply({ content: '❌ Only the DM can control NPC actions.' }); }
+        if (sessionData.state !== 'RUNNING') { return interaction.editReply({ content: `❌ Cannot attack: Combat is not running.` }); }
+
+        // --- 2. Verify Turn ---
+        const activeCombatantId = sessionData.turnOrder?.[sessionData.currentTurnIndex];
+        const actorCombatant = sessionData.combatants?.find(c => c.id === actorId);
+        if (!actorCombatant) { return interaction.editReply({ content: `❌ Error: Cannot find the NPC's combatant data.` }); }
+        console.log(`[DM NPC Attack Action ${sessionId}] Attacker: ${actorCombatant.name}, Allegiance: ${actorCombatant.allegiance}`);
+
+        if (actorId !== activeCombatantId) { const active = sessionData.combatants?.find(c=>c.id===activeCombatantId); return interaction.editReply({ content: `❌ It's not this NPC's turn! It's **${active?.name || 'Unknown'}**'s turn.` }); }
+
+        // --- 3. Find Valid Targets (opposite allegiance) ---
+        console.log(`[DM NPC Attack Action ${sessionId}] Finding targets with allegiance NOT equal to ${actorCombatant.allegiance}`);
+        const potentialTargets = sessionData.combatants?.filter(c => {
+            const isTarget = c.id !== actorId && c.currentHP > 0 && c.allegiance !== actorCombatant.allegiance;
+            console.log(`  - Checking ${c.name} (Allegiance: ${c.allegiance}, HP: ${c.currentHP}): Is valid target? ${isTarget}`);
+            return isTarget;
+        });
+        
+        if (!potentialTargets || potentialTargets.length === 0) { return interaction.editReply({ content: 'ℹ️ No valid targets available for the NPC to attack!' }); }
+        console.log(`[DM NPC Attack Action ${sessionId}] Found ${potentialTargets.length} valid targets.`);
+
+        // --- 4. Build Target Selection Menu ---
+        const targetOptions = potentialTargets.map(target =>
+            new StringSelectMenuOptionBuilder()
+                .setLabel(`${target.name} (${target.currentHP}/${target.maxHP} HP)`.substring(0, 100))
+                .setValue(target.id) // Target combatant UUID
+        );
+
+        const targetSelectMenu = new StringSelectMenuBuilder()
+            // Use a distinct custom ID for NPC target selection
+            .setCustomId(`cts_npc_${sessionId}_${actorId}`)
+            .setPlaceholder('Choose a target for the NPC to attack...')
+            .addOptions(targetOptions.slice(0, 25));
+
+        const row = new ActionRowBuilder().addComponents(targetSelectMenu);
+
+        // --- 5. Reply with the Menu ---
+        await interaction.editReply({
+            content: `**DM Action:** Choose a target for **${actorCombatant.name}** to attack!`,
+            components: [row],
+            ephemeral: true
+        });
+        console.log(`[DM NPC Attack Action ${sessionId}] Presented target selection to DM for Actor ${actorId}`);
+
+    } catch (error) {
+        console.error(`[DM NPC Attack Action ${sessionId}] Error for Actor ${actorId}:`, error);
+        await interaction.editReply({ content: '❌ An error occurred while preparing the NPC attack.', components: [] }).catch(console.error);
+    }
+}
+
+
 async function handleCombatTargetSelectAttack(interaction, sessionId, actorId) {
-    await interaction.deferUpdate({ ephemeral: true });
+    // We are NOT deferring here. We will edit the original ephemeral message.
     const targetId = interaction.values[0];
     console.log(`[Combat Attack ${sessionId}] Actor ${actorId} selected Target ${targetId}`);
+
+    // Immediately update the ephemeral message to give feedback
+    await interaction.update({ content: `⚔️ Attacking...`, components: [] });
 
     if (!interaction.client.activeCombats?.has(interaction.channelId)) { return interaction.followUp({ content: '❌ Error: Active combat data not found!', ephemeral: true }); }
     const sessionData = interaction.client.activeCombats.get(interaction.channelId);
@@ -237,12 +529,15 @@ async function handleCombatTargetSelectAttack(interaction, sessionId, actorId) {
         let finalDamage = 0;
         let hitConnected = false;
 
-        // --- Step 1: Get Effective Stats (USING PLACEHOLDER) ---
-        const attackerStats = await getEffectiveCombatStats(attacker);
-        const targetStats = await getEffectiveCombatStats(target);
+        // --- Step 1: Get Effective Stats (NOW ASYNC) ---
+        const [attackerStats, targetStats] = await Promise.all([
+            getEffectiveCombatStats(attacker),
+            getEffectiveCombatStats(target)
+        ]);
+        
         console.log(`  Stats | Attacker AT:${attackerStats.currentAT} TP:${attackerStats.currentTP} | Target PA:${targetStats.currentPA} RS:${targetStats.currentRS}`);
         if (attackerStats.currentAT === undefined || !attackerStats.currentTP || targetStats.currentPA === undefined || targetStats.currentRS === undefined) {
-             throw new Error(`Missing effective combat stats.`);
+             throw new Error(`Missing effective combat stats after fetch.`);
         }
 
         // --- Step 2: Resolve Attack Roll ---
@@ -291,24 +586,123 @@ async function handleCombatTargetSelectAttack(interaction, sessionId, actorId) {
         const finalLogEntry = logSummaryParts.join(' ');
         await addLogEntry(interaction.client, interaction.channelId, sessionId, finalLogEntry);
 
-        // --- Step 5: Update Display ---
-        // Removed the debug logs before this call
-        await updateCombatDisplay(interaction.client, interaction.channelId);
+        // --- Step 5: Delete the ephemeral "Attacking..." message ---
+        await interaction.deleteReply();
 
-        // --- Step 6: NO Ephemeral Feedback ---
+        // --- Step 6: Advance the turn ---
+        await nextTurn(interaction.client, interaction.channelId);
 
-        console.log(`[Combat Attack ${sessionId}] Action resolved for ${actorId}. Turn NOT advanced.`);
+        console.log(`[Combat Attack ${sessionId}] Action resolved and turn advanced for ${actorId}.`);
 
     } catch (error) { // Catch errors during action resolution
         console.error(`[Combat Attack ${sessionId}] Error resolving attack by ${actorId} on ${targetId}:`, error);
-        await interaction.followUp({ content: '❌ An error occurred while resolving the attack.', ephemeral: true });
+        // Edit the ephemeral message to show the error
+        await interaction.editReply({ content: '❌ An error occurred while resolving the attack.' });
+    }
+}
+
+/**
+ * Handles the DM's target selection for an NPC attack.
+ * This function is nearly identical to handleCombatTargetSelectAttack but ensures
+ * the interaction is handled correctly for the DM.
+ * @param {StringSelectMenuInteraction} interaction - The select menu interaction.
+ * @param {string} sessionId - The combat session ID.
+ * @param {string} actorId - The combatant ID of the NPC attacker.
+ */
+async function handleDmNpcTargetSelectAttack(interaction, sessionId, actorId) {
+    await interaction.deferUpdate({ ephemeral: true }); // Acknowledge the menu selection
+    const targetId = interaction.values[0];
+    console.log(`[DM NPC Attack ${sessionId}] DM ${interaction.user.id} selected Target ${targetId} for Actor ${actorId}`);
+
+    // Get session data and verify DM
+    const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+    if (!sessionData || sessionData.id !== sessionId) { return interaction.followUp({ content: '❌ Error: Active combat data not found!', ephemeral: true }); }
+    if (sessionData.dmUserId !== interaction.user.id) { return interaction.followUp({ content: '❌ Not the DM.', ephemeral: true }); }
+
+    const attacker = sessionData.combatants.find(c => c.id === actorId);
+    const target = sessionData.combatants.find(c => c.id === targetId);
+    const activeCombatantId = sessionData.turnOrder[sessionData.currentTurnIndex];
+
+    // Validation
+    if (actorId !== activeCombatantId) { return interaction.followUp({ content: `❌ It's not this NPC's turn!`, ephemeral: true }); }
+    if (!attacker || !target) { return interaction.followUp({ content: `❌ Attacker/Target data missing.`, ephemeral: true }); }
+    if (target.currentHP <= 0) { return interaction.followUp({ content: `❌ ${target.name} is already defeated!`, ephemeral: true }); }
+    if (attacker.allegiance === target.allegiance) { return interaction.followUp({ content: `❌ Cannot attack own side.`, ephemeral: true }); }
+
+    try {
+        // This block is identical to the resolution logic in handleCombatTargetSelectAttack
+        // For DRY principle, this could be refactored into a shared `resolveCombatAction` function
+        // but for clarity and to fix the immediate bug, we'll duplicate it here.
+        console.log(`[DM NPC Attack ${sessionId}] Resolving: ${attacker.name} vs ${target.name}`);
+        const logSummaryParts = [];
+        let hitConnected = false;
+
+        const [attackerStats, targetStats] = await Promise.all([
+            getEffectiveCombatStats(attacker),
+            getEffectiveCombatStats(target)
+        ]);
+
+        const attackResult = resolveAttack(attackerStats.currentAT);
+        logSummaryParts.push(`${attacker.name} attacks ${target.name}. (Roll: ${attackResult.roll}/${attackerStats.currentAT})`);
+        if (attackResult.confirmRoll !== null) { logSummaryParts.push(`(Confirm: ${attackResult.confirmRoll})`); }
+
+        switch (attackResult.outcome) {
+            case 'BOTCH': logSummaryParts.push(`-> **BOTCH!**`); break;
+            case 'NORMAL_MISS': logSummaryParts.push(`-> **Miss!**`); break;
+            case 'CRITICAL_SUCCESS':
+            case 'NORMAL_HIT':
+                if (attackResult.outcome === 'CRITICAL_SUCCESS') { logSummaryParts.push(`-> **CRITICAL HIT!**`); }
+                else { logSummaryParts.push(`-> Hit!`); }
+                hitConnected = true;
+
+                const defenseResult = resolveDefense(targetStats.currentPA);
+                logSummaryParts.push(`| ${target.name} Parry: ${defenseResult.roll}/${targetStats.currentPA}.`);
+                if (defenseResult.success) { logSummaryParts.push(`**Parried!**`); hitConnected = false; }
+                else { logSummaryParts.push(`Parry Failed.`); }
+                break;
+        }
+
+        if (hitConnected) {
+            let rolledDamage = parseAndRollDamage(attackerStats.currentTP);
+            if (attackResult.outcome === 'CRITICAL_SUCCESS') rolledDamage *= 2;
+            const finalDamage = applySoak(rolledDamage, targetStats.currentRS);
+            logSummaryParts.push(`| ${rolledDamage} TP - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`);
+
+            const newHP = Math.max(0, target.currentHP - finalDamage);
+            if (newHP !== target.currentHP) {
+                await axios.put(`${BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP });
+                target.currentHP = newHP;
+                logSummaryParts.push(`| ${target.name} HP: ${newHP}/${target.maxHP}.`);
+                if (newHP <= 0) { logSummaryParts.push(`**Defeated!**`); }
+            } else { logSummaryParts.push("No damage taken."); }
+        }
+
+        const finalLogEntry = logSummaryParts.join(' ');
+        await addLogEntry(interaction.client, interaction.channelId, sessionId, finalLogEntry);
+        
+        await interaction.editReply({ content: `✅ Attack by **${attacker.name}** resolved.`, components: [] });
+
+        // Automatically delete the confirmation message after 5 seconds
+        setTimeout(() => {
+            interaction.deleteReply().catch(error => {
+                // Ignore errors if the user dismisses the message manually before the timeout
+                if (error.code !== 10008) { // 10008: Unknown Message
+                    console.error("Failed to delete ephemeral reply:", error);
+                }
+            });
+        }, 5000);
+        
+        await nextTurn(interaction.client, interaction.channelId);
+
+    } catch (error) {
+        console.error(`[DM NPC Attack ${sessionId}] Error resolving attack by ${actorId} on ${targetId}:`, error);
+        await interaction.followUp({ content: '❌ An error occurred while resolving the NPC attack.', ephemeral: true });
     }
 }
 
 
 /**
- * Adds a log entry to the in-memory state and (eventually) sends it to the backend.
- * Includes logging direct from map after modification attempt.
+ * Adds a log entry to the in-memory state AND sends it to the backend API.
  * @param {Client} client - The Discord client instance.
  * @param {string} channelId - The channel ID where combat is active.
  * @param {string} sessionId - The combat session ID.
@@ -316,109 +710,241 @@ async function handleCombatTargetSelectAttack(interaction, sessionId, actorId) {
  */
 async function addLogEntry(client, channelId, sessionId, entry) {
     const functionName = `[Log ${sessionId}]`;
-    console.log(`${functionName} ADDING: "${entry}" for Channel ${channelId}`); // Log entry
+    console.log(`${functionName} ADDING: "${entry}" for Channel ${channelId}`);
 
-    if (!client.activeCombats) {
-         console.warn(`${functionName} client.activeCombats map missing.`);
-         return;
-    }
-    if (!client.activeCombats.has(channelId)) {
-         console.warn(`${functionName} No active combat in map for channel ${channelId}.`);
-         return;
-    }
+    let logUpdatedInMemory = false; // Flag to track if memory update happened
 
-    // Get the object reference from the Map
-    const sessionDataRef = client.activeCombats.get(channelId);
+    // Update in-memory log first
+    if (client.activeCombats?.has(channelId)) {
+        const sessionDataRef = client.activeCombats.get(channelId);
+        if (sessionDataRef && typeof sessionDataRef === 'object' && sessionDataRef.id === sessionId) {
+            if (!sessionDataRef.combatLog || !Array.isArray(sessionDataRef.combatLog)) {
+                sessionDataRef.combatLog = [];
+            }
+            sessionDataRef.combatLog.push(entry);
+            const MAX_LOG_LENGTH = 20;
+            if(sessionDataRef.combatLog.length > MAX_LOG_LENGTH) {
+                 sessionDataRef.combatLog = sessionDataRef.combatLog.slice(-MAX_LOG_LENGTH);
+            }
+            logUpdatedInMemory = true; // Mark memory as updated
+            console.log(`${functionName} In-memory log updated. Length: ${sessionDataRef.combatLog.length}`);
+        } else { console.warn(`${functionName} Session data in map invalid/mismatch.`); }
+    } else { console.warn(`${functionName} No active combat in map.`); }
 
-    // Validate the retrieved object
-    if (!sessionDataRef || typeof sessionDataRef !== 'object' || sessionDataRef.id !== sessionId) {
-        console.warn(`${functionName} Session data in map invalid/mismatch for channel ${channelId}.`);
-        return;
-    }
-
-    // Ensure combatLog array exists and is an array
-    if (!sessionDataRef.combatLog || !Array.isArray(sessionDataRef.combatLog)) {
-        sessionDataRef.combatLog = [];
-        console.log(`${functionName} Initialized in-memory combatLog array.`);
-    }
-
-    // --- Modify the array directly on the object reference ---
+    // --- Send log entry to backend API ---
     try {
-        sessionDataRef.combatLog.push(entry); // Attempt push
-        console.log(`${functionName} Pushed entry. Temp array length: ${sessionDataRef.combatLog.length}`);
-    } catch (pushError) {
-         console.error(`${functionName} Error during combatLog.push:`, pushError);
-         return; // Stop if push itself fails
-    }
-    // --- End modification ---
-
-    // Trim log
-    const MAX_LOG_LENGTH = 20;
-    if(sessionDataRef.combatLog.length > MAX_LOG_LENGTH) {
-         sessionDataRef.combatLog = sessionDataRef.combatLog.slice(-MAX_LOG_LENGTH);
-         console.log(`${functionName} Log trimmed to ${MAX_LOG_LENGTH} entries.`);
-    }
-
-    // --- Re-fetch from map and Log state AFTER push attempt ---
-    // This confirms if the object IN THE MAP was actually modified
-    const updatedSessionInMap = client.activeCombats.get(channelId);
-    if (updatedSessionInMap && updatedSessionInMap.combatLog && Array.isArray(updatedSessionInMap.combatLog)) {
-        console.log(`${functionName} === VERIFY MAP AFTER PUSH ===`);
-        console.log(`${functionName} Map log length: ${updatedSessionInMap.combatLog.length}`);
-        console.log(`${functionName} Map last 5 entries:`, updatedSessionInMap.combatLog.slice(-5));
-        console.log(`${functionName} ============================`);
-    } else {
-        console.error(`${functionName} AFTER PUSH - Failed to re-fetch session or valid log array from map!`);
+        console.log(`${functionName} Sending entry to backend: PUT ${BACKEND_URL}/combatSession/${sessionId}`);
+        // Use the generic update endpoint, sending only the new entry
+        // Backend controller needs to handle appending this entry
+        const response = await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, {
+             combatLogEntry: entry // Send the new entry string
+         });
+        if (response.status === 200) {
+             console.log(`${functionName} Backend acknowledged log entry.`);
+        } else {
+             console.warn(`${functionName} Backend responded with unexpected status ${response.status} for log entry.`);
+        }
+    } catch (error) {
+        console.error(`${functionName} Failed to send log entry to backend:`, error.message);
+        // Handle specific errors if needed (e.g., session not found on backend 404)
+        if (axios.isAxiosError(error) && error.response) {
+             console.error(`  -> Backend Status: ${error.response.status}, Data: ${JSON.stringify(error.response.data)}`);
+        }
+        // If the API call fails, the log only exists in the bot's memory until next successful save/restart.
     }
 
-    // TODO: Backend API call to persist the log entry...
-    // console.warn(`addLogEntry needs backend API call!`);
+    // Log directly from map AFTER potential update attempt for final verification
+     if (logUpdatedInMemory) {
+        const updatedSessionInMap = client.activeCombats.get(channelId);
+        if (updatedSessionInMap?.combatLog) {
+            console.log(`${functionName} === VERIFY MAP AFTER ADD ===`);
+            console.log(`${functionName} Map log length: ${updatedSessionInMap.combatLog.length}`);
+            console.log(`${functionName} Map last entry: ${updatedSessionInMap.combatLog[updatedSessionInMap.combatLog.length - 1]}`);
+            console.log(`${functionName} ==========================`);
+        }
+    }
 }
-
 
 async function getEffectiveCombatStats(combatant) {
-    console.warn(`getEffectiveCombatStats for ${combatant.name} not fully implemented! Using placeholders.`);
-    // Placeholder: In reality, fetch Player+Weapon/Stats API or Mob API data here
+    console.log(`[getEffectiveCombatStats] Fetching stats for ${combatant.name} (Type: ${combatant.type})`);
+    
     if (combatant.type === 'PLAYER') {
-        // Example: Fetch player data, find equipped weapon AT/TP, get PA/RS from stats/items
-         // const playerResponse = await axios.get(`${BACKEND_URL}/player/${combatant.playerId}?relations=weapons,stats,items`);
-         // const player = playerResponse.data;
-         // const weapon = player.weapons.find(w => w.isEquipped...);
-         // const shield = player.items.find(i => i.isEquipped && i.type === 'SHIELD'); // Assuming items have type/isEquipped
-         // const armor = player.items.find(i => i.isEquipped && i.type === 'ARMOR');
-         return { currentAT: 12, currentPA: 6, currentRS: 2, currentTP: '1w6+4' }; // HARDCODED PLACEHOLDERS
+        try {
+            const playerResponse = await axios.get(`${BACKEND_URL}/player/${combatant.playerId}?relations=weapons,stats`);
+            const player = playerResponse.data;
+
+            if (!player || !player.stats || !player.weapons) {
+                throw new Error(`Incomplete player data for ID ${combatant.playerId}`);
+            }
+
+            const offensiveWeapon = player.weapons.find(w => w.isEquipped === 'Y' && (w.equippedSlot === 'OFFENSE' || w.equippedSlot === 'ADAPTIVE'));
+            const defensiveWeapon = player.weapons.find(w => w.isEquipped === 'Y' && (w.equippedSlot === 'DEFENSE' || w.equippedSlot === 'ADAPTIVE'));
+
+            // If a single ADAPTIVE weapon is used, it counts for both offense and defense.
+            let at = offensiveWeapon ? offensiveWeapon.at : player.stats.attacke_basis || 8; // Default to 8 if no weapon
+            const tp = offensiveWeapon ? offensiveWeapon.tp : '1w6';
+            let pa = defensiveWeapon ? defensiveWeapon.pa : player.stats.parade_basis || 6; // Default to 6 if no weapon/shield
+            
+            // RS (Armor Soak) is missing from the Stats entity. Assuming 0 for now. This is a data model gap.
+            let rs = player.stats.ruestungsschutz || 0;
+
+            // --- NEW: Apply effects ---
+            if (combatant.effects && Array.isArray(combatant.effects)) {
+                for (const effect of combatant.effects) {
+                    if (effect.type === 'defend') {
+                        pa += effect.bonus;
+                        console.log(`[getEffectiveCombatStats] Applied defend bonus (+${effect.bonus}) to ${player.name}. New PA: ${pa}`);
+                    }
+                }
+            }
+
+            console.log(`[getEffectiveCombatStats] Player ${player.name}: AT=${at}, PA=${pa}, RS=${rs}, TP=${tp}`);
+            return { currentAT: at, currentPA: pa, currentRS: rs, currentTP: tp };
+
+        } catch (error) {
+            console.error(`[getEffectiveCombatStats] Failed to fetch player data for ${combatant.name}:`, error.message);
+            // Return default/fallback stats on error
+            return { currentAT: 8, currentPA: 6, currentRS: 0, currentTP: '1w6' };
+        }
     } else if (combatant.type === 'NPC') {
-         // Example: Fetch mob definition data
-         // const mobResponse = await axios.get(`${BACKEND_URL}/mob/id/${combatant.mobDefinitionId}`);
-         // const mob = mobResponse.data;
-         // return { currentAT: mob.baseAttackValue, currentPA: mob.baseParryValue, currentRS: mob.baseArmorSoak, currentTP: mob.baseDamageTP };
-         return { currentAT: 10, currentPA: 5, currentRS: 1, currentTP: '1w6+2' }; // HARDCODED PLACEHOLDERS
+        try {
+            const mobResponse = await axios.get(`${BACKEND_URL}/mob/id/${combatant.mobDefinitionId}`);
+            const mob = mobResponse.data;
+
+            if (!mob) {
+                throw new Error(`Mob definition not found for ID ${combatant.mobDefinitionId}`);
+            }
+
+            let pa = mob.baseParryValue;
+            if (combatant.effects && Array.isArray(combatant.effects)) {
+                for (const effect of combatant.effects) {
+                    if (effect.type === 'defend') {
+                        pa += effect.bonus;
+                        console.log(`[getEffectiveCombatStats] Applied defend bonus (+${effect.bonus}) to NPC ${mob.name}. New PA: ${pa}`);
+                    }
+                }
+            }
+
+            const stats = {
+                currentAT: mob.baseAttackValue,
+                currentPA: pa,
+                currentRS: mob.baseArmorSoak,
+                currentTP: mob.baseDamageTP
+            };
+            
+            console.log(`[getEffectiveCombatStats] NPC ${mob.name}: AT=${stats.currentAT}, PA=${stats.currentPA}, RS=${stats.currentRS}, TP=${stats.currentTP}`);
+            return stats;
+
+        } catch (error) {
+            console.error(`[getEffectiveCombatStats] Failed to fetch mob data for ${combatant.name}:`, error.message);
+            // Return default/fallback stats on error
+            return { currentAT: 8, currentPA: 6, currentRS: 0, currentTP: '1w6' };
+        }
     }
-    return { currentAT: 0, currentPA: 0, currentRS: 0, currentTP: '1w6' }; // Default fallback
+    
+    // Fallback for unknown types
+    console.warn(`[getEffectiveCombatStats] Unknown combatant type for ${combatant.name}: ${combatant.type}`);
+    return { currentAT: 0, currentPA: 0, currentRS: 0, currentTP: '1w6' };
 }
 
 
 
 
+/**
+ * Advances the combat turn to the next non-defeated combatant.
+ * Updates the in-memory state and persists the new turn index to the backend.
+ * Calls updateCombatDisplay at the end.
+ * @param {Client} client - The Discord client instance.
+ * @param {string} channelId - The ID of the channel where combat is active.
+ */
 async function nextTurn(client, channelId) {
-     console.warn(`nextTurn not fully implemented!`);
-     // TODO:
-     // 1. Get session from client.activeCombats using channelId
-     // 2. If !session or state !== RUNNING, return.
-     // 3. Find current actor, set isActiveTurn = false (in memory & API PUT /combatant/:id)
-     // 4. Increment currentTurnIndex (with wrap around using modulo session.turnOrder.length)
-     // 5. Find new actor, set isActiveTurn = true (in memory & API PUT /combatant/:id)
-     // 6. Update session currentTurnIndex in memory (and API PUT /combatSession/:id ?) - maybe save full state less often?
-     // 7. Check for win/loss conditions?
-     // 8. Potentially call updateCombatDisplay implicitly here or return session state?
-     // For now, just log.
-     const sessionData = client.activeCombats?.get(channelId);
-     if(sessionData?.turnOrder?.length > 0){
-          sessionData.currentTurnIndex = (sessionData.currentTurnIndex + 1) % sessionData.turnOrder.length;
-          console.log(`Advanced turn for session ${sessionData.id}. New index: ${sessionData.currentTurnIndex}`);
-          // In real implementation, save this index change to backend too.
-     }
+    const functionName = `[Next Turn ${channelId}]`;
+    console.log(`${functionName} Attempting to advance turn.`);
 
+    // 1. Get State from Memory
+    if (!client.activeCombats?.has(channelId)) { console.error(`${functionName} No active combat found.`); return; }
+    const sessionData = client.activeCombats.get(channelId);
+    if (!sessionData || !Array.isArray(sessionData.turnOrder) || sessionData.turnOrder.length === 0) { console.error(`${functionName} Invalid session data or empty turn order.`); return; }
+    if (sessionData.state !== 'RUNNING') { console.warn(`${functionName} Combat not running, turn cannot advance.`); return; }
+
+    const sessionId = sessionData.id;
+    const turnOrder = sessionData.turnOrder;
+    const numCombatants = turnOrder.length;
+
+    // --- (Optional: Set previous combatant isActiveTurn=false via API) ---
+    // const previousActorId = turnOrder[sessionData.currentTurnIndex];
+    // try { await axios.put(`${BACKEND_URL}/combatant/${previousActorId}`, { isActiveTurn: false }); }
+    // catch (e) { console.error(`${functionName} Failed API call to set previous actor inactive`, e.message); }
+    // --- End Optional ---
+
+    // 2. Find Next Active Combatant
+    let nextIndex = sessionData.currentTurnIndex; // Start checking from current index + 1
+    let nextActiveCombatant = null;
+    let checkedCount = 0; // Safety break for infinite loops
+
+    console.log(`${functionName} Starting search for next turn from index ${sessionData.currentTurnIndex}.`);
+
+    while (checkedCount < numCombatants) {
+        nextIndex = (nextIndex + 1) % numCombatants; // Move to next index, wrap around
+        const nextCombatantId = turnOrder[nextIndex];
+        const potentialCombatant = sessionData.combatants.find(c => c.id === nextCombatantId);
+
+        console.log(`${functionName} Checking index ${nextIndex}: ID=${nextCombatantId}, Found=${!!potentialCombatant}, HP=${potentialCombatant?.currentHP}`);
+
+        if (potentialCombatant && potentialCombatant.currentHP > 0) {
+            nextActiveCombatant = potentialCombatant;
+            console.log(`${functionName} Found next active combatant: ${nextActiveCombatant.name} at index ${nextIndex}`);
+            break; // Found the next active participant
+        }
+
+        checkedCount++;
+        if (checkedCount >= numCombatants) { // Should not happen if >0 HP combatants exist
+            console.log(`${functionName} Cycled through all combatants, none found active.`);
+            break;
+        }
+    }
+
+    // 3. Handle Combat End or Update Turn
+    if (!nextActiveCombatant) {
+        // This case handles when all combatants are defeated simultaneously, resulting in a draw.
+        console.log(`[Combat End ${sessionId}] No active combatants remaining! Draw or mutual defeat.`);
+        sessionData.state = 'ENDED';
+        sessionData.currentTurnIndex = -1;
+        await addLogEntry(client, channelId, sessionId, "--- Combat Ended: No survivors! ---");
+
+    } else {
+        // --- NEW: Check for Victory Condition ---
+        const consciousCombatants = sessionData.combatants.filter(c => c.currentHP > 0);
+        const uniqueAllegiances = [...new Set(consciousCombatants.map(c => c.allegiance))];
+
+        if (uniqueAllegiances.length === 1) {
+            console.log(`[Combat End ${sessionId}] Victory condition met! Allegiance ${uniqueAllegiances[0]} has won.`);
+            sessionData.state = 'ENDED';
+            sessionData.currentTurnIndex = -1;
+            const winner = uniqueAllegiances[0] === 'PLAYER_SIDE' ? 'The players' : 'The hostile forces';
+            await addLogEntry(client, channelId, sessionId, `--- Combat Ended: ${winner} are victorious! ---`);
+        } else {
+            // --- Continue to Next Turn ---
+            sessionData.currentTurnIndex = nextIndex; // Update index in memory
+            
+            if (nextActiveCombatant.effects) {
+                console.log(`${functionName} Clearing temporary effects for ${nextActiveCombatant.name}.`);
+                nextActiveCombatant.effects = nextActiveCombatant.effects.filter(eff => !eff.isTemporary);
+            }
+
+            console.log(`${functionName} New turn index: ${sessionData.currentTurnIndex}. New active combatant: ${nextActiveCombatant.name}`);
+            try {
+                 console.log(`${functionName} Updating backend session index to ${nextIndex}`);
+                 await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, { currentTurnIndex: nextIndex });
+            } catch(e) {
+                 console.error(`${functionName} Failed to update backend with new turn index:`, e.message);
+            }
+            await addLogEntry(client, channelId, sessionId, `--- ${nextActiveCombatant.name}'s Turn ---`);
+        }
+    }
+
+    // 4. Update the Display (ALWAYS call this to show new turn or end state)
+    await updateCombatDisplay(client, channelId);
 }
 
 /**
@@ -433,18 +959,25 @@ async function nextTurn(client, channelId) {
  * @param {Client} client - The Discord client instance (to access activeCombats).
  * @param {string} channelId - The ID of the channel where combat is happening.
  */
-async function updateCombatDisplay(client, channelId) {
+async function updateCombatDisplay(client, channelId, freshSessionData = null) {
     const functionName = `[Display Update ${channelId}]`;
     console.log(`${functionName} Attempting update.`);
 
-    // 1. Get State from Memory
-    if (!client.activeCombats?.has(channelId)) {
-        console.error(`${functionName} No active combat found in memory map.`);
-        return;
+    // 1. Get State from Memory or use fresh data if provided
+    let sessionData;
+    if (freshSessionData) {
+        console.log(`${functionName} Using fresh session data provided.`);
+        sessionData = freshSessionData;
+    } else {
+        if (!client.activeCombats?.has(channelId)) {
+            console.error(`${functionName} No active combat found in memory map.`);
+            return;
+        }
+        sessionData = client.activeCombats.get(channelId);
     }
-    const sessionData = client.activeCombats.get(channelId);
+    
     if (!sessionData || !sessionData.id || !sessionData.state || !sessionData.messageId) {
-        console.error(`${functionName} Session data in map is invalid/missing fields.`, sessionData);
+        console.error(`${functionName} Session data is invalid/missing fields.`, sessionData);
         client.activeCombats.delete(channelId);
         return;
     }
@@ -482,7 +1015,7 @@ async function updateCombatDisplay(client, channelId) {
                     if (activeCombatant.type === 'PLAYER') {
                         actionRows = [createPlayerActionRow(sessionId, activeCombatantId)]; // Use helper
                     } else if (activeCombatant.type === 'NPC') {
-                        actionRows = [createNpcDmActionRow(sessionId, activeCombatantId)]; // Use helper
+                        actionRows = createNpcDmActionRow(sessionId, activeCombatantId); // Use helper
                     }
                 } else {
                      console.log(`${functionName} Current turn combatant ${activeCombatant.name} is defeated.`);
@@ -494,10 +1027,15 @@ async function updateCombatDisplay(client, channelId) {
             }
         } else if (sessionData.state === 'ENDED') {
              console.log(`${functionName} Combat ended state.`);
-             // Optionally adjust embed further for ended state
-             if (!combatEmbed.data.footer?.text?.startsWith('Combat Ended')) { // Avoid duplicate footers
+             if (!combatEmbed.data.footer?.text?.startsWith('Combat Ended')) {
                 combatEmbed.setFooter({ text: `Combat Ended | Session ID: ${sessionId.substring(0, 8)}...` });
              }
+             const logButton = new ButtonBuilder()
+                .setCustomId(`show_full_log_${sessionId}`)
+                .setLabel('Show Full Log')
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji({ name: '📜' });
+             actionRows = [new ActionRowBuilder().addComponents(logButton)];
         }
         // For SETUP state or invalid turn index, actionRows remains []
 
@@ -686,6 +1224,11 @@ async function handleCancelCombatInteraction(interaction, sessionId) { /* ... Im
         await axios.delete(`${BACKEND_URL}/combatSession/${sessionId}`); console.log(`Session ${sessionId} deleted.`);
         if(session.messageId) { const channel = await interaction.client.channels.fetch(session.channelId).catch(()=>{}); if(channel?.isTextBased()) { const msg = await channel.messages.fetch(session.messageId).catch(()=>{}); if(msg) await msg.edit({content:`*Setup cancelled.*`, embeds:[], components:[]}).catch(e=>console.warn("Msg edit fail on cancel",e)); }}
         await interaction.editReply({ content: '✅ Combat setup cancelled.' });
+        setTimeout(() => {
+            interaction.deleteReply().catch(error => {
+                if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+            });
+        }, 5000);
     } catch(error) { let msg = "Error cancelling."; if (error instanceof Error) msg = error.message; await interaction.editReply(`❌ ${msg}`); }
 }
 
@@ -906,9 +1449,6 @@ function createPlayerActionRow(sessionId, actorCombatantId) {
     const attackButton = new ButtonBuilder()
         .setCustomId(`caa_${sessionId}_${actorCombatantId}`) // Shortened ID
         .setLabel("Attack").setStyle(ButtonStyle.Danger).setEmoji({ name: "⚔️" });
-    const defendButton = new ButtonBuilder()
-        .setCustomId(`cad_${sessionId}_${actorCombatantId}`) // Shortened ID
-        .setLabel("Defend").setStyle(ButtonStyle.Secondary).setEmoji({ name: "🛡️" });
     const skillButton = new ButtonBuilder()
         .setCustomId(`cas_${sessionId}_${actorCombatantId}`) // Shortened ID
         .setLabel("Skill/Action").setStyle(ButtonStyle.Primary).setEmoji({ name: "✨" });
@@ -916,7 +1456,7 @@ function createPlayerActionRow(sessionId, actorCombatantId) {
         .setCustomId(`cet_${sessionId}_${actorCombatantId}`) // Shortened ID
         .setLabel("End Turn").setStyle(ButtonStyle.Secondary).setEmoji({ name: "⏩" });
 
-    return new ActionRowBuilder().addComponents(attackButton, defendButton, skillButton, endTurnButton);
+    return new ActionRowBuilder().addComponents(attackButton, skillButton, endTurnButton);
 }
 
 /**
@@ -1013,46 +1553,28 @@ async function handleStartFightInteraction(interaction, sessionId) {
         interaction.client.activeCombats.set(session.channelId, updatedSessionData);
         console.log(`[Start Fight ${sessionId}] Session loaded into active memory map for channel ${session.channelId}`);
 
-        // --- 7. Update Discord Message ---
+        // --- 7. Log Combat Start and Update Display ---
+        const firstCombatantName = updatedSessionData.combatants.find(c => c.id === updatedSessionData.turnOrder[0])?.name || 'Unknown';
+        await addLogEntry(interaction.client, session.channelId, sessionId, `--- Combat Started! ---`);
+        await addLogEntry(interaction.client, session.channelId, sessionId, `--- ${firstCombatantName}'s Turn ---`);
+
         try {
-            console.log(`[Start Fight ${sessionId}] Updating original message ${session.messageId}`);
-            const channel = await interaction.client.channels.fetch(session.channelId).catch(() => null);
-            if (!channel?.isTextBased()) throw new Error("Channel not found/text-based for message update.");
-
-            const originalMessage = await channel.messages.fetch(session.messageId).catch(() => null);
-            if (!originalMessage) throw new Error("Original setup message not found for update.");
-
-            // Build new embed showing combat state
-            const combatEmbed = createCombatEmbed(updatedSessionData);
-
-            // Build action buttons for the FIRST participant's turn
-            let actionRow = null;
-            const firstCombatant = updatedSessionData.combatants.find(c => c.id === updatedSessionData.turnOrder[0]);
-            if (firstCombatant?.type === 'PLAYER') { // Only show buttons if first turn is a player
-                actionRow = createPlayerActionRow(sessionId, firstCombatant.id);
-                console.log(`[Start Fight ${sessionId}] Added action buttons for first player: ${firstCombatant.name}`);
-            } else if (firstCombatant) {
-                 console.log(`[Start Fight ${sessionId}] First turn is NPC (${firstCombatant.name}), awaiting DM action (no buttons shown yet).`);
-                 // Later, DM might get prompted or specific buttons
-            }
-
-            // Edit the original message, removing setup components and adding combat ones
-            await originalMessage.edit({
-                content: ' ', // Clear any previous content like "Setup cancelled"
-                embeds: [combatEmbed],
-                components: actionRow ? [actionRow] : [] // Add action row only if created
-            });
-            console.log(`[Start Fight ${sessionId}] Original message updated to combat state.`);
-
-        } catch (messageUpdateError) {
-             console.error(`[Start Fight ${sessionId}] Failed to update original message to combat state:`, messageUpdateError);
-             // Combat *did* start on backend & in memory, but message failed. Inform DM.
-             await interaction.followUp({ content: '⚠️ Combat started, but failed to update the main message display! Manual refresh might be needed.', ephemeral: true });
-             // Don't return here, the main confirmation should still send.
+            // Directly pass the fresh data to the display function
+            await updateCombatDisplay(interaction.client, session.channelId, updatedSessionData);
+            console.log(`[Start Fight ${sessionId}] Initial combat display updated successfully.`);
+        } catch (displayError) {
+            console.error(`[Start Fight ${sessionId}] Failed to update initial combat display:`, displayError);
+            await interaction.followUp({ content: '⚠️ Combat started, but failed to update the main message display!', ephemeral: true });
         }
 
         // --- 8. Send Confirmation to DM ---
-        await interaction.editReply({ content: '✅ Combat started!', ephemeral: true });
+        await interaction.editReply({ content: '✅ Combat started!' });
+        // Automatically delete the confirmation message after 5 seconds
+        setTimeout(() => {
+            interaction.deleteReply().catch(error => {
+                if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+            });
+        }, 5000);
 
     } catch (error) { // Catch outer errors (initial fetch, validation etc.)
         console.error(`[Start Fight ${sessionId}] Unhandled error in handler:`, error);
@@ -1285,6 +1807,11 @@ async function handleRemoveParticipantSelectInteraction(interaction, sessionId) 
                 // Respond to the select menu interaction confirming removal.
                 // We can remove the select menu now or prompt to remove another. Let's just confirm.
                 await interaction.editReply({ content: `✅ Participant removed successfully.`, components: [] }); // Remove select menu
+                setTimeout(() => {
+                    interaction.deleteReply().catch(error => {
+                        if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+                    });
+                }, 5000);
 
 
             } else { // Handle unexpected success status from DELETE
@@ -1312,5 +1839,170 @@ module.exports = {
     handleCombatButton,
     handleCombatSelectMenu,
     handleCombatModalSubmit,
-    updateCombatDisplay
+    updateCombatDisplay,
+    resolveCombatAction,
+    addLogEntry,
+    nextTurn,
+    getEffectiveCombatStats
 };
+
+async function handleShowFullLogInteraction(interaction, sessionId) {
+    await interaction.deferReply({ ephemeral: true });
+    try {
+        const response = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`);
+        const session = response.data;
+
+        if (!session || !session.combatLog) {
+            return interaction.editReply('❌ Could not retrieve combat log.');
+        }
+
+        const logContent = session.combatLog.join('\n');
+        const attachment = new AttachmentBuilder(Buffer.from(logContent, 'utf-8'), { name: `combat_log_${sessionId}.txt` });
+
+        await interaction.editReply({
+            content: 'Here is the full combat log:',
+            files: [attachment]
+        });
+    } catch (error) {
+        console.error('Error fetching full combat log:', error);
+        await interaction.editReply('❌ An error occurred while fetching the log.');
+    }
+}
+
+async function handleParkCombatInteraction(interaction, sessionId) {
+    await interaction.deferReply({ ephemeral: true });
+    const channelId = interaction.channelId;
+    const dmUserId = interaction.user.id;
+
+    try {
+        const sessionData = interaction.client.activeCombats.get(channelId);
+        if (!sessionData || sessionData.id !== sessionId) {
+            return interaction.editReply('❌ Could not find active combat data.');
+        }
+        if (sessionData.dmUserId !== dmUserId) {
+            return interaction.editReply('❌ Only the DM can park the combat.');
+        }
+        if (sessionData.state !== 'RUNNING') {
+            return interaction.editReply(`❌ Combat is not running. Current state: ${sessionData.state}.`);
+        }
+
+        await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, { state: 'PAUSED' });
+        sessionData.state = 'PAUSED';
+        await updateCombatDisplay(interaction.client, channelId);
+        interaction.client.activeCombats.delete(channelId);
+
+        await interaction.editReply('✅ Combat has been paused. Use `/resumecombat` to continue.');
+    } catch (error) {
+        console.error('Error parking combat via button:', error);
+        await interaction.editReply('❌ An error occurred while parking the combat.');
+    }
+}
+
+async function handleEndCombatInteraction(interaction, sessionId) {
+    await interaction.deferReply({ ephemeral: true });
+    const channelId = interaction.channelId;
+    const dmUserId = interaction.user.id;
+
+    try {
+        const sessionData = interaction.client.activeCombats.get(channelId);
+        if (!sessionData || sessionData.id !== sessionId) {
+            return interaction.editReply('❌ Could not find active combat data.');
+        }
+        if (sessionData.dmUserId !== dmUserId) {
+            return interaction.editReply('❌ Only the DM can end the combat.');
+        }
+
+        const reason = 'Ended by the DM.';
+        await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, {
+            state: 'ENDED',
+            combatLogEntry: `--- Combat Ended: ${reason} ---`
+        });
+
+        sessionData.state = 'ENDED';
+        if (!sessionData.combatLog) sessionData.combatLog = [];
+        sessionData.combatLog.push(`--- Combat Ended: ${reason} ---`);
+
+        await updateCombatDisplay(interaction.client, channelId);
+        interaction.client.activeCombats.delete(channelId);
+
+        await interaction.editReply('✅ Combat has been ended.');
+    } catch (error) {
+        console.error('Error ending combat via button:', error);
+        await interaction.editReply('❌ An error occurred while ending the combat.');
+    }
+}
+
+async function handleResumeSessionSelect(interaction) {
+    const functionName = `[Resume Session Select]`;
+    // The value from the select menu is the session ID
+    const sessionId = interaction.values[0];
+    console.log(`${functionName} User ${interaction.user.id} selected session ${sessionId} to resume.`);
+
+    await interaction.deferReply({ ephemeral: true });
+
+    try {
+        // --- 1. Fetch Full Session Data ---
+        // We need combatants to rebuild the in-memory state correctly.
+        const getUrl = `${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`;
+        console.log(`${functionName} Fetching session data from ${getUrl}`);
+        const response = await axios.get(getUrl);
+        const sessionToResume = response.data;
+
+        // --- 2. Validate Session and User ---
+        if (!sessionToResume || !sessionToResume.id) {
+            return interaction.editReply({ content: '❌ Error: Could not find the selected session data.' });
+        }
+        if (sessionToResume.dmUserId !== interaction.user.id) {
+            return interaction.editReply({ content: '❌ You are not the DM of this combat session.' });
+        }
+        if (sessionToResume.state !== 'PAUSED') {
+            return interaction.editReply({ content: `❌ This combat session is not paused. Current state: \`${sessionToResume.state}\`.` });
+        }
+        if (interaction.client.activeCombats?.has(interaction.channelId)) {
+            return interaction.editReply({ content: '❌ There is already another active combat in this channel.' });
+        }
+
+        // --- 3. Update State on Backend ---
+        const updateUrl = `${BACKEND_URL}/combatSession/${sessionId}`;
+        console.log(`${functionName} Setting session state to RUNNING via PUT ${updateUrl}`);
+        await axios.put(updateUrl, { state: 'RUNNING' });
+        sessionToResume.state = 'RUNNING'; // Reflect change locally
+
+        // --- 4. Load State into Memory ---
+        if (!interaction.client.activeCombats) {
+            interaction.client.activeCombats = new Map();
+        }
+        interaction.client.activeCombats.set(interaction.channelId, sessionToResume);
+        console.log(`${functionName} Session ${sessionId} loaded into active memory for channel ${interaction.channelId}.`);
+
+        // --- 5. Log Resumption & Update Display ---
+        await addLogEntry(interaction.client, interaction.channelId, sessionId, `--- Combat Resumed ---`);
+        await updateCombatDisplay(interaction.client, interaction.channelId, sessionToResume);
+        console.log(`${functionName} Combat display updated.`);
+
+        // --- 6. Confirm Success ---
+        // We also need to delete the original "Which session?" message
+        try {
+            await interaction.message.delete();
+            console.log(`${functionName} Deleted the session selection message.`);
+        } catch (deleteError) {
+            console.warn(`${functionName} Could not delete the original select menu message:`, deleteError.message);
+        }
+        await interaction.editReply({ content: '✅ Combat resumed successfully!' });
+
+
+    } catch (error) {
+        console.error(`${functionName} Error resuming session ${sessionId}:`, error);
+        let errorMessage = 'An unexpected error occurred.';
+        if (axios.isAxiosError(error) && error.response) {
+            errorMessage = `Backend Error (${error.response.status}): ${error.response.data?.message || 'Failed to resume.'}`;
+        } else if (error instanceof Error) {
+            errorMessage = error.message;
+        }
+        await interaction.editReply({ content: `❌ ${errorMessage}` }).catch(console.error);
+    }
+}
+
+async function handleDmNpcSkillAction(interaction, sessionId, actorId) {
+    await interaction.reply({ content: 'NPC skill actions are not implemented yet.', ephemeral: true });
+}

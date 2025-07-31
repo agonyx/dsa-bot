@@ -14,6 +14,7 @@ const STAT_CONFIG = [
     { key: 'le_max', label: 'Max LP' },
     { key: 'le_current', label: 'Current LP' },
     { key: 'initiative', label: 'Initiative' },
+    { key: 'ruestungsschutz', label: 'Armor (RS)' },
     { key: 'ausweichen', label: 'Ausweichen' }
 ];
 

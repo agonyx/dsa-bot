@@ -6,11 +6,6 @@ const axios = require('axios');
 require('dotenv').config();
 const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents'); 
 // --- Constants ---
-const BACKEND_URL = process.env.BACKEND_URL;
-if (!BACKEND_URL) {
-    console.error("Error: BACKEND_URL environment variable is not set.");
-    // Handle missing env var appropriately
-}
 
 // --- Main Execution Function ---
 /**
@@ -18,6 +13,11 @@ if (!BACKEND_URL) {
  * @param {Interaction} interaction - The command interaction.
  */
 async function executeStartCombat(interaction) {
+    const BACKEND_URL = process.env.BACKEND_URL;
+    if (!BACKEND_URL) {
+        console.error("Error: BACKEND_URL environment variable is not set.");
+        // Handle missing env var appropriately
+    }
     // Optional: Permission checks...
 
     try {
