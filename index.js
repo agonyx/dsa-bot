@@ -52,6 +52,52 @@ for (const file of eventFiles) {
 }
 
 const combatHandler = require('./handlers/combatHandler'); // Assuming CommonJS
+const axios = require('axios');
+
+/**
+ * Recovers active or paused combat sessions from the backend on bot startup.
+ * @param {Client} client The Discord client instance.
+ */
+async function recoverActiveCombats(client) {
+    console.log('[Recovery] Starting active combat session recovery...');
+    try {
+        const response = await axios.get(`${process.env.BACKEND_URL}/combatSession/active`);
+        const sessions = response.data;
+
+        if (!sessions || sessions.length === 0) {
+            console.log('[Recovery] No active or paused sessions found to recover.');
+            return;
+        }
+
+        console.log(`[Recovery] Found ${sessions.length} session(s) to recover.`);
+
+        for (const session of sessions) {
+            if (!session.channelId || !session.id) {
+                console.warn('[Recovery] Skipping session with missing channelId or id:', session);
+                continue;
+            }
+
+            // Add the session back to the in-memory map
+            client.activeCombats.set(session.channelId, session);
+            console.log(`[Recovery] Loaded session ${session.id} for channel ${session.channelId} into memory.`);
+
+            // Refresh the combat display to make buttons interactive again
+            try {
+                await combatHandler.updateCombatDisplay(client, session.channelId, session);
+                console.log(`[Recovery] Successfully refreshed display for session ${session.id}.`);
+            } catch (displayError) {
+                console.error(`[Recovery] Failed to update display for session ${session.id} in channel ${session.channelId}:`, displayError);
+                // If the message or channel was deleted, we should remove it from memory
+                client.activeCombats.delete(session.channelId);
+            }
+        }
+        console.log('[Recovery] Finished combat session recovery.');
+
+    } catch (error) {
+        console.error('[Recovery] Could not fetch or process active combat sessions from backend:', error.message);
+    }
+}
+
 
 client.on(Events.InteractionCreate, async interaction => {
     // --- Handle Slash Commands ---
@@ -88,6 +134,7 @@ client.on(Events.InteractionCreate, async interaction => {
             customId.startsWith('cad_') ||
             customId.startsWith('cas_') ||
             customId.startsWith('cet_') ||
+            customId.startsWith('csm_') || // Combat Skill Maneuver
             customId.startsWith('dmnpc_action') ||
             customId.startsWith('ctsa_') ||
             customId.startsWith('cts_npc_') ||
@@ -133,8 +180,9 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 // Event listener for when the client is ready
-client.once(Events.ClientReady, readyClient => {
+client.once(Events.ClientReady, async readyClient => {
     console.log(`✅ Ready! Logged in as ${readyClient.user.tag}`);
+    await recoverActiveCombats(readyClient);
 });
 
 client.login(process.env.DISCORD_TOKEN);

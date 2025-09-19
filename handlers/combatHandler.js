@@ -1,10 +1,11 @@
 // src/handlers/combatHandler.js -- CORRECTED
 
 const { Interaction, StringSelectMenuInteraction, ButtonInteraction, ModalSubmitInteraction, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, EmbedBuilder, ButtonStyle, AttachmentBuilder } = require('discord.js');
-const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents'); 
+const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents');
 const axios = require('axios');
 const { ButtonBuilder } = require('@discordjs/builders');
 const { resolveAttack, parseAndRollDamage, applySoak, resolveDefense, rollDice } = require('../utils/combatUtils');
+const crypto = require('crypto');
 resolveAttack
 require('dotenv').config();
 
@@ -138,63 +139,6 @@ async function handleCombatButton(interaction) {
  */
 async function handleCombatActionAttack(interaction, sessionId, actorId) {
     console.log(`[Attack Action ${sessionId}] Handling for Actor ${actorId} by User ${interaction.user.id}`);
-    // Defer ephemerally - we will reply with the target menu or an error
-    // Use deferReply here because errors need an immediate reply context
-    await interaction.deferReply({ ephemeral: true });
-
-    try {
-        // --- 1. Get Current Combat State from Memory ---
-        if (!interaction.client.activeCombats) { return interaction.editReply({ content: '❌ Error: Combat state map missing!' }); }
-        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
-        if (!sessionData || sessionData.id !== sessionId) { return interaction.editReply({ content: '❌ Error: Could not find active combat data.' }); }
-        if (sessionData.state !== 'RUNNING') { return interaction.editReply({ content: `❌ Cannot attack: Combat is not running.` }); }
-        if (!sessionData.turnOrder || sessionData.turnOrder.length === 0 || sessionData.currentTurnIndex === undefined) { return interaction.editReply({ content: `❌ Cannot attack: Turn order issue.` }); }
-
-        // --- 2. Verify State and Turn ---
-        const activeCombatantId = sessionData.turnOrder[sessionData.currentTurnIndex];
-        const actorCombatant = sessionData.combatants?.find(c => c.id === actorId);
-        if (!actorCombatant) { return interaction.editReply({ content: `❌ Error: Cannot find your combatant data.` }); }
-        if (actorId !== activeCombatantId) { const active = sessionData.combatants?.find(c=>c.id===activeCombatantId); return interaction.editReply({ content: `❌ It's not your turn! It's **${active?.name || 'Unknown'}**'s turn.` }); }
-        if (actorCombatant.type === 'PLAYER' && actorCombatant.discordUserId !== interaction.user.id) { return interaction.editReply({ content: `❌ You cannot control **${actorCombatant.name}**.` }); }
-
-        // --- 3. Find Valid Targets ---
-        const potentialTargets = sessionData.combatants?.filter(c => c.id !== actorId && c.currentHP > 0 && c.allegiance !== actorCombatant.allegiance );
-        if (!potentialTargets || potentialTargets.length === 0) { return interaction.editReply({ content: 'ℹ️ No valid targets available to attack!' }); }
-
-        // --- 4. Build Target Selection Menu (Simplified Options) ---
-        const targetOptions = potentialTargets.map(target => {
-            // Create label (ensure it's within 100 chars)
-            const label = `${target.name} (${target.currentHP}/${target.maxHP} HP)`.substring(0, 100);
-            // *** Use Builder with ONLY Label and Value ***
-            return new StringSelectMenuOptionBuilder()
-                .setLabel(label)
-                .setValue(target.id); // Target combatant UUID
-        });
-
-        const targetSelectMenu = new StringSelectMenuBuilder()
-            .setCustomId(`ctsa_${sessionId}_${actorId}`) // Use shortened ID
-            .setPlaceholder('Choose a target to attack...')
-            .addOptions(targetOptions.slice(0, 25)); // Add the array of builders
-
-        const row = new ActionRowBuilder().addComponents(targetSelectMenu); // Type needed for TS, not JS
-
-        // --- 5. Reply with the Menu ---
-        await interaction.editReply({
-            content: `**${actorCombatant.name}'s Turn:** Choose a target to attack!`,
-            components: [row],
-            ephemeral: true
-        });
-        console.log(`[Attack Action ${sessionId}] Presented target selection to Actor ${actorId}`);
-
-    } catch (error) {
-        console.error(`[Attack Action ${sessionId}] Error for Actor ${actorId}:`, error);
-        if (!interaction.replied && !interaction.deferred) { await interaction.reply({ content: '❌ Error preparing attack.', ephemeral: true}).catch(console.error); }
-        else { await interaction.editReply({ content: '❌ An error occurred while preparing your attack action.', components: [], embeds: [] }).catch(console.error); }
-    }
-}
-
-async function handleCombatActionAttack(interaction, sessionId, actorId) {
-    console.log(`[Attack Action ${sessionId}] Handling for Actor ${actorId} by User ${interaction.user.id}`);
     await interaction.deferReply({ ephemeral: true });
 
     try {
@@ -233,104 +177,234 @@ async function handleCombatActionAttack(interaction, sessionId, actorId) {
 
 async function resolveCombatAction(client, channelId, sessionId, actorId, targetId, maneuverId) {
     const sessionData = client.activeCombats.get(channelId);
-    if (!sessionData) return;
+    if (!sessionData) return; // Should be caught by caller, but good practice
 
     const attacker = sessionData.combatants.find(c => c.id === actorId);
     const target = sessionData.combatants.find(c => c.id === targetId);
 
-    try {
-        let maneuver = null;
-        if (maneuverId && maneuverId !== 'null') {
-            const response = await axios.get(`${process.env.BACKEND_URL}/action-modification/${maneuverId}`);
-            maneuver = response.data;
-        }
+    // No try/catch here. Let errors be thrown to the caller.
 
-        const [attackerStats, targetStats] = await Promise.all([
-            getEffectiveCombatStats(attacker),
-            getEffectiveCombatStats(target)
-        ]);
-
-        let atValue = attackerStats.currentAT;
-        let paValue = targetStats.currentPA;
-        let damageBonus = 0;
-        let logMessage = `${attacker.name} attacks ${target.name}.`;
-
-        if (maneuver) {
-            logMessage = `${attacker.name} uses **${maneuver.name}** to attack ${target.name}.`;
-            if (maneuver.rules.at_modifier) atValue += maneuver.rules.at_modifier;
-            if (maneuver.rules.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
-            if (maneuver.rules.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
-        }
-
-        const attackResult = resolveAttack(atValue);
-        logMessage += ` (Roll: ${attackResult.roll}/${atValue})`;
-        if (attackResult.confirmRoll !== null) logMessage += ` (Confirm: ${attackResult.confirmRoll})`;
-
-        let hitConnected = false;
-        if (attackResult.outcome === 'NORMAL_HIT' || attackResult.outcome === 'CRITICAL_SUCCESS') {
-            hitConnected = true;
-            const defenseResult = resolveDefense(paValue);
-            logMessage += ` | ${target.name} Parry: ${defenseResult.roll}/${paValue}.`;
-            if (defenseResult.success) {
-                logMessage += ` **Parried!**`;
-                hitConnected = false;
-            } else {
-                logMessage += ` Parry Failed.`;
-            }
-        } else {
-            logMessage += ` -> **Miss!**`;
-        }
-
-        if (hitConnected) {
-            let rolledDamage = parseAndRollDamage(attackerStats.currentTP);
-            if (attackResult.outcome === 'CRITICAL_SUCCESS') rolledDamage *= 2;
-            rolledDamage += damageBonus;
-            const finalDamage = applySoak(rolledDamage, targetStats.currentRS);
-            logMessage += ` | ${rolledDamage} TP - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`;
-            const newHP = Math.max(0, target.currentHP - finalDamage);
-            if (newHP !== target.currentHP) {
-                await axios.put(`${process.env.BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP });
-                target.currentHP = newHP;
-                logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
-                if (newHP <= 0) logMessage += ` **Defeated!**`;
-            }
-        }
-
-        await addLogEntry(client, channelId, sessionId, logMessage);
-        await nextTurn(client, channelId);
-
-    } catch (error) {
-        console.error(`Error resolving combat action:`, error);
-        // We need a way to report this back to the user.
-        const channel = await client.channels.fetch(channelId);
-        await channel.send('An error occurred while resolving the combat action.');
+    let maneuver = null;
+    if (maneuverId && maneuverId !== 'null') {
+        const response = await axios.get(`${process.env.BACKEND_URL}/action-modification/${maneuverId}`);
+        maneuver = response.data;
     }
-}
 
-async function handleCombatTargetSelectAttack(interaction, sessionId, actorId, maneuverId) {
-    const targetId = interaction.values[0];
-    await interaction.update({ content: `⚔️ Attacking...`, components: [] });
-    await resolveCombatAction(interaction.client, interaction.channelId, sessionId, actorId, targetId, maneuverId);
-    await interaction.deleteReply();
+    const [attackerStats, targetStats] = await Promise.all([
+        getEffectiveCombatStats(attacker),
+        getEffectiveCombatStats(target)
+    ]);
+
+    let atValue = attackerStats.currentAT;
+    let paValue = targetStats.currentPA;
+    let damageBonus = 0;
+    let logMessage = `${attacker.name} attacks ${target.name}.`;
+
+    if (maneuver) {
+        logMessage = `${attacker.name} uses **${maneuver.name}** to attack ${target.name}.`;
+        if (maneuver.rules.at_modifier) atValue += maneuver.rules.at_modifier;
+        if (maneuver.rules.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
+        if (maneuver.rules.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
+    }
+
+    const attackResult = resolveAttack(atValue);
+    logMessage += ` (Roll: ${attackResult.roll}/${atValue})`;
+    if (attackResult.confirmRoll !== null) logMessage += ` (Confirm: ${attackResult.confirmRoll})`;
+
+    let hitConnected = false;
+    if (attackResult.outcome === 'NORMAL_HIT' || attackResult.outcome === 'CRITICAL_SUCCESS') {
+        hitConnected = true;
+        const defenseResult = resolveDefense(paValue);
+        logMessage += ` | ${target.name} Parry: ${defenseResult.roll}/${paValue}.`;
+        if (defenseResult.success) {
+            logMessage += ` **Parried!**`;
+            hitConnected = false;
+        } else {
+            logMessage += ` Parry Failed.`;
+        }
+    } else {
+        logMessage += ` -> **Miss!**`;
+    }
+
+    if (hitConnected) {
+        let rolledDamage = parseAndRollDamage(attackerStats.currentTP);
+        if (attackResult.outcome === 'CRITICAL_SUCCESS') {
+            rolledDamage *= 2;
+        }
+        
+        const totalDamage = rolledDamage + damageBonus;
+        const finalDamage = applySoak(totalDamage, targetStats.currentRS);
+
+        let damageLog;
+        if (damageBonus > 0) {
+            damageLog = ` | ${rolledDamage} + ${damageBonus} (Skill) = ${totalDamage} TP`;
+        } else {
+            damageLog = ` | ${totalDamage} TP`;
+        }
+
+        logMessage += `${damageLog} - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`;
+        const newHP = Math.max(0, target.currentHP - finalDamage);
+        if (newHP !== target.currentHP) {
+            // 1. API Call First
+            await axios.put(`${process.env.BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP });
+            // 2. Update memory ONLY after successful API call
+            target.currentHP = newHP;
+            logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
+            if (newHP <= 0) logMessage += ` **Defeated!**`;
+        }
+    }
+
+    await addLogEntry(client, channelId, sessionId, logMessage);
+    await nextTurn(client, channelId);
 }
 
 async function handleCombatSelectMenu(interaction) {
     const customId = interaction.customId;
     console.log(`[Combat Handler] Select Menu Received: ${customId}`);
 
-    if (customId.startsWith('ctsa_')) {
+    if (!interaction.client.pendingCombatActions) {
+        interaction.client.pendingCombatActions = new Map();
+    }
+
+    if (customId.startsWith('ctsa_')) { // Player selected a TARGET for either a normal attack or a skill
+        await interaction.update({ content: `⚔️ Resolving action...`, components: [] });
+
+        try {
+            const parts = customId.split('_');
+            const sessionId = parts[1];
+            const actorIdFromCustomId = parts[2];
+            const maneuverIdFromCustomId = parts[3]; // Will be 'null' for a normal attack
+
+            const compositeValue = interaction.values[0];
+            const [targetId, nonce] = compositeValue.split(':');
+
+            let actorId;
+            let maneuverId;
+            let finalTargetId;
+
+            if (nonce) {
+                // This is a SKILL attack, which uses a nonce.
+                const pendingAction = interaction.client.pendingCombatActions.get(nonce);
+                if (!pendingAction) {
+                    return interaction.editReply({ content: '❌ This action has expired. Please try again.', components: [] });
+                }
+                interaction.client.pendingCombatActions.delete(nonce);
+
+                if (actorIdFromCustomId !== pendingAction.actorId) {
+                    console.error(`[Combat Handler] Mismatch between actorId in customId (${actorIdFromCustomId}) and nonce cache (${pendingAction.actorId})!`);
+                    return interaction.editReply({ content: '❌ Action data mismatch. Please try again.', components: [] });
+                }
+
+                actorId = pendingAction.actorId;
+                maneuverId = pendingAction.maneuverId;
+                finalTargetId = targetId;
+            } else {
+                // This is a STANDARD attack. The value is just the targetId.
+                actorId = actorIdFromCustomId;
+                maneuverId = maneuverIdFromCustomId; // Should be 'null'
+                finalTargetId = compositeValue;
+            }
+
+            // --- Start: Added Validation ---
+            const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+            if (!sessionData || sessionData.id !== sessionId) {
+                throw new Error('Active combat data not found or session mismatch.');
+            }
+            const attacker = sessionData.combatants.find(c => c.id === actorId);
+            const target = sessionData.combatants.find(c => c.id === finalTargetId);
+            const activeCombatantId = sessionData.turnOrder[sessionData.currentTurnIndex];
+
+            if (actorId !== activeCombatantId) {
+                throw new Error("It's not your turn!");
+            }
+            if (attacker?.type === 'PLAYER' && attacker.discordUserId !== interaction.user.id) {
+                throw new Error("You cannot control another player's character.");
+            }
+            if (!attacker || !target) {
+                throw new Error('Attacker or Target data could not be found.');
+            }
+            if (target.currentHP <= 0) {
+                throw new Error(`${target.name} is already defeated!`);
+            }
+            // --- End: Added Validation ---
+
+            console.log(`[Combat Handler] Routing to resolveCombatAction (Session: ${sessionId}, Actor: ${actorId}, Target: ${finalTargetId}, Maneuver: ${maneuverId})`);
+            
+            await resolveCombatAction(interaction.client, interaction.channelId, sessionId, actorId, finalTargetId, maneuverId);
+            
+            await interaction.deleteReply().catch(err => {
+                if (err.code !== 10008) console.error("Failed to delete ephemeral confirmation:", err);
+            });
+
+        } catch (error) {
+            console.error(`[Combat Handler] Error resolving combat action:`, error);
+            await interaction.followUp({ content: `❌ Error: ${error.message}`, ephemeral: true }).catch(console.error);
+        }
+
+    } else if (customId.startsWith('csm_')) { // Player selected a SKILL/MANEUVER
+        const parts = customId.split('_');
+        const sessionId = parts[1];
+        const actorId = parts[2];
+        const maneuverId = interaction.values[0];
+
+        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        if (!sessionData) return;
+
+        const actorCombatant = sessionData.combatants.find(c => c.id === actorId);
+        const potentialTargets = sessionData.combatants.filter(c => c.id !== actorId && c.currentHP > 0 && c.allegiance !== actorCombatant.allegiance);
+
+        if (!potentialTargets.length) {
+            return interaction.update({ content: 'There are no valid targets for this skill.', components: [] });
+        }
+
+        const nonce = crypto.randomBytes(8).toString('hex');
+        interaction.client.pendingCombatActions.set(nonce, { actorId, maneuverId });
+        setTimeout(() => {
+            if (interaction.client.pendingCombatActions.has(nonce)) {
+                console.log(`[Combat Handler] Auto-deleting expired pending action with nonce ${nonce}`);
+                interaction.client.pendingCombatActions.delete(nonce);
+            }
+        }, 300000);
+
+        const targetOptions = potentialTargets.map(target => ({
+            label: `${target.name} (${target.currentHP}/${target.maxHP} HP)`.substring(0, 100),
+            value: `${target.id}:${nonce}`,
+        }));
+
+        const targetSelectMenu = new StringSelectMenuBuilder()
+            .setCustomId(`ctsa_${sessionId}_${actorId}`) // FIXED: Added actorId for consistency
+            .setPlaceholder('Choose a target for your maneuver...')
+            .addOptions(targetOptions);
+
+        const row = new ActionRowBuilder().addComponents(targetSelectMenu);
+
+        await interaction.update({
+            content: `You have chosen your maneuver. Now, select your target:`,
+            components: [row],
+        });
+
+    } else if (customId.startsWith('cts_npc_')) {
         const parts = customId.split('_');
         if (parts.length === 4) {
-            const sessionId = parts[1];
-            const actorId = parts[2];
-            const maneuverId = parts[3];
-            await handleCombatTargetSelectAttack(interaction, sessionId, actorId, maneuverId);
+            const sessionId = parts[2];
+            const actorId = parts[3];
+            console.log(`[Combat Handler] Routing -> DM NPC Attack Target Select (Session: ${sessionId}, Actor: ${actorId})`);
+            await handleDmNpcTargetSelectAttack(interaction, sessionId, actorId);
         } else {
-            console.error(`Invalid ctsa_ customId format: ${customId}`);
-            await interaction.update({ content: 'Error: Invalid target selection data.', components: [], ephemeral: true }).catch(console.error);
+            console.error(`Invalid cts_npc_ customId format: ${customId}`);
+            await interaction.update({ content: 'Error: Invalid NPC target selection data.', components: [], ephemeral: true }).catch(console.error);
         }
+    } else if (customId.startsWith('resume_session_select')) {
+        console.log(`[Combat Handler] Routing -> Resume Session Select`);
+        await handleResumeSessionSelect(interaction);
+    } else if (customId.startsWith('remove_participant_select_')) {
+        const sessionId = customId.substring('remove_participant_select_'.length);
+        console.log(`[Combat Handler] Routing -> Remove Participant Select (Session: ${sessionId})`);
+        await handleRemoveParticipantSelectInteraction(interaction, sessionId);
     }
-    // ... other select menu handlers
+    else {
+        console.log(`[Combat Handler] Ignoring select menu with unknown prefix: ${customId}`);
+    }
 }
 
 /**
@@ -501,105 +575,7 @@ async function handleDmNpcAttackAction(interaction, sessionId, actorId) {
 }
 
 
-async function handleCombatTargetSelectAttack(interaction, sessionId, actorId) {
-    // We are NOT deferring here. We will edit the original ephemeral message.
-    const targetId = interaction.values[0];
-    console.log(`[Combat Attack ${sessionId}] Actor ${actorId} selected Target ${targetId}`);
 
-    // Immediately update the ephemeral message to give feedback
-    await interaction.update({ content: `⚔️ Attacking...`, components: [] });
-
-    if (!interaction.client.activeCombats?.has(interaction.channelId)) { return interaction.followUp({ content: '❌ Error: Active combat data not found!', ephemeral: true }); }
-    const sessionData = interaction.client.activeCombats.get(interaction.channelId);
-    if (!sessionData || sessionData.id !== sessionId || sessionData.state !== 'RUNNING') { return interaction.followUp({ content: '❌ Error: Combat is not active or session mismatch.', ephemeral: true }); }
-
-    const attacker = sessionData.combatants.find(c => c.id === actorId);
-    const target = sessionData.combatants.find(c => c.id === targetId);
-    const activeCombatantId = sessionData.turnOrder[sessionData.currentTurnIndex];
-    // Basic validation
-    if (actorId !== activeCombatantId) { return interaction.followUp({ content: `❌ It's not your turn!`, ephemeral: true }); }
-    if (attacker?.type === 'PLAYER' && attacker.discordUserId !== interaction.user.id) { return interaction.followUp({ content: `❌ Not your character.`, ephemeral: true }); }
-    if (!attacker || !target) { return interaction.followUp({ content: `❌ Attacker/Target data missing.`, ephemeral: true }); }
-    if (target.currentHP <= 0) { return interaction.followUp({ content: `❌ ${target.name} is already defeated!`, ephemeral: true }); }
-    if (attacker.allegiance === target.allegiance) { return interaction.followUp({ content: `❌ Cannot attack own side.`, ephemeral: true }); }
-
-    try {
-        console.log(`[Combat Attack ${sessionId}] Resolving: ${attacker.name} vs ${target.name}`);
-        const logSummaryParts = []; // Build a summary log entry
-        let finalDamage = 0;
-        let hitConnected = false;
-
-        // --- Step 1: Get Effective Stats (NOW ASYNC) ---
-        const [attackerStats, targetStats] = await Promise.all([
-            getEffectiveCombatStats(attacker),
-            getEffectiveCombatStats(target)
-        ]);
-        
-        console.log(`  Stats | Attacker AT:${attackerStats.currentAT} TP:${attackerStats.currentTP} | Target PA:${targetStats.currentPA} RS:${targetStats.currentRS}`);
-        if (attackerStats.currentAT === undefined || !attackerStats.currentTP || targetStats.currentPA === undefined || targetStats.currentRS === undefined) {
-             throw new Error(`Missing effective combat stats after fetch.`);
-        }
-
-        // --- Step 2: Resolve Attack Roll ---
-        const attackResult = resolveAttack(attackerStats.currentAT);
-        logSummaryParts.push(`${attacker.name} attacks ${target.name}. (Roll: ${attackResult.roll}/${attackerStats.currentAT})`);
-        if (attackResult.confirmRoll !== null) { logSummaryParts.push(`(Confirm: ${attackResult.confirmRoll})`); }
-
-        // --- Step 3: Process Outcome ---
-        switch (attackResult.outcome) {
-            case 'BOTCH':
-                logSummaryParts.push(`-> **BOTCH!**`); break;
-            case 'NORMAL_MISS':
-                 if (attackResult.roll === 20) logSummaryParts.push(`-> Botch Averted.`);
-                 logSummaryParts.push(`-> **Miss!**`); break;
-            case 'CRITICAL_SUCCESS':
-            case 'NORMAL_HIT':
-                 if (attackResult.roll === 1 && attackResult.outcome === 'NORMAL_HIT') { logSummaryParts.push(`-> Crit Failed.`); }
-                 else if (attackResult.outcome === 'CRITICAL_SUCCESS'){ logSummaryParts.push(`-> **CRITICAL HIT!**`); }
-                 else { logSummaryParts.push(`-> Hit!`); }
-                 hitConnected = true; // Assume hit connects unless parried
-
-                 // Resolve Defense
-                 const defenseResult = resolveDefense(targetStats.currentPA);
-                 logSummaryParts.push(`| ${target.name} Parry: ${defenseResult.roll}/${targetStats.currentPA}.`);
-                 if (defenseResult.success) { logSummaryParts.push(`**Parried!**`); hitConnected = false; }
-                 else { logSummaryParts.push(`Parry Failed.`); /* Proceed to damage */ }
-                break;
-        }
-
-        // --- Step 3b/c: Calculate Damage/Soak & Update HP (only if hit connected) ---
-        if (hitConnected) {
-             let rolledDamage = 0;
-             try { rolledDamage = parseAndRollDamage(attackerStats.currentTP); } catch(e) { console.error(e); }
-             if (attackResult.outcome === 'CRITICAL_SUCCESS') rolledDamage *= 2;
-             finalDamage = applySoak(rolledDamage, targetStats.currentRS);
-             logSummaryParts.push(`| ${rolledDamage} TP - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`);
-
-             const newHP = Math.max(0, target.currentHP - finalDamage);
-             if (newHP !== target.currentHP) {
-                 try { await axios.put(`${BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP }); target.currentHP = newHP; logSummaryParts.push(`| ${target.name} HP: ${newHP}/${target.maxHP}.`); if(newHP <= 0) { logSummaryParts.push(`**Defeated!**`); } }
-                 catch(e) { console.error("HP Update Fail:", e); logSummaryParts.push("(HP Update ERR!)"); }
-             } else { logSummaryParts.push("No damage taken."); }
-        }
-
-        // --- Step 4: Update Combat Log ---
-        const finalLogEntry = logSummaryParts.join(' ');
-        await addLogEntry(interaction.client, interaction.channelId, sessionId, finalLogEntry);
-
-        // --- Step 5: Delete the ephemeral "Attacking..." message ---
-        await interaction.deleteReply();
-
-        // --- Step 6: Advance the turn ---
-        await nextTurn(interaction.client, interaction.channelId);
-
-        console.log(`[Combat Attack ${sessionId}] Action resolved and turn advanced for ${actorId}.`);
-
-    } catch (error) { // Catch errors during action resolution
-        console.error(`[Combat Attack ${sessionId}] Error resolving attack by ${actorId} on ${targetId}:`, error);
-        // Edit the ephemeral message to show the error
-        await interaction.editReply({ content: '❌ An error occurred while resolving the attack.' });
-    }
-}
 
 /**
  * Handles the DM's target selection for an NPC attack.
@@ -614,85 +590,42 @@ async function handleDmNpcTargetSelectAttack(interaction, sessionId, actorId) {
     const targetId = interaction.values[0];
     console.log(`[DM NPC Attack ${sessionId}] DM ${interaction.user.id} selected Target ${targetId} for Actor ${actorId}`);
 
-    // Get session data and verify DM
-    const sessionData = interaction.client.activeCombats.get(interaction.channelId);
-    if (!sessionData || sessionData.id !== sessionId) { return interaction.followUp({ content: '❌ Error: Active combat data not found!', ephemeral: true }); }
-    if (sessionData.dmUserId !== interaction.user.id) { return interaction.followUp({ content: '❌ Not the DM.', ephemeral: true }); }
+    const { client, channelId } = interaction;
+    const sessionData = client.activeCombats.get(channelId);
+
+    if (!sessionData || sessionData.id !== sessionId) {
+        return interaction.followUp({ content: '❌ Error: Active combat data not found!', ephemeral: true });
+    }
+    if (sessionData.dmUserId !== interaction.user.id) {
+        return interaction.followUp({ content: '❌ Not the DM for this combat.', ephemeral: true });
+    }
 
     const attacker = sessionData.combatants.find(c => c.id === actorId);
     const target = sessionData.combatants.find(c => c.id === targetId);
     const activeCombatantId = sessionData.turnOrder[sessionData.currentTurnIndex];
 
-    // Validation
-    if (actorId !== activeCombatantId) { return interaction.followUp({ content: `❌ It's not this NPC's turn!`, ephemeral: true }); }
-    if (!attacker || !target) { return interaction.followUp({ content: `❌ Attacker/Target data missing.`, ephemeral: true }); }
-    if (target.currentHP <= 0) { return interaction.followUp({ content: `❌ ${target.name} is already defeated!`, ephemeral: true }); }
-    if (attacker.allegiance === target.allegiance) { return interaction.followUp({ content: `❌ Cannot attack own side.`, ephemeral: true }); }
+    // --- Validation ---
+    if (actorId !== activeCombatantId) {
+        return interaction.followUp({ content: `❌ It's not this NPC's turn!`, ephemeral: true });
+    }
+    if (!attacker || !target) {
+        return interaction.followUp({ content: `❌ Attacker/Target data missing.`, ephemeral: true });
+    }
 
     try {
-        // This block is identical to the resolution logic in handleCombatTargetSelectAttack
-        // For DRY principle, this could be refactored into a shared `resolveCombatAction` function
-        // but for clarity and to fix the immediate bug, we'll duplicate it here.
-        console.log(`[DM NPC Attack ${sessionId}] Resolving: ${attacker.name} vs ${target.name}`);
-        const logSummaryParts = [];
-        let hitConnected = false;
+        // --- Call the centralized combat resolution function ---
+        // For a standard NPC attack, the maneuverId is null.
+        await resolveCombatAction(client, channelId, sessionId, actorId, targetId, null);
 
-        const [attackerStats, targetStats] = await Promise.all([
-            getEffectiveCombatStats(attacker),
-            getEffectiveCombatStats(target)
-        ]);
-
-        const attackResult = resolveAttack(attackerStats.currentAT);
-        logSummaryParts.push(`${attacker.name} attacks ${target.name}. (Roll: ${attackResult.roll}/${attackerStats.currentAT})`);
-        if (attackResult.confirmRoll !== null) { logSummaryParts.push(`(Confirm: ${attackResult.confirmRoll})`); }
-
-        switch (attackResult.outcome) {
-            case 'BOTCH': logSummaryParts.push(`-> **BOTCH!**`); break;
-            case 'NORMAL_MISS': logSummaryParts.push(`-> **Miss!**`); break;
-            case 'CRITICAL_SUCCESS':
-            case 'NORMAL_HIT':
-                if (attackResult.outcome === 'CRITICAL_SUCCESS') { logSummaryParts.push(`-> **CRITICAL HIT!**`); }
-                else { logSummaryParts.push(`-> Hit!`); }
-                hitConnected = true;
-
-                const defenseResult = resolveDefense(targetStats.currentPA);
-                logSummaryParts.push(`| ${target.name} Parry: ${defenseResult.roll}/${targetStats.currentPA}.`);
-                if (defenseResult.success) { logSummaryParts.push(`**Parried!**`); hitConnected = false; }
-                else { logSummaryParts.push(`Parry Failed.`); }
-                break;
-        }
-
-        if (hitConnected) {
-            let rolledDamage = parseAndRollDamage(attackerStats.currentTP);
-            if (attackResult.outcome === 'CRITICAL_SUCCESS') rolledDamage *= 2;
-            const finalDamage = applySoak(rolledDamage, targetStats.currentRS);
-            logSummaryParts.push(`| ${rolledDamage} TP - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`);
-
-            const newHP = Math.max(0, target.currentHP - finalDamage);
-            if (newHP !== target.currentHP) {
-                await axios.put(`${BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP });
-                target.currentHP = newHP;
-                logSummaryParts.push(`| ${target.name} HP: ${newHP}/${target.maxHP}.`);
-                if (newHP <= 0) { logSummaryParts.push(`**Defeated!**`); }
-            } else { logSummaryParts.push("No damage taken."); }
-        }
-
-        const finalLogEntry = logSummaryParts.join(' ');
-        await addLogEntry(interaction.client, interaction.channelId, sessionId, finalLogEntry);
-        
+        // --- Confirm to the DM ---
         await interaction.editReply({ content: `✅ Attack by **${attacker.name}** resolved.`, components: [] });
 
-        // Automatically delete the confirmation message after 5 seconds
+        // Automatically delete the confirmation message after a few seconds
         setTimeout(() => {
-            interaction.deleteReply().catch(error => {
-                // Ignore errors if the user dismisses the message manually before the timeout
-                if (error.code !== 10008) { // 10008: Unknown Message
-                    console.error("Failed to delete ephemeral reply:", error);
-                }
+            interaction.deleteReply().catch(err => {
+                if (err.code !== 10008) console.error("Failed to delete ephemeral confirmation:", err);
             });
         }, 5000);
-        
-        await nextTurn(interaction.client, interaction.channelId);
 
     } catch (error) {
         console.error(`[DM NPC Attack ${sessionId}] Error resolving attack by ${actorId} on ${targetId}:`, error);
@@ -923,6 +856,22 @@ async function nextTurn(client, channelId) {
             sessionData.currentTurnIndex = -1;
             const winner = uniqueAllegiances[0] === 'PLAYER_SIDE' ? 'The players' : 'The hostile forces';
             await addLogEntry(client, channelId, sessionId, `--- Combat Ended: ${winner} are victorious! ---`);
+            
+            // --- FIX: Add API call to update backend state ---
+            try {
+                await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, { state: 'ENDED' });
+                console.log(`[Combat End ${sessionId}] Backend state updated to ENDED.`);
+            } catch (error) {
+                console.error(`[Combat End ${sessionId}] CRITICAL: Failed to update backend state to ENDED:`, error.message);
+                // The bot will think the combat is over, but the DB will disagree.
+                // We should probably send a message to the channel to warn the DM.
+                const channel = await client.channels.fetch(channelId).catch(() => null);
+                if (channel) {
+                    await channel.send('⚠️ **Warning:** Combat has ended, but there was an error saving this to the database. The session may still appear as active.');
+                }
+            }
+            // --- End FIX ---
+
         } else {
             // --- Continue to Next Turn ---
             sessionData.currentTurnIndex = nextIndex; // Update index in memory
@@ -1218,18 +1167,35 @@ async function addCombatantPlayer(interaction, sessionId, player) {
          await interaction.followUp({ content: errorMessage, ephemeral: true, components: [] });
     }
 }
-async function handleCancelCombatInteraction(interaction, sessionId) { /* ... Implementation as before ... */
-    console.log(`Handling Cancel Combat for session ${sessionId} by user ${interaction.user.id}`); await interaction.deferReply({ ephemeral: true });
-    try { const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`); const session = sessionResponse.data; if (!session) throw new Error("Not found"); if (session.dmUserId !== interaction.user.id) throw new Error("Not DM"); if (session.state !== 'SETUP') throw new Error(`Wrong state ${session.state}`);
-        await axios.delete(`${BACKEND_URL}/combatSession/${sessionId}`); console.log(`Session ${sessionId} deleted.`);
-        if(session.messageId) { const channel = await interaction.client.channels.fetch(session.channelId).catch(()=>{}); if(channel?.isTextBased()) { const msg = await channel.messages.fetch(session.messageId).catch(()=>{}); if(msg) await msg.edit({content:`*Setup cancelled.*`, embeds:[], components:[]}).catch(e=>console.warn("Msg edit fail on cancel",e)); }}
+async function handleCancelCombatInteraction(interaction, sessionId) {
+    console.log(`Handling Cancel Combat for session ${sessionId} by user ${interaction.user.id}`);
+    await interaction.deferReply({ ephemeral: true });
+    try {
+        const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`);
+        const session = sessionResponse.data;
+        if (!session) throw new Error("Not found");
+        if (session.dmUserId !== interaction.user.id) throw new Error("Not DM");
+        if (session.state !== 'SETUP') throw new Error(`Wrong state ${session.state}`);
+        await axios.delete(`${BACKEND_URL}/combatSession/${sessionId}`);
+        console.log(`Session ${sessionId} deleted.`);
+        if (session.messageId) {
+            const channel = await interaction.client.channels.fetch(session.channelId).catch(() => {});
+            if (channel?.isTextBased()) {
+                const msg = await channel.messages.fetch(session.messageId).catch(() => {});
+                if (msg) await msg.edit({ content: `*Setup cancelled.*`, embeds: [], components: [] }).catch(e => console.warn("Msg edit fail on cancel", e));
+            }
+        }
         await interaction.editReply({ content: '✅ Combat setup cancelled.' });
         setTimeout(() => {
             interaction.deleteReply().catch(error => {
                 if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
             });
-        }, 5000);
-    } catch(error) { let msg = "Error cancelling."; if (error instanceof Error) msg = error.message; await interaction.editReply(`❌ ${msg}`); }
+        }, 3000);
+    } catch (error) {
+        let msg = "Error cancelling.";
+        if (error instanceof Error) msg = error.message;
+        await interaction.editReply(`❌ ${msg}`);
+    }
 }
 
 async function showAddMobModal(interaction, sessionId) { /* ... Implementation as before ... */
@@ -1569,12 +1535,12 @@ async function handleStartFightInteraction(interaction, sessionId) {
 
         // --- 8. Send Confirmation to DM ---
         await interaction.editReply({ content: '✅ Combat started!' });
-        // Automatically delete the confirmation message after 5 seconds
+        // Automatically delete the confirmation message after 3 seconds
         setTimeout(() => {
             interaction.deleteReply().catch(error => {
                 if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
             });
-        }, 5000);
+        }, 3000);
 
     } catch (error) { // Catch outer errors (initial fetch, validation etc.)
         console.error(`[Start Fight ${sessionId}] Unhandled error in handler:`, error);
@@ -1811,7 +1777,7 @@ async function handleRemoveParticipantSelectInteraction(interaction, sessionId) 
                     interaction.deleteReply().catch(error => {
                         if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
                     });
-                }, 5000);
+                }, 3000);
 
 
             } else { // Handle unexpected success status from DELETE
@@ -1892,6 +1858,11 @@ async function handleParkCombatInteraction(interaction, sessionId) {
         interaction.client.activeCombats.delete(channelId);
 
         await interaction.editReply('✅ Combat has been paused. Use `/resumecombat` to continue.');
+        setTimeout(() => {
+            interaction.deleteReply().catch(error => {
+                if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+            });
+        }, 3000);
     } catch (error) {
         console.error('Error parking combat via button:', error);
         await interaction.editReply('❌ An error occurred while parking the combat.');
@@ -1926,6 +1897,11 @@ async function handleEndCombatInteraction(interaction, sessionId) {
         interaction.client.activeCombats.delete(channelId);
 
         await interaction.editReply('✅ Combat has been ended.');
+        setTimeout(() => {
+            interaction.deleteReply().catch(error => {
+                if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+            });
+        }, 3000);
     } catch (error) {
         console.error('Error ending combat via button:', error);
         await interaction.editReply('❌ An error occurred while ending the combat.');
@@ -1956,7 +1932,7 @@ async function handleResumeSessionSelect(interaction) {
             return interaction.editReply({ content: '❌ You are not the DM of this combat session.' });
         }
         if (sessionToResume.state !== 'PAUSED') {
-            return interaction.editReply({ content: `❌ This combat session is not paused. Current state: \`${sessionToResume.state}\`.` });
+            return interaction.editReply({ content: `❌ This combat session is not paused. Current state: ${sessionToResume.state}.` });
         }
         if (interaction.client.activeCombats?.has(interaction.channelId)) {
             return interaction.editReply({ content: '❌ There is already another active combat in this channel.' });
@@ -1989,6 +1965,11 @@ async function handleResumeSessionSelect(interaction) {
             console.warn(`${functionName} Could not delete the original select menu message:`, deleteError.message);
         }
         await interaction.editReply({ content: '✅ Combat resumed successfully!' });
+        setTimeout(() => {
+            interaction.deleteReply().catch(error => {
+                if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+            });
+        }, 3000);
 
 
     } catch (error) {
@@ -2005,4 +1986,53 @@ async function handleResumeSessionSelect(interaction) {
 
 async function handleDmNpcSkillAction(interaction, sessionId, actorId) {
     await interaction.reply({ content: 'NPC skill actions are not implemented yet.', ephemeral: true });
+}
+
+
+async function handleCombatActionSkill(interaction, sessionId, actorId) {
+    console.log(`[Skill Action ${sessionId}] Handling for Actor ${actorId} by User ${interaction.user.id}`);
+    await interaction.deferReply({ ephemeral: true });
+
+    try {
+        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        if (!sessionData) {
+            return interaction.editReply('❌ Could not find active combat data.');
+        }
+
+        const actorCombatant = sessionData.combatants.find(c => c.id === actorId);
+        if (!actorCombatant || actorCombatant.type !== 'PLAYER') {
+            return interaction.editReply('❌ Invalid actor for this action.');
+        }
+
+        // Fetch player's available skills (action modifications)
+        const skillsResponse = await axios.get(`${BACKEND_URL}/player/${actorCombatant.playerId}/action-modifications?actionType=MELEE`);
+        const availableSkills = skillsResponse.data;
+
+        if (!availableSkills || availableSkills.length === 0) {
+            return interaction.editReply('ℹ️ You have no available combat skills/maneuvers.');
+        }
+
+        const skillOptions = availableSkills.map(skill => ({
+            label: skill.name,
+            description: `AT Mod: ${skill.rules.at_modifier || 0}, PA Mod: ${skill.rules.opponent_pa_modifier || 0}, DMG Mod: ${skill.rules.damage_bonus || 0}`.substring(0, 100),
+            value: String(skill.id), // Ensure value is a string
+        }));
+
+        const skillSelectMenu = new StringSelectMenuBuilder()
+            .setCustomId(`csm_${sessionId}_${actorId}`) // Combat Skill Maneuver
+            .setPlaceholder('Choose a skill/maneuver to use...')
+            .addOptions(skillOptions);
+
+        const row = new ActionRowBuilder().addComponents(skillSelectMenu);
+
+        await interaction.editReply({
+            content: `**${actorCombatant.name}'s Turn:** Choose a skill to perform.`,
+            components: [row],
+            ephemeral: true
+        });
+
+    } catch (error) {
+        console.error(`[Skill Action ${sessionId}] Error for Actor ${actorId}:`, error);
+        await interaction.editReply({ content: '❌ An error occurred while fetching your skills.' }).catch(console.error);
+    }
 }

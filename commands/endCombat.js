@@ -20,33 +20,52 @@ module.exports = {
         const reason = interaction.options.getString('reason') || 'Ended by the DM.';
 
         try {
-            // 1. Get active combat session from memory
-            if (!interaction.client.activeCombats?.has(channelId)) {
-                return interaction.editReply('❌ There is no active combat session in this channel to end.');
+            let sessionData;
+            // 1. Try to get session from memory first
+            if (interaction.client.activeCombats?.has(channelId)) {
+                sessionData = interaction.client.activeCombats.get(channelId);
+            } else {
+                // 2. If not in memory, check the backend for an active session
+                try {
+                    const response = await axios.get(`${BACKEND_URL}/combatSession/channel/${channelId}/active`);
+                    sessionData = response.data;
+                    // If found, load it into memory to ensure consistency
+                    if (!interaction.client.activeCombats) interaction.client.activeCombats = new Map();
+                    interaction.client.activeCombats.set(channelId, sessionData);
+                } catch (error) {
+                    if (axios.isAxiosError(error) && error.response?.status === 404) {
+                        return interaction.editReply('❌ There is no active combat session in this channel to end.');
+                    }
+                    throw error; // Re-throw other errors
+                }
             }
-            const sessionData = interaction.client.activeCombats.get(channelId);
+            
+            if (!sessionData) {
+                 return interaction.editReply('❌ Could not find an active combat session in this channel.');
+            }
+
             const sessionId = sessionData.id;
 
-            // 2. Verify user is the DM
+            // 3. Verify user is the DM
             if (sessionData.dmUserId !== dmUserId) {
                 return interaction.editReply('❌ Only the DM who started the combat can end it.');
             }
 
-            // 3. Send request to backend to update state
+            // 4. Send request to backend to update state
             await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, {
                 state: 'ENDED',
                 combatLogEntry: `--- Combat Ended: ${reason} ---`
             });
 
-            // 4. Update in-memory state
+            // 5. Update in-memory state
             sessionData.state = 'ENDED';
             if (!sessionData.combatLog) sessionData.combatLog = [];
             sessionData.combatLog.push(`--- Combat Ended: ${reason} ---`);
 
-            // 5. Update the display one last time
+            // 6. Update the display one last time
             await updateCombatDisplay(interaction.client, channelId);
             
-            // 6. Remove from active combats map
+            // 7. Remove from active combats map
             interaction.client.activeCombats.delete(channelId);
 
             await interaction.editReply('✅ Combat has been ended.');
