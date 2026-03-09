@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,55 +13,72 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible') || false;
 
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-            const player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    name,
+                    avatar,
+                    stats:stats(*)
+                `)
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!player?.stats) {
+            if (error || !player?.stats) {
                 return interaction.reply({ 
                     content: '❌ No character selected! Use `/choosecharacter` first.',
                     ephemeral: true 
                 });
             }
 
+            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            
+            if (!stats) {
+                return interaction.reply({ 
+                    content: '❌ No stats found for this character!',
+                    ephemeral: true 
+                });
+            }
+
             // Health bar calculation
-            const maxLP = player.stats.le_max || 1;
-            const currentLP = player.stats.le_current;
+            const maxLP = stats.le_max || 1;
+            const currentLP = stats.le_current;
             const healthPercentage = Math.floor((currentLP / maxLP) * 100);
             const healthBar = '■'.repeat(Math.round(currentLP / maxLP * 10)) + '□'.repeat(10 - Math.round(currentLP / maxLP * 10));
 
             const statsEmbed = new EmbedBuilder()
-                .setColor(0x2F3136) // Dark theme color
+                .setColor(0x2F3136)
                 .setTitle(`🔰 ${player.name}'s Statistics`)
-                .setThumbnail(player.avatar ? `${process.env.BACKEND_URL}/uploads/${player.avatar}` : null)
                 .setDescription(`**Character Overview**\n${healthBar} **${healthPercentage}%** (${currentLP}/${maxLP} LP)`)
                 .addFields(
                     { 
                         name: '🧠 Attributes',
                         value: [
-                            `**MU:** \`${player.stats.mu}\``,
-                            `**KL:** \`${player.stats.kl}\``,
-                            `**IN:** \`${player.stats.in}\``,
-                            `**CH:** \`${player.stats.ch}\``
+                            `**MU:** \`${stats.mu}\``,
+                            `**KL:** \`${stats.kl}\``,
+                            `**IN:** \`${stats.in}\``,
+                            `**CH:** \`${stats.ch}\``
                         ].join('\n'),
                         inline: true
                     },
                     { 
                         name: '⚔️ Combat Stats',
                         value: [
-                            `**FF:** \`${player.stats.ff}\``,
-                            `**GE:** \`${player.stats.ge}\``,
-                            `**KO:** \`${player.stats.ko}\``,
-                            `**KK:** \`${player.stats.kk}\``
+                            `**FF:** \`${stats.ff}\``,
+                            `**GE:** \`${stats.ge}\``,
+                            `**KO:** \`${stats.ko}\``,
+                            `**KK:** \`${stats.kk}\``
                         ].join('\n'),
                         inline: true
                     },
                     { 
                         name: '🛡️ Defense',
                         value: [
-                            `**Initiative:** \`${player.stats.initiative}\``,
-                            `**Ausweichen:** \`${player.stats.ausweichen}\``,
-                            `**Max LP:** \`${player.stats.le_max}\``,
-                            `**Current LP:** \`${player.stats.le_current}\``
+                            `**Initiative:** \`${stats.initiative}\``,
+                            `**Ausweichen:** \`${stats.ausweichen}\``,
+                            `**Max LP:** \`${stats.le_max}\``,
+                            `**Current LP:** \`${stats.le_current}\``
                         ].join('\n'),
                         inline: true
                     }
@@ -72,13 +88,22 @@ module.exports = {
                     iconURL: interaction.user.avatarURL() 
                 });
 
-            // Avatar handling
+            // Avatar handling via Supabase storage
             let files = [];
             if (player.avatar) {
-                const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-                const imageResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-                files.push(new AttachmentBuilder(Buffer.from(imageResponse.data), { name: 'avatar.png' }));
-                statsEmbed.setThumbnail('attachment://avatar.png');
+                try {
+                    const { data: avatarData, error: avatarError } = await supabase
+                        .storage
+                        .from('avatars')
+                        .download(player.avatar);
+                    
+                    if (!avatarError && avatarData) {
+                        files.push(new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' }));
+                        statsEmbed.setThumbnail('attachment://avatar.png');
+                    }
+                } catch (e) {
+                    // Avatar not found, continue without it
+                }
             }
 
             return interaction.reply({

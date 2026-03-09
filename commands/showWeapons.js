@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,10 +11,19 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible', false);
 
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-            const player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    name,
+                    avatar,
+                    weapons:weapons(*)
+                `)
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!player || !player.id) {
+            if (error || !player) {
                 return interaction.reply({ content: 'You have not selected a player yet. Use the /chooseCharacter command to select a player.', ephemeral: true });
             }
 
@@ -40,14 +48,14 @@ module.exports = {
             if (meleeWeapons.length > 0) {
                 meleeColumn += '**Melee Weapons**\n\n';
                 meleeWeapons.forEach(weapon => {
-                    meleeColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.isEquipped === "Y" ? "Yes" : "No"}\nSlot: ${weapon.equippedSlot || 'N/A'}\n\u200B\n`;
+                    meleeColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.is_equipped === "Y" ? "Yes" : "No"}\nSlot: ${weapon.equipped_slot || 'N/A'}\n\u200B\n`;
                 });
             }
 
             if (rangedWeapons.length > 0) {
                 rangedColumn += '**Ranged Weapons**\n\n';
                 rangedWeapons.forEach(weapon => {
-                    rangedColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.isEquipped === "Y" ? "Yes" : "No"}\nSlot: ${weapon.equippedSlot || 'N/A'}\n\u200B\n`;
+                    rangedColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.is_equipped === "Y" ? "Yes" : "No"}\nSlot: ${weapon.equipped_slot || 'N/A'}\n\u200B\n`;
                 });
             }
 
@@ -64,15 +72,23 @@ module.exports = {
             }
 
             if (player.avatar) {
-                const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-                const imageResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-                const imageBuffer = Buffer.from(imageResponse.data, 'binary');
-                const attachment = new AttachmentBuilder(imageBuffer, { name: 'avatar.png' });
-                weaponEmbed.setThumbnail('attachment://avatar.png');
-                return interaction.reply({ embeds: [weaponEmbed], files: [attachment], ephemeral: !visible });
-            } else {
-                return interaction.reply({ embeds: [weaponEmbed], ephemeral: !visible });
+                try {
+                    const { data: avatarData, error: avatarError } = await supabase
+                        .storage
+                        .from('avatars')
+                        .download(player.avatar);
+                    
+                    if (!avatarError && avatarData) {
+                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' });
+                        weaponEmbed.setThumbnail('attachment://avatar.png');
+                        return interaction.reply({ embeds: [weaponEmbed], files: [attachment], ephemeral: !visible });
+                    }
+                } catch (e) {
+                    // Avatar not found, continue without it
+                }
             }
+            
+            return interaction.reply({ embeds: [weaponEmbed], ephemeral: !visible });
 
         } catch (error) {
             console.error('Error showing weapons:', error);

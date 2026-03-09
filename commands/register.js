@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const axios = require('axios');
+const { callEdgeFunction } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,25 +11,23 @@ module.exports = {
         const discordId = interaction.user.id;
 
         try {
-            // Defer the reply to give more time for the backend request
             await interaction.deferReply({ ephemeral: true });
 
-            // Send a POST request to your backend
-            const response = await axios.post(`${process.env.BACKEND_URL}/player`, {
+            const { data, status } = await callEdgeFunction('create-player', {
                 name: name,
                 discordId: discordId,
             });
 
-            // Check the response from the backend
-            if (response.status === 201) {
+            if (status === 201) {
                 await interaction.editReply({ content: `Successfully registered new player ${name}` });
             } else {
-                console.error('Failed to register player:', response.data);
+                console.error('Failed to register player:', data);
                 await interaction.editReply({ content: 'Failed to register new player. Please try again later.' });
             }
         } catch (error) {
             console.error('Error registering player:', error);
-            await interaction.editReply({ content: 'An error occurred while registering the player. Please try again later.' });
+            const errorMessage = error.data?.error || error.message || 'An unknown error occurred';
+            await interaction.editReply({ content: `An error occurred while registering the player: ${errorMessage}` });
         }
     },
 };

@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,19 +10,30 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         const { user } = interaction;
-        const BACKEND_URL = process.env.BACKEND_URL;
 
         try {
             // --- 1. Fetch Player Data ---
-            const playerResponse = await axios.get(`${BACKEND_URL}/player/selected/${user.id}`);
-            const player = playerResponse.data;
-            if (!player) {
+            const { data: player, error: playerError } = await supabase
+                .from('players')
+                .select('id, name')
+                .eq('discord_id', user.id)
+                .eq('selected', 'YES')
+                .single();
+
+            if (playerError || !player) {
                 return interaction.editReply('❌ You need to select a character first with `/choosecharacter`.');
             }
 
-            // --- 2. Fetch Player's Learned Skills ---
-            const skillsResponse = await axios.get(`${BACKEND_URL}/player/${player.id}/action-modifications`);
-            const skills = skillsResponse.data;
+            // --- 2. Fetch Player's Learned Skills via join ---
+            const { data: skills, error: skillsError } = await supabase
+                .from('player_action_modifications')
+                .select(`
+                    ftw,
+                    action_modification:action_modifications(id, name, description, action_type)
+                `)
+                .eq('player_id', player.id);
+
+            if (skillsError) throw skillsError;
 
             // --- 3. Create and Send the Embed ---
             const embed = new EmbedBuilder()
@@ -32,9 +42,14 @@ module.exports = {
 
             if (skills && skills.length > 0) {
                 const skillsDescription = skills
-                    .map(skill => `**${skill.name}**: ${skill.description}`)
+                    .map(s => {
+                        const skill = s.action_modification;
+                        if (!skill) return null; // Handle broken foreign key
+                        return `**${skill.name}**${s.ftw ? ` (FtW: ${s.ftw})` : ''}: ${skill.description}`;
+                    })
+                    .filter(Boolean) // Remove null entries from broken FKs
                     .join('\n');
-                embed.setDescription(skillsDescription);
+                embed.setDescription(skillsDescription || 'This character has not learned any special combat skills yet.');
             } else {
                 embed.setDescription('This character has not learned any special combat skills yet.');
             }
@@ -43,11 +58,7 @@ module.exports = {
 
         } catch (error) {
             console.error('Error in /showskills:', error);
-            let errorMessage = 'An error occurred while fetching your skills.';
-            if (axios.isAxiosError(error) && error.response?.status === 404) {
-                errorMessage = '❌ Could not find a selected character. Please use `/choosecharacter` first.';
-            }
-            await interaction.editReply(errorMessage);
+            await interaction.editReply('❌ An error occurred while fetching your skills.');
         }
     },
 };

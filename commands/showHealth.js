@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config(); // Load environment variables
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,24 +11,33 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible', false);
 
-            // Fetch the selected player and their stats from the backend
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-            const player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    name,
+                    avatar,
+                    stats:stats(le_max, le_current)
+                `)
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!player || !player.id) {
+            if (error || !player || !player.id) {
                 return interaction.reply({ content: 'You are not registered in the system or do not have a selected player.', ephemeral: true });
             }
 
-            // Access the health stats directly from the player object
-            const { le_max, le_current } = player.stats;
+            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
 
-            if (le_max === undefined || le_current === undefined) {
+            if (!stats || stats.le_max === undefined || stats.le_current === undefined) {
                 return interaction.reply({ content: 'Your selected player does not have health stats.', ephemeral: true });
             }
 
+            const { le_max, le_current } = stats;
+
             // Create an embed to display the health information
             const embed = new EmbedBuilder()
-                .setColor(0x0099FF) // Set a color for the embed
+                .setColor(0x0099FF)
                 .setTitle(`${player.name}'s Health`)
                 .setDescription(`Here are your current and maximum health values.`)
                 .addFields(
@@ -38,22 +46,24 @@ module.exports = {
                 )
                 .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() });
 
-            // If the player has an avatar, set it as the embed's thumbnail
             if (player.avatar) {
-                const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-
-                // Download the image and attach it
-                const imageResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-                const imageBuffer = Buffer.from(imageResponse.data, 'binary');
-                const attachment = new AttachmentBuilder(imageBuffer, { name: 'avatar.png' });
-
-                // Set the attached image as the thumbnail
-                embed.setThumbnail('attachment://avatar.png');
-
-                return interaction.reply({ embeds: [embed], files: [attachment], ephemeral: !visible });
-            } else {
-                return interaction.reply({ embeds: [embed], ephemeral: !visible });
+                try {
+                    const { data: avatarData, error: avatarError } = await supabase
+                        .storage
+                        .from('avatars')
+                        .download(player.avatar);
+                    
+                    if (!avatarError && avatarData) {
+                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' });
+                        embed.setThumbnail('attachment://avatar.png');
+                        return interaction.reply({ embeds: [embed], files: [attachment], ephemeral: !visible });
+                    }
+                } catch (e) {
+                    // Avatar not found, continue without it
+                }
             }
+
+            return interaction.reply({ embeds: [embed], ephemeral: !visible });
 
         } catch (error) {
             console.error('Error showing health:', error);

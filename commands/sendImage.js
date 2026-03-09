@@ -1,15 +1,21 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { SUPABASE_URL } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('sendimage')
-        .setDescription('Sends a test image to the channel.'),
+        .setDescription('Sends a test image to the channel.')
+        .addStringOption(option =>
+            option.setName('filename')
+                .setDescription('The filename of the image in storage')
+                .setRequired(false)),
     async execute(interaction) {
         try {
-            // Replace this URL with any image URL you'd like to test
-            const imageUrl = `${process.env.BACKEND_URL}/uploads/8-62923c97-44bc-42cb-8d24-23c30df3534b.png`;
+            const filename = interaction.options.getString('filename') || 'test-image.png';
             
-            // Send the image directly
+            // Use Supabase storage URL
+            const imageUrl = `${SUPABASE_URL}/storage/v1/object/public/avatars/${filename}`;
+            
             return interaction.reply({ files: [imageUrl] });
         } catch (error) {
             console.error('Error sending image:', error);

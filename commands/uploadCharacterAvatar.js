@@ -1,7 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const axios = require('axios');
-const FormData = require('form-data');
-const fs = require('fs');
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,13 +14,18 @@ module.exports = {
             const discordId = interaction.user.id;
 
             // Fetch the selected player by discordId to get the player ID
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
+            const { data: player, error: playerError } = await supabase
+                .from('players')
+                .select('id')
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!playerResponse.data || !playerResponse.data.id) {
+            if (playerError || !player?.id) {
                 return interaction.reply({ content: 'No player selected. Use the /chooseCharacter command first.', ephemeral: true });
             }
 
-            const playerId = playerResponse.data.id;
+            const playerId = player.id;
 
             // Get the image attachment from the command
             const attachment = interaction.options.getAttachment('image');
@@ -31,23 +34,38 @@ module.exports = {
             }
 
             // Download the image from the attachment URL
-            const imageResponse = await axios.get(attachment.url, { responseType: 'stream' });
+            const imageResponse = await fetch(attachment.url);
+            const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
 
-            // Prepare form data to send the image as multipart/form-data
-            const form = new FormData();
-            form.append('avatar', imageResponse.data, {
-                filename: attachment.name,
-                contentType: attachment.contentType,
-            });
+            // Generate unique filename
+            const fileExt = attachment.name.split('.').pop();
+            const fileName = `${playerId}-${Date.now()}.${fileExt}`;
 
-            // Send the image to your backend, updating the player's avatar
-            await axios.put(`${process.env.BACKEND_URL}/player/${playerId}/avatar`, form, {
-                headers: {
-                    ...form.getHeaders(),
-                },
-            });
+            // Upload to Supabase storage
+            const { data: uploadData, error: uploadError } = await supabase
+                .storage
+                .from('avatars')
+                .upload(fileName, imageBuffer, {
+                    contentType: attachment.contentType,
+                    upsert: true
+                });
 
-            // Respond to the user
+            if (uploadError) {
+                console.error('Upload error:', uploadError);
+                return interaction.reply({ content: 'Failed to upload image.', ephemeral: true });
+            }
+
+            // Update player with avatar filename
+            const { error: updateError } = await supabase
+                .from('players')
+                .update({ avatar: fileName })
+                .eq('id', playerId);
+
+            if (updateError) {
+                console.error('Update error:', updateError);
+                return interaction.reply({ content: 'Failed to update character avatar.', ephemeral: true });
+            }
+
             return interaction.reply({ content: 'Your character avatar has been updated successfully!', ephemeral: true });
         } catch (error) {
             console.error('Error uploading image:', error);

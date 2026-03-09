@@ -21,6 +21,7 @@ const client = new Client({
 // Command handling
 client.commands = new Collection(); 
 client.activeCombats = new Map();
+client.pendingCombatActions = new Map();
 
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -52,17 +53,25 @@ for (const file of eventFiles) {
 }
 
 const combatHandler = require('./handlers/combatHandler'); // Assuming CommonJS
-const axios = require('axios');
+const { supabase } = require('./utils/supabaseClient');
 
 /**
- * Recovers active or paused combat sessions from the backend on bot startup.
+ * Recovers active or paused combat sessions from the database on bot startup.
  * @param {Client} client The Discord client instance.
  */
 async function recoverActiveCombats(client) {
     console.log('[Recovery] Starting active combat session recovery...');
     try {
-        const response = await axios.get(`${process.env.BACKEND_URL}/combatSession/active`);
-        const sessions = response.data;
+        // Fetch sessions that are RUNNING or PAUSED with their combatants
+        const { data: sessions, error } = await supabase
+            .from('combat_sessions')
+            .select('*, combatants(*)')
+            .in('state', ['RUNNING', 'PAUSED']);
+
+        if (error) {
+            console.error('[Recovery] Database error:', error);
+            return;
+        }
 
         if (!sessions || sessions.length === 0) {
             console.log('[Recovery] No active or paused sessions found to recover.');
@@ -72,34 +81,73 @@ async function recoverActiveCombats(client) {
         console.log(`[Recovery] Found ${sessions.length} session(s) to recover.`);
 
         for (const session of sessions) {
-            if (!session.channelId || !session.id) {
-                console.warn('[Recovery] Skipping session with missing channelId or id:', session);
+            if (!session.channel_id || !session.id) {
+                console.warn('[Recovery] Skipping session with missing channel_id or id:', session);
                 continue;
             }
 
+            // Convert snake_case to camelCase for in-memory compatibility
+            const memorySession = {
+                ...session,
+                dmUserId: session.dm_user_id,
+                channelId: session.channel_id,
+                messageId: session.message_id,
+                combatLog: session.combat_log,
+                turnOrder: session.turn_order,
+                currentTurnIndex: session.current_turn_index,
+                combatants: session.combatants?.map(c => ({
+                    ...c,
+                    maxHP: c.max_hp,
+                    currentHP: c.current_hp,
+                    initiativeRoll: c.initiative_roll,
+                    initiativeBase: c.initiative_base,
+                    playerId: c.player_id,
+                    discordUserId: c.discord_user_id,
+                    mobDefinitionId: c.mob_definition_id,
+                    sessionId: c.session_id,
+                    isActiveTurn: c.is_active_turn
+                })) || []
+            };
+
             // Add the session back to the in-memory map
-            client.activeCombats.set(session.channelId, session);
-            console.log(`[Recovery] Loaded session ${session.id} for channel ${session.channelId} into memory.`);
+            client.activeCombats.set(session.channel_id, memorySession);
+            console.log(`[Recovery] Loaded session ${session.id} for channel ${session.channel_id} into memory.`);
 
             // Refresh the combat display to make buttons interactive again
             try {
-                await combatHandler.updateCombatDisplay(client, session.channelId, session);
+                await combatHandler.updateCombatDisplay(client, session.channel_id, memorySession);
                 console.log(`[Recovery] Successfully refreshed display for session ${session.id}.`);
             } catch (displayError) {
-                console.error(`[Recovery] Failed to update display for session ${session.id} in channel ${session.channelId}:`, displayError);
+                console.error(`[Recovery] Failed to update display for session ${session.id} in channel ${session.channel_id}:`, displayError);
                 // If the message or channel was deleted, we should remove it from memory
-                client.activeCombats.delete(session.channelId);
+                client.activeCombats.delete(session.channel_id);
             }
         }
         console.log('[Recovery] Finished combat session recovery.');
 
     } catch (error) {
-        console.error('[Recovery] Could not fetch or process active combat sessions from backend:', error.message);
+        console.error('[Recovery] Could not fetch or process active combat sessions:', error.message);
     }
 }
 
 
 client.on(Events.InteractionCreate, async interaction => {
+    // --- Handle Autocomplete ---
+    if (interaction.isAutocomplete()) {
+        const command = interaction.client.commands.get(interaction.commandName);
+        if (!command || !command.autocomplete) {
+            console.error(`No autocomplete handler for ${interaction.commandName}`);
+            return interaction.respond([]).catch(() => {});
+        }
+        try {
+            await command.autocomplete(interaction);
+        } catch (error) {
+            console.error(`Error in autocomplete for ${interaction.commandName}:`, error);
+            await interaction.respond([]).catch(() => {});
+        }
+        return;
+    }
+    
     // --- Handle Slash Commands ---
     if (interaction.isChatInputCommand()) {
         const command = interaction.client.commands.get(interaction.commandName);
@@ -163,7 +211,12 @@ client.on(Events.InteractionCreate, async interaction => {
             }
         }
         // --- Check for EditStats Prefixes/IDs (and DO NOTHING centrally) ---
-        else if (customId === 'stat_select' || customId === 'exit_editor' || customId.startsWith('edit_'))
+        else if (customId === 'stat_select' || 
+                 customId === 'exit_editor' || 
+                 customId === 'select-character' ||
+                 customId === 'skill_select_menu' ||
+                 customId === 'confirm_skill_selection' ||
+                 customId.startsWith('edit_'))
         {
             // *** Explicitly ignore these IDs in the central handler ***
             console.log(`Ignoring interaction ${customId} in central handler (handled by specific command).`);

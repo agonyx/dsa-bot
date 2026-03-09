@@ -1,39 +1,46 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const axios = require('axios');
+const { supabase } = require('../utils/supabaseClient');
 const { rollDice } = require('../utils/rollUtil');
-require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('evade')
         .setDescription('Attempt to dodge an attack using your Ausweichen skill'),
     async execute(interaction) {
+        await interaction.deferReply({ ephemeral: true });
+        
         try {
             const discordId = interaction.user.id;
 
-            // Fetch player data
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-            const player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    name,
+                    avatar,
+                    stats:stats(ausweichen)
+                `)
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!player?.stats) {
-                return interaction.reply({ 
-                    content: '❌ No character selected! Use `/choosecharacter` first.',
-                    ephemeral: true 
+            if (error || !player?.stats) {
+                return interaction.editReply({ 
+                    content: '❌ No character selected! Use `/choosecharacter` first.'
                 });
             }
 
-            const { ausweichen } = player.stats;
+            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            const { ausweichen } = stats;
             const diceRoll = rollDice(20);
             const success = diceRoll <= ausweichen;
 
-            // Create visual elements
             const successIndicator = success ? '🟢 SUCCESS' : '🔴 FAILURE';
             const diceComparison = `${diceRoll}${success ? ' ≤ ' : ' > '}${ausweichen}`;
             const successChance = `${Math.round((ausweichen / 20) * 100)}% evasion chance`;
 
-            // Build embed
             const embed = new EmbedBuilder()
-                .setColor(success ? 0x57F287 : 0xED4245) // Discord success/danger colors
+                .setColor(success ? 0x57F287 : 0xED4245)
                 .setTitle(`🛡️ Evasion Attempt - ${successIndicator}`)
                 .setDescription([
                     `**${player.name}** rolled a D20 to evade!`,
@@ -52,32 +59,38 @@ module.exports = {
                         inline: true
                     }
                 )
-                .setThumbnail(player.avatar ? `${process.env.BACKEND_URL}/uploads/${player.avatar}` : null)
                 .setFooter({ 
                     text: `Requested by ${interaction.user.username}`,
                     iconURL: interaction.user.avatarURL() 
                 })
                 .setTimestamp();
 
-            // Handle avatar attachment
             let files = [];
             if (player.avatar) {
-                const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-                const imageResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-                files.push(new AttachmentBuilder(Buffer.from(imageResponse.data), { name: 'avatar.png' }));
-                embed.setThumbnail('attachment://avatar.png');
+                try {
+                    const { data: avatarData, error: avatarError } = await supabase
+                        .storage
+                        .from('avatars')
+                        .download(player.avatar);
+                    
+                    if (!avatarError && avatarData) {
+                        files.push(new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' }));
+                        embed.setThumbnail('attachment://avatar.png');
+                    }
+                } catch (e) {
+                    // Avatar not found, continue without it
+                }
             }
 
-            return interaction.reply({
+            return interaction.editReply({
                 embeds: [embed],
                 files: files
             });
 
         } catch (error) {
             console.error('Evade Command Error:', error);
-            return interaction.reply({
-                content: '❌ Failed to process evasion attempt!',
-                ephemeral: true
+            return interaction.editReply({
+                content: '❌ Failed to process evasion attempt!'
             });
         }
     }

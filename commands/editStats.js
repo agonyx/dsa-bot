@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ButtonBuilder, ButtonStyle } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 
 const STAT_CONFIG = [
     { key: 'mu', label: 'MU' },
@@ -26,32 +25,43 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${interaction.user.id}`);
-            let player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    name,
+                    avatar,
+                    stats:stats(*)
+                `)
+                .eq('discord_id', interaction.user.id)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!player?.stats) {
+            if (error || !player?.stats) {
                 return interaction.editReply('❌ No character stats found! Select a character first.');
             }
 
+            let stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            let currentPlayer = player;
+
             // Helper functions
-            const createStatSelect = (stats) => new StringSelectMenuBuilder()
+            const createStatSelect = (statsData) => new StringSelectMenuBuilder()
                 .setCustomId('stat_select')
                 .setPlaceholder('📝 Select stat to edit...')
                 .addOptions(STAT_CONFIG.map(stat => ({
                     label: stat.label,
                     value: stat.key,
-                    description: `Current: ${stats[stat.key]}`
+                    description: `Current: ${statsData[stat.key]}`
                 })));
 
-            const createStatsEmbed = (stats) => new EmbedBuilder()
+            const createStatsEmbed = (statsData) => new EmbedBuilder()
                 .setColor(0x2F3136)
                 .setTitle('🔧 Character Stat Editor')
-                .setThumbnail(player.avatar ? `${process.env.BACKEND_URL}/uploads/${player.avatar}` : null)
                 .setDescription('**Select a stat from the dropdown below to modify it**')
                 .addFields(
                     STAT_CONFIG.map(stat => ({
                         name: `**${stat.label}**`,
-                        value: `\`${stats[stat.key]}\``,
+                        value: `\`${statsData[stat.key]}\``,
                         inline: true
                     }))
                 )
@@ -63,9 +73,9 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger);
 
             const message = await interaction.editReply({
-                embeds: [createStatsEmbed(player.stats)],
+                embeds: [createStatsEmbed(stats)],
                 components: [
-                    new ActionRowBuilder().addComponents(createStatSelect(player.stats)),
+                    new ActionRowBuilder().addComponents(createStatSelect(stats)),
                     new ActionRowBuilder().addComponents(exitButton)
                 ]
             });
@@ -79,7 +89,7 @@ module.exports = {
                 if (i.customId === 'stat_select') {
                     const statKey = i.values[0];
                     const statConfig = STAT_CONFIG.find(s => s.key === statKey);
-                    const currentValue = player.stats[statKey];
+                    const currentValue = stats[statKey];
 
                     const modal = new ModalBuilder()
                         .setCustomId(`edit_${statKey}`)
@@ -127,7 +137,7 @@ module.exports = {
                         return;
                     }
 
-                    if (!player.stats.hasOwnProperty(statKey)) {
+                    if (!stats.hasOwnProperty(statKey)) {
                         const msg = await modalInteraction.reply({
                             content: '❌ Invalid stat selection!',
                             ephemeral: true
@@ -136,7 +146,7 @@ module.exports = {
                         return;
                     }
 
-                    if (player.stats[statKey] === parsedValue) {
+                    if (stats[statKey] === parsedValue) {
                         const msg = await modalInteraction.reply({
                             content: 'ℹ️ Value unchanged',
                             ephemeral: true
@@ -145,31 +155,30 @@ module.exports = {
                         return;
                     }
 
-                    // Update stats
-                    const updatedStats = { ...player.stats, [statKey]: parsedValue };
-                    await axios.put(`${process.env.BACKEND_URL}/stats/${player.stats.id}`, updatedStats);
+                    // Update stats in Supabase
+                    const { error: updateError } = await supabase
+                        .from('stats')
+                        .update({ [statKey]: parsedValue })
+                        .eq('player_id', currentPlayer.id);
 
-                    // Refresh data and update interface
-                    const refreshedData = (await axios.get(
-                        `${process.env.BACKEND_URL}/player/selected/${interaction.user.id}`
-                    )).data;
-                    player = refreshedData;
+                    if (updateError) throw updateError;
+
+                    // Update local state
+                    stats[statKey] = parsedValue;
 
                     await interaction.editReply({
-                        embeds: [createStatsEmbed(refreshedData.stats)],
+                        embeds: [createStatsEmbed(stats)],
                         components: [
-                            new ActionRowBuilder().addComponents(createStatSelect(refreshedData.stats)),
+                            new ActionRowBuilder().addComponents(createStatSelect(stats)),
                             new ActionRowBuilder().addComponents(exitButton)
                         ]
                     });
 
-                    // Temporary success indicator
                     const successMsg = await modalInteraction.reply({
                         content: `🔄 Updated **${statLabel}** to \`${parsedValue}\`!`,
                         ephemeral: true
                     });
                     
-                    // Auto-remove success message after 2 seconds
                     setTimeout(async () => {
                         await successMsg.delete().catch(console.error);
                     }, 2000);

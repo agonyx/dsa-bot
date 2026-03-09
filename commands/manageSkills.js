@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,24 +10,32 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         const { user, client } = interaction;
-        const BACKEND_URL = process.env.BACKEND_URL;
 
         try {
             // --- 1. Fetch Player and Skill Data ---
-            const playerResponse = await axios.get(`${BACKEND_URL}/player/selected/${user.id}`);
-            const player = playerResponse.data;
-            if (!player) {
+            const { data: player, error: playerError } = await supabase
+                .from('players')
+                .select('id, name')
+                .eq('discord_id', user.id)
+                .eq('selected', 'YES')
+                .single();
+
+            if (playerError || !player) {
                 return interaction.editReply('❌ You need to select a character first with `/choosecharacter`.');
             }
 
-            const [allSkillsResponse, playerSkillsResponse] = await Promise.all([
-                axios.get(`${BACKEND_URL}/action-modification`),
-                axios.get(`${BACKEND_URL}/player/${player.id}/action-modifications`)
+            // Fetch all skills and player's skills in parallel
+            const [allSkillsResult, playerSkillsResult] = await Promise.all([
+                supabase.from('action_modifications').select('id, name, description'),
+                supabase
+                    .from('player_action_modifications')
+                    .select('action_modification_id')
+                    .eq('player_id', player.id)
             ]);
 
-            const allSkills = allSkillsResponse.data;
-            const playerSkills = playerSkillsResponse.data;
-            const playerSkillIds = new Set(playerSkills.map(s => s.id));
+            const allSkills = allSkillsResult.data;
+            const playerSkills = playerSkillsResult.data;
+            const playerSkillIds = new Set(playerSkills.map(s => s.action_modification_id));
 
             if (!allSkills || allSkills.length === 0) {
                 return interaction.editReply('ℹ️ There are no combat skills available in the system yet.');
@@ -37,9 +44,9 @@ module.exports = {
             // --- 2. Build the Multi-Select Menu ---
             const options = allSkills.map(skill => ({
                 label: skill.name,
-                description: skill.description.substring(0, 100),
+                description: skill.description?.substring(0, 100) || 'No description',
                 value: skill.id,
-                default: playerSkillIds.has(skill.id) // Pre-select skills the player has
+                default: playerSkillIds.has(skill.id)
             }));
 
             const selectMenu = new StringSelectMenuBuilder()
@@ -65,16 +72,41 @@ module.exports = {
             // --- 3. Await User Interaction ---
             const collector = message.createMessageComponentCollector({
                 filter: i => i.user.id === user.id,
-                time: 60000, // 60 seconds
+                time: 60000,
             });
 
-            let lastSelectedValues = playerSkills.map(s => s.id); // Initialize with current skills
+            let lastSelectedValues = [...playerSkillIds]; // Initialize with current skills
+            
+            // Build promises array for database operations
+            const buildPromises = (selectedSkillIds, skillsToAdd, skillsToRemove) => {
+                const promises = [];
+                
+                if (skillsToAdd.length > 0) {
+                    const insertData = skillsToAdd.map(skillId => ({
+                        player_id: player.id,
+                        action_modification_id: skillId,
+                        ftw: 0
+                    }));
+                    promises.push(supabase.from('player_action_modifications').insert(insertData));
+                }
+                
+                for (const skillId of skillsToRemove) {
+                    promises.push(
+                        supabase
+                            .from('player_action_modifications')
+                            .delete()
+                            .eq('player_id', player.id)
+                            .eq('action_modification_id', skillId)
+                    );
+                }
+                
+                return promises;
+            };
 
             collector.on('collect', async i => {
                 if (i.isStringSelectMenu()) {
-                    lastSelectedValues = i.values; // Update the selection from the menu interaction
+                    lastSelectedValues = i.values;
                     await i.deferUpdate();
-                    // No need to edit the message here, the selection is stored
                 } else if (i.customId === 'confirm_skill_selection') {
                     await i.deferUpdate();
                     const selectedSkillIds = new Set(lastSelectedValues);
@@ -83,18 +115,19 @@ module.exports = {
                     const skillsToAdd = [...selectedSkillIds].filter(id => !playerSkillIds.has(id));
                     const skillsToRemove = [...playerSkillIds].filter(id => !selectedSkillIds.has(id));
 
-                    // --- 4. Perform API Calls ---
-                    const promises = [];
-                    for (const skillId of skillsToAdd) {
-                        // Find the full skill object to get the name for the reply
-                        const skill = allSkills.find(s => s.id === skillId);
-                        promises.push(axios.post(`${BACKEND_URL}/player-action-modification/assign`, { playerId: player.id.toString(), skillName: skill.name }));
+                    // --- 4. Perform Database Operations ---
+                    const promises = buildPromises(selectedSkillIds, skillsToAdd, skillsToRemove);
+                    const results = await Promise.all(promises);
+                    
+                    // Check for errors in any operation
+                    const errors = results.filter(r => r && r.error);
+                    if (errors.length > 0) {
+                        console.error('Database errors during skill update:', errors);
+                        return i.editReply({
+                            content: '❌ Some database operations failed. Please try again.',
+                            components: [],
+                        });
                     }
-                    for (const skillId of skillsToRemove) {
-                        promises.push(axios.delete(`${BACKEND_URL}/player-action-modification/unassign`, { data: { playerId: player.id.toString(), skillId } }));
-                    }
-
-                    await Promise.all(promises);
 
                     await i.editReply({
                         content: `✅ Skills for **${player.name}** have been updated!\nAdded: ${skillsToAdd.length}\nRemoved: ${skillsToRemove.length}`,

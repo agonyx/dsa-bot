@@ -1,23 +1,29 @@
 const { InteractionType, ComponentType } = require('discord.js');
-const axios = require('axios');
+const { supabase, callEdgeFunction } = require('../utils/supabaseClient');
 
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction) {
         if (interaction.type === InteractionType.MessageComponent && interaction.componentType === ComponentType.StringSelect) {
             if (interaction.customId === 'select-character') {
-                const selectedPlayerId = interaction.values[0]; // Get the selected player ID
+                const selectedPlayerId = interaction.values[0];
                 const discordId = interaction.user.id;
 
                 try {
-                    // Fetch the selected player's details to get the name
-                    const response = await axios.get(`${process.env.BACKEND_URL}/player/${selectedPlayerId}`);
-                    const playerName = response.data.name;
+                    const { data: player, error: fetchError } = await supabase
+                        .from('players')
+                        .select('name')
+                        .eq('id', selectedPlayerId)
+                        .single();
 
-                    // Update the selected player in the backend
-                    await axios.put(`${process.env.BACKEND_URL}/player/selected/${discordId}/${selectedPlayerId}`);
+                    if (fetchError) throw fetchError;
 
-                    await interaction.update({ content: `You have selected the character: ${playerName}.`, components: [] });
+                    await callEdgeFunction('set-selected-player', {
+                        playerId: parseInt(selectedPlayerId),
+                        discordId: discordId
+                    });
+
+                    await interaction.update({ content: `You have selected the character: ${player.name}.`, components: [] });
                 } catch (error) {
                     console.error('Error selecting character:', error);
                     await interaction.update({ content: 'An error occurred while selecting your character. Please try again later.', components: [] });

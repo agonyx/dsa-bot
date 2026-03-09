@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -54,20 +53,20 @@ module.exports = {
                 tp: interaction.options.getString('tp'),
                 at: interaction.options.getInteger('at'),
                 pa: interaction.options.getInteger('pa'),
-                isEquipped: interaction.options.getString('equipped') || 'N',
-                equippedSlot: interaction.options.getString('slot') || null
+                is_equipped: interaction.options.getString('equipped') || 'N',
+                equipped_slot: interaction.options.getString('slot') || null
             };
 
-            // Validate TP format
-            if (!/^\d+w\d+(\+\d+)?$/.test(weaponData.tp)) {
+            // Validate TP format (supports: 1w6, 1W6, W6, 1w6+3, 1w6 - 2, etc.)
+            if (!/^\d+[wW]\d+(\s*[\+\-]\s*\d+)?$/.test(weaponData.tp)) {
                 return interaction.reply({
-                    content: 'Invalid TP format! Use format like 1w6+3',
+                    content: 'Invalid TP format! Use format like 1w6+3, 1W6-2, or W6',
                     ephemeral: true
                 });
             }
 
             // Validate equipped slot logic
-            if (weaponData.isEquipped === 'Y' && !weaponData.equippedSlot) {
+            if (weaponData.is_equipped === 'Y' && !weaponData.equipped_slot) {
                 return interaction.reply({
                     content: 'You must select a slot when equipping a weapon!',
                     ephemeral: true
@@ -75,39 +74,44 @@ module.exports = {
             }
 
             // Get selected player
-            const playerResponse = await axios.get(
-                `${process.env.BACKEND_URL}/player/selected/${discordId}`
-            );
+            const { data: player, error: playerError } = await supabase
+                .from('players')
+                .select('id')
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!playerResponse.data) {
+            if (playerError || !player) {
                 return interaction.reply({
                     content: 'No selected character! Use /choosecharacter first',
                     ephemeral: true
                 });
             }
 
-            // Create weapon through API
-            const response = await axios.post(
-                `${process.env.BACKEND_URL}/weapon`,
-                {
+            // Create weapon
+            const { data: weapon, error: weaponError } = await supabase
+                .from('weapons')
+                .insert({
                     ...weaponData,
-                    player: {
-                        id: playerResponse.data.id
-                    }
-                }
-            );
+                    player_id: player.id
+                })
+                .select()
+                .single();
+
+            if (weaponError) throw weaponError;
+
             // Build embed response
             const embed = new EmbedBuilder()
                 .setColor(0x00FF00)
                 .setTitle('Weapon Added Successfully')
                 .addFields(
-                    { name: 'Name', value: response.data.name, inline: true },
-                    { name: 'Type', value: response.data.type, inline: true },
-                    { name: 'TP', value: response.data.tp, inline: true },
-                    { name: 'AT', value: response.data.at.toString(), inline: true },
-                    { name: 'PA', value: response.data.pa.toString(), inline: true },
-                    { name: 'Equipped', value: response.data.isEquipped, inline: true },
-                    { name: 'Slot', value: response.data.equippedSlot || 'None', inline: true }
+                    { name: 'Name', value: weapon.name, inline: true },
+                    { name: 'Type', value: weapon.type, inline: true },
+                    { name: 'TP', value: weapon.tp, inline: true },
+                    { name: 'AT', value: weapon.at.toString(), inline: true },
+                    { name: 'PA', value: weapon.pa.toString(), inline: true },
+                    { name: 'Equipped', value: weapon.is_equipped, inline: true },
+                    { name: 'Slot', value: weapon.equipped_slot || 'None', inline: true }
                 );
 
             interaction.reply({ embeds: [embed] });

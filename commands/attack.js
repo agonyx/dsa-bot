@@ -1,37 +1,44 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase } = require('../utils/supabaseClient');
 const { resolveAttack, parseAndRollDamage, applySoak, resolveDefense } = require('../utils/combatUtils');
-
-const BACKEND_URL = process.env.BACKEND_URL;
 
 // Helper function to get player data and effective stats
 async function getPlayerData(discordId) {
     try {
-        // Fetch the selected player character for the given Discord ID
-        const playerResponse = await axios.get(`${BACKEND_URL}/player/selected/${discordId}?relations=stats,weapons`);
-        const player = playerResponse.data;
+        const { data: player, error } = await supabase
+            .from('players')
+            .select(`
+                id,
+                name,
+                stats:stats(*),
+                weapons:weapons(*)
+            `)
+            .eq('discord_id', discordId)
+            .eq('selected', 'YES')
+            .single();
 
-        if (!player || !player.stats || !player.weapons) {
+        if (error || !player?.stats || !player?.weapons) {
             throw new Error(`Incomplete character data. Please ensure you have a character with stats and weapons.`);
         }
 
+        const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+
         // Determine equipped weapons
-        const offensiveWeapon = player.weapons.find(w => w.isEquipped === 'Y' && (w.equippedSlot === 'OFFENSE' || w.equippedSlot === 'ADAPTIVE'));
-        const defensiveWeapon = player.weapons.find(w => w.isEquipped === 'Y' && (w.equippedSlot === 'DEFENSE' || w.equippedSlot === 'ADAPTIVE'));
+        const offensiveWeapon = player.weapons.find(w => w.is_equipped === 'Y' && (w.equipped_slot === 'OFFENSE' || w.equipped_slot === 'ADAPTIVE'));
+        const defensiveWeapon = player.weapons.find(w => w.is_equipped === 'Y' && (w.equipped_slot === 'DEFENSE' || w.equipped_slot === 'ADAPTIVE'));
 
         // Calculate effective stats
-        const at = offensiveWeapon ? offensiveWeapon.at : player.stats.attacke_basis || 8;
+        const at = offensiveWeapon ? offensiveWeapon.at : stats.attacke_basis || 8;
         const tp = offensiveWeapon ? offensiveWeapon.tp : '1w6';
-        const pa = defensiveWeapon ? defensiveWeapon.pa : player.stats.parade_basis || 6;
-        const rs = player.stats.ruestungsschutz || 0;
+        const pa = defensiveWeapon ? defensiveWeapon.pa : stats.parade_basis || 6;
+        const rs = stats.ruestungsschutz || 0;
 
         return {
             id: player.id,
             name: player.name,
-            statsId: player.stats.id,
-            currentHP: player.stats.le_current,
-            maxHP: player.stats.le_max,
+            statsId: stats.id,
+            currentHP: stats.le_current,
+            maxHP: stats.le_max,
             effectiveStats: {
                 currentAT: at,
                 currentPA: pa,
@@ -40,14 +47,10 @@ async function getPlayerData(discordId) {
             }
         };
     } catch (error) {
-        if (axios.isAxiosError(error) && error.response?.status === 404) {
-            throw new Error(`No character selected for the user with ID ${discordId}. Use \`/choosecharacter\`.`);
-        }
-        console.error(`Error fetching player data for ${discordId}:`, error);
-        throw new Error('Could not retrieve character data from the backend.');
+        if (error.message?.includes('Incomplete')) throw error;
+        throw new Error(`No character selected for the user with ID ${discordId}. Use \`/choosecharacter\`.`);
     }
 }
-
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -68,14 +71,27 @@ module.exports = {
         const { user } = interaction;
 
         try {
-            const playerResponse = await axios.get(`${BACKEND_URL}/player/selected/${user.id}`);
-            const player = playerResponse.data;
+            const { data: player } = await supabase
+                .from('players')
+                .select('id')
+                .eq('discord_id', user.id)
+                .eq('selected', 'YES')
+                .single();
+
             if (!player) return await interaction.respond([]);
 
-            const skillsResponse = await axios.get(`${BACKEND_URL}/player/${player.id}/action-modifications?actionType=MELEE`);
-            const skills = skillsResponse.data;
+            const { data: skills } = await supabase
+                .from('player_action_modifications')
+                .select(`
+                    action_modification:action_modifications(id, name, action_type)
+                `)
+                .eq('player_id', player.id);
 
-            const choices = skills.map(skill => ({ name: skill.name, value: skill.id }));
+            const meleeSkills = (skills || [])
+                .map(s => s.action_modification)
+                .filter(s => s && s.action_type === 'MELEE');
+
+            const choices = meleeSkills.map(skill => ({ name: skill.name, value: skill.id }));
             const filtered = choices.filter(choice => choice.name.toLowerCase().startsWith(focusedValue.toLowerCase()));
             
             await interaction.respond(filtered);
@@ -86,7 +102,7 @@ module.exports = {
     },
 
     async execute(interaction) {
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
 
         const { user: attackerUser } = interaction;
         const targetUser = interaction.options.getUser('target');
@@ -95,7 +111,7 @@ module.exports = {
         if (attackerUser.id === targetUser.id) {
             return interaction.editReply('❌ You cannot attack yourself.');
         }
-         if (targetUser.bot) {
+        if (targetUser.bot) {
             return interaction.editReply("❌ You can't attack a bot.");
         }
 
@@ -110,8 +126,12 @@ module.exports = {
 
             let maneuver = null;
             if (maneuverId) {
-                const response = await axios.get(`${BACKEND_URL}/action-modification/${maneuverId}`);
-                maneuver = response.data;
+                const { data: maneuverData } = await supabase
+                    .from('action_modifications')
+                    .select('*')
+                    .eq('id', maneuverId)
+                    .single();
+                maneuver = maneuverData;
             }
 
             // 2. Get effective stats and apply maneuver modifiers
@@ -122,9 +142,9 @@ module.exports = {
 
             if (maneuver) {
                 description = `**${attacker.name}** uses **${maneuver.name}** to attack **${target.name}**!\n\n`;
-                if (maneuver.rules.at_modifier) atValue += maneuver.rules.at_modifier;
-                if (maneuver.rules.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
-                if (maneuver.rules.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
+                if (maneuver.rules?.at_modifier) atValue += maneuver.rules.at_modifier;
+                if (maneuver.rules?.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
+                if (maneuver.rules?.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
             }
 
             // 3. Resolve the attack
@@ -176,7 +196,13 @@ module.exports = {
 
                 if (newHP !== target.currentHP) {
                     // Update target's health in the database
-                    await axios.put(`${BACKEND_URL}/stats/${target.statsId}`, { le_current: newHP });
+                    const { error: updateError } = await supabase
+                        .from('stats')
+                        .update({ le_current: newHP })
+                        .eq('id', target.statsId);
+
+                    if (updateError) console.error('Failed to update target HP:', updateError);
+                    
                     description += `\n❤️ **${target.name}'s HP:** ${newHP} / ${target.maxHP}`;
                     if (newHP <= 0) {
                         description += `\n\n**${target.name} has been defeated!**`;
@@ -197,7 +223,7 @@ module.exports = {
         } catch (error) {
             console.error('Error executing standalone attack command:', error);
             const errorMessage = error.message || 'An unknown error occurred.';
-            await interaction.editReply({ content: `❌ ${errorMessage}`, ephemeral: true });
+            await interaction.editReply(`❌ ${errorMessage}`);
         }
     },
 };

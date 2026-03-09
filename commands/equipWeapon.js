@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config();
+const { supabase, callEdgeFunction } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,18 +8,19 @@ module.exports = {
     
     async execute(interaction) {
         try {
-
-            
-            // Defer the initial response
             await interaction.deferReply({ ephemeral: true });
 
-            // Fetch player data
-            const playerResponse = await axios.get(
-                `${process.env.BACKEND_URL}/player/selected/${interaction.user.id}`
-            );
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    weapons:weapons(*)
+                `)
+                .eq('discord_id', interaction.user.id)
+                .eq('selected', 'YES')
+                .single();
             
-            const player = playerResponse.data;
-            if (!player?.weapons?.length) {
+            if (error || !player?.weapons?.length) {
                 return interaction.editReply({ 
                     content: player ? 'No weapons available!' : 'No selected character!',
                     components: []
@@ -78,10 +78,11 @@ module.exports = {
                     const slot = slotInteraction.values[0];
 
                     try {
-                        await axios.post(
-                            `${process.env.BACKEND_URL}/weapon/equip/${weaponId}`,
-                            { equippedSlot: slot }
-                        );
+                        // Use the equip-weapon Edge Function
+                        await callEdgeFunction('equip-weapon', { 
+                            weaponId: parseInt(weaponId), 
+                            equippedSlot: slot 
+                        });
 
                         await interaction.editReply({
                             content: `✅ Successfully equipped ${weaponInteraction.component.options.find(o => o.value === weaponId).label} in ${slot} slot!`,

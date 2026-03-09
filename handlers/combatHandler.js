@@ -2,17 +2,64 @@
 
 const { Interaction, StringSelectMenuInteraction, ButtonInteraction, ModalSubmitInteraction, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, EmbedBuilder, ButtonStyle, AttachmentBuilder } = require('discord.js');
 const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents');
-const axios = require('axios');
 const { ButtonBuilder } = require('@discordjs/builders');
 const { resolveAttack, parseAndRollDamage, applySoak, resolveDefense, rollDice } = require('../utils/combatUtils');
 const crypto = require('crypto');
-resolveAttack
-require('dotenv').config();
+const { supabase, callEdgeFunction } = require('../utils/supabaseClient');
 
-const BACKEND_URL = process.env.BACKEND_URL;
-if (!BACKEND_URL) {
-    console.error("FATAL: BACKEND_URL environment variable is not set.");
-    process.exit(1);
+/**
+ * Helper to get session data from memory or load from DB if missing.
+ * Converts snake_case to camelCase for compatibility.
+ */
+async function getOrLoadSession(client, channelId) {
+    // Check memory first
+    let sessionData = client.activeCombats.get(channelId);
+    if (sessionData) {
+        console.log(`[getOrLoadSession] Found session in memory for channel ${channelId}`);
+        return sessionData;
+    }
+
+    // Not in memory - try to load from DB
+    console.log(`[getOrLoadSession] Session not in memory, loading from DB for channel ${channelId}`);
+    const { data: session, error } = await supabase
+        .from('combat_sessions')
+        .select('*, combatants(*)')
+        .eq('channel_id', channelId)
+        .in('state', ['RUNNING', 'PAUSED'])
+        .single();
+
+    if (error || !session) {
+        console.error(`[getOrLoadSession] Failed to load session from DB:`, error?.message);
+        return null;
+    }
+
+    // Convert snake_case to camelCase
+    const memorySession = {
+        ...session,
+        dmUserId: session.dm_user_id,
+        channelId: session.channel_id,
+        messageId: session.message_id,
+        combatLog: session.combat_log,
+        turnOrder: session.turn_order,
+        currentTurnIndex: session.current_turn_index,
+        combatants: session.combatants?.map(c => ({
+            ...c,
+            maxHP: c.max_hp,
+            currentHP: c.current_hp,
+            initiativeRoll: c.initiative_roll,
+            initiativeBase: c.initiative_base,
+            playerId: c.player_id,
+            discordUserId: c.discord_user_id,
+            mobDefinitionId: c.mob_definition_id,
+            sessionId: c.session_id,
+            isActiveTurn: c.is_active_turn
+        })) || []
+    };
+
+    // Store in memory for future use
+    client.activeCombats.set(channelId, memorySession);
+    console.log(`[getOrLoadSession] Loaded session ${session.id} from DB into memory`);
+    return memorySession;
 }
 
 
@@ -142,7 +189,7 @@ async function handleCombatActionAttack(interaction, sessionId, actorId) {
     await interaction.deferReply({ ephemeral: true });
 
     try {
-        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
         if (!sessionData || sessionData.id !== sessionId) { return interaction.editReply({ content: '❌ Error: Could not find active combat data.' }); }
         if (sessionData.state !== 'RUNNING') { return interaction.editReply({ content: `❌ Cannot attack: Combat is not running.` }); }
 
@@ -186,8 +233,12 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
 
     let maneuver = null;
     if (maneuverId && maneuverId !== 'null') {
-        const response = await axios.get(`${process.env.BACKEND_URL}/action-modification/${maneuverId}`);
-        maneuver = response.data;
+        const { data, error } = await supabase
+            .from('action_modifications')
+            .select('*')
+            .eq('id', maneuverId)
+            .single();
+        if (!error && data) maneuver = data;
     }
 
     const [attackerStats, targetStats] = await Promise.all([
@@ -202,9 +253,9 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
 
     if (maneuver) {
         logMessage = `${attacker.name} uses **${maneuver.name}** to attack ${target.name}.`;
-        if (maneuver.rules.at_modifier) atValue += maneuver.rules.at_modifier;
-        if (maneuver.rules.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
-        if (maneuver.rules.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
+        if (maneuver.rules?.at_modifier) atValue += maneuver.rules.at_modifier;
+        if (maneuver.rules?.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
+        if (maneuver.rules?.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
     }
 
     const attackResult = resolveAttack(atValue);
@@ -212,7 +263,31 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
     if (attackResult.confirmRoll !== null) logMessage += ` (Confirm: ${attackResult.confirmRoll})`;
 
     let hitConnected = false;
-    if (attackResult.outcome === 'NORMAL_HIT' || attackResult.outcome === 'CRITICAL_SUCCESS') {
+    let botchOutcome = null;
+    if (attackResult.outcome === 'BOTCH') {
+        // DSA 5e Botch: Roll on botch table (simplified: self-injury)
+        const botchDamage = Math.max(1, Math.floor(parseAndRollDamage(attackerStats.currentTP) / 2));
+        const newAttackerHP = Math.max(0, attacker.currentHP - botchDamage);
+        logMessage += ` -> **BOTCH!** ${attacker.name} injures themselves for ${botchDamage} damage!`;
+        
+        // Update attacker HP in database
+        const { error: botchUpdateError } = await supabase
+            .from('combatants')
+            .update({ current_hp: newAttackerHP })
+            .eq('id', attacker.id);
+        
+        if (botchUpdateError) {
+            console.error('Failed to update attacker HP after botch:', botchUpdateError);
+        } else {
+            attacker.currentHP = newAttackerHP;
+            logMessage += ` | ${attacker.name} HP: ${newAttackerHP}/${attacker.maxHP}.`;
+            if (newAttackerHP <= 0) logMessage += ` **Self-defeated!**`;
+        }
+    } else if (attackResult.outcome === 'CRITICAL_SUCCESS') {
+        hitConnected = true;
+        // DSA 5e: Critical hits bypass parry
+        logMessage += ` -> **CRITICAL!** Cannot be parried!`;
+    } else if (attackResult.outcome === 'NORMAL_HIT') {
         hitConnected = true;
         const defenseResult = resolveDefense(paValue);
         logMessage += ` | ${target.name} Parry: ${defenseResult.roll}/${paValue}.`;
@@ -245,12 +320,21 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
         logMessage += `${damageLog} - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`;
         const newHP = Math.max(0, target.currentHP - finalDamage);
         if (newHP !== target.currentHP) {
-            // 1. API Call First
-            await axios.put(`${process.env.BACKEND_URL}/combatant/${target.id}`, { currentHP: newHP });
-            // 2. Update memory ONLY after successful API call
-            target.currentHP = newHP;
-            logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
-            if (newHP <= 0) logMessage += ` **Defeated!**`;
+            // 1. Supabase Call First - check for errors
+            const { error: updateError } = await supabase
+                .from('combatants')
+                .update({ current_hp: newHP })
+                .eq('id', target.id);
+            
+            if (updateError) {
+                console.error('Failed to update combatant HP in database:', updateError);
+                logMessage += ` | ⚠️ DB update failed!`;
+            } else {
+                // 2. Update memory ONLY after successful API call
+                target.currentHP = newHP;
+                logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
+                if (newHP <= 0) logMessage += ` **Defeated!**`;
+            }
         }
     }
 
@@ -306,7 +390,7 @@ async function handleCombatSelectMenu(interaction) {
             }
 
             // --- Start: Added Validation ---
-            const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+            const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
             if (!sessionData || sessionData.id !== sessionId) {
                 throw new Error('Active combat data not found or session mismatch.');
             }
@@ -347,8 +431,11 @@ async function handleCombatSelectMenu(interaction) {
         const actorId = parts[2];
         const maneuverId = interaction.values[0];
 
-        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
-        if (!sessionData) return;
+        const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
+        if (!sessionData) {
+            await interaction.followUp({ content: '❌ No active combat session found.', ephemeral: true }).catch(console.error);
+            return;
+        }
 
         const actorCombatant = sessionData.combatants.find(c => c.id === actorId);
         const potentialTargets = sessionData.combatants.filter(c => c.id !== actorId && c.currentHP > 0 && c.allegiance !== actorCombatant.allegiance);
@@ -457,13 +544,10 @@ function createNpcDmActionRow(sessionId, npcActorId) {
 async function handleCombatEndTurnInteraction(interaction, sessionId, actorId) {
     console.log(`[End Turn ${sessionId}] Handling for Actor ${actorId} by User ${interaction.user.id}`);
     // Defer update - the main display will refresh after turn advances
-    await interaction.deferUpdate({ ephemeral: true });
+    await interaction.deferUpdate();
 
-    // --- Get Current Combat State from Memory ---
-    if (!interaction.client.activeCombats?.has(interaction.channelId)) {
-        console.error(`[End Turn ${sessionId}] No active combat in map.`); return; // Silently fail? Or followUp?
-    }
-    const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+    // --- Get Current Combat State from Memory or DB ---
+    const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
     if (!sessionData || sessionData.id !== sessionId || sessionData.state !== 'RUNNING') {
         console.error(`[End Turn ${sessionId}] Session not running or ID mismatch.`); return;
     }
@@ -517,11 +601,17 @@ async function handleCombatEndTurnInteraction(interaction, sessionId, actorId) {
  */
 async function handleDmNpcAttackAction(interaction, sessionId, actorId) {
     console.log(`[DM NPC Attack Action ${sessionId}] Handling for Actor ${actorId} by DM ${interaction.user.id}`);
-    await interaction.deferReply({ ephemeral: true });
+    try {
+        await interaction.deferReply({ ephemeral: true });
+    } catch (deferError) {
+        console.error(`[DM NPC Attack Action] Failed to defer:`, deferError.message);
+        return; // Can't continue if we can't defer
+    }
 
     try {
         // --- 1. Get Current Combat State & Verify DM ---
-        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
+        console.log(`[DM NPC Attack Action] sessionData found:`, !!sessionData, sessionData?.id);
         if (!sessionData || sessionData.id !== sessionId) { return interaction.editReply({ content: '❌ Error: Could not find active combat data.' }); }
         if (sessionData.dmUserId !== interaction.user.id) { return interaction.editReply({ content: '❌ Only the DM can control NPC actions.' }); }
         if (sessionData.state !== 'RUNNING') { return interaction.editReply({ content: `❌ Cannot attack: Combat is not running.` }); }
@@ -635,7 +725,7 @@ async function handleDmNpcTargetSelectAttack(interaction, sessionId, actorId) {
 
 
 /**
- * Adds a log entry to the in-memory state AND sends it to the backend API.
+ * Adds a log entry to the in-memory state AND sends it to Supabase.
  * @param {Client} client - The Discord client instance.
  * @param {string} channelId - The channel ID where combat is active.
  * @param {string} sessionId - The combat session ID.
@@ -664,26 +754,42 @@ async function addLogEntry(client, channelId, sessionId, entry) {
         } else { console.warn(`${functionName} Session data in map invalid/mismatch.`); }
     } else { console.warn(`${functionName} No active combat in map.`); }
 
-    // --- Send log entry to backend API ---
+    // --- Send log entry to Supabase ---
     try {
-        console.log(`${functionName} Sending entry to backend: PUT ${BACKEND_URL}/combatSession/${sessionId}`);
-        // Use the generic update endpoint, sending only the new entry
-        // Backend controller needs to handle appending this entry
-        const response = await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, {
-             combatLogEntry: entry // Send the new entry string
-         });
-        if (response.status === 200) {
-             console.log(`${functionName} Backend acknowledged log entry.`);
+        console.log(`${functionName} Sending entry to Supabase for session ${sessionId}`);
+        
+        // Fetch current log from Supabase
+        const { data: session, error: fetchError } = await supabase
+            .from('combat_sessions')
+            .select('combat_log')
+            .eq('id', sessionId)
+            .single();
+        
+        if (fetchError) {
+            console.error(`${functionName} Failed to fetch current log: ${fetchError.message}`);
+            return;
+        }
+        
+        // Append new entry to log
+        const currentLog = session?.combat_log || [];
+        const updatedLog = [...currentLog, entry];
+        const MAX_LOG_LENGTH_DB = 20;
+        const trimmedLog = updatedLog.slice(-MAX_LOG_LENGTH_DB);
+        
+        // Update log in Supabase
+        const { error: updateError } = await supabase
+            .from('combat_sessions')
+            .update({ combat_log: trimmedLog })
+            .eq('id', sessionId);
+        
+        if (updateError) {
+            console.error(`${functionName} Failed to update log in Supabase: ${updateError.message}`);
         } else {
-             console.warn(`${functionName} Backend responded with unexpected status ${response.status} for log entry.`);
+            console.log(`${functionName} Log entry saved to Supabase.`);
         }
     } catch (error) {
-        console.error(`${functionName} Failed to send log entry to backend:`, error.message);
-        // Handle specific errors if needed (e.g., session not found on backend 404)
-        if (axios.isAxiosError(error) && error.response) {
-             console.error(`  -> Backend Status: ${error.response.status}, Data: ${JSON.stringify(error.response.data)}`);
-        }
-        // If the API call fails, the log only exists in the bot's memory until next successful save/restart.
+        console.error(`${functionName} Failed to send log entry to Supabase:`, error.message);
+        // If the call fails, the log only exists in the bot's memory until next successful save/restart.
     }
 
     // Log directly from map AFTER potential update attempt for final verification
@@ -703,23 +809,31 @@ async function getEffectiveCombatStats(combatant) {
     
     if (combatant.type === 'PLAYER') {
         try {
-            const playerResponse = await axios.get(`${BACKEND_URL}/player/${combatant.playerId}?relations=weapons,stats`);
-            const player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select('*, stats:stats(*), weapons:weapons(*)')
+                .eq('id', combatant.playerId)
+                .single();
 
-            if (!player || !player.stats || !player.weapons) {
+            if (error || !player) {
+                throw new Error(`Failed to fetch player data for ID ${combatant.playerId}: ${error?.message}`);
+            }
+
+            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            if (!stats || !player.weapons) {
                 throw new Error(`Incomplete player data for ID ${combatant.playerId}`);
             }
 
-            const offensiveWeapon = player.weapons.find(w => w.isEquipped === 'Y' && (w.equippedSlot === 'OFFENSE' || w.equippedSlot === 'ADAPTIVE'));
-            const defensiveWeapon = player.weapons.find(w => w.isEquipped === 'Y' && (w.equippedSlot === 'DEFENSE' || w.equippedSlot === 'ADAPTIVE'));
+            const offensiveWeapon = player.weapons.find(w => w.is_equipped === 'Y' && (w.equipped_slot === 'OFFENSE' || w.equipped_slot === 'ADAPTIVE'));
+            const defensiveWeapon = player.weapons.find(w => w.is_equipped === 'Y' && (w.equipped_slot === 'DEFENSE' || w.equipped_slot === 'ADAPTIVE'));
 
             // If a single ADAPTIVE weapon is used, it counts for both offense and defense.
-            let at = offensiveWeapon ? offensiveWeapon.at : player.stats.attacke_basis || 8; // Default to 8 if no weapon
+            let at = offensiveWeapon ? offensiveWeapon.at : stats.attacke_basis || 8; // Default to 8 if no weapon
             const tp = offensiveWeapon ? offensiveWeapon.tp : '1w6';
-            let pa = defensiveWeapon ? defensiveWeapon.pa : player.stats.parade_basis || 6; // Default to 6 if no weapon/shield
+            let pa = defensiveWeapon ? defensiveWeapon.pa : stats.parade_basis || 6; // Default to 6 if no weapon/shield
             
             // RS (Armor Soak) is missing from the Stats entity. Assuming 0 for now. This is a data model gap.
-            let rs = player.stats.ruestungsschutz || 0;
+            let rs = stats.ruestungsschutz || 0;
 
             // --- NEW: Apply effects ---
             if (combatant.effects && Array.isArray(combatant.effects)) {
@@ -741,14 +855,17 @@ async function getEffectiveCombatStats(combatant) {
         }
     } else if (combatant.type === 'NPC') {
         try {
-            const mobResponse = await axios.get(`${BACKEND_URL}/mob/id/${combatant.mobDefinitionId}`);
-            const mob = mobResponse.data;
+            const { data: mob, error } = await supabase
+                .from('mobs')
+                .select('*')
+                .eq('id', combatant.mobDefinitionId)
+                .single();
 
-            if (!mob) {
+            if (error || !mob) {
                 throw new Error(`Mob definition not found for ID ${combatant.mobDefinitionId}`);
             }
 
-            let pa = mob.baseParryValue;
+            let pa = mob.base_parry_value;
             if (combatant.effects && Array.isArray(combatant.effects)) {
                 for (const effect of combatant.effects) {
                     if (effect.type === 'defend') {
@@ -759,10 +876,10 @@ async function getEffectiveCombatStats(combatant) {
             }
 
             const stats = {
-                currentAT: mob.baseAttackValue,
+                currentAT: mob.base_attack_value,
                 currentPA: pa,
-                currentRS: mob.baseArmorSoak,
-                currentTP: mob.baseDamageTP
+                currentRS: mob.base_armor_soak,
+                currentTP: mob.base_damage_tp
             };
             
             console.log(`[getEffectiveCombatStats] NPC ${mob.name}: AT=${stats.currentAT}, PA=${stats.currentPA}, RS=${stats.currentRS}, TP=${stats.currentTP}`);
@@ -804,10 +921,10 @@ async function nextTurn(client, channelId) {
     const turnOrder = sessionData.turnOrder;
     const numCombatants = turnOrder.length;
 
-    // --- (Optional: Set previous combatant isActiveTurn=false via API) ---
+    // --- (Optional: Set previous combatant isActiveTurn=false via Supabase) ---
     // const previousActorId = turnOrder[sessionData.currentTurnIndex];
-    // try { await axios.put(`${BACKEND_URL}/combatant/${previousActorId}`, { isActiveTurn: false }); }
-    // catch (e) { console.error(`${functionName} Failed API call to set previous actor inactive`, e.message); }
+    // try { await supabase.from('combatants').update({ is_active_turn: false }).eq('id', previousActorId); }
+    // catch (e) { console.error(`${functionName} Failed to set previous actor inactive`, e.message); }
     // --- End Optional ---
 
     // 2. Find Next Active Combatant
@@ -857,12 +974,15 @@ async function nextTurn(client, channelId) {
             const winner = uniqueAllegiances[0] === 'PLAYER_SIDE' ? 'The players' : 'The hostile forces';
             await addLogEntry(client, channelId, sessionId, `--- Combat Ended: ${winner} are victorious! ---`);
             
-            // --- FIX: Add API call to update backend state ---
+            // --- FIX: Add Supabase call to update backend state ---
             try {
-                await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, { state: 'ENDED' });
-                console.log(`[Combat End ${sessionId}] Backend state updated to ENDED.`);
+                await supabase
+                    .from('combat_sessions')
+                    .update({ state: 'ENDED' })
+                    .eq('id', sessionId);
+                console.log(`[Combat End ${sessionId}] Supabase state updated to ENDED.`);
             } catch (error) {
-                console.error(`[Combat End ${sessionId}] CRITICAL: Failed to update backend state to ENDED:`, error.message);
+                console.error(`[Combat End ${sessionId}] CRITICAL: Failed to update Supabase state to ENDED:`, error.message);
                 // The bot will think the combat is over, but the DB will disagree.
                 // We should probably send a message to the channel to warn the DM.
                 const channel = await client.channels.fetch(channelId).catch(() => null);
@@ -883,10 +1003,13 @@ async function nextTurn(client, channelId) {
 
             console.log(`${functionName} New turn index: ${sessionData.currentTurnIndex}. New active combatant: ${nextActiveCombatant.name}`);
             try {
-                 console.log(`${functionName} Updating backend session index to ${nextIndex}`);
-                 await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, { currentTurnIndex: nextIndex });
+                 console.log(`${functionName} Updating Supabase session index to ${nextIndex}`);
+                 await supabase
+                    .from('combat_sessions')
+                    .update({ current_turn_index: nextIndex })
+                    .eq('id', sessionId);
             } catch(e) {
-                 console.error(`${functionName} Failed to update backend with new turn index:`, e.message);
+                 console.error(`${functionName} Failed to update Supabase with new turn index:`, e.message);
             }
             await addLogEntry(client, channelId, sessionId, `--- ${nextActiveCombatant.name}'s Turn ---`);
         }
@@ -1035,35 +1158,37 @@ async function handleJoinCombatInteraction(interaction, sessionId) {
     const discordId = interaction.user.id;
 
     try {
-        // Fetch User's SELECTED Character
-        console.log(`Workspaceing SELECTED character for discordId ${discordId} via GET ${BACKEND_URL}/player/selected/${discordId}`);
-        const response = await axios.get(`${BACKEND_URL}/player/selected/${discordId}`);
+        // Fetch User's SELECTED Character from Supabase
+        console.log(`Fetching SELECTED character for discordId ${discordId} from Supabase`);
+        const { data: character, error } = await supabase
+            .from('players')
+            .select('*, stats:stats(*)')
+            .eq('discord_id', discordId)
+            .eq('selected', 'YES')
+            .single();
 
-        if (response.status === 200 && response.data) {
-            const character = response.data;
-            if (!character.stats) {
-                // Use followUp since we deferred update
-                await interaction.followUp({ content: '❌ Your selected character data is missing required stats information. Cannot join combat.', ephemeral: true });
-                return;
-            }
-            console.log(`Attempting join session ${sessionId} with selected char ID ${character.id}`);
-            await addCombatantPlayer(interaction, sessionId, character); // Calls helper
-
-        } else { // Should be caught by catch block usually
-             console.error(`Could not retrieve selected character info. Status ${response.status}`);
-             // Use followUp since we deferred update
-             await interaction.followUp({ content: '❌ Could not retrieve your selected character information.', ephemeral: true });
+        if (error || !character) {
+            console.error(`Could not retrieve selected character info:`, error?.message);
+            await interaction.followUp({ content: '❌ No character selected. Use `/choosecharacter` first.', ephemeral: true });
+            return;
         }
+
+        const stats = Array.isArray(character.stats) ? character.stats[0] : character.stats;
+        if (!stats) {
+            await interaction.followUp({ content: '❌ Your selected character data is missing required stats information. Cannot join combat.', ephemeral: true });
+            return;
+        }
+        character.stats = stats;
+        
+        console.log(`Attempting join session ${sessionId} with selected char ID ${character.id}`);
+        await addCombatantPlayer(interaction, sessionId, character); // Calls helper
 
     } catch (error) {
         console.error(`Error handleJoinCombatInteraction session ${sessionId}, user ${discordId}:`, error);
         let errorMessage = 'An error occurred while trying to join.';
-        if (axios.isAxiosError(error) && error.response) {
-             if (error.response.status === 404) { errorMessage = '❌ No character selected. Use `/choosecharacter` first.'; }
-             else { errorMessage = `❌ Backend error (${error.response.status}): ${error.response.data?.message || error.message}`; } // Use error.message as fallback
-        } else if (error instanceof Error) { errorMessage = `❌ Error: ${error.message}`; }
+        if (error instanceof Error) { errorMessage = `❌ Error: ${error.message}`; }
         // Use followUp since we deferred update
-        await interaction.followUp({ content: errorMessage, ephemeral: true }).catch(console.error); // Catch potential error sending followUp
+        await interaction.followUp({ content: errorMessage, ephemeral: true }).catch(console.error);
     }
 }
 
@@ -1097,34 +1222,42 @@ async function addCombatantPlayer(interaction, sessionId, player) {
         // --- Prepare Data ---
         const combatantData = {
             sessionId, type: 'PLAYER', allegiance: 'PLAYER_SIDE',
-            playerId: player.id, discordUserId: player.discordId, name: player.name,
-            maxHP: player.stats[maxHpField], currentHP: player.stats[currentHpField],
+            playerId: player.id, discordUserId: player.discord_id, name: player.name,
+            maxHp: player.stats[maxHpField], currentHp: player.stats[currentHpField],
             initiativeBase: player.stats[initBaseField]
         };
-        console.log(`Attempting POST ${BACKEND_URL}/combatant:`, combatantData);
+        console.log(`Calling create-combatant Edge Function:`, combatantData);
 
-        // --- API Call ---
-        const response = await axios.post(`${BACKEND_URL}/combatant`, combatantData);
+        // --- Edge Function Call ---
+        const { data, status, error } = await callEdgeFunction('create-combatant', combatantData);
 
         // --- Handle Success ---
-        if (response.status === 201) {
+        if (!error && (status === 200 || status === 201)) {
             console.log(`Combatant ${player.name} added to session ${sessionId}.`);
 
             // --- Update Public Setup Message ---
             try {
                  console.log(`Updating setup message for ${sessionId} after player join.`);
-                 // Fetch session data WITH combatants AND messageId
-                 const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`);
-                 const updatedSession = sessionResponse.data;
+                 // Fetch session data WITH combatants from Supabase
+                 const { data: updatedSession, error: sessionError } = await supabase
+                    .from('combat_sessions')
+                    .select('*, combatants(*)')
+                    .eq('id', sessionId)
+                    .single();
 
-                 if (updatedSession?.messageId && updatedSession?.combatants) {
-                    const channel = await interaction.client.channels.fetch(updatedSession.channelId).catch(() => null);
+                 if (sessionError) {
+                    console.error(`Failed to fetch updated session: ${sessionError.message}`);
+                    return;
+                 }
+
+                 if (updatedSession?.message_id && updatedSession?.combatants) {
+                    const channel = await interaction.client.channels.fetch(updatedSession.channel_id).catch(() => null);
                     if (channel?.isTextBased()) {
-                        const originalMessage = await channel.messages.fetch(updatedSession.messageId).catch(() => null);
+                        const originalMessage = await channel.messages.fetch(updatedSession.message_id).catch(() => null);
                         if (originalMessage) {
                             // Get DM username for embed
-                            let dmUser = await interaction.client.users.fetch(updatedSession.dmUserId).catch(() => null);
-                            const dmUsername = dmUser ? dmUser.username : updatedSession.dmUserId;
+                            let dmUser = await interaction.client.users.fetch(updatedSession.dm_user_id).catch(() => null);
+                            const dmUsername = dmUser ? dmUser.username : updatedSession.dm_user_id;
 
                             // Create the updated embed
                             const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
@@ -1140,10 +1273,10 @@ async function addCombatantPlayer(interaction, sessionId, player) {
                                 embeds: [newEmbed],
                                 components: newActionRows // Use the dynamically generated rows
                             });
-                            console.log(`Successfully updated setup message ${updatedSession.messageId} (Start enabled: ${canStart})`);
+                            console.log(`Successfully updated setup message ${updatedSession.message_id} (Start enabled: ${canStart})`);
 
-                        } else { console.warn(`Original message ${updatedSession.messageId} not found.`); }
-                    } else { console.warn(`Channel ${updatedSession.channelId} not found/not text.`); }
+                        } else { console.warn(`Original message ${updatedSession.message_id} not found.`); }
+                    } else { console.warn(`Channel ${updatedSession.channel_id} not found/not text.`); }
                  } else { console.warn(`Missing data needed to update message for session ${sessionId}.`); }
             } catch(updateError) {
                  console.error(`Failed to update original setup message for ${sessionId}:`, updateError);
@@ -1153,17 +1286,14 @@ async function addCombatantPlayer(interaction, sessionId, player) {
             // --- NO FINAL EPHEMERAL REPLY/EDIT ---
             // Interaction was deferUpdate, no need to explicitly close.
 
-        } else { // Handle non-201 success from POST /combatant
-             console.error(`Failed add combatant. Status: ${response.status}`, response.data);
-             await interaction.followUp({ content: `❌ Failed add: Status ${response.status}.`, ephemeral: true, components: [] });
+        } else { // Handle error from create-combatant
+             console.error(`Failed add combatant. Status: ${status}`, error);
+             await interaction.followUp({ content: `❌ Failed add: ${error?.message || 'Unknown error'}.`, ephemeral: true, components: [] });
         }
-    } catch (error) { // Catch errors from POST /combatant call
-         console.error(`Error addCombatantPlayer API call session ${sessionId}, player ${player.id}:`, error);
+    } catch (error) { // Catch errors from Edge Function call
+         console.error(`Error addCombatantPlayer session ${sessionId}, player ${player.id}:`, error);
          let errorMessage = 'An error occurred adding you to combat.';
-         if (axios.isAxiosError(error) && error.response) {
-              if (error.response.status === 409) { errorMessage = `❌ Could not join: ${error.response.data || 'Already in combat!'}`; }
-              else { errorMessage = `❌ Backend error (${error.response.status})`; }
-         } else if (error instanceof Error) { errorMessage = `❌ Error: ${error.message}`; }
+         if (error instanceof Error) { errorMessage = `❌ Error: ${error.message}`; }
          await interaction.followUp({ content: errorMessage, ephemeral: true, components: [] });
     }
 }
@@ -1171,17 +1301,28 @@ async function handleCancelCombatInteraction(interaction, sessionId) {
     console.log(`Handling Cancel Combat for session ${sessionId} by user ${interaction.user.id}`);
     await interaction.deferReply({ ephemeral: true });
     try {
-        const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`);
-        const session = sessionResponse.data;
-        if (!session) throw new Error("Not found");
-        if (session.dmUserId !== interaction.user.id) throw new Error("Not DM");
+        const { data: session, error } = await supabase
+            .from('combat_sessions')
+            .select('*')
+            .eq('id', sessionId)
+            .single();
+        
+        if (error || !session) throw new Error("Not found");
+        if (session.dm_user_id !== interaction.user.id) throw new Error("Not DM");
         if (session.state !== 'SETUP') throw new Error(`Wrong state ${session.state}`);
-        await axios.delete(`${BACKEND_URL}/combatSession/${sessionId}`);
+        
+        const { error: deleteError } = await supabase
+            .from('combat_sessions')
+            .delete()
+            .eq('id', sessionId);
+        
+        if (deleteError) throw deleteError;
         console.log(`Session ${sessionId} deleted.`);
-        if (session.messageId) {
-            const channel = await interaction.client.channels.fetch(session.channelId).catch(() => {});
+        
+        if (session.message_id) {
+            const channel = await interaction.client.channels.fetch(session.channel_id).catch(() => {});
             if (channel?.isTextBased()) {
-                const msg = await channel.messages.fetch(session.messageId).catch(() => {});
+                const msg = await channel.messages.fetch(session.message_id).catch(() => {});
                 if (msg) await msg.edit({ content: `*Setup cancelled.*`, embeds: [], components: [] }).catch(e => console.warn("Msg edit fail on cancel", e));
             }
         }
@@ -1200,9 +1341,26 @@ async function handleCancelCombatInteraction(interaction, sessionId) {
 
 async function showAddMobModal(interaction, sessionId) { /* ... Implementation as before ... */
     console.log(`Showing Add Mob Modal for session ${sessionId} by user ${interaction.user.id}`);
-    try { const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`); const session = sessionResponse.data; if (!session) {await interaction.reply({content:"Not found", ephemeral:true}); return;} if (session.dmUserId !== interaction.user.id) {await interaction.reply({content:"DM only", ephemeral:true}); return;} if (session.state !== 'SETUP') {await interaction.reply({content:`State is ${session.state}`, ephemeral:true}); return;}
-         const modal = new ModalBuilder().setCustomId(`add_mob_submit_${sessionId}`).setTitle(`Add Mob`); const input = new TextInputBuilder().setCustomId('mobNameInput').setLabel("Mob Template Name").setStyle(TextInputStyle.Short).setRequired(true); modal.addComponents(new ActionRowBuilder().addComponents(input)); await interaction.showModal(modal);
-    } catch(error) { if (!interaction.replied && !interaction.deferred) { await interaction.reply({ content: "Failed show modal.", ephemeral: true }).catch(console.error); } }
+    try {
+        const { data: session, error } = await supabase
+            .from('combat_sessions')
+            .select('*')
+            .eq('id', sessionId)
+            .single();
+        
+        if (!session) { await interaction.reply({content:"Not found", ephemeral:true}); return; }
+        if (session.dm_user_id !== interaction.user.id) { await interaction.reply({content:"DM only", ephemeral:true}); return; }
+        if (session.state !== 'SETUP') { await interaction.reply({content:`State is ${session.state}`, ephemeral:true}); return; }
+        
+        const modal = new ModalBuilder().setCustomId(`add_mob_submit_${sessionId}`).setTitle(`Add Mob`);
+        const input = new TextInputBuilder().setCustomId('mobNameInput').setLabel("Mob Template Name").setStyle(TextInputStyle.Short).setRequired(true);
+        modal.addComponents(new ActionRowBuilder().addComponents(input));
+        await interaction.showModal(modal);
+    } catch(error) {
+        if (!interaction.replied && !interaction.deferred) {
+            await interaction.reply({ content: "Failed show modal.", ephemeral: true }).catch(console.error);
+        }
+    }
 }
 
 /**
@@ -1213,7 +1371,6 @@ async function showAddMobModal(interaction, sessionId) { /* ... Implementation a
 // In handlers/combatHandler.js
 
 // (Ensure createSetupEmbed and createSetupActionRows helpers are defined)
-// (Ensure axios, BACKEND_URL etc. are defined/required)
 
 async function handleAddMobSubmitInteraction(interaction, sessionId) {
     // Use deferUpdate consistently
@@ -1223,26 +1380,26 @@ async function handleAddMobSubmitInteraction(interaction, sessionId) {
     console.log(`Handling Add Mob Submit for session ${sessionId}. Mob name: "${requestedMobName}"`);
 
     try {
-       // --- 1. Fetch Mob Template from Backend ---
+       // --- 1. Fetch Mob Template from Supabase ---
        let mobTemplate;
        try {
-           const encodedName = encodeURIComponent(requestedMobName);
-           // *** FIXED TYPO BELOW ***
-           console.log(`Workspaceing mob template via GET ${BACKEND_URL}/mob/name/${encodedName}`);
-           const response = await axios.get(`${BACKEND_URL}/mob/name/${encodedName}`);
-           if (!response.data?.id) throw new Error("Mob template found but missing required fields.");
-           mobTemplate = response.data;
+           console.log(`Fetching mob template "${requestedMobName}" from Supabase`);
+           const { data, error } = await supabase
+               .from('mobs')
+               .select('*')
+               .eq('name', requestedMobName)
+               .single();
+           
+           if (error || !data?.id) throw new Error("Mob template found but missing required fields.");
+           mobTemplate = data;
            console.log(`Found mob template ID: ${mobTemplate.id}`);
        } catch (fetchError) {
             console.error(`Error fetching mob template "${requestedMobName}":`, fetchError);
-             if (axios.isAxiosError(fetchError) && fetchError.response?.status === 404) {
-                 return interaction.followUp({ content: `❌ Mob template named "**${requestedMobName}**" not found. Use \`/listmobs\` or ensure exact spelling.`, ephemeral: true });
-             }
-           return interaction.followUp({ content: '❌ Could not fetch mob template details from the backend.', ephemeral: true });
+            return interaction.followUp({ content: `❌ Mob template named "**${requestedMobName}**" not found. Use \`/listmobs\` or ensure exact spelling.`, ephemeral: true });
        }
 
        // --- 2. Prepare Combatant Data ---
-       const requiredFields = ['id', 'name', 'baseMaxHP', 'baseInitiative'];
+       const requiredFields = ['id', 'name', 'base_max_hp', 'base_initiative'];
        for (const field of requiredFields) {
             if (mobTemplate[field] === undefined || mobTemplate[field] === null) {
                  console.error(`Mob template incomplete: missing ${field}`);
@@ -1251,32 +1408,40 @@ async function handleAddMobSubmitInteraction(interaction, sessionId) {
        }
        const combatantData = {
            sessionId: sessionId, type: 'NPC', allegiance: 'HOSTILE',
-           mobDefinitionId: mobTemplate.id, playerId: null, discordUserId: null,
-           name: mobTemplate.name, maxHP: mobTemplate.baseMaxHP,
-           currentHP: mobTemplate.baseMaxHP, initiativeBase: mobTemplate.baseInitiative
+           mobDefinitionId: mobTemplate.id, playerId: null, discord_user_id: null,
+           name: mobTemplate.name, maxHp: mobTemplate.base_max_hp,
+           currentHp: mobTemplate.base_max_hp, initiativeBase: mobTemplate.base_initiative
        };
 
-       // --- 3. API Call POST /combatant ---
-       console.log(`Attempting POST ${BACKEND_URL}/combatant with NPC data:`, combatantData);
-       const response = await axios.post(`${BACKEND_URL}/combatant`, combatantData);
+       // --- 3. Edge Function Call create-combatant ---
+       console.log(`Calling create-combatant Edge Function with NPC data:`, combatantData);
+       const { data, status, error } = await callEdgeFunction('create-combatant', combatantData);
 
        // --- 4. Handle Success ---
-       if (response.status === 201) {
+       if (!error && (status === 200 || status === 201)) {
            console.log(`NPC Combatant ${mobTemplate.name} added successfully to session ${sessionId}.`);
 
            // --- Update the Original Setup Message ---
            try {
                 console.log(`Attempting to update setup message after adding mob for session ${sessionId}`);
-                const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`);
-                const updatedSession = sessionResponse.data;
+                const { data: updatedSession, error: sessionError } = await supabase
+                    .from('combat_sessions')
+                    .select('*, combatants(*)')
+                    .eq('id', sessionId)
+                    .single();
 
-                if (updatedSession?.messageId && updatedSession?.combatants) {
-                   const channel = await interaction.client.channels.fetch(updatedSession.channelId).catch(() => null);
+                if (sessionError || !updatedSession) {
+                    console.error(`Failed to fetch session: ${sessionError?.message}`);
+                    return;
+                }
+
+                if (updatedSession?.message_id && updatedSession?.combatants) {
+                   const channel = await interaction.client.channels.fetch(updatedSession.channel_id).catch(() => null);
                    if (channel?.isTextBased()) {
-                       const originalMessage = await channel.messages.fetch(updatedSession.messageId).catch(() => null);
+                       const originalMessage = await channel.messages.fetch(updatedSession.message_id).catch(() => null);
                        if (originalMessage) {
-                           let dmUser = await interaction.client.users.fetch(updatedSession.dmUserId).catch(() => null);
-                           const dmUsername = dmUser ? dmUser.username : updatedSession.dmUserId;
+                           let dmUser = await interaction.client.users.fetch(updatedSession.dm_user_id).catch(() => null);
+                           const dmUsername = dmUser ? dmUser.username : updatedSession.dm_user_id;
 
                            // Create the updated embed
                            const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
@@ -1291,11 +1456,11 @@ async function handleAddMobSubmitInteraction(interaction, sessionId) {
                                embeds: [newEmbed],
                                components: newActionRows // Use the dynamically generated rows
                            });
-                           console.log(`Successfully updated setup message ${updatedSession.messageId} after adding mob (Start enabled: ${canStart}).`);
+                           console.log(`Successfully updated setup message ${updatedSession.message_id} after adding mob (Start enabled: ${canStart}).`);
                            // *** End Corrected Edit Block ***
 
-                       } else { console.warn(`Original message ${updatedSession.messageId} not found.`); }
-                   } else { console.warn(`Channel ${updatedSession.channelId} not found/not text.`); }
+                       } else { console.warn(`Original message ${updatedSession.message_id} not found.`); }
+                   } else { console.warn(`Channel ${updatedSession.channel_id} not found/not text.`); }
                 } else { console.warn(`Missing data needed to update message for session ${sessionId}.`); }
            } catch(updateError) {
                 console.error(`Failed to update original setup message after adding mob for session ${sessionId}:`, updateError);
@@ -1305,17 +1470,15 @@ async function handleAddMobSubmitInteraction(interaction, sessionId) {
            // --- NO FINAL editReply/followUp needed because we used deferUpdate ---
 
        } else {
-           // Handle non-201 success from POST /combatant
-           console.error(`Failed to add NPC combatant. Backend responded with status: ${response.status}`, response.data);
-           await interaction.followUp({ content: `❌ Failed to add mob. Backend responded with status ${response.status}.`, ephemeral: true });
+           // Handle error from create-combatant
+           console.error(`Failed to add NPC combatant. Status: ${status}`, error);
+           await interaction.followUp({ content: `❌ Failed to add mob. ${error?.message || 'Unknown error'}.`, ephemeral: true });
        }
 
-    } catch(error) { // Catch errors from initial fetch/API call
+    } catch(error) { // Catch errors from initial fetch/Edge Function call
         console.error(`Error in handleAddMobSubmitInteraction for session ${sessionId}:`, error);
         let errorMessage = 'An error occurred while adding the mob.';
-         if (axios.isAxiosError(error) && error.response) {
-              errorMessage = `Backend error (${error.response.status})`;
-         } else if (error instanceof Error) { errorMessage = error.message; }
+        if (error instanceof Error) { errorMessage = error.message; }
         await interaction.followUp({ content: `❌ ${errorMessage}`, ephemeral: true }).catch(console.error);
     }
 }
@@ -1366,7 +1529,7 @@ function createCombatEmbed(session) {
             const name = combatant.name || `*Unknown*`;
             const hp = (combatant.currentHP !== undefined && combatant.maxHP !== undefined) ? `(${combatant.currentHP}/${combatant.maxHP} HP)` : '';
             const roll = (combatant.initiativeRoll !== null && combatant.initiativeRoll !== undefined) ? `[INI: ${combatant.initiativeRoll}]` : '';
-            const status = combatant.currentHP <= 0 ? '~~' : '';
+            const status = (combatant.currentHP !== undefined && combatant.currentHP <= 0) ? '~~' : '';
             let line = "";
 
             if (session.state === 'RUNNING' && index === currentTurnIndex) {
@@ -1437,18 +1600,22 @@ async function handleStartFightInteraction(interaction, sessionId) {
         // --- 1. Fetch Session & Verify DM/State ---
         let session;
         try {
-            console.log(`[Start Fight ${sessionId}] Fetching session data.`);
+            console.log(`[Start Fight ${sessionId}] Fetching session data from Supabase.`);
             // Fetch with combatants relation needed for initiative base and count
-            const response = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`);
-            if (!response.data?.id) throw new Error("Session data invalid.");
-            session = response.data;
-        } catch (fetchError) { /* ... handle fetch errors ... */
+            const { data, error } = await supabase
+                .from('combat_sessions')
+                .select('*, combatants(*)')
+                .eq('id', sessionId)
+                .single();
+            
+            if (error || !data?.id) throw new Error("Session data invalid.");
+            session = data;
+        } catch (fetchError) {
             console.error(`[Start Fight ${sessionId}] Error fetching session:`, fetchError);
-            const errorMsg = (axios.isAxiosError(fetchError) && fetchError.response?.status === 404) ? '❌ Combat setup not found.' : '❌ Could not fetch setup details.';
-            return interaction.editReply({ content: errorMsg });
+            return interaction.editReply({ content: '❌ Could not fetch setup details.' });
         }
 
-        if (session.dmUserId !== interaction.user.id) { return interaction.editReply({ content: '❌ Only the DM can start the fight.' }); }
+        if (session.dm_user_id !== interaction.user.id) { return interaction.editReply({ content: '❌ Only the DM can start the fight.' }); }
         if (session.state !== 'SETUP') { return interaction.editReply({ content: `❌ Cannot start fight. Current state: ${session.state}.` }); }
 
         let combatants = session.combatants;
@@ -1468,7 +1635,7 @@ async function handleStartFightInteraction(interaction, sessionId) {
         // --- 3. Roll Initiative & Determine Turn Order ---
         console.log(`[Start Fight ${sessionId}] Rolling initiative...`);
         combatants.forEach(c => {
-            const baseIni = c.initiativeBase ?? 0; // Default base to 0 if missing
+            const baseIni = c.initiative_base ?? 0; // Default base to 0 if missing
             c.initiativeRoll = rollDice(6) + baseIni;
             console.log(`  - ${c.name}: ${c.initiativeRoll} (Base: ${baseIni})`);
         });
@@ -1478,7 +1645,7 @@ async function handleStartFightInteraction(interaction, sessionId) {
             if (b.initiativeRoll !== a.initiativeRoll) {
                 return b.initiativeRoll - a.initiativeRoll;
             }
-            return (b.initiativeBase ?? 0) - (a.initiativeBase ?? 0);
+            return (b.initiative_base ?? 0) - (a.initiative_base ?? 0);
             // Add further tie-breakers if needed (e.g., random, ID)
         });
 
@@ -1489,26 +1656,26 @@ async function handleStartFightInteraction(interaction, sessionId) {
         }));
         console.log(`[Start Fight ${sessionId}] Turn order determined:`, turnOrder);
 
-        // --- 4. Prepare Backend Payload ---
+        // --- 4. Prepare Edge Function Payload ---
         const startPayload = {
+            sessionId: sessionId,
             turnOrder: turnOrder,
             combatantInitiatives: combatantInitiatives
         };
 
-        // --- 5. Call Backend API to Start Combat ---
+        // --- 5. Call Edge Function to Start Combat ---
         let updatedSessionData;
         try {
-            const startUrl = `${BACKEND_URL}/combatSession/${sessionId}/start`;
-            console.log(`[Start Fight ${sessionId}] Calling PUT ${startUrl}`);
-            const response = await axios.put(startUrl, startPayload);
-            if (response.status !== 200 || !response.data) throw new Error(`Backend start failed, status: ${response.status}`);
-            updatedSessionData = response.data; // Backend returns the updated session
-            console.log(`[Start Fight ${sessionId}] Backend confirmed combat started.`);
+            console.log(`[Start Fight ${sessionId}] Calling start-combat Edge Function`);
+            const { data, status, error } = await callEdgeFunction('start-combat', startPayload);
+            if (error || (status !== 200 && status !== 201)) throw new Error(`Edge function failed: ${error?.message || status}`);
+            updatedSessionData = data; // Edge function returns the updated session
+            console.log(`[Start Fight ${sessionId}] Edge function confirmed combat started.`);
+            console.log(`[Start Fight ${sessionId}] Edge function returned combatants:`, JSON.stringify(updatedSessionData.combatants?.map(c => ({id: c.id, name: c.name, hp: c.current_hp, maxHp: c.max_hp}))));
         } catch (startError) {
-             console.error(`[Start Fight ${sessionId}] Error calling start combat API:`, startError);
-             let errorMsg = 'Failed to start combat on backend.';
-              if (axios.isAxiosError(startError) && startError.response) { errorMsg = `Backend Error (${startError.response.status}): ${startError.response.data?.message || 'Failed to start'}`; }
-              else if (startError instanceof Error) { errorMsg = startError.message; }
+             console.error(`[Start Fight ${sessionId}] Error calling start combat:`, startError);
+             let errorMsg = 'Failed to start combat.';
+             if (startError instanceof Error) { errorMsg = startError.message; }
              return interaction.editReply({ content: `❌ ${errorMsg}` });
         }
 
@@ -1516,17 +1683,40 @@ async function handleStartFightInteraction(interaction, sessionId) {
         if (!interaction.client.activeCombats) {
              interaction.client.activeCombats = new Map(); // Ensure map exists
         }
-        interaction.client.activeCombats.set(session.channelId, updatedSessionData);
-        console.log(`[Start Fight ${sessionId}] Session loaded into active memory map for channel ${session.channelId}`);
+        // Convert snake_case to camelCase for in-memory compatibility
+        const memorySession = {
+            ...updatedSessionData,
+            dmUserId: updatedSessionData.dm_user_id,
+            channelId: updatedSessionData.channel_id,
+            messageId: updatedSessionData.message_id,
+            combatLog: updatedSessionData.combat_log,
+            turnOrder: updatedSessionData.turn_order,
+            currentTurnIndex: updatedSessionData.current_turn_index,
+            // Convert combatants to camelCase
+            combatants: updatedSessionData.combatants?.map(c => ({
+                ...c,
+                maxHP: c.max_hp,
+                currentHP: c.current_hp,
+                initiativeRoll: c.initiative_roll,
+                initiativeBase: c.initiative_base,
+                playerId: c.player_id,
+                discordUserId: c.discord_user_id,
+                mobDefinitionId: c.mob_definition_id,
+                sessionId: c.session_id,
+                isActiveTurn: c.is_active_turn
+            })) || []
+        };
+        interaction.client.activeCombats.set(session.channel_id, memorySession);
+        console.log(`[Start Fight ${sessionId}] Session loaded into active memory map for channel ${session.channel_id}`);
 
         // --- 7. Log Combat Start and Update Display ---
-        const firstCombatantName = updatedSessionData.combatants.find(c => c.id === updatedSessionData.turnOrder[0])?.name || 'Unknown';
-        await addLogEntry(interaction.client, session.channelId, sessionId, `--- Combat Started! ---`);
-        await addLogEntry(interaction.client, session.channelId, sessionId, `--- ${firstCombatantName}'s Turn ---`);
+        const firstCombatantName = updatedSessionData.combatants.find(c => c.id === updatedSessionData.turn_order[0])?.name || 'Unknown';
+        await addLogEntry(interaction.client, session.channel_id, sessionId, `--- Combat Started! ---`);
+        await addLogEntry(interaction.client, session.channel_id, sessionId, `--- ${firstCombatantName}'s Turn ---`);
 
         try {
-            // Directly pass the fresh data to the display function
-            await updateCombatDisplay(interaction.client, session.channelId, updatedSessionData);
+            // Directly pass the converted memory session data to the display function
+            await updateCombatDisplay(interaction.client, session.channel_id, memorySession);
             console.log(`[Start Fight ${sessionId}] Initial combat display updated successfully.`);
         } catch (displayError) {
             console.error(`[Start Fight ${sessionId}] Failed to update initial combat display:`, displayError);
@@ -1566,81 +1756,94 @@ async function handleLeaveSetupInteraction(interaction, sessionId) {
     try {
         // --- 1. Find the user's Combatant ID ---
         let combatantToDelete;
-        const findUrl = `${BACKEND_URL}/combatant/session/${sessionId}/user/${discordId}`;
         try {
-            console.log(`[Leave Setup ${sessionId}] Finding combatant via GET ${findUrl}`);
-            const findResponse = await axios.get(findUrl);
-            if (findResponse.status === 200 && findResponse.data && findResponse.data.id) {
-                combatantToDelete = findResponse.data;
-                console.log(`[Leave Setup ${sessionId}] Found combatant ID: ${combatantToDelete.id}`);
-            } else { throw new Error(`Unexpected response finding combatant: ${findResponse.status}`); }
+            console.log(`[Leave Setup ${sessionId}] Finding combatant in Supabase`);
+            const { data, error } = await supabase
+                .from('combatants')
+                .select('*')
+                .eq('session_id', sessionId)
+                .eq('discord_user_id', discordId)
+                .single();
+            
+            if (error || !data?.id) {
+                return interaction.followUp({ content: "❌ You haven't joined this combat setup.", ephemeral: true });
+            }
+            combatantToDelete = data;
+            console.log(`[Leave Setup ${sessionId}] Found combatant ID: ${combatantToDelete.id}`);
         } catch (findError) {
              console.error(`[Leave Setup ${sessionId}] Error finding combatant:`, findError.message);
-             if (axios.isAxiosError(findError) && findError.response?.status === 404) { return interaction.followUp({ content: "❌ You haven't joined this combat setup.", ephemeral: true }); }
-             return interaction.followUp({ content: '❌ Could not verify your participation (API Error).', ephemeral: true });
+             return interaction.followUp({ content: '❌ Could not verify your participation.', ephemeral: true });
         }
         if (!combatantToDelete?.id) { return interaction.followUp({ content: '❌ Internal error finding your combatant data.', ephemeral: true }); }
 
-        // --- 2. API Call: Delete the Combatant ---
-        const deleteUrl = `${BACKEND_URL}/combatant/${combatantToDelete.id}`;
+        // --- 2. Delete the Combatant ---
         try {
-            console.log(`[Leave Setup ${sessionId}] Attempting DELETE ${deleteUrl}`);
-            const deleteResponse = await axios.delete(deleteUrl);
+            console.log(`[Leave Setup ${sessionId}] Deleting combatant ${combatantToDelete.id}`);
+            const { error: deleteError } = await supabase
+                .from('combatants')
+                .delete()
+                .eq('id', combatantToDelete.id);
 
-            if (deleteResponse.status === 200 || deleteResponse.status === 204) {
-                console.log(`[Leave Setup ${sessionId}] Combatant ${combatantToDelete.id} deleted via API.`);
+            if (deleteError) {
+                console.error(`[Leave Setup ${sessionId}] Error deleting: ${deleteError.message}`);
+                return interaction.followUp({ content: `❌ Failed to leave: ${deleteError.message}.`, ephemeral: true });
+            }
+            
+            console.log(`[Leave Setup ${sessionId}] Combatant ${combatantToDelete.id} deleted.`);
 
-                // --- 3. Update the Original Setup Message ---
-                try {
-                    console.log(`[Leave Setup ${sessionId}] Attempting setup message update.`);
-                    // Fetch session again to get the *updated* combatant list
-                    const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`);
-                    const updatedSession = sessionResponse.data;
+            // --- 3. Update the Original Setup Message ---
+            try {
+                console.log(`[Leave Setup ${sessionId}] Attempting setup message update.`);
+                // Fetch session again to get the *updated* combatant list
+                const { data: updatedSession, error: sessionError } = await supabase
+                    .from('combat_sessions')
+                    .select('*, combatants(*)')
+                    .eq('id', sessionId)
+                    .single();
 
-                    if (updatedSession?.messageId && updatedSession?.combatants) {
-                        const channel = await interaction.client.channels.fetch(updatedSession.channelId).catch(() => null);
-                        if (channel?.isTextBased()) {
-                            const originalMessage = await channel.messages.fetch(updatedSession.messageId).catch(() => null);
-                            if (originalMessage) {
-                                let dmUser = await interaction.client.users.fetch(updatedSession.dmUserId).catch(() => null);
-                                const dmUsername = dmUser ? dmUser.username : updatedSession.dmUserId;
-
-                                // Create the updated embed
-                                const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
-
-                                // *** ADDED: Determine if start is possible & rebuild rows ***
-                                const canStart = updatedSession.state === 'SETUP' && updatedSession.combatants?.length >= 2;
-                                const newActionRows = createSetupActionRows(sessionId, canStart); // Use helper
-
-                                // Edit message with new embed AND potentially updated button states
-                                await originalMessage.edit({
-                                    embeds: [newEmbed],
-                                    components: newActionRows // Use dynamically generated rows
-                                });
-                                console.log(`[Leave Setup ${sessionId}] Successfully updated setup message ${updatedSession.messageId} (Start enabled: ${canStart}).`);
-
-                            } else { console.warn(`[Leave Setup ${sessionId}] Original message ${updatedSession.messageId} not found.`); }
-                        } else { console.warn(`[Leave Setup ${sessionId}] Channel ${updatedSession.channelId} not found/not text.`); }
-                    } else { console.warn(`[Leave Setup ${sessionId}] Missing data needed to update message.`); }
-                } catch (updateError) {
-                    console.error(`[Leave Setup ${sessionId}] Failed to update setup message:`, updateError);
-                    // Don't send another message, just log error. User implicitly knows they left.
+                if (sessionError || !updatedSession) {
+                    console.error(`[Leave Setup ${sessionId}] Failed to fetch updated session: ${sessionError?.message}`);
+                    return;
                 }
 
-                // --- 4. Finalize interaction (NO VISIBLE CONFIRMATION) ---
-                // No editReply/followUp needed here for success path after deferUpdate
+                if (updatedSession?.message_id && updatedSession?.combatants) {
+                    const channel = await interaction.client.channels.fetch(updatedSession.channel_id).catch(() => null);
+                    if (channel?.isTextBased()) {
+                        const originalMessage = await channel.messages.fetch(updatedSession.message_id).catch(() => null);
+                        if (originalMessage) {
+                            let dmUser = await interaction.client.users.fetch(updatedSession.dm_user_id).catch(() => null);
+                            const dmUsername = dmUser ? dmUser.username : updatedSession.dm_user_id;
 
-            } else { // Handle unexpected success status from DELETE
-                 console.error(`[Leave Setup ${sessionId}] Unexpected delete status: ${deleteResponse.status}`);
-                 await interaction.followUp({ content: `❌ Failed to leave (unexpected API status: ${deleteResponse.status}).`, ephemeral: true });
+                            // Create the updated embed
+                            const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
+
+                            // *** ADDED: Determine if start is possible & rebuild rows ***
+                            const canStart = updatedSession.state === 'SETUP' && updatedSession.combatants?.length >= 2;
+                            const newActionRows = createSetupActionRows(sessionId, canStart); // Use helper
+
+                            // Edit message with new embed AND potentially updated button states
+                            await originalMessage.edit({
+                                embeds: [newEmbed],
+                                components: newActionRows // Use dynamically generated rows
+                            });
+                            console.log(`[Leave Setup ${sessionId}] Successfully updated setup message ${updatedSession.message_id} (Start enabled: ${canStart}).`);
+
+                        } else { console.warn(`[Leave Setup ${sessionId}] Original message ${updatedSession.message_id} not found.`); }
+                    } else { console.warn(`[Leave Setup ${sessionId}] Channel ${updatedSession.channel_id} not found/not text.`); }
+                } else { console.warn(`[Leave Setup ${sessionId}] Missing data needed to update message.`); }
+            } catch (updateError) {
+                console.error(`[Leave Setup ${sessionId}] Failed to update setup message:`, updateError);
+                // Don't send another message, just log error. User implicitly knows they left.
             }
-        } catch (deleteError) { // Catch errors during DELETE API call
-            console.error(`[Leave Setup ${sessionId}] Error calling DELETE ${deleteUrl}:`, deleteError);
+
+            // --- 4. Finalize interaction (NO VISIBLE CONFIRMATION) ---
+            // No editReply/followUp needed here for success path after deferUpdate
+
+        } catch (deleteError) { // Catch errors during DELETE
+            console.error(`[Leave Setup ${sessionId}] Error deleting combatant:`, deleteError);
              let errorMsg = 'An error occurred trying to leave.';
-              if (axios.isAxiosError(deleteError) && deleteError.response) {
-                  errorMsg = `Backend error (${deleteError.response?.status || 'Network Error'})`;
-              } else if (deleteError instanceof Error) { errorMsg = deleteError.message; }
-             await interaction.followUp({ content: `❌ ${errorMsg}`, ephemeral: true });
+             if (deleteError instanceof Error) { errorMsg = deleteError.message; }
+            await interaction.followUp({ content: `❌ ${errorMsg}`, ephemeral: true });
         }
 
     } catch (error) { // Catch unexpected outer errors
@@ -1660,18 +1863,21 @@ async function handleManageParticipantsInteraction(interaction, sessionId) {
         // 1. Fetch session data (including combatants) and verify DM/State
         let session;
         try {
-            console.log(`Workspaceing session ${sessionId} for Manage Participants.`);
-            // Make sure backend returns combatants here
-            const response = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`);
-            if (!response.data?.id) throw new Error("Session data missing ID.");
-            session = response.data;
-        } catch (fetchError) { /* ... handle fetch errors, reply ephemerally ... */
+            console.log(`Fetching session ${sessionId} for Manage Participants from Supabase.`);
+            const { data, error } = await supabase
+                .from('combat_sessions')
+                .select('*, combatants(*)')
+                .eq('id', sessionId)
+                .single();
+            
+            if (error || !data?.id) throw new Error("Session data missing ID.");
+            session = data;
+        } catch (fetchError) {
             console.error(`Error fetching session ${sessionId} for Manage:`, fetchError);
-            const errorMsg = (axios.isAxiosError(fetchError) && fetchError.response?.status === 404) ? '❌ Combat setup not found.' : '❌ Could not fetch setup details.';
-            return interaction.editReply({ content: errorMsg });
+            return interaction.editReply({ content: '❌ Could not fetch setup details.' });
         }
 
-        if (session.dmUserId !== interaction.user.id) { return interaction.editReply({ content: '❌ Only the DM can manage participants.' }); }
+        if (session.dm_user_id !== interaction.user.id) { return interaction.editReply({ content: '❌ Only the DM can manage participants.' }); }
         if (session.state !== 'SETUP') { return interaction.editReply({ content: `❌ Can only manage participants during SETUP (Current state: ${session.state}).` }); }
         if (!session.combatants || session.combatants.length === 0) { return interaction.editReply({ content: 'ℹ️ There are no participants to manage yet.' }); }
 
@@ -1705,7 +1911,7 @@ async function handleManageParticipantsInteraction(interaction, sessionId) {
 }
 /**
  * Handles the selection from the 'Remove Participant' select menu.
- * Calls the backend to delete the selected combatant and updates the main message.
+ * Calls Supabase to delete the selected combatant and updates the main message.
  */
 async function handleRemoveParticipantSelectInteraction(interaction, sessionId) {
     // sessionId is parsed from customId by the main router (handleCombatSelectMenu)
@@ -1721,77 +1927,88 @@ async function handleRemoveParticipantSelectInteraction(interaction, sessionId) 
         // Optional: Fetch session again to double-check DM permissions? Or assume valid if they got menu.
         // For added security, fetching is better.
         try {
-             const sessionRes = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`);
-             if (sessionRes.data?.dmUserId !== interaction.user.id) {
-                  return interaction.followUp({ content: `❌ You are no longer the DM for this session? Cannot remove participant.`, ephemeral: true });
-             }
-             dmUserId = sessionRes.data.dmUserId; // Store for later embed rebuild
+            const { data: session, error } = await supabase
+                .from('combat_sessions')
+                .select('*')
+                .eq('id', sessionId)
+                .single();
+            
+            if (error || !session || session.dm_user_id !== interaction.user.id) {
+                return interaction.followUp({ content: `❌ You are no longer the DM for this session? Cannot remove participant.`, ephemeral: true });
+            }
+            dmUserId = session.dm_user_id; // Store for later embed rebuild
         } catch (sessionFetchErr) {
-             console.error("Error re-fetching session during remove:", sessionFetchErr);
-             return interaction.followUp({ content: `❌ Could not verify session details. Cannot remove participant.`, ephemeral: true });
+            console.error("Error re-fetching session during remove:", sessionFetchErr);
+            return interaction.followUp({ content: `❌ Could not verify session details. Cannot remove participant.`, ephemeral: true });
         }
 
 
-        // --- 1. API Call: Delete the Combatant ---
-        const deleteUrl = `${BACKEND_URL}/combatant/${combatantIdToRemove}`;
+        // --- 1. Delete the Combatant ---
         try {
-            console.log(`Attempting DELETE ${deleteUrl}`);
-            const deleteResponse = await axios.delete(deleteUrl);
+            console.log(`Deleting combatant ${combatantIdToRemove} from Supabase`);
+            const { error: deleteError } = await supabase
+                .from('combatants')
+                .delete()
+                .eq('id', combatantIdToRemove);
 
-            if (deleteResponse.status === 200 || deleteResponse.status === 204) {
-                console.log(`Combatant ${combatantIdToRemove} deleted successfully via API.`);
+            if (deleteError) {
+                console.error(`Delete combatant ${combatantIdToRemove} failed: ${deleteError.message}`);
+                return interaction.editReply({ content: `❌ Failed to remove participant: ${deleteError.message}.`, components: [] });
+            }
+            
+            console.log(`Combatant ${combatantIdToRemove} deleted successfully.`);
 
-                // --- 2. Update the Original Setup Message ---
-                try {
-                    console.log(`Attempting setup message update after removing combatant ${combatantIdToRemove}`);
-                    // Fetch session again to get the *updated* combatant list and messageId
-                    const sessionResponse = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`);
-                    const updatedSession = sessionResponse.data;
+            // --- 2. Update the Original Setup Message ---
+            try {
+                console.log(`Attempting setup message update after removing combatant ${combatantIdToRemove}`);
+                // Fetch session again to get the *updated* combatant list and message_id
+                const { data: updatedSession, error: sessionError } = await supabase
+                    .from('combat_sessions')
+                    .select('*, combatants(*)')
+                    .eq('id', sessionId)
+                    .single();
 
-                    if (updatedSession?.messageId && updatedSession?.combatants) {
-                        const channel = await interaction.client.channels.fetch(updatedSession.channelId).catch(() => null);
-                        if (channel?.isTextBased()) {
-                            const originalMessage = await channel.messages.fetch(updatedSession.messageId).catch(() => null);
-                            if (originalMessage) {
-                                // We stored dmUserId earlier, fetch username if needed
-                                let dmUser = await interaction.client.users.fetch(dmUserId).catch(() => null);
-                                const dmUsername = dmUser ? dmUser.username : dmUserId;
-                                const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
-                                // Edit message with updated embed and original components (including manage button)
-                                await originalMessage.edit({ embeds: [newEmbed], components: originalMessage.components });
-                                console.log(`Successfully updated setup message ${updatedSession.messageId} after removal.`);
-                            }
-                        }
-                    }
-                } catch (updateError) {
-                     console.error(`Failed to update setup message after removal for session ${sessionId}:`, updateError);
-                     // Non-fatal, maybe send followUp?
-                     await interaction.followUp({ content: `⚠️ Participant removed, but failed to update the setup message.`, ephemeral: true }).catch(console.error);
+                if (sessionError || !updatedSession) {
+                    console.error(`Failed to fetch updated session: ${sessionError?.message}`);
+                    return;
                 }
 
-                // --- 3. Update the Ephemeral Management Message ---
-                // Respond to the select menu interaction confirming removal.
-                // We can remove the select menu now or prompt to remove another. Let's just confirm.
-                await interaction.editReply({ content: `✅ Participant removed successfully.`, components: [] }); // Remove select menu
-                setTimeout(() => {
-                    interaction.deleteReply().catch(error => {
-                        if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
-                    });
-                }, 3000);
-
-
-            } else { // Handle unexpected success status from DELETE
-                console.error(`Delete combatant ${combatantIdToRemove} failed: Unexpected status ${deleteResponse.status}`);
-                await interaction.editReply({ content: `❌ Failed to remove participant (unexpected API status: ${deleteResponse.status}).`, components: [] });
+                if (updatedSession?.message_id && updatedSession?.combatants) {
+                    const channel = await interaction.client.channels.fetch(updatedSession.channel_id).catch(() => null);
+                    if (channel?.isTextBased()) {
+                        const originalMessage = await channel.messages.fetch(updatedSession.message_id).catch(() => null);
+                        if (originalMessage) {
+                            // We stored dmUserId earlier, fetch username if needed
+                            let dmUser = await interaction.client.users.fetch(dmUserId).catch(() => null);
+                            const dmUsername = dmUser ? dmUser.username : dmUserId;
+                            const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
+                            // Edit message with updated embed and original components (including manage button)
+                            await originalMessage.edit({ embeds: [newEmbed], components: originalMessage.components });
+                            console.log(`Successfully updated setup message ${updatedSession.message_id} after removal.`);
+                        }
+                    }
+                }
+            } catch (updateError) {
+                console.error(`Failed to update setup message after removal for session ${sessionId}:`, updateError);
+                // Non-fatal, maybe send followUp?
+                await interaction.followUp({ content: `⚠️ Participant removed, but failed to update the setup message.`, ephemeral: true }).catch(console.error);
             }
-        } catch (deleteError) { // Catch errors during DELETE API call
-            console.error(`Error calling DELETE ${deleteUrl}:`, deleteError);
-             let errorMsg = 'An error occurred trying to remove the participant.';
-              if (axios.isAxiosError(deleteError) && deleteError.response) {
-                   if (deleteError.response.status === 404) errorMsg = `Combatant not found (maybe already removed?).`;
-                   else errorMsg = `Backend error (${deleteError.response.status}): Failed to remove.`;
-              } else if (deleteError instanceof Error) { errorMsg = deleteError.message; }
-             await interaction.editReply({ content: `❌ ${errorMsg}`, components: [] });
+
+            // --- 3. Update the Ephemeral Management Message ---
+            // Respond to the select menu interaction confirming removal.
+            // We can remove the select menu now or prompt to remove another. Let's just confirm.
+            await interaction.editReply({ content: `✅ Participant removed successfully.`, components: [] }); // Remove select menu
+            setTimeout(() => {
+                interaction.deleteReply().catch(error => {
+                    if (error.code !== 10008) { console.error("Failed to delete ephemeral reply:", error); }
+                });
+            }, 3000);
+
+        } catch (deleteError) { // Catch errors during DELETE
+            console.error(`Error deleting combatant:`, deleteError);
+            let errorMsg = 'An error occurred trying to remove the participant.';
+            if (deleteError instanceof Error) { errorMsg = deleteError.message; }
+            await interaction.editReply({ content: `❌ ${errorMsg}`, components: [] });
         }
 
     } catch (error) { // Catch outer errors
@@ -1815,14 +2032,17 @@ module.exports = {
 async function handleShowFullLogInteraction(interaction, sessionId) {
     await interaction.deferReply({ ephemeral: true });
     try {
-        const response = await axios.get(`${BACKEND_URL}/combatSession/${sessionId}`);
-        const session = response.data;
+        const { data: session, error } = await supabase
+            .from('combat_sessions')
+            .select('combat_log')
+            .eq('id', sessionId)
+            .single();
 
-        if (!session || !session.combatLog) {
+        if (error || !session || !session.combat_log) {
             return interaction.editReply('❌ Could not retrieve combat log.');
         }
 
-        const logContent = session.combatLog.join('\n');
+        const logContent = session.combat_log.join('\n');
         const attachment = new AttachmentBuilder(Buffer.from(logContent, 'utf-8'), { name: `combat_log_${sessionId}.txt` });
 
         await interaction.editReply({
@@ -1852,7 +2072,16 @@ async function handleParkCombatInteraction(interaction, sessionId) {
             return interaction.editReply(`❌ Combat is not running. Current state: ${sessionData.state}.`);
         }
 
-        await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, { state: 'PAUSED' });
+        const { error } = await supabase
+            .from('combat_sessions')
+            .update({ state: 'PAUSED' })
+            .eq('id', sessionId);
+        
+        if (error) {
+            console.error('Error parking combat:', error);
+            return interaction.editReply('❌ Failed to park combat in database.');
+        }
+
         sessionData.state = 'PAUSED';
         await updateCombatDisplay(interaction.client, channelId);
         interaction.client.activeCombats.delete(channelId);
@@ -1884,14 +2113,35 @@ async function handleEndCombatInteraction(interaction, sessionId) {
         }
 
         const reason = 'Ended by the DM.';
-        await axios.put(`${BACKEND_URL}/combatSession/${sessionId}`, {
-            state: 'ENDED',
-            combatLogEntry: `--- Combat Ended: ${reason} ---`
-        });
+        const logEntry = `--- Combat Ended: ${reason} ---`;
+        
+        // Fetch current log, append entry, and update state
+        const { data: currentSession, error: fetchError } = await supabase
+            .from('combat_sessions')
+            .select('combat_log')
+            .eq('id', sessionId)
+            .single();
+        
+        if (fetchError) {
+            console.error('Error fetching session for end combat:', fetchError);
+            return interaction.editReply('❌ Failed to fetch session data.');
+        }
+        
+        const updatedLog = [...(currentSession.combat_log || []), logEntry];
+        
+        const { error: updateError } = await supabase
+            .from('combat_sessions')
+            .update({ state: 'ENDED', combat_log: updatedLog })
+            .eq('id', sessionId);
+        
+        if (updateError) {
+            console.error('Error ending combat:', updateError);
+            return interaction.editReply('❌ Failed to end combat in database.');
+        }
 
         sessionData.state = 'ENDED';
         if (!sessionData.combatLog) sessionData.combatLog = [];
-        sessionData.combatLog.push(`--- Combat Ended: ${reason} ---`);
+        sessionData.combatLog.push(logEntry);
 
         await updateCombatDisplay(interaction.client, channelId);
         interaction.client.activeCombats.delete(channelId);
@@ -1919,16 +2169,18 @@ async function handleResumeSessionSelect(interaction) {
     try {
         // --- 1. Fetch Full Session Data ---
         // We need combatants to rebuild the in-memory state correctly.
-        const getUrl = `${BACKEND_URL}/combatSession/${sessionId}?relations=combatants`;
-        console.log(`${functionName} Fetching session data from ${getUrl}`);
-        const response = await axios.get(getUrl);
-        const sessionToResume = response.data;
+        console.log(`${functionName} Fetching session data from Supabase`);
+        const { data: sessionToResume, error: fetchError } = await supabase
+            .from('combat_sessions')
+            .select('*, combatants(*)')
+            .eq('id', sessionId)
+            .single();
 
         // --- 2. Validate Session and User ---
-        if (!sessionToResume || !sessionToResume.id) {
+        if (fetchError || !sessionToResume || !sessionToResume.id) {
             return interaction.editReply({ content: '❌ Error: Could not find the selected session data.' });
         }
-        if (sessionToResume.dmUserId !== interaction.user.id) {
+        if (sessionToResume.dm_user_id !== interaction.user.id) {
             return interaction.editReply({ content: '❌ You are not the DM of this combat session.' });
         }
         if (sessionToResume.state !== 'PAUSED') {
@@ -1939,21 +2191,39 @@ async function handleResumeSessionSelect(interaction) {
         }
 
         // --- 3. Update State on Backend ---
-        const updateUrl = `${BACKEND_URL}/combatSession/${sessionId}`;
-        console.log(`${functionName} Setting session state to RUNNING via PUT ${updateUrl}`);
-        await axios.put(updateUrl, { state: 'RUNNING' });
-        sessionToResume.state = 'RUNNING'; // Reflect change locally
+        console.log(`${functionName} Setting session state to RUNNING`);
+        const { error: updateError } = await supabase
+            .from('combat_sessions')
+            .update({ state: 'RUNNING' })
+            .eq('id', sessionId);
+        
+        if (updateError) {
+            console.error(`${functionName} Error updating state:`, updateError);
+            return interaction.editReply({ content: '❌ Failed to update session state.' });
+        }
+        
+        // Convert snake_case to camelCase for in-memory compatibility
+        const memorySession = {
+            ...sessionToResume,
+            dmUserId: sessionToResume.dm_user_id,
+            channelId: sessionToResume.channel_id,
+            messageId: sessionToResume.message_id,
+            combatLog: sessionToResume.combat_log,
+            turnOrder: sessionToResume.turn_order,
+            currentTurnIndex: sessionToResume.current_turn_index
+        };
+        memorySession.state = 'RUNNING'; // Reflect change locally
 
         // --- 4. Load State into Memory ---
         if (!interaction.client.activeCombats) {
             interaction.client.activeCombats = new Map();
         }
-        interaction.client.activeCombats.set(interaction.channelId, sessionToResume);
+        interaction.client.activeCombats.set(interaction.channelId, memorySession);
         console.log(`${functionName} Session ${sessionId} loaded into active memory for channel ${interaction.channelId}.`);
 
         // --- 5. Log Resumption & Update Display ---
         await addLogEntry(interaction.client, interaction.channelId, sessionId, `--- Combat Resumed ---`);
-        await updateCombatDisplay(interaction.client, interaction.channelId, sessionToResume);
+        await updateCombatDisplay(interaction.client, interaction.channelId, memorySession);
         console.log(`${functionName} Combat display updated.`);
 
         // --- 6. Confirm Success ---
@@ -1974,12 +2244,7 @@ async function handleResumeSessionSelect(interaction) {
 
     } catch (error) {
         console.error(`${functionName} Error resuming session ${sessionId}:`, error);
-        let errorMessage = 'An unexpected error occurred.';
-        if (axios.isAxiosError(error) && error.response) {
-            errorMessage = `Backend Error (${error.response.status}): ${error.response.data?.message || 'Failed to resume.'}`;
-        } else if (error instanceof Error) {
-            errorMessage = error.message;
-        }
+        const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
         await interaction.editReply({ content: `❌ ${errorMessage}` }).catch(console.error);
     }
 }
@@ -1994,7 +2259,7 @@ async function handleCombatActionSkill(interaction, sessionId, actorId) {
     await interaction.deferReply({ ephemeral: true });
 
     try {
-        const sessionData = interaction.client.activeCombats.get(interaction.channelId);
+        const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
         if (!sessionData) {
             return interaction.editReply('❌ Could not find active combat data.');
         }
@@ -2005,8 +2270,20 @@ async function handleCombatActionSkill(interaction, sessionId, actorId) {
         }
 
         // Fetch player's available skills (action modifications)
-        const skillsResponse = await axios.get(`${BACKEND_URL}/player/${actorCombatant.playerId}/action-modifications?actionType=MELEE`);
-        const availableSkills = skillsResponse.data;
+        const { data: playerSkills, error } = await supabase
+            .from('player_action_modifications')
+            .select('*, action_modifications(*)')
+            .eq('player_id', actorCombatant.playerId);
+        
+        if (error) {
+            console.error(`[Skill Action ${sessionId}] Error fetching skills:`, error);
+            return interaction.editReply('❌ An error occurred while fetching your skills.');
+        }
+        
+        // Filter for MELEE action type and extract the action_modifications data
+        const availableSkills = playerSkills
+            ?.filter(pam => pam.action_modifications && pam.action_modifications.action_type === 'MELEE')
+            .map(pam => pam.action_modifications) || [];
 
         if (!availableSkills || availableSkills.length === 0) {
             return interaction.editReply('ℹ️ You have no available combat skills/maneuvers.');
@@ -2014,7 +2291,7 @@ async function handleCombatActionSkill(interaction, sessionId, actorId) {
 
         const skillOptions = availableSkills.map(skill => ({
             label: skill.name,
-            description: `AT Mod: ${skill.rules.at_modifier || 0}, PA Mod: ${skill.rules.opponent_pa_modifier || 0}, DMG Mod: ${skill.rules.damage_bonus || 0}`.substring(0, 100),
+            description: `AT Mod: ${skill.rules?.at_modifier || 0}, PA Mod: ${skill.rules?.opponent_pa_modifier || 0}, DMG Mod: ${skill.rules?.damage_bonus || 0}`.substring(0, 100),
             value: String(skill.id), // Ensure value is a string
         }));
 

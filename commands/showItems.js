@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const axios = require('axios');
-require('dotenv').config(); // Load environment variables
+const { supabase } = require('../utils/supabaseClient');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,11 +11,19 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible', false);
 
-            // Fetch the selected player and their items from the backend
-            const playerResponse = await axios.get(`${process.env.BACKEND_URL}/player/selected/${discordId}`);
-            const player = playerResponse.data;
+            const { data: player, error } = await supabase
+                .from('players')
+                .select(`
+                    id,
+                    name,
+                    avatar,
+                    items:items(*)
+                `)
+                .eq('discord_id', discordId)
+                .eq('selected', 'YES')
+                .single();
 
-            if (!player || !player.id) {
+            if (error || !player || !player.id) {
                 return interaction.reply({ content: 'You have not selected a player yet. Use the /chooseCharacter command to select a player.', ephemeral: true });
             }
 
@@ -35,24 +42,28 @@ module.exports = {
             // Add each item as a field
             items.forEach(item => {
                 itemsEmbed.addFields(
-                    { name: item.name, value: `Type: ${item.type}\nDescription: ${item.description}`, inline: false }
+                    { name: item.name, value: `Type: ${item.type || 'N/A'}\nDescription: ${item.description || 'N/A'}`, inline: false }
                 );
             });
+
             if (player.avatar) {
-                const avatarUrl = `${process.env.BACKEND_URL}/uploads/${player.avatar}`;
-
-                // Download the image and attach it
-                const imageResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-                const imageBuffer = Buffer.from(imageResponse.data, 'binary');
-                const attachment = new AttachmentBuilder(imageBuffer, { name: 'avatar.png' });
-
-                // Set the attached image as the thumbnail
-                itemsEmbed.setThumbnail('attachment://avatar.png');
-
-                return interaction.reply({ embeds: [itemsEmbed], files: [attachment], ephemeral: !visible });
-            } else {
-                return interaction.reply({ embeds: [itemsEmbed], ephemeral: !visible });
+                try {
+                    const { data: avatarData, error: avatarError } = await supabase
+                        .storage
+                        .from('avatars')
+                        .download(player.avatar);
+                    
+                    if (!avatarError && avatarData) {
+                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' });
+                        itemsEmbed.setThumbnail('attachment://avatar.png');
+                        return interaction.reply({ embeds: [itemsEmbed], files: [attachment], ephemeral: !visible });
+                    }
+                } catch (e) {
+                    // Avatar not found, continue without it
+                }
             }
+
+            return interaction.reply({ embeds: [itemsEmbed], ephemeral: !visible });
 
         } catch (error) {
             console.error('Error showing items:', error);

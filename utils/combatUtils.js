@@ -141,6 +141,7 @@ function resolveDefense(targetPA) {
 
 /**
  * Applies Armor Soak (RS) to rolled damage.
+ * DSA 5e Rule: If damage > 0 but <= RS/2, deal 1 point of damage (minimum damage).
  * @param {number} damageAmount - The damage rolled (after potential crits).
  * @param {number} targetRS - The target's Armor Soak value (Rüstungsschutz).
  * @returns {number} The final damage dealt after soak (minimum 0).
@@ -150,8 +151,17 @@ function applySoak(damageAmount, targetRS) {
     const effectiveDamage = Number.isFinite(damageAmount) ? damageAmount : 0;
     const effectiveRS = Number.isFinite(targetRS) ? targetRS : 0;
 
-    // Damage cannot be reduced below 0 by armor
-    const finalDamage = Math.max(0, effectiveDamage - effectiveRS);
+    // Calculate damage after soak
+    let finalDamage = effectiveDamage - effectiveRS;
+    
+    // DSA 5e minimum damage rule: if damage > 0 but <= RS/2, deal 1 point
+    if (finalDamage <= 0 && effectiveDamage > 0 && effectiveDamage <= Math.floor(effectiveRS / 2)) {
+        finalDamage = 1;
+        console.log(`[Apply Soak] Minimum damage rule applied: ${effectiveDamage} <= RS/2 (${Math.floor(effectiveRS / 2)}) -> 1 damage`);
+    }
+    
+    // Damage cannot be reduced below 0
+    finalDamage = Math.max(0, finalDamage);
 
     console.log(`[Apply Soak] Damage: ${effectiveDamage} - RS: ${effectiveRS} = Final: ${finalDamage}`);
     return finalDamage;
