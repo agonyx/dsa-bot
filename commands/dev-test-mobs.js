@@ -10,7 +10,7 @@ const testMobs = [
         base_attack_value: 9,
         base_parry_value: 7,
         base_armor_soak: 1,
-        base_damage_tp: '1w6+1'
+        base_damage_tp: '1w6+1',
     },
     {
         name: 'Orc Grunt',
@@ -20,7 +20,7 @@ const testMobs = [
         base_attack_value: 13,
         base_parry_value: 10,
         base_armor_soak: 3,
-        base_damage_tp: '1w6+4'
+        base_damage_tp: '1w6+4',
     },
     {
         name: 'Forest Spider',
@@ -30,15 +30,22 @@ const testMobs = [
         base_attack_value: 12,
         base_parry_value: 8,
         base_armor_soak: 2,
-        base_damage_tp: '1w6+2'
-    }
+        base_damage_tp: '1w6+2',
+    },
 ];
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('setuptestmobs')
-        .setDescription('Creates a set of standard test mobs in the database.'),
+        .setName('dev-test-mobs')
+        .setDescription('[DEV ONLY] Creates a set of standard test mobs in the database.'),
     async execute(interaction) {
+        if (process.env.DEV_MODE !== 'true') {
+            return interaction.reply({
+                content: '❌ This command is only available in development mode.',
+                ephemeral: true,
+            });
+        }
+
         await interaction.deferReply({ ephemeral: true });
 
         const results = [];
@@ -47,9 +54,7 @@ module.exports = {
 
         for (const mob of testMobs) {
             try {
-                const { error } = await supabase
-                    .from('mobs')
-                    .insert(mob);
+                const { error } = await supabase.from('mobs').insert(mob);
 
                 if (error) {
                     if (error.code === '23505') {
@@ -68,10 +73,11 @@ module.exports = {
             }
         }
 
-        const replyMessage = `**Test Mob Setup Complete**\n\n` +
-                             `- **Successful:** ${successCount}\n` +
-                             `- **Failed:** ${failCount}\n\n` +
-                             results.join('\n');
+        const replyMessage =
+            `**Test Mob Setup Complete**\n\n` +
+            `- **Successful:** ${successCount}\n` +
+            `- **Failed:** ${failCount}\n\n` +
+            results.join('\n');
 
         await interaction.editReply({ content: replyMessage });
     },

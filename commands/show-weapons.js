@@ -1,11 +1,15 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('show-weapons');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('showweapons')
+        .setName('show-weapons')
         .setDescription('Displays the weapons of your selected character.')
-        .addBooleanOption(option => option.setName('visible').setDescription('Make the response visible to everyone in the channel.')),
+        .addBooleanOption(option =>
+            option.setName('visible').setDescription('Make the response visible to everyone in the channel.')
+        ),
     async execute(interaction) {
         try {
             const discordId = interaction.user.id;
@@ -13,31 +17,43 @@ module.exports = {
 
             const { data: player, error } = await supabase
                 .from('players')
-                .select(`
+                .select(
+                    `
                     id,
                     name,
                     avatar,
                     weapons:weapons(*)
-                `)
+                `
+                )
                 .eq('discord_id', discordId)
                 .eq('selected', 'YES')
                 .single();
 
             if (error || !player) {
-                return interaction.reply({ content: 'You have not selected a player yet. Use the /chooseCharacter command to select a player.', ephemeral: true });
+                return interaction.reply({
+                    content:
+                        'You have not selected a player yet. Use the /choose-character command to select a player.',
+                    ephemeral: true,
+                });
             }
 
             const weapons = player.weapons;
 
             if (!weapons || weapons.length === 0) {
-                return interaction.reply({ content: 'Your selected player does not have any weapons.', ephemeral: true });
+                return interaction.reply({
+                    content: 'Your selected player does not have any weapons.',
+                    ephemeral: true,
+                });
             }
 
             const weaponEmbed = new EmbedBuilder()
-                .setColor(0x0099FF)
+                .setColor(0x0099ff)
                 .setTitle(`**${player.name} - Weapons**`)
                 .setDescription('Here are the weapons your character currently has:\n\u200B')
-                .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() });
+                .setFooter({
+                    text: `Requested by ${interaction.user.username}`,
+                    iconURL: interaction.user.avatarURL(),
+                });
 
             const meleeWeapons = weapons.filter(weapon => weapon.type === 'MELEE');
             const rangedWeapons = weapons.filter(weapon => weapon.type === 'RANGED');
@@ -48,14 +64,14 @@ module.exports = {
             if (meleeWeapons.length > 0) {
                 meleeColumn += '**Melee Weapons**\n\n';
                 meleeWeapons.forEach(weapon => {
-                    meleeColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.is_equipped === "Y" ? "Yes" : "No"}\nSlot: ${weapon.equipped_slot || 'N/A'}\n\u200B\n`;
+                    meleeColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.is_equipped === 'Y' ? 'Yes' : 'No'}\nSlot: ${weapon.equipped_slot || 'N/A'}\n\u200B\n`;
                 });
             }
 
             if (rangedWeapons.length > 0) {
                 rangedColumn += '**Ranged Weapons**\n\n';
                 rangedWeapons.forEach(weapon => {
-                    rangedColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.is_equipped === "Y" ? "Yes" : "No"}\nSlot: ${weapon.equipped_slot || 'N/A'}\n\u200B\n`;
+                    rangedColumn += `**${weapon.name}**\nType: ${weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}\nDamage: ${weapon.tp}\nAT: ${weapon.at}\nPA: ${weapon.pa}\nEquipped: ${weapon.is_equipped === 'Y' ? 'Yes' : 'No'}\nSlot: ${weapon.equipped_slot || 'N/A'}\n\u200B\n`;
                 });
             }
 
@@ -73,26 +89,26 @@ module.exports = {
 
             if (player.avatar) {
                 try {
-                    const { data: avatarData, error: avatarError } = await supabase
-                        .storage
+                    const { data: avatarData, error: avatarError } = await supabase.storage
                         .from('avatars')
                         .download(player.avatar);
-                    
+
                     if (!avatarError && avatarData) {
-                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' });
+                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), {
+                            name: 'avatar.png',
+                        });
                         weaponEmbed.setThumbnail('attachment://avatar.png');
                         return interaction.reply({ embeds: [weaponEmbed], files: [attachment], ephemeral: !visible });
                     }
                 } catch (e) {
-                    // Avatar not found, continue without it
+                    // Avatar fetch failed, continue without it
                 }
             }
-            
-            return interaction.reply({ embeds: [weaponEmbed], ephemeral: !visible });
 
+            return interaction.reply({ embeds: [weaponEmbed], ephemeral: !visible });
         } catch (error) {
-            console.error('Error showing weapons:', error);
+            log.error({ error }, 'Error showing weapons');
             return interaction.reply({ content: 'There was an error while fetching your weapons.', ephemeral: true });
         }
-    }
+    },
 };

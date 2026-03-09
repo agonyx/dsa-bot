@@ -1,9 +1,11 @@
 const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('list-mobs');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('listmobs')
+        .setName('list-mobs')
         .setDescription('Lists available mob templates defined for combat.')
         .setDMPermission(false),
 
@@ -11,20 +13,19 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: mobs, error } = await supabase
-                .from('mobs')
-                .select('*')
-                .order('name');
+            const { data: mobs, error } = await supabase.from('mobs').select('*').order('name');
 
             if (error) throw error;
 
             if (!mobs || mobs.length === 0) {
-                await interaction.editReply("ℹ️ No mob templates have been defined yet. Use `/addmob` to create some.");
+                await interaction.editReply(
+                    'ℹ️ No mob templates have been defined yet. Use `/add-mob` to create some.'
+                );
                 return;
             }
 
             const listEmbed = new EmbedBuilder()
-                .setColor(0x5865F2)
+                .setColor(0x5865f2)
                 .setTitle('👾 Available Mob Templates 👾')
                 .setDescription(`Found ${mobs.length} mob template(s).`)
                 .setTimestamp();
@@ -36,9 +37,15 @@ module.exports = {
                 const par = mob.base_parry_value ?? 'N/A';
                 const arm = mob.base_armor_soak ?? 'N/A';
                 const dmg = mob.base_damage_tp ?? 'N/A';
-                const desc = mob.description ? `\n*${mob.description.substring(0, 100)}${mob.description.length > 100 ? '...' : ''}*` : '';
+                const desc = mob.description
+                    ? `\n*${mob.description.substring(0, 100)}${mob.description.length > 100 ? '...' : ''}*`
+                    : '';
 
-                return { name: `🔹 ${mob.name}`, value: `**HP:** ${hp} | **INI:** ${ini} | **AT:** ${atk} | **PA:** ${par} | **RS:** ${arm} | **TP:** ${dmg}${desc}`, inline: false };
+                return {
+                    name: `🔹 ${mob.name}`,
+                    value: `**HP:** ${hp} | **INI:** ${ini} | **AT:** ${atk} | **PA:** ${par} | **RS:** ${arm} | **TP:** ${dmg}${desc}`,
+                    inline: false,
+                };
             });
             listEmbed.addFields(fieldsToShow);
 
@@ -49,10 +56,9 @@ module.exports = {
             }
 
             await interaction.editReply({ embeds: [listEmbed] });
-
         } catch (error) {
-            console.error('Error executing /listmobs:', error);
+            log.error({ error }, 'Error executing /list-mobs');
             await interaction.editReply({ content: `❌ Error: ${error.message || 'Failed to fetch mob list.'}` });
         }
-    }
+    },
 };

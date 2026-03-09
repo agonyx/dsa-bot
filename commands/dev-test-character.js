@@ -1,17 +1,25 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('dev-test-character');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('setuptestcharacter')
-        .setDescription('Sets up a test character with default stats, weapons, and items.'),
+        .setName('dev-test-character')
+        .setDescription('[DEV ONLY] Sets up a test character with default stats, weapons, and items.'),
     async execute(interaction) {
+        if (process.env.DEV_MODE !== 'true') {
+            return interaction.reply({
+                content: '❌ This command is only available in development mode.',
+                ephemeral: true,
+            });
+        }
+
         const discordId = interaction.user.id;
 
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            // 1. Create Player with Stats using edge function
             const { callEdgeFunction } = require('../utils/supabaseClient');
             const { data: result } = await callEdgeFunction('create-player', {
                 name: 'Test Character',
@@ -25,7 +33,6 @@ module.exports = {
                 throw new Error('Failed to create player');
             }
 
-            // 2. Update the newly created Stats
             if (stats?.id) {
                 await supabase
                     .from('stats')
@@ -47,7 +54,6 @@ module.exports = {
                     .eq('id', stats.id);
             }
 
-            // 3. Create Weapons
             await supabase.from('weapons').insert([
                 {
                     name: 'Test Sword',
@@ -67,10 +73,9 @@ module.exports = {
                     pa: 0,
                     is_equipped: 'N',
                     player_id: player.id,
-                }
+                },
             ]);
 
-            // 4. Create Items
             await supabase.from('items').insert([
                 {
                     name: 'Health Potion',
@@ -83,13 +88,12 @@ module.exports = {
                     description: 'A set of lockpicks.',
                     quantity: 1,
                     player_id: player.id,
-                }
+                },
             ]);
 
             await interaction.editReply({ content: 'Test character created successfully!' });
-
         } catch (error) {
-            console.error('Error setting up test character:', error);
+            log.error({ error }, 'Error setting up test character');
             await interaction.editReply({ content: `An error occurred: ${error.message}` });
         }
     },

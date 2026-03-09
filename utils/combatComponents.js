@@ -1,7 +1,7 @@
-const { ButtonBuilder } = require("@discordjs/builders");
-const { ActionRowBuilder } = require("@discordjs/builders");
-const { EmbedBuilder } = require("@discordjs/builders");
-const { ButtonStyle } = require("discord.js");
+const { ButtonBuilder } = require('@discordjs/builders');
+const { ActionRowBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('@discordjs/builders');
+const { ButtonStyle } = require('discord.js');
 
 // --- Helper function to build the Setup Embed ---
 function createSetupEmbed(sessionId, dmUsername, participants = []) {
@@ -10,21 +10,22 @@ function createSetupEmbed(sessionId, dmUsername, participants = []) {
         .map(p => `- ${p.name || 'Unknown Player'}`)
         .join('\n');
     const npcList = participants
-         .filter(p => p.type === 'NPC')
-         .map(p => `- ${p.name || 'Unknown Mob'}`)
-         .join('\n');
+        .filter(p => p.type === 'NPC')
+        .map(p => `- ${p.name || 'Unknown Mob'}`)
+        .join('\n');
 
     const embed = new EmbedBuilder()
         // *** FIX: Use the numeric color value ***
         .setColor(39423) // Decimal for #0099FF
         .setTitle('⚔️ Combat Setup Initiated ⚔️')
-        .setDescription(`Combat initiated by **${dmUsername}**.\n\nPlayers, click "Join Combat"!\nDM, use "Manage Participants".`)
+        .setDescription(
+            `Combat initiated by **${dmUsername}**.\n\nPlayers, click "Join Combat"!\nDM, use "Manage Participants".`
+        )
         .setFooter({ text: `Session ID: ${sessionId.substring(0, 8)}...` });
     embed.addFields({ name: '👤 Players Joined', value: playerList || 'None yet.', inline: true });
     embed.addFields({ name: '👾 Mobs Added', value: npcList || 'None yet.', inline: true });
     return embed;
 }
-
 
 /**
  * Creates the Action Rows with buttons for the combat setup message.
@@ -82,7 +83,7 @@ function createSetupActionRows(sessionId, canStart) {
         .setEmoji({ name: '👾' });
     // Arrange buttons in rows
     const row1 = new ActionRowBuilder().addComponents(joinButton, addMobButton, startButton);
-    const row2 = new ActionRowBuilder().addComponents(leaveButton,manageButton, cancelButton);
+    const row2 = new ActionRowBuilder().addComponents(leaveButton, manageButton, cancelButton);
 
     return [row1, row2];
 }
@@ -90,5 +91,5 @@ function createSetupActionRows(sessionId, canStart) {
 // --- Export the functions ---
 module.exports = {
     createSetupEmbed,
-    createSetupActionRows
+    createSetupActionRows,
 };

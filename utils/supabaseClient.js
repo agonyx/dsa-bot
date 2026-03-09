@@ -1,10 +1,12 @@
 const { createClient } = require('@supabase/supabase-js');
+const { createLogger } = require('./logger');
+const log = createLogger('supabase');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    console.error("FATAL: SUPABASE_URL and SUPABASE_ANON_KEY environment variables must be set.");
+    log.fatal('SUPABASE_URL and SUPABASE_ANON_KEY environment variables must be set');
     process.exit(1);
 }
 
@@ -17,10 +19,10 @@ async function callEdgeFunction(functionName, payload, method = 'POST') {
         method,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-            'apikey': SUPABASE_ANON_KEY
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            apikey: SUPABASE_ANON_KEY,
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
     });
 
     const data = await response.json();
@@ -39,5 +41,5 @@ module.exports = {
     supabase,
     callEdgeFunction,
     SUPABASE_URL,
-    SUPABASE_FUNCTIONS_URL
+    SUPABASE_FUNCTIONS_URL,
 };

@@ -3,23 +3,16 @@ require('dotenv').config();
 const { Client, Events, GatewayIntentBits, Collection, Partials } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
+const { createLogger } = require('./utils/logger');
+const log = createLogger('index');
 
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-    ],
-    partials: [
-        Partials.Channel,
-        Partials.GuildMember,
-        Partials.User,
-        Partials.Message,
-    ]
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+    partials: [Partials.Channel, Partials.GuildMember, Partials.User, Partials.Message],
 });
 
 // Command handling
-client.commands = new Collection(); 
+client.commands = new Collection();
 client.activeCombats = new Map();
 client.pendingCombatActions = new Map();
 
@@ -29,11 +22,11 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = require(filePath);
-    
+
     if ('data' in command && 'execute' in command) {
         client.commands.set(command.data.name, command);
     } else {
-        console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        log.warn({ file: filePath }, 'Command missing required "data" or "execute" property');
     }
 }
 
@@ -44,7 +37,7 @@ const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'
 for (const file of eventFiles) {
     const filePath = path.join(eventsPath, file);
     const event = require(filePath);
-    
+
     if (event.once) {
         client.once(event.name, (...args) => event.execute(...args));
     } else {
@@ -53,14 +46,15 @@ for (const file of eventFiles) {
 }
 
 const combatHandler = require('./handlers/combatHandler'); // Assuming CommonJS
-const { supabase } = require('./utils/supabaseClient');
+const { supabase, callEdgeFunction } = require('./utils/supabaseClient');
+const { sessionToMemory } = require('./utils/transforms');
 
 /**
  * Recovers active or paused combat sessions from the database on bot startup.
  * @param {Client} client The Discord client instance.
  */
 async function recoverActiveCombats(client) {
-    console.log('[Recovery] Starting active combat session recovery...');
+    log.info('Starting active combat session recovery...');
     try {
         // Fetch sessions that are RUNNING or PAUSED with their combatants
         const { data: sessions, error } = await supabase
@@ -69,112 +63,134 @@ async function recoverActiveCombats(client) {
             .in('state', ['RUNNING', 'PAUSED']);
 
         if (error) {
-            console.error('[Recovery] Database error:', error);
+            log.error({ error }, 'Database error during session recovery');
             return;
         }
 
         if (!sessions || sessions.length === 0) {
-            console.log('[Recovery] No active or paused sessions found to recover.');
+            log.info('No active or paused sessions found to recover');
             return;
         }
 
-        console.log(`[Recovery] Found ${sessions.length} session(s) to recover.`);
+        log.info({ count: sessions.length }, 'Found sessions to recover');
 
         for (const session of sessions) {
             if (!session.channel_id || !session.id) {
-                console.warn('[Recovery] Skipping session with missing channel_id or id:', session);
+                log.warn({ session }, 'Skipping session with missing channel_id or id');
                 continue;
             }
 
             // Convert snake_case to camelCase for in-memory compatibility
-            const memorySession = {
-                ...session,
-                dmUserId: session.dm_user_id,
-                channelId: session.channel_id,
-                messageId: session.message_id,
-                combatLog: session.combat_log,
-                turnOrder: session.turn_order,
-                currentTurnIndex: session.current_turn_index,
-                combatants: session.combatants?.map(c => ({
-                    ...c,
-                    maxHP: c.max_hp,
-                    currentHP: c.current_hp,
-                    initiativeRoll: c.initiative_roll,
-                    initiativeBase: c.initiative_base,
-                    playerId: c.player_id,
-                    discordUserId: c.discord_user_id,
-                    mobDefinitionId: c.mob_definition_id,
-                    sessionId: c.session_id,
-                    isActiveTurn: c.is_active_turn
-                })) || []
-            };
+            const memorySession = sessionToMemory(session);
 
             // Add the session back to the in-memory map
             client.activeCombats.set(session.channel_id, memorySession);
-            console.log(`[Recovery] Loaded session ${session.id} for channel ${session.channel_id} into memory.`);
+            log.info({ sessionId: session.id, channelId: session.channel_id }, 'Loaded session into memory');
 
             // Refresh the combat display to make buttons interactive again
             try {
                 await combatHandler.updateCombatDisplay(client, session.channel_id, memorySession);
-                console.log(`[Recovery] Successfully refreshed display for session ${session.id}.`);
+                log.info({ sessionId: session.id }, 'Successfully refreshed display');
             } catch (displayError) {
-                console.error(`[Recovery] Failed to update display for session ${session.id} in channel ${session.channel_id}:`, displayError);
+                log.error(
+                    { sessionId: session.id, channelId: session.channel_id, error: displayError },
+                    'Failed to update display'
+                );
                 // If the message or channel was deleted, we should remove it from memory
                 client.activeCombats.delete(session.channel_id);
             }
         }
-        console.log('[Recovery] Finished combat session recovery.');
-
+        log.info('Finished combat session recovery');
     } catch (error) {
-        console.error('[Recovery] Could not fetch or process active combat sessions:', error.message);
+        log.error({ error: error.message }, 'Could not fetch or process active combat sessions');
     }
 }
-
 
 client.on(Events.InteractionCreate, async interaction => {
     // --- Handle Autocomplete ---
     if (interaction.isAutocomplete()) {
         const command = interaction.client.commands.get(interaction.commandName);
         if (!command || !command.autocomplete) {
-            console.error(`No autocomplete handler for ${interaction.commandName}`);
-            return interaction.respond([]).catch(() => {});
+            return;
         }
         try {
             await command.autocomplete(interaction);
         } catch (error) {
-            console.error(`Error in autocomplete for ${interaction.commandName}:`, error);
-            await interaction.respond([]).catch(() => {});
+            log.error({ command: interaction.commandName, error }, 'Error in autocomplete');
         }
         return;
     }
-    
+
+    // --- Handle String Select Menu (from events/interactionsCreate.js) ---
+    if (interaction.isStringSelectMenu() && interaction.customId === 'select-character') {
+        const selectedPlayerId = interaction.values[0];
+        const discordId = interaction.user.id;
+
+        try {
+            const { data: player, error: fetchError } = await supabase
+                .from('players')
+                .select('name')
+                .eq('id', selectedPlayerId)
+                .single();
+
+            if (fetchError) throw fetchError;
+
+            await callEdgeFunction('set-selected-player', {
+                playerId: parseInt(selectedPlayerId),
+                discordId: discordId,
+            });
+
+            await interaction.update({
+                content: `You have selected the character: ${player.name}.`,
+                components: [],
+            });
+        } catch (error) {
+            log.error({ error }, 'Error selecting character');
+            await interaction.update({
+                content: 'An error occurred while selecting your character. Please try again later.',
+                components: [],
+            });
+        }
+        return;
+    }
+
     // --- Handle Slash Commands ---
     if (interaction.isChatInputCommand()) {
         const command = interaction.client.commands.get(interaction.commandName);
         if (!command) {
-            console.error(`No command matching ${interaction.commandName} was found.`);
+            log.error({ command: interaction.commandName }, 'No command matching was found');
             try {
-               await interaction.reply({ content: `Command not found: ${interaction.commandName}`, ephemeral: true });
-            } catch (e) { console.error("Error replying about missing command:", e); }
+                await interaction.reply({ content: `Command not found: ${interaction.commandName}`, ephemeral: true });
+            } catch (e) {
+                log.error({ error: e }, 'Error replying about missing command');
+            }
             return;
         }
         try {
             await command.execute(interaction);
         } catch (error) {
-           console.error(`Error executing command ${interaction.commandName}:`, error);
+            log.error({ command: interaction.commandName, error }, 'Error executing command');
             const replyOptions = { content: 'There was an error while executing this command!', ephemeral: true };
             try {
-                 if (interaction.replied || interaction.deferred) { await interaction.followUp(replyOptions); }
-                 else { await interaction.reply(replyOptions); }
-            } catch (replyError) { console.error(`Failed to send error reply for command ${interaction.commandName}:`, replyError); }
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp(replyOptions);
+                } else {
+                    await interaction.reply(replyOptions);
+                }
+            } catch (replyError) {
+                log.error({ command: interaction.commandName, error: replyError }, 'Failed to send error reply');
+            }
         }
     }
     // --- Handle Components (Buttons, Selects, Modals) ---
-    else if (interaction.isMessageComponent() || interaction.isModalSubmit()) { // Combined check for components/modals
+    else if (interaction.isMessageComponent() || interaction.isModalSubmit()) {
+        // Combined check for components/modals
         const customId = interaction.customId;
 
         // --- Check for Combat Prefixes ---
-        if (customId.startsWith('combat_') || customId.startsWith('join_combat_') ||
+        if (
+            customId.startsWith('combat_') ||
+            customId.startsWith('join_combat_') ||
             customId.startsWith('add_mob_') || // Catches modal trigger and submit
             customId.startsWith('start_fight_') ||
             customId.startsWith('cancel_combat_') ||
@@ -193,39 +209,46 @@ client.on(Events.InteractionCreate, async interaction => {
             customId.startsWith('park_combat_') ||
             customId.startsWith('end_combat_') ||
             customId.startsWith('resume_session_select') ||
-            customId.startsWith('show_full_log_'))
-        {
+            customId.startsWith('show_full_log_')
+        ) {
             // Route to appropriate combat handler function
-            console.log(`Routing combat interaction ${customId} to combatHandler`);
+            log.debug({ customId }, 'Routing combat interaction to combatHandler');
             try {
                 if (interaction.isButton()) await combatHandler.handleCombatButton(interaction);
                 else if (interaction.isStringSelectMenu()) await combatHandler.handleCombatSelectMenu(interaction);
                 else if (interaction.isModalSubmit()) await combatHandler.handleCombatModalSubmit(interaction);
             } catch (error) {
-                 console.error(`Error during combat interaction processing (${customId}):`, error);
-                 // Attempt to inform user if possible
-                  if (!interaction.replied && !interaction.deferred && interaction.isRepliable()) {
-                      try { await interaction.reply({ content: 'An error occurred processing this combat action.', ephemeral: true }); }
-                      catch(e) { console.error("Failed to send combat interaction error reply", e); }
-                  }
+                log.error({ customId, error }, 'Error during combat interaction processing');
+                // Attempt to inform user if possible
+                if (!interaction.replied && !interaction.deferred && interaction.isRepliable()) {
+                    try {
+                        await interaction.reply({
+                            content: 'An error occurred processing this combat action.',
+                            ephemeral: true,
+                        });
+                    } catch (e) {
+                        log.error({ error: e }, 'Failed to send combat interaction error reply');
+                    }
+                }
             }
         }
         // --- Check for EditStats Prefixes/IDs (and DO NOTHING centrally) ---
-        else if (customId === 'stat_select' || 
-                 customId === 'exit_editor' || 
-                 customId === 'select-character' ||
-                 customId === 'skill_select_menu' ||
-                 customId === 'confirm_skill_selection' ||
-                 customId.startsWith('edit_'))
-        {
+        else if (
+            customId === 'stat_select' ||
+            customId === 'exit_editor' ||
+            customId === 'select-character' ||
+            customId === 'skill_select_menu' ||
+            customId === 'confirm_skill_selection' ||
+            customId.startsWith('edit_')
+        ) {
             // *** Explicitly ignore these IDs in the central handler ***
-            console.log(`Ignoring interaction ${customId} in central handler (handled by specific command).`);
+            log.debug({ customId }, 'Ignoring interaction in central handler (handled by specific command)');
             // IMPORTANT: No reply, deferUpdate, or other acknowledgement here!
-            // Let the collector/listener in editStats.js handle it.
+            // Let the collector/listener in edit-stats.js handle it.
         }
         // --- Handle Other/Unknown Components ---
         else {
-            console.warn(`Unhandled component interaction ID in central handler: ${customId}`);
+            log.warn({ customId }, 'Unhandled component interaction ID in central handler');
             // Do not acknowledge unless you have a specific reason for centrally handling unknown components.
         }
     }
@@ -234,7 +257,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // Event listener for when the client is ready
 client.once(Events.ClientReady, async readyClient => {
-    console.log(`✅ Ready! Logged in as ${readyClient.user.tag}`);
+    log.info({ tag: readyClient.user.tag }, 'Ready! Logged in');
     await recoverActiveCombats(readyClient);
 });
 

@@ -1,49 +1,41 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('add-weapon');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('addweapon')
+        .setName('add-weapon')
         .setDescription('Add a new weapon to your character')
+        .addStringOption(option => option.setName('name').setDescription('Weapon name').setRequired(true))
         .addStringOption(option =>
-            option.setName('name')
-                .setDescription('Weapon name')
-                .setRequired(true))
-        .addStringOption(option =>
-            option.setName('type')
+            option
+                .setName('type')
                 .setDescription('Weapon type')
                 .setRequired(true)
-                .addChoices(
-                    { name: 'MELEE', value: 'MELEE' },
-                    { name: 'RANGED', value: 'RANGED' }
-                ))
+                .addChoices({ name: 'MELEE', value: 'MELEE' }, { name: 'RANGED', value: 'RANGED' })
+        )
         .addStringOption(option =>
-            option.setName('tp')
-                .setDescription('Damage formula (e.g., 1w6+3)')
-                .setRequired(true))
-        .addIntegerOption(option =>
-            option.setName('at')
-                .setDescription('Attack value')
-                .setRequired(true))
-        .addIntegerOption(option =>
-            option.setName('pa')
-                .setDescription('Parry value')
-                .setRequired(true))
+            option.setName('tp').setDescription('Damage formula (e.g., 1w6+3)').setRequired(true)
+        )
+        .addIntegerOption(option => option.setName('at').setDescription('Attack value').setRequired(true))
+        .addIntegerOption(option => option.setName('pa').setDescription('Parry value').setRequired(true))
         .addStringOption(option =>
-            option.setName('equipped')
+            option
+                .setName('equipped')
                 .setDescription('Equip this weapon?')
-                .addChoices(
-                    { name: 'Y', value: 'Y' },
-                    { name: 'N', value: 'N' }
-                ))
+                .addChoices({ name: 'Y', value: 'Y' }, { name: 'N', value: 'N' })
+        )
         .addStringOption(option =>
-            option.setName('slot')
+            option
+                .setName('slot')
                 .setDescription('Equipment slot')
                 .addChoices(
                     { name: 'ADAPTIVE', value: 'ADAPTIVE' },
                     { name: 'OFFENSE', value: 'OFFENSE' },
                     { name: 'DEFENSE', value: 'DEFENSE' }
-                )),
+                )
+        ),
     async execute(interaction) {
         try {
             const discordId = interaction.user.id;
@@ -54,26 +46,23 @@ module.exports = {
                 at: interaction.options.getInteger('at'),
                 pa: interaction.options.getInteger('pa'),
                 is_equipped: interaction.options.getString('equipped') || 'N',
-                equipped_slot: interaction.options.getString('slot') || null
+                equipped_slot: interaction.options.getString('slot') || null,
             };
 
-            // Validate TP format (supports: 1w6, 1W6, W6, 1w6+3, 1w6 - 2, etc.)
-            if (!/^\d+[wW]\d+(\s*[\+\-]\s*\d+)?$/.test(weaponData.tp)) {
+            if (!/^\d+[wW]\d+(\s*[+-]\s*\d+)?$/.test(weaponData.tp)) {
                 return interaction.reply({
                     content: 'Invalid TP format! Use format like 1w6+3, 1W6-2, or W6',
-                    ephemeral: true
+                    ephemeral: true,
                 });
             }
 
-            // Validate equipped slot logic
             if (weaponData.is_equipped === 'Y' && !weaponData.equipped_slot) {
                 return interaction.reply({
                     content: 'You must select a slot when equipping a weapon!',
-                    ephemeral: true
+                    ephemeral: true,
                 });
             }
 
-            // Get selected player
             const { data: player, error: playerError } = await supabase
                 .from('players')
                 .select('id')
@@ -83,26 +72,24 @@ module.exports = {
 
             if (playerError || !player) {
                 return interaction.reply({
-                    content: 'No selected character! Use /choosecharacter first',
-                    ephemeral: true
+                    content: 'No selected character! Use /choose-character first',
+                    ephemeral: true,
                 });
             }
 
-            // Create weapon
             const { data: weapon, error: weaponError } = await supabase
                 .from('weapons')
                 .insert({
                     ...weaponData,
-                    player_id: player.id
+                    player_id: player.id,
                 })
                 .select()
                 .single();
 
             if (weaponError) throw weaponError;
 
-            // Build embed response
             const embed = new EmbedBuilder()
-                .setColor(0x00FF00)
+                .setColor(0x00ff00)
                 .setTitle('Weapon Added Successfully')
                 .addFields(
                     { name: 'Name', value: weapon.name, inline: true },
@@ -115,13 +102,12 @@ module.exports = {
                 );
 
             interaction.reply({ embeds: [embed] });
-
         } catch (error) {
-            console.error('Add weapon error:', error);
+            log.error({ error }, 'Add weapon error');
             interaction.reply({
                 content: 'Failed to add weapon. Please check your input and try again.',
-                ephemeral: true
+                ephemeral: true,
             });
         }
-    }
+    },
 };

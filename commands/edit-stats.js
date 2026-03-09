@@ -1,5 +1,17 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ButtonBuilder, ButtonStyle } = require('discord.js');
+const {
+    SlashCommandBuilder,
+    EmbedBuilder,
+    ActionRowBuilder,
+    StringSelectMenuBuilder,
+    ModalBuilder,
+    TextInputBuilder,
+    TextInputStyle,
+    ButtonBuilder,
+    ButtonStyle,
+} = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('edit-stats');
 
 const STAT_CONFIG = [
     { key: 'mu', label: 'MU' },
@@ -14,12 +26,12 @@ const STAT_CONFIG = [
     { key: 'le_current', label: 'Current LP' },
     { key: 'initiative', label: 'Initiative' },
     { key: 'ruestungsschutz', label: 'Armor (RS)' },
-    { key: 'ausweichen', label: 'Ausweichen' }
+    { key: 'ausweichen', label: 'Ausweichen' },
 ];
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('editstats')
+        .setName('edit-stats')
         .setDescription('Edit your character stats through an interactive interface'),
     async execute(interaction) {
         try {
@@ -27,12 +39,14 @@ module.exports = {
 
             const { data: player, error } = await supabase
                 .from('players')
-                .select(`
+                .select(
+                    `
                     id,
                     name,
                     avatar,
                     stats:stats(*)
-                `)
+                `
+                )
                 .eq('discord_id', interaction.user.id)
                 .eq('selected', 'YES')
                 .single();
@@ -41,31 +55,34 @@ module.exports = {
                 return interaction.editReply('❌ No character stats found! Select a character first.');
             }
 
-            let stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
-            let currentPlayer = player;
+            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            const currentPlayer = player;
 
-            // Helper functions
-            const createStatSelect = (statsData) => new StringSelectMenuBuilder()
-                .setCustomId('stat_select')
-                .setPlaceholder('📝 Select stat to edit...')
-                .addOptions(STAT_CONFIG.map(stat => ({
-                    label: stat.label,
-                    value: stat.key,
-                    description: `Current: ${statsData[stat.key]}`
-                })));
+            const createStatSelect = statsData =>
+                new StringSelectMenuBuilder()
+                    .setCustomId('stat_select')
+                    .setPlaceholder('📝 Select stat to edit...')
+                    .addOptions(
+                        STAT_CONFIG.map(stat => ({
+                            label: stat.label,
+                            value: stat.key,
+                            description: `Current: ${statsData[stat.key]}`,
+                        }))
+                    );
 
-            const createStatsEmbed = (statsData) => new EmbedBuilder()
-                .setColor(0x2F3136)
-                .setTitle('🔧 Character Stat Editor')
-                .setDescription('**Select a stat from the dropdown below to modify it**')
-                .addFields(
-                    STAT_CONFIG.map(stat => ({
-                        name: `**${stat.label}**`,
-                        value: `\`${statsData[stat.key]}\``,
-                        inline: true
-                    }))
-                )
-                .setFooter({ text: 'Session expires after 5 minutes of inactivity' });
+            const createStatsEmbed = statsData =>
+                new EmbedBuilder()
+                    .setColor(0x2f3136)
+                    .setTitle('🔧 Character Stat Editor')
+                    .setDescription('**Select a stat from the dropdown below to modify it**')
+                    .addFields(
+                        STAT_CONFIG.map(stat => ({
+                            name: `**${stat.label}**`,
+                            value: `\`${statsData[stat.key]}\``,
+                            inline: true,
+                        }))
+                    )
+                    .setFooter({ text: 'Session expires after 5 minutes of inactivity' });
 
             const exitButton = new ButtonBuilder()
                 .setCustomId('exit_editor')
@@ -76,13 +93,13 @@ module.exports = {
                 embeds: [createStatsEmbed(stats)],
                 components: [
                     new ActionRowBuilder().addComponents(createStatSelect(stats)),
-                    new ActionRowBuilder().addComponents(exitButton)
-                ]
+                    new ActionRowBuilder().addComponents(exitButton),
+                ],
             });
 
             const collector = message.createMessageComponentCollector({
                 filter: i => i.user.id === interaction.user.id,
-                time: 300_000
+                time: 300_000,
             });
 
             collector.on('collect', async i => {
@@ -111,7 +128,7 @@ module.exports = {
                     await i.update({
                         content: '✅ Editor closed successfully',
                         components: [],
-                        embeds: []
+                        embeds: [],
                     });
                     collector.stop();
                 }
@@ -127,20 +144,19 @@ module.exports = {
                     const parsedValue = parseInt(newValue);
                     const statLabel = STAT_CONFIG.find(s => s.key === statKey)?.label || 'Unknown Stat';
 
-                    // Validation checks
                     if (isNaN(parsedValue)) {
                         const msg = await modalInteraction.reply({
                             content: '❌ Must be a whole number!',
-                            ephemeral: true
+                            ephemeral: true,
                         });
                         setTimeout(() => msg.delete(), 3000);
                         return;
                     }
 
-                    if (!stats.hasOwnProperty(statKey)) {
+                    if (!Object.hasOwn(stats, statKey)) {
                         const msg = await modalInteraction.reply({
                             content: '❌ Invalid stat selection!',
-                            ephemeral: true
+                            ephemeral: true,
                         });
                         setTimeout(() => msg.delete(), 3000);
                         return;
@@ -149,13 +165,12 @@ module.exports = {
                     if (stats[statKey] === parsedValue) {
                         const msg = await modalInteraction.reply({
                             content: 'ℹ️ Value unchanged',
-                            ephemeral: true
+                            ephemeral: true,
                         });
                         setTimeout(() => msg.delete(), 2000);
                         return;
                     }
 
-                    // Update stats in Supabase
                     const { error: updateError } = await supabase
                         .from('stats')
                         .update({ [statKey]: parsedValue })
@@ -163,31 +178,29 @@ module.exports = {
 
                     if (updateError) throw updateError;
 
-                    // Update local state
                     stats[statKey] = parsedValue;
 
                     await interaction.editReply({
                         embeds: [createStatsEmbed(stats)],
                         components: [
                             new ActionRowBuilder().addComponents(createStatSelect(stats)),
-                            new ActionRowBuilder().addComponents(exitButton)
-                        ]
+                            new ActionRowBuilder().addComponents(exitButton),
+                        ],
                     });
 
                     const successMsg = await modalInteraction.reply({
                         content: `🔄 Updated **${statLabel}** to \`${parsedValue}\`!`,
-                        ephemeral: true
+                        ephemeral: true,
                     });
-                    
-                    setTimeout(async () => {
-                        await successMsg.delete().catch(console.error);
-                    }, 2000);
 
+                    setTimeout(async () => {
+                        await successMsg.delete().catch(err => log.error({ error: err }, 'Failed to delete success message'));
+                    }, 2000);
                 } catch (error) {
-                    console.error('Modal Error:', error);
+                    log.error({ error }, 'Modal error');
                     const errorMsg = await modalInteraction.reply({
                         content: '❌ Failed to update stat!',
-                        ephemeral: true
+                        ephemeral: true,
                     });
                     setTimeout(() => errorMsg.delete(), 3000);
                 }
@@ -198,14 +211,13 @@ module.exports = {
             collector.on('end', () => {
                 interaction.editReply({
                     content: '🕒 Session expired - Editor closed',
-                    components: []
+                    components: [],
                 });
                 interaction.client.removeListener('interactionCreate', modalHandler);
             });
-
         } catch (error) {
-            console.error('EditStats Error:', error);
+            log.error({ error }, 'EditStats error');
             interaction.editReply('❌ Failed to initialize editor!');
         }
-    }
+    },
 };

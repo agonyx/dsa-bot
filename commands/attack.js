@@ -1,18 +1,21 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
 const { resolveAttack, parseAndRollDamage, applySoak, resolveDefense } = require('../utils/combatUtils');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('attack');
 
-// Helper function to get player data and effective stats
 async function getPlayerData(discordId) {
     try {
         const { data: player, error } = await supabase
             .from('players')
-            .select(`
+            .select(
+                `
                 id,
                 name,
                 stats:stats(*),
                 weapons:weapons(*)
-            `)
+            `
+            )
             .eq('discord_id', discordId)
             .eq('selected', 'YES')
             .single();
@@ -23,11 +26,13 @@ async function getPlayerData(discordId) {
 
         const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
 
-        // Determine equipped weapons
-        const offensiveWeapon = player.weapons.find(w => w.is_equipped === 'Y' && (w.equipped_slot === 'OFFENSE' || w.equipped_slot === 'ADAPTIVE'));
-        const defensiveWeapon = player.weapons.find(w => w.is_equipped === 'Y' && (w.equipped_slot === 'DEFENSE' || w.equipped_slot === 'ADAPTIVE'));
+        const offensiveWeapon = player.weapons.find(
+            w => w.is_equipped === 'Y' && (w.equipped_slot === 'OFFENSE' || w.equipped_slot === 'ADAPTIVE')
+        );
+        const defensiveWeapon = player.weapons.find(
+            w => w.is_equipped === 'Y' && (w.equipped_slot === 'DEFENSE' || w.equipped_slot === 'ADAPTIVE')
+        );
 
-        // Calculate effective stats
         const at = offensiveWeapon ? offensiveWeapon.at : stats.attacke_basis || 8;
         const tp = offensiveWeapon ? offensiveWeapon.tp : '1w6';
         const pa = defensiveWeapon ? defensiveWeapon.pa : stats.parade_basis || 6;
@@ -44,11 +49,11 @@ async function getPlayerData(discordId) {
                 currentPA: pa,
                 currentRS: rs,
                 currentTP: tp,
-            }
+            },
         };
     } catch (error) {
         if (error.message?.includes('Incomplete')) throw error;
-        throw new Error(`No character selected for the user with ID ${discordId}. Use \`/choosecharacter\`.`);
+        throw new Error(`No character selected for the user with ID ${discordId}. Use \`/choose-character\`.`, { cause: error });
     }
 }
 
@@ -56,15 +61,14 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('attack')
         .setDescription('Performs a standalone attack against a target, outside of formal combat.')
-        .addUserOption(option =>
-            option.setName('target')
-                .setDescription('The target of your attack')
-                .setRequired(true))
+        .addUserOption(option => option.setName('target').setDescription('The target of your attack').setRequired(true))
         .addStringOption(option =>
-            option.setName('maneuver')
+            option
+                .setName('maneuver')
                 .setDescription('The combat maneuver to use (optional)')
                 .setAutocomplete(true)
-                .setRequired(false)),
+                .setRequired(false)
+        ),
 
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
@@ -82,9 +86,11 @@ module.exports = {
 
             const { data: skills } = await supabase
                 .from('player_action_modifications')
-                .select(`
+                .select(
+                    `
                     action_modification:action_modifications(id, name, action_type)
-                `)
+                `
+                )
                 .eq('player_id', player.id);
 
             const meleeSkills = (skills || [])
@@ -93,10 +99,10 @@ module.exports = {
 
             const choices = meleeSkills.map(skill => ({ name: skill.name, value: skill.id }));
             const filtered = choices.filter(choice => choice.name.toLowerCase().startsWith(focusedValue.toLowerCase()));
-            
+
             await interaction.respond(filtered);
         } catch (error) {
-            console.error('Error during maneuver autocomplete:', error);
+            log.error({ error }, 'Error during maneuver autocomplete');
             await interaction.respond([]);
         }
     },
@@ -116,7 +122,6 @@ module.exports = {
         }
 
         try {
-            // 1. Fetch data for both attacker and target
             const attacker = await getPlayerData(attackerUser.id);
             const target = await getPlayerData(targetUser.id);
 
@@ -134,7 +139,6 @@ module.exports = {
                 maneuver = maneuverData;
             }
 
-            // 2. Get effective stats and apply maneuver modifiers
             let atValue = attacker.effectiveStats.currentAT;
             let paValue = target.effectiveStats.currentPA;
             let damageBonus = 0;
@@ -147,7 +151,6 @@ module.exports = {
                 if (maneuver.rules?.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
             }
 
-            // 3. Resolve the attack
             const attackResult = resolveAttack(atValue);
             description += `⚔️ **Attack Roll:** ${attackResult.roll} / ${atValue}`;
             if (attackResult.confirmRoll !== null) description += ` (Confirm: ${attackResult.confirmRoll})`;
@@ -170,7 +173,6 @@ module.exports = {
                     break;
             }
 
-            // 4. Resolve defense if the attack hit
             if (hitConnected) {
                 const defenseResult = resolveDefense(paValue);
                 description += `\n🛡️ **${target.name}'s Parry:** ${defenseResult.roll} / ${paValue}`;
@@ -182,11 +184,10 @@ module.exports = {
                 }
             }
 
-            // 5. Calculate and apply damage if the attack connected
             if (hitConnected) {
                 let rolledDamage = parseAndRollDamage(attacker.effectiveStats.currentTP);
                 if (attackResult.outcome === 'CRITICAL_SUCCESS') rolledDamage *= 2;
-                
+
                 const totalDamage = rolledDamage + damageBonus;
                 const finalDamage = applySoak(totalDamage, target.effectiveStats.currentRS);
 
@@ -195,20 +196,19 @@ module.exports = {
                 const newHP = Math.max(0, target.currentHP - finalDamage);
 
                 if (newHP !== target.currentHP) {
-                    // Update target's health in the database
                     const { error: updateError } = await supabase
                         .from('stats')
                         .update({ le_current: newHP })
                         .eq('id', target.statsId);
 
-                    if (updateError) console.error('Failed to update target HP:', updateError);
-                    
+                    if (updateError) log.error({ error: updateError }, 'Failed to update target HP');
+
                     description += `\n❤️ **${target.name}'s HP:** ${newHP} / ${target.maxHP}`;
                     if (newHP <= 0) {
                         description += `\n\n**${target.name} has been defeated!**`;
-                    } 
+                    }
                 } else {
-                    description += "\n\nNo damage was taken after soak.";
+                    description += '\n\nNo damage was taken after soak.';
                 }
             }
 
@@ -219,9 +219,8 @@ module.exports = {
                 .setTimestamp();
 
             await interaction.editReply({ embeds: [resultEmbed] });
-
         } catch (error) {
-            console.error('Error executing standalone attack command:', error);
+            log.error({ error }, 'Error executing standalone attack command');
             const errorMessage = error.message || 'An unknown error occurred.';
             await interaction.editReply(`❌ ${errorMessage}`);
         }

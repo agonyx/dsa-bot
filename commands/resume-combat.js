@@ -1,6 +1,8 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
 const { updateCombatDisplay } = require('../handlers/combatHandler');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('resume-combat');
 
 async function resumeSingleCombat(interaction, sessionToResume) {
     const { client, channelId } = interaction;
@@ -8,9 +10,9 @@ async function resumeSingleCombat(interaction, sessionToResume) {
 
     const { data: updatedSession, error } = await supabase
         .from('combat_sessions')
-        .update({ 
+        .update({
             state: 'RUNNING',
-            combat_log: [...(sessionToResume.combat_log || []), '--- Combat Resumed ---']
+            combat_log: [...(sessionToResume.combat_log || []), '--- Combat Resumed ---'],
         })
         .eq('id', sessionId)
         .select('*, combatants(*)')
@@ -21,8 +23,7 @@ async function resumeSingleCombat(interaction, sessionToResume) {
     if (!client.activeCombats) {
         client.activeCombats = new Map();
     }
-    
-    // Convert snake_case to camelCase for in-memory compatibility
+
     const memorySession = {
         ...updatedSession,
         dmUserId: updatedSession.dm_user_id,
@@ -31,18 +32,19 @@ async function resumeSingleCombat(interaction, sessionToResume) {
         combatLog: updatedSession.combat_log,
         turnOrder: updatedSession.turn_order,
         currentTurnIndex: updatedSession.current_turn_index,
-        combatants: updatedSession.combatants?.map(c => ({
-            ...c,
-            maxHP: c.max_hp,
-            currentHP: c.current_hp,
-            initiativeRoll: c.initiative_roll,
-            initiativeBase: c.initiative_base,
-            playerId: c.player_id,
-            discordUserId: c.discord_user_id,
-            mobDefinitionId: c.mob_definition_id,
-            sessionId: c.session_id,
-            isActiveTurn: c.is_active_turn
-        })) || []
+        combatants:
+            updatedSession.combatants?.map(c => ({
+                ...c,
+                maxHP: c.max_hp,
+                currentHP: c.current_hp,
+                initiativeRoll: c.initiative_roll,
+                initiativeBase: c.initiative_base,
+                playerId: c.player_id,
+                discordUserId: c.discord_user_id,
+                mobDefinitionId: c.mob_definition_id,
+                sessionId: c.session_id,
+                isActiveTurn: c.is_active_turn,
+            })) || [],
     };
     client.activeCombats.set(channelId, memorySession);
 
@@ -52,7 +54,7 @@ async function resumeSingleCombat(interaction, sessionToResume) {
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('resumecombat')
+        .setName('resume-combat')
         .setDescription('Resumes a parked combat session in this channel (DM only).'),
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
@@ -102,11 +104,10 @@ module.exports = {
             await interaction.editReply({
                 content: 'Multiple paused sessions found. Please choose which one to resume:',
                 components: [row],
-                ephemeral: true
+                ephemeral: true,
             });
-
         } catch (error) {
-            console.error('Error resuming combat:', error);
+            log.error({ error }, 'Error resuming combat');
             await interaction.editReply(`❌ An error occurred: ${error.message || 'Failed to resume combat.'}`);
         }
     },

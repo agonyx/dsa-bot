@@ -1,20 +1,21 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
 const { resolveCombatAction } = require('../handlers/combatHandler');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('use-skill');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('use-skill')
         .setDescription('Uses a special combat skill against a target.')
-        .addUserOption(option =>
-            option.setName('target')
-                .setDescription('The target for your skill')
-                .setRequired(true))
+        .addUserOption(option => option.setName('target').setDescription('The target for your skill').setRequired(true))
         .addStringOption(option =>
-            option.setName('maneuver')
+            option
+                .setName('maneuver')
                 .setDescription('The combat maneuver to use')
                 .setAutocomplete(true)
-                .setRequired(true)),
+                .setRequired(true)
+        ),
 
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
@@ -32,9 +33,11 @@ module.exports = {
 
             const { data: skills } = await supabase
                 .from('player_action_modifications')
-                .select(`
+                .select(
+                    `
                     action_modification:action_modifications(id, name, action_type)
-                `)
+                `
+                )
                 .eq('player_id', player.id);
 
             const meleeSkills = (skills || [])
@@ -43,10 +46,10 @@ module.exports = {
 
             const choices = meleeSkills.map(skill => ({ name: skill.name, value: skill.id }));
             const filtered = choices.filter(choice => choice.name.toLowerCase().startsWith(focusedValue.toLowerCase()));
-            
+
             await interaction.respond(filtered);
         } catch (error) {
-            console.error('Error during maneuver autocomplete:', error);
+            log.error({ error }, 'Error during maneuver autocomplete');
             await interaction.respond([]);
         }
     },
@@ -78,7 +81,6 @@ module.exports = {
             return interaction.editReply('❌ The specified target is not in this combat.');
         }
 
-        // Validate skill ownership
         const { data: playerSkill, error: skillError } = await supabase
             .from('player_action_modifications')
             .select('id')
@@ -90,8 +92,15 @@ module.exports = {
             return interaction.editReply('❌ You do not have access to this skill or it does not exist.');
         }
 
-        await resolveCombatAction(client, channelId, sessionData.id, attackerCombatant.id, targetCombatant.id, maneuverId);
-        
+        await resolveCombatAction(
+            client,
+            channelId,
+            sessionData.id,
+            attackerCombatant.id,
+            targetCombatant.id,
+            maneuverId
+        );
+
         await interaction.editReply(`Your skill use against ${targetUser.username} has been resolved.`);
     },
 };

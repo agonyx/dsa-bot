@@ -1,9 +1,11 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('show-skills');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('showskills')
+        .setName('show-skills')
         .setDescription('Displays the special combat skills of your selected character.'),
 
     async execute(interaction) {
@@ -12,7 +14,6 @@ module.exports = {
         const { user } = interaction;
 
         try {
-            // --- 1. Fetch Player Data ---
             const { data: player, error: playerError } = await supabase
                 .from('players')
                 .select('id, name')
@@ -21,43 +22,42 @@ module.exports = {
                 .single();
 
             if (playerError || !player) {
-                return interaction.editReply('❌ You need to select a character first with `/choosecharacter`.');
+                return interaction.editReply('❌ You need to select a character first with `/choose-character`.');
             }
 
-            // --- 2. Fetch Player's Learned Skills via join ---
             const { data: skills, error: skillsError } = await supabase
                 .from('player_action_modifications')
-                .select(`
+                .select(
+                    `
                     ftw,
                     action_modification:action_modifications(id, name, description, action_type)
-                `)
+                `
+                )
                 .eq('player_id', player.id);
 
             if (skillsError) throw skillsError;
 
-            // --- 3. Create and Send the Embed ---
-            const embed = new EmbedBuilder()
-                .setColor(0x0099FF)
-                .setTitle(`Combat Skills for ${player.name}`);
+            const embed = new EmbedBuilder().setColor(0x0099ff).setTitle(`Combat Skills for ${player.name}`);
 
             if (skills && skills.length > 0) {
                 const skillsDescription = skills
                     .map(s => {
                         const skill = s.action_modification;
-                        if (!skill) return null; // Handle broken foreign key
+                        if (!skill) return null;
                         return `**${skill.name}**${s.ftw ? ` (FtW: ${s.ftw})` : ''}: ${skill.description}`;
                     })
-                    .filter(Boolean) // Remove null entries from broken FKs
+                    .filter(Boolean)
                     .join('\n');
-                embed.setDescription(skillsDescription || 'This character has not learned any special combat skills yet.');
+                embed.setDescription(
+                    skillsDescription || 'This character has not learned any special combat skills yet.'
+                );
             } else {
                 embed.setDescription('This character has not learned any special combat skills yet.');
             }
 
             await interaction.editReply({ embeds: [embed] });
-
         } catch (error) {
-            console.error('Error in /showskills:', error);
+            log.error({ error }, 'Error in /show-skills');
             await interaction.editReply('❌ An error occurred while fetching your skills.');
         }
     },

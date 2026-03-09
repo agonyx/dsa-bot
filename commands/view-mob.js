@@ -1,16 +1,42 @@
 const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
+const { createLogger } = require('../utils/logger');
+const log = createLogger('view-mob');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('viewmob')
+        .setName('view-mob')
         .setDescription('Displays the details of a specific mob template.')
-        .addStringOption(option => option
-            .setName('name')
-            .setDescription('The exact name of the mob template to view.')
-            .setRequired(true)
-            .setMaxLength(100))
+        .addStringOption(option =>
+            option
+                .setName('name')
+                .setDescription('The exact name of the mob template to view.')
+                .setRequired(true)
+                .setMaxLength(100)
+                .setAutocomplete(true)
+        )
         .setDMPermission(false),
+
+    async autocomplete(interaction) {
+        const focusedValue = interaction.options.getFocused();
+
+        try {
+            const { data: mobs } = await supabase
+                .from('mobs')
+                .select('name')
+                .order('name');
+
+            const choices = (mobs || []).map(m => ({ name: m.name, value: m.name }));
+            const filtered = choices.filter(c =>
+                c.name.toLowerCase().includes(focusedValue.toLowerCase())
+            );
+
+            await interaction.respond(filtered.slice(0, 25));
+        } catch (error) {
+            log.error({ error }, 'Autocomplete error');
+            await interaction.respond([]);
+        }
+    },
 
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
@@ -18,20 +44,16 @@ module.exports = {
         const mobName = interaction.options.getString('name');
 
         try {
-            const { data: mob, error } = await supabase
-                .from('mobs')
-                .select('*')
-                .eq('name', mobName)
-                .single();
+            const { data: mob, error } = await supabase.from('mobs').select('*').eq('name', mobName).single();
 
             if (error || !mob) {
-                return interaction.editReply({ 
-                    content: `❌ Mob template named **${mobName}** not found. Check the spelling or use \`/listmobs\`.` 
+                return interaction.editReply({
+                    content: `❌ Mob template named **${mobName}** not found. Check the spelling or use \`/list-mobs\`.`,
                 });
             }
 
             const mobEmbed = new EmbedBuilder()
-                .setColor(0x8B4513)
+                .setColor(0x8b4513)
                 .setTitle(`👾 Mob Details: ${mob.name} 👾`)
                 .setTimestamp();
 
@@ -49,10 +71,9 @@ module.exports = {
             );
 
             await interaction.editReply({ embeds: [mobEmbed] });
-
         } catch (error) {
-            console.error(`Error executing /viewmob for name "${mobName}":`, error);
+            log.error({ error, mobName }, 'Error executing /view-mob');
             await interaction.editReply({ content: `❌ Error: ${error.message || 'Failed to fetch mob details.'}` });
         }
-    }
+    },
 };
