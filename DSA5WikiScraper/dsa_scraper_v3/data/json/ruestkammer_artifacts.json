@@ -1,0 +1,1348 @@
+[
+  {
+    "id": "ruestkammer_artifacts_Erschaffung_karmaler_Artefakte",
+    "category": "ruestkammer_artifacts",
+    "name": "Erschaffung karmaler Artefakte",
+    "url": "https://dsa.ulisses-regelwiki.de/KdG_G%C3%B6tterwirken/erweiterte-liturgieregeln/erschaffung-karmaler-artefakte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Grundregeln",
+      "Götterwirken",
+      "Erweiterte Liturgieregeln"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Götterwirken"
+  },
+  {
+    "id": "ruestkammer_artifacts_Kraftspeicher",
+    "category": "ruestkammer_artifacts",
+    "name": "Kraftspeicher",
+    "url": "https://dsa.ulisses-regelwiki.de/Magische_Artefakte/kraftspeicher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Grundregeln",
+      "Artefaktzauberei"
+    ],
+    "properties": {},
+    "description": "Kraftspeicher sind spezielle Materialien, die als Batterie für Astralkraft genutzt werden können. Klassisches Beispiel sind die Karfunkelsteine der Drachen. Jedes dieser Materialien hat ein natürliches Maximum an Zauberkraft, die es aufnehmen kann. Ein Zauberer kann durch Körperkontakt mit dem Kraftspeicher auf die darin enthaltenen AsP zurückgreifen, ganz so, als ob es seine eigenen wären. Er kann während eines Zaubers auch frei bestimmen, wie viele AsP seines eigenen Vorrats und wie viele AsP vom Kraftspeicher genutzt werden und die Kosten so beliebig aufteilen. Jeder Zauberer kann Kraftspeicher verwenden, aber um sie aufzuladen, ist die Sonderfertigkeit Gefäß der Macht Voraussetzung. Der Gegenstand wird dazu mit einem ARCANOVI verzaubert und die gewünschte AsP-Menge als Zusatzkosten hineingegeben. Für eine Übersicht natürlicher Kraftspeicher und ihrer maximalen AsP siehe nachstehenden Tabelle.\n\n# Herstellungskosten: Die Herstellungskosten eines Kraftspeichers betragen die Kosten des ARCANOVI und der auf den Speicher übertragenen AsP. Karfunkelsteine, Kashra-Steine und Sangurit-Kristalle sind natürlich vorkommende Kraftspeicher, die bereits über AsP verfügen, sodass die Zusatzkosten der Aufladung beim ersten Mal optional ignoriert werden können.\n\n# Kraftspeicher nutzen: Um den Kraftspeicher zu nutzen, muss ein Zauberer mit ihm Körperkontakt herstellen. Es ist keine gesonderte Aktion nötig, um ihn anzuzapfen.\n\n# Kein weiterer Effekt: Der Kraftspeicher hat keinen Effekt eines üblichen Artefakts, sondern nur den Bonus durch die AsP.\n\n# Entleerung: Kraftspeicher können genutzt werden, bis sie leer sind und dann oder nach teilweiser Entleerung mit erneutem ARCANOVI und einfließenden AsP wieder aufgeladen werden.\n\nAnmerkung: *) natürlicher Kraftspeicher, der bei Fund bereits AsP enthält\n\nArkane Schmieden & Labore, 30 Geschuppte Tyrannen, Seite 158",
+    "subcategory": "Grundregeln"
+  },
+  {
+    "id": "ruestkammer_artifacts_Artefaktzauberei",
+    "category": "ruestkammer_artifacts",
+    "name": "Artefaktzauberei",
+    "url": "https://dsa.ulisses-regelwiki.de/Magische_Artefakte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Grundregeln"
+    ],
+    "properties": {},
+    "description": "Folgende allgemeine Regeln zu Artefakten gelten, wenn nichts anderes bei den Untertypen von Artefakten angegeben ist: # Um den gespeicherten Zauberspruch zu aktivieren, ist üblicherweise das Aussprechen eines Schlüsselwortes oder die Ausführung einer Schlüsselgeste nötig. Dazu ist 1 freie Aktion notwendig. # Das Artefakt würfelt die Zauberprobe des ausgelösten Zaubers und zwar mit Eigenschaftswerten von jeweils 14 und dem FW, der den in dem Artefakt gespeicherten FP des Zauberspruchs entspricht. # Die Wirkung des Zauberspruchs tritt zu Beginn der nächsten Kampfrunde ein. Bei Zaubersprüchen, wo eine variable Wirkungsdauer besteht, muss diese vor dem Verzaubern angekündigt werden. Gleiches gilt bei Sprüchen, wo der AsP-Einsatz vor dem Wirken des Zauberspruchs bestimmt werden muss. # Es gibt verschiedene Arten von Artefakten: Zauberspeicher-Artefakte, selbst aufladende Artefakte, dauerhaft wirkende Artefakte, Zaubertalismane und Kraftspeicher. Zauberspeicher-Artefakte haben nur eine kurze Wirkung und sind danach verbraucht, selbst aufladende Artefakte können ihre Kräfte wieder zurückgewinnen und dauerhaft wirkende Artefakte sind legendäre Zaubergegenstände, deren Wirkung sich nie erschöpft. Zaubertalismane verstärken nur einen Zauber, den der Zauberer bereits beherrscht. Kraftspeicher beinhalten AsP, auf die ein Zauberer zurückgreifen kann. # Auch wenn Zaubersprüche in diese Artefakte gebunden sind, gelten sie beim Kampf, beispielsweise gegen Dämonen, nicht als magische Waffen. # Spielst du mit Zaubererweiterungen, dann gilt: Diese können ebenfalls an Artefakte gebunden werden.\n\nBei dieser Variante der Artefakterschaffung werden ein oder mehrere Zaubersprüche im Artefakt gespeichert. Hierzu wird im ARCANOVI-Ritual zuerst das Objekt vorbereitet und dann der nötige Zauberspruch im Objekt verankert. Der ARCANOVI und der anschließende Zauberspruch müssen direkt aufeinanderfolgen. Soll der gleiche Zauber mehrfach im Artefakt verankert sein, müssen die AsP-Kosten des Zauberspruchs auch mehrfach gezahlt werden. Außerdem wird sowohl die Ritualprobe auf den ARCANOVI als auch die Probe auf den Zauberspruch um 1 pro zusätzlicher Aufladung erschwert.\n\nDer Zauberspruch kann nicht durch Zaubermodifikationen verändert werden. 1/10 der so durch den ARCANOVI und den verankerten Zauberspruch aufgewendeten AsP werden permanent verbraucht. Diese permanenten AsP gehen mit dem Wirken der Zauber verloren und müssen nicht noch einmal extra abgezogen werden (wenn also ein Artefakt 40 AsP kostet, verliert der Zauberer 40 AsP und 4 AsP davon gehen permanent verloren). Misslingt eine der Proben, so misslingt die gesamte Verzauberung. In diesem Falle fällt kein Verlust permanenter AsP an. Mehr als 7 Ladungen können in kein Artefakt gespeichert werden.\n\nEine deutlich komplexere Anwendung des ARCANOVI ist die Erschaffung sich selbst aufladender Artefakte. Das Artefakt ist in der Lage, astrale Kräfte aus der Umgebung zu ziehen, um den in ihm gebundenen Zauberspruch immer wieder wirken zu können. Abhängig davon, wie schnell sich das Artefakt wieder aufladen soll, variieren die Schwierigkeit der Ritualprobe des ARCANOVI und die Schwierigkeit der Zauberprobe des gewünschten Zauberspruchs. Je nachdem, wie oft sich eine Ladung auflädt (Tag, Woche, Monat), ist die Probe zusätzlich erschwert und kostet mehr AsP (siehe Tabelle). Ansonsten funktioniert das Erschaffen von selbst aufladenden Artefakten wie das Herstellen eines Zauberspeicher-Artefakts.\n\nTäglich aktivierbare Artefakte sind sehr selten und ausgesprochen teuer. Aufgrund des enormen Aufwands an AsP werden diese Artefakte meist nur von erfahrenen Ritualgruppen hergestellt.\n\nTheoretisch kann man Zaubersprüche in jedes beliebige Objekt binden. Und tatsächlich neigen manche Zauberkundige dazu, einfache Kupferringe, Holzlöffel und andere Alltagsgegenstände zu verzaubern. Es hat sich aber gezeigt, dass sich manche Materialien besonders gut für die Verzauberung eignen, während andere eher ungeeignet sind.\n\n# Eisen und Stahl sind deutlich aufwendiger zu verzaubern als die oben genannten Materialien. Ritualproben des ARCANOVI und des ZAUBERKLINGE sind bei Objekten, die dem Gewicht nach mindestens zur Hälfte aus Eisen oder Stahl bestehen, um -2 erschwert.\n\n# Manche Metalle wie das sogenannte Amulettmetall (eine Legierung aus Arkanium, Mondsilber und Quecksilber) vereinfachen wiederum Proben und senken die AsP-Kosten.\n\n# Auch manche Edelsteine sind für verschiedene Arten von Zaubersprüchen besonders geeignet. So sind Rubine bei der Verankerung von Zaubersprüchen hilfreich, die Feuer erschaffen oder Kraft spenden, während Achate Heilzauber unterstützen.\n\n# Zu guter Letzt gelten ausgefallene Hilfsmittel wie Alicorn, Ambra oder manche seltene Pflanzen als hilfreich. ## Hierbei gilt: Zusätzliche Aufwendungen von je 100 Silbertalern an passendem Material senken die Kosten an permanenten AsP um je 1. Maximal kann so die Hälfte der Kosten an permanenten AsP eingespart werden. ## Alternativ kann eine Aufwendung von passendem Material eine Erleichterung von 1 bei der Probe auf ARCANOVI herbeiführen. Bei einem Misslingen werden die Materialien trotzdem verbraucht.\n\nEin großes Mysterium der Artefaktmagie sind dauerhaft wirkende Artefakte, also solche, die über eine beliebige Zeit hinweg, manchmal über Jahrhunderte und Jahrtausende, ein und denselben Zauberspruch dauerhaft aktiv halten. Einige von ihnen können die Zauberwirkung sogar unterbrechen, bis der Nutzer den Effekt wieder aktivieren möchte. Es wird vermutet, dass hierzu eine Formel aus der Temporalmagie, der sogenannte INFINITUM verwendet wird, doch die wenigsten Zauberkundigen Aventuriens beherrschen ihn.\n\nBesonders bei sehr aufwendigen Artefakten und bei von Zauberlehrlingen verzauberten Übungsartefakten tauchen immer wieder störende Nebeneffekte auf. Wenn bei der Ritualprobe des ARCANOVI maximal eine QS von 1 erzielt wurde, wird geheim vom Meister auf folgende Tabelle gewürfelt:\n\nEin Zaubertalisman ist ein Artefakt, dass selbst keinen Zauber auslöst, aber einen festgelegten Zauber verstärken kann.\n\n# Um einen Zaubertalisman zu erschaffen, benötigt man die die SF Auxiliator . Man muss den Gegenstand mit einem ARCANOVI und dem gewünschten SPRUCH verzaubern.\n\n# Führt ein Zauberer einen Zaubertalisman mit einem Zauber mit sich und wirkt selbst diesen Zauber, so erhält er bei Gelingen +1 FP (bis zu einem Maximum von 18 FP).\n\n# Der Zaubertalisman hat keinen Effekt eines üblichen Artefakts, sondern nur den Bonus auf die FP.\n\n# Nach QS+4 Einsätzen des verstärkten Zaubers erlischt die Kraft des Zaubertalismans und die Verzauberung muss erneut erfolgen, um ihn aufzuladen.\n\nBei einem Kraftspeicher handelt es sich um einen Gegenstand, in dem kein Zauber verankert wurde, sondern der als Speicher für Astralpunkte dient.\n\n# Ein Zauberer kann durch Körperkontakt mit dem Kraftspeicher auf die darin enthaltenen AsP zurückgreifen, ganz so, als ob es seine eigenen wären. Er kann während eines Zaubers auch frei bestimmen, wie viele AsP seines eigenen Vorrats und wie viele AsP vom Kraftspeicher genutzt werden. Er hat also die Kosten beliebig aufteilen.\n\n# Um einen Kraftspeicher zu erschaffen benötigt man die die SF Gefäß der Macht . Man muss den Gegenstand mit einem ARCANOVI verzaubern und die gewünschte AsP-Menge hineinfließen lassen. Es gibt Kraftspeicher, die von Natur aus schon über AsP verfügen, sodass man beim ersten Mal diese Aufladung ignorieren und gleich die AsP nutzen kann. Erst danach muss man mit der Prozedur wieder AsP einfließen lassen.\n\n# Der Kraftspeicher hat keinen Effekt eines üblichen Artefakts, sondern nur den Bonus durch die AsP.\n\n# Wenn alle AsP des Kraftspeichers leer sind, kann man ihn wieder mit dem ARCANOVI und eigenen ASP aufladen.\n\nJe nach QS der ARCANOVI-Probe kann ein Zauberer sich folgende Artefakteigenschaften aussuchen. Dabei kann ein Artefakt auch mehrere Artefakteigenschaften aufweisen, solange der Zauberer die QS dafür ausgeben kann.\n\nArtefaktseele Sollte ein Artefakt nicht ohnehin durch einen Nebeneffekt durch eine Wesenheit beseelt worden sein, kann ein Zauberer auch dem Artefakt selbst eine Seele zukommen lassen, ein Verstand, der sich nur mit ihm unterhält. Die genauen Auswirkungen sind Meisterentscheid. QS : 5\n\nGespür des Schöpfers Der Hersteller des Artefakts spürt stets, in welcher Richtung sich das Artefakt befindet, gleich wie weit es von ihm entfernt ist. QS : 1\n\nMagischer Apport Das Artefakt kann vom Hersteller zu sich gerufen werden. Es fliegt auf dem kürzesten Weg mit Geschwindigkeit 15 zum Zauberer und umfliegt selbstständig Hindernisse. Fenster durchschlägt das Artefakt, Wände aus Holz oder Stein halten es jedoch auf. Der Zauberer muss für den Einsatz des Apports das Artefakt nicht sehen. QS : 3\n\nResistenz gegen profanen Schaden Strukturschaden, der gegen das Artefakt gerichtet wird, wird halbiert. QS : 1\n\nSelbstreparatur Am Ende jeder KR erhält das Artefakt wieder 1W6 Strukturpunkte zurück, wenn es vorher beschädigt wurde. QS : 2\n\nSiegel und Zertifikat Das Artefakt erhält ein Siegel und Zertifikat in seiner Signatur, sodass bei magischen Analysen erkannt werden kann, wer es erschaffen hat. QS : 1\n\nStarke Magie Das Artefakt würfelt auf Eigenschaftswerte von 15 statt 14. QS : 4\n\nUnzerstörbar Das Artefakt ist wie durch ein Bindungsritual eines Traditionsartefakts unzerstörbar und kann höchstens durch Drachenfeuer, Lava oder ähnliches vernichtet werden. QS : 4\n\nVariabler Auslöser Der gewählte Auslöser des Artefakts kann bei Wiederaufladung ausgetauscht werden. QS : 2\n\nVerschleierung Alle Proben, die zum Analysieren oder Entdecken des Artefakts verwendet werden, sind um –3 erschwert QS : 2\n\nPublikation(en): Regelwerk, Seite 266 ff. Kodex der Magie, Seite 303 ff.",
+    "subcategory": "Regeln"
+  },
+  {
+    "id": "ruestkammer_artifacts_Traditionsartefakte_und_mindere_Traditionsartefakte",
+    "category": "ruestkammer_artifacts",
+    "name": "Traditionsartefakte und mindere Traditionsartefakte",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefaktauswahl.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen"
+    ],
+    "properties": {
+      "Publikation(en)": "Aventurische Magie , Seite 10 ff. Aventurische Magie II , Seite 10 ff. Aventurische Magie III , Seite 10 ff. Kodex der Magie , Seite 31"
+    },
+    "description": "",
+    "subcategory": "Regeln"
+  },
+  {
+    "id": "ruestkammer_artifacts_Animistenwaffe",
+    "category": "ruestkammer_artifacts",
+    "name": "Animistenwaffe",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Animistenwaffe",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Animisten",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Waffenzauber",
+      "Anmerkung": "Ork-Animisten in Orks - Hauer & Schwarzer Pelz dazugekommen.",
+      "Publikation(en)": "Aventurische Magie III , Seite 18 Die Dampfenden Dschungel - Der Tiefe Süden & die Waldinseln , Seite 152 Die Gestade des Gottwals - Thorwal und das Gjalskerland , Seite 147 Helden des Wolfsfrosts , Seite 45 Orks - Hauer & Schwarzer Pelz , Seite 39"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Hauerkette",
+    "category": "ruestkammer_artifacts",
+    "name": "Hauerkette",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Hauerkette",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Goblinzauberinnen",
+      "Kategorie": "tertiäres Traditionsartefakt",
+      "Volumenpunkte": "9",
+      "Sonderfertigkeiten": "Hauerkettenzauber",
+      "Publikation(en)": "Kodex der Magie , Seite 119"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Alchimistenschale",
+    "category": "ruestkammer_artifacts",
+    "name": "Alchimistenschale",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Alchimistenschale",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Zauberalchimisten",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Alchimistische Schalenzauber",
+      "Publikation(en)": "Aventurische Magie II , Seite 41 Kodex der Magie , Seite 167"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Zauberkleidung",
+    "category": "ruestkammer_artifacts",
+    "name": "Zauberkleidung",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Zauberkleidung",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Zaubertänzer",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Gewandzauber",
+      "Publikation(en)": "Aventurische Magie , Seite 63 Das Dornenreich , Seite 153 Kodex der Magie , Seite 196"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Sippenchronik",
+    "category": "ruestkammer_artifacts",
+    "name": "Sippenchronik",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Sippenchronik",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Zibilja",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Chronikzauber",
+      "Publikation(en)": "Aventurische Magie III , Seite 48 Kodex der Magie , Seite 205"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Zauberschale",
+    "category": "ruestkammer_artifacts",
+    "name": "Zauberschale",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Zauberschale",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Gildenmagier",
+      "Kategorie": "minderes Traditionsartefakt",
+      "Sonderfertigkeiten": "Gildenmagische Schalenzauber",
+      "Anmerkung": "Für die Nutzung des minderen Traditionsartefaktes wird die allgemeine magische Sonderfertigkeit Schalenverzauberung benötigt.",
+      "Publikation(en)": "Kodex der Magie , Seite 108"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Druidensichel",
+    "category": "ruestkammer_artifacts",
+    "name": "Druidensichel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Druidensichel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Druiden",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Sichelrituale",
+      "Publikation(en)": "Aventurische Magie III , Seite 27 f. Die Flusslande - Der Kosch und die Nordmarken , Seite 151 f. Kodex der Magie , Seite 63 f."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Bannschwert",
+    "category": "ruestkammer_artifacts",
+    "name": "Bannschwert",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Bannschwert",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Gildenmagier",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Bannschwertzauber",
+      "Publikation(en)": "Aventurische Magie , Seite 28 Kodex der Magie , Seite 101 f. Sturmgeheul & Runenzauber (Die Gestade des Gottwals) , Seite 13"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Schelmenspielzeug",
+    "category": "ruestkammer_artifacts",
+    "name": "Schelmenspielzeug",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Schelmenspielzeug",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Schelme",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Spielzeugzauber",
+      "Publikation(en)": "Aventurische Magie II , Seite 37 Kodex der Magie , Seite 163"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Schweinetrommel",
+    "category": "ruestkammer_artifacts",
+    "name": "Schweinetrommel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Schweinetrommel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Goblinzauberinnen",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Schweinetrommelzauber",
+      "Publikation(en)": "Kodex der Magie , Seite 116 f."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Zauberinstrument",
+    "category": "ruestkammer_artifacts",
+    "name": "Zauberinstrument",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Zauberinstrument",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Zauberbarden",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Instrumentzauber",
+      "Publikation(en)": "Aventurische Magie , Seite 50 Die Gestade des Gottwals - Thorwal und das Gjalskerland , Seite 152 Die Siebenwindküste - Albernia und der Windhag , Seite 162 Die Sonnenküste - Der wilde Süden & die Zyklopeninseln , Seite 150 Kodex der Magie , Seite 181",
+      "Errata": "Das Fassungsvermögen beträgt 15 Volumenpunkten statt der in Aventurische Magie und Kodex der Magie fälschlicherweise 18."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Lebensring",
+    "category": "ruestkammer_artifacts",
+    "name": "Lebensring",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Lebensring",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Geoden",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Ringzauber",
+      "Anmerkung": "*) Der Lebensring weist die Besonderheit auf, dass er nicht abgenommen werden kann. Als Ausgleich verfügt er allerdings über weniger Volumenpunkte als vergleichbare Traditionsartefakte.",
+      "Publikation(en)": "Aventurische Magie III , Seite 33 f. Helden des Wolfsfrosts , Seite 39 Kodex der Magie , Seite 73"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Seeleninstrument_iama",
+    "category": "ruestkammer_artifacts",
+    "name": "Seeleninstrument (iama)",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Seeleninstrument+%28iama%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Elfen",
+      "Kategorie": "minderes Traditionsartefakt",
+      "Anmerkung": "[zur Klarstellung: keine Sonderfertigkeiten, einfach nur ein besonderer Gegenstand wohl]",
+      "Publikation(en)": "Kodex der Magie , Seite 70"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Zauberkugel",
+    "category": "ruestkammer_artifacts",
+    "name": "Zauberkugel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Zauberkugel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Scharlatane",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Scharlatanische Kugelzauber",
+      "Publikation(en)": "Aventurische Magie , Seite 35 Kodex der Magie , Seite 150"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Schuppenbeutel",
+    "category": "ruestkammer_artifacts",
+    "name": "Schuppenbeutel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Schuppenbeutel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Kristallomanten",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "18",
+      "Sonderfertigkeiten": "Beutelzauber",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 36 f. Kodex der Magie , Seite 131 f."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Narrenkappe",
+    "category": "ruestkammer_artifacts",
+    "name": "Narrenkappe",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Narrenkappe",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Schelme",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Kappenzauber",
+      "Publikation(en)": "Aventurische Magie II , Seite 35 Kodex der Magie , Seite 160 f."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Kristallkugel",
+    "category": "ruestkammer_artifacts",
+    "name": "Kristallkugel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Kristallkugel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Kristallomanten",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Kristallomantische  Kugelzauber",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 38 f. Kodex der Magie , Seite 134"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Krallenkette",
+    "category": "ruestkammer_artifacts",
+    "name": "Krallenkette",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Krallenkette",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Animisten",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Krallenkettenzaubern",
+      "Publikation(en)": "Geisterwald & Knochenklippen (Die Gestade des Gottwals) , Seite 14 Kodex der Magie , Seite 48 Orks - Hauer & Schwarzer Pelz , Seite 40"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Flugger_t",
+    "category": "ruestkammer_artifacts",
+    "name": "Fluggerät",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Flugger%C3%A4t",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Hexen",
+      "Kategorie": "minderes Traditionsartefakt",
+      "Anmerkung": "Für die Nutzung des minderen Traditionsartefaktes wird die allgemeine magische Sonderfertigkeit Flugsalbe benötigt. Weitere SF für das Fluggerät gibt es nicht.",
+      "Publikation(en)": "Regelwerk , Seite 281 Aventurische Magie II , Seite 233 Kodex der Magie , Seite 129 f."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Zauberstecken",
+    "category": "ruestkammer_artifacts",
+    "name": "Zauberstecken",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Zauberstecken",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Scharlatane",
+      "Kategorie": "minderes Traditionsartefakt",
+      "Sonderfertigkeiten": "Steckenzauber",
+      "Anmerkung": "Für die Nutzung des minderen Traditionsartefaktes wird die allgemeine magische Sonderfertigkeit Steckenverzauberung benötigt.",
+      "Publikation(en)": "Aventurische Magie , Seite 39 Kodex der Magie , Seite 154"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Magierkugel",
+    "category": "ruestkammer_artifacts",
+    "name": "Magierkugel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Magierkugel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Gildenmagier",
+      "Kategorie": "tertiäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Gildenmagische Kugelzauber",
+      "Anmerkung": "[alternative Bezeichnung: Gildenmagische Magierkugel]",
+      "Publikation(en)": "Aventurische Magie II , Seite 15 Kodex der Magie , Seite 104"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Thin_Trinkhorn",
+    "category": "ruestkammer_artifacts",
+    "name": "Thin (Trinkhorn)",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Thin+%28Trinkhorn%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Zauberbarden",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Trinkhornzauber",
+      "Anmerkung": "Tradition : Nur der Untergruppe der Sangara zugewiesen.",
+      "Publikation(en)": "Kodex der Magie , Seite 184 f. Sturmgeheul & Runenzauber (Die Gestade des Gottwals) , Seite 22"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Echsenhaube",
+    "category": "ruestkammer_artifacts",
+    "name": "Echsenhaube",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Echsenhaube",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Kristallomanten",
+      "Kategorie": "tertiäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Haubenzauber",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 41 f. Kodex der Magie , Seite 138"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Druidendolch",
+    "category": "ruestkammer_artifacts",
+    "name": "Druidendolch",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Druidendolch",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Druiden",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Dolchrituale",
+      "Publikation(en)": "Aventurische Magie III , Seite 24 f. Die Flusslande - Der Kosch und die Nordmarken , Seite 150 Die Streitenden Königreiche - Nostria und Andergast , Seite 158 Kodex der Magie , Seite 60"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Goblinkeule",
+    "category": "ruestkammer_artifacts",
+    "name": "Goblinkeule",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Goblinkeule",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Goblinzauberinnen",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Keulenzauber",
+      "Publikation(en)": "Kodex der Magie , Seite 112 ff."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Hexenkessel",
+    "category": "ruestkammer_artifacts",
+    "name": "Hexenkessel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Hexenkessel",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Hexen",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "15",
+      "Sonderfertigkeiten": "Kesselzauber",
+      "Publikation(en)": "Aventurische Magie II , Seite 26 Kodex der Magie , Seite 126"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Magierstab",
+    "category": "ruestkammer_artifacts",
+    "name": "Magierstab",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Magierstab",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Gildenmagier",
+      "Kategorie": "primäres Traditionsartefakt",
+      "Volumenpunkte": "18",
+      "Sonderfertigkeiten": "Stabzauber",
+      "Anmerkung": "*) Mittels bestimmter Stabzauber kann das Volumen vergrößert werden; dabei dürfen auf demselben Magierstab jedoch nur Stabzauber zur Volumenerweiterung in zwei verschiedenen Stabzauberzweigen (zusätzlich zur allgemeinen Volumenerweiterung) liegen.",
+      "Publikation(en)": "Regelwerk , Seite 275 f. Aventurische Magie , Seite 20 Kodex der Magie , Seite 88 f."
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_Thin_Trinkhorn",
+    "category": "ruestkammer_artifacts",
+    "name": "Thin (Trinkhorn)",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt.html?traditionsartefakt=Thin%20(Trinkhorn)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Erläuterungen",
+      "Traditionsartefakte (magische)"
+    ],
+    "properties": {
+      "Tradition": "Zauberbarden",
+      "Kategorie": "sekundäres Traditionsartefakt",
+      "Volumenpunkte": "12",
+      "Sonderfertigkeiten": "Trinkhornzauber",
+      "Anmerkung": "Tradition : Nur der Untergruppe der Sangara zugewiesen.",
+      "Publikation(en)": "Kodex der Magie , Seite 184 f. Sturmgeheul & Runenzauber (Die Gestade des Gottwals) , Seite 22"
+    },
+    "description": "",
+    "subcategory": "Erläuterungen"
+  },
+  {
+    "id": "ruestkammer_artifacts_WdV_-_Anregende_Artefakte",
+    "category": "ruestkammer_artifacts",
+    "name": "WdV - Anregende Artefakte",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV-AnregendeArtefakte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Wege der Vereinigungen - ab 18 Jahre"
+  },
+  {
+    "id": "ruestkammer_artifacts_Kleines_Orbitarium",
+    "category": "ruestkammer_artifacts",
+    "name": "Kleines Orbitarium",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_kleines_orbitarium.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Durch diese Sonderfertigkeit kann der Magier in der Kugel ein Abbild des Sternenhimmels erzeugen. Das Abbild leuchtet sanft und zeigt nur den Sternenhimmel, den auch der Magier mit bloßem Auge über sich sehen kann. Bei Bewölkung kann der Meister entscheiden, dass die Sonderfertigkeit nicht funktioniert. Der Magier kann einzelne Teile des Sternenhimmels auf der Kugel vergrößern. Dadurch erhält er eine Erleichterung von 1 bei Proben auf Sternkunde .\n\nPublikation: Aventurische Magie II Seite 17",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Konservierungsgef",
+    "category": "ruestkammer_artifacts",
+    "name": "Konservierungsgefäß",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_konservierungsgefaess.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Kugel lässt sich durch eine Berührung und den Willen des Magiers öffnen. In das entstandene Loch kann der Zauberer etwas hinlegen, was durch das Verschließen der Kugel nicht nur hermetisch abgeriegelt ist, sondern auch solange konserviert wird, wie es sich im Inneren der Kugel befindet. Die Kugel bietet Platz für einen halben Liter. Das Gewicht des gelagerten Gegenstands darf einen halben Stein nicht übersteigen.\n\nAsP-Kosten: 2 AsP für das Schließen oder Öffnen der Kugel\n\nPublikation: Aventurische Magie II Seite 17",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Aufbewahrung",
+    "category": "ruestkammer_artifacts",
+    "name": "Aufbewahrung",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_aufbewahrung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Magier kann Gegenstände bis zur Größe einer Tasse mit der Kugel berühren und sie nach 16 Aktionen in die Kugel transferieren. Die Kugel bietet beliebig vielen Gegenständen mit einem Gesamtgewicht von bis zu 5 Stein Platz. Es können nur profane Gegenstände aufgenommen werden. Mittels 2 Aktionen kann ein beliebiger, vom Magier bestimmter Gegenstand wieder aus der Kugel entfernt werden. Nahrungsmittel werden in der Kugel nicht konserviert, können also verderben.\n\nAsP-Kosten: 1 AsP pro Gegenstand, der transferiert oder entfernt werden soll\n\nPublikation: Aventurische Magie II Seite 15",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Schutz_gegen_Untote",
+    "category": "ruestkammer_artifacts",
+    "name": "Schutz gegen Untote",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_schutz_untote.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Um die Magierkugel entsteht ein kugelförmiges Schutzfeld, das von Wesen des Typus Untote nicht betreten werden kann. Die Reichweite ist so groß wie die Angriffsdistanz des Magiers. Die Aktivierung dauert 2 Aktionen. Bewegt sich der Magier mit der Kugel, weichen die Untoten aus. Haben sie keine Ausweichmöglichkeit, können sie den Radius der Kugel betreten, haben aber Erschwernisse von 1 auf alle Proben und versuchen, so bald wie möglich die Zone zu verlassen.\n\nPublikation: Aventurische Magie II Seite 18",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Dschinnenlampe",
+    "category": "ruestkammer_artifacts",
+    "name": "Dschinnenlampe",
+    "url": "https://dsa.ulisses-regelwiki.de/Dschinnenlampe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Einmal pro Monat kann das Artefakt für eine Stunde aktiviert werden, sodass der darin wohnende Feuerdschinn erscheint. Auslöser ist das Polieren der Lampe.\n\nPublikation: Aventurischer Almanach, Seite 198",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Esravun_das_Sternenschwert_des_Mautaban_2H",
+    "category": "ruestkammer_artifacts",
+    "name": "Esravun, das Sternenschwert des Mautaban (2H)",
+    "url": "https://dsa.ulisses-regelwiki.de/Artefakte/esravun-das-sternenschwert-des-mautaban.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffen",
+      "Zweihandschwerter",
+      "Seltene & Einmalige Zweihandschwerter"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Waffe ist magisch und besteht zu 50 % aus Endurium, zu 50 % aus Meteoreisen. Der Träger des Objekts hört alle 1W6 Tage wispernde Stimmen in einer ihm unbekannten Sprache.\n\nWaffenvorteil: Gelingt dem Träger Esravuns ein Kritischer Erfolg ( Attacke / Verteidugung / Fernkampf ), ist der Bestätigungswurf um +2 Punkte erleichtert.\n\nWaffennachteil: Mit Esravun sind Finten um zusätzlich -1 erschwert.\n\nBeschreibung: ein legendärer Doppelkhunchomer, geschmiedet aus dem Meteor von Elem, besteht aus Meteoreisen und Endurium\n\nKönigin der Tränen, Seite 31 Rüstkammer des Wüstenreichs, Seite 18",
+    "subcategory": "Zweihandschwerter"
+  },
+  {
+    "id": "ruestkammer_artifacts_Wunderwerke_der_Mechanik",
+    "category": "ruestkammer_artifacts",
+    "name": "Wunderwerke der Mechanik",
+    "url": "https://dsa.ulisses-regelwiki.de/wunderwerke-der-mechanik.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer"
+    ],
+    "properties": {},
+    "description": "Falls ein Held ein Wunderwerk der Mechanik kaufen will, statt es selbst herzustellen, kann er dies bei einem zwergischen oder menschlichen Mechanikus tun.\n\n*) Zusätzlich müssen noch die Kosten für eine entsprechende Armbrust und Munition gezahlt werden.\n\nPublikation: Rüstkammer der Flusslande, Seite 23",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "ruestkammer_artifacts_Bindung_der_Magierkugel",
+    "category": "ruestkammer_artifacts",
+    "name": "Bindung der Magierkugel",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_bindung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Bindung der Magierkugel ist der erste Kugelzauber, der auf eine gildenmagische Magierkugel gewirkt wird. Mit ihm wird die Magierkugel gebunden, und fortan ist sie unzerbrechlich. Einzig elementares Feuer, das heißer brennt als ein Drachenodem oder ein IGNIFAXIUS, sowie gezielte Antimagie können sie zerstören. Die Magierkugel gilt von nun an als magische Waffe und kann nicht durch andere Mittel wie den ARCANOVI mit weiteren Zaubern belegt werden. Ein Zauberer kann immer nur eine Magierkugel besitzen. Das Binden einer Magierkugel kostet den Zauberer einmalig 2 permanente AsP. Der Zauberer kann sich entscheiden, seine Verbindung zur Kugel zu lösen, beispielsweise, um eine neue an sich zu binden. Nach dem Tod eines Zauberers verliert die Kugel nach 24 Stunden die permanent gespeicherten AsP und jegliche Magie.\n\nPublikation: Aventurische Magie II Seite 15",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Talismane",
+    "category": "ruestkammer_artifacts",
+    "name": "Talismane",
+    "url": "https://dsa.ulisses-regelwiki.de/Artefakte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Der_Schleier_des_Nebels",
+    "category": "ruestkammer_artifacts",
+    "name": "Der Schleier des Nebels",
+    "url": "https://dsa.ulisses-regelwiki.de/Artefakte/der-schleier-des-nebels.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein Schleier aus durchsichtiger blauer Seide, von seinen endlosen Reisen braun verkrustet\n\nWirkung: Der Träger des Schleiers kann von Lebewesen und Seelen bzw. Geistern von einstigen Lebewesen nicht mehr sinnlich wahrgenommen werden, wenn er das nicht will. Er ist groß genug, um zwei Lebewesen der Größenkategorie mittel oder ein großes zu verbergen. Er macht keine Objekte unsichtbar, es sei denn, es handelt sich um Kleidung, Rüstung und Ausrüstung, die gerade am Körper getragen wird. Wenn der Schleier für Rahja nicht gefällige Zwecke missbraucht wird, also etwa, um jemanden hinterrücks anzugreifen, verlässt er den oder die Trägerin augenblicklich und fliegt davon. Es ist unmöglich, ihn davon abzuhalten.\n\nKosten: unbekannt; 8 KaP oder 1 Schip, wirkt bis zum Ablegen, aber max. 1 Stunde",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Vergr_erungsglas",
+    "category": "ruestkammer_artifacts",
+    "name": "Vergrößerungsglas",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_vergroesserungsglas.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Kugel kann als Lupe dienen, ohne dass sich ihre Form ändert. Als Vergrößerungsglas dient sie dazu, kleine Schriftzeichen oder Symbole lesbar zu machen oder winzige Objekte zu untersuchen. Zu diesem Zweck ist eine Probe auf Sinnesschärfe (Suchen oder Wahrnehmen) erforderlich, die um 2 erleichtert ist. Die Kugel kann mit diesem Zauber nicht als Fernglas benutzt werden.\n\nPublikation: Aventurische Magie II Seite 18",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Artefakte",
+    "category": "ruestkammer_artifacts",
+    "name": "Artefakte",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Artefakte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "ruestkammer_artifacts_Tafel_der_Lumnianer",
+    "category": "ruestkammer_artifacts",
+    "name": "Tafel der Lumnianer",
+    "url": "https://dsa.ulisses-regelwiki.de/Artefakte/tafel-der-lumnianer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Beschreibung: eine Steintafel mit Reliefbildern eines untergegangenen Volks\n\nWirkung: Wird die Tafel mit Blut benetzt, so offenbaren sich winzige Einschlüsse von Illuminium in einer abgebildeten Sternenkonstellation, die zu leuchten beginnt. Wer die Tafel nutzt, erhält bei Proben auf Orientierung und Sternkunde jeweils eine Erleichterung von QS / 2 Punkten (sofern das Illuminium leuchtet).\n\nKosten: unbekannt; für insgesamt 1 Schip sowie 1 LeP pro Stunde kann die Tafel für bis zu 24 Stunden aktiviert werden.",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Magische_Artefakte",
+    "category": "ruestkammer_artifacts",
+    "name": "Magische Artefakte",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Artefakte/magische-artefakte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Raschas_Blutkelch",
+    "category": "ruestkammer_artifacts",
+    "name": "Raschas Blutkelch",
+    "url": "https://dsa.ulisses-regelwiki.de/Artefakte/raschas-blutkelch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein grobes Tongefäß mit Mustern, die Ferkina-Schmucknarben ähneln\n\nWirkung: Blut, das in den Kelch gefüllt wird, wird von jeglichen Krankheitsauslösern und Giften gereinigt. Handelt es sich um Blut eines Wesens ab der Größenkategorie groß und/oder eines Kulturschaffenden, so heilt der Kelch einem daraus Trinkenden LeP im Verhältnis 1:1, die den SP entsprechen, die zum Blutverlust führten. Allerdings werden alle so geheilten LeP von der oder den kommenden Regenerationsphasen des Trinkenden abgezogen, bis der Bonus durch den Kelch ausgeglichen wurde. Eine Nutzung des Kelches heilt max. QS x 3 LeP. Zusätzlich können bis zu QS/2 Stufen Betäubung abgebaut werden. Wurde durch den Kelch ein Gift oder eine Krankheit neutralisiert, so erhält der Trinkende ab Krankheits- / Giftstufe 3/4/5/6 1/2/3/4 Stufen Schmerz für 1 Stunde.\n\nKosten: unbekannt; für 1 Schip sowie entsprechende Mengen Blut kann der Kelch aktiviert werden",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Gro_es_Orbitarium",
+    "category": "ruestkammer_artifacts",
+    "name": "Großes Orbitarium",
+    "url": "https://dsa.ulisses-regelwiki.de/traditionsartefakt_kugelzauber_grosses_Orbitarium.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Magische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Durch diese Sonderfertigkeit kann der Magier in der Kugel ein Abbild des Sternenhimmels erzeugen. Das Abbild leuchtet sanft und zeigt nur den Sternenhimmel, den auch der Magier mit bloßem Auge über sich sehen kann. Bei Bewölkung kann der Meister entscheiden, dass die Sonderfertigkeit nicht funktioniert. Der Magier kann einzelne Teile des Sternenhimmels auf der Kugel vergrößern. Dadurch erhält er eine Erleichterung von 2 bei Proben auf Sternkunde .\n\nPublikation: Aventurische Magie II Seite 17",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "ruestkammer_artifacts_Armreif_der_Willensst_rke",
+    "category": "ruestkammer_artifacts",
+    "name": "Armreif der Willensstärke",
+    "url": "https://dsa.ulisses-regelwiki.de/ArmreifderWillensst.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Zauberspeicher mit 3 PSYCHOSTABILIS (FP 9, 20 Minuten Wirkungsdauer), Auslöser ist das Drehen des Reifes\n\nPublikation: Regelwerk (3. überarb. Aufl.), Seite 270",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Das_Auge_des_Morgens",
+    "category": "ruestkammer_artifacts",
+    "name": "Das Auge des Morgens",
+    "url": "https://dsa.ulisses-regelwiki.de/DasAugedesMorgens.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Auge des Morgens erlaubt bei der richtigen Sternenkonstellation, etwa einmal monatlich, einen Blick auf ferne Ereignisse. Hierzu muss ein Begriff genannt werden, das Auge zeigt dann eine Person, ein Ereignis oder einen Ort. Meist zeigt es Bilder aus der Gegenwart, gelegentlich auch solche aus der Vergangenheit und ganz selten einmal auch Eindrücke aus der Zukunft. In seltenen Fällen ist es auch schon mal vorgekommen, dass nur graues Ätherrauschen und umherzuckende Blitze zu sehen waren. Aktiviert werden kann das Auge des Morgens mittels des geheimen Reichssiegels oder über Schlüsselworte. Diese sollen jedoch allein den höchsten Mitgliedern des Ordens und der Kaiserfamilie bekannt sein.\n\nPublikation: Aventurischer Almanach, Seite 198",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Efferdperle",
+    "category": "ruestkammer_artifacts",
+    "name": "Efferdperle",
+    "url": "https://dsa.ulisses-regelwiki.de/Efferdperle.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Efferdperle ist ein Talisman des Efferd, der seinen Träger vor unheiligen Kreaturen aus der Domäne Charyptoroths beschützt. Sie erleichtert Zeremonien der Efferdkirche um 3.\n\nWer die Kräfte der Efferdperle einsetzt, kann einen Schutzkreis von 6 Schritt Radius um sich errichten, der alle Dämonen und mit Charyptoroth assoziierten Wesen (Krakonier, Hummerier, Charyptoroth-Paktierer, Seeschlangen) davon abhält, sich zu nähern. Der Schutzkreis bewegt sich mit dem Träger und gilt als geweihter Boden. Damit ist es dem Talisman möglich, solche Wesen zu verletzen, wenn man sie in den Radius der Wirkung zwingt. Grundsätzlich versuchen die betroffenen Wesen, sich vom Wirkungsradius fernzuhalten. Gelingt ihnen das nicht und zwingt der Träger der Efferdperle sie in den Radius, können sie dort allerdings normal handeln. Die Wirkung hält QS Minuten an.\n\nPublikation: Havena - Versunkene Geheimnisse, Seite 93",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Firnklinge",
+    "category": "ruestkammer_artifacts",
+    "name": "Firnklinge",
+    "url": "https://dsa.ulisses-regelwiki.de/Firnklinge.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Säbel wurde mit ZAUBERKLINGE verzaubert und gilt für die nächsten 80 Jahre als magische Waffe.\n\nPublikation: Regelwerk (3. überarb. Aufl.), Seite 270",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Kraftg_rtel",
+    "category": "ruestkammer_artifacts",
+    "name": "Kraftgürtel",
+    "url": "https://dsa.ulisses-regelwiki.de/Kraftguertel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Drückt man auf die Augen des Ogers, wird der Träger von enormen Kräften durchdrungen. Der Gürtel wirkt als Zauberspeicher mit 3 ATTRIBUTO KÖRPERKRAFT (FW 12).\n\nJe nach QS erhält der Träger des Kraftgürtels verschiedene Boni. Die Boni sind kumulativ, das heißt bei QS 3 hat der Träger insgesamt KK +2 und ZK +1.\n\nFür jede QS hält die Wirkung des Kraftgürtels 10 Minuten.\n\nPublikation: Aventurischer Almanach, Seite 198",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Krakenauge",
+    "category": "ruestkammer_artifacts",
+    "name": "Krakenauge",
+    "url": "https://dsa.ulisses-regelwiki.de/Krakenauge.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Krakenauge ist ein erzdämonischer Talisman aus der Domäne Charyptoroths, der Macht über Wesen aus der Tiefsee verleiht. Das Auge erleichtert Beschwörungen von Dämonen aus Charyptoroths Gefolge um 3. Darüber hinaus ähnelt es einem dauerhaft wirkenden Artefakt mit einem HERR ÜBER DAS TIERREICH (20 FP), der sich jedoch auf Meereslebewesen innerhalb von 16 Schritt Reichweite beschränkt. Mit dem Krakenauge lassen sich Meereslebewesen aller Größenkategorien beherrschen, abgesehen von Kulturschaffenden, Delphinen, Walen und Rochen. Selbst Seeschlangen und andere ähnlich große Meeresungeheuer können der Wirkung des dunklen Talismans nicht widerstehen.\n\nPublikation: Havena - Versunkene Geheimnisse, Seite 92",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Maske_der_Tausend_Gesichter",
+    "category": "ruestkammer_artifacts",
+    "name": "Maske der Tausend Gesichter",
+    "url": "https://dsa.ulisses-regelwiki.de/Maske_der_Tausend_Gesichter.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Aussehen: eine leichte Maske aus Brokatstoff in verschiedenen dunklen Grautönen\n\nWirkung: selbstaufladendes Artefakt mit DUPLICATUS (FW 18), einmal wöchentlich aktivierbar, Auslöser durch Aufsetzen der Maske\n\nPublikation(en): Heldenwerk-Archiv 3, Seite 122",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Paralysis-Brosche",
+    "category": "ruestkammer_artifacts",
+    "name": "Paralysis-Brosche",
+    "url": "https://dsa.ulisses-regelwiki.de/Paralysis-Brosche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Zauberspeicher mit 1 PARALYSIS (FW 12), Auslöser ist das Handauflegen auf die Brosche und das Rufen des Worts „Yeti“.\n\nPublikation: Aventurischer Almanach, Seite 198",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Spurtstiefel",
+    "category": "ruestkammer_artifacts",
+    "name": "Spurtstiefel",
+    "url": "https://dsa.ulisses-regelwiki.de/Spurtstiefel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Selbst aufladendes Artefakt mit AXXELERATUS (FW 9, 15 Kampfrunden), einmal wöchentlich aktivierbar, Auslöser durch Zusammenschlagen der Hacken.\n\nPublikation: Aventurischer Almanach, Seite 199",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Syronius_sch_tzende_Klinge",
+    "category": "ruestkammer_artifacts",
+    "name": "Syroniusʼ schützende Klinge",
+    "url": "https://dsa.ulisses-regelwiki.de/Syronius_schuetzende_Klinge.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Schwert wurde mit ZAUBERKLINGE verzaubert und gilt für die nächsten 60 Jahre als magische Waffe. Zusätzlich ist es ein selbst aufladendes Artefakt mit ARMATRUTZ (FW 12, RS 2 für 12 Minuten), das einmal wöchentlich aktivierbar ist. Auslöser ist das Schlüsselwort: „Syroniusʼ Panzer“.\n\nKosten: 196 AsP, 20 zusätzlich permanent\n\nPublikation: Aventurischer Almanach, Seite 199",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Teleport-Ring",
+    "category": "ruestkammer_artifacts",
+    "name": "Teleport-Ring",
+    "url": "https://dsa.ulisses-regelwiki.de/Teleport-Ring.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Wirkung: Zauberspeicher mit 2 TRANSVERSALIS (je FW 15), Auslöser ist das Drehen des Rings.\n\nPublikation: Aventurischer Almanach, Seite 199",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Widderhalskette",
+    "category": "ruestkammer_artifacts",
+    "name": "Widderhalskette",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_Widderhalskette.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: eine auffällige Goldkette mit einem dicken Widderkopf als Anhänger\n\nWirkung: Dieser Zauberspeicher kombiniert einmalig die Wirkung der Zauber Satuarias Herrlichkeit (12 FP) mit dem von Levthans Feuer (12 FP). Ausleglöst wird die Wirkung durch Konzentration und einen mindestens 5 Sekunden dauernden Blickkontakt zwischen dem Opfer und dem Träger.\n\nDie Widderhalskette wird vor allem von Hexern hergestellt, die bei Frauen und Männern wenig erfolgreich sind. Manche Stücke verkaufen sie aber auch, sind sie doch ebenso begehrte wie einträgliche Verführungswerkzeuge.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Glanzvoller_Kettenhemdbikini",
+    "category": "ruestkammer_artifacts",
+    "name": "Glanzvoller Kettenhemdbikini",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_kettenhemdbikini.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein wunderschöner, leicht glitzernder Kettenhemdbikini, der meist besonders eng anliegt und wenig bedeckt\n\nWirkung: Auf diesem legendären, dauerhaft wirkenden Artefakt liegt ein Armatrutz, der dem Ziel +3 RS verleiht (zusätzlich zum RS, den der Kettenhemdbikini sowieso verleiht).\n\nAlle übrigen Werte entsprechen dem eines profanen Kettenhemdbikinis (siehe Seite XXX ).\n\nDiese magischen Artefakte sind vermutlich der Grund für die Legende, dass dieses Rüstungsstück seine Trägerin genauso gut schützt wie ein Kettenhemd.\n\nSeine Ursprünge verlieren sich im Dunkeln der Geschichte. Fast alle Kulturen, in denen Kettenrüstungen hergestellt werden, kennen jedoch Märchen über sagenhafte Trägerinnen der beliebten Rüstung.\n\nKosten: 350 AsP, zusätzlich 35 permanent",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Hexisches_Lippenrot",
+    "category": "ruestkammer_artifacts",
+    "name": "Hexisches Lippenrot",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_lippenrot.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: Lippenrot in einem kleinen Tiegelchen\n\nWirkung: Auf dem Zauberspeicher wirkt dreimalig Satuarias Herrlichkeit (12 FP). Trägt ein Kulturschaffender das Lippenrot auf seine Lippen auf, wird der Zauber aktiviert.\n\nEs wird meist von Hexen für den Eigenbedarf hergestellt oder um es an jene weiterzuverkaufen, die sich für ein Fest zurechtmachen oder ihren Liebsten verführen wollen.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Olisbosg_rtel_der_Radscha_Uschtammar",
+    "category": "ruestkammer_artifacts",
+    "name": "Olisbosgürtel der Radscha Uschtammar",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_Olisbosg%C3%BCrtel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: Olisbosgürtel aus Leder mit einem Dildo aus Glas\n\nWirkung: Auf dem magischen Olisbosgürtel, einem selbst aufladenden Artefakt, liegt der Zauber Penisformung (12 FP, lädt sich wöchentlich auf). Sobald eine Trägerin den Gürtel anzieht und die Radscha Uschtammar anbetet, wirkt der Zauber, und der Dildo verwandelt sich in einen echten Penis, der mit der Trägerin körperlich verbunden ist und mit dem sie fühlen kann. Der Penis kann alle Sexpraktiken ausführen, die mit einem Penis durchgeführt werden können, selbst Samenspiele. Die Zeugung von Nachkommen ist unter Einfluss dieses Artefakts nicht möglich.\n\nDiese Gürtel sind vor allem in den Tulamidenlanden, insbesondere in der Gegend um Fasar bekannt, aber sehr selten.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Orgienmaske",
+    "category": "ruestkammer_artifacts",
+    "name": "Orgienmaske",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_Orgienmaske.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: eine schwarze Halbmaske aus Leder\n\nWirkung: Auf dem Zauberspeicher wirkt dreimal der Zauberspruch Erregung spüren (12 FP). Er wird durch das Wort „Levthan“ ausgelöst, allerdings nur, wenn die Trägerin sich beim Liebespiel zu dritt oder bei einer Orgie vergnügt. Die Magie der Maske lässt sich aber nur auf einen Teilnehmer der Orgien-Gruppe anwenden.\n\nDas Artefakt ist für die Anwendung bei Orgien vorgesehen, um die Vorlieben des Ziels der Begierde zu erspüren und somit das Liebesspiel zu vereinfachen. Sie ist vor allem im Horasreich und in Al’Anfa verbreitet.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Projektionskugel_der_Wollust",
+    "category": "ruestkammer_artifacts",
+    "name": "Projektionskugel der Wollust",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_Projektionskugel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: eine etwa 5 bis 10 Halbfinger durchmessende Glaskugel\n\nWirkung: Dieser Zauberspeicher erzeugt eine erotische Bildillusion. Drückt ein Kulturschaffender auf die Kugel und spricht den Losungssatz (meist bezogen auf die Illusion, etwa „Lustvolle Levthansweibchen“, „Unterwürfige Uthurier“ oder „Geile Gardisten, Teil III“), so wird der darin enthaltene Oculus Illusionis (12 FP, Wirkungsdauer 30 Minuten) ausgelöst. Die dargestellte Szene ist ein Liebesakt, der allen Zuschauern als visuelle Erotika dienen kann.\n\nIm Horasreich und Aranien wird diese Kugel gerne von Scharlatanen und Illusionsmagiern hergestellt, die damit gutes Geld verdienen. Zwar könnten sie auch selbst aufladende Artefakte mit der gleichen Wirkung erschaffen, aber es ist wesentlich lukrativer, wenn die Kundschaft immer wieder zu ihnen kommen muss. Illusionen mit zusätzlicher Täuschung des Gehörsinns oder gar des Tastsinns sind extrem selten und kosten leicht das Doppelte bis Dreifache.\n\nPreis: 650 Silbertaler, oft auch zu Einstiegspreisen von ca. 30 Silbertalern; Einige Erotikhändler halten sogar konstante Preise von ca. 50 Silbertalern",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Streichelfeder_der_Verz_ckung",
+    "category": "ruestkammer_artifacts",
+    "name": "Streichelfeder der Verzückung",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_streichelfeder.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: eine große Vogelfeder eines elburischen Liebespfaus\n\nWirkung: Auf dem selbst aufladenden Artefakt liegt ein Verlangen kontrollieren (12 FP, lädt sich täglich auf). Die Feder wird aktiviert, indem man sacht über den nackten Körper eines anderen Kulturschaffenden streichelt und ihn so in Erregung versetzt.\n\nSolche Federn werden gerne in den Tulamidenlanden verwendet, insbesondere in Aranien.\n\nKosten: 116 AsP, zusätzlich 12 permanent",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Verfluchter_Versteifungsring",
+    "category": "ruestkammer_artifacts",
+    "name": "Verfluchter Versteifungsring",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_versteifungsring.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein kleiner Ring aus Bronze\n\nWirkung: Dieses dauerhaft wirkende Artefakt unbekannter Herkunft (manche vermuten schelmische Magie dahinter, andere gehen von einem Zauberpatzer aus) sieht aus wie ein einfacher Bronzering. Sobald eine Person mit Penis ihn an den Finger steckt, lässt er sich nicht mehr abnehmen. Der Träger bekommt eine Dauererektion und sein Glied wird steif wie unter dem Zauber Paralysis bei Stufe IV angegeben .\n\nDieser Zustand hält 1W6 Tage an. Während dieser Zeit ist der Träger dennoch in der Lage Wasser zu lassen. Beim Liebesspiel erweist sich das „Steinglied“ eher als hinderlich, sodass alle Proben auf Betören (Liebeskünste) um 1 erschwert sind. Andere Gesellschaftstalente (bis auf Menschenkenntnis ) sind nach Meisterentscheid um 1 bis 5 Punkte erschwert.\n\nBei Personen ohne Penis hat das Artefakt keine Wirkung.\n\nKosten: ca. 120 AsP, zusätzlich 12 permanent",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Sprechender_Olisbos",
+    "category": "ruestkammer_artifacts",
+    "name": "Sprechender Olisbos",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_olisbos.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein Olisbos aus Zedernholz mit einem kleinen eingeritzten Gesicht\n\nWirkung: Dieses dauerhaft wirkende Artefakt war ursprünglich für einen ganz anderen Zweck erschaffen worden. Ein Zauber sollte eine Skulptur aus Zedernholz zum Sprechen bringen, dabei passierte aber ein Zauberpatzer, der dem Holz ein eigenes Bewusstsein verlieh. Später wurde die Skulptur zu einem Olisbos geschnitzt, die Artefaktseele im Inneren wurde dadurch jedoch nicht zerstört. Der Olisbos redet gerne mit seiner Besitzerin, auch während des Liebesspiels. Am liebsten stellt er Fragen, die sich mit ja oder nein beantworten lassen („War das gut?“). Die Artefaktseele ist sehr intelligent und ihrer Besitzerin gegenüber loyal, manchmal reagiert sie sogar ein wenig eifersüchtig auf Konkurrenz.\n\nRegeltechnisch kann der sprechende Olisbos wie ein normaler Olisbos behandelt werden.\n\nKosten: ca. 69 AsP, zusätzlich 7 permanent",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Schmuckringe_der_Verf_hrung",
+    "category": "ruestkammer_artifacts",
+    "name": "Schmuckringe der Verführung",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_schmuckringe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: hübsche, bronzene Schmuckringe\n\nWirkung: Dieses selbst aufladende Artefakt wird in Form von Schmuckringen für die Brustwarzen oder den Intimbereich hergestellt. Hier liegt ein Brust-, PENIS- oder Vaginaformung drauf (12 FP, lädt sich monatlich auf). Der Zauber kann einige Körpermerkmale somit ändern und auf seine Vorliebe für das Liebesspiel anpassen.\n\nRegeltechnisch können die Schmuckringe wie normale Schmuckringe behandelt werden.\n\nKosten: ca. 20 AsP, zusätzlich 2 permanent",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Reizw_sche_der_Begierde",
+    "category": "ruestkammer_artifacts",
+    "name": "Reizwäsche der Begierde",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_reizw%C3%A4sche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: Seidenhandschuhe, Mieder und Stiefel – alles in Schwarz; alternativ auch in einer Männerversion mit schwarzer Unterhose aus Leder erhältlich, gelegentlich auch einer schwarzen Ledermütze; gelegentlich auch durchsichtige Unterwäsche\n\nWirkung: Auf der Reizwäsche, einem selbst aufladenden Artefakt, liegt ein Levthans Feuer (12 FP, lädt sich wöchentlich auf). Er wird ausgelöst, indem die Trägerin mit beiden Händen über ihre Brüste streicht.\n\nDie magische Reizwäsche gibt es in verschiedenen Kleidungsstilen, die je nach Bedarf und Region angepasst werden können. Man muss alle dazugehörigen Kleidungsstücke tragen, auf denen der Zauber liegt, damit die Wirkung ausgelöst werden kann.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Dekadenter_Luststuhl",
+    "category": "ruestkammer_artifacts",
+    "name": "Dekadenter Luststuhl",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_luststuhl.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein eleganter Holzstuhl mit bequemen, eingearbeiteten Sitzkissen und Rückenpolsterung aus Samt\n\nWirkung: Das selbst aufladende Artefakt ist mit dem Zauber Spielzeug der Lust (12 FP, lädt sich wöchentlich auf) belegt. Wenn sich ein Kulturschaffender auf den Stuhl setzt und über das Ende beider Armlehnen gleichzeitig streicht, fährt aus dem Sitzkissen ein Holzolisbos heraus, der den Sitzenden erregen möchte.\n\nDie ersten dieser Stühle sollen einst in der Gegend um Selem geschaffen worden sein. Inzwischen findet man jedoch auch woanders in Aventurien hin und wieder ein Exemplar.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Zelt_des_heimlichen_Beischlafs",
+    "category": "ruestkammer_artifacts",
+    "name": "Zelt des heimlichen Beischlafs",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_zelt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein großes Vier-Personen-Zelt mit traviagefälligen Symbolen auf den Außenzeltwänden (Gänse, Eheringe, Herdfeuer)\n\nWirkung: Das Zelt ist ein selbst aufladendes Artefakt, auf dem ein Silentium (12 FP, lädt sich monatlich auf, Wirkungsdauer 30 Minuten) liegt. In erster Linie wurde das Zelt dazu entwickelt, damit Liebende während des Militärdienstes heimlich und lautlos ihren Trieben nachkommen konnten, und dabei die Kameraden nicht beim erholsamen Schlaf stören. Es lässt sich aber auch für andere, phexgefällige, Aktionen verwenden.\n\nVerbreitet ist das Zelt vor allem im Mittelreich, aber auch in anderen Ländern mit Armeen kann es hin und wieder auftauchen.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Thaz-Laraanji-Ring",
+    "category": "ruestkammer_artifacts",
+    "name": "Thaz-Laraanji-Ring",
+    "url": "https://dsa.ulisses-regelwiki.de/ae_ring.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Ausrüstung und Rüstkammer",
+      "WdV - Anregende Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: ein Ring aus Silber und Meteoreisen\n\nWirkung: Auf dem Zauberspeicher liegt ein Invocatio Minor (12 FP), der einen Thaz-Laraanji herbeiruft, der erotische Dienste für den Träger ausführt.\n\nSolche Ringe gehören zu den leichteren Übungen von dämonenbeschwörenden Schwarzmagiern, allerdings ist und bleibt auch der vergleichsweise harmlose Thaz-Laraanji ein Dämon, sodass an vielen Orten Aventuriens dieses Artefakt als verboten und wider die göttliche Ordnung angesehen wird.",
+    "subcategory": "WdV - Ausrüstung und Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_artifacts_Das_Joborner_Liebeslicht",
+    "category": "ruestkammer_artifacts",
+    "name": "Das Joborner Liebeslicht",
+    "url": "https://dsa.ulisses-regelwiki.de/joborner-liebeslicht.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Beschreibung: Eine recht schmucklose Öllampe aus Ton, die einen sanften, aber berauschenden Rosenduft verbreitet, wenn sie entzündet wird\n\nWirkung: Die Wirkung des Liebeslichtes betrifft ausschließlich Kulturschaffende. Das Liebeslicht sorgt für eine friedliche und fröhliche Gemütslage. Wird das Liebeslicht angezündet, verströmt es einen angenehmen Rosenduft, der allen, die ihn riechen können, 1 Stufe Furcht nimmt. Wer sich jedoch explizit nicht auf die Harmonie einlassen will, weil er z. B. gerade einen Mord plant, wird von der Wirkung nicht erfasst. Hält der Geweihte das angezündeten Licht über den Kopf und in beiden Händen, so wirkt das Liebeslicht auf alle, die entweder den Geruch wahrnehmen oder das Licht sehen können (maximal bis zu einem Radius von 100 Schritt). Sie verlieren alle Stufen Furcht und alle Nachteile, die Hass und Ängste schüren, fallen bis zum Ende der Wirkung von ihnen ab (z. B. Angst vor …, Persönlichkeitsschwächen wie Neid, Streitsucht und Vorurteile, Schlechte Eigenschaften wie Jähzorn). Gleiches gilt für alle Status. Der Geweihte muss das Licht für eine halbe Minute hochhalten, danach hält die Wirkung QS x 4 Stunden an. Je nach Gefühlslage geben sich Feinde die Hand und trinken miteinander, Freunde umarmen sich, Liebende feiern ausgelassen. An Streit und Kampf denkt keiner mehr. Selbst gegen Ende der Wirkungsdauer werden sich Feinde respektvoll voneinander trennen. Sollte der Talisman eine QS von 6 erzielt haben, dann nimmt die Feier sogar orgiastische Züge an.\n\nPublikation: Neue Bande und Uralter Zwist, Seite 17",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Koschbasalt-K_stchen",
+    "category": "ruestkammer_artifacts",
+    "name": "Koschbasalt-Kästchen",
+    "url": "https://dsa.ulisses-regelwiki.de/koschbasaltkaestchen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Das Koschbasalt-Kästchen gilt als mit Koschbasalt verkleidetes Behältnis und ist speziell so bearbeitet worden, dass es quasi unmöglich ist, mit Hellsichtmagie zu erkennen, was in dem Kästchen liegt. Außerdem können weder körperlose Wesen in das Kästchen eindringen, noch ist es Objekten im Inneren möglich, magische Effekte außerhalb des Kästchens zu entfalten.\n\nPublikation: Rüstkammer der Flusslande, Seite 23",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Laterne_der_Ilpetta_Ingrasim",
+    "category": "ruestkammer_artifacts",
+    "name": "Laterne der Ilpetta Ingrasim",
+    "url": "https://dsa.ulisses-regelwiki.de/laterne-der-ilpetta-ingrasim.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Beschreibung: Eine kunstvoll geschmückte und mit Flammenornamenten verzierte Laterne aus Zwergenstahl\n\nWirkung: Die Laterne schützt in einem Radius von QS Schritt jeden vor einstürzenden Stollen und Höhlen. Sie kann zudem anzeigen, wo eine solche Gefahr besteht.\n\nPublikation: Rüstkammer der Flusslande, Seite 24",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Ankh-el-Hawwa",
+    "category": "ruestkammer_artifacts",
+    "name": "Ankh-el-Hawwa",
+    "url": "https://dsa.ulisses-regelwiki.de/ruestkammer/ankh-el-hawwa.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Magische Artefakte"
+    ],
+    "properties": {},
+    "description": "Beschreibung: zwei Schmuckstücke gleichen Aussehens, meist aus Bronze, für die Träger maßgefertigt\n\nWirkung: Ankh-el-Hawwas werden jeweils von zwei miteinander verbundenen Personen getragen. Erleidet eine Person den Status Krank oder Vergiftet oder sinken ihre LeP unter 25 %, so verfärbt sich das Schmuckstück des anderen schwarz. Fallen die LeP der Person auf 0, so zerstört sich das Schmuckstück des Partners selbst – auch wenn die Person rechtzeitig geheilt wird und überlebt. Der Schmuck wirkt über eine Reichweite von 999 Meilen und nur, wenn eine starke emotionale Bindung der Träger besteht. Erreicht wird der Effekt durch einen mit Arcanovi gebundenen Eisenrost (FW16) mit speziellem Auslöser.\n\nPreis: 25 Silbertaler (Materialwert) / 600 Silbertaler",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_artifacts_Stein_des_Ingerimm",
+    "category": "ruestkammer_artifacts",
+    "name": "Stein des Ingerimm",
+    "url": "https://dsa.ulisses-regelwiki.de/stein-des-ingerimm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Talismane"
+    ],
+    "properties": {},
+    "description": "Beschreibung: Ein großer Brocken aus Mindoriumerz.\n\nWirkung: In einem Radius von QS x 100 Schritt schützt der Stein Wesen und Objekte vor Erdbeben, Vulkanausbrüchen und Feuerbrünsten.\n\nPublikation: Rüstkammer der Flusslande, Seite 24",
+    "subcategory": "Artefakte"
+  }
+]

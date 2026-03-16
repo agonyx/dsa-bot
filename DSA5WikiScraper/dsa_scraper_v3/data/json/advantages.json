@@ -1,0 +1,545 @@
+[
+  {
+    "id": "advantages_Geweihter",
+    "category": "advantages",
+    "name": "Geweihter",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Geweihter",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Geweihte erhält als Karmaenergie-Grundwert 20 KaP. Der Vorteil beinhaltet nicht die Sonderfertigkeit Tradition. Diese muss einzeln erworben werden. Jeder Geweihte muss mit einer Tradition starten (eine Tradition ist eine spezielle Sonderfertigkeit). Ein Held kann auch im späteren Verlauf seines Lebens diesen Vorteil erwerben und Geweihter werden. Allerdings kann man nur eine geweihte Tradition besitzen. Ein Erwerb einer weiteren geweihten Tradition ist nicht möglich.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "25 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 165"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Zauberer",
+    "category": "advantages",
+    "name": "Zauberer",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Zauberer",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Zauberer erhält als Astralenergie- Grundwert 20 AsP. Der Vorteil beinhaltet nicht die Sonderfertigkeit Tradition (siehe Regelwerk Seite 275 ). Diese muss einzeln erworben werden. Jeder Zauberer muss mit einer Tradition starten (eine Tradition ist eine spezielle Sonderfertigkeit). Dieser Vorteil lässt sich im späteren Spielverlauf nicht mehr erwerben.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "25 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 169"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Riesenlindwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Riesenlindwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+%28Riesenlindwurm%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held weist eine übernatürliche Regenerationsfähigkeit auf. Er erhält in einer Regenerationsphase +1W6 für seine Lebensenergie. Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "20 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenkontrolle",
+    "category": "advantages",
+    "name": "Drachenkontrolle",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenkontrolle",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held kann einen Niederen Drachen in einer Reichweite von 16 Schritt dauerhaft zu kontrollieren versuchen. Dazu muss er eine Vergleichsprobe auf Willenskraft gewinnen. Er kann nur einen einzelnen Niederen Drachen dauerhaft kontrollieren. Erst wenn dieser stirbt oder der Held die Kontrolle freiwillig abbricht, kann er einen neuen Drachen zu kontrollieren versuchen. Der Drache lässt sich als Kampfgefährte oder als Flugreittier einsetzen und gehorcht dem Helden aufs Wort. Um die Fähigkeit zu aktivieren, muss der Held 1 Aktion einsetzen. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Vorteil Drachenblut (alle)",
+      "AP-Wert": "40 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Purpurwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Purpurwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+%28Purpurwurm%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Ein Held mit Purpurwurmblut in sich lässt hat ein Gespür für Zauberei. Proben auf Magiekunde sind um +2 erleichtert. Ist der Held ein Zauberer, so kann er sich ein Merkmal aussuchen. Zauber mit diesem Merkmal sind ebenfalls um +1 erleichtert. Schaden durch Feuer wird für den Helden um –2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "40/15 (Zauberer ja/nein) Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Kontakt_Magier",
+    "category": "advantages",
+    "name": "Kontakt (Magier)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Kontakt+%28Magier%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Ein Magier kann einem Helden als zuverlässiger Garant für Informationen über magische Ereignisse dienen oder ihm auch mit seiner Magie zur Seite stehen, wenn der Abenteurer von ihm einen Gefallen verlangt. Talente: Etikette 4 (14/14/14), Gassenwissen 4 (14/14/14), Handel 5 (14/14/14), Magiekunde 12 (14/14/14), Willenskraft 7 (14/14/14) Einfluss: 3 Zuverlässigkeit: 3",
+      "AP-Wert": "18 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Kompendium II , Seite 61"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Gro_e_Zauberauswahl_I-II",
+    "category": "advantages",
+    "name": "Große Zauberauswahl I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Gro%C3%9Fe+Zauberauswahl+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held kann pro Stufe des Vorteils einen zusätzlichen Zauber aktivieren und damit die Begrenzung von maximal 3 Zaubern übersteigen. Ob er diese Zauber zu Spielbeginn oder später aktiviert, ist ihm überlassen.",
+      "Voraussetzung": "Sonderfertigkeit Tradition (Aninmisten oder Intuitive Zauberer oder Runenschöpfer oder Darna), kein Nachteil Kleine Zauberauswahl",
+      "AP-Wert": "8 Abenteuerpunkte pro Stufe",
+      "Publikation(en)": "Aventurische Magie , Seite 225 Aventurische Magie III , Seite 207 Geisterwald & Knochenklippen (Die Gestade des Gottwals) , Seite 5 Kodex der Magie , Seite 379"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenzauberkraft",
+    "category": "advantages",
+    "name": "Drachenzauberkraft",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenzauberkraft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held fokussiert sich auf seine Umgebung, um ihr die Astralenergie zu entziehen. Er legt eine Probe auf Willenskraft ab und erhält 2W6+QS AsP hinzu. Die Fähigkeit ist nur einmal alle 24 Stunden einsetzbar und dauert 10 Aktionen. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Vorteil Drachenblut (Purpurwurm)",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 153"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Kontakt_Geweihte",
+    "category": "advantages",
+    "name": "Kontakt (Geweihte)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Kontakt+%28Geweihte%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Ein einfacher Geweihter kann dem Helden bei Fragen zu kirchlichen Themen beistehen oder für ihn auch eine passende Liturgie wirken, um ihm bei der Lösung eines Problems zu helfen, sofern dies nicht im Widerspruch zur Gottheit oder Kirche des Geweihten steht. Talente: Gassenwissen 4 (13/14/14), Götter & Kulte 10 (14/14/14), Handel 5 (13/14/14), Willenskraft 7 (13/14/14) Einfluss: 3 Zuverlässigkeit: 3",
+      "AP-Wert": "18 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Kompendium II , Seite 60"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Kaiserdrache",
+    "category": "advantages",
+    "name": "Drachenblut (Kaiserdrache)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+%28Kaiserdrache%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Ein Held mit Kaiserdrachenblut in sich lässt sich von nichts so leicht beeindrucken. Proben auf Willenskraft sind um +2 erleichtert. Proben auf Einschüchtern erhalten +1 QS (bis zu einem maximum von 6 QS). Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "25 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachent_ter",
+    "category": "advantages",
+    "name": "Drachentöter",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachent%C3%B6ter",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Drachentöter werden respektvoll behandelt, erhalten regelmäßig Einladungen zu Festen der gehobenen Gesellschaft und oftmals kostenlos Speis und Trank in Tavernen. Der Held wird so behandelt, als hätte er einen um 1 höheren sozialen Rang als üblich. Das Gegenüber muss aber wissen oder zumindest glauben, dass der Held ein Drachentöter ist, damit der Bonus zählt. Der Held erhält zudem einen Bonus von +1 TP gegen alle Drachen, sowohl gegenüber echten als auch Niederen Drachen .",
+      "Voraussetzung": "Der Held muss einen Wahren Drachen getötet haben.",
+      "AP-Wert": "10 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Bestiarium , Seite 120 Der Ruf des Berges , Seite 103 Geschuppte Tyrannen , Seite 147 Kodex der Helden , Seite 392"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Blutzauberer",
+    "category": "advantages",
+    "name": "Blutzauberer",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Blutzauberer",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held wird zum Zauberer, obwohl er nicht mit der Gabe der Zauberei geboren wurde. Er verfügt nicht über einen eigenen AsP-Vorrat, sondern zaubert stattdessen mit seiner Lebensenergie. Dabei sind Lebenspunkte doppelt so viel Wert wie AsP, sodass ein Zauber, der 7 AsP kosten würde, den Helden nur 4 LeP kosten. Hat der Held einen eigenen AsP-Vorrat, kann er sich bei jedem Zauber entscheiden, ob er mit AsP oder LeP zaubern möchte.",
+      "Voraussetzung": "Paktgeschenk Zauberei mit Lebenskraft",
+      "AP-Wert": "0 Abenteuerpunkte (wird automatisch über das Paktgeschenk Zauberei mit Lebenskraft vergeben)",
+      "Publikation(en)": "Aventurische Magie III , Seite 208 Aventurische Magie III Bonusmaterial und Errata , Seite 7 Kodex der Magie , Seite 379"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Unbeschwertes_Zaubern",
+    "category": "advantages",
+    "name": "Unbeschwertes Zaubern",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Unbeschwertes+Zaubern",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Schelm kann eine SK und ZK seiner Ziele von bis zu 2 bei seinen Schelmenstreichen ignorieren. Dieser Vorteil ist mit der Sonderfertigkeit Lockeres Zaubern kombinierbar, sodass SK und ZK von bis zu 3 ignoriert werden können.",
+      "Voraussetzung": "Sonderfertigkeit Tradition (Schelme)",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Magie II , Seite 219 Kodex der Magie , Seite 380"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_H_hlendrache",
+    "category": "advantages",
+    "name": "Drachenblut (Höhlendrache)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+%28H%C3%B6hlendrache%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held erhält den Vorteil Dunkelsicht II (und muss diesen nicht gegen die Grenze von 80 AP in Vorteilen bei der Heldenerschaffung rechnen). Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "25 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Gletscherwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Gletscherwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+%28Gletscherwurm%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Im waffenlosen Kampf kann der Held seinem Gegner zusätzlichen Schaden zufügen, indem er ihn vereist. Dieser Schaden wird wie der Status Brennend auf kleiner Fläche behandelt. Eine unverteidigte Raufen-AT reicht dazu aus. Schaden durch Feuer und Eis wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Kraft_des_Drachen",
+    "category": "advantages",
+    "name": "Kraft des Drachen",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Kraft+des+Drachen",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Einmal am Tag kann der Held eine Probe auf Selbstbeherrschung ablegen. Bei Gelingen erhöht sich für 1 Minute seine KK und sein Kraftakt-FW jeweils um QS. Dies kann auch den Schadensbonus erhöhen, ändert aber nichts an weiteren abgeleiteten Werten. Diese Fähigkeit zu aktivieren dauert 1 Aktion. Nach dem Ende der Wirkung erhält der Held 1 Stufe Betäubung . ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Vorteil Drachenblut (alle)",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 153"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Schwer_zu_verzaubern",
+    "category": "advantages",
+    "name": "Schwer zu verzaubern (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Schwer+zu+verzaubern+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Viele Zauber, die auf den Helden gesprochen werden können, die auf ihn wirken, sind um 1 erschwert. Dies gilt für alle Zauber und magischen Effekte mit den Merkmalen Einfluss, Heilung, Hellsicht und Verwandlung sowie für solche, die durch Seelenkraft oder Zähigkeit modifiziert werden. Diese Erschwernis gilt auch dann, wenn der Held sich verzaubern lassen möchte.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Schwer zu verzaubern als automatischen oder empfohlenen Vorteil besitzen.",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 168"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenschwanz",
+    "category": "advantages",
+    "name": "Drachenschwanz",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenschwanz",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Drachenschwanz dient sowohl für die Balance und erleichtert Proben auf Körperbeherrschung um +1, als auch als Hilfe im Nahkampf. Die TP bei allen Nahkampfangriffen mit Raufen steigen um +1 TP, die Reichweite steigt von kurz auf mittel und mit dem Drachenschwanz ist auch das Manöver Zu Fall bringen einsetzbar. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Vorteil Drachenblut (alle)",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152 f."
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Einhorndrache",
+    "category": "advantages",
+    "name": "Drachenblut (Einhorndrache)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+%28Einhorndrache%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held besitzt eine intuitive Form der Empathie und kann sein Gegenüber sehr gut einschätzen. Proben auf Menschenkenntnis sind um +2 erleichtert. Als Zauberer spart er bei allen Zaubern mit dem Merkmal Hellsicht 1 AsP (minimale Kosten 1 AsP) und die Wirkung erhöht sich um 1 QS (bis zu einem Maximum von 6 QS). Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "30 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Purpurwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Purpurwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+(Purpurwurm)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Ein Held mit Purpurwurmblut in sich lässt hat ein Gespür für Zauberei. Proben auf Magiekunde sind um +2 erleichtert. Ist der Held ein Zauberer, so kann er sich ein Merkmal aussuchen. Zauber mit diesem Merkmal sind ebenfalls um +1 erleichtert. Schaden durch Feuer wird für den Helden um –2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "40/15 (Zauberer ja/nein) Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_H_hlendrache",
+    "category": "advantages",
+    "name": "Drachenblut (Höhlendrache)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+(H%C3%B6hlendrache)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held erhält den Vorteil Dunkelsicht II (und muss diesen nicht gegen die Grenze von 80 AP in Vorteilen bei der Heldenerschaffung rechnen). Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "25 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Gletscherwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Gletscherwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+(Gletscherwurm)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Im waffenlosen Kampf kann der Held seinem Gegner zusätzlichen Schaden zufügen, indem er ihn vereist. Dieser Schaden wird wie der Status Brennend auf kleiner Fläche behandelt. Eine unverteidigte Raufen-AT reicht dazu aus. Schaden durch Feuer und Eis wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Kaiserdrache",
+    "category": "advantages",
+    "name": "Drachenblut (Kaiserdrache)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+(Kaiserdrache)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Ein Held mit Kaiserdrachenblut in sich lässt sich von nichts so leicht beeindrucken. Proben auf Willenskraft sind um +2 erleichtert. Proben auf Einschüchtern erhalten +1 QS (bis zu einem maximum von 6 QS). Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "25 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Einhorndrache",
+    "category": "advantages",
+    "name": "Drachenblut (Einhorndrache)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+(Einhorndrache)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held besitzt eine intuitive Form der Empathie und kann sein Gegenüber sehr gut einschätzen. Proben auf Menschenkenntnis sind um +2 erleichtert. Als Zauberer spart er bei allen Zaubern mit dem Merkmal Hellsicht 1 AsP (minimale Kosten 1 AsP) und die Wirkung erhöht sich um 1 QS (bis zu einem Maximum von 6 QS). Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "30 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 151"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Riesenlindwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Riesenlindwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut+(Riesenlindwurm)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held weist eine übernatürliche Regenerationsfähigkeit auf. Er erhält in einer Regenerationsphase +1W6 für seine Lebensenergie. Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "20 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Aventurische_Magie",
+    "category": "advantages",
+    "name": "Publikation [Alle] Regelwerk Achaz - Schuppenkleid & Lange Zungen Aventurische Magie Aventurische Magie II Aventurische Magie III Aventurische Magie III Bonusmaterial und Errata Aventurische Namen Aventurisches Bestiarium Aventurisches Bestiarium II Aventurisches Elementarium Aventurisches Götterwirken Aventurisches Kompendium Aventurisches Kompendium II Der Abgesang Ometheons (Sternenträger III) Der Rabenkrieg Der Ruf des Berges Der schwarze Forst (Theaterritter III) Die Gestade des Gottwals - Thorwal und das Gjalskerland Die Siebenwindküste - Albernia und der Windhag Die Sonnenküste - Der wilde Süden & die Zyklopeninseln Die Streitenden Königreiche - Nostria und Andergast Die Zähne des Kaimans (Rabenkrieg I) Divinarium Liturgia Dryadenhain & Dschinnenzauber Geisterwald & Knochenklippen (Die Gestade des Gottwals) Geschöpfe der Anderswelt Geschuppte Tyrannen Grauen aus dem Nebel Havena - Versunkene Geheimnisse Helden der Siebenwindküste Helden des Wolfsfrosts Klingen der Nacht Kneipen & Tavernen (Meisterschirmbegleitheft) Kodex der Helden Kodex der Magie Liturgien und Zeremonien Lustschlösser & Zauberwesen Mysterien des Wolfsfrosts Mysterien Havenas Namenlose Nacht Orks - Hauer & Schwarzer Pelz Seemannsgarn und Krakensilber",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteilauswahl.html?publikation=Aventurische%20Magie",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "advantages_schwer_zu_verzaubern",
+    "category": "advantages",
+    "name": "Schwer zu verzaubern (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=schwer%20zu%20verzaubern%20%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Viele Zauber, die auf den Helden gesprochen werden können, die auf ihn wirken, sind um 1 erschwert. Dies gilt für alle Zauber und magischen Effekte mit den Merkmalen Einfluss, Heilung, Hellsicht und Verwandlung sowie für solche, die durch Seelenkraft oder Zähigkeit modifiziert werden. Diese Erschwernis gilt auch dann, wenn der Held sich verzaubern lassen möchte.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Schwer zu verzaubern als automatischen oder empfohlenen Vorteil besitzen.",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 168"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Schwer_zu_verzaubern",
+    "category": "advantages",
+    "name": "Schwer zu verzaubern (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Schwer%20zu%20verzaubern%20%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Viele Zauber, die auf den Helden gesprochen werden können, die auf ihn wirken, sind um 1 erschwert. Dies gilt für alle Zauber und magischen Effekte mit den Merkmalen Einfluss, Heilung, Hellsicht und Verwandlung sowie für solche, die durch Seelenkraft oder Zähigkeit modifiziert werden. Diese Erschwernis gilt auch dann, wenn der Held sich verzaubern lassen möchte.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Schwer zu verzaubern als automatischen oder empfohlenen Vorteil besitzen.",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 168"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "advantages_Drachenblut_Riesenlindwurm",
+    "category": "advantages",
+    "name": "Drachenblut (Riesenlindwurm)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Drachenblut%20%28Riesenlindwurm%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held weist eine übernatürliche Regenerationsfähigkeit auf. Er erhält in einer Regenerationsphase +1W6 für seine Lebensenergie. Schaden durch Feuer wird für den Helden um -2 TP gesenkt. ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Kein anderer Ahnenblut-Vorteil",
+      "AP-Wert": "20 Abenteuerpunkte",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 152"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  }
+]

@@ -1,0 +1,1975 @@
+[
+  {
+    "id": "special_abilities_animal_Ausbildungsaufs_tze",
+    "category": "special_abilities_animal",
+    "name": "Ausbildungsaufsätze",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Ausbildungsaufs%C3%A4tze.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Ein Ausbildungsaufsatz ist eine Sammlung von Boni, die zu den Werten des Tiers addiert werden, wenn es die entsprechende Ausbildung durchlaufen hat.\n\nUm einem Tier einen Ausbildungsaufsatz zu verleihen, muss der Heldin eine Sammelprobe auf Tierkunde , 1 Monat, 7 Versuche gelingen. Der Modifikator für die Probe hängt vor der Tierart ab. Gelingt die Probe, so erhält das Tier alle angegeben Modifikatoren des Ausbildungsaufsatzes, inklusive der aufgeführten Tricks . Bei einem Misslingen der Probe hat das Tier nichts gelernt und die Probe kann mit einer Erschwernis von -1 wiederholt werden. Diese Erschwernis ist bei weiteren Versuchen kumulativ.\n\nJedes Tier kann nur einen Ausbildungsaufsatz erhalten, ein zweiter kann ihm nicht über das Abrichten verliehen werden. Allerdings kann das Tier zusätzliche Tricks erlernen. Je nach Tierart sind nur bestimmte Ausbildungsaufsätze möglich. Der Meister kann entscheiden, dass es Tierarten gibt, denen man keine Ausbildungsaufsätze geben kann.\n\n*) Diese Wildtiere können selbst bei hoher Loyalität keinen Ausbildungsaufsatz erlernen.",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Kampftier",
+    "category": "special_abilities_animal",
+    "name": "Kampftier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Kampftier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Abrichter können bestimmte Tiere auch dazu ausbilden, auf Befehl anzugreifen. Orkische Kriegshunde sind typische Beispiele für Kampftiere.\n\nBoni: +1 MU +1 KK +2 AT +1 TP +20 % LeP Einschüchtern-FW +4\n\nAventurisches Kompendium 2, Seite 26 Kodex des Schwertes, Seite 154\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Reittier",
+    "category": "special_abilities_animal",
+    "name": "Reittier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Reittier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Ob Pferd , Esel , Kamel oder goblinisches Reitwildschein viele Tiere werden zu Reittieren ausgebildet, damit man auf ihnen reiten kann.\n\nBoni: Das Tier gilt nicht mehr als unausgebildet , darüber hinaus kann ein Reittier einen weiteren Ausbildungsaufsatz erhalten (z. B. Renntier ). Außerdem ist es, je nach Tierart, in der Lage, ein bis zwei Personen mit leichtem Gepäck zu tragen.\n\nAventurisches Kompendium 2, Seite 26 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 29 Kodex des Schwertes, Seite 154\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Tricks",
+    "category": "special_abilities_animal",
+    "name": "Tricks",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Tricks.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Einem Tier einen Trick beizubringen, ist eine deutlich weniger aufwendige Aufgabe als eine Ausbildung .\n\n# Domstizierte Tiere: Um einem domestizierten Tier einen Trick beizubringen, muss die Heldin eine Sammelprobe auf Tierkunde, 1 Tag, 7 Versuche, bestehen.\n\n# Wildtiere: Um hingegen einem Wildtier einen Trick beizubringen, muss die Heldin eine Sammelprobe auf Tierkunde, 2 Tage, 5 Versuche, bestehen.\n\nDer Modifikator ist je nach Tierart unterschiedlich.  Zusätzlich zu den Tricks aus einem Ausbildungsaufsatz kann ein domestiziertes Tier noch bis zu KL/2 weitere Tricks erlernen. Ein Wildtier kann maximal KL/2 Tricks erlernen.\n\nUm einem Tier einen Befehl für einen Trick zu geben (oder ein Kommando, um den Trick zu beenden), ist immer 1 freie Aktion notwendig. Der Meister kann entscheiden, dass es Tierarten gibt, denen man keine oder nur bestimmte Tricks beibringen kann.\n\nDer Meister kann bestimmen, dass bestimmte Tierarten einige Tricks nicht ausführen können. So ist es vielleicht nicht möglich, einem Bären den Trick Apport oder Wache beizubringen.",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Zwiegespr_ch",
+    "category": "special_abilities_animal",
+    "name": "Zwiegespräch",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Zwiegespraech.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute übermittelt Bilder, Gefühle und Erfahrungen telepathisch an die Hexe, so lange beide Körperkontakt aufrechterhalten. Da Vertrautentiere die menschliche Sprache begrenzt verstehen, kann sich so ein Zwiegespräch entwickeln, bei dem die Hexe spricht und der Vertraute telepathisch antwortet.\n\nTierarten: alle AsP-Kosten: 1 AsP pro 10 Minuten Wirkungsdauer: aufrechterhaltend Merkmal: Einfluss AP-Wert: beherrschen Vertrautentiere von Anfang an\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 373",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Vertrautentricks",
+    "category": "special_abilities_animal",
+    "name": "Vertrautentricks",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Vertrautentricks.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Vertrautentiere können eine Reihe von Tricks erlernen, die sie unter Aufwendung eigener AsP nutzen können. Diese Tricks eignen sie sich selbst an, müssen aber die entsprechenden AP aufwenden, um sie zu erlernen. # Sie erfordern keine Fertigkeitsproben, jedoch 1 Aktion zur Aktivierung. # Für Belange wie beispielsweise Antimagie gelten sie als Zauber, die mit 1 QS gewirkt wurden.\n\nPublikation(en): Regelwerk, Seite 279 Kodex der Magie, Seite 367",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Hexensinn",
+    "category": "special_abilities_animal",
+    "name": "Hexensinn",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Hexensinn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute kann über eine beliebige Distanz hinweg die Richtung ausmachen, in der sich die Hexe befindet. Nur göttliches Wirken und Antimagie gegen Hellsicht können diese Verbindung stören.\n\nTierarten: alle AsP-Kosten: 1 AsP Wirkungsdauer: eine halbe Stunde Merkmal: Hellsicht AP-Wert: beherrschen Vertrautentiere von Anfang an\n\nPublikation(en): Regelwerk, Seite 279 Kodex der Magie, Seite 369",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Jagdtier",
+    "category": "special_abilities_animal",
+    "name": "Jagdtier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Jagdtier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Ein Jagdtier ist darin geschult, die Fährte von Jagdwild zu suchen oder es zu erspähen und zu jagen. Jagdhunde und -falken sind klassische Jagdtiere, aber unter Umständen lässt sich z. B. auch ein Gepard ausbilden.\n\nBoni: +1 GE +1 KO +1 AT Fährtensuchen- oder Sinnesschärfe*-FW +8 (*für Flugtiere) Fliegen*- oder Körperbeherrschung-FW +6 (*für Flugtiere)\n\nTricks: Apport , Fass I , Laut , Still , Such\n\nAventurisches Kompendium 2, Seite 26 Kodex des Schwertes, Seite 154\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_H_tetier",
+    "category": "special_abilities_animal",
+    "name": "Hütetier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Huetetier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Ein Hütetier sorgt dafür, dass eine Herde aus domestizierten Tieren zusammenbleibt. Es treibt die Herde in die richtige Richtung und stellt sich wegrennenden Tieren in den Weg, um sie wieder zurückzutreiben. Ein Hütehund, der eine Schafherde zusammenhält, ist ein klassisches Beispiel für ein Hütetier.\n\nBoni: +1 MU +1 IN +1 GE +1 VW Körperbeherrschung-FW +4 Sinnesschärfe-FW +6\n\nTricks: Ablegen , Komm , Laut , Sitz , Treiben\n\nAventurisches Kompendium 2, Seite 26 Kodex des Schwertes, Seite 154\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Trage-_oder_Zugtier",
+    "category": "special_abilities_animal",
+    "name": "Trage- oder Zugtier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Tragetier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Trage und Zugtiere müssen schwere Lasten tragen oder Ziehen. Ochsen , Pferde und Elefanten , die in der Landwirtschaft helfen, sind klassische Zug- oder Tragtiere.\n\nBoni: +2 KK +2 KO +25 % LeP Tier kann Gewicht in Höhe von (Eigenes Gewicht / 100 x KK) tragen. Außerdem wird das Gewicht aus der Sonderregel Packesel verdoppelt (gilt nur für Tiere ohne den Zusatz k bei KK).\n\nAventurisches Kompendium 2 Seite 26ff. Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 29 Kodex des Schwertes, Seite 155\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Renntier",
+    "category": "special_abilities_animal",
+    "name": "Renntier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Renntier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "In den Tulamidenlanden sind Rennkamele äußerst beliebt, aber auch Pferde- und Hunderennen sind in Aventurien keine Seltenheit. Ein Renntier wurde darin geschult, so schnell zu rennen, wie es nur kann, meist, um ein Wettrennen zu gewinnen.\n\nBoni: +2 GE +2 KO +25 % GS Körperbeherrschung-FW +8\n\nAventurisches Kompendium 2, Seite 26 Kodex des Schwertes, Seite 154",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Zirkustier",
+    "category": "special_abilities_animal",
+    "name": "Zirkustier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Zirkustier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Tiere, denen man besondere Kunststücke beigebracht hat, mit welchen sie in einem Zirkus auftreten können, werden Zirkustiere genannt. Hierbei handelt es sich vor allem um Affen, Raubkatzen und Zirkusbären.\n\nBoni: +2 FF +2 GE Gaukeleien-FW +8 Klettern- oder Körperbeherrschung-FW +6\n\nAventurisches Kompendium 2, Seite 27 Kodex des Schwertes, Seite 155\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Wachtier",
+    "category": "special_abilities_animal",
+    "name": "Wachtier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Wachtier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Ein Wachtier soll einen bestimmten Bereich, z. B. ein Haus, einen Hinterhof oder Garten bewachen und schlägt Alarm, sobald sich ein Unbefugter nähert. Ein Beispiel für ein Wachtier sind Wachhunde oder -gänse.\n\nBoni: +2 MU +1 IN +1 AT +2 VW Einschüchtern-FW +6\n\nTricks: Ablegen, Komm, Laut, Sitz, Wache\n\nAventurisches Kompendium 2, Seite 27 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 29 Kodex des Schwertes, Seite\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Suchtier",
+    "category": "special_abilities_animal",
+    "name": "Suchtier",
+    "url": "https://dsa.ulisses-regelwiki.de/Aus_Suchtier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Ausbildungsaufsätze"
+    ],
+    "properties": {},
+    "description": "Suchtiere wurden darin geschult, ihre Nase oder andere Sinne bei der Suche nach etwas ganz Bestimmten einzusetzen. Trüffelschweine sind ein gutes Beispiel für Suchtiere, aber auch Spürhunde.\n\nBoni: +1 KL +2 IN +1 GE Fährtensuchen- oder Sinnesschärfe-FW +8\n\nAventurisches Kompendium 2, Seite 26 Kodex des Schwertes, Seite 155\n\nErrata: AP-Wert wurde im Kodex des Schwertes gesenkt.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Tierische_Sonderfertigkeiten",
+    "category": "special_abilities_animal",
+    "name": "Tierische Sonderfertigkeiten",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Tiere.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "special_abilities_animal_Fass_I",
+    "category": "special_abilities_animal",
+    "name": "Fass I",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Fass.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier greift Wesen der Größenkategorie winzig und klein an, wenn die Heldin es befielt. Es hört damit auf, wenn der Befehl Aus von der Heldin ausgesprochen wird.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Aus",
+    "category": "special_abilities_animal",
+    "name": "Aus",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Aus.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Gibt man dem Tier diesen Befehl, lässt es sein Opfer los.\n\nVoraussetzung: Loyalität 8 , Trick Fass I\n\nAventurisches Kompendium 2 Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen Seite 29 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Fass_II",
+    "category": "special_abilities_animal",
+    "name": "Fass II",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Fass2.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier greift Wesen der Größenkategorie mittel an, wenn die Heldin es befielt. Es hört damit auf, wenn der Befehl Aus von der Heldin ausgesprochen wird.\n\nVoraussetzung: Loyalität 8 , Trick Fass I\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Platz",
+    "category": "special_abilities_animal",
+    "name": "Platz",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Platz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier legt sich auf den Befehl Platz hin. Geht die Heldin 12 oder mehr Schritt weg, folgt das Tier ihr. Wird das Tier oder die Heldin angegriffen, endet der Trick.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen Seite 30",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Apport",
+    "category": "special_abilities_animal",
+    "name": "Apport",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Apport.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier kann seinem Besitzer einen Gegenstand zurückbringen oder Jagdbeute apportieren.\n\nAventurisches Kompendium 2, Seite 27 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 29 Kodex des Schwertes, Seite 155",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Komm",
+    "category": "special_abilities_animal",
+    "name": "Komm",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Komm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier begibt sich durch den Befehl Komm zur Heldin, sofern es die Möglichkeit dazu hat.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Wache",
+    "category": "special_abilities_animal",
+    "name": "Wache",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Wache.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier gibt bemerkbar Laut, sobald eine Person sich nähert, die es nicht kennt.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 31 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Ablegen",
+    "category": "special_abilities_animal",
+    "name": "Ablegen",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Ablegen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Bei diesem Trick legt sich das Tier hin wartet unbeweglich an Ort und Stelle, bis der Held den Befehl Komm durchführt (oder andere Ereignisse eintreten, die es zu Bewegungen zwingt, etwa, wenn es angegriffen wird).\n\nVoraussetzung: Loyalität 10 , Trick Komm , Trick Sitz\n\nAventurisches Kompendium 2, Seite 27 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 29 Kodex des Schwertes, Seite 155",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Anzeigen",
+    "category": "special_abilities_animal",
+    "name": "Anzeigen",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Anzeigen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Durch diesen Trick kann ein Tier die Beute einer Jagd still durch Körperhaltung anzeigen, sodass das Wild nicht aufgeschreckt wird und flieht.\n\nAventurisches Kompendium 2, Seite 27 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 29 Kodex des Schwertes, Seite 155",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Still",
+    "category": "special_abilities_animal",
+    "name": "Still",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Still.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier verhält sich die nächsten 5 Minuten ruhig. Wird das Tier oder die Heldin angegriffen, endet der Trick.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Kunstst_ck",
+    "category": "special_abilities_animal",
+    "name": "Kunststück",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Kunststueck.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Durch diesen Trick kann das Tier ein Zirkuskunststück aufführen. Für jedes Kunststück muss ein eigener Trick erlernt werden. Dies kann z. B. auch bei einigen Vögeln das Sprechen von ganzen Sätzen umfassen, oder das Jonglieren von Gegenständen.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Fass_III",
+    "category": "special_abilities_animal",
+    "name": "Fass III",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Fass3.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier greift Wesen bis zur Größenkategorie groß und riesig an, wenn die Heldin es befielt. Es hört damit auf, wenn der Befehl Aus von der Heldin ausgesprochen wird.\n\nVoraussetzung: Loyalität 10 , Trick Fass II\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Sitz",
+    "category": "special_abilities_animal",
+    "name": "Sitz",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Sitz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier setzt sich auf den Befehl Sitz hin. Geht die Heldin 3 oder mehr Schritt weg, folgt das Tier ihr. Wird das Tier oder die Heldin angegriffen, endet der Trick.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Such",
+    "category": "special_abilities_animal",
+    "name": "Such",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Such.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Dieser Befehl sorgt dafür, dass das Tier versucht, eine Fährte aufzunehmen. Er setzt seine Fertigkeit Fährtensuchen ein.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 30 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Laut",
+    "category": "special_abilities_animal",
+    "name": "Laut",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Laut.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier gibt laut, sobald es eine Gefahr bemerkt.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen Seite 30",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Treiben",
+    "category": "special_abilities_animal",
+    "name": "Treiben",
+    "url": "https://dsa.ulisses-regelwiki.de/Trick_Treiben.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tricks"
+    ],
+    "properties": {},
+    "description": "Das Tier treibt auf den Befehl Treiben eine Herde von domestizierten Tieren in die von der Heldin gewünschte Richtung. Außerdem fängt das Tier fliehende Herdentiere wieder ein, ohne sie zu verletzen.\n\nAventurisches Kompendium 2, Seite 28 Die Gestade des Gottwals - Geisterwald & Knochenklippen, Seite 31 Kodex des Schwertes, Seite 156",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Kr_tenschlag",
+    "category": "special_abilities_animal",
+    "name": "Krötenschlag",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Kroetenschlag.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Die Kröte wandelt auf einen Schlag ihre gesamten AsP in einen magischen Angriff um, der an seinem Ziel viele kleinste Verletzungen bewirkt. Die Kröte fügt dem nächststehenden Ziel 2W6+2 Trefferpunkte zu. Rüstungen schützen nicht vor diesem Vertrautentrick.\n\nTierarten : Kröten AsP-Kosten : alle AsP, mindestens aber 8 AsP Wirkungsdauer : sofort Merkmal : Verwandlung AP-Wert : 25 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 370",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Tiersinne",
+    "category": "special_abilities_animal",
+    "name": "Tiersinne",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Tiersinne.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Der Vertraute leiht seiner Hexe eine spezielle Art der Wahrnehmung, abhängig von der Tierart des Vertrauten. # Affen: Herausragender Sinn (Gehör) # Eulen: 1 Stufe Dunkelsicht und Herausragender Sinn (Sicht) # Falken: Herausragender Sinn (Sicht) # Hunde: Herausragender Sinn (Geschmack & Geruch) # Iltisse: Herausragender Sinn (Gehör) # Katzen: 1 Stufe Dunkelsicht und Herausragender Sinn (Gehör) # Kröten: Herausragender Sinn (Geschmack & Geruch) # Opossums: Herausragender Sinn (Gehör) # Raben: Herausragender Sinn (Sicht) # Schlangen: Herausragender Sinn (Geschmack & Geruch) # Schnecken: Herausragender Sinn (Tastsinn) # Vielfraße: Herausragender Sinn (Geschmack & Geruch) # Wildkatzen: 1 Stufe Dunkelsicht und Herausragender Sinn (Gehör) Die Tiersinne funktionieren wie die entsprechenden Vorteile. Der Vertraute muss während der gesamten Wirkungsdauer Körperkontakt zur Hexe halten.\n\nTierarten : alle AsP-Kosten : 1 AsP pro 5 Minuten Wirkungsdauer : aufrechterhaltend Merkmal : Hellsicht AP-Wert : 10 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 372",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Halluzinationsgift",
+    "category": "special_abilities_animal",
+    "name": "Halluzinationsgift",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Halluzinationsgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Das Vertrautentier kann durch 1 SP ein Halluzinationsgift bei seinem Gegner auslösen. Wenn das Tier 1 SP oder mehr mit einem Biss-Angriff verursacht, kann es zusätzlich sein Halluzinationsgift einsetzen. Das Vertrautentier hat 7 KR Zeit, um 1 SP mit dem Biss-Angriff zu verursachen. Hat es das Gift übertragen, kann es keine weitere Person während der Wirkungsdauer mit Halluzinationsgift vergiften.\n\nTierarten : Schlangen, Schnecken, Spinnen AsP-Kosten : 8 AsP pro Gifteinsatz Wirkungsdauer : sofort Merkmal : Verwandlung AP-Wert : 12 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 21 Kodex der Magie, Seite 369",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Diebstahl",
+    "category": "special_abilities_animal",
+    "name": "Diebstahl",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Diebstahl.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Hexe kann dem Vertrauten mit einer freien Aktion befehlen, einen kleinen, maximal 0,25 Stein schweren Gegenstand mittels des Talents Taschendiebstahl zu stehlen (falls Wachen anwesend sind, über eine Vergleichsprobe gegen deren Sinnesschärfe ; der FW des Vertrauten in Taschendiebstahl beträgt 10), etwa einen Ring oder eine Dattel. Der Gegenstand darf sich zu Beginn des Vertrautentricks höchstens 7 Meilen von dem Tier entfernt befinden. War der Diebstahl erfolgreich, bringt das Tier der Hexe den Gegenstand. Das Vertrautentier muss den Gegenstand nicht gesehen haben; es reicht, wenn die Hexe den Gegenstand beschreibt. Hat die Hexe den Gegenstand schon einmal gesehen, dann kennt das Vertrautentier den Gegenstand automatisch; hat die Hexe den Gegenstand noch nicht gesehen und gibt dem Tier eine Beschreibung basierend auf Hörensagen, dann kann es nach Meisterentscheid geschehen, dass das Tier einen falschen Gegenstand stiehlt.\n\nTierarten: Affen, Falken, Iltisse, Opossums, Raben AsP-Kosten: 4 AsP Wirkungsdauer: maximal 4 Stunden, danach muss der Diebstahl vollendet sein, sonst bricht das Vertrautentier den Diebstahl ab Merkmal: Einfluss AP-Wert: 8 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 20 Kodex der Magie, Seite 367",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Hypnotischer_Blick",
+    "category": "special_abilities_animal",
+    "name": "Hypnotischer Blick",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_HypnotischerBlick.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Das Vertrautentier verharrt an Ort und Stelle und starrt dabei einen Kulturschaffenden an, der dadurch hypnotisiert wird. Dies sorgt dafür, dass er während der Wirkungsdauer 2 Stufen Paralyse erhält. Er kann eine Probe auf Willenskraft erschwert um –1 ablegen, bei deren Gelingen er nur 1 Stufe Paralyse erhält. Der Blick hat eine Reichweite von 7 Schritt. Bewegt sich das Ziel weiter als 50 Schritt von der Schlange weg, endet die Wirkung sofort. Die Hypnose wirkt nur auf Kulturschaffende mit einer SK von 2 oder weniger. Ein Ziel kann nur von der Wirkung eines einzigen Hypnotischen Blicks betroffen sein, also dadurch nicht mehrere Stufen Paralyse erhalten.\n\nTierarten : Opossums, Schlangen, Schnecken AsP-Kosten : 1 AsP pro KR Wirkungsdauer : je nach AsP-Einsatz Merkmal : Einfluss AP-Wert : 10 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 21 Kodex der Magie, Seite 369",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Dinge_ersp_ren",
+    "category": "special_abilities_animal",
+    "name": "Dinge erspüren",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Dingeerspueren.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute kann ein Objekt ausfindig machen, das längere Zeit im Besitz der Hexe war und zu dem sie eine emotionale Bindung hat. Üblicherweise übermittelt die Hexe ihrem Vertrauten durch Zwiegespräch, welches Objekt er suchen soll. Befindet sich das Objekt im Umkreis von sieben Meilen, kann der Vertraute die Richtung ausmachen, in der sich das Objekt befindet, jedoch nicht zwingend den exakten Weg, über den man zu dem Objekt gelangt.\n\nTierarten: alle AsP-Kosten: 1 AsP Wirkungsdauer: eine halbe Stunde Merkmal: Hellsicht AP-Wert: 10 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 279 Kodex der Magie, Seite 367",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Stimmungssinn",
+    "category": "special_abilities_animal",
+    "name": "Stimmungssinn",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Stimmungssinn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Der Vertraute erkennt die Gefühle und Stimmungen einer Person und übermittelt sie der Hexe. Zwei Hexen können so in begrenztem Rahmen stille Zwiesprache halten, indem ihre Vertrautentiere ihnen gegenseitig die Gefühle schildern. Gegebenenfalls kann die Meisterin eine Erleichterung von 1 bei Proben auf Menschenkenntnis zugestehen, um die betroffene Person zu durchschauen.\n\nTierarten : alle AsP-Kosten : 1 AsP pro 5 Minuten Wirkungsdauer : aufrechterhaltend Merkmal : Hellsicht AP-Wert : 20 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 371",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Sonnenkind",
+    "category": "special_abilities_animal",
+    "name": "Sonnenkind",
+    "url": "https://dsa.ulisses-regelwiki.de/SVF_Sonnenkind.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Manchmal müssen selbst die eloquenten Schwestern des Wissens körperlich aktiv werden, etwa um sich zu verteidigen oder zu fliehen. Zu diesem Zweck kann die vertraute Schlange der Hexe sich um deren Körper wickeln und ihr die Fähigkeit verleihen, aus Wärme Kraft zu schöpfen. So lange sich die Hexe in spürbar warmem Licht oder in der Nähe einer direkten Wärmequelle – wie Feuer – befindet, ist ihre GS um 4 erhöht und ihr AW steigt um 2. Der Vertrautentrick wirkt, so lange sich das Tier um den Körper der Hexe gewickelt hält oder bis es keine AsP mehr aufwenden kann.\n\nTierarten : Schlangen AsP-Kosten : 2 AsP pro KR Wirkungsdauer : je nach AsP-Einsatz Merkmal : Verwandlung AP-Wert: 15 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 371",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Streicheleinheiten",
+    "category": "special_abilities_animal",
+    "name": "Streicheleinheiten",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Streicheleinheiten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Kulturschaffende in einem Radius von bis zu 2 Schritt um das Vertrautentier verfallen dem Bedürfnis, das Tier zu streicheln (nur die Hexe ist immun gegen den Trick ihres Vertrautentiers). Sie können sich diesem Zwang mit einer Probe auf Willenskraft erschwert um -2 widersetzen. Misslingt die Probe, sind die Betroffenen gegenüber dem Tier freundlich und werden ihm nichts antun, solange der Trick wirkt. Der Trick wirkt nicht oder hört auf der Stelle auf, sobald der Betroffene angegriffen wird (wozu auch Zauber und Liturgien zählen, die gegen ihn gerichtet sind). Es sind nur Kulturschaffende mit einer SK von 2 oder weniger von dem Trick betroffen.\n\nTierarten: alle AsP-Kosten: 1 AsP pro 2 Minuten Wirkungsdauer: je nach AsP-Einsatz Merkmal: Einfluss AP-Wert: 10 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 22 Kodex der Magie, Seite 371",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Hexenstimme",
+    "category": "special_abilities_animal",
+    "name": "Hexenstimme",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Hexenstimme.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Hexe kann mit ihrer Stimme durch ihr Vertrautentier sprechen, um kurze Botschaften zu überbringen. Dabei kann sie nicht automatisch hören oder anderweitig verstehen, was dem Vertrautentier vor Ort geantwortet wurde.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Katzenplage",
+    "category": "special_abilities_animal",
+    "name": "Katzenplage",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Katzenplage.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Die Katze überträgt durch eine Berührung einen Geruch auf einen Kulturschaffenden, der Katzenminze ähnelt. Alle Katzen (nur Hauskatzen, keine Wild- und Großkatzen) in bis zu 100 Schritt Entfernung vom Kulturschaffenden nehmen diesen Geruch wahr und nähern sich ihm mit dem Ziel, sich an ihm zu reiben und ständig zu miauen. Was anfangs wenig bedrohlich wirkt, sorgt in einer Stadt mit vielen Katzen dafür, dass das Opfer des Tricks von einer ganzen Horde Katzen umgeben ist, die wie Kletten an ihm hängen und ihm überall hin auffällig folgen. Durch die Katzen können soziale Nachteile entstehen: Eine Stadtwache mag einen Helden nicht das Stadttor passieren lassen, ein Kneipenwirt verbietet ihm das Betreten seiner Taverne, in einem Dorf voller abergläubischer Menschen fällt das Opfer schnell auf. Die Meisterin kann einem solchen Opfer Erschwernisse von –1 auf Proben auferlegen, wenn es zur Situation passt.\n\nTierarten : Katzen, Wildkatzen AsP-Kosten : 2 AsP pro Stunde Wirkungsdauer : je nach AsP-Einsatz Merkmal : Illusion AP-Wert : 10 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 21 Kodex der Magie, Seite 369 f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Tarnung",
+    "category": "special_abilities_animal",
+    "name": "Tarnung",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Tarnung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute nimmt die Farbe der Umgebung an und verschmilzt so mit dem Hintergrund. Proben auf Verbergen (sich Verstecken) sind für ihn um 2 erleichtert. Die Tarnung wirkt nur, solange sich das Tier nicht bewegt.\n\nTierarten: Kröten AsP-Kosten: 1 AsP pro 5 Minuten Wirkungsdauer: aufrechterhaltend Merkmal: Verwandlung AP-Wert: 10 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 371 f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Wunderbeutel_Kr_tenleib",
+    "category": "special_abilities_animal",
+    "name": "Wunderbeutel Krötenleib",
+    "url": "https://dsa.ulisses-regelwiki.de/SVF_WunderbeutelKroetenleib.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Die meisten Töchter der Erde sind talentierte Alchimistinnen, jedoch ist schon so manche Hexe vor ihrem Kessel verzweifelt, weil sie diese eine letzte Zutat einfach nicht mehr auftreiben konnte. Dem Wunderbeutel Krötenleib hat sie zu verdanken, dass ihr Werk oft doch noch zu retten ist. Gibt die Hexe der Kröte eine Portion einfaches Wirselkraut zu fressen und wartet eine Nacht, kann sie am nächsten Morgen eine krötenmaulgroße Portion der letzten fehlenden pflanzlichen Zutat in dessen Maul finden, das sie dem Tier als nächstes zu brauen angekündigt hat. Für die Einleitung dieser magischen Transformation ist es notwendig, dass die Kröte zuvor alle anderen Zutaten im Besitz der Hexe gesehen hat, die für das Rezept notwendig sind. Der Meister hat das letzte Wort dabei, ob die gewünschte Zutat vom Vertrautentier erschaffen werden kann. Wird die Zutat für etwas anderes verwendet als die Herstellung des angekündigten Alchimicums, zerfällt sie durch den Willen des verärgerten Vertrautentieres zu wertlosem Staub. Gegen eventuelle Wirkungen der Zutat ist das Vertrautentier immun.\n\nTierarten : Kröten AsP-Kosten : je nach Zutat variabel; Suchschwierigkeit der Pflanze mal 3 AsP, mindestens 1 AsP Wirkungsdauer : sofort Merkmal : Verwandlung AP-Wert : 20 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 372 f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Wachsame_Augen",
+    "category": "special_abilities_animal",
+    "name": "Wachsame Augen",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_WachsameAugen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier ruft Tiere der gleichen Art wie es selbst herbei, die maximal 7 Meilen entfernt vom Vertrauten sein dürfen. Zusammen mit dem Vertrauten wachen diese dann über den Schlaf der Hexe. Maximal erscheinen so 49 Tiere. Die Tiere werden nicht in einen Kampf eingreifen, aber sie wecken die Hexe rechtzeitig durch Geräusche oder andere Möglichkeiten, wenn sie eine Gefahr wahrnehmen, die sich auf bis zu 100 Schritt nähert. Die Tiere wissen instinktiv, was für die Hexe eine Gefahr darstellt und was nicht, also beispielsweise wecken sie sie, wenn ein der Hexe bekannter Feind sich nähert. Der Trick funktioniert nur, wenn mindestens ein Tier der gleichen Art wie der Vertraute in Reichweite ist.\n\nTierarten: alle AsP-Kosten: 4 AsP Wirkungsdauer: bis zum Ende des Schlafs Merkmal: Einfluss AP-Wert: 10 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 22 Kodex der Magie, Seite 372",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Leben_aufsp_ren",
+    "category": "special_abilities_animal",
+    "name": "Leben aufspüren",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Leben_aufspueren.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier kann in einem Radius von 3 Meilen einen Kulturschaffenden aufspüren, den der Geode persönlich kennt. Dieser muss dem Vertrauten dazu den Namen der Person mitteilen. Der Vertraute muss keine Probe ablegen und spürt magisch, wo sich die Person aufhält, solange sie sich zu Beginn des Tricks im Wirkungsradius befindet.*\n\nTierarten: Hunde, Vielfraße AsP-Kosten: 5 AsP Wirkungsdauer: 30 Minuten Merkmal: Hellsicht AP-Wert: 10 Abenteuerpunkte\n\n*) Der Trick kann auch dazu angewandt werden, von Lawinen verschüttete Personen zu finden. Der Vertraute mag nicht durch den Schnee oder die Felsen kommen, aber er wird anschlagen und so dem Geoden zeigen, wo in etwa zu suchen ist.\n\nPublikation(en): Aventurische Magie III, Seite 33 Kodex der Magie, Seite 370",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Schw_chenkuckuck",
+    "category": "special_abilities_animal",
+    "name": "Schwächenkuckuck",
+    "url": "https://dsa.ulisses-regelwiki.de/SVF_Schwaechenkuckuck.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Mit einer einfachen Berührung kann das Vertrautentier einem kulturschaffenden Lebewesen eine Persönlichkeitsschwäche seiner Hexe übertragen. So lange das Ziel an der Schwäche leidet, wird die Hexe nicht länger von deren Auswirkung beeinträchtigt, sofern sie dies wünscht. Sobald sie die Schwäche wieder willentlich akzeptiert, oder das Vertrautentier keine AsP mehr aufwenden kann, endet die Wirkung. Während der Wirkungsdauer kann das Vertrautentier keine AsP regenerieren.\n\nTierarten : alle AsP-Kosten : 6 AsP pro Tag Wirkungsdauer : je nach AsP-Einsatz Merkmal : Einfluss AP-Wert : 8 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 371",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Teleportationsflug",
+    "category": "special_abilities_animal",
+    "name": "Teleportationsflug",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Teleportationsflug.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Rabe kann sich während des Flugs teleportieren, um so schneller eine größere Distanz zurückzulegen. Dieser Vertrautentrick kann nur dazu eingesetzt werden, die Flugzeit zu verkürzen, allerdings nicht für Kampfzwecke. Der Einsatz erfordert pro 5 teleportierten Meilen 1 Aktion.\n\nTierarten : Falken, Raben AsP-Kosten: 3 AsP pro 5 Meilen Teleportationsweg Wirkungsdauer: sofort Merkmal: Sphären AP-Wert: 10 Abenteuerpunkte\n\nAventurische Magie II, Seite 22 Kodex der Magie, Seite 372 Helden des Wolfsfrosts, Seite 42",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Hol_es",
+    "category": "special_abilities_animal",
+    "name": "Hol es!",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_HolES.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier kann ausgeschickt werden, um einen Gegenstand zu stehlen. Dieser Gegenstand kann bis zu 20 Meilen entfernt sein.\n\nTierarten : Hunde, Vielfraße AsP-Kosten : 10 AsP Wirkungsdauer : sofort Merkmal : Einfluss AP-Wert : 15 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 369",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Gaukeltricks",
+    "category": "special_abilities_animal",
+    "name": "Gaukeltricks",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Gaukeltricks.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Affe kann bis zu 6 Personen durch kleine Gaukeltricks wie Purzelbäume, Grimassen oder akrobatische Kunststücke ablenken. Die Zuschauer erhalten eine Erschwernis von 1 auf alle Fertigkeitsproben, während sie dem Affen zusehen. Dieser Vertrautentrick darf nicht in einem Kampf angewendet werden. Er wirkt nur auf Personen, deren SK 2 oder niedriger ist und die sich zu Beginn des Tricks maximal 7 Schritt vom Affen entfernt befinden. Bei mehr als 6 Personen in Wirkungsreichweite kann der Spieler der Hexe auswählen, wer betroffen ist.\n\nTierarten : Affen, Iltisse AsP-Kosten : 3 AsP pro Minute Wirkungsdauer : je nach AsP-Einsatz Merkmal : Einfluss AP-Wert : 15 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 20 Kodex der Magie, Seite 368",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_N_chtlicher_Lebensraub",
+    "category": "special_abilities_animal",
+    "name": "Nächtlicher Lebensraub",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Lebensraub.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier kann sich nach Sonnenuntergang zu einem schlafenden Kulturschaffenden begeben und ihm bis zu 7 LeP rauben. Dazu muss sich das Vertrautentier bis auf 1 Schritt dem Schlafenden nähern. Pro 10 Minuten, die das Tier bei dem Schlafenden verbringt, kann es 1 LeP rauben. Das Opfer kann aber durch den Entzug der Lebenskraft nicht auf 0 oder weniger LeP gebracht werden. Die LeP kann sich das Vertrautentier gutschreiben, es kann aber auch nach dem Raub beliebig viele dieser Punkte durch Berührung an seine Hexe übertragen. Kurzfristig können so auch die maximalen LeP des Vertrautentiers überschritten werden, überzählige LeP gehen aber zu Beginn des nächsten Sonnenaufgangs verloren. Durch die geschenkten LeP kann die Hexe aber nicht mehr LeP erhalten, als ihr Höchstwert erlaubt. Das Opfer bekommt von dem Raub nichts mit.\n\nTierarten : Eulen, Katzen, Wildkatzen AsP-Kosten: 1 AsP pro LeP Wirkungsdauer: je nach AsP-Einsatz Merkmal: Verwandlung AP-Wert: 12 Abenteuerpunkte\n\nAventurische Magie II, Seite 21 Kodex der Magie, Seite 370 Helden des Wolfsfrosts, Seite 42",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Schlafender_Freund",
+    "category": "special_abilities_animal",
+    "name": "Schlafender Freund",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_SchlafenderFreund.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Wenn die Hexe schläft, ihr Vertrautentier in Körperkontakt bei ihr ruht und eine Regenerationsphase anbricht, kann das Vertrautentier die Hexe heilen. Für jeweils 2 AsP, die das Vertrautentier überträgt, kann die Hexe 1 LeP zusätzlich regenerieren.\n\nTierarten: alle AsP-Kosten: je nach Einsatz Wirkungsdauer: sofort Merkmal: Heilung AP-Wert: 8 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 22 Kodex der Magie, Seite 370 f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Gef_hrte_in_neuer_Gestalt",
+    "category": "special_abilities_animal",
+    "name": "Gefährte in neuer Gestalt",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Gestalt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier verwandelt sich innerhalb von 16 Aktionen in eine menschliche, nackte Gestalt. In Menschengestalt hat der Vertraute die unten aufgeführten Werte. Pro 50 AP, die der Vertraute gesammelt hat, kann er einen Bonus auf seine Fertigkeiten erhalten: +3 LeP oder +1 Punkt einer beliebigen Eigenschaft. Seine Intelligenz wächst auf das Maß eines Menschen an, wodurch er auch die Muttersprache der Hexe beherrscht. An sein Leben als Tier kann er sich erinnern, aber als Tier hat der Vertraute keine Ahnung von seiner Zeit in Menschengestalt. In Menschengestalt kann der Vertraute keine weiteren Vertrautentricks einsetzen. Die Rückverwandlung dauert ebenfalls 16 Aktionen. Während der beiden Verwandlungsphasen hat das Tier den Status Bewegungsunfähig .\n\nTierarten: alle (außer Vertrautentiere der Zibilja) AsP-Kosten: 8 AsP pro Stunde Wirkungsdauer: je nach Einsatz Merkmal: Verwandlung AP-Wert: 45 Abenteuerpunkte\n\nAnmerkung :Geoden-Vertrautentiere verwandeln in eine Zwergengestalt, Goblinzauberinnen-Vertrautentiere verwandeln in eine Goblingestalt\n\nWaffenlos: AT 12 PA 6 TP 1W6 RW kurz RS/BE: 0/0 Aktionen: 1 Vorteile/Nachteile: Gutaussehend I Sonderfertigkeiten: keine Talente: Betören 6, Einschüchtern 4, Klettern 4, Körperbeherrschung 4, Kraftakt 4, Menschenkenntnis 8, Schwimmen 4, Selbstbeherrschung 4, Sinnesschärfe 8, Überreden 4, Verbergen 4, Willenskraft 8 Flucht: individuell\n\nAnmerkung : Je nach Tierart hat das Vertrautentier einige weitere Vorteile und ein paar äußere Merkmale des Tiers: # Affen: besonders behaart, FW Klettern +6 # Eulen: Federn im Haar, Dunkelsicht I # Falken: Federn im Haar, FW Sinnesschärfe +6 # Hunde: Fell, FW Sinnesschärfe +6 # Iltisse: spitze Nase, FW Überreden +6 # Katzen: Katzenaugen, Dunkelsicht I # Kröten: glitschige Haut, FW Willenskraft +6 # Opossums: leicht befellt, schielen manchmal, FW Überreden +6 # Raben: Federn im Haar, FW Sinnesschärfe +6 # Schlangen: geschlitzte Pupille, FW Kraftakt +6 # Schnecken: schleimig, FW Selbstbeherrschung +6 # Spinnen: chitinartiger Überzeug an einigen Hautstellen, FW Verbergen +6 # Vielfraße: befellt, FW Kraftakt +6 # Wildkatzen: Katzenaugen, Dunkelsicht I\n\nPublikationen: Aventurische Magie II, Seite 20 Aventurische Tiergefährten, Seite 114 Kodex der Magie, Seite 368 f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Schneckens_ure",
+    "category": "special_abilities_animal",
+    "name": "Schneckensäure",
+    "url": "https://dsa.ulisses-regelwiki.de/SVF_Schneckensaure.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier kann innerhalb von 1 Minute eine Portion Säure erschaffen, die sich durch alle Materialien, bis auf wenige Ausnahmen nach Meisterentscheid (Glas, Stein, magische Metalle) frisst. Auf der Haut sorgt die Säure für 1W6 TP und den Status Brennend auf kleiner Fläche\n\nTierarten : Schnecken AsP-Kosten : 6 AsP Wirkungsdauer : sofort Merkmal : Verwandlung AP-Wert : 12 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 371",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Ruhepol",
+    "category": "special_abilities_animal",
+    "name": "Ruhepol",
+    "url": "https://dsa.ulisses-regelwiki.de/SVF_Ruhepol.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier hat eine beruhigende Wirkung auf den Hexer, sodass er pro Minute, die er es in beiden Armen hält, eine Stufe Furcht oder Verwirrung heilen kann. Es ist ebenso möglich dadurch pro Minute eine Stufe Schmerz zu heilen, wobei dies nur so lange gilt, wie das Tier in den Armen des Hexers verweilt. Lässt er es los, kehrt der Schmerz mit einer Stufe pro Minute mit sämtlichen Auswirkungen zurück. Es ist nicht möglich, pro Minute mehr als eine Stufe insgesamt zu heilen.\n\nTierarten : alle AsP-Kosten : 2 AsP pro geheilter Zustandsstufe Wirkungsdauer : sofort Merkmal : Heilung AP-Wert : 10 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 370",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Kr_tengift",
+    "category": "special_abilities_animal",
+    "name": "Krötengift",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Kroetengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Die Kröte sondert statt des sonst bei Kröten üblichen Gifts ein magisches Hautgift ab, das jeden, der sie berührt, mit dem Fluch WARZEN SPRIESSEN schlägt. Der Warzen-Fluch wirkt in diesem Fall drei Tage.\n\nTierarten : Kröten, Schnecken AsP-Kosten : 3 AsP Wirkungsdauer : 5 Kampfrunden Merkmal : Verwandlung AP-Wert : 10 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 370",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Furchtbote",
+    "category": "special_abilities_animal",
+    "name": "Furchtbote",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Furchtbote.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung : Die Eule kann einen Kulturschaffenden in 1 Aktion innerhalb der Reichweite ihrer GS anfliegen und ihm Angst einjagen, statt eine AT einzusetzen. Sie fliegt dazu bis auf 4 Schritt an das Opfer heran. Das Opfer muss eine Probe auf Willenskraft (Bedrohungen standhalten) erschwert um –2 ablegen. Misslingt die Probe, erhält das Opfer 1 Stufe Furcht . Kein Opfer kann so von der Eule mehr als 1 Stufe Furcht erhalten.\n\nTierarten : Eulen AsP-Kosten : 5 AsP pro Anflug Wirkungsdauer : sofort Merkmal : Einfluss AP-Wert : 15 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 20 Kodex der Magie, Seite 368",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Ungesehener_Beobachter",
+    "category": "special_abilities_animal",
+    "name": "Ungesehener Beobachter",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_UngesehenerBeobachter.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute wird Auge und Ohr der Hexe. Sie kann wahrnehmen, was er wahrnimmt. Um den Kontakt aufrechtzuerhalten, muss die Hexe mit geschlossenen Augen verweilen und sich auf ihren Vertrauten konzentrieren. Die Verbindung wirkt nur in eine Richtung, die Hexe kann ihrem Vertrauten daher keine Aufträge erteilen. Die Reichweite der Verbindung beträgt sieben Meilen. Sollte der Vertraute verletzt werden, erleidet die Hexe den gleichen Schaden wie der Vertraute. Der so miterlebte Tod eines Vertrauten kann eine Hexe stark traumatisieren.\n\nTierarten: alle AsP-Kosten: 1 AsP pro 10 Minuten Wirkungsdauer: aufrechterhaltend Merkmal: Einfluss AP-Wert: 35 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 372",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Erster_unter_Gleichen",
+    "category": "special_abilities_animal",
+    "name": "Erster unter Gleichen",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_ErsterunterGleichen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute kann Tiere seiner Art einschüchtern und vertreiben, solange sie nicht größer sind als er selbst.\n\nTierarten: alle AsP-Kosten: 3 AsP Wirkungsdauer: eine halbe Stunde Merkmal: Einfluss AP-Wert: 5 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 279 Kodex der Magie, Seite 367 f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Kraftraub",
+    "category": "special_abilities_animal",
+    "name": "Kraftraub",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Kraftraub.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute kann einer Person während einer Ruhephase deren Regeneration entziehen, wenn er sie beim Schlafen beobachtet. Das Tier muss das Opfer die ganze Schlafphase beobachten und entzieht ihm dafür die ganze Regeneration der Regenerationsphase. Die entzogene Lebensenergie kann er seiner eigenen hinzufügen, wenn ihm noch Lebenspunkte fehlen. Ansonsten verfällt sie. Die Person hat während der Beobachtungsphase Alpträume von dem Vertrautentier. Es wird keine AE oder KE gestohlen.\n\nTierarten: alle AsP-Kosten: 3 AsP Wirkungsdauer: aufrechterhaltend Merkmal: Heilung AP-Wert: 15 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 280 Kodex der Magie, Seite 370",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Fluchbote",
+    "category": "special_abilities_animal",
+    "name": "Fluchbote",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Fluchbote.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Vertraute überbringt einen Fluch an ein von der Hexe ausgewähltes Opfer. Er muss hierzu bis zu 7 Schritt an sein Ziel herankommen und es anstarren. Sobald er den Fluch auf das Opfer gewirkt hat, übermittelt er telepathisch die mit dem Fluch verbundenen Worte der Hexe, die die Bedingungen erklären, ob und wie der Fluch gelöst werden kann.\n\nTierarten : alle (außer Vertraute der Geoden, Goblinzauberinnen und Zibilja) AsP-Kosten: 1 AsP Wirkungsdauer : sofort Merkmal : je nach Fluch AP-Wert : 15 Abenteuerpunkte\n\nPublikation(en): Regelwerk, Seite 279 Kodex der Magie, Seite 368",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Extrem_Putzig",
+    "category": "special_abilities_animal",
+    "name": "Extrem Putzig",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_ExtremPutzig.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Vertrautentier erzeugt eine Aura, in der es Kulturschaffenden sehr schwer fällt, es anzugreifen. Angriffe jeglicher Art erfordern vorher eine gelungene Probe auf Willenskraft –5. Die Wirkung hält 1 Stunde an.\n\nTierarten : Iltisse AsP-Kosten : 5 AsP Wirkungsdauer : sofort Merkmal : Einfluss AP-Wert : 10 Abenteuerpunkte\n\nPublikation(en): Kodex der Magie, Seite 368",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Einsch_chterndes_Bellen",
+    "category": "special_abilities_animal",
+    "name": "Einschüchterndes Bellen",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Einschuechterndes_Bellen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Das Bellen erzeugt in einem Radius von 8 Schritt um ihn herum eine Zone der Furcht . Alle Kulturschaffenden und Tiere mit maximal SK 2 erleiden für 5 KR eine 1 Stufe Furcht . Nur der Geode ist davon nicht betroffen.\n\nTierarten: Hunde, Vielfraße AsP-Kosten: 10 AsP Wirkungsdauer: sofort Merkmal: Einfluss AP-Wert: 15 Abenteuerpunkte\n\nAventurische Magie III, Seite 33 Kodex der Magie, Seite 367 Helden des Wolfsfrosts, Seite 42",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Spinnensinn",
+    "category": "special_abilities_animal",
+    "name": "Spinnensinn",
+    "url": "https://dsa.ulisses-regelwiki.de/VSF_Spinnensinn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Vertrautentricks"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die Spinne kann einen magischen Gefahrensinn auf die Hexe übertragen. Solange der Sinn wirkt, kann die Hexe nicht den Status Überrascht erhalten und darf in der ersten KR als erstes handeln, so wie unter der Schicksalspunkte-Option Erster (siehe Regelwerk ).\n\nTierarten: Spinnen AsP-Kosten: 5 AsP pro 15 Minuten Wirkungsdauer: je nach AsP-Einsatz Merkmal: Hellsicht AP-Wert: 12 Abenteuerpunkte\n\nPublikation(en): Aventurische Magie II, Seite 22 Kodex der Magie, Seite 371",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Zusammenarbeit",
+    "category": "special_abilities_animal",
+    "name": "Zusammenarbeit",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Zusammenarbeit.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Das Tier kann andere Tiere seiner Art und gleicher oder höherer Ausbildungsstufe zur Zusammenarbeit bewegen. So kann sich beispielsweise eine Gruppe Tiere zum Treiben und Hüten einer Herde zusammenfinden, oder es lassen sich gemeinsame Angriffe einleiten. Das Tier mit der Sonderfertigkeit ist nicht zwangsläufig Anführer der Gruppe und kann nicht ohne weiteres den anderen Tieren Befehle erteilen.\n\nVoraussetzungen: natürliches Herden- oder Rudeltier\n\nAventurische Tiergefährten, Seite 125 Helden des Wolfsfrosts, Seite 97",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Heilerin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Heilerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Heilerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Eine Heldin mit dieser Sonderfertigkeit lässt die LeP nach einer Probe auf Heilkunde Wunden (Stabilisieren) bei einem Patienten bei der Letzten Rettung vor dem Tod nicht nur auf 1 steigen, sondern der Patient verfügt danach über QS LeP.\n\nErweiterte Talentsonderfertigkeiten: Handwerkskunst , Machtvoller Heiler , Routinierte Wundversorgung\n\nAventurisches Kompendium 2, Seite 79 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 279",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Fallenstellers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Fallenstellers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Fallenstellers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Held mit dieser Sonderfertigkeit erhält bei der Jagd mit Fallen eine Erleichterung von 1 bei Proben auf Tierkunde (Wildtiere) .\n\nErweiterte Talentsonderfertigkeiten: Erfolgreicher Jäger , Fährtenleser , Meister der Orientierung\n\nVoraussetzungen: Fährtensuchen 8, Tierkunde 6\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 278 Helden des Wolfsfrosts, Seite 35",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Tiersonderfertigkeiten",
+    "category": "special_abilities_animal",
+    "name": "Tiersonderfertigkeiten",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Tiersonderfertigkeiten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Diese Sonderfertigkeiten für Tiere können, wie auch bei Helden, einfach mittels AP aktiviert werden, sofern die Voraussetzungen erfüllt sind. Sie sind vergleichbar mit den Allgemeinen Sonderfertigkeiten der Helden und sind keine Kampfsonderfertigkeiten .",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_J_gers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Jägers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_J%C3%A4gers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Held mit dieser Sonderfertigkeit erhält bei der Pirschjagd eine Erleichterung von +1 bei Proben auf Tierkunde (Wildtiere) .\n\nErweiterte Talentsonderfertigkeiten: Erfolgreicher Jäger , Fährtenleser , Kind der Natur\n\nVoraussetzungen: Fährtensuchen 6, Tierkunde 8\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 279 Helden des Wolfsfrosts, Seite 35",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Offiziers",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Offiziers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Offiziers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Der Offizier muss zwei Anwendungsgebiete im Talent Kriegskunst auswählen. Auf diese Anwendungsgebiete erhält er fortan bei Proben +1 FP (bis zu einem Maximum von 18 FP). Außerdem kann er das Talent Bekehren & Überzeugen (öffentliche Rede) nutzen, um vor einem Kampf oder einer Schlacht eine motivierende Rede von 1 bis 5 Minuten Länge zu halten, die für bis zu 10 ausgewählte Personen auch regeltechnische Vorteile mit sich bringen kann. Die 10 ausgewählten Personen erhalten jeweils insgesamt QS Punkte, die sie einsetzen können, um Erschwernisse auf AT, PA, FK, Körperbeherrschung , Selbstbeherrschung und Willenskraft auszugleichen. Ein solcher Ausgleich muss vor einer Probe angesagt werden, er gilt immer nur für eine einzelne Handlung und pro Handlung kann maximal -1 Punkt Erschwernis ausgeglichen werden. Erschwernisse aus selbstgewählten Manövern können nicht reduziert werden. Wenn mehrere Helden diese Fähigkeit einsetzen, wird nur die höchste QS berücksichtigt. Die Wirkung endet spätestens mit dem Ende des Kampfes.\n\nErweiterte Talentsonderfertigkeiten: Herrschaftsanspruch , Soziale Kompetenz , Vertrauenswürdig , ein oder zwei dieser Talentsonderfertigkeiten können wahlweise auch durch die erweiterten Kampfsonderfertigkeiten Taktik durchbrechen und/oder Taktische Befehle ersetzt werden.",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Kartographen",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Kartographen",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Kartographen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin bekommt eine Erleichterung von +1 auf Geographie (Kartographie) . Sie benötigt zudem für das Zeichnen einer Karte nur die Hälfte der Zeit, die man normalerweise braucht.\n\nErweiterte Talentsonderfertigkeiten: Fachwissen , Handwerkskunst , Universalgenie\n\nVoraussetzung: Malen & Zeichnen 8, SF Kartographie\n\nGlaube, Macht & Heldenmut - Die Sonnenküste, Seite 15",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Schankmagd",
+    "category": "special_abilities_animal",
+    "name": "Weg der Schankmagd",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Schankmagd.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Verfügt eine Heldin über diese Sonderfertigkeit, ist sie besonders gut darin, Gerüchte aufzuschnappen, andere zu bezirzen und bei Verhandlungen einen Preisnachlass oder Trinkgeld zu bekommen. Alle Teilproben auf CH bei Betören , Gassenwissen (Informationssuche) und Handel (Feilschen) sind um +1 erleichtert.\n\nErweiterte Talentsonderfertigkeiten: Gerüchte aufschnappen , Soziale Kompetenz , Verhandlungsgeschick\n\nVoraussetzungen: Betören 8, Gassenwissen 4, Handel 4\n\nAventurisches Kompendium 2, Seite 80 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 282",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Kontoristin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Kontoristin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Kontoristin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin bekommt eine Erleichterung von +1 auf Handel (Buchhaltung oder Geldwechsel) . Sie benötigt zudem bei allem im Zusammenhang mit Buchhaltung, Buchführung und Buchprüfung nur die Hälfte der Zeit, die man normalerweise braucht.\n\nErweiterte Talentsonderfertigkeiten: Rechnungswesen , Verhandlungsgeschick , Vertrauenswürdig\n\nAventurisches Kompendium 2, Seite 79 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 280 Helden der Winterwacht, Seite 31",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_K_nstlerin",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Künstlerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_K%C3%BCnstlerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin kann ein Talent, das zur Anwendung ihrer Kunst entscheidend ist, mit Erwerb dieses Stils aussuchen und fortan damit Geld verdienen . Sie bekommt statt Kreuzern oder Heller für die Anwendung ihrer Kunst Silbertaler.\n\nErweiterte Talentsonderfertigkeiten: Gute Verarbeitung , Handwerkskunst , Kunstbegabt\n\nVoraussetzungen: ausgewähltes Talent FW 8\n\nAP-Wert: A-/B-/C-/D-Talent 2/4/6/8 Abenteuerpunkte\n\nAventurisches Kompendium 2, Seite 79f. Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 280",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Boten",
+    "category": "special_abilities_animal",
+    "name": "Weg des Boten",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Boten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Bei Verfolgungsjagden bekommt der Bote bei seiner Fertigkeitsprobe, um zu entkommen oder den Gegner einzuholen, eine Erleichterung von +1. Außerdem gilt für ihn die Erleichterung von 1 aller Ortskenntnisse auch für Handel (Feilschen) und Wildnisleben (Lagersuche) .\n\nErweiterte Talentsonderfertigkeiten: Gerüchte aufschnappen , Kind der Natur , Meister der Orientierung\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 278",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_T_towiererin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Tätowiererin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_T%C3%A4towiererin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Proben auf Malen & Zeichnen , um Tätowierungen zu stechen, sind um +1 erleichtert.\n\nErweiterte Talentsonderfertigkeiten: Phantastische Tätowierung , Gute Verarbeitung , Handwerkskunst\n\nVoraussetzungen: Malen & Zeichnen 8, Tätowierer\n\nAventurisches Kompendium 2, Seite 81 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 283",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_H_flings",
+    "category": "special_abilities_animal",
+    "name": "Weg des Höflings",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_H%C3%B6flings.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Held mit diesem Talentstil verdoppelt die Erleichterungen in Betören (Anbändeln) , Etikette und Überreden gegenüber Personen mit niedrigerem Sozialen Stand von +1 auf +2.\n\nErweiterte Talentsonderfertigkeiten: Gerüchte aufschnappen , Herrschaftsanspruch , Soziale Kompetenz\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 279",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Reiterin",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Reiterin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Reiterin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin erhält bei Proben auf Reiten (Langstreckenreiten, Springreiten oder Verfolgungsjagden) eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Kind der Natur , Körperliches Geschick , Tierverbundenheit\n\nGlaube, Macht & Heldenmut - Die Siebenwindküste, Seite 14 Kodex des Schwertes, Seite 281 Helden der Siebenwindküste, Seite 35",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Gauklerin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Gauklerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Gauklerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin erhält bei Gaukeleien eine Erleichterung von +1. Zudem kann sie, wie unter der Schicksalspunkte Sonderfertigkeit, um ein Ergebnis zu verbessern , das Würfelergebnis der Teilprobe auf FF um 2 reduzieren.\n\nErweiterte Talentsonderfertigkeiten: Einnahmequelle , Körperliches Geschick , Täuschung der Zuschauer\n\nVoraussetzungen: Gaukeleien 8, Körperbeherrschung 4\n\nAventurisches Kompendium 2, Seite 78f. Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 279",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Patrizierin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Patrizierin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Patrizierin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Eine Heldin mit diesem Talentstil verdoppelt die Erleichterungen in Bekehren & Überzeugen , Etikette und Überreden gegenüber Personen mit niedrigeren Sozialen Stand von +1 auf +2.\n\nErweiterte Talentsonderfertigkeiten: Herrschaftsanspruch , Verhandlungsgeschick , Vertrauenswürdig\n\nAventurisches Kompendium 2, Seite 80 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 281",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Fischers",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Fischers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Fischers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Held mit dieser Sonderfertigkeit erhält bei Proben auf Schwimmen oder Fischen & Angeln eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Erfolgreicher Fischer , Kind der Natur , Körperliches Geschick\n\nVoraussetzung: Schwimmen 6, Fischen & Angeln 6",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Baderin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Baderin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Baderin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Wer über diesen Stil verfügt, kann bei der Sonderfertigkeit Erholsames Bad den 1W6-Wurf zur Bestimmung, ob es ein zusätzlicher LeP regeneriert wird bei Misslingen wiederholen. Außerdem können bei der Benutzung der Sonderfertigkeit Erholsames Bad besonders effiziente Badeessenzen hergestellt werden, die für zwei Personen ausreichen. Die Kosten für den Kauf der Kräuteressenzen (5 Silbertaler), wie auch die Dauer für die Zubereitung (1 Stunde) ändern sich jedoch nicht.\n\nErweiterte Talentsonderfertigkeiten: Entspannendes Liebesspiel , Großes Heilbad , Soziale Kompetenz\n\nVoraussetzungen: Heilkunde Seele 4, Heilkunde Wunden 8, Sonderfertigkeit Erholsames Bad\n\nAventurisches Kompendium 2, Seite 78 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 278",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Rechtswahrers",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Rechtswahrers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Rechtswahrers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held kennt sich hervorragend mit der Jagd nach Banditen und Räubern aus. Proben auf Sinnesschärfe (Hinterhalt entdecken) und Willenskraft (Einschüchtern widerstehen) sind um +1 erleichtert.\n\nErweiterte Talentsonderfertigkeiten: Bedrohliche Aura , Körperliches Geschick , Kind der Natur\n\nVoraussetzungen: Sinnesschärfe 4, Willenskraft 4\n\nGlaube, Macht & Heldenmut - Die Sonnenküste, Seite 15",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Bardin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Bardin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Bardin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin erhält bei Musizieren und Singen eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Ermutigende Darstellung , Faszinierende Darstellung , Kunstbegabt\n\nAventurisches Kompendium 2, Seite 78 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 278 Glaube, Macht & Heldenmut - Die Siebenwindküsten, Seite 14 Helden der Siebenwindküste, Seite 35 Glaube, Macht & Heldenmut- Die Sonnenküste, Seite 15",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Adligen",
+    "category": "special_abilities_animal",
+    "name": "Weg des Adligen",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Adligen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Held mit diesem Talentstil verdoppelt die Erleichterungen in Bekehren & Überzeugen , Einschüchtern , Etikette (Benehmen) und Überreden (Schmeicheln) gegenüber Personen mit niedrigeren Sozialen Stand von +1 auf +2.\n\nErweiterte Talentsonderfertigkeiten: Herrschaftsanspruch , Soziale Kompetenz , Vertrauenswürdig\n\nAventurisches Kompendium 2, Seite 81 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 277 Glaube, Macht & Heldenmut - Die Dampfenden Dschungel, Seite 11",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Prospektors",
+    "category": "special_abilities_animal",
+    "name": "Weg des Prospektors",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Prospektors.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Proben auf Steinbearbeitung , um Erkenntnisse über Bodenschätze einzuholen, sind um +1 erleichtert.\n\nE rweiterte Talentsonderfertigkeiten: Gesteinskunde , Gute Verarbeitung , Meister der Orientierung\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 281 Helden des Wolfsfrosts, Seite 35",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Schriftstellers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Schriftstellers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Schriftstellers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Probe auf das jeweilige Schriftstellerei-Talent, ist für den Schriftsteller um +1 erleichtert.\n\nErweiterte Talentsonderfertigkeiten: Allgemeinwissen , Kunstbegabt , Vertrauenswürdig\n\nVoraussetzungen: Sonderfertigkeit Schriftstellerei\n\nAventurisches Kompendium 2, Seite 83 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 282",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Okkultisten",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Okkultisten",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Okkultisten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held erhält bei Bekehren & Überzeugen (Einzelgespräch) und Gassenwissen (Beschatten oder Informationssuche) eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Allgemeinwissen , Bedrohliche Aura , Gerüchte aufschnappen\n\nVoraussetzungen: Bekehren & Überzeugen 8, Gassenwissen 8",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Schauk_mpferin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Schaukämpferin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Schauk%C3%A4mpferin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Einmal in einem Kampf kann die Schaukämpferin entscheiden anstatt TP durch einen waffenlosen Angriff, durch ihren Gegner 1 Stufe Betäubung abzubekommen. Die Spielerin der Schaukämpferin kann nach dem Auswürfeln der TP entscheiden, ob sie lieber TP oder Betäubung bekommt. Zudem kann die Heldin Betäubung , die sie im waffenlosen Kampf erhalten hat, innerhalb von 1 Stunde pro Stufe abbauen.\n\nErweiterte Talentsonderfertigkeiten: Einnahmequelle , Kraftanstrengung , Täuschung der Zuschauer\n\nAventurisches Kompendium 2, Seite 80 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 282",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Holzf_llers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Holzfällers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Holzf%C3%A4llers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Verfügt ein Held über diese Sonderfertigkeit, kennt er sich im Umgang mit der Holzfälleraxt so gut aus, dass sie in seinen Händen 1 Punkt weniger PA-Abzüge beim PA-Modifikator, sowie +1 TP einbringen. Zudem gilt sie für ihn nicht als improvisierte Waffe .\n\nErweiterte Talentsonderfertigkeiten: Gute Verarbeitung , Handwerkskunst , Kraftanstrengung\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 279 Glaube, Macht & Heldenmut, Seite 17",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Streuners",
+    "category": "special_abilities_animal",
+    "name": "Weg des Streuners",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Streuners.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Held mit diesem Talentstil kann einmal pro Tag eine einzelne Teilprobe seiner Wahl in einem der Talente Gassenwissen , Überreden und Verbergen nochmal würfeln. Der Held kann sich jeden Tag nach Bedarf für eines der Talente entscheiden. Diese Fähigkeit ist kombinierbar mit dem Vorteil Begabung und dem Einsatz der Schicksalspunkte Option Neu würfeln . Die Reihenfolge der verschiedenen Einsätze diese Fähigkeiten muss der Spieler bestimmen, nachdem die reguläre Probe abgelegt wurde. Das letzte Ergebnis bei der Probe ist bindend. Eine Wiederholung des Wurfes ist bei einer Doppel- oder Dreifach- 20 nicht erlaubt, weshalb eine Fertigkeitsprobe immer erst zu Ende gewürfelt werden muss, bevor neu gewürfelt wird.\n\nErweiterte Talentsonderfertigkeiten: Gerüchte aufschnappen , Körperliches Geschick , Soziale Kompetenz\n\nVoraussetzungen: Gassenwissen 8, Überreden 8, Verbergen 8\n\nAventurisches Kompendium 2, Seite 83 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 283",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Echsenkundigen",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Echsenkundigen",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Echsenkundigen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held erhält bei Geschichtswissen und Magiekunde , sofern sich die Probe auf Echsen bezieht, eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Allgemeinwissen , Fachwissen , Gerüchte aufschnappen\n\nVoraussetzungen: Geschichtswisse 8, Magiekunde 8",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Schmiedin",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Schmiedin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Schmiedin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Bei einer gelungenen Probe Metallbearbeitung erhält der Held +1 FP (bis zu einem Maximum von 18 FP). Außerdem benötigt der Held bei Erfolgs- und Sammelproben auf Metallbearbeitung nur die Hälfte der angegebenen Zeit bzw. der angegebenen Intervalldauer.\n\nErweiterte Talentsonderfertigkeiten: Gute Verarbeitung , Handwerkskunst , Kraftanstrengung\n\nGlaube, Macht & Heldenmut - Die Dampfenden Dschungel, Seite 11 Kodex des Schwertes, Seite 282",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_R_uberin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Räuberin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_R%C3%A4uberin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin kennt sich hervorragend damit aus, jemanden zu überfallen und auszurauben. Proben auf Verbergen (Sich Verstecken) und Einschüchtern (Drohung) sind um +1 erleichtert.\n\nErweiterte Talentsonderfertigkeiten: Bedrohliche Aura , Kraftanstrengung , Meisterin der Tarnung\n\nVoraussetzungen: Einschüchtern 6, Verbergen 6\n\nAventurisches Kompendium 2, Seite 80 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 281",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Bognerin",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Bognerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Bognerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Bei Proben zur Herstellung, Reparatur oder Verbesserung von Waffen der Kampftechnik Bögen erhält ein Held mit dieser Sonderfertigkeit eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Gute Verarbeitung , Handwerkskunst , Routinierte Praxis\n\nVoraussetzung: Holzbearbeitung 8, SF Waffenbau\n\nGlaube, Macht & Heldenmut - Die Streitenden Königreiche, Seite 16",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Zimmermanns",
+    "category": "special_abilities_animal",
+    "name": "Weg des Zimmermanns",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Zimmermanns.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Bei einer gelungenen Probe Holzbearbeitung (Tischlerarbeiten oder Zimmermannsarbeiten) erhält der Held +1 FP (bis zu einem Maximum von 18 FP). Außerdem benötigt der Held bei Erfolgs- und Sammelproben auf Holzbearbeitung nur die Hälfte der angegebenen Zeit bzw. der angegebenen Intervall-Dauer.\n\nErweiterte Talentsonderfertigkeiten: Gute Verarbeitung , Handwerkskunst , Kraftanstrengung\n\nAventurisches Kompendium 2, Seite 83 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 285",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Apothekers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Apothekers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Apothekers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Wer über diesen Stil verfügt, kann bei der Sonderfertigkeit Kräutermischung den 1W6-Wurf zur Bestimmung, ob es ein zusätzlicher LeP regeneriert wird, bei Misslingen wiederholen. Außerdem können bei der Kräutermischung besonders effiziente Mischungen hergestellt werden, die für zwei Portionen ausreichen. Die Kosten für den Kauf der Kräuter (5 Silbertaler), wie auch die Dauer für die Zubereitung (1 Stunde) ändern sich jedoch nicht.\n\nErweiterte Talentsonderfertigkeiten: Gute Verarbeitung , Meisterliche Kräutermischung , Vertrauenswürdig\n\nVoraussetzungen: Pflanzenkunde 8, Sonderfertigkeit Kräutermischung\n\nAventurisches Kompendium 2, Seite 81 f. Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 277",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Prostituierten",
+    "category": "special_abilities_animal",
+    "name": "Weg der Prostituierten",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Prostituierten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Wer mit einer Heldin zu tun hat, die über diesen Talentstil verfügt, dessen Proben auf Willenskraft (Betören widerstehen) sind um -1 erschwert.\n\nErweiterte Talentsonderfertigkeiten: Einnahmequelle , Entspannendes Liebesspiel , Soziale Kompetenz\n\nAventurisches Kompendium 2, Seite 80 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 281",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Rattenf_ngers",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Rattenfängers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Rattenf%C3%A4ngers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Verteidigt sich ein Lebewesen der Größenkategorie winzig gegen eine AT oder FK des Helden, so erhält es -2 auf seine Verteidigung.\n\nErweiterte Talentsonderfertigkeiten: Erfolgreicher Jäger , Fährtenleser , Körperliches Geschick",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Seefahrerin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Seefahrerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Seefahrerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin erhält bei Körperbeherrschung (Balance) eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Kind der Natur , Meister der Orientierung , Seemannsgarn\n\nAventurisches Kompendium 2, Seite 80 Glaube, Macht & Heldenmut - Havena, Seite 18 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 282 Helden der Siebenwindküste, Seite 35 Helden des Wolfsfrosts, Seite 35",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Fleischers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Fleischers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Fleischers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Verfügt ein Held über diese Sonderfertigkeit, kennt er sich im Umgang mit Fleischerbeilen und Schlachtermessern so gut aus, dass sie in seinen Händen 1 Punkt weniger PA-Abzüge beim PA-Modifikator, sowie +1 TP einbringen. Zudem gelten sie für ihn nicht als improvisierte Waffen.\n\nErweiterte Talentsonderfertigkeiten: Handwerkskunst , Gute Verarbeitung , Kraftanstrengung\n\nVoraussetzungen: Lebensmittelbearbeitung 8\n\nAventurisches Kompendium 2, Seite 82 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 278",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Gelehrten",
+    "category": "special_abilities_animal",
+    "name": "Weg der Gelehrten",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Gelehrten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin muss ein Wissenstalent , das für ihre Profession eine tragende Rolle spielt, mit Erwerb dieses Stils auswählen und erhält darin eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Allgemeinwissen , Fachwissen , Universalgenie\n\nVoraussetzungen: ausgewähltes Talent FW 8\n\nAP-Wert: A-/B-/C-/D-Talent 5/10/15/20 Abenteuerpunkte\n\nAventurisches Kompendium 2, Seite 79 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 279",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Deichbauers",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Deichbauers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Deichbauers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel : Bei einer gelungenen Probe Steinbearbeitung (Deichbau oder Maurerarbeiten) erhält der Held +1 FP (bis zu einem Maximum von 18 FP). Außerdem benötigt der Held bei Erfolgs- und Sammelproben auf Steinbearbeitung nur die Hälfte der angegebenen Zeit bzw. der angegebenen Intervall-Dauer.\n\nErweiterte Talentsonderfertigkeiten : Handwerkskunst , Kraftanstrengung , Virtuose Wettervorhersage\n\nVoraussetzung : Steinbearbeitung 8, SF Deichbauer\n\nGlaube, Macht und Heldenmut - Die Streitenden Königreiche, Seite 17",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Schreiberin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Schreiberin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Schreiberin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Schreiberin kann Texte 25 % schneller lesen und verfassen als regulär dafür notwendig ist. Diese Ersparnis ist kumulativ mit anderen Sonderfertigkeiten, die zu einer Zeitersparnis beim Schreiben von Texten führen.\n\nErweiterte Talentsonderfertigkeiten: Allgemeinwissen , Kopist , Rechnungswesen\n\nVoraussetzungen: passende Schrift und Sprache\n\nAventurisches Kompendium 2, Seite 80 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 282",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Zofe",
+    "category": "special_abilities_animal",
+    "name": "Weg der Zofe",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Zofe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Eine Heldin mit dieser Sonderfertigkeit kann ihrer Herrin durch eine Probe auf Etikette (Dienen & Gehorchen) QS/2 Erleichterungen in Höhe von +1 Punkt bei Proben auf Gesellschaftstalente (mit Ausnahme von Willenskraft ) verschaffen. Wenn die Erleichterungen nicht innerhalb von 24 Stunden genutzt werden, verfallen sie. Die Erleichterungen können nicht miteinander kombiniert werden.\n\nErweiterte Talentsonderfertigkeiten: Gerüchte aufschnappen , Grandioser Leibdiener , Soziale Kompetenz\n\nVoraussetzungen: Etikette 8, Sonderfertigkeit Leibdiener\n\nAventurisches Kompendium 2, Seite 81 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 285",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Echsenb_ndigers",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Echsenbändigers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Echsenb%C3%A4ndigers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held erhält bei Tierkunde, sofern sich die Probe auf Echsen bezieht, und Wildnisleben (Lageraufbau oder Lagersuche) eine Erleichterung von +1.\n\nErweiterte Talentsonderfertigkeiten: Bedrohliche Aura , Meister der Orientierung , Tierverbundenheit\n\nVoraussetzungen: Tierkunde 8, Wildnisleben 8",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_Taschendiebes",
+    "category": "special_abilities_animal",
+    "name": "Weg des Taschendiebes",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_Taschendiebes.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Bei gelungenen Proben auf Taschendiebstahl und Verbergen (Gegenstände verbergen oder sich Verstecken) erhält der Held +1 FP (bis zu einem Maximum von 18 FP).\n\nErweiterte Talentsonderfertigkeiten: Körperliches Geschick , Meisterin der Tarnung , Unauffälliger Griff\n\nVoraussetzungen: Taschendiebstahl 8, Verbergen 4\n\nAventurisches Kompendium 2, Seite 83 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 283",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Spitzelin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Spitzelin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Spitzelin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Verfügt die Heldin über diesen Talentstil, so ist sie geschickt darin, andere zu beschatten und dabei nicht aufzufallen. Bei Proben auf Sinnesschärfe, um sie zu entdecken, erhalten ihre Gegner eine Erschwernis von -1. Außerdem kann sie selbst bei einer Probe auf Gassenwissen (Beschatten) das Ergebnis einer einzigen Teilprobe (außer eine gewürfelte 20) um 2 senken.\n\nErweiterte Talentsonderfertigkeiten: Bedrohliche Aura , Gerüchte aufschnappen , Körperliches Geschick\n\nAventurisches Kompendium 2, Seite 81 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 283",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_des_H_ndlers",
+    "category": "special_abilities_animal",
+    "name": "Weg des Händlers",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_des_H%C3%A4ndlers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held bekommt eine Erleichterung von +1 auf Handel (Feilschen oder Geldwechsel) . Außerdem benötigt der Held bei Erfolgs- und Sammelproben auf Rechnen nur die Hälfte der angegebenen Zeit bzw. der angegebenen Intervall-Dauer.\n\nErweiterte Talentsonderfertigkeiten: Gerüchte aufschnappen , Handwerkskunst , Verhandlungsgeschick\n\nAventurisches Kompendium 2, Seite 82 Glaube Macht und Heldenmut - Das Dornenreich, Seite 11 Kodex der Helden, Seite 423 Kodex des Schwertes, Seite 279 Helden des Dornenreichs, Seite 28",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_d_Pflanzenkundlerin",
+    "category": "special_abilities_animal",
+    "name": "Weg d. Pflanzenkundlerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Pflanzenkundlerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: In jeder Region, für welche sie die Sonderfertigkeit Geländekunde erworben hat, erhält die Heldin bei Proben auf Pflanzenkunde eine zusätzliche Erleichterung von +1 (insgesamt also +2).\n\nErweiterte Talentsonderfertigkeiten: Erfolgreicher Sammler , Kind der Natur , Meisterliche Kräutermischung\n\nVoraussetzung: Pflanzenkunde 8, SF Geländekunde\n\nGlaube, Macht & Heldenmut - Die Sonnenküste, Seite 15 Kodex des Schwertes, Seite 281",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Weg_der_Karawanenf_hrerin",
+    "category": "special_abilities_animal",
+    "name": "Weg der Karawanenführerin",
+    "url": "https://dsa.ulisses-regelwiki.de/TSF_Weg_der_Karawanenf%C3%BChrerin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Profane Sonderfertigkeiten",
+      "Talentstilsonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin muss beim Erwerb dieser Sonderfertigkeit eine passende Geländekunde aus Dschungel-, Steppen- oder Wüstenkundig auswählen. Die Erleichterung dieser Geländekunde erhöht sich um +1 (auf +2).\n\nErweiterte Talentsonderfertigkeiten: Kind der Natur , Meister der Orientierung , Tierverbundenheit\n\nVoraussetzungen: Wildnisleben 8, eine passende Geländekunde\n\nAventurisches Kompendium 2, Seite 79 Kodex der Helden, Seite 422 Kodex des Schwertes, Seite 280",
+    "subcategory": "Profane Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Alraunenbeere",
+    "category": "special_abilities_animal",
+    "name": "Alraunenbeere",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_alraunenbeere.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Alraunige kann durch Aufwendung von Astral- und Lebenspunkten nach 8 Stunden eine Beere an seinem Haupt wachsen lassen. Das wachsen einer zweiten Beere dauert weitere 8 Stunden. Wird eine (maximal 2) Beere einem alchimistischen Rezept entweder beim Brauen oder dem fertigen Elixier beigegeben, erhöht sich die QS pro Beere augenblicklich um 1 (max. QS 6).\n\nPublikation(en): Aventurisches Herbarium, Seite 99",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Elixierspeicher",
+    "category": "special_abilities_animal",
+    "name": "Elixierspeicher",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_elixierspeicher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Alraunige kann ein pflanzliches Hilfsmittel, Gift oder Rauschmittel oder ein alchimistisches Elixier, Gift oder Rauschmittel in seinem Körper speichern, sofern es flüssig ist. Die Substanz hat keine Wirkung auf den Homunculus und bleibt in seinem Leib haltbar. Sobald der Alraunige die Substanz freigibt, setzt der Verfallsprozess der Substanz wieder ein. Es kann immer nur eine Anwendung einer Substanz im Alraunigen Homunculus gespeichert werden. Der Alraunige ist in der Lage, die so gespeicherte Substanz eigenständig zu verwenden. Die Aufnahme und Abgabe der Substanz erfolgt über die „Haut“ und dauert je 4 Aktionen. Der Alraunige kann die Substanz alternativ durch einen Spuckangriff entleeren. Dies geschieht gemäß des gewöhnlichen Spuckangriffs innerhalb von 1 Aktion, verursacht dann jedoch den gewöhnlichen Schaden von 1W3 SP am Alraunigen.\n\nPublikation(en): Aventurisches Herbarium, Seite 100",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Ingredienz_ersp_ren",
+    "category": "special_abilities_animal",
+    "name": "Ingredienz erspüren",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_ingredienze_ersp%C3%BCren.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Alraunige kann eine Ingredienz für ein Rezept ausfindig machen. Befindet sich die Ingredienz im Umkreis von sieben Meilen, kann der Alraunige die Richtung ausmachen, in der sich die Ingredienz befindet, jedoch nicht zwingend den exakten Weg, über den man zu der Ingredienz gelangt. Der Einsatz dieser Homunculusfähigkeit dauert 4 Aktionen.\n\nPublikation(en): Aventurisches Herbarium, Seite 100",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Giftabsorption",
+    "category": "special_abilities_animal",
+    "name": "Giftabsorption",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_giftabsorption.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Durch Körperkontakt kann der Alraunige Homunculus ein Ziel mit dem Status Vergiftet heilen und das Gift im Körper des Zieles augenblicklich neutralisieren. Die Wirkung des Giftes und der Zustand Vergiftet enden damit sofort. Dieser Vorgang dauert 1 Aktion.\n\nPublikation(en): Aventurisches Herbarium, Seite 100",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Heilendes_Raunen",
+    "category": "special_abilities_animal",
+    "name": "Heilendes Raunen",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_heilendes_raunen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Alraunige raunt einer verwelkten Pflanze zu, welche sich daraufhin erholt und wieder für Rezepte nutzbar wird. Die Fähigkeit funktioniert nicht bei übernatürlichen Pflanzen. Der Einsatz dieser Homunculusfähigkeit dauert 4 Aktionen.\n\nPublikation(en): Aventurisches Herbarium, Seite 100",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Alraunenschrei",
+    "category": "special_abilities_animal",
+    "name": "Alraunenschrei",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_alraunenschrei.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Alraunige wandelt auf einen Schlag seine gesamten AsP in einen magischen Schrei um, der allen Wesen in einem Radius von 3 Schritt 2W6+2 Schadenspunkte zufügt. Der Einsatz dieser Homunculusfähigkeit dauert 1 Aktion.\n\nAsP-Kosten: alle AsP, mindestens aber 8 AsP\n\nPublikation(en): Aventurisches Herbarium, Seite 99 ff.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Homunculus_Sonderfertigkeiten",
+    "category": "special_abilities_animal",
+    "name": "Homunculus Sonderfertigkeiten",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_homunculus.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Homunculusbindung",
+    "category": "special_abilities_animal",
+    "name": "Homunculusbindung",
+    "url": "https://dsa.ulisses-regelwiki.de/sf_h_homunculusbindung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Homunculus Sonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Wirkung: Mit dieser Sonderfertigkeit kann die Erschafferin eines Homunculus diesen an sich binden. Sie ermöglicht es, den Homunculus mit Eigenblut vor dem Verfall zu bewahren und dessen Verletzungen zu heilen. Diese Sonderfertigkeit muss vor der Erschaffung des Homunculus erworben werden, andernfalls misslingt die Brauprobe automatisch. Es wird nicht empfohlen, diese Sonderfertigkeit bei der Generierung des Helden zu erwerben. Voraussetzungen: keine; Es ist möglich, gleichzeitig die Sonderfertigkeiten Vertrautenbindung und Homunculusbindung zu besitzen. Es ist jedoch nicht möglich, gleichzeitig ein Vertrautentier und einen Homunculus an sich zu binden.\n\nPublikation(en): Aventurisches Herbarium, Seite 99",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Schatzsucher",
+    "category": "special_abilities_animal",
+    "name": "Schatzsucher",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Schatzsucher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Ein Schatzsucher-Tier gräbt gelegentlich im Boden herum, um sich selbst zu bespaßen, sofern es keiner anderen Angelegenheit Aufmerksamkeit schenken muss. Kommt es an jedem Tag dazu, für jeweils mindestens eine Stunde zu graben, kann es einmal pro Woche ein Objekt mit Wert im Erdboden finden. Zur Identifikation des Objekts kann die untenstehende Tabelle verwendet werden. Alternative Fundstücke sind nach Meisterentscheid möglich. Konkrete  Eigenschaften der Fundstücke sollten mit Bedacht auf die jeweilige Fundregion ausgewählt werden. Die Fähigkeit lässt sich nur einmal innerhalb von 24 Stunden anwenden.\n\nVoraussetzungen: Tier kann graben, IN 13\n\nPublikation: Aventurische Tiergefährten, Seite 123f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Angst_riechen",
+    "category": "special_abilities_animal",
+    "name": "Angst riechen",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Angst_riechen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Tiere, die Angst riechen können, greifen das nervlich schwächste Mitglied ihrer Gegnergruppe bevorzugt und als erstes an. Als schwächstes Mitglied gilt ein Ziel der Gegnergruppe mit dem niedrigsten MU-Wert. Ändert sich die Zuschreibung schwächstes Mitglied im Laufe des Kampfes, wechselt das Tier entsprechend das Ziel. Nur Lebewesen können durchschaut werden.\n\nVoraussetzungen: Wildtier, keine domestizierten Tiere\n\nPublikation: Aventurische Tiergefährten, Seite 123",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Bewegungsk_nstler",
+    "category": "special_abilities_animal",
+    "name": "Bewegungskünstler",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Bewegungskuenstler.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Das Tier kann sich vorwärts, seitwärts und rückwärts bewegen, ohne dadurch gesonderte Erschwernisse zu erleiden.\n\nVoraussetzungen: Tier mit Beinen, keine Wildtiere, unter Pferden nur Yaquirtaler\n\nPublikation: Aventurische Tiergefährten, Seite 123",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Gesichter_lesen",
+    "category": "special_abilities_animal",
+    "name": "Gesichter lesen",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Gesichter_lesen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Alle Proben auf Gesellschaftstalente des Tieres, die auf Kulturschaffende Bezug nehmen, sind um 1 erleichtert.\n\nPublikation: Aventurische Tiergefährten, Seite 123",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Gewohnheitstier",
+    "category": "special_abilities_animal",
+    "name": "Gewohnheitstier",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Gewohnheitstier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Das Tier hat einen kleinen Dienst so verinnerlicht, dass es ihn ohne Fehl genau einmal täglich ausübt, sofern die auslösenden Bedingungen eintreten. Wird es dabei behindert, reagiert es je nach Persönlichkeit aggressiv, trotzig oder deprimiert. Wird es länger als drei Tage an der Ausübung des Dienstes gehindert, sinkt der LO-Wert gegenüber seiner kulturschaffenden Bezugsperson um 1 je angefangenem Tag nach dem dritten Tag ohne eine Möglichkeit, den Dienst wie verinnerlicht auszuführen. Der Wert steigt wieder auf den normalen Wert, sobald der Dienst verrichtet wurde.\n\nDer Dienst ist nie an einen spezifischen Gegenstand gebunden, sondern an eine Handlung gegenüber der kulturschaffenden Bezugsperson. Genauer handelt es sich um die Durchführung einer bestimmten Geste innerhalb einer bestimmten Situation, die mit der Bezugsperson geteilt wird. Beispiele wären: „Wenn Frauchen ein Schwert zieht, wird gebellt“ oder „Wenn Herrchen aufwacht, bringe ich ihm die Schuhe neben seinem Bett“.\n\nPublikation: Aventurische Tiergefährten, Seite 123",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Rastullahs_Schwingen",
+    "category": "special_abilities_animal",
+    "name": "Rastullahs Schwingen",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Rastullahs_Schwingen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Das Pferd treibt sich auf ein Signal des Reiters hin zu einem finalen Galopp mit Höchstgeschwindigkeit. So werden 15 Minuten Galopp zusätzlich zum natürlichen Limit des Tieres möglich. In der ersten Minute bewegt es sich mit GS +2 fort. Es läuft so lange, bis es angehalten wird, oder vor Erschöpfung zusammenbricht. Nach der ersten Minute muss das Pferd eine Probe auf Selbstbeherrschung –7 überstehen, sonst bricht es tot zusammen. Übersteht es diese, kann es die vollen 15 Minuten wie auf Rastullahs Schwingen laufen. Anschließend benötigt das Pferd eine längere Verschnaufpause. Die Sonderfertigkeit kann frühestens nach 1 Woche erneut eingesetzt werden.*\n\n* Zur Länge des Trabs und Galopps siehe hier .\n\nPublikation: Aventurische Tiergefährten, Seite 123",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Schrecksicher",
+    "category": "special_abilities_animal",
+    "name": "Schrecksicher",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Schrecksicher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Das Tier erleidet keine Erschwernisse durch plötzlich auftretende und ablenkende Geräusche, Bewegungen und Gerüche.\n\nVoraussetzungen: kein Nachteil Kläffer oder Nervös\n\nPublikation: Aventurische Tiergefährten, Seite 124",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Seefest",
+    "category": "special_abilities_animal",
+    "name": "Seefest",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Seefest.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Durch Seegang entstehende Erschwernisse auf Proben können ignoriert werden. Dies gilt nur, solange sich das Tier auf einem Schiff, einem Boot oder einem anderen Seegefährt aufhält, das sich auf einem befahrbaren Gewässer befindet.\n\nVoraussetzungen: kein Nachteil Starre, kein Vorteil Wasserlebewesen\n\nPublikation: Aventurische Tiergefährten, Seite 124f.",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Schw_cheninstinkt",
+    "category": "special_abilities_animal",
+    "name": "Schwächeninstinkt",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Schwaecheninstinkt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Tiere mit Schwächeninstinkt greifen von sich aus immer automatisch den Gegner mit dem niedrigsten Rüstungsschutz an, es sei denn, die Bezugsperson des Tieres befiehlt ihm etwas anderes. Dies hat Priorität vor dem Effekt der Tiersonderfertigkeit Angst riechen.\n\nPublikation: Aventurische Tiergefährten, Seite 124",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Trickser",
+    "category": "special_abilities_animal",
+    "name": "Trickser",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Trickser.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Im Rahmen dessen natürlicher Fähigkeiten kann das Tier bei solchen Handlungen helfen, die unter das Talent Gaukeleien fallen. Alle Proben auf Gaukeleien, die bei denen das Tier eine wesentliche Rolle übernimmt, sind um 1 erleichtert. Sollten das Tier gar den Trick Kunststück beherrschen, ist die Probe sogar um 2 erleichtert. Durch die Tiersonderfertigkeit Trickser beherrscht das Tier jedoch keinesfalls automatisch Tricks.\n\nPublikation: Aventurische Tiergefährten, Seite 125",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Trittsicher_Gel_ndetyp",
+    "category": "special_abilities_animal",
+    "name": "Trittsicher (Geländetyp)",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Trittsicher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Proben auf Reiten, die aufgrund von gefährlichem Gelände erschwert wären, sind um 1 weniger erschwert, sofern das Tier an den Geländetyp gewöhnt ist. Für jeden Geländetyp existiert eine eigene Sonderfertigkeit. Als Geländetypen kommen alle infrage, die unter Geländekunde aufgeführt sind und für die der Spielleiter sein Einverständnis gibt (siehe Regelwerk Seite 217).\n\nVoraussetzungen: Tier besitzt den Ausbildungsaufsatz Reittier\n\nPublikation: Aventurische Tiergefährten, Seite 125",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Stille_Wacht",
+    "category": "special_abilities_animal",
+    "name": "Stille Wacht",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Stille_Wacht.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Wenn seine kulturschaffende Bezugsperson schläft oder anderweitig unaufmerksam gegenüber seiner Umgebung wirkt, alarmiert das Tier sie durch Stupsen und Geräusche über das Herannahen von Feinden. Eine Probe auf Sinnesschärfe entscheidet darüber, ob das Tier eine solche Gefahr entdeckt.\n\nPublikation: Aventurische Tiergefährten, Seite 125",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  },
+  {
+    "id": "special_abilities_animal_Warnsignal",
+    "category": "special_abilities_animal",
+    "name": "Warnsignal",
+    "url": "https://dsa.ulisses-regelwiki.de/SF_Warnsignal.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Sonderfertigkeiten",
+      "Tierische Sonderfertigkeiten",
+      "Tiersonderfertigkeiten"
+    ],
+    "properties": {},
+    "description": "Regel: Das Tier hat erlernt, seine Körpersprache sowie sein Aussehen bewusst so zu nutzen, dass es gefährlich wirkt. Tiere, die freiwillig das Warnsignal ignorieren wollen, um sich auf körperliche Reichweite zu nähern, müssen eine Vergleichsprobe auf Willenskraft –1 gegen Einschüchtern des Tiers, welches das Warnsignal gibt, gewinnen. Für ein Tier, dem der Angriff auf das Ziel mit Warnsignal befohlen wird, oder einen Kulturschaffenden, der sich auf Angriffsdistanz nähern will, ist die Probe auf Willenskraft sogar um 2 erschwert.\n\nVoraussetzungen: keine domestizierten Tiere; Ausnahme: Tiere nach Meisterentscheid (Beispiele für geeignete Tiere: Mähnenwolf, Nordmähne, Nuala, Orkischer Kriegshund, Orkpony, Pfau, Riesenhirschkäfer, Shadif, Svellttaler Kaltblut, Tralloper Riese, Tuzaker, Wehrheimer Bluthund, Winhaller Wolfsjäger, Zornbrechter Bluthund, viele Tiere, die unter „Besondere Begleiter“ aufgeführt sind).\n\nPublikation: Aventurische Tiergefährten, Seite 125",
+    "subcategory": "Tierische Sonderfertigkeiten"
+  }
+]

@@ -1,0 +1,354 @@
+2026-03-16 14:27:39,782 [INFO] Starting DSA 5 Wiki Scraper
+2026-03-16 14:27:39,783 [INFO] Phase: 1
+2026-03-16 14:27:39,783 [INFO] Categories: all
+2026-03-16 14:27:39,783 [INFO] Resume: False
+2026-03-16 14:27:39,783 [INFO] ==================================================
+2026-03-16 14:27:39,783 [INFO] PHASE 1: Downloading HTML files
+2026-03-16 14:27:39,783 [INFO] ==================================================
+2026-03-16 14:27:39,784 [INFO] Starting explicit category: rules
+2026-03-16 14:27:40,029 [INFO] Loaded 5432 sitemap URLs from https://dsa.ulisses-regelwiki.de/sitemap.xml
+2026-03-16 14:28:35,896 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/index.php/SF_Vision.html
+2026-03-16 14:28:36,773 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/index.php/SF_Predigt.html
+2026-03-16 14:28:37,892 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/index.php/SF_Vision.html
+2026-03-16 14:28:37,892 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Fertigkeitsproben
+2026-03-16 14:28:38,529 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/index.php/SF_Predigt.html
+2026-03-16 14:28:39,237 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Fertigkeitsproben
+2026-03-16 14:28:39,851 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/index.php/SF_Vision.html
+2026-03-16 14:28:40,488 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/index.php/SF_Predigt.html
+2026-03-16 14:28:40,488 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Fertigkeitsproben
+2026-03-16 14:28:54,554 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/vorteil.htmlvorteil%3DZauberer
+2026-03-16 14:28:55,336 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%C3%9Cberreden
+2026-03-16 14:28:55,857 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/vorteil.htmlvorteil%3DZauberer
+2026-03-16 14:28:56,273 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%C3%9Cberreden
+2026-03-16 14:28:57,113 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/vorteil.htmlvorteil%3DZauberer
+2026-03-16 14:28:57,685 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%C3%9Cberreden
+2026-03-16 14:29:14,916 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Epharit-R%C3%BCstung
+2026-03-16 14:29:16,298 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Epharit-R%C3%BCstung
+2026-03-16 14:29:17,403 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Epharit-R%C3%BCstung
+2026-03-16 14:30:31,319 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Nebelwand
+2026-03-16 14:30:32,260 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Nebelwand
+2026-03-16 14:30:33,192 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Nebelwand
+2026-03-16 14:30:47,173 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7B%7Blink_url%3A%3A8513?talent=%C3%9Cberreden
+2026-03-16 14:30:47,221 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7B%7Blink_url%3A%3A8513?talent=Verkleiden
+2026-03-16 14:30:47,413 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7B%7Blink_url%3A%3A8513?talent=%C3%9Cberreden
+2026-03-16 14:30:48,354 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7B%7Blink_url%3A%3A8513?talent=%C3%9Cberreden
+2026-03-16 14:30:48,354 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7B%7Blink_url%3A%3A8513?talent=Verkleiden
+2026-03-16 14:30:49,322 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7B%7Blink_url%3A%3A8513?talent=Verkleiden
+2026-03-16 14:31:14,501 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%E2%80%9Cvorteil.html?vorteil=Geweihter%E2%80%9C
+2026-03-16 14:31:15,011 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Feengesteck
+2026-03-16 14:31:15,582 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%E2%80%9Cvorteil.html?vorteil=Geweihter%E2%80%9C
+2026-03-16 14:31:15,869 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Feengesteck
+2026-03-16 14:31:16,619 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%E2%80%9Cvorteil.html?vorteil=Geweihter%E2%80%9C
+2026-03-16 14:31:17,059 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Feengesteck
+2026-03-16 14:31:39,963 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/vorteil.htmlvorteil.html?vorteil=Reich+I-X
+2026-03-16 14:31:40,940 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/vorteil.htmlvorteil.html?vorteil=Reich+I-X
+2026-03-16 14:31:41,972 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/vorteil.htmlvorteil.html?vorteil=Reich+I-X
+2026-03-16 14:32:19,440 [INFO] Discovered 926 content URLs, 4321 hybrid URLs, and 80 crawl-only URLs for rules
+2026-03-16 14:32:19,444 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 5247
+2026-03-16 14:32:19,444 [INFO] Completed rules: 0 success, 12 failed
+2026-03-16 14:32:19,444 [INFO] Starting explicit category: species
+2026-03-16 14:32:20,988 [INFO] Discovered 0 content URLs, 0 hybrid URLs, and 0 crawl-only URLs for species
+2026-03-16 14:32:20,989 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 0
+2026-03-16 14:32:20,989 [INFO] Completed species: 0 success, 0 failed
+2026-03-16 14:32:20,989 [INFO] Starting explicit category: cultures
+2026-03-16 14:32:22,919 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Schlechte+Eigenschaft
+2026-03-16 14:32:22,927 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Farbenblind
+2026-03-16 14:32:22,931 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Hitzeempfindlich
+2026-03-16 14:32:23,972 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Hitzeempfindlich
+2026-03-16 14:32:23,972 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Farbenblind
+2026-03-16 14:32:23,972 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Schlechte+Eigenschaft
+2026-03-16 14:32:24,235 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Unf%C3%A4hig
+2026-03-16 14:32:24,235 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Unfrei
+2026-03-16 14:32:24,777 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Unf%C3%A4hig
+2026-03-16 14:32:24,777 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Unfrei
+2026-03-16 14:32:25,196 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Unfrei
+2026-03-16 14:32:25,253 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Hitzeempfindlich
+2026-03-16 14:32:25,415 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Schlechte+Eigenschaft
+2026-03-16 14:32:25,415 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Farbenblind
+2026-03-16 14:32:25,415 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/%7Blink_url%3A%3A8586%7Curlattr%7D%7D?nachteil=Unf%C3%A4hig
+2026-03-16 14:32:26,771 [INFO] Discovered 7 content URLs, 66 hybrid URLs, and 0 crawl-only URLs for cultures
+2026-03-16 14:32:26,772 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 73
+2026-03-16 14:32:26,772 [INFO] Completed cultures: 0 success, 5 failed
+2026-03-16 14:32:26,772 [INFO] Starting explicit category: professions
+2026-03-16 14:32:36,258 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/traditionsartefakt_sf_ringzauber.htmlsonderfertigkeit%3DBindung%2Bdes%2BRings
+2026-03-16 14:32:36,805 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/traditionsartefakt_sf_ringzauber.htmlsonderfertigkeit%3DBindung%2Bdes%2BRings
+2026-03-16 14:32:37,396 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Nachtblind
+2026-03-16 14:32:37,699 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/traditionsartefakt_sf_ringzauber.htmlsonderfertigkeit%3DBindung%2Bdes%2BRings
+2026-03-16 14:32:38,261 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Nachtblind
+2026-03-16 14:32:39,446 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Nachtblind
+2026-03-16 14:32:44,887 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Schmerz
+2026-03-16 14:32:45,690 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Schmerz
+2026-03-16 14:32:46,710 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/Schmerz
+2026-03-16 14:32:47,307 [INFO] Discovered 44 content URLs, 319 hybrid URLs, and 10 crawl-only URLs for professions
+2026-03-16 14:32:47,308 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 363
+2026-03-16 14:32:47,308 [INFO] Completed professions: 0 success, 3 failed
+2026-03-16 14:32:47,308 [INFO] Starting explicit category: special_abilities_karmale
+2026-03-16 14:32:54,142 [INFO] Discovered 7 content URLs, 103 hybrid URLs, and 0 crawl-only URLs for special_abilities_karmale
+2026-03-16 14:32:54,142 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 110
+2026-03-16 14:32:54,142 [INFO] Completed special_abilities_karmale: 0 success, 0 failed
+2026-03-16 14:32:54,142 [INFO] Starting explicit category: special_abilities_magical
+2026-03-16 14:33:05,362 [INFO] Discovered 76 content URLs, 121 hybrid URLs, and 0 crawl-only URLs for special_abilities_magical
+2026-03-16 14:33:05,362 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 197
+2026-03-16 14:33:05,362 [INFO] Completed special_abilities_magical: 0 success, 0 failed
+2026-03-16 14:33:05,362 [INFO] Starting explicit category: special_abilities_profane
+2026-03-16 14:33:11,989 [INFO] Discovered 38 content URLs, 45 hybrid URLs, and 0 crawl-only URLs for special_abilities_profane
+2026-03-16 14:33:11,990 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 83
+2026-03-16 14:33:11,990 [INFO] Completed special_abilities_profane: 0 success, 0 failed
+2026-03-16 14:33:11,990 [INFO] Starting explicit category: special_abilities_animal
+2026-03-16 14:33:14,418 [INFO] Discovered 1 content URLs, 7 hybrid URLs, and 0 crawl-only URLs for special_abilities_animal
+2026-03-16 14:33:14,418 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 8
+2026-03-16 14:33:14,418 [INFO] Completed special_abilities_animal: 0 success, 0 failed
+2026-03-16 14:33:14,418 [INFO] Starting explicit category: advantages
+2026-03-16 14:33:15,950 [INFO] Discovered 0 content URLs, 0 hybrid URLs, and 0 crawl-only URLs for advantages
+2026-03-16 14:33:15,950 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 0
+2026-03-16 14:33:15,950 [INFO] Completed advantages: 0 success, 0 failed
+2026-03-16 14:33:15,950 [INFO] Starting explicit category: advantages_animal
+2026-03-16 14:33:17,482 [INFO] Discovered 0 content URLs, 0 hybrid URLs, and 0 crawl-only URLs for advantages_animal
+2026-03-16 14:33:17,482 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 0
+2026-03-16 14:33:17,482 [INFO] Completed advantages_animal: 0 success, 0 failed
+2026-03-16 14:33:17,482 [INFO] Starting explicit category: disadvantages
+2026-03-16 14:33:19,028 [INFO] Discovered 0 content URLs, 0 hybrid URLs, and 0 crawl-only URLs for disadvantages
+2026-03-16 14:33:19,028 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 0
+2026-03-16 14:33:19,028 [INFO] Completed disadvantages: 0 success, 0 failed
+2026-03-16 14:33:19,028 [INFO] Starting explicit category: disadvantages_animal
+2026-03-16 14:33:20,546 [INFO] Discovered 0 content URLs, 0 hybrid URLs, and 0 crawl-only URLs for disadvantages_animal
+2026-03-16 14:33:20,546 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 0
+2026-03-16 14:33:20,546 [INFO] Completed disadvantages_animal: 0 success, 0 failed
+2026-03-16 14:33:20,546 [INFO] Starting explicit category: magic
+2026-03-16 14:33:23,480 [INFO] Discovered 10 content URLs, 14 hybrid URLs, and 0 crawl-only URLs for magic
+2026-03-16 14:33:23,480 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 24
+2026-03-16 14:33:23,480 [INFO] Completed magic: 0 success, 0 failed
+2026-03-16 14:33:23,480 [INFO] Starting explicit category: götterwirken
+2026-03-16 14:33:25,432 [INFO] Discovered 1 content URLs, 0 hybrid URLs, and 0 crawl-only URLs for götterwirken
+2026-03-16 14:33:25,432 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 1
+2026-03-16 14:33:25,432 [INFO] Completed götterwirken: 0 success, 0 failed
+2026-03-16 14:33:25,432 [INFO] Starting explicit category: ruestkammer_artifacts
+2026-03-16 14:33:28,708 [INFO] Discovered 7 content URLs, 12 hybrid URLs, and 0 crawl-only URLs for ruestkammer_artifacts
+2026-03-16 14:33:28,708 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 19
+2026-03-16 14:33:28,708 [INFO] Completed ruestkammer_artifacts: 0 success, 0 failed
+2026-03-16 14:33:28,709 [INFO] Starting explicit category: ruestkammer_equipment
+2026-03-16 14:33:41,739 [INFO] Discovered 76 content URLs, 91 hybrid URLs, and 0 crawl-only URLs for ruestkammer_equipment
+2026-03-16 14:33:41,739 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 167
+2026-03-16 14:33:41,739 [INFO] Completed ruestkammer_equipment: 0 success, 0 failed
+2026-03-16 14:33:41,739 [INFO] Starting explicit category: ruestkammer_helmets
+2026-03-16 14:33:44,933 [INFO] Discovered 4 content URLs, 11 hybrid URLs, and 0 crawl-only URLs for ruestkammer_helmets
+2026-03-16 14:33:44,933 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 15
+2026-03-16 14:33:44,933 [INFO] Completed ruestkammer_helmets: 0 success, 0 failed
+2026-03-16 14:33:44,933 [INFO] Starting explicit category: ruestkammer_armor_equipment
+2026-03-16 14:33:47,410 [INFO] Discovered 2 content URLs, 2 hybrid URLs, and 0 crawl-only URLs for ruestkammer_armor_equipment
+2026-03-16 14:33:47,410 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 4
+2026-03-16 14:33:47,410 [INFO] Completed ruestkammer_armor_equipment: 0 success, 0 failed
+2026-03-16 14:33:47,410 [INFO] Starting explicit category: ruestkammer_armor
+2026-03-16 14:33:52,427 [INFO] Discovered 17 content URLs, 28 hybrid URLs, and 0 crawl-only URLs for ruestkammer_armor
+2026-03-16 14:33:52,428 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 45
+2026-03-16 14:33:52,428 [INFO] Completed ruestkammer_armor: 0 success, 0 failed
+2026-03-16 14:33:52,428 [INFO] Starting explicit category: ruestkammer_weapons
+2026-03-16 14:34:07,646 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/geweiht
+2026-03-16 14:34:08,120 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/geweiht
+2026-03-16 14:34:08,334 [WARNING] HTTP 404 for https://dsa.ulisses-regelwiki.de/geweiht
+2026-03-16 14:34:08,505 [INFO] Discovered 74 content URLs, 123 hybrid URLs, and 1 crawl-only URLs for ruestkammer_weapons
+2026-03-16 14:34:08,506 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 197
+2026-03-16 14:34:08,506 [INFO] Completed ruestkammer_weapons: 0 success, 1 failed
+2026-03-16 14:34:08,506 [INFO] Starting explicit category: bestiarium
+2026-03-16 14:34:34,831 [INFO] Discovered 87 content URLs, 308 hybrid URLs, and 0 crawl-only URLs for bestiarium
+2026-03-16 14:34:34,831 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 395
+2026-03-16 14:34:34,831 [INFO] Completed bestiarium: 0 success, 0 failed
+2026-03-16 14:34:34,831 [INFO] Starting explicit category: herbarium
+2026-03-16 14:34:37,837 [INFO] Discovered 7 content URLs, 19 hybrid URLs, and 0 crawl-only URLs for herbarium
+2026-03-16 14:34:37,837 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 26
+2026-03-16 14:34:37,837 [INFO] Completed herbarium: 0 success, 0 failed
+2026-03-16 14:34:37,837 [INFO] Starting explicit category: poisons_and_illnesses
+2026-03-16 14:34:41,194 [INFO] Discovered 6 content URLs, 31 hybrid URLs, and 0 crawl-only URLs for poisons_and_illnesses
+2026-03-16 14:34:41,194 [INFO] Category-owned pages discovered: 0; cross-category or unresolved pages discovered: 37
+2026-03-16 14:34:41,194 [INFO] Completed poisons_and_illnesses: 0 success, 0 failed
+2026-03-16 14:35:12,242 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/adipoli-images.html
+2026-03-16 14:35:12,243 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/accordion.html
+2026-03-16 14:35:12,243 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/adipoli-gallery.html
+2026-03-16 14:35:12,959 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/advanced-banner.html
+2026-03-16 14:35:15,177 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/background-parallax.html
+2026-03-16 14:35:15,177 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/background-gradient.html
+2026-03-16 14:35:16,093 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/blockquote.html
+2026-03-16 14:35:16,629 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/alert-box.html
+2026-03-16 14:35:17,166 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/contact-info.html
+2026-03-16 14:35:17,167 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/circular-countdowns.html
+2026-03-16 14:35:17,167 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/buttons.html
+2026-03-16 14:35:17,167 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/code.html
+2026-03-16 14:35:17,168 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/circle-progress.html
+2026-03-16 14:35:17,168 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/columns.html
+2026-03-16 14:35:17,520 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/custom-list.html
+2026-03-16 14:35:18,971 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/downloads.html
+2026-03-16 14:35:19,390 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/counters.html
+2026-03-16 14:35:20,555 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/dividers.html
+2026-03-16 14:35:21,986 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/flip-clock.html
+2026-03-16 14:35:21,987 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/form.html
+2026-03-16 14:35:21,987 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/flip-box.html
+2026-03-16 14:35:22,492 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/google-trends.html
+2026-03-16 14:35:24,251 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/galleries.html
+2026-03-16 14:35:25,039 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/hover-box.html
+2026-03-16 14:35:25,761 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/icon-list.html
+2026-03-16 14:35:25,762 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/icon-box.html
+2026-03-16 14:35:25,762 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/icon.html
+2026-03-16 14:35:26,049 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/intense-images.html
+2026-03-16 14:35:28,736 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/light-gallery.html
+2026-03-16 14:35:31,304 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/notification.html
+2026-03-16 14:35:32,630 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/promo-box.html
+2026-03-16 14:35:33,179 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/qucik-facts.html
+2026-03-16 14:35:37,932 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/slick-slider.html
+2026-03-16 14:35:39,179 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/tables.html
+2026-03-16 14:35:40,418 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/typography.html
+2026-03-16 14:35:41,110 [WARNING] HTTP 500 for https://dsa.ulisses-regelwiki.de/video-audio.html
+2026-03-16 14:35:46,562 [INFO] Discovered 193 content URLs, 981 hybrid URLs, and 0 crawl-only URLs for sitemap_ingest
+2026-03-16 14:35:46,562 [INFO] Completed sitemap_ingest: 1174 success, 36 failed
+2026-03-16 14:35:46,578 [INFO] Phase 1 complete: 10824 success, 57 failed
+2026-03-16 14:35:46,578 [INFO]   advantages: 1 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   advantages_animal: 1 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   bestiarium: 892 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   cultures: 285 downloaded, 5 failed
+2026-03-16 14:35:46,578 [INFO]   disadvantages: 1 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   disadvantages_animal: 1 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   götterwirken: 7 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   herbarium: 250 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   magic: 45 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   poisons_and_illnesses: 111 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   professions: 817 downloaded, 3 failed
+2026-03-16 14:35:46,578 [INFO]   ruestkammer_armor: 210 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   ruestkammer_armor_equipment: 20 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   ruestkammer_artifacts: 80 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   ruestkammer_equipment: 224 downloaded, 0 failed
+2026-03-16 14:35:46,578 [INFO]   ruestkammer_helmets: 36 downloaded, 0 failed
+2026-03-16 14:35:46,579 [INFO]   ruestkammer_weapons: 481 downloaded, 1 failed
+2026-03-16 14:35:46,579 [INFO]   rules: 5247 downloaded, 12 failed
+2026-03-16 14:35:46,579 [INFO]   sitemap_ingest: 1174 downloaded, 36 failed
+2026-03-16 14:35:46,579 [INFO]   special_abilities_animal: 134 downloaded, 0 failed
+2026-03-16 14:35:46,579 [INFO]   special_abilities_karmale: 130 downloaded, 0 failed
+2026-03-16 14:35:46,579 [INFO]   special_abilities_magical: 332 downloaded, 0 failed
+2026-03-16 14:35:46,579 [INFO]   special_abilities_profane: 334 downloaded, 0 failed
+2026-03-16 14:35:46,579 [INFO]   species: 11 downloaded, 0 failed
+2026-03-16 14:35:46,579 [INFO] ==================================================
+2026-03-16 14:35:46,579 [INFO] Scraping complete!
+2026-03-16 14:35:46,579 [INFO] ==================================================
+2026-03-16 14:37:39,829 [INFO] Starting DSA 5 Wiki Scraper
+2026-03-16 14:37:39,830 [INFO] Phase: 2
+2026-03-16 14:37:39,830 [INFO] Categories: all
+2026-03-16 14:37:39,830 [INFO] Resume: True
+2026-03-16 14:37:39,830 [INFO] ==================================================
+2026-03-16 14:37:39,830 [INFO] PHASE 2: Parsing HTML to JSON
+2026-03-16 14:37:39,830 [INFO] ==================================================
+2026-03-16 14:39:32,052 [INFO] Saved 831 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\unresolved.json
+2026-03-16 14:39:32,052 [INFO] Saving explicit category: rules
+2026-03-16 14:39:32,076 [INFO] Saved 1123 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\rules.json
+2026-03-16 14:39:32,076 [INFO] Saving explicit category: species
+2026-03-16 14:39:32,077 [INFO] Saved 10 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\species.json
+2026-03-16 14:39:32,077 [INFO] Saving explicit category: cultures
+2026-03-16 14:39:32,079 [INFO] Saved 56 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\cultures.json
+2026-03-16 14:39:32,079 [INFO] Saving explicit category: professions
+2026-03-16 14:39:32,085 [INFO] Saved 274 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\professions.json
+2026-03-16 14:39:32,085 [INFO] Saving explicit category: special_abilities_karmale
+2026-03-16 14:39:32,099 [INFO] Saved 601 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\special_abilities_karmale.json
+2026-03-16 14:39:32,099 [INFO] Saving explicit category: special_abilities_magical
+2026-03-16 14:39:32,131 [INFO] Saved 1178 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\special_abilities_magical.json
+2026-03-16 14:39:32,131 [INFO] Saving explicit category: special_abilities_profane
+2026-03-16 14:39:32,141 [INFO] Saved 544 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\special_abilities_profane.json
+2026-03-16 14:39:32,142 [INFO] Saving explicit category: special_abilities_animal
+2026-03-16 14:39:32,144 [INFO] Saved 132 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\special_abilities_animal.json
+2026-03-16 14:39:32,145 [INFO] Saving explicit category: advantages
+2026-03-16 14:39:32,146 [INFO] Saved 29 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\advantages.json
+2026-03-16 14:39:32,146 [INFO] Saving explicit category: advantages_animal
+2026-03-16 14:39:32,146 [INFO] Saved 0 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\advantages_animal.json
+2026-03-16 14:39:32,147 [INFO] Saving explicit category: disadvantages
+2026-03-16 14:39:32,150 [INFO] Saved 131 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\disadvantages.json
+2026-03-16 14:39:32,151 [INFO] Saving explicit category: disadvantages_animal
+2026-03-16 14:39:32,151 [INFO] Saved 0 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\disadvantages_animal.json
+2026-03-16 14:39:32,151 [INFO] Saving explicit category: magic
+2026-03-16 14:39:32,185 [INFO] Saved 775 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\magic.json
+2026-03-16 14:39:32,185 [INFO] Saving explicit category: götterwirken
+2026-03-16 14:39:32,198 [INFO] Saved 443 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\götterwirken.json
+2026-03-16 14:39:32,198 [INFO] Saving explicit category: ruestkammer_artifacts
+2026-03-16 14:39:32,201 [INFO] Saved 79 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\ruestkammer_artifacts.json
+2026-03-16 14:39:32,201 [INFO] Saving explicit category: ruestkammer_equipment
+2026-03-16 14:39:32,206 [INFO] Saved 152 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\ruestkammer_equipment.json
+2026-03-16 14:39:32,206 [INFO] Saving explicit category: ruestkammer_helmets
+2026-03-16 14:39:32,207 [INFO] Saved 14 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\ruestkammer_helmets.json
+2026-03-16 14:39:32,207 [INFO] Saving explicit category: ruestkammer_armor_equipment
+2026-03-16 14:39:32,207 [INFO] Saved 0 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\ruestkammer_armor_equipment.json
+2026-03-16 14:39:32,207 [INFO] Saving explicit category: ruestkammer_armor
+2026-03-16 14:39:32,209 [INFO] Saved 80 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\ruestkammer_armor.json
+2026-03-16 14:39:32,209 [INFO] Saving explicit category: ruestkammer_weapons
+2026-03-16 14:39:32,218 [INFO] Saved 406 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\ruestkammer_weapons.json
+2026-03-16 14:39:32,219 [INFO] Saving explicit category: bestiarium
+2026-03-16 14:39:32,236 [INFO] Saved 758 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\bestiarium.json
+2026-03-16 14:39:32,236 [INFO] Saving explicit category: herbarium
+2026-03-16 14:39:32,242 [INFO] Saved 288 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\herbarium.json
+2026-03-16 14:39:32,242 [INFO] Saving explicit category: poisons_and_illnesses
+2026-03-16 14:39:32,245 [INFO] Saved 123 items to C:\Users\Leon\Desktop\projects\DSA\DSANewBot\DSA5WikiScraper\dsa_scraper_v3_sitemap_validation\data\json\poisons_and_illnesses.json
+2026-03-16 14:39:32,259 [INFO] Phase 2 complete: 7196 items parsed
+2026-03-16 14:39:32,259 [INFO]   advantages: 29 items
+2026-03-16 14:39:32,259 [INFO]   advantages_animal: 0 items
+2026-03-16 14:39:32,259 [INFO]   bestiarium: 758 items
+2026-03-16 14:39:32,259 [INFO]   cultures: 56 items
+2026-03-16 14:39:32,259 [INFO]   disadvantages: 131 items
+2026-03-16 14:39:32,259 [INFO]   disadvantages_animal: 0 items
+2026-03-16 14:39:32,259 [INFO]   götterwirken: 443 items
+2026-03-16 14:39:32,260 [INFO]   herbarium: 288 items
+2026-03-16 14:39:32,260 [INFO]   magic: 775 items
+2026-03-16 14:39:32,260 [INFO]   poisons_and_illnesses: 123 items
+2026-03-16 14:39:32,260 [INFO]   professions: 274 items
+2026-03-16 14:39:32,260 [INFO]   ruestkammer_armor: 80 items
+2026-03-16 14:39:32,260 [INFO]   ruestkammer_armor_equipment: 0 items
+2026-03-16 14:39:32,260 [INFO]   ruestkammer_artifacts: 79 items
+2026-03-16 14:39:32,260 [INFO]   ruestkammer_equipment: 152 items
+2026-03-16 14:39:32,260 [INFO]   ruestkammer_helmets: 14 items
+2026-03-16 14:39:32,260 [INFO]   ruestkammer_weapons: 406 items
+2026-03-16 14:39:32,260 [INFO]   rules: 1123 items
+2026-03-16 14:39:32,260 [INFO]   special_abilities_animal: 132 items
+2026-03-16 14:39:32,260 [INFO]   special_abilities_karmale: 601 items
+2026-03-16 14:39:32,260 [INFO]   special_abilities_magical: 1178 items
+2026-03-16 14:39:32,260 [INFO]   special_abilities_profane: 544 items
+2026-03-16 14:39:32,260 [INFO]   species: 10 items
+2026-03-16 14:39:32,260 [INFO] ==================================================
+2026-03-16 14:39:32,260 [INFO] Scraping complete!
+2026-03-16 14:39:32,260 [INFO] ==================================================
+2026-03-16 14:39:50,642 [INFO] Starting DSA 5 Wiki Scraper
+2026-03-16 14:39:50,642 [INFO] Phase: audit
+2026-03-16 14:39:50,642 [INFO] Categories: all
+2026-03-16 14:39:50,642 [INFO] Resume: True
+2026-03-16 14:39:50,642 [INFO] ==================================================
+2026-03-16 14:39:50,642 [INFO] AUDIT: Building coverage reports
+2026-03-16 14:39:50,642 [INFO] ==================================================
+2026-03-16 14:39:51,181 [INFO] Audit summary: expected_parseable=8027 emitted_urls=8027 hard_errors=none warnings=unresolved_items=831
+2026-03-16 14:39:51,181 [INFO] ==================================================
+2026-03-16 14:39:51,181 [INFO] Scraping complete!
+2026-03-16 14:39:51,181 [INFO] ==================================================
+2026-03-16 14:40:10,963 [INFO] Starting DSA 5 Wiki Scraper
+2026-03-16 14:40:10,963 [INFO] Phase: export
+2026-03-16 14:40:10,963 [INFO] Categories: all
+2026-03-16 14:40:10,963 [INFO] Resume: True
+2026-03-16 14:40:10,963 [INFO] ==================================================
+2026-03-16 14:40:10,963 [INFO] EXPORT: Building embedding-ready corpus
+2026-03-16 14:40:10,963 [INFO] ==================================================
+2026-03-16 14:40:11,899 [INFO] Export complete: docs=8027 chunks=11370 unresolved=831 failed_urls=57
+2026-03-16 14:40:11,899 [INFO] ==================================================
+2026-03-16 14:40:11,899 [INFO] Scraping complete!
+2026-03-16 14:40:11,899 [INFO] ==================================================
+2026-03-16 14:46:37,317 [INFO] Starting DSA 5 Wiki Scraper
+2026-03-16 14:46:37,318 [INFO] Phase: audit
+2026-03-16 14:46:37,318 [INFO] Categories: all
+2026-03-16 14:46:37,318 [INFO] Resume: True
+2026-03-16 14:46:37,318 [INFO] ==================================================
+2026-03-16 14:46:37,318 [INFO] AUDIT: Building coverage reports
+2026-03-16 14:46:37,318 [INFO] ==================================================
+2026-03-16 14:46:37,902 [INFO] Audit summary: expected_parseable=8027 emitted_urls=8027 hard_errors=none warnings=unresolved_items=831
+2026-03-16 14:46:37,903 [INFO] ==================================================
+2026-03-16 14:46:37,903 [INFO] Scraping complete!
+2026-03-16 14:46:37,903 [INFO] ==================================================
+2026-03-16 14:52:33,710 [INFO] Starting DSA 5 Wiki Scraper
+2026-03-16 14:52:33,711 [INFO] Phase: export
+2026-03-16 14:52:33,711 [INFO] Categories: all
+2026-03-16 14:52:33,711 [INFO] Resume: True
+2026-03-16 14:52:33,711 [INFO] ==================================================
+2026-03-16 14:52:33,711 [INFO] EXPORT: Building embedding-ready corpus
+2026-03-16 14:52:33,711 [INFO] ==================================================
+2026-03-16 14:52:34,606 [INFO] Export complete: docs=8027 chunks=11370 unresolved=831 failed_urls=57
+2026-03-16 14:52:34,606 [INFO] ==================================================
+2026-03-16 14:52:34,606 [INFO] Scraping complete!
+2026-03-16 14:52:34,606 [INFO] ==================================================

@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-03-16T13:46:37.750051Z",
+  "totals": {
+    "discovered": 8333,
+    "fetched": 8276,
+    "failed": 57,
+    "parsed": 8027,
+    "resolved": 7196,
+    "unresolved": 831,
+    "emitted": 8027,
+    "duplicates": 0
+  },
+  "hard_error_count": 0,
+  "warning_count": 831
+}

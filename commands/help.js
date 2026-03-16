@@ -16,6 +16,7 @@ module.exports = {
                     { name: 'Weapons', value: 'weapons' },
                     { name: 'Skills', value: 'skills' },
                     { name: 'Mobs (DM)', value: 'mobs' },
+                    { name: 'Regelwiki', value: 'regelwiki' },
                     { name: 'Utility', value: 'utility' }
                 )
         ),
@@ -63,6 +64,11 @@ module.exports = {
                 {
                     name: '👾 Mobs (DM Only)',
                     value: '`/add-mob` `/edit-mob` `/view-mob` `/list-mobs`',
+                    inline: false,
+                },
+                {
+                    name: '📖 Regelwiki',
+                    value: '`/regel`',
                     inline: false,
                 },
                 {
@@ -147,6 +153,23 @@ function getCategoryHelp(category) {
                 { name: '/edit-mob', value: 'Edit an existing mob template' },
                 { name: '/view-mob', value: 'View mob template details' },
                 { name: '/list-mobs', value: 'List all available mob templates' }
+            ),
+
+        regelwiki: new EmbedBuilder()
+            .setColor(0x2f3136)
+            .setTitle('📖 Regelwiki Commands')
+            .setDescription('Search the DSA 5e rules database (7,000+ rules from the Regelwiki)')
+            .addFields(
+                { name: '/regel <suche>', value: 'Search rules by keyword (e.g., `/regel Finte`)' },
+                {
+                    name: '/regel <suche> kategorie:<filter>',
+                    value: 'Filter by category (e.g., Bestiarium, Magie, Kampf-SF)',
+                },
+                { name: '/regel <suche> anzahl:5', value: 'Show up to 5 results (default 3)' },
+                {
+                    name: '/regel <suche> visible:true',
+                    value: 'Make the search results visible to everyone',
+                }
             ),
 
         utility: new EmbedBuilder()

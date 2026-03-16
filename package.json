@@ -7,6 +7,9 @@
         "dev": "node --watch index.js",
         "deploy:guild": "node deploy-commands.js guild",
         "deploy:global": "node deploy-commands.js",
+        "embed:rules": "node scripts/import-rules-v3.js",
+        "import:rules": "node scripts/import-rules-v3.js",
+        "query:rules": "node scripts/query-rules.js",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
@@ -26,6 +29,7 @@
         "@supabase/supabase-js": "^2.98.0",
         "discord.js": "^14.15.3",
         "dotenv": "^16.4.5",
+        "openai": "^4.0.0",
         "pino": "^10.3.1"
     },
     "devDependencies": {

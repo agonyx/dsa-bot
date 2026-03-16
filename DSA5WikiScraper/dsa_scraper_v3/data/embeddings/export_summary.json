@@ -1,0 +1,13 @@
+{
+  "doc_count": 8027,
+  "chunk_count": 11370,
+  "unresolved_doc_count": 831,
+  "embeddable_doc_count": 8027,
+  "excluded_doc_count": 0,
+  "failed_url_count": 57,
+  "audit_hard_error_count": 0,
+  "audit_warning_count": 831,
+  "uses_audit_doc_ids": true,
+  "includes_unresolved_docs": true,
+  "default_excludes_unresolved_chunks": false
+}

@@ -1,0 +1,2201 @@
+[
+  {
+    "id": "ruestkammer_equipment_Fackel",
+    "category": "ruestkammer_equipment",
+    "name": "Fackel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Fackel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lichtquellen (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Die Brenndauer der Fackel beträgt 1,5 Stunden. Sichtmodifikatoren durch Dunkelheit werden im Fackelschein pro 2 Schritt Radius wie folgt reduziert: –4/–3/–2/–1 Stufe(n).\n\nEine Fackel lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 21",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kerzen_und_Zauberkerzen",
+    "category": "ruestkammer_equipment",
+    "name": "Kerzen und Zauberkerzen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_KerzenundZauberkerzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lichtquellen (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Kerze – Die Brenndauer einer Kerze beträgt 10 Stunden. Sichtmodifikatoren durch Dunkelheit werden durch Kerzenschein pro 1 Schritt Radius wie folgt reduziert: –4/–3/–2/–1 Stufe(n).\n\nStundenkerze – wie Kerze, dazu zusätzlich: Der Held kann mit der Stundenkerze die Zeit bis auf 30 Minuten genau bestimmen.\n\nZauberkerze – wie Kerze, dazu zusätzlich: Die jeweilige Eigenschaft erhält bei der ersten Teilprobe auf das jeweilige Ritual zum Be- oder Entschwören eines Dämons, Elementars oder Geistes einen Bonus von +1, wenn genug Zauberkerzen eingesetzt werden (bei Dämonen/Elementaren/Geistern 7/6/5/ Zauberkerzen).\n\nPublikation: Aventurische Rüstkammer, Seite 29",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_llampe",
+    "category": "ruestkammer_equipment",
+    "name": "Öllampe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Oellampe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lichtquellen (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Die Brenndauer der Öllampe beträgt 8 Stunden. Sichtmodifikatoren durch Dunkelheit werden im Schein der Öllampe pro 1 Schritt Radius wie folgt reduziert: –4/–3/–2/–1 Stufe(n).\n\nPublikation: Aventurische Rüstkammer, Seite 37",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Besondere_Munitionsarten",
+    "category": "ruestkammer_equipment",
+    "name": "Besondere Munitionsarten",
+    "url": "https://dsa.ulisses-regelwiki.de/besondere-munitionsarten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Waffenausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Beil_Handaxt",
+    "category": "ruestkammer_equipment",
+    "name": "Beil/Handaxt",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_BeilHandaxt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der ersten Teilprobe auf Holzbearbeitung (Bäume schlagen) bei Verwendung eines Beils einen Bonus von +1.\n\nEin Beil lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 13",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Munition",
+    "category": "ruestkammer_equipment",
+    "name": "Munition",
+    "url": "https://dsa.ulisses-regelwiki.de/munition.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Kugeln",
+    "category": "ruestkammer_equipment",
+    "name": "Kugeln",
+    "url": "https://dsa.ulisses-regelwiki.de/kugeln.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition"
+    ],
+    "properties": {},
+    "description": "Kugeln dienen als Munition für bestimmte Armbrüste und Schleudern.",
+    "subcategory": "Waffenausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Steinchen",
+    "category": "ruestkammer_equipment",
+    "name": "Steinchen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Munition_Steinchen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition"
+    ],
+    "properties": {},
+    "description": "Publikation(en) : Aventurisches Götterwirken, Seite  234 Aventurisches Kompendium, Seite  229",
+    "subcategory": "Waffenausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Phiole",
+    "category": "ruestkammer_equipment",
+    "name": "Phiole",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Phiole.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Alchimie (Labore & Werkzeuge)"
+    ],
+    "properties": {},
+    "description": "Eine Phiole kann 0,1 Liter Flüssigkeit aufnehmen. Um eine Phiole zu entkorken und daraus zu trinken, ist lediglich eine 1 Aktion notwendig. Alchimisten kaufen Phiolen oft in großer Stückzahl.\n\nAventurische Rüstkammer, Seite 39 Arkane Schmieden & Labore, Seite 156",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Taschenuhr_Vinsalter_Ei",
+    "category": "ruestkammer_equipment",
+    "name": "Taschenuhr (Vinsalter Ei)",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Taschenuhr.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Der Held kann mit einem Vinsalter Ei die Zeit bis auf die Minute genau bestimmen.\n\nAventurische Rüstkammer, Seite 48 Arkane Schmieden & Labore, Seite 156",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Abakus",
+    "category": "ruestkammer_equipment",
+    "name": "Abakus",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Abakus.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Bei einer gelungenen Probe auf Rechnen steigen die FP um 1 (bis zu einem Maximum von 18). Zudem kann das Intervall bei Sammelproben auf Rechnen um 25 % verringert werden.\n\nPublikation: Aventurische Rüstkammer II, Seite 12",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Kriegspfeile_und_-bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Kriegspfeile und -bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/kriegspfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Der Schaden der Waffe erhöht sich um +1 TP. Die Reichweite der Waffe sinkt um 10 %\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Sehnenschneider-Pfeile_und_-Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Sehnenschneider-Pfeile und -Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/sehnenschneider-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Die Reichweitenangaben der Fernkampfwaffen sind bei einem Sehnenschneider halbiert. Der RS des Ziels wird verdoppelt. Das Geschoss richtet zusätzlich 1W6 TP an. Gegen gespannte Seile kann das Geschoss ebenfalls verwendet werden. Es durchtrennt bei einem Treffer das Seil automatisch.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Kamelspiel",
+    "category": "ruestkammer_equipment",
+    "name": "Kamelspiel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kamelspiel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Mit gezinkten Kamelspielen erhält ein Held eine Erleichterung von 1 auf Proben auf Brett- und Glücksspiel (Brettspiele) , wenn er über die Sonderfertigkeit Falschspiel verfügt. Allerdings gilt diese Erleichterung nur für die Probe, die nach der ersten gescheiterten Probe abgelegt wird (siehe Regelwerk Seite 216 ).\n\nPublikation: Aventurische Rüstkammer, Seite 42",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Kettenbrecher-Pfeile_und_-Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Kettenbrecher-Pfeile und -Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenbrecher-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Kettenrüstungen schützen gegen Kettenbrecher nur mit einem RS von 1.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Panzerbrecher-Pfeile_und_-Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Panzerbrecher-Pfeile und -Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/panzerbrecher-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Ketten- und Plattenrüstungen schützen gegen Panzerbrecher nur mit einem RS von 1.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Boltankartenset",
+    "category": "ruestkammer_equipment",
+    "name": "Boltankartenset",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Boltankartenset.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Mit gezinkten Boltankarten erhält ein Held eine Erleichterung von 1 auf Proben auf Brett- und Glücksspiel (Kartenspiele) , wenn er über die Sonderfertigkeit Falschspielen verfügt. Allerdings gilt diese Erleichterung nur für die Probe, die nach der ersten, gescheiterten Probe abgelegt wird (siehe Regelwerk Seite 216).\n\nPublikation: Aventurische Rüstkammer, Seite 14",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Bolzenschuss-Torsionswaffe",
+    "category": "ruestkammer_equipment",
+    "name": "Bolzenschuss-Torsionswaffe",
+    "url": "https://dsa.ulisses-regelwiki.de/bolzenschuss-torsionswaffe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Der Schaden der Waffe erhöht sich um +2 TP, die Reichweite sich um 10 %. Die Waffe kann keine Kugeln mehr verschießen und kann kein Repetier-Magazin verwenden.\n\nKosten: +100 % der ursprünglichen Waffe, Pfeile kosten das Doppelte von Kugeln\n\nWaffen: Armbrüste, die als Munitionsart Kugeln verwenden\n\nPublikation(en): Aventurische Rüstkammer II, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Parf_m",
+    "category": "ruestkammer_equipment",
+    "name": "Parfüm",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Parfuem.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Charisma erhält bei Betören einen Bonus von +1, wenn sich der Held bis zu einer Stunde vorher einparfümiert hat und sein Gegenüber den Parfümgeruch mag (mag es das nicht, kann die Probe auch um 1 erschwert sein).\n\nPublikation: Aventurische Rüstkammer, Seite 38",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Waffenausr_stung",
+    "category": "ruestkammer_equipment",
+    "name": "Waffenausrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/RS_Waffenausruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "ruestkammer_equipment_Kreide_und_Zauberkreide",
+    "category": "ruestkammer_equipment",
+    "name": "Kreide und Zauberkreide",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_KreideundZauberkreide.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Kreide – Ein Stück Kreide reicht für 20 Bilder oder größere Zeichnungen wie Pentagramme o.Ä.\n\nZauberkreide – wie Kreide, dazu zusätzlich: Die jeweilige Eigenschaft erhält bei der ersten Teilprobe auf das jeweilige Ritual zum Be- oder Entschwören eines Dämons, Elementars oder Geistes einen Bonus von +1, wenn entsprechende Ritualsymbole mit Zauberkreide gezeichnet werden (verbraucht bei Dämonen/Elementaren/Geistern ein Stück Kreide je 7/6/5 Bildern, die gezeichnet werden).\n\nPublikation: Aventurische Rüstkammer, Seite 32",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Brecheisen",
+    "category": "ruestkammer_equipment",
+    "name": "Brecheisen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Brecheisen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Brecheisen – Körperkraft erhält bei Kraftakt (Drücken & Verbiegen oder Stemmen & Heben) bei Verwendung eines Brecheisens einen Bonus von +1, wenn es darum geht, eine Tür, ein Fenster oder Ähnliches aufzubrechen oder ein Gewicht zu bewegen.\n\nBrechstange – Körperkraft erhält bei Kraftakt (Drücken & Verbiegen oder Stemmen & Heben) bei Verwendung einer Brechstange einen Bonus von +1 in beiden KK-Teilproben, wenn es darum geht, eine Tür, ein Fenster oder Ähnliches aufzubrechen oder ein Gewicht zu bewegen.\n\nEin Brecheisen und eine Brechstange lassen sich als improvisierte Waffen verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 15",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Encyclopaedia_Magica",
+    "category": "ruestkammer_equipment",
+    "name": "Encyclopaedia Magica",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_EncyclopaediaMagica.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: verschieden, je nach Ausgabe, oft Bosparano und Garethi/Kusliker Zeichen\n\nBei einer gelungenen Probe auf Magiekunde steigen die FP um 1/2/3 (bis zu einem Maximum von 18), sofern dem Helden 1/3/7 brauchbare Bände der Encyclopaedia Magica vorliegen.\n\nPublikation: Aventurische Rüstkammer, Seite 20",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Federmesser",
+    "category": "ruestkammer_equipment",
+    "name": "Federmesser",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Federmesser.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Mit einem Federmesser kann man Federkiele zum Schreiben herrichten. Ein Federmesser lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 20",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Codex_Albyricus",
+    "category": "ruestkammer_equipment",
+    "name": "Codex Albyricus",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_CodexAlbyricus.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: meist Bosparano/Kusliker Zeichen\n\nBei einer gelungenen Probe auf Rechtskunde (Gildenrecht) steigen die FP um 1/2/3 (bis zu einem Maximum von 18), sofern dem Helden 1/3/7 brauchbare Bände des Codex Albyricus vorliegen.\n\nPublikation: Aventurische Rüstkammer, Seite 17",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Chirurgische_Instrumente",
+    "category": "ruestkammer_equipment",
+    "name": "Chirurgische Instrumente",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_ChirurgischeInstrumente.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Heilkunde Wunden (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Bei einer gelungenen Probe auf Heilkunde Wunden sinkt bei chirurgischen Eingriffen mit chirurgischen Instrumenten/hochwertigem Instrumentarium die Wahrscheinlichkeit, dass der Patient sich Wundfieber zuzieht, um 5 / 10 %.\n\nAußerdem erhält er einen Bonus von +1 / +2 LeP (unter Verwendung von chirurgischen Instrumenten bzw. hochwertigem Instrumentarium) bei seiner nächsten Regeneration nach dem Eingriff.\n\nPublikation: Aventurische Rüstkammer 2, Seite 17",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Federkiel_Tinte",
+    "category": "ruestkammer_equipment",
+    "name": "Federkiel & Tinte",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_FederkielundTinte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Durch die Kombination beider Gegenstände kann der Held Texte auf geeignetes Material wie Papier niederschreiben. Ansonsten hat der Gegenstand keine regeltechnische Funktion.\n\nPublikation: Aventurische Rüstkammer 2, Seite 20",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Brevier_der_zw_lfg_ttlichen_Unterweisung",
+    "category": "ruestkammer_equipment",
+    "name": "Brevier der zwölfgöttlichen Unterweisung",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Brevier12.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: meist Garethi/Kusliker Zeichen\n\nKlugheit erhält bei der zweiten Teilprobe auf Götter & Kulte (jede alveranische Gottheit und assoziierte Halbgötter) einen Bonus von +1, wenn es darum geht, allgemeine Informationen über die Gottheit des Anwendungsgebiets zu erlangen.\n\nPublikation: Aventurische Rüstkammer, Seite 16",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Amboss",
+    "category": "ruestkammer_equipment",
+    "name": "Amboss",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Amboss.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Metallbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Konstitution erhält bei der zweiten Teilprobe auf Metallbearbeitung (Feinschmiedearbeiten oder Grobschmiedearbeiten) bei Verwendung eines Ambosses in Kombination mit einem Schmiedehammer einen Bonus von +1.\n\nPublikation: Aventurische Rüstkammer 2, Seite 13",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Astrolabium",
+    "category": "ruestkammer_equipment",
+    "name": "Astrolabium",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Astrolabium.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Astrolabium – Proben auf Sternkunde werden durch ein Astrolabium um 1 erleichtert. Voraussetzung für diesen Bonus ist ein FW von 8 in Sternkunde .\n\nArmillarsphäre – Bei einer gelungenen Probe auf Sternkunde steigen die FP um 1 (bis zu einem Maximum von 18). Voraussetzung für diesen Bonus ist ein FW von 6 in Sternkunde .\n\nDer Held kann mit einem Astrolabium/einer Armillarsphäre die Zeit bis auf 5 Minuten genau bestimmen.\n\nPublikation: Aventurische Rüstkammer, Seite 12",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Bratspie",
+    "category": "ruestkammer_equipment",
+    "name": "Bratspieß",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Bratspiess.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lebensmittelbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der zweiten Teilprobe auf Lebensmittelbearbeitung (Braten & Sieden) bei Verwendung eines Bratspießes einen Bonus von +1, wenn es darum geht, Essen über einem Feuer zu braten.\n\nEin Bratspieß lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 15",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Feldflasche",
+    "category": "ruestkammer_equipment",
+    "name": "Feldflasche",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Feldflasche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Eine Feldflasche kann 1 Liter Flüssigkeit aufnehmen. Um eine Feldflasche zu entkorken und daraus zu trinken, ist eine 1 Aktion notwendig.\n\nPublikation: Aventurische Rüstkammer, Seite 21",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Dietrich",
+    "category": "ruestkammer_equipment",
+    "name": "Dietrich",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Dietrich.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Dietrich – Fingerfertigkeit erhält bei Schlösserknacken (Bartschlösser) bei Verwendung eines Dietrichs einen Bonus von +1, wenn es darum geht, ein Bartschloss zu knacken.\n\nDietrichset – Fingerfertigkeit erhält bei Schlösserknacken (Bartschlösser) bei Verwendung eines Dietrichs einen Bonus von +1 in beiden FF-Teilproben, wenn es darum geht, ein Bartschloss zu knacken.\n\nZwei oder mehr Dietriche bringen keinen zusätzlichen Bonus (nur das Dietrichset).\n\nPublikation: Aventurische Rüstkammer, Seite 18",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Annalen_des_G_tteralters",
+    "category": "ruestkammer_equipment",
+    "name": "Annalen des Götteralters",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_AnnalendesGoetteralters.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: meist Garethi/Kusliker Zeichen\n\nRegeltechnik: Klugheit erhält bei der zweiten Teilprobe auf Geschichtswissen, Götter & Kulte (jede alveranische Gottheit und assoziierte Halbgötter) und Sagen & Legenden einen Bonus von +1, wenn es darum geht, allgemeine Informationen über die Gottheit des Anwendungsgebiets oder Sagen über den Zwölfgöttermythos zu erlangen.\n\nPublikation: Aventurische Rüstkammer II, Seite 14 Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Genaue_QS_Gegenst_nde_verfluchen",
+    "category": "ruestkammer_equipment",
+    "name": "Genaue QS [Gegenstände verfluchen]",
+    "url": "https://dsa.ulisses-regelwiki.de/OR_Gegenstandsfluc_GenaueQS.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Optionale Regeln"
+    ],
+    "properties": {},
+    "description": "Du kannst statt der üblichen 1 QS bei Gegenstandsflüchen auch die ausgewürfelte QS des Fluchs nehmen. Das macht die Gegenstandsflüche in der Regel stärker, aber du musst auch die QS bei dem Objekt nachhalten. Das Spiel wird durch den Einsatz dieser Optionalregel komplexer.\n\nPublikation(en): Kodex der Magie, Seite 248",
+    "subcategory": "Regeln"
+  },
+  {
+    "id": "ruestkammer_equipment_Holzschale",
+    "category": "ruestkammer_equipment",
+    "name": "Holzschale",
+    "url": "https://dsa.ulisses-regelwiki.de/Ausr_Holzschale.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lebensmittelbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kette_aus_verh_rteten_Eierschalen",
+    "category": "ruestkammer_equipment",
+    "name": "Kette aus verhärteten Eierschalen",
+    "url": "https://dsa.ulisses-regelwiki.de/Ausr_KetteEierschalen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Achaz - Schuppenkleid & Lange Zungen, Seite 59",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Feinmechanikerwerkzeug",
+    "category": "ruestkammer_equipment",
+    "name": "Feinmechanikerwerkzeug",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Feinmechanikerwerkzeug.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Metallbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Feinmechanikerwerkzeug erleichtert Proben auf Metallbearbeitung (Feinschmiedearbeiten) und Schlösserknacken (Kombinationsschlösser) um 1.\n\nPublikation: Aventurische Rüstkammer 2, Seite 21",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Bernsteinbrille",
+    "category": "ruestkammer_equipment",
+    "name": "Bernsteinbrille",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Bernsteinbrille.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Träger der Bernsteinbrille muss keine Probe ablegen, um festzustellen, ob er Schneeblind wird. Voraussetzung dafür ist aber, dass er die Bernsteinbrille mindestens 8 Stunden täglich während seiner Reise trägt.\n\nPublikation: Aventurische Rüstkammer 2, Seite 15",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Brotbeutel",
+    "category": "ruestkammer_equipment",
+    "name": "Brotbeutel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Brotbeutel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein kleiner/großer Brotbeutel kann bis zu 2/4 Stein Gewicht an Gegenständen aufnehmen.\n\nPublikation: Aventurische Rüstkammer 2, Seite 16",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Falscher_Bart",
+    "category": "ruestkammer_equipment",
+    "name": "Falscher Bart",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_FalscherBart.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein falscher Bart erleichtert Proben auf Verkleiden , wenn es darum geht, sich als Mann auszugeben (vorausgesetzt, die dargestellte Person würde auch einen Bart tragen). Sollte ein Zwerg herausfinden, dass sein Gegenüber einen falschen Bart benutzt, sind Gesellschaftstalente (außer Menschenkenntnis und Willenskraft ) gegenüber diesem Zwerg für immer um 1 erschwert.\n\nPublikation: Aventurische Rüstkammer 2, Seite 19",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Besen",
+    "category": "ruestkammer_equipment",
+    "name": "Besen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Besen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Besen lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 15",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Edle_Kleidung",
+    "category": "ruestkammer_equipment",
+    "name": "Edle Kleidung",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_EdleKleidung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Nach Meisterentscheid kann die edle Kleidung dazu dienen, bei einer Probe auf Verkleiden (Kostümierung oder Person imitieren) einen Helden mit sozialem Stand Stufe 1 oder 2 wie jemanden der Stufe 3 aussehen zu lassen. Der Held kann dann bei einer gelungenen Probe auf Verkleiden (Kostümierung oder Person imitieren) von den Vorteilen des höheren sozialen Standes profitieren.\n\nPublikation: Aventurische Rüstkammer 2, Seite 18",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Fernrohr",
+    "category": "ruestkammer_equipment",
+    "name": "Fernrohr",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Fernrohr.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Helden erhalten bei Proben auf Sinnesschärfe (Suchen) , die sich auf die Sicht beziehen, Erschwernisse bei großen Distanzen: 100 bis 500 Schritt –1, 501 bis 1.000 Schritt –2, 1.001 bis 2.000 Schritt –3, 2.001 bis 3.000 Schritt –3 usw. Fernrohre können diese Erschwernis senken. Das kleine und das zusammenschiebbare Fernrohr senken die Erschwernisse um 1, das normale Fernrohr senkt die Erschwernisse um 2 und das große Fernrohr sogar um 3 (jeweils bis zu einem Minimum von +/–0).\n\nPublikation: Aventurische Rüstkammer, Seite 22",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Feuerstein_und_Stahl",
+    "category": "ruestkammer_equipment",
+    "name": "Feuerstein und Stahl",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_FeuersteinundStahl.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Proben auf Wildnisleben (Feuermachen) werden durch Feuerstein und Stahl um 2 erleichtert.\n\nPublikation: Aventurische Rüstkammer, Seite 23",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Fesselseil",
+    "category": "ruestkammer_equipment",
+    "name": "Fesselseil",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Fesselseil.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fesselseil, Hanf – Bei einer gelungenen Probe auf Fesseln (Fesselungen) steigen die FP um 1 (bis zu einem Maximum von 18).\n\nFesselseil, Leder – Bei einer gelungenen Probe auf Fesseln (Fesselungen) steigen die FP um 2 (bis zu einem Maximum von 18) und das Seil fügt bei Befeuchtung dem Opfer nach der Fesselung einmalig 1W3 SP zu.\n\nPublikation: Aventurische Rüstkammer, Seite 23",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_G_rteltasche",
+    "category": "ruestkammer_equipment",
+    "name": "Gürteltasche",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_G%C3%BCrteltasche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Wer einen Gegenstand aus einer Gürteltasche ziehen möchte, benötigt dafür lediglich 1 Aktion.\n\nPublikation: Aventurische Rüstkammer, Seite 25",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Geldbeutel_Geldkatze",
+    "category": "ruestkammer_equipment",
+    "name": "Geldbeutel & Geldkatze",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_GeldbeutelundGeldkatze.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Geldbeutel – Fingerfertigkeit erhält bei Taschendiebstahl (Person bestehlen) einen Malus von 1, wenn das Opfer des Diebstahls einen Geldbeutel verwendet, um sein Geld zu sichern.\n\nGeldkatze – Fingerfertigkeit und Gewandtheit erhalten bei Taschendiebstahl (Person bestehlen) einen Malus von 1, wenn das Opfer des Diebstahls eine Geldkatze verwendet, um sein Geld zu sichern.\n\nEin/e Geldbeutel/Geldkatze verfügt über ein Volumen für 50/20 Münzen.\n\nPublikation: Aventurische Rüstkammer, Seite 24",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Fl_te",
+    "category": "ruestkammer_equipment",
+    "name": "Flöte",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Floete.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Musizieren (Instrumente & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 70",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Fleischerbeil",
+    "category": "ruestkammer_equipment",
+    "name": "Fleischerbeil",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Fleischerbeil.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lebensmittelbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der zweiten Teilprobe auf Lebensmittelbearbeitung (Ausnehmen) bei Verwendung eines Fleischerbeils einen Bonus von +1, wenn es darum geht, Fleisch zu verarbeiten. Ein Fleischerbeil lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 22",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_G_tterfig_rchen",
+    "category": "ruestkammer_equipment",
+    "name": "Götterfigürchen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Goetterfiguerchen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Wer ein Götterfigürchen (oder ein vergleichbares Amulett, etc.) seiner angebeteten Gottheit mit sich führt und es täglich beim Gebet aufstellt, der kann einmal während eines Abenteuers den Zustand Furcht für 2 KR ignorieren. Danach muss der Held der Gottheit des Figürchens eine größere Spende zukommen lassen (etwa 10 Dukaten), damit das Götterfigürchen erneut diese Wirkung entfalten kann.\n\nPublikation: Aventurische Rüstkammer, Seite 25 Aventurisches Götterwirken II, Seite 178",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Gro_er_Aventurischer_Atlas",
+    "category": "ruestkammer_equipment",
+    "name": "Großer Aventurischer Atlas",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Gro%C3%9FerAventurischerAtlas.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Sprache/Schrift: Garethi/Kusliker Zeichen\n\nRegeltechnik: Proben auf Geographie sind um 1 Punkt erleichtert.\n\nPublikation: Aventurische Rüstkammer II, Seite 23 Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Handharfe",
+    "category": "ruestkammer_equipment",
+    "name": "Handharfe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Handharfe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Musizieren (Instrumente & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 70",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Jonglierball",
+    "category": "ruestkammer_equipment",
+    "name": "Jonglierball",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Jonglierball.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der dritten Teilprobe auf Gaukeleien (Jonglieren) bei Verwendung von Jonglierbällen mit Gewichten einen Bonus von +1. Ein Jonglierball lässt sich als improvisierte Fernkampfwaffe einsetzen.\n\nPublikation: Aventurische Rüstkammer 2, Seite 25",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_H_ngematte",
+    "category": "ruestkammer_equipment",
+    "name": "Hängematte",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Haengematte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Konstitution erhält bei der dritten Teilprobe auf Wildnisleben (Lageraufbau) bei Verwendung einer Hängematte einen Bonus von +1 bei folgenden Geländetypen: Dschungel, Kulturland, Sumpf und Wald.\n\nAußerdem senkt die Hängematte bei der Verwendung auf Wasserfahrzeugen die Gefahr, an der Seekrankheit zu erkranken um 5 %.\n\nPublikation: Aventurische Rüstkammer 2, Seite 24",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Hauerkette",
+    "category": "ruestkammer_equipment",
+    "name": "Hauerkette",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Hauerkette.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 119",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Handspiegel",
+    "category": "ruestkammer_equipment",
+    "name": "Handspiegel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Handspiegel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Charisma erhält bei der zweiten Teilprobe auf Betören (Aufhübschen) bei Verwendung eines Handspiegels einen Bonus von +1. Ein Handspiegel lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 24",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Hilffreycher_Leytfaden_des_wandernden_Adepten",
+    "category": "ruestkammer_equipment",
+    "name": "Hilffreycher Leytfaden des wandernden Adepten",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_HilffreycherLeytfadendeswanderndenAdepten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: Garethi/Kusliker Zeichen\n\nBei folgenden Talenten wird mit 1W6 gewürfelt, wenn der Leytfaden zur Hilfe genommen wird: Etikette, Handel, Rechtskunde, Singen . Bei einer gewürfelten 6 bekommt der Held folgenden Vorteil: Eine beliebige Eigenschaft erhält bei einer einzigen Teilprobe des Talents einen Bonus von +1.\n\nPublikation: Aventurische Rüstkammer, Seite 28",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Gwen_Petryl-Stein",
+    "category": "ruestkammer_equipment",
+    "name": "Gwen Petryl-Stein",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_GwenPetryl-Stein.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lichtquellen (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Die Brenndauer des Steins ist unbegrenzt. Sichtmodifikatoren durch Dunkelheit werden im Schein des kopfgroßen/ faustgroßen/fingerkuppengroßen Steins pro 3/2/1 Schritt Radius wie folgt reduziert: –4/–3/–2/–1 Stufe(n).\n\nPublikation: Aventurische Rüstkammer, Seite 26 Havena - Versunkene Geheimnisse, Seite 89 (Erweiterte Tabelle)",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kletterhaken",
+    "category": "ruestkammer_equipment",
+    "name": "Kletterhaken",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kletterhaken.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Klettern (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "In Kombination mit einem Kletterseil erhält der Held durch Kletterhaken eine Erleichterung von 1 bei Proben auf Klettern .\n\nPublikation: Aventurische Rüstkammer, Seite 30",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kohlestift",
+    "category": "ruestkammer_equipment",
+    "name": "Kohlestift",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kohlestift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Durch einen Kohlestift kann der Held Texte auf geeignetes Material wie Papier niederschreiben. Ansonsten hat der Gegenstand keine regeltechnische Funktion.\n\nPublikation: Aventurische Rüstkammer 2, Seite 26",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Kapuzenumhang",
+    "category": "ruestkammer_equipment",
+    "name": "Kapuzenumhang",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kapuzenumhang.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Durch das Tragen eines Kapuzenumhangs kann bei der Berechnung von Kälteschaden die Temperatur um 5 Grad erhöht werden (siehe Regelwerk Seite 346 ). Intuition erhält bei der zweiten Teilprobe auf Verbergen (sich Verstecken) bei Verwendung eines Kapuzenumhangs einen Bonus von +1. Außerdem sind Proben auf Gassenwissen (Beschatten) um 1 erleichtert.\n\nPublikation: Aventurische Rüstkammer 2, Seite 25",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kartographiewerkzeug",
+    "category": "ruestkammer_equipment",
+    "name": "Kartographiewerkzeug",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kartographiewerkzeug.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei Malen & Zeichen (Zeichnen) einen Bonus von +1, wenn es darum geht, eine Karte anzufertigen.\n\nPublikation: Aventurische Rüstkammer, Seite 29",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Kletterseil",
+    "category": "ruestkammer_equipment",
+    "name": "Kletterseil",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kletterseil.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Klettern (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "In Kombination mit Kletterhaken erhält der Held durch ein Kletterseil eine Erleichterung von 1 bei Proben auf Klettern .\n\nPublikation: Aventurische Rüstkammer, Seite 30",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kette",
+    "category": "ruestkammer_equipment",
+    "name": "Kette",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kette.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der zweiten Teilprobe auf Fesseln (Fesselungen) bei Verwendung einer Kette einen Bonus von +1, wenn sie mit einem Vorhängeschloss kombiniert wird. Eine Kette lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 26",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Kopftuch",
+    "category": "ruestkammer_equipment",
+    "name": "Kopftuch",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kopftuch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Durch das Tragen eines Kopftuchs kann bei der Berechnung von Hitzeschaden die Temperatur um 5 Grad gesenkt werden (siehe Regelwerk Seite 348 ).\n\nPublikation: Aventurische Rüstkammer 2, Seite 27",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Laterne",
+    "category": "ruestkammer_equipment",
+    "name": "Laterne",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Laterne.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lichtquellen (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Die Brenndauer der Laterne beträgt 12 Stunden. Sichtmodifikatoren durch Dunkelheit werden im Schein der Laterne pro 3 Schritt Radius wie folgt reduziert: –4/–3/–2/–1 Stufe(n).\n\nPublikation: Aventurische Rüstkammer, Seite 33",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kupferkessel",
+    "category": "ruestkammer_equipment",
+    "name": "Kupferkessel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kupferkessel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Alchimie (Labore & Werkzeuge)"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei Alchimie (Elixiere) einen Bonus von +1, wenn der Held zur Herstellung den Kupferkessel verwendet.\n\nPublikation: Aventurische Rüstkammer, Seite 32",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Kompass_S_dweiser",
+    "category": "ruestkammer_equipment",
+    "name": "Kompass (Südweiser)",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Kompass.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Mit einem Südweiser erhält ein Held eine Erleichterung von 5 auf Proben auf Orientierung , wenn es darum geht, die Himmelrichtung zu bestimmen. Andere Proben auf das Talent können durch den Kompass auch eine geringere Erleichterung erhalten.\n\nPublikation: Aventurische Rüstkammer, Seite 31",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Magierrobe",
+    "category": "ruestkammer_equipment",
+    "name": "Magierrobe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Magierrobe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "# Leichtes Gewand: Die entsprechende Eigenschaft erhält bei der ersten Teilprobe auf Zaubern mit dem Merkmal Einfluss oder Heilung einen Bonus von +1. Alle anderen Zauber erleiden eine Erschwernis von –1.\n\n# Großes Gewand: Die entsprechende Eigenschaft erhält bei der ersten Teilprobe auf Zaubern mit dem Merkmal Objekt oder Verwandlung einen Bonus von +1. Alle anderen Zauber erleiden eine Erschwernis von –1.\n\n# Beschwörungsgewand: Die folgenden Erleichterungen gelten jeweils nur für die Wesenheiten, denen das Beschwörungsgewand entspricht. So erleichtert eine weiße Elementarbeschwörungsrobe die Proben bei Elementarwesen, eine schwarze Dämonenbeschwörungsrobe erleichtert die Proben bei Dämonen und eine rote Geisterbeschwörungsrobe erleichtert die Proben bei Geistern. Die entsprechende Eigenschaft erhält bei der ersten Teilprobe auf Zauber mit dem Merkmal Antimagie, Dämonisch, Elementar oder Sphären einen Bonus von +1 (sofern es um Be- oder Entschwörungen von Wesenheiten geht, z. B. DSCHINNENRUF, GEISTERRUF, INVOCATIO, HEPTA-, HEXA- oder PENTAGRAMMA), oder die entsprechende Eigenschaft erhält bei der ersten Teilprobe auf Merkmalsbann (z. B. EINFLUSSoder VERWANDLUNGSBANN) einen Bonus von +1. Unabhängig davon, welche Variante gewählt wird, erleiden alle anderen Zauber eine Erschwernis von –1.\n\n# Konventsgewand: Ein Konventsgewand hat weder Vor- noch Nachteile.\n\n# Reisegewand: Ein Reisegewand hat weder Vor- noch Nachteile.\n\n# Normale Robe: Eine gewöhnliche Magierrobe hat weder Vor- noch Nachteile.\n\nPublikation: Aventurische Rüstkammer, Seite 33 Kodex der Magie, Seite 81 [nur Regeltechniken der unterschiedlichen Gewandarten}",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Lederrucksack",
+    "category": "ruestkammer_equipment",
+    "name": "Lederrucksack",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Lederrucksack.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Ein Lederrucksack kann bis zu 50 Stein Gewicht an Gegenständen aufnehmen.\n\nPublikation: Aventurische Rüstkammer, Seite 33",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Lederranzen",
+    "category": "ruestkammer_equipment",
+    "name": "Lederranzen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Lederranzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Lederranzen kann bis zu 25 Stein Gewicht an Gegenständen aufnehmen.\n\nPublikation: Aventurische Rüstkammer 2, Seite 27",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Lebensring",
+    "category": "ruestkammer_equipment",
+    "name": "Lebensring",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Lebensring.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 73",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Laute",
+    "category": "ruestkammer_equipment",
+    "name": "Laute",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Laute.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Musizieren (Instrumente & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 70",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Papier_Pergament",
+    "category": "ruestkammer_equipment",
+    "name": "Papier & Pergament",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_PapierundPergament.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Bei einer gelungenen Probe auf Malen & Zeichnen (Malen oder Zeichnen) steigen die FP um 1 (bis zu einem Maximum von 18).\n\nPublikation: Aventurische Rüstkammer, Seite 38",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Prems_Tierleben",
+    "category": "ruestkammer_equipment",
+    "name": "Prems Tierleben",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_PremsTierleben.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: meist Garethi/Kusliker Zeichen\n\nBei einer gelungenen Probe auf Tierkunde erhält der Held einen Bonus von +1 FP, wenn es um Wesen aus folgenden Regionen geht: Albernia, Andergast, Gjalskerland, Horasreich, Nordaventurien, Nostria, Orkland, Thorwal, Zyklopeninseln.\n\nPublikation: Aventurische Rüstkammer, Seite 39",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Nadel-_Zwirnset",
+    "category": "ruestkammer_equipment",
+    "name": "Nadel-& Zwirnset",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Nadel-undZwirnset.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der zweiten Teilprobe auf Stoffbearbeitung (Schneidern) bei Verwendung eines Nadel- & Zwirnsets einen Bonus von +1.\n\nPublikation: Aventurische Rüstkammer 2, Seite 28",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Nudel-_Teigholz",
+    "category": "ruestkammer_equipment",
+    "name": "Nudel-/Teigholz",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Nudel-Teigholz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Lebensmittelbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der dritten Teilprobe auf Lebensmittelbearbeitung (Backen) bei Verwendung eines Nudel-/Teigholz einen Bonus von +1.\n\nEin Nudel-/Teigholz lässt sich als improvisierte Waffe verwenden (siehe Seite 138).\n\nPublikation: Aventurische Rüstkammer, Seite 36",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Mantel",
+    "category": "ruestkammer_equipment",
+    "name": "Mantel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Mantel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Intuition erhält bei Verbergen (Gegenstände verbergen) einen Bonus von +1, wenn der Gegenstand unter dem Mantel oder in einer Tasche des Mantels verborgen werden kann.\n\nPublikation: Aventurische Rüstkammer, Seite 36",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Proviantpaket_W_stenreich",
+    "category": "ruestkammer_equipment",
+    "name": "Proviantpaket  Wüstenreich",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Proviant/proviantpaket-wuestenreich.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Proviant"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Proviant",
+    "category": "ruestkammer_equipment",
+    "name": "Proviant",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Proviant.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Proviant sättigt pro Ration einen Menschen für einen Tag.\n\n[ Anmerkung : Teilweise wurde für das Gewicht auch 0,5 Stein angegeben und scheint das Gewicht für die Flüssigkeit in der Tagesration zu entsprechen. (vermutlich ohne Gewicht eines Behältnisses)]\n\nPublikation: Regelwerk, Seite 375 Aventurische Rüstkammer, Seite 40 Kodex der Helden, Seite 470",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Storchenmaske",
+    "category": "ruestkammer_equipment",
+    "name": "Storchenmaske",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Storchenmaske.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Storchenmaske – Bei der Pflege und dem Kontakt mit einem Kranken sinkt die Ansteckungswahrscheinlichkeit für den Träger der Storchenmaske um 5 % (bis zu einem Minimum von 5 %).\n\nGesundheitssteigernde Essenzen – Bei der Pflege und dem Kontakt mit einem Kranken sinkt die Ansteckungswahrscheinlichkeit für den Träger der Storchenmaske mit Gesundheitssteigernden Essenzen um 10 % (bis zu einem Minimum von 5 %). Eine Anwendung reicht für 12 Stunden.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 30 Aventurisches Götterwirken II, Seite 178 [Anmerkung: nur Storchenmaske]",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Schweinetrommel",
+    "category": "ruestkammer_equipment",
+    "name": "Schweinetrommel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Schweinetrommel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 116",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Quadrant",
+    "category": "ruestkammer_equipment",
+    "name": "Quadrant",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Quadrant.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Klugheit erhält bei Sternkunde (Himmelskartographie oder Kalendarium) oder Orientierung (Sternenhimmel) bei Verwendung eines Quadranten einen Bonus von +1.\n\nPublikation: Aventurische Rüstkammer, Seite 41",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Steckenpferd_Stoffpuppe",
+    "category": "ruestkammer_equipment",
+    "name": "Steckenpferd & Stoffpuppe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_SteckenpferdundStoffpuppe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Wer sein Spielzeug liebt und es beim Schlafenggehen dabeihat, der kann bei der beginnenden Regenerationsphase eine gewürfelte 1 als eine 2 werten. Dies gilt sowohl für die Regeneration von LeP, AsP und KaP.\n\nNach Meisterentscheid können aber Proben auf Gesellschaftstalente (außer Willenskraft ) um 1 erschwert werden, wenn die Liebe zu dem Spielzeug dem Gegenüber des Helden seltsam anmutet. Tsageweihte, Schelme und Kinder sind davon selten betroffen, ihnen gestehen die meisten Kulturschaffenden den Besitz dieser Spielzeuge zu.\n\nPublikation: Aventurische Rüstkammer 2, Seite 29",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Strickleiter",
+    "category": "ruestkammer_equipment",
+    "name": "Strickleiter",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Strickleiter.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Klettern (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Mit einer Strickleiter erhält ein Held eine Erleichterung von 3 bei Proben auf Klettern, sofern die Strickleiter richtig angebracht ist.\n\nPublikation: Aventurische Rüstkammer, Seite 47",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Schere",
+    "category": "ruestkammer_equipment",
+    "name": "Schere",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Schere.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der ersten Teilprobe auf Stoffbearbeitung (Schneidern) bei Verwendung einer Schere einen Bonus von +1. Eine Schere/Schneiderschere lässt sich als improvisierte Waffe verwenden.\n\n➤ Zur improvisierten Waffe: Schneiderschere (i)\n\nPublikation: Aventurische Rüstkammer 2, Seite 28",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Sippenchronik",
+    "category": "ruestkammer_equipment",
+    "name": "Sippenchronik",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Sippenchronik.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 205",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Seife",
+    "category": "ruestkammer_equipment",
+    "name": "Seife",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Seife.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Seife – Wer regelmäßig Seife benutzt, erhält einen Bonus von +1 ZK gegen Krankheitsproben.\n\nEine Seife lässt sich in Kombination mit einem Tuch oder einem ähnlichen Stoffgegenstand als improvisierte Waffe verwenden.\n\nSeife, parfümiert – wie Seife, zusätzlich noch: Charisma erhält auf Betören einen Bonus von +1, wenn sich der Held bis zu einer Stunde vorher mit einer parfümierten Seife gewaschen hat und sein Gegenüber Sauberkeit und den Parfümgeruch mag (mag es das nicht, kann die Probe auch um 1 erschwert sein).\n\nPublikation: Aventurische Rüstkammer, Seite 45",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Sense",
+    "category": "ruestkammer_equipment",
+    "name": "Sense",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Sense.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Eine Sense lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 29",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Schlafsack",
+    "category": "ruestkammer_equipment",
+    "name": "Schlafsack",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Schlafsack.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Schlafsack senkt die Kältestufe um 1 und kann mit dem Kälteschutz eines Zelts kombiniert werden.\n\nPublikation: Aventurische Rüstkammer, Seite 43",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Schneeschuhe",
+    "category": "ruestkammer_equipment",
+    "name": "Schneeschuhe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Schneeschuhe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ohne Schneeschuhe kann ein Held sich nur mit halbierter GS durch hohen Schnee bewegen. Mit Schneeschuhen kann er im Schnee 75 % seiner GS nutzen.\n\nPublikation: Aventurische Rüstkammer, Seite 44",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Spaten_Spitzhacke",
+    "category": "ruestkammer_equipment",
+    "name": "Spaten & Spitzhacke",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_SpatenundSpitzhacke.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Körperkraft erhält bei der dritten Teilprobe auf Steinbearbeitung (Steine brechen) bei Verwendung einer Spitzhacke einen Bonus von +1. Eine Spitzhacke wie auch ein Spaten lassen sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 46",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Schmiedehammer",
+    "category": "ruestkammer_equipment",
+    "name": "Schmiedehammer",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Schmiedehammer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Metallbearbeitung (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Körperkraft erhält bei der dritten Teilprobe auf Metallbearbeitung (Grobschmiedearbeiten) bei Verwendung eines Schmiedehammers einen Bonus von +1.\n\nEin Schmiedehammer lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 43",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Sichel",
+    "category": "ruestkammer_equipment",
+    "name": "Sichel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Sichel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei der zweiten Teilprobe auf Pflanzenkunde (Nutzpflanzen) bei Verwendung einer Sichel einen Bonus von +1, wenn es um Ackerbau geht.\n\nDie Sichel lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 45",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Tagebuch",
+    "category": "ruestkammer_equipment",
+    "name": "Tagebuch",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Tagebuch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Ein Tagebuch hat keine regeltechnische Funktion.\n\nPublikation: Aventurische Rüstkammer 2, Seite 32",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Stundenglas",
+    "category": "ruestkammer_equipment",
+    "name": "Stundenglas",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Stundenglas.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Der Held kann mit einem Stundenglas eine Zeitdauer bis auf 5 Minuten genau bestimmen.\n\nPublikation: Aventurische Rüstkammer, Seite 47",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Truhe",
+    "category": "ruestkammer_equipment",
+    "name": "Truhe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Truhe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Eine Reisetruhe/Schatztruhe/Seekiste/Truhe kann bis zu 120/150/100/80 Stein Gewicht an Gegenständen aufnehmen.\n\nPublikation: Aventurische Rüstkammer 2, Seite 33",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Trinkhorn",
+    "category": "ruestkammer_equipment",
+    "name": "Trinkhorn",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Trinkhorn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Regelwerk, Seite 376 Kodex der Magie, Seite 185",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Tabak_Zubeh_r",
+    "category": "ruestkammer_equipment",
+    "name": "Tabak & Zubehör",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_TabakundZubeh%C3%B6r.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Eine Pfeife und Tabak haben keine regeltechnische Funktion.\n\nPublikation: Aventurische Rüstkammer 2, Seite 31",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Tanzgewand",
+    "category": "ruestkammer_equipment",
+    "name": "Tanzgewand",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Tanzgewand.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Aventurische Magie, Seite 66 Kodex der Magie, Seite 196",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Unterhosen",
+    "category": "ruestkammer_equipment",
+    "name": "Unterhosen",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Unterhosen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Eine Unterhose hat keine regeltechnische Funktion.\n\nPublikation: Aventurische Rüstkammer, Seite 49",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Umh_ngetasche",
+    "category": "ruestkammer_equipment",
+    "name": "Umhängetasche",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Umhaengetasche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Eine Umhängetasche kann bis zu 20 Stein Gewicht an Gegenständen aufnehmen.\n\nPublikation: Aventurische Rüstkammer, Seite 49",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Tiegel",
+    "category": "ruestkammer_equipment",
+    "name": "Tiegel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Tiegel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Tiegel kann 5 Anwendungen einer Salbe aufnehmen. Um die Salbe anzuwenden, ist lediglich eine 1 Aktion notwendig.\n\nPublikation: Aventurische Rüstkammer 2, Seite 32",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Wasserschlauch",
+    "category": "ruestkammer_equipment",
+    "name": "Wasserschlauch",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wasserschlauch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Wasserschlauch kann 1,5 Liter Flüssigkeit aufnehmen. Um einen Wasserschlauch zu entkorken und daraus zu trinken, ist lediglich eine 1 Aktion notwendig.\n\nPublikation: Aventurische Rüstkammer, Seite 52",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Vorschlaghammer",
+    "category": "ruestkammer_equipment",
+    "name": "Vorschlaghammer",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Vorschlaghammer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Körperkraft erhält bei der dritten Teilprobe auf Steinbearbeitung ( Maurerarbeiten oder Steine brechen ) bei Verwendung eines Vorschlaghammers einen Bonus von +1. Ein Vorschlaghammer lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 33",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Verband",
+    "category": "ruestkammer_equipment",
+    "name": "Verband",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Verband.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Heilkunde Wunden (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Fingerfertigkeit erhält bei Heilkunde Wunden einen Bonus von +1, sofern ein Verband verwendet werden kann (Stofffetzen bringen keinen Bonus!).\n\nPublikation: Aventurische Rüstkammer, Seite 50",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Wasserpfeife",
+    "category": "ruestkammer_equipment",
+    "name": "Wasserpfeife",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wasserpfeife.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Charisma erhält bei Etikette (Klatsch & Tratsch) einen Bonus von +1, wenn der Held als Gastgeber eines Festes die Wasserpfeife mit seinen Gästen teilt und das gemeinsame Rauchen als zuvorkommende Geste auf dem Fest geschätzt wird.\n\nPublikation: Aventurische Rüstkammer, Seite 51",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Vorh_ngeschloss",
+    "category": "ruestkammer_equipment",
+    "name": "Vorhängeschloss",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Vorhaengeschloss.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Um ein Vorhängeschloss zu öffnen, ist eine Probe auf Schlösserknacken (Bartschlösser) notwendig.\n\nPublikation: Aventurische Rüstkammer, Seite 51",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Zunder",
+    "category": "ruestkammer_equipment",
+    "name": "Zunder",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Zunder.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Zunder – Bei einer gelungenen Probe auf Wildnisleben (Feuermachen) steigt die QS um 1 (bis zu einem Maximum von 6).\n\nZunderdose – Die Zunderdose ist wasserdicht, sodass ihr Inhalt auch beim Schwimmen oder Tauchen nicht unbrauchbar wird.\n\nEin Held benötigt 1 freie Aktion, um die Zunderdose zu öffnen oder zu schließen.\n\nPublikation: Aventurische Rüstkammer, Seite 54",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Wolfsfell",
+    "category": "ruestkammer_equipment",
+    "name": "Wolfsfell",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wolfsfell.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Wolfsfell verfügt über einen Kälteschutz von 1.\n\nPublikation: Aventurische Rüstkammer 2, Seite 34",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Zimmermannskasten",
+    "category": "ruestkammer_equipment",
+    "name": "Zimmermannskasten",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Zimmermannskasten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Ein Zimmermannskasten erleichtert Proben auf Holzbearbeitung ( Tischlerarbeiten oder Zimmermannsarbeiten ) um 1.\n\nPublikation: Aventurische Rüstkammer 2, Seite 36",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Wolldecke",
+    "category": "ruestkammer_equipment",
+    "name": "Wolldecke",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wolldecke.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Eine Wolldecke/Phraischafwolldecke senkt die Kältestufe um 1/2 und kann mit dem Kälteschutz eines Zelts kombiniert werden.\n\nPublikation: Aventurische Rüstkammer, Seite 52",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Zelt",
+    "category": "ruestkammer_equipment",
+    "name": "Zelt",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Zelt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Gelingt eine Probe auf Wildnisleben (Lagerbau) mit QS 5+ beim Aufbau des Zelts, so gilt es für Regenerationsphasen als gute Unterkunft und bringt einen Bonus von +1 LeP/AsP/KaP (siehe Regelwerk Seite 339).\n\nEin Zelt verfügt über Kälteschutz und senkt die Kältestufe um 1. Es kann mit Kleidung und einer Wolldecke oder einem Schlafsack kombiniert werden.\n\nDer Auf- und Abbau von Zelten dauert 20 Minuten, bei einem Großzelt 1 Stunde.\n\nPublikation: Aventurische Rüstkammer, Seite 54",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Wurfhaken",
+    "category": "ruestkammer_equipment",
+    "name": "Wurfhaken",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wurfhaken.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Klettern (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Kombiniert mit einem Kletterseil, lässt sich der Wurfhaken werfen und verhakt sich, falls das Gelände (z. B. ein Ast oder eine Gesteinsformation) das zulässt. Dazu ist eine Probe auf FK von Wurfwaffen nötig. Der Wurf dauert 2 Aktionen und die Probe ist pro 5 Schritt um 1 erschwert.\n\nEin Wurfhaken mit Kletterseil (mindestens 1 Schritt) lässt sich als improvisierte Waffe verwenden.\n\nPublikation: Aventurische Rüstkammer, Seite 53",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Wundn_hzeug",
+    "category": "ruestkammer_equipment",
+    "name": "Wundnähzeug",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wundnaehzeug.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Heilkunde Wunden (Werkzeuge & Utensilien)"
+    ],
+    "properties": {},
+    "description": "Proben auf Heilkunde Wunden sind um 1 erleichtert, vorausgesetzt, die Verletzung muss genäht werden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 36",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Wie_man_k_mpft_reitet_und_Bier_trinkt",
+    "category": "ruestkammer_equipment",
+    "name": "Wie man kämpft, reitet und Bier trinkt",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wiemankaempft.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Benutzte Sprache/Schrift: Garethi/Kusliker Zeichen\n\nBei folgenden Talenten wird mit 1W6 gewürfelt, wenn das Buch zur Hilfe genommen wird: Reiten und Zechen. Bei einer gewürfelten 6 bekommt der Held folgenden Vorteil: Eine beliebige Eigenschaft erhält bei einer einzigen Teilprobe des Talents einen Bonus von +1. Wurde das Buch höchstens 1 Stunde vor einem Kampf gelesen, kann bei einem Kritischen Treffer bei Raufen 1 vom Bestätigungswurf abgezogen werden.\n\nPublikation: Aventurische Rüstkammer 2, Seite 35",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_W_rfel",
+    "category": "ruestkammer_equipment",
+    "name": "Würfel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Ausr_Wuerfel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Mit gezinkten Würfeln erhält ein Held eine Erleichterung von 1 auf Proben auf Brett- und Glücksspiel (Würfelspiele) , wenn er über die Sonderfertigkeit Falschspiele verfügt. Allerdings gilt diese Erleichterung nur für die Probe, die nach der ersten, gescheiterten Probe abgelegt wird (siehe Regelwerk Seite 216).\n\nPublikation: Aventurische Rüstkammer, Seite 53",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Vademecum",
+    "category": "ruestkammer_equipment",
+    "name": "Vademecum",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Buch_Vademecum.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Sprache/Schrift : Garethi/Kusliker Zeichen\n\nPublikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Rahjasutra_Elrem-al_Moran-Ausgabe",
+    "category": "ruestkammer_equipment",
+    "name": "Rahjasutra, Elrem-al’Moran-Ausgabe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Buch_Rahjasutra-ElemaMoran.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Sprache/Schrift : Garethi/Kusliker Zeichen\n\nPublikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Rahjasutra_Zweitkopie",
+    "category": "ruestkammer_equipment",
+    "name": "Rahjasutra, Zweitkopie",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_Buch_Rahjasutra-Zweitkopie.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Sprache/Schrift : meist Tulamidya/Tulamidya-Zeichen\n\nPublikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Buch_der_Schlange",
+    "category": "ruestkammer_equipment",
+    "name": "Buch der Schlange",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_BuchSchlange.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Bücher (profan, magisch, karmal)"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Einhornstirnband",
+    "category": "ruestkammer_equipment",
+    "name": "Einhornstirnband",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_Einhornstirnband.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition"
+    ],
+    "properties": {},
+    "description": "Bolzen dienen als Munition für bestimmte Armbrüste.\n\nSollte ein Bolzen im Nahkampf verwendet werden wird er als improvisierte Waffe mit der Kampftechnik Raufen mit folgendem Profil verwendet:\n\nAnmerkung: Eine Parade ist nicht möglich, bei einem Spiel mit Waffenbeschädigungen muss bei jedem Angriff eine Bruchfaktor-Probe erfolgen.",
+    "subcategory": "Waffenausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Roter_Schleier",
+    "category": "ruestkammer_equipment",
+    "name": "Roter Schleier",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_RoterSchleier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Prisma",
+    "category": "ruestkammer_equipment",
+    "name": "Prisma",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_Prisma.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_G_nsebeutel",
+    "category": "ruestkammer_equipment",
+    "name": "Gänsebeutel",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_Gaensebeutel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Mondamulett",
+    "category": "ruestkammer_equipment",
+    "name": "Mondamulett",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_Mondamulett.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Gr_ne_Handschuhe",
+    "category": "ruestkammer_equipment",
+    "name": "Grüne Handschuhe",
+    "url": "https://dsa.ulisses-regelwiki.de/RK_ZerG_GrueneHandschuhe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Götterwirken, Seite 232",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Munitionstasche",
+    "category": "ruestkammer_equipment",
+    "name": "Munitionstasche",
+    "url": "https://dsa.ulisses-regelwiki.de/munitionstasche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Wenn ein Held keine Munitionstasche griffbereit umgeschnallt hat, so steigt die Ladezeit um 1 Aktion, wenn er seine Waffe (also Bolzen) bereitmachen will.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Geh_rtete_Pfeile_und_Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Gehärtete Pfeile und Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/gehaertete-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Der Schaden der Waffe erhöht sich um +1 TP.\n\nWaffen: Kettenbrecher-Pfeile und -Bolzen, Kriegspfeile und -bolzen, Panzerbrecher-Pfeile und -Bolzen, Pferde-Pfeile und-bolzen\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Brandpfeile_und_-bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Brandpfeile und -bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/brandpfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Die Reichweitenangaben der Fernkampfwaffen sind bei einem Brandgeschoss halbiert. Die TP der Waffe sind halbiert. Bei einem Treffer entzündet sich brennbares Material bei 1-4 auf dem W6. Dazu zählt auch nach Meisterentscheid die Kleidung eines Helden, sodass er zu Beginn der nächsten KR an dem Status Brennend auf kleiner Fläche leidet. Das Geschoss lässt sich nicht wiederverwenden.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Jagdpfeile_und_-bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Jagdpfeile und -bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/jagdpfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Pferde-Pfeile_und_-Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Pferde-Pfeile und -Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/pferde-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Wesen der Größenkategorie groß und riesig erleiden +6 TP. Der RS des Ziels wird verdoppelt.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Singende_Pfeile_und_Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Singende Pfeile und Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/singende-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Um das singende Geschoss zu hören ist eine Probe auf Sinnesschärfe (Wahrnehmen) +5 notwendig. Pro volle 100 Schritt ist sie um 1 erschwert. Die TP des singenden Geschosses sind um 2 reduziert.\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Improvisierte_Brandpfeile_und_-bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Improvisierte Brandpfeile und -bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/improvisierte-brandpfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Die Reichweitenangaben der Fernkampfwaffen sind bei einem improvisierten Brandgeschoss halbiert. Die TP der Waffe sind halbiert. Bei einem Treffer entzündet sich brennbares Material bei 1-2 auf dem W6. Dazu zählt nach Meisterentscheid auch die Kleidung eines Helden, sodass er zu Beginn der nächsten KR an dem Status Brennend auf kleiner Fläche leidet. Das Geschoss lässt sich nicht wiederverwenden.\n\nWaffen: alle Pfeil- und Bolzentypen bis auf Brandpfeile und -bolzen, Improvisierte Brandpfeile und -bolzen lässt sich nicht mit der Ausstattung Gute Federn kombinieren\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Stumpfe_Pfeile_und_Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Stumpfe Pfeile und Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/stumpfe-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Regeltechnik: Statt den TP der Waffe, richtet ein stumpfes Geschoss nur 1W3 TP an, bei 1-3 auf einem W6 jedoch zusätzlich eine Stufe Betäubung .\n\nPublikation(en): Aventurische Rüstkammer II, Seite 119",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Pfeile_im_Nahkampf",
+    "category": "ruestkammer_equipment",
+    "name": "Pfeile im Nahkampf",
+    "url": "https://dsa.ulisses-regelwiki.de/pfeile.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition"
+    ],
+    "properties": {},
+    "description": "Sollte ein Pfeil im Nahkampf verwendet werden wird er als improvisierte Waffe mit der Kampftechnik Raufen mit folgendem Profil verwendet:\n\nAnmerkung: Eine Parade ist nicht möglich, bei einem Spiel mit Waffenbeschädigungen muss bei jedem Angriff eine Bruchfaktor-Probe erfolgen.",
+    "subcategory": "Waffenausrüstung"
+  },
+  {
+    "id": "ruestkammer_equipment_Widerhaken-Pfeile_und_-Bolzen",
+    "category": "ruestkammer_equipment",
+    "name": "Widerhaken-Pfeile und -Bolzen",
+    "url": "https://dsa.ulisses-regelwiki.de/widerhaken-pfeile-und-bolzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Verursacht das Widerhaken-Geschoss SP, steckt es im Körper des Ziels fest. Ein steckenbleibendes Widerhakengeschoss verursacht alle 5 Minuten 1 SP. Um es zu entfernen muss entweder das Geschoss mit Kraft herausgezogen (1W6+2 SP) oder vorsichtig mit einer Probe auf Heilkunde Wunden herausgelöst werden. Eine misslungene Probe verursacht 1W3 SP, dauert aber auch nur 1 Minute. Das Geschoss lässt sich nach einem erfolgreichen Treffer nicht mehr wiederverwenden.\n\nWaffen: Jagdpfeile und -bolzen, Kettenbrecher-Pfeile und -Bolzen, Kriegspfeile und -bolzen, Panzerbrecher- Pfeile und -Bolzen, Pferde-Pfeile und-bolzen, Sehnenscheider-Pfeile und -Bolzen\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121f",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Bernsteinpfeilspitzen",
+    "category": "ruestkammer_equipment",
+    "name": "Bernsteinpfeilspitzen",
+    "url": "https://dsa.ulisses-regelwiki.de/besondere-munitionsarten/bernsteinpfeilspitzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung",
+      "Munition",
+      "Besondere Munitionsarten"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Gegen chitingepanzerte Vielbeinige verursacht die Waffe den doppelten Schaden (Trefferpunkte werden ausgewürfelt, dann verdoppelt, anschließend der RS abgezogen).",
+    "subcategory": "Munition"
+  },
+  {
+    "id": "ruestkammer_equipment_Dornenspitze",
+    "category": "ruestkammer_equipment",
+    "name": "Dornenspitze",
+    "url": "https://dsa.ulisses-regelwiki.de/dornenspitze.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Die Spitze verursacht 1W6+3 TP. Rüstungen mit RS 4 oder mehr erleiden dadurch einen Malus von –2 auf RS.\n\nPublikation(en): Aventurische Rüstkammer, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Einkerbung",
+    "category": "ruestkammer_equipment",
+    "name": "Einkerbung",
+    "url": "https://dsa.ulisses-regelwiki.de/einkerbung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Der Schaden der Waffe erhöht sich um +1 TP. Die Probe auf FK ist um 1 erschwert.\n\nWaffen: Armbrüste, die als Munitionsart Kugeln verwenden\n\nPublikation(en): Aventurische Rüstkammer II, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Geh_nge",
+    "category": "ruestkammer_equipment",
+    "name": "Gehänge",
+    "url": "https://dsa.ulisses-regelwiki.de/gehaenge.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Wer ein Gehänge benutzt, der benötigt keine zusätzlichen Aktionen, um eine Hiebwaffe oder Zweihandhiebwaffe bereitzumachen.\n\nWaffen: Kampftechniken Hiebwaffen, Zweihandhiebwaffen, Zweihandschwerter\n\nPublikation(en): Aventurische Rüstkammer, Seite 119",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_G_rtelhalter",
+    "category": "ruestkammer_equipment",
+    "name": "Gürtelhalter",
+    "url": "https://dsa.ulisses-regelwiki.de/guertelhalter.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Benutzt der Held einen Gürtelhalter, dann kann er die Ladezeit bei den meisten Armbrüsten um 2 Aktionen reduzieren (vor weiteren Abzügen durch die Sonderfertigkeit Schnellladen).\n\nWaffen: Armbrüste (nur Modelle, die mindestens 5 Aktionen Ladezeit aufweisen)\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Gute_Federn",
+    "category": "ruestkammer_equipment",
+    "name": "Gute Federn",
+    "url": "https://dsa.ulisses-regelwiki.de/gute-federn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Die Reichweite erhöht sich um 10 %.\n\nWaffen: alle Pfeil- und Bolzentypen, bis auf Brandpfeile und -bolzen und Sehnenschneider-Pfeile und -Bolzen, Gute Federn lässt sich nicht mit der Ausstattung Improvisierte Brandpfeile und -bolzen kombinieren\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_H_ftk_cher",
+    "category": "ruestkammer_equipment",
+    "name": "Hüftköcher",
+    "url": "https://dsa.ulisses-regelwiki.de/hueftkoecher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Wenn ein Held keinen Hüftköcher griffbereit umgeschnallt hat, so steigt die Ladezeit um 1 Aktion, wenn er seine Waffe (also beispielsweise Pfeile oder Wurfspeere) bereitmachen will. Ein Hüftköcher reduziert darüber hinaus auch die Ladezeiterhöhung von einem Reittier aus um 1 Aktion (siehe Seite 122).\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_K_cher",
+    "category": "ruestkammer_equipment",
+    "name": "Köcher",
+    "url": "https://dsa.ulisses-regelwiki.de/koecher.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Wenn ein Held keinen Köcher griffbereit umgeschnallt hat, so steigt die Ladezeit um 1 Aktion, wenn er seine Waffe (also beispielsweise Pfeile oder Wurfspeere) bereitmachen will.\n\nPublikation(en): Aventurische Rüstkammer, Seite 119",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Lederriemen",
+    "category": "ruestkammer_equipment",
+    "name": "Lederriemen",
+    "url": "https://dsa.ulisses-regelwiki.de/lederriemen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Das Manöver Entwaffnen ist gegen den Helden mit einer Waffe mit Lederriemen schwerer auszuführen. Eine Parade, um das Entwaffnen zu verhindern, ist um 1 erleichtert.\n\nWaffe: alle Waffen, die über einen Griff verfügen, der mit Leder umwickelt werden kann\n\nPublikation(en): Aventurische Rüstkammer, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Lederschlaufe",
+    "category": "ruestkammer_equipment",
+    "name": "Lederschlaufe",
+    "url": "https://dsa.ulisses-regelwiki.de/lederschlaufe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Bei einem Patzer erleidet der Held nur 1W6 SP. Spielst du mit der Optionalregel der Patzertabellen, so kann das Ergebnis Waffe verloren ignoriert werden. Der Patzer hat dann keine Auswirkungen. Die Lederschlaufe hat keinen Einfluss auf das Manöver Entwaffnen .\n\nWaffen: Kampftechnik Hiebwaffen (vor allem Streitäxte und Streitkolben)\n\nPublikation(en): Aventurische Rüstkammer, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Repetier-Magazin",
+    "category": "ruestkammer_equipment",
+    "name": "Repetier-Magazin",
+    "url": "https://dsa.ulisses-regelwiki.de/repetier-magazin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Die Fernkampfwaffe benötigt nur noch die Hälfte der LZ, solange noch Munition im Repetier-Magazin enthalten ist. Das aufgesetzte Repetier-Magazin kann entweder 3 oder 7 Kugeln aufnehmen. Um das gesamte Magazin zu wechseln, benötigt der Schütze 6 Aktionen, das Nachladen einer einzelnen Kugel dauert so lange, wie die LZ normalerweise bei der Waffe dauert +1 Aktion.\n\nKosten: 120 Silbertaler für 3er-Magazin, 350 Silbertaler für 7er-Magazin\n\nWaffen: Armbrüste, die als Munitionsart Kugeln verwenden\n\nPublikation(en): Aventurische Rüstkammer II, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Schw_rzen",
+    "category": "ruestkammer_equipment",
+    "name": "Schwärzen",
+    "url": "https://dsa.ulisses-regelwiki.de/schwaerzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Geschwärzte Waffen verleihen dem Helden eine Erleichterung von 1 bei Proben auf Verbergen (Gegenstände verbergen), wenn die Waffe in der Dunkelheit wahrgenommen werden soll. Der Zustand hält 1 Stunde an, kann aber jederzeit mit einem feuchten Tuch abgewischt werden.\n\nWaffen: alle Waffen mit einer Metallfläche\n\nPublikation(en): Aventurische Rüstkammer, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_equipment_Scheide",
+    "category": "ruestkammer_equipment",
+    "name": "Scheide",
+    "url": "https://dsa.ulisses-regelwiki.de/scheide.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Waffenausrüstung"
+    ],
+    "properties": {},
+    "description": "Regel: Wer eine Scheide benutzt, der benötigt keine zusätzlichen Aktionen, um einen Dolch, eine Fechtwaffe oder ein Schwert bereitzumachen.\n\nKosten: 12 Silbertaler (Schwertscheide), 10 Silbertaler (Fechtwaffenscheide), 5 Silbertaler (Dolchscheide)\n\nWaffen: Kampftechniken Dolche, Fechtwaffen, Schwerter\n\nPublikation(en): Aventurische Rüstkammer, Seite 120",
+    "subcategory": "Rüstkammer"
+  }
+]

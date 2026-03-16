@@ -1,0 +1,198 @@
+[
+  {
+    "id": "ruestkammer_helmets_Helme",
+    "category": "ruestkammer_helmets",
+    "name": "Helme",
+    "url": "https://dsa.ulisses-regelwiki.de/RS_Helme.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "ruestkammer_helmets_Fl_gelhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Flügelhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/fluegelhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Flügelhelm gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Einmal in einem Kampf kann der Träger eines Flügelhelms einen Schip ausgeben und die Wirkung einem seiner Kampfgefährten übertragen.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 1 erschwert, wenn es ums Hören geht.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Wolfshelm",
+    "category": "ruestkammer_helmets",
+    "name": "Wolfshelm",
+    "url": "https://dsa.ulisses-regelwiki.de/wolfshelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Wolfshelm gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Proben auf Willenskraft , wenn der Träger eines Wolfshelms jemanden einschüchtert, sind um 1 erschwert.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 2 erschwert, wenn es ums Hören oder Sehen geht. Wer länger als 10 KR am Stück mit einem Wolfshelm auf dem Kopf kämpft, erleidet 1 Stufe Betäubung für 30 Minuten.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Handpuppe_Schelmenspielzeug",
+    "category": "ruestkammer_helmets",
+    "name": "Handpuppe (Schelmenspielzeug)",
+    "url": "https://dsa.ulisses-regelwiki.de/handpuppe-schelmenspielzeug.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Aventurische Magie II, Seite 234 Kodex der Magie, Seite 163",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Baburiner_Hut",
+    "category": "ruestkammer_helmets",
+    "name": "Baburiner Hut",
+    "url": "https://dsa.ulisses-regelwiki.de/baburiner-hut.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Baburiner Hut gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Gegen Waffen der Kampftechniken Armbrüste, Bögen, Dolche und Schwerter schützt der Baburiner Hut mit RS 5.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 1 erschwert, wenn es ums Hören geht.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Gladiatorenhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Gladiatorenhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/gladiatorenhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Gladiatorenhelm gilt als Lederrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Gegen Waffen der Kampftechniken Dolche , Fechtwaffen und Schwerter schützt der Gladiatorenhelm mit RS 4.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 1 erschwert, wenn es ums Hören oder Sehen geht.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Lederhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Lederhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/lederhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Lederhelm gilt als Lederrüstung für die Trefferzone Kopf.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Zwergenhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Zwergenhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/zwergenhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Zwergenhelm gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Gegen Treffer von Kreaturen der Größenkategorie groß oder riesig schützt der Zwergenhelm mit RS 7.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 2 erschwert, wenn es ums Hören geht.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Maskenhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Maskenhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/maskenhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Maskenhelm gilt als Plattenrüstung für die Trefferzone Kopf. Man benötigt zum Auf- und Absetzen des Helms 5 Aktionen.\n\nHelmvorteil: Proben auf Einschüchtern sind um 1 erleichtert.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 1 erschwert, wenn es ums Hören oder Sehen geht.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Tellerhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Tellerhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/tellerhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Tellerhelm gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Bei Schaden durch herabfallende Trümmer schützt der Tellerhelm seinen Träger mit +1 RS für den gesamten Körper.\n\nHelmnachteil: Bei einem Treffer muss zusätzlich mit 1W6 gewürfelt werden. Bei einer 1 besteht nur ein RS von 0, bei einer 2 ein RS von 1 und bei einer 3 ein RS von 3.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Der_Dragenhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Der Dragenhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/dragenhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte",
+      "Seltene & Einmalige Helme"
+    ],
+    "properties": {},
+    "description": "Der Dragenhelm ist eine Plattenrüstung für die Trefferzone Kopf.\n\nWirkung: Beim Dragenhelm handelt es sich um ein dauerhaft wirkendes Artefakt. Der Helm erhöht die SK des Trägers gegenüber Zaubern um 3. Der Grund dafür ist ein dauerhafter PSYCHOSTABILIS mit 14 FP. Zudem wirkt ein permanenter DISRUPTIVO mit 14 FP auf dem Helm, der eine Zone von 10 Schritt Radius um den Helm herum mit einer Erschwernis von 5 für Zauber belegt.\n\nPublikation: Rüstkammer der Streitenden Königreiche, Seite 23",
+    "subcategory": "Artefakte"
+  },
+  {
+    "id": "ruestkammer_helmets_Topfhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Topfhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/topfhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Topfhelm gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Gegen Waffen der Kampftechniken Schwerter und Zweihandschwerter zählt der Topfhelm in der Trefferzone Kopf mit RS 8.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 3 erschwert, wenn es ums Hören oder Sehen geht. Wer länger als 7 KR am Stück mit einem Topfhelm auf dem Kopf kämpft, erleidet 1 Stufe Betäubung für 30 Minuten.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Drachenhelm",
+    "category": "ruestkammer_helmets",
+    "name": "Drachenhelm",
+    "url": "https://dsa.ulisses-regelwiki.de/drachenhelm.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Helme"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Drachenhelm gilt als Plattenrüstung für die Trefferzone Kopf.\n\nHelmvorteil: Gegen Waffen der Kampftechniken Dolche und Schwerter schützt der Drachenhelm mit RS 7. Außerdem kann einmal in einem Kampf ein Bestätigungswurf nochmal gewürfelt werden und das bessere Ergebnis zählt.\n\nHelmnachteil: Proben auf Sinnesschärfe sind um 2 erschwert, wenn es ums Hören oder Sehen geht.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_helmets_Stoffpuppe_Schelmenspielzeug",
+    "category": "ruestkammer_helmets",
+    "name": "Stoffpuppe (Schelmenspielzeug)",
+    "url": "https://dsa.ulisses-regelwiki.de/stoffpuppe-schelmenspielzeug.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Regelwerk, Seite 381 Aventurische Magie II, Seite 234 Aventurische Rüstkammer II, Seite 29 Kodex der Magie, Seite 163",
+    "subcategory": "Rüstkammer"
+  }
+]

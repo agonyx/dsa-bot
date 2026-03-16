@@ -1,0 +1,2422 @@
+[
+  {
+    "id": "disadvantages_Angst_vor_I-III",
+    "category": "disadvantages",
+    "name": "Angst vor … I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Angst+vor+%E2%80%A6+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Pro Stufe der Angst erleidet der Held eine Stufe Furcht , so lange er dem Auslöser ausgesetzt ist.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-8 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 170"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Vision_r",
+    "category": "disadvantages",
+    "name": "Visionär",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Vision%C3%A4r",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Die Heldin bekommt eine neue Einsatzmöglichkeit für Götter & Kulte (eigene Gottheit) . Sie kann bis zu drei Vision-Sonderfertigkeiten erlernen, auch wenn sie nicht über den Vorteil Geweihter verfügt. Die Zelotin muss eine Gottheit auswählen, wenn sie sich für diesen Vorteil entscheidet. Lässt sich eine Visionärin im späteren Verlauf ihres Lebens der ausgewählten Gottheit weihen, bekommt sie die 10 AP dieses Vorteils wieder zurück bzw. kann sie mit Geweihter verrechnen.",
+      "Voraussetzung": "Nachteil Prinzipientreue I (ausgewählte Gottheit), kein Vorteil Geweihter, kein Vorteil Prediger",
+      "AP-Wert": "10 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Götterwirken , Seite 227"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Pech_I-III",
+    "category": "disadvantages",
+    "name": "Pech I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Pech+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held startet pro Stufe des Nachteils mit 1 Schicksalspunkt weniger als üblich. Sein Maximum an Schicksalspunkten sinkt hierdurch um einen Punkt pro Stufe. Die Anzahl der Schicksalspunkte darf hierbei nicht unter 0 fallen.",
+      "Voraussetzung": "Kein Vorteil Glück",
+      "AP-Wert": "-20 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Lichtempfindlich",
+    "category": "disadvantages",
+    "name": "Lichtempfindlich",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Lichtempfindlich",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held erleidet eine Stufe Schmerz , sobald er Sonnenlicht ausgesetzt ist, das heller ist als Dämmerlicht. Diese Auswirkung lässt sich vermeiden, wenn der Betroffene seinen kompletten Körper inklusive der Augen verhüllt.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-20 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 173"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Empfindlichkeit_unedle_Metalle",
+    "category": "disadvantages",
+    "name": "Empfindlichkeit (unedle Metalle) (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Empfindlichkeit+(unedle+Metalle)+(%2A)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Verliert der Held Lebenspunkte durch Metallwaffen, steigen die Schadenspunkte um 4. Eine einfache Berührung mit entsprechenden Metallen richtet 1 Schadenspunkt pro 5 vollen Minuten an. Bei Unterbrechungen addieren sich die Teilzeiten auf, solange die Unterbrechungen die Dauer von 1 Stunde nicht überschreiten. Diese Empfindlichkeit gilt gegen unedle Metalle (z. B: Eisen, Stahl, Blei, Kupfer) nicht aber gegen magische Metalle oder Edelmetalle.",
+      "Voraussetzung": "Spezies Nachalben",
+      "AP-Wert": "-30 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Helden des Wolfsfrosts , Seite 31 Klingen der Nacht , Seite 106"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Verpflichtungen_I-III",
+    "category": "disadvantages",
+    "name": "Verpflichtungen I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Verpflichtungen+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held muss Anweisungen desjenigen befolgen, dem er verpflichtet ist, oder mit den Konsequenzen leben. Ein Held kann mehreren Institutionen oder Personen verpflichtet sein, er bekommt jedoch nur einmal Abenteuerpunkte für den Nachteil (und zwar für die höchste Verpflichtungsstufe).",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Tiervor-_und_-nachteile",
+    "category": "disadvantages",
+    "name": "Tiervor- und -nachteile",
+    "url": "https://dsa.ulisses-regelwiki.de/vor-und-nachteile/tiervor-und-nachteile.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile"
+    ],
+    "properties": {},
+    "description": "Tiere können, genauso wie kulturschaffende Helden, Vor- und Nachteile aufweisen. Wir haben dir hier eine Reihe von Vor- und Nachteilen für Tiere zusammengestellt, die du für deinen tierischen Begleiter auswählen kannst. Grundlegend gelten die gleichen Regeln wie für Kulturschaffende , mit folgenden Ausnahmen:",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "disadvantages_WdV_-_Vor-_und_Nachteile",
+    "category": "disadvantages",
+    "name": "WdV - Vor- und Nachteile",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV-Vorteile_Nachteile.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "disadvantages_Schlechte_Regeneration_Lebensenergie_I-III",
+    "category": "disadvantages",
+    "name": "Schlechte Regeneration (Lebensenergie) I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte+Regeneration+%28Lebensenergie%29+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Für jede Stufe des Nachteils muss der Held beim Regenerationswurf 1 Punkt abziehen (bis zu einem Minimum von 0).",
+      "Voraussetzung": "Kein Vorteil Verbesserte Regeneration (Lebensenergie)",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Kleine_Zauberauswahl_I-III",
+    "category": "disadvantages",
+    "name": "Kleine Zauberauswahl I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Kleine+Zauberauswahl+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der intuitive Zauberer muss pro Stufe einen der drei Zauber streichen, über die er maximal verfügen kann.",
+      "Voraussetzung": "Sonderfertigkeit Tradition (Aninisten oder Intuitive Zauberer* oder Runenschöpfer oder Darna), Kein Vorteil Große Zauberauswahl",
+      "AP-Wert": "–10 Abenteuerpunkte pro Stufe",
+      "Anmerkung": "* Intuitive Zauberer können diesen Nachteil maximal auf Stufe II erwerben.",
+      "Publikation(en)": "Aventurische Magie , Seite 144 Aventurische Magie III , Seite 208 Geisterwald & Knochenklippen (Die Gestade des Gottwals) , Seite 5 Kodex der Magie , Seite 380"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Stigma",
+    "category": "disadvantages",
+    "name": "Stigma",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Stigma",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Meister kann eine Erschwernis von 1 auf Gesellschaftstalente (ausgenommen Einschüchtern, Menschenkenntnis und Willenskraft) und Handel (Feilschen) aussprechen, wenn er dies für angemessen hält. Ein Held kann den Nachteil nur einmal wählen.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Raubtiergeruch",
+    "category": "disadvantages",
+    "name": "Raubtiergeruch",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Raubtiergeruch",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Meister kann immer, wenn der Held nahe genug an domestizierten Tieren ist und diese ihn wittern, mit dem W6 würfeln. Bei einer 1 versuchen sie, vor der vermeintlichen Bedrohung zu fliehen. Hunde und Katzen meiden die Nähe eines Helden mit diesem Nachteil, Pferde scheuen und selbst Schafe und Ziegen fliehen blökend, sobald er sich ihnen nähert. Bei Proben auf Tierkunde und Reiten im Umgang mit domestizierten Tieren kann ein Held mit Raubtiergeruch maximal 1 QS übrig behalten.",
+      "Voraussetzung": "Nachteil Unfähig (Reiten), Nachteil Unfähig (Tierkunde)",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Bestiarium , Seite 121"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_B_ser_Namensvetter",
+    "category": "disadvantages",
+    "name": "Böser Namensvetter",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=B%C3%B6ser+Namensvetter",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held gerät ständig in Schwierigkeiten, weil  sich jemand für ihn ausgibt oder schlimmer: tatsächlich so heißt wie er. Dies kann nach Meisterentscheid  Erschwernisse von 1 bis 3 auf Gesellschaftstalente  nach sich ziehen (mit Ausnahme von Menschenkenntnis und Willenskraft ).  Die  Häufigkeit  und  die  Auswirkungen sollten von Spielerin und Spielleiterin zusammen festgelegt werden.",
+      "Voraussetzung": "Ein Name mit Wiedererkennungswert, der aber nicht zu exotisch ist, Kein Vorteil Allerweltsname, Elfen können diesen Vorteil nicht wählen,  da ihre Namen einzigartig sind.",
+      "AP-Wert": "-10 Abenteuerpunkte (Je nach Kampagne und Problemen, die sich durch den Nachteil Böser Namensvetter ergeben, kann der Wert auch zwischen –2  und –20 AP liegen.)",
+      "Publikation(en)": "Aventurische Namen , Seite 89"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Eigenschaft",
+    "category": "disadvantages",
+    "name": "Schlechte Eigenschaft",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte+Eigenschaft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "In jeder Situation, in der der Held mit einem potenziellen Auslöser seiner Schlechten Eigenschaft konfrontiert wird, muss er eine Probe auf Willenskraft bestehen, um sich zu beherrschen. Gelingt ihm diese Probe, ist alles in Ordnung, ansonsten muss er entsprechend der Schlechten Eigenschaft agieren. Seine Schlechte Eigenschaft hat ihn so lange im Griff, wie er dem Auslöser ausgesetzt ist. Der Meister kann für die Probe auf Willenskraft entsprechend der Stärke des Auslösers Erschwernisse oder Erleichterungen aussprechen. Es dürfen bis zu zwei Schlechte Eigenschaften pro Held gewählt werden. Kombinationen, die sich ausschließen (z. B. Geiz und Verschwendungssucht), dürfen nicht gewählt werden. Das letzte Wort darüber hat der Spielleiter. Beispiele: # Aberglaube: Der Held weicht vor schwarzen Katzen, Unglückszahlen und anderen schlechten Omen zurück. AP-Wert: –5 Abenteuerpunkte # Autoritätsglaube: Der Held zweifelt nicht an den Worten höhergestellter Personen, selbst wenn sie unlogische Befehle erteilen oder unglaubwürdig sind. AP-Wert: –5 Abenteuerpunkte # Geiz: Wenn der Held erst einmal Gold oder andere Wertgegenstände besitzt, gibt er sie nur ungerne wieder her. Lieber schränkt er sich selbst und andere finanziell ein, und er geht sogar unnötige Risiken ein, um Geld zu sparen. AP-Wert: –5 Abenteuerpunkte # Goldgier: Goldgierige Helden lassen alle Vorsicht fallen, wenn es darum geht, eine Schatztruhe oder andere wertvolle Gegenstände zu untersuchen und an sich zu nehmen. AP-Wert: –5 Abenteuerpunkte # Jähzorn: Der Held ist sehr reizbar und neigt zu Wutausbrüchen, die meist nur kurz anhalten, aber zu gewalttätigem Verhalten führen können. AP-Wert: –10 Abenteuerpunkte # Kleptomanie: Manche Abenteurer stehlen um des Stehlens willen, egal ob das Diebesgut einen nennenswerten Wert hat oder nicht, ohne über die Konsequenzen nachzudenken. AP-Wert: –10 Abenteuerpunkte # Naiv: Der Held ist gutherzig und naiv, vertraut den falschen Leuten und kann sich kaum vorstellen, dass man manche Leute es nicht gut mit ihm meinen. Er wird auch durch Enttäuschungen nicht vorsichtiger. AP-Wert: –10 Abenteuerpunkte # Neugier: Jeder Abenteurer ist neugierig, aber einige Abenteurer werden so von ihrer Neugierde getrieben, dass sie unnötige Risiken eingehen, um sie zu befriedigen. AP-Wert: –5 Abenteuerpunkte # Rachsucht: Während jähzornige Helden sofort ihrer Wut freien Lauf lassen, sind rachsüchtige besonnener und planen langfristig, wie sie sich für Kränkungen, egal wie gering, rächen können. AP-Wert: –5 Abenteuerpunkte # Spielsucht: Spielsüchtige lassen sich leicht zu riskanten Glücksspielen und Wetten verleiten. Oft führt die Spielsucht zu hohen Spielschulden. AP-Wert: –5 Abenteuerpunkte # Verschwendungssucht: Geld bleibt nicht lange im Besitz des Helden. Er gibt es mit vollen Händen (für sinnlose Dinge) aus. AP-Wert: –5 Abenteuerpunkte # Sikaryan-Durst (nur für Sikaryan-Räuber; automatisch vergeben bei Zustand Sikaryan-Verlust ): Diese Schlechte Eigenschaft sorgt dafür, dass ein Sikaryan-Räuber seinen Hunger stillen will. Je höher sein Sikaryan-Verlust ist, desto eindringlicher will er dem Verlangen nachgehen und ist bereit, seine Tarnung aufzugeben und sich auf den nächsten Kulturschaffenden zu stürzen.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "je nach Schlechter Eigenschaft",
+      "Anmerkung": "\"Sikaryan-Durst\" als weitere Ausgestaltung der \"Schlechte Eigenschaft\" eingeführt in: Aventurisches Bestiarium II, Seite 118 / Aventurisches Götterwirken II, Seite 182",
+      "Publikation(en)": "Regelwerk , Seite 176ff. Aventurisches Bestiarium II , Seite 118"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schurkenname",
+    "category": "disadvantages",
+    "name": "Schurkenname",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schurkenname",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Eine Heldin mit diesem Nachteil bekommt nach Meisterentscheid bei Proben auf die Talente Etikette und Überreden eine Erschwernis von 1 auf alle Teilproben, die auf Charisma abgelegt werden, wenn sich ihr Gegenüber an dem Schurkennamen stört und dieser dem Gegenüber bekannt ist. Dafür erhält die Heldin eine Erleichterung von 1 auf Teilproben bei Charisma in dem Talent Einschüchtern .",
+      "Voraussetzung": "Ein möglichst schurkischer Name,, Kein Vorteil Allerweltsname,, Kein Vorteil Heldenhafter Name,, Kein Nachteil Lächerlicher Name,, Kein Nachteil Unpassender  Name., Elfen können diesen Vorteil nicht wählen, da  sie keine Schurkennamen aufweisen.",
+      "AP-Wert": "-2 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Namen , Seite 90"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Krankheitsanf_llig_I-II",
+    "category": "disadvantages",
+    "name": "Krankheitsanfällig I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Krankheitsanf%C3%A4llig+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Eine Krankheitsanfälligkeit verschlechtert Zähigkeit und Seelenkraft um 1 pro Stufe, wenn es darum geht, Krankheiten zu widerstehen.",
+      "Voraussetzung": "Kein Vorteil Krankheitsresistenz",
+      "AP-Wert": "-5 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_L_stige_Bl_tenfeen",
+    "category": "disadvantages",
+    "name": "Lästige Blütenfeen",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=L%C3%A4stige+Bl%C3%BCtenfeen",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Jedes Mal, wenn der Zauberer Astralenergie ausgibt und es eine Gegend ist, in der Blütenfeen leben, würfelt er mit dem W20. Ist das Ergebnis gleich oder kleiner der ausgegebenen Astralenergiemenge, dann tauchen eine oder mehrere Blütenfeen auf und belästigen den Zauberer. Alle folgenden Fertigkeitsproben sind in diesem Fall wegen der Ablenkung um 1 erschwert. Die Feenbleiben für 10 Minuten, ehe sie von selbst wieder verschwinden. Man kann nicht von mehr als einer Blütenfee gleichzeitig abgelenkt werden, die Erschwernis steigt also nicht durch weitere Feen, die durch den Nachteil erscheinen.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Die Siebenwindküste - Albernia und der Windhag , Seite 154"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Stumm",
+    "category": "disadvantages",
+    "name": "Stumm",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Stumm",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann sich in den meisten Fällen mit anderen Personen nicht verständigen (außer über Zeichensprache oder schriftlich). Der Einsatz von Zaubern und anderen Handlungen, die Sprache erfordern, ist unmöglich oder stark erschwert. Der Held erhält dauerhaft den Status Stumm .",
+      "Voraussetzung": "Kein Vorteil Geborener Redner, Kein Vorteil Wohlklang, Kein Nachteil Sprachfehler",
+      "AP-Wert": "-40 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Wenige_Visionen_I-II",
+    "category": "disadvantages",
+    "name": "Wenige Visionen I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Wenige+Visionen+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Bei Stufe I kann der Zelot nur 2 Vision-Sonderfertigkeiten beherrschen, bei Stufe II sogar nur 1.",
+      "Voraussetzung": "Vorteil Visionär",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Aventurisches Götterwirken , Seite 228"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_L_cherlicher_Name",
+    "category": "disadvantages",
+    "name": "Lächerlicher Name",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=L%C3%A4cherlicher+Name",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Die Heldin hatte schon immer einen lächerlichen Namen, oder aber sie hat sich irgendwann einen  ehrenrührigen Beinamen verdient. Wenn die Heldin  ihren Namen nennt, muss ihr Gegenüber eine Probe  auf Willenskraft bestehen, um nicht unangemessen zu  reagieren. Hat sich jemand an den Namen gewöhnt,  entfällt diese Probe.",
+      "Voraussetzung": "Ein möglichst lächerlicher Name, Kein Vorteil Allerweltsname, Kein Vorteil Heldenhafter Name, Kein Nachteil Schurkenname",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Namen , Seite 90"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Stechender_Orkgeruch",
+    "category": "disadvantages",
+    "name": "Stechender Orkgeruch (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Stechender+Orkgeruch+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Wesen, die diesen Nachteil aufweisen, werden in Kampfsituationen gegen Tiere bevorzugt angegriffen. Zudem sind nach Meisterentscheid Proben auf Reiten und Tierkunde , um bestimmte Tiere abzurichten, zu beruhigen oder zu reiten, um –2 erschwert.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Nachteil als automatischen oder empfohlenen Nachteil aufweisen.",
+      "AP-Wert": "–12",
+      "Publikation(en)": "Orks - Hauer & Schwarzer Pelz , Seite 30"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Misslungene_Reifepr_fung",
+    "category": "disadvantages",
+    "name": "Misslungene Reifeprüfung",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Misslungene+Reifepr%C3%BCfung",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Unter Angehörigen ihrer Kultur hat der Held eine Erschwernis von –1 auf Gesellschaftstalente außer Menschenkenntnis und Willenskraft, sofern das Gegenüber von der misslungenen Reifeprüfung weiß. Sollten Angehörige die misslungene Reifeprüfung als nicht besonders schlimm empfinden, gilt die Erschwernis nicht.*",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "10 Abenteuerpunkte",
+      "Anmerkung": "Bei Gjalskern bedeutet das Misslingen üblicherweise eine Verbannung aus dem Haerad, bei den Thorwalern ist eine misslungene Reifeprüfung weniger schlimm und kann in der Regel widerholt werden.",
+      "Publikation(en)": "Die Gestade des Gottwals - Thorwal und das Gjalskerland , Seite 141"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Lichtempfindlich_II",
+    "category": "disadvantages",
+    "name": "Lichtempfindlich II (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Lichtempfindlich+II+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held erleidet zwei Stufen Schmerz , sobald er Sonnenlicht ausgesetzt ist, das heller ist als Dämmerlicht. Diese Auswirkung lässt sich vermeiden, wenn der Betroffene seinen kompletten Körper inklusive der Augen verhüllt.",
+      "Voraussetzung": "Kein Nachteil Lichtempfindlich I",
+      "AP-Wert": "-30 Abenteuerpunkte",
+      "Publikation(en)": "Helden des Wolfsfrosts , Seite 31 Klingen der Nacht , Seite 106"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Yurach",
+    "category": "disadvantages",
+    "name": "Yurach",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Yurach",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Yurach gelten bei den Orks als Ausgestoßene. Alle Proben auf Bekehren & Überzeugen , Etikette , Handel und Überreden erhalten gegenüber Orks eine Erschwernis von –1. Diese Erschwernis gilt nicht gegenüber Nicht-Orks. Der soziale Stand eines Yurach ist zudem immer Stufe I (siehe Regelwerk ).",
+      "Voraussetzung": "Der Held muss der Kultur Orkland angehören.",
+      "AP-Wert": "–20",
+      "Publikation(en)": "Orks - Hauer & Schwarzer Pelz , Seite 30"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Wenige_Predigten_I-II",
+    "category": "disadvantages",
+    "name": "Wenige Predigten I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Wenige+Predigten+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Bei Stufe I kann der Zelot nur 2 Predigt-Sonderfertigkeiten beherrschen, bei Stufe II sogar nur 1.",
+      "Voraussetzung": "Vorteil Prediger",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Aventurisches Götterwirken , Seite 228"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Verst_mmelt",
+    "category": "disadvantages",
+    "name": "Verstümmelt",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Verst%C3%BCmmelt",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Viele Fertigkeitsproben können durch die Verstümmelung erschwert oder unmöglich sein. Die Entscheidung hierüber obliegt dem Meister je nach Situation. # Einarmig : Einer der beiden Arme des Charakters fehlt mindestens bis zum Ellbogen. # Einäugig : Eines der beiden Augen des Helden ist blind oder er hat es verloren. Fernkampfangriffe sind dadurch um 4 erschwert. # Einbeinig : Der Held hat nur ein Bein, bzw. es ist unterhalb des Knies amputiert. Der Geschwindigkeit- Grundwert ist halbiert. Krücken und einfache Prothesen wie ein Holzbein helfen gegen die Verminderung der Geschwindigkeit nicht. # Einhändig : Dem Abenteurer fehlt eine Hand. # Einohrig : Eines der Ohren ist abgeschnitten oder verkrüppelt. Proben auf Sinnesschärfe auf Hören sind für den Helden grundsätzlich um 1 erschwert.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-30 Abenteuerpunkte (Einarmig); –10 Abenteuerpunkte (Einäugig); –30 Abenteuerpunkte (Einbeinig); –20 Abenteuerpunkte (Einhändig); –5 Abenteuerpunkte (Einohrig)",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Niedrige_Seelenkraft",
+    "category": "disadvantages",
+    "name": "Niedrige Seelenkraft",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Niedrige+Seelenkraft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der SK-Grundwert des Helden ist um 1 schlechter.",
+      "Voraussetzung": "Kein Vorteil Hohe Seelenkraft",
+      "AP-Wert": "-25 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlafwandler",
+    "category": "disadvantages",
+    "name": "Schlafwandler",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlafwandler",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Kein Held sollte mehr als einmal pro Woche schlafwandeln. Am Tag nach dem Schlafwandeln erhält der Held 24 Stunden lang eine Stufe des Zustands Betäubung durch die geringe Erholung in der Nacht. Die Regeneration ist für den Held in der Nacht, in der er schlafwandelt um 1 gesenkt.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 175"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Lernfaul",
+    "category": "disadvantages",
+    "name": "Lernfaul",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Lernfaul",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Schelm kann keine Zauber in Schelmenstreiche umwandeln.",
+      "Voraussetzung": "Sonderfertigkeit Tradition (Schelme)",
+      "AP-Wert": "-15 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Magie II , Seite 219 Kodex der Magie , Seite 380"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Prinzipientreue_I-III",
+    "category": "disadvantages",
+    "name": "Prinzipientreue I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Prinzipientreue+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Prinzipientreue gibt es in drei Stufen. Während die erste Stufe den Helden nur leicht einschränkt, ist die zweite Stufe schon fordernd, die letzte Stufe benachteiligt den Helden schwer. Ein Held kann mehreren Prinzipien folgen, er bekommt jedoch nur einmal Abenteuerpunkte für den Nachteil (und zwar für die höchste Prinzipientreuestufe). Wer gegen seine Prinzipien verstößt, erleidet eine Erschwernis von 1 auf alle Fertigkeitsproben. Dieser Zustand dauert mindestens eine Stunde an, über die genaue Länge entscheidet der Meister unter Berücksichtigung der Schwere des Verstoßes. [Anmerkung: Im folgenden den jeweiligen Moralkodex für Geweihte bzw (weiter unten) den für Schamanen / (ungeweihte) Priestern als Beispiele des Nachteils.] Moralkodici der Geweihten: Moralkodex der Angroschkirche (Prinzipientreue II) # Wahrung des Feuers: In der Gegenwart des Angroschgeweihten sollen alle Feuer brennen. Haus- und Waldbrände dürfen aber eingedämmt werden, und wenn ein Gläubiger durch den Brand in direkte Gefahr gerät, darf auch ein Angroschgeweihter Feuer löschen. # Zusammenhalt: Der Angroschgeweihte trägt dafür Sorge, dass alle Zwerge zusammenhalten, schlichtet Streit unter ihnen und versucht, den Frieden unter den Angehörigen seines Volkes zu wahren. # Drachenwacht: Der Angroschgeweihte soll die Zwerge und die gesamte Welt vor dem Einfluss der Drachen beschützen. Moralkodex der Aveskirche (Prinzipientreue I) # Gefährten helfen: Reisegefährten in der Not soll ein Avesgeweihter stets helfen. # Reiseberichte anfertigen: Abenteuerreisen sollten immer auch schriftlich festgehalten oder mündlich weitergegeben werden. # Ungebundenheit: Ein Avesgeweihter soll keine Eide leisten, die ihn an einen Ort binden (außer einen Avestempel – und auch das nur für eine bestimmte Zeit). # Überschreitung des Horizonts: Der Avesgeweihte sollte immer danach streben, seinen Horizont in Form einer Reise zu erweitern. Moralkodex der Borongeweihten (Prinzipientreue II) # Bestattung: Kein Leichnam sollte unbestattet sein. Der Geweihte muss für die Totenruhe sorgen. # Schweigen: Schweigen ist eine Tugend. Kein Geweihter sollte ohne Grund reden. # Traum: Ergründe die Welt der Träume. In ihr kann der Geweihte den Willen Borons ergründen. Moralkodex der Chr’Ssir’Ssr-Priester (Prinzipientreue II) # Macht des Chr’Ssir’Ssr: Der Priester dient der Gottheit, die über allen anderen Göttern steht. # Sturmruf: Der Priester wacht über das Wetter und erforscht dessen Phänomene. Er versucht hinter das Geheimnis der Wetterkontrolle zu gelangen. Moralkodex der Efferdgeweihten (Prinzipientreue II) # Feuerbann und Ernährung: Efferdgeweihte versuchen Feuer als Lichtquelle zu vermeiden und entzünden in der Regel keine Flammen. Stattdessen nutzen sie beispielsweise das Licht des Gwen Petryl-Steins in ihren Tempeln und warme Quellen, um sich warmzuhalten. Efferdgeweihte meiden gegartes und geräuchertes Essen, worunter auch Gegrilltes und Gebratenes fällt. Streng verboten ist es ihnen zudem, vom Delphin, Wal oder Robbe zu essen. Es gibt Efferdgeweihte, die sich streng an das Nahrungsgebot halten. Die meisten jedoch essen auch Brot, Suppe und andere einfache Speisen, obwohl Feuer benötigt wird, um diese zuzubereiten. Allerdings lassen sie diese Speisen dann von anderen zubereiten, um nicht selbst in Kontakt mit Feuer zu gelangen. # Schicksalsergebenheit: Ein Efferdgeweihter fügt sich den Befehlen seines Vorgesetzten oder des Kapitäns, auf dessen  Schiff  er  sich  befindet,  solange  diese  nicht  seinem Moralkodex zuwiderlaufen. # Ausleben der Emotionen: Efferdgeweihte leben ihre Gefühle aus, egal ob sie Zorn, Trauer Schmerz oder Freude empfinden. Sie halten sich hierbei nicht zurück und lassen diesen Gefühlen freien Lauf. Moralkodex der Firunkirche (Prinzipientreue II) # Ernsthaftigkeit: Witze und ähnliche Verspieltheiten sind Zeitverschwendung und sollten gemieden werden. # Askese: Der Firungeweihte sollte nicht verschwenderisch mit Ressourcen umgehen. Er sollte nur das benutzen, was er auch wirklich braucht. # Belastbarkeit: Das Streben des Firungeweihten gilt den Herausforderungen, die ihm sein Gott schickt. Er sollte sich immer bis an die Grenzen seiner Belastbarkeit begeben und sich kontinuierlich steigern. Moralkodex des Graveshkults (Prinzipientreue II) # Unterstützung der Handwerker: Der Graveshpriester muss die Mitglieder seiner Sippe bei handwerklichen Arbeiten unterstützen, damit gute Ergebnisse erzielt werden. # Meisterprodukt: Der Graveshpriester strebt danach, ausgezeichnete Gegenstände, Waffen und Rüstungen herzustellen. Der Umgang mit den dazugehörigen Rohstoffen ist für ihn zweitrangig. Moralkodex der Hesindegeweihten (Prinzipientreue I) # Sammeln von Wissen: Artefakte, Bücher und anderes Wissen sind in den Augen der Göttin so wertvoll, dass es gesammelt werden muss. # Ewige Lehre: Der Geweihte sollte sich bemühen, sich stets fortzubilden. # Ästhetik: Die Welt ist schön und der Geweihte soll die Schönheit der Welt ehren und mehren. Moralkodex der H’Szint-Priester (Prinzipientreue I) # Schutz vor den H’Ranga: Der Priester sorgt dafür, dass die H’Ranga durch Opfergaben mild gestimmt werden, damit sie in ihrem Zorn nicht unter den Achaz wüten. # Suche nach der Wandlung: Der Priester sucht nach dem Geheimnis der Veränderung und erforscht die Magie. Moralkodex der Ifirnkirche (Prinzipientreue I) # Hilfsbereitschaft: Eine Ifirngeweihte hilft jedem Wesen, wenn es Hilfe braucht (mit Ausnahme von Wesen, die sich gegen die zwölfgöttliche Ordnung auflehnen oder deren erklärte Feinde sind). # Wärme: Die Ifirngeweihte versucht, Menschen mit Worten und Taten Wärme zu spenden. # Körperliche Leistungsfähigkeit: Der Körper der Ifirngeweihten sollte jederzeit den Belastungen, denen sie sich stellen muss, standhalten können. # Ewige Reise: Eine Ifirngeweihte begibt sich ständig auf Reise, immer auf der Suche nach Menschen, denen sie helfen kann. Moralkodex der Ingerimmgeweihten (Prinzipientreue II) # Wahrung des Feuers: In der Gegenwart des Ingerimmgeweihten sollen alle Feuer brennen. Haus- und Waldbrände dürfen aber eingedämmt werden, und wenn ein Gläubiger durch den Brand in direkte Gefahr gerät, darf auch ein Ingerimmgeweihter Feuer löschen. # Opfer: Schöne Edelsteine und handwerkliche Erzeugnisse opfert der Ingerimmgeweihte voller Freude seinem Gott (beispielsweise durch Verbrennen). # Demut und Geduld: Der Ingerimmgeweihte muss Geduld bewahren und soll nicht mit seinen Fähigkeiten prahlen. # Fleiß und Geschick: Der Ingerimmgeweihte strebt in seinen Künsten nach Perfektion und verwendet auf die Verbesserung seines Handwerks viel Zeit. # Zorn und Kraft: Sollte es nötig sein, dann muss ein Ingerimmgeweihter seinem Zorn freien Lauf lassen. Moralkodex der Korgeweihten (Prinzipientreue II) # Guter Kampf und Gutes Gold: Korgeweihte lehnen zwar nicht immer Heilmagie ab, aber sie bevorzugen es, darauf zu verzichten. Zudem lässt sich jeder Korgeweihte seine Dienste nach den Richtlinien des Khunchomer Kodex bezahlen. Haben Korgeweihte erst einmal einen Vertrag unterzeichnet, sind sie ihrem Auftraggeber gegenüber loyal und bestrafen z. B. auch Deserteure der Einheit, der sie dienen. # Gnadenlosigkeit: Ein Geweihter des Kor jammert nicht um Gnade. Ob er jemandem Gnade gewährt, muss er selbst entscheiden. # Söldnerehre: Der Korgeweihte achtet die Regeln des Krieges und hält sich an die Söldnerehre. Er geht gegen Schändungen (sowohl von Menschen als auch Dingen) vor, da es die Söldnerehre verbietet (Plünderungen sind jedoch erlaubt, da es hierfür Richtlinien im Kodex gibt). Auch ist er verantwortlich für Kors Gefolgsleute (Söldner und Gladiatoren) und tritt für deren Rechte ein. Moralkodex des Levthankults (Prinzipientreue I) # Eigennutz und Egoismus: An erster Stelle im Leben kommt der Geweihte, danach Levthan und dann andere Menschen. Der Priester muss nicht immer eigennützig handeln, aber egoistisches Verhalten ist durchaus erwünscht und bringt ihm in der Regel auch die größten Vorteile. # Vergnügen und Verführung: Der Levthangeweihte strebt danach, seinem eigenen Vergnügen nachzugehen, gleich ob es sich dabei um Sex, Essen oder Rauschmittel handelt. Dabei versucht er stets, auch andere Personen zu verführen und ihnen seine eigenen Freuden nahezubringen. # Geheimnisse des Gehörnten lüften: Levthan und sein Kult bergen viele Geheimnisse, und selbst seine Priester kennen sie nicht alle. Es ist gut, danach zu streben diese Geheimnisse aufzudecken, gleich ob sie dazu führen, dass Levthan in einem besseren oder schlechteren Licht dasteht. Moralkodex des Marbokults (Prinzipientreue II) # Bestattung: Kein Leichnam sollte unbestattet liegen bleiben. Die Geweihte muss für die Totenruhe sorgen. # Betreuung Sterbender: Eine Marbogeweihte wird sich immer mit Vorrang um die Betreuung Sterbenskranker kümmern – und sie notfalls von ihrem Leid erlösen. # Traum: Ergründe die Welt der Träume. In ihr kann die Geweihte den Willen Marbos erkennen. Moralkodex der Nanduskirche (Prinzipientreue I) # Streben nach Weisheit: Ein Nandusgeweihter sollte stets nach Wissen streben und somit auch nach Weisheit. # Erleuchtung für Andere: Es soll dem Nandusgeweihten eine wichtige Aufgabe sein, andere Menschen zu erleuchten und sie somit vor Dummheit und Fehlern zu bewahren. # Geheimwissen: Der Nandusgeweihte strebt danach, die höheren Mysterien der Kirche zu erlernen. # Einfluss: Es ist wichtig, die Kirche und ihre Lehren zu fördern und zu verbreiten. Der Nandusgeweihte sollte versuchen, Einfluss zu gewinnen, um dieses Ziel zu erreichen. Moralkodex der Numinorupriester (Prinzipientreue II) # Ausgeglichenheit: Diener Numinorus lassen sich nicht zu impulsiven Handlungen hinreißen und behalten stets das große Ganze im Blick. Sie sind ruhig und beherrscht, niemals Sklave ihrer Emotionen. # Wissbegier: Numinoru gewährt seinen Anhängern nicht die Gabe der Prophezeiung und die Herrschaft über das Meer, damit sie die Sicherheit der heimatlichen Gestade genießen, sondern damit sie zu neuen Horizonten aufbrechen und in die Tiefen hinabtauchen. Sie streben stets nach neuen Erkenntnissen. # Planung: Die Anhänger Numinorus gehen planvoll vor und denken weit in die prophezeite Zukunft, sie handeln nicht unvorbereitet. Moralkodex der Perainegeweihten (Prinzipientreue I) # Hilfe: Leiste jedem Hilfe, der Hilfe benötigt. # Aufopferung: Arbeite hart und halte dich vom Müßiggang fern. # Bescheidenheit: Verschwende nicht die Gaben der Göttin. # Heilkunst: Bilde dich in der Heilkunst fort. Moralkodex der Phexgeweihten (Prinzipientreue I) # Gegenleistung: Für eine zu erfüllende Aufgabe muss der Geweihte stets eine Gegenleistung verlangen. # Heimlichkeit: Der Geweihte soll seine Pläne im Verborgenen ausführen. # Herausforderung: Je größer die Herausforderung, desto größer der Ruhm. Der Geweihte soll große # Herausforderungen suchen und sich ihnen stellen. Moralkodex der Praiosgeweihten (Prinzipientreue II) # Gehorsam: Der  Geweihte  ist  verpflichtet,  sich  an  die Befehle von Personen zu halten, die über ihm in der Kirchenhierarchie stehen. # Offensichtlichkeit: Der Geweihte versteckt sich nicht. Schutz von Gesetz und Staat: Der Geweihte verteidigt zwölfgöttliche Reiche und Strukturen und achtet auf die Einhaltung der Gesetze. # Magiebann: Magie, vor allem schwarze Magie, sollte gebannt werden. Weiße Magie kann unter Umständen toleriert werden. Das Gildenrecht der Magier ist zu achten. # Mission: Der Glaube an den Götterfürsten und seine Geschwister muss in alle Winkel Deres verbreitet werden. Moralkodex der Rahjakirche (Prinzipientreue I) # Freude & Harmonie: Die Rahjageweihte ist dazu bestimmt, Freude zu verbreiten und die Sorgen der Menschen zu vertreiben. Dabei soll die Geweihte das passende Maß finden und auf die Vorlieben der Gläubigen eingehen. Aufdringliches Verhalten seitens der Geweihten steht einem harmonischen Anspruch entgegen. # Ekstase & Leidenschaft: Den Rausch der Göttin soll nicht nur die Geweihte erleben, sondern ihn auch den Gläubigen schenken. Alles, was die Rahjageweihte verschenkt, soll sie mit Leidenschaft verschenken. # Hingabe & Gleichmut: Die Rahjageweihte erträgt auch Zeiten, in denen sie keine Freude empfinden kann, mit Gleichmut. Ihre Hingabe soll besonders der göttlichen Ekstase dienen, nicht vergänglichen Dingen. Moralkodex der Rondrageweihten (Prinzipientreue II) # Verteidigung des Glaubens: Die Verteidigung des Glaubens ist die Pflicht jedes Rondrageweihten. # Ritterlichkeit: Der Rondrageweihte setzt im Kampf keine Armbrüste ein oder verhält sich unehrenhaft. # Verantwortung: Der Schutz aller Gläubigen, der Heiligtümer und der Tempel der Zwölfgötter steht im Vordergrund der Aufgaben eines Geweihten. # Zweikampf: Der ehrenhafte Zweikampf ist von allen Kampfhandlungen die ehrenhafteste. # Schwertmeisterschaft: Sich in allen Waffengattungen auszukennen und sie zu meistern ist eine Selbstverständlichkeit für den Geweihten. Moralkodex der Swafnirkirche (Prinzipientreue II) # Ehrlichkeit & Ehre: Ein Swafnirgeweihter sagt immer, was er wirklich denkt, und behält es nicht für sich. Er lügt auch niemanden an. Zudem sollten seine Handlungen immer ehrenvoll sein, und er sollte nichts tun, das seine Ehre oder die seiner Gemeinschaft beschmutzt. # Walschutz: Wale und Delphine gilt es zu schützen, Walfänger müssen vertrieben oder gar getötet werden. # Mut: Der Swafnirgeweihte steht immer an vorderster Reihe, wenn es zum Kampf gegen Hranngargezücht oder andere Schrecken geht. # Gemeinschaft: Der Swafnirgeweihte sorgt dafür, dass es seiner Gemeinschaft gut geht, und kümmert sich um die walwütigen Swafnirskinder, damit sie niemanden verletzen. Moralkodex der Traviageweihten (Prinzipientreue II) # Gastfreundschaft: Die Traviageweihte gewährt jedem, der dies wünscht, Gastfreundschaft und achtet auf die Einhaltung der Gesetze der Gastfreundschaft (niemand soll einen anderen Gast beleidigen oder angreifen). # Mäßigung und Wahrung von Sitte und Anstand: Die Traviageweihte achtet auf das friedliche Zusammenleben der Menschen. Sie verurteilt Prunksucht, Unzuverlässigkeit und unzüchtiges Benehmen. # Treue: Wer sich untreu verhält, egal ob in der Ehe oder weil er Versprechen bricht, sollte seinen Fehler wieder gut machen, worüber die Traviageweihte wacht. Moralkodex der Tsageweihten (Prinzipientreue II) # Lebenserhaltung: Die Tsageweihte achtet und schützt das Leben. # Waffenbann: Die Tsageweihte soll keine Waffen benutzen und damit Lebewesen schaden oder gar töten. # Erneuerung: Stillstand und Routine sind der Tsageweihten ein Gräuel. Sie versucht stets, ihren Horizont zu erweitern und probiert gerne neue Sachen aus. Moralkodex der Zsahh-Priester (Prinzipientreue II) # Schutz vor den H’Ranga: Die Priesterin sorgt dafür, dass die H’Ranga durch Opfergaben mild gestimmt werden, damit sie in ihrem Zorn nicht unter den Achaz wüten. # Heilung: Verletzte Sippenmitglieder müssen versorgt und geheilt werden, zudem ist es wichtig, dass sich die Priesterin auch um schwangere Achaz und den Schutz der Brutnester kümmert. Moralkodici von Schamanen bzw. Priester: Moralkodex der Achazschamanen (Prinzipientreue I) # Schutz vor den H’Ranga: Der Schamane sorgt dafür, dass die H’Ranga durch Opfergaben milde gestimmt werden, damit sie in ihrem Zorn nicht unter den Achaz wüten. # Bewahrung der Sippe: Die Sippe ist der Mittelpunkt des Seins. Der Achazschamane tut alles, um den Frieden in der Sippe zu bewahren. Moralkodex der Ferkinaschamanen (Prinzipientreue I) # Bestattung der Toten: Der Schamane muss die Verstorbenen der Sippe würdevoll und mit den richtigen Zeremonien bestatten. # Feiern und Mannbarkeitsriten: Ferkinaschamanen sind sowohl für die Ausrichtung von Festen zu Ehren der Götter wie auch für die der Mannbarkeitsriten verantwortlich. # Kontakt zur Geisterwelt: Der Schamane ist für den Kontakt zur Geisterwelt verantwortlich. Er ist Mittler zwischen dieser Welt und der Welt der Geister. # Tabuzonen: Der Schamane errichtet und bewacht Tabuzonen, da das, was dort lauert, eine Gefahr für seine Sippe ist. Moralkodex der Fjarningerschamanen (Prinzipientreue I) # Bestattung der Toten: Der Schamane muss die Verstorbenen der Sippe würdevoll und mit den richtigen Zeremonien bestatten. # Heilung: Falls der Schamane Kranken begegnet, ist er verpflichtet, ihnen zu helfen, sofern es ihm möglich ist, denn das Leben jedes Einzelnen trägt zum Überleben des Stammes bei. # Kontakt zur Geisterwelt: Der Schamane ist für den Kontakt zur Geisterwelt verantwortlich. Er ist Mittler zwischen dieser Welt und der Welt der Geister. # Tabuzonen: Der Schamane errichtet und bewacht Tabuzonen, da das, was dort lauert, eine Gefahr für seine Sippe ist. Moralkodex der Gjalskerschamanen (Prinzipientreue I) # Bestattung der Toten: Der Schamane muss die Verstorbenen der Sippe würdevoll und mit den richtigen Zeremonien für ihre Reise an die Küste vorbereiten, wo sie im Meer bestattet werden. # Heilung: Falls der Schamane Kranken begegnet, ist er verpflichtet, ihnen zu helfen, sofern es ihm möglich ist. # Kontakt zur Geisterwelt: Der Schamane ist für den Kontakt zur Geisterwelt verantwortlich. Er ist Mittler zwischen dieser Welt und der Welt der Geister. # Tabuzonen: Der Schamane errichtet und bewacht Tabuzonen, da das, was dort lauert, eine Gefahr für seine Sippe ist. Moralkodex der Nivesenschamanen (Prinzipientreue I) # Bestattung der Toten: Der Schamane muss die Verstorbenen der Sippe würdevoll und mit den richtigen Zeremonien bestatten. # Heilung: Falls der Schamane Kranken begegnet, ist er verpflichtet, ihnen zu helfen, sofern es ihm möglich ist. # Kontakt zur Geisterwelt: Der Schamane ist für den Kontakt zur Geisterwelt verantwortlich. Er ist Mittler zwischen dieser Welt und der Welt der Geister. # Tabuzonen: Der Schamane errichtet und bewacht Tabuzonen, da das, was dort lauert, eine Gefahr für seine Sippe ist. Moralkodex der Rur-und-Gror-Kirche (Prinzipientreue II) # Mehrung der Schönheit: Rur-und-Gror-Priester sind dafür verantwortlich, die Schönheit der Welt zu mehren und zu verhindern, dass Dämonen und das Bruderlose die Schönheit mindern. # Finden der 64 Fragen des Seins: Die Priester sind dazu aufgerufen, den Mysterien von Rur und Gror auf den Grund zu gehen sowie weitere Menschen für den Glauben zu begeistern und zu inspirieren – nicht als Missionar, sondern als Vorbild. Moralkodex der Tahaya-Schamanen (Prinzipientreue I) # Bestattung der Toten: Der Schamane muss die Verstorbenen der Sippe würdevoll und mit den richtigen Zeremonien bestatten. # Heilung: Falls der Schamane Kranken begegnet, ist er verpflichtet, ihnen zu helfen, sofern es ihm möglich ist. # Kontakt zur Geisterwelt: Der Schamane ist für den Kontakt zur Geisterwelt verantwortlich. Er ist Mittler zwischen dieser Welt und der Welt der Geister. # Tabu-Zonen: Der Schamane errichtet und bewacht Tabu-Zonen, da das, was dort lauert, eine Gefahr für seine Sippe ist. Moralkodex des Tairachkults (Prinzipientreue I) # Bewahrung der Gesetze der Götter: Der Tairachschamane bewahrt die Überlieferung und verhindert jede Veränderung der bestehenden göttlichen Gesetze und Ordnung. # Mittler zwischen der Welt der Toten und Lebenden: Mächtige Geister werden von dem Schamanen gerufen, um dienlich zu sein, überwundene Gegner werden „entseelt“. # Heilung von Körper und Geist: Der Schamane kümmert sich um die Verletzungen der Mitglieder der Sippe und vertreibt ruhelose Geister. Moralkodex der Trollzackerschamanen (Prinzipientreue I) # Kontakt zur Geisterwelt: Der Schamane ist für den Kontakt zur Geisterwelt verantwortlich. Er ist Mittler zwischen dieser Welt und der Welt der Geister. # Schmerz erdulden: Schmerzen zu erdulden, ist eine Ehre. Je schlimmer der Schmerz im Diesseits, desto besser wird das Leben im Jenseits. # Tabuzonen: Der Schamane errichtet und bewacht Tabuzonen, da das, was dort lauert, eine Gefahr für seine Sippe ist. # Trollehre: Trolle und Riesen sind wie Götter oder wie Kinder der Götter zu behandeln.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Anmerkung": "Der Moralkodex ist bei der Traditionsbeschreibung bzw. die Prinzipientreue-Stufe in dem Professionspaket enthalten und den jeweiligen Publikationen (Regelwerk, Aventursiches Götterwirken, Aventurisches Götterwirken II und/oder auch  Regionalspielhilfen; Numinorupriester aus \"Unendlichkeit & Tiefenrausch\"; \"Achaz-Kulte\" aus \"Achaz - Schuppenkleid & Lange Zungen\" und \"Ork-Kulte\" aus \"Orks - Hauer & Schwarzer Pelz\") entnommen.",
+      "Publikation(en)": "Regelwerk , Seite 175"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_L_stige_Mindergeister",
+    "category": "disadvantages",
+    "name": "Lästige Mindergeister",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=L%C3%A4stige+Mindergeister",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Jedes Mal wenn der Zauberer Astralenergie ausgibt, würfelt er mit dem W20. Ist das Ergebnis gleich oder kleiner der ausgegebenen Astralenergiemenge, tauchen Mindergeister auf und belästigen den Zauberer. Welche Art von Mindergeistern erscheinen, entscheidet der Meister je nach Situation. Beispiele sind Windbeutel, die das Haar des Zauberers selbst bei Windstille wallen lassen, Tränenlinge, die sich unter die Augen setzen, oder Feuerwusel, die Gegenstände des Zauberers erhitzen oder gar verkohlen. Außerdem sind alle Fertigkeitsproben wegen der Ablenkung um 1 erschwert. Die Mindergeister bleiben für 10 Minuten, ehe sie von selbst wieder verschwinden. Sind durch zu häufiges Zaubern mehrere Mindergeister erschienen, summieren sich die Erschwernis dennoch nicht auf.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-20 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 173"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Taub",
+    "category": "disadvantages",
+    "name": "Taub",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Taub",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann keine Probe auf Sinnesschärfe ablegen, die mit dem Hören zu tun haben. Er erhält den Status Taub.",
+      "Voraussetzung": "Kein Vorteil Herausragender Sinn (Gehör)",
+      "AP-Wert": "-40 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Sensibler_Geruchssinn",
+    "category": "disadvantages",
+    "name": "Sensibler Geruchssinn (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Sensibler+Geruchssinn+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Solange der Held dem Geruch ausgesetzt ist, erleidet er eine Stufe Verwirrung .",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Sensibler Geruchssinn als automatischen oder empfohlenen Nachteil besitzen., Kein Eingeschränkter Sinn (Geruch)",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Zauberanf_llig_I-II",
+    "category": "disadvantages",
+    "name": "Zauberanfällig I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Zauberanf%C3%A4llig+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Gegen Magie sind Seelenkraft und Zähigkeit um 1 pro Stufe schlechter als üblich.",
+      "Voraussetzung": "Kein Vorteil Schwer zu verzaubern",
+      "AP-Wert": "-12 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Sprachfehler",
+    "category": "disadvantages",
+    "name": "Sprachfehler",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Sprachfehler",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Bei Gesellschaftstalenten (außer Menschenkenntnis und Willenskraft) und Handeln (Feilschen) kann er nach Meisterentscheid eine Erschwernis von 1 erhalten, wenn es darum geht, mit anderen Personen zu sprechen.",
+      "Voraussetzung": "Kein Nachteil Stumm",
+      "AP-Wert": "-15 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Arm_I-III",
+    "category": "disadvantages",
+    "name": "Arm I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Arm+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch den Nachteil Arm erhält ein Held bei der Generierung 250 Silbertaler weniger pro Stufe. Wählt er also 3 Stufen Arm, beginnt er ohne Startkapital und besitzt nur ein Kleiderpaket der Kategorie arm.",
+      "Voraussetzung": "Kein Vorteil Reich",
+      "AP-Wert": "-1 Abenteuerpunkt (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 170"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechtes_Namensged_chtnis",
+    "category": "disadvantages",
+    "name": "Schlechtes Namensgedächtnis",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechtes+Namensged%C3%A4chtnis",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann sich kaum einen Namen richtig merken, auch nicht die seiner Reisegefährten, seines Lehnsherrn, des Kontaktmanns in den Schwarzen Landen, der eigenen Kinder oder seiner Angebeteten. Entweder bringt er alles durcheinander, nennt Leute  beim falschen Namen, oder aber er ändert sie aus Versehen ständig ab. Alle Teilproben auf Klugheit bei Proben auf Etikette (Heraldik & Stammbäume oder Klatsch & Tratsch) sind um 2 erschwert.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-2 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Namen , Seite 90"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Zerbrechlich",
+    "category": "disadvantages",
+    "name": "Zerbrechlich",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Zerbrechlich",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Erschwernisse durch den Zustand Schmerz werden wie bei einer Stufe höher behandelt. Die Handlungsunfähigkeit tritt somit bereits bei Stufe III ein.",
+      "Voraussetzung": "Kein Vorteil Zäher Hund",
+      "AP-Wert": "-20 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Eingeschr_nkter_Sinn",
+    "category": "disadvantages",
+    "name": "Eingeschränkter Sinn",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Eingeschr%C3%A4nkter+Sinn",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Wer über einen Eingeschränkten Sinn verfügt, dessen Proben auf Sinnesschärfe sind um 2 erschwert, wenn die Probe den entsprechenden Sinn betrifft. Eingeschränkte Sicht erschwert zudem Proben auf Fernkampf um 2. Folgende Sinne können gewählt werden: Sicht, Gehör, Geruch & Geschmack, Tastsinn. Ein Held kann bis zu zwei eingeschränkte Sinne besitzen.",
+      "Voraussetzung": "Kein Vorteil Herausragender Sinn für den gleichen Sinn, Kein Nachteil Blind (bei Sicht), Kein Nachteil Taub (bei Gehör)",
+      "AP-Wert": "–15 Abenteuerpunkte (Sicht), –10 Abenteuerpunkte (Gehör), –6 Abenteuerpunkte (Geruch & Geschmack), –2 Abenteuerpunkte (Tastsinn)",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Regeneration_Karmaenergie_I-III",
+    "category": "disadvantages",
+    "name": "Schlechte Regeneration (Karmaenergie) I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte+Regeneration+%28Karmaenergie%29+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Für jede Stufe des Nachteils muss der Held beim Regenerationswurf 1 Punkt abziehen (bis zu einem Minimum von 0).",
+      "Voraussetzung": "Vorteil Geweihter, Kein Vorteil Verbesserte Regeneration (Karmaenergie)",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 176"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Blutrausch",
+    "category": "disadvantages",
+    "name": "Blutrausch",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Blutrausch",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held erhält unter speziellen Umständen den Status Blutrausch . Der Blutrausch wird aktiviert, wenn der Held durch einen Angriff eine Stufe des Zustands Schmerz erleidet oder ihm seine Probe auf Willenskraft zur Aktivierung der Schlechten Eigenschaft Jähzorn misslingt.",
+      "Voraussetzung": "Schlechte Eigenschaft Jähzorn, Kein Nachteil Angst vor Blut",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Giftanf_llig_I-II",
+    "category": "disadvantages",
+    "name": "Giftanfällig I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Giftanf%C3%A4llig+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Eine Giftanfälligkeit verschlechtert Zähigkeit und Seelenkraft um 1 pro Stufe, wenn es darum geht, Giften zu widerstehen.",
+      "Voraussetzung": "Kein Vorteil Giftresistenz",
+      "AP-Wert": "-5 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Angewohnheit",
+    "category": "disadvantages",
+    "name": "Schlechte Angewohnheit",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte+Angewohnheit",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Ein Held kann so viele Schlechte Angewohnheiten wählen, wie er möchte, erhält hierdurch allerdings insgesamt maximal 6 AP. In seltenen Fällen kann der Meister auch Erschwernisse auf Gesellschaftstalente vergeben. Beispiele: # Barfüßer : Obwohl es in der Kultur des Charakters üblich ist, Schuhwerk zu tragen, läuft er andauernd barfuß herum – selbst vor Adligen oder bei schlechtem Wetter. # Belästigung : Der Abenteurer starrt hübschen Frauen/ Männern auf den Ausschnitt/den Hintern oder macht ständig anzügliche Kommentare. # Dritte Person : Der Held spricht immer in der dritten Person von sich („Alrik mag das. Alrik hätte gerne noch ein Ferdoker Bier.“). # Duzer : Obwohl es angebracht wäre, kann ein Held mit einer solchen Schlechten Angewohnheit niemanden mit „Ihr“ ansprechen, auch höchste Würdenträger nicht. Er spricht jeden mit „Du“ an. # Erster : Ob bei der Wahl des besten Zimmers in einem Gasthaus oder beim Einkauf – der Held muss immer der Erste sein. # Heulsuse : Ob aus Angst, Freude, Trauer oder Ärger, der Held kann leicht zum Weinen gebracht werden. # Hypochonder : Ständig glaubt der Held, dass er an einer schrecklichen Krankheit erkranken könnte, selbst wenn er sich bester Gesundheit erfreut oder eine Ansteckung absolut unwahrscheinlich ist. Sollte er tatsächlich einmal krank sein, nimmt er stets das Schlimmste an. # Junge : Wenn der Abenteurer mit jemanden ein Gespräch führt, endet der Satz oft auf „Junge“, selbst bei Frauen („Nicht schlecht, Junge. Hast du gut gemacht, Junge.“). # Langschläfer : Der Abenteurer schläft gerne lange – wird er geweckt, hat er extrem schlechte Laune. # Links-Rechts-Schwäche : Der Charakter vertauscht ständig links und rechts. # Mein Kind : Der Held beginnt oder beendet fast jedes Gespräch mit den Worten „Mein Kind“. # Nägelkauer : Immer wenn er nichts zu tun hat, kaut der Charakter auf seinen Fingernägeln. # Nase-/Ohrenbohrer : Bei dem Helden ist die Zwangshandlung, seinen Finger in Nase oder Ohr zu stecken, sehr stark ausgeprägt. # Nervös : Ruhig abzuwarten ist für den Abenteurer ausgesprochen schwierig. Er läuft im Zimmer herum, nimmt Platz und steht wieder auf – und wiederholt diese Handlungen so oft, bis endlich etwas passiert. # Putzfimmel : Der Held leidet unter einem Putzzwang – er muss Gegenstände oder Räume stets sauber halten. # Raucher : Der Held ist leidenschaftlicher Genussraucher, aber nicht süchtig. Hat er einmal keinen Tabak zur Verfügung, wird er dies lautstark und anhaltend bedauern, erleidet aber ansonsten keine Nachteile. # Redet wie ein Wasserfall : Wenn der Held mit anderen spricht, redet er so schnell, dass man sich konzentrieren muss, ihm zu folgen. # Schlechte Tischmanieren : Der Abenteurer schlürft und rülpst, benutzt kein Besteck oder isst seinen Kameraden immer alles weg. # Selbstgespräche : Beim Nachdenken oder in unpassenden Situationen redet der Held gerne mit sich selbst. # Unordentlich : Überall, wo der Held nächtigt oder lebt, lässt er Kleidung und Sachen herumliegen. # Wir : Der Held redet, wenn er sich selbst meint, immer von wir („Wir verstehen, was du sagst.“). weitere Beispiele aus Aventurische Namen : # Falscher Name : Die Heldin spricht ihre Freunde sehr oft mit einem falschen Namen an. Manchmal vertauscht sie sogar das Geschlecht („Das war mal ein Abenteuer, Alrike.“ „Stimmt schon, aber mein Name ist immer noch Alrik.“) # He du! / He Ihr! : Der Held spricht so gut wie niemanden mit Namen an, sei es, weil er ihn sich nicht merken kann, oder weil er es einfach nicht für nötig hält. Je nach Stellung oder Gemüt des Angesprochenen, kann das natürlich leicht zu Problemen führen. # Namensnenner : Der Held spricht sein Gegenüber andauernd mit Namen an, selbst wenn er damit allen auf die Nerven fällt. („Also ich würde mir das wirklich gut überlegen, Alrik. Alrik, reich mir doch mal das Salz.“) # Namensverdreher : Die Heldin vertauscht immer Teile des Namens oder fügt Buchstaben in den Namen ihres Gegenübers ein. („Halda, gib mir mal deinen Dolch.“ „Ich heiße Hilda!“).",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-2 Abenteuerpunkte (pro Schlechter Angewohnheit)",
+      "Publikation(en)": "Regelwerk , Seite 175 Aventurische Namen , Seite 91"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Nachtblind",
+    "category": "disadvantages",
+    "name": "Nachtblind",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Nachtblind",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Sobald der Held mindestens eine Stufe Sichterschwernis durch Dunkelheit erleidet, wird diese Erschwernis für ihn um eine Stufe erhöht.",
+      "Voraussetzung": "Kein Vorteil Dunkelsicht, Kein Nachteil Blind",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 173"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Verweichlicht",
+    "category": "disadvantages",
+    "name": "Verweichlicht",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Verweichlicht",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Bei der Probe auf Selbstbeherrschung (Handlungsfähigkeit bewahren oder Störungen ignorieren) bei Wundeffekten bekommt die Heldin eine Erschwernis von 2.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Kompendium , Seite 133"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Niedrige_Lebenskraft_I-VII",
+    "category": "disadvantages",
+    "name": "Niedrige Lebenskraft I-VII",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Niedrige+Lebenskraft+I-VII",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der LE-Grundwert sinkt durch diesen Nachteil um 1 Punkt pro Stufe des Nachteils.",
+      "Voraussetzung": "Kein Vorteil Hohe Lebenskraft",
+      "AP-Wert": "-4 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Regeneration_Astralenergie_I-III",
+    "category": "disadvantages",
+    "name": "Schlechte Regeneration (Astralenergie) I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte+Regeneration+%28Astralenergie%29+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Für jede Stufe des Nachteils muss der Held beim Regenerationswurf 1 Punkt abziehen (bis zu einem Minimum von 0).",
+      "Voraussetzung": "Vorteil Zauberer, Kein Vorteil Verbesserte Regeneration (Astralenergie)",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 176"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Wilde_Magie",
+    "category": "disadvantages",
+    "name": "Wilde Magie",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Wilde+Magie",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "19er werden bei Fertigkeitsproben auf Zauber und Rituale in Hinsicht auf die Bestimmung eines Patzers wie eine 20 behandelt.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Instabiler_Zauberer",
+    "category": "disadvantages",
+    "name": "Instabiler Zauberer",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Instabiler+Zauberer",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Würfelt der Held einen Patzer bei einem Zauber oder einer magischen Handlung, durchdringt ihn magische Energie und er erleidet 2W6 SP.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-5 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Magie , Seite 226 Kodex der Magie , Seite 380"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_K_ltestarre",
+    "category": "disadvantages",
+    "name": "Kältestarre (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=K%C3%A4ltestarre+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Statt Kälteschaden zu erleiden, versetzt sich der Körper eines Achaz automatisch in eine Kältestarre. Er bekommt jede Minute bei Temperaturen, in denen er Kälteschaden erleiden würde, 1 Stufe Paralyse und bei der IV Stufe zusätzlich den Status Bewusstlos . In der Kältestarre kann er 1W20 Jahre überleben. Gelangt er wieder in eine wärmere Gegend, so bauen sich die Stufen Paralyse alle volle 30 Minuten um 1 Stufe ab. Ab Stufe III verliert er den Status Bewusstlos .",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Vorteil als automatischen oder empfohlenen Vorteil aufweisen.",
+      "AP-Wert": "-15 Abenteuerpunkte",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 29"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Unpassender_Name",
+    "category": "disadvantages",
+    "name": "Unpassender Name",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Unpassender+Name",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Ein Held mit diesem Nachteil bekommt nach Meisterentscheid bei Proben auf die Talente Bekehren & Überzeugen und Überreden eine Erschwernis von 1  auf alle Teilproben, die auf Charisma abgelegt werden, wenn sich sein Gegenüber an dem unpassenden Namen stört und dieser dem Gegenüber bekannt ist.",
+      "Voraussetzung": "Ein möglichst unpassender Name,, Kein Vorteil Allerweltsname,, Kein Vorteil Heldenhafter Name,, Kein Nachteil Schurkenname., Kein Nachteil Lächerlicher Name,, Elfen können diesen Vorteil nicht wählen, da ihre Namen immer passend sind.",
+      "AP-Wert": "-4 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Namen , Seite 90"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Beh_big",
+    "category": "disadvantages",
+    "name": "Behäbig",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Beh%C3%A4big",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch Behäbig verliert ein Held 1 Punkt von seinem Geschwindigkeit-Grundwert.",
+      "Voraussetzung": "Kein Vorteil Flink",
+      "AP-Wert": "-4 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Magische_Einschr_nkung",
+    "category": "disadvantages",
+    "name": "Magische Einschränkung",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Magische+Einschr%C3%A4nkung",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "In der Umgebung, für die der Nachteil gilt, hat der Zauberer bei magischen Fertigkeitsproben keine Erschwernisse, ansonsten eine von 1. Beispiel für Magische Einschränkung (Umgebung) • Fluch der Auen • Fluch der Berge • Fluch des Eises • Fluch der Meere • Fluch der Nacht • Fluch des Waldes Anmerkung: Ein Fluch der Helligkeit ist möglich.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-30 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 173"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Unf_hig",
+    "category": "disadvantages",
+    "name": "Unfähig",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Unf%C3%A4hig",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held muss bei einer Probe auf das Talent das beste Würfelergebnis einer Teilprobe neu würfeln. Das zweite Ergebnis ist bindend. Ein Abenteurer kann maximal zwei Unfähigkeiten besitzen.",
+      "Voraussetzung": "Kein Vorteil Begabung auf das  gleiche Talent, Maximal 2 Unfähigkeiten",
+      "AP-Wert": "A-/B-/C-/D- Talent: –1/–2/–3/–4 Abenteuerpunkt(e)",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Niedrige_Z_higkeit",
+    "category": "disadvantages",
+    "name": "Niedrige Zähigkeit",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Niedrige+Z%C3%A4higkeit",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der ZK-Grundwert des Helden ist um 1 schlechter.",
+      "Voraussetzung": "Kein Vorteil Hohe Zähigkeit",
+      "AP-Wert": "-25 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Niedrige_Astralkraft_I-VII",
+    "category": "disadvantages",
+    "name": "Niedrige Astralkraft I-VII",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Niedrige+Astralkraft+I-VII",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der AE-Grundwert sinkt durch diesen Nachteil um 1 Punkt pro Stufe des Nachteils.",
+      "Voraussetzung": "Vorteil Zauberer, Kein Vorteil Hohe Astralkraft",
+      "AP-Wert": "-2 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Blind",
+    "category": "disadvantages",
+    "name": "Blind",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Blind",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch den Nachteil ist ihm der Einsatz vieler Fertigkeiten erschwert oder erst gar nicht möglich. Dies gilt ebenfalls für Sonderfertigkeiten. Welche Handlungen um wie viel erschwert oder gar unmöglich sind, entscheidet der Meister. Die Blindheit ist nicht heilbar, außer durch ein Großes Wunder. Der Held erhält den Status Blind .",
+      "Voraussetzung": "Kein Vorteil Herausragender Sinn (Sicht), Keine Nachteil Einäugig, Keine Nachteil Farbenblind, Keine Nachteil Nachtblind, Keine Nachteil Eingeschränkter Sinn (Sicht)",
+      "AP-Wert": "-50 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Hitzeempfindlich_II",
+    "category": "disadvantages",
+    "name": "Hitzeempfindlich II (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Hitzeempfindlich+II+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Hitzestufen werden für den Helden um 2 Stufen erhöht, sobald er mindestens unter Hitzestufe 2 leidet.",
+      "Voraussetzung": "Spezies Nachtalben, Kein Vorteil Hitzeresistenz, Kein Nachteil Hitzeempfindlich I",
+      "AP-Wert": "-6 Abenteuerpunkte",
+      "Publikation(en)": "Helden des Wolfsfrosts , Seite 31 Klingen der Nacht , Seite 106"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Niedrige_Karmalkraft_I-VII",
+    "category": "disadvantages",
+    "name": "Niedrige Karmalkraft I-VII",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Niedrige+Karmalkraft+I-VII",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der KE-Grundwert sinkt durch diesen Nachteil um 1 Punkt pro Stufe des Nachteils.",
+      "Voraussetzung": "Vorteil Geweihter, Kein Vorteil Hohe Karmalkraft",
+      "AP-Wert": "-2 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Artefaktgebunden",
+    "category": "disadvantages",
+    "name": "Artefaktgebunden",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Artefaktgebunden",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Ist der Held nicht in direktem Kontakt mit dem Artefakt (dies bedeutet: Kontakt mit der Haut), kann er nur erschwert Zaubern. Dieser Nachteil erschwert Zauber um 1, wenn die Bedingung des Körperkontaktes nicht erfüllt ist. Wird das Artefakt vernichtet, kann er so lange nur mit der Erschwernis Zauber wirken, bis er selbst ein neues Artefakt gleicher Machart hergestellt hat, in das die Artefaktgebundenheit automatisch einfließt.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 170"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Fettleibig",
+    "category": "disadvantages",
+    "name": "Fettleibig",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Fettleibig",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Nachteil hat zur Folge, dass Proben auf Klettern, Körperbeherrschung, Tanzen und Verbergen um 1 erschwert sind.",
+      "Voraussetzung": "Nachteil Behäbig",
+      "AP-Wert": "-25 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Farbenblind",
+    "category": "disadvantages",
+    "name": "Farbenblind",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Farbenblind",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Für den Abenteurer sind Farben nicht zu unterscheiden. Dies kann sich bei einigen Proben, etwa auf Alchimie („Rote Flüssigkeit in grüne Flüssigkeit schütten.“), beim Zuordnen von Wappen (Etikette) oder bei der Orientierung im Dschungel negativ auswirken. Ob eine Probe abgelegt werden kann und wie hoch die Erschwernis ist, entscheidet der Meister.",
+      "Voraussetzung": "Kein Nachteil Blind",
+      "AP-Wert": "-2 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Hitzeempfindlich",
+    "category": "disadvantages",
+    "name": "Hitzeempfindlich",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Hitzeempfindlich",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Hitzestufen werden für den Helden um 1 Stufe erhöht, sobald er mindestens unter Hitzestufe 2 leidet.",
+      "Voraussetzung": "Kein Vorteil Hitzeresistenz",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schwacher_Karmalk_rper",
+    "category": "disadvantages",
+    "name": "Schwacher Karmalkörper",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schwacher+Karmalk%C3%B6rper",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Jedes Mal, wenn der Held Karmapunkte ausgibt, verliert er einen Karmapunkt zusätzlich.",
+      "Voraussetzung": "Vorteil Geweihter",
+      "AP-Wert": "-15 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_K_rperliche_Auff_lligkeit",
+    "category": "disadvantages",
+    "name": "Körperliche Auffälligkeit",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=K%C3%B6rperliche+Auff%C3%A4lligkeit",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Ein Held kann maximal zwei Körperliche Auffälligkeiten wählen. Die Körperliche Auffälligkeit zieht gelegentlich Erschwernisse auf Gesellschaftstalente aufgrund von Aberglaube oder Misstrauen nach sich.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-2 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Pechmagnet",
+    "category": "disadvantages",
+    "name": "Pechmagnet",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Pechmagnet",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Bei jeder zufälligen Bestimmung des Meisters (Welcher Held wird von dem Pfeil getroffen? Wer stand von der Gruppe in der Nähe der Falle, als sie ausgelöst wurde?) sind die Chancen bei einem Abenteurer mit diesem Nachteil mindestens doppelt so hoch wie die eines Helden ohne Pechmagnet. Der Nachteil sollte in der Heldengruppe nicht bei allen Helden auftreten, da sich der Nachteil ansonsten aufhebt. Dementsprechend erfordert die Wahl von Pechmagnet Rücksprache mit dem Meister.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-5 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_H_sslich_I-II",
+    "category": "disadvantages",
+    "name": "Hässlich I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=H%C3%A4sslich+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch jede Stufe dieses Nachteils erleidet der Held eine Erschwernis von 1 auf Betören (Anbändeln, Liebeskünste), Überreden (Manipulieren, Schmeicheln) und Handel (Feilschen).",
+      "Voraussetzung": "Kein Vorteil Gutaussehend",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Jagdwildgeruch",
+    "category": "disadvantages",
+    "name": "Jagdwildgeruch",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Jagdwildgeruch",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Meister kann immer, wenn der Held nahegenug an hungrigen Raubtieren ist (50 Schritt Radius) und diese ihn wittern, mit dem W6 würfeln. Bei einer 1-2 halten sie den Abenteurer für Beute und greifen ihn an. Sollte es zu einem Kampf mit einer ganzen Heldengruppe kommen, so greifen die Raubtiere bevorzugt einen Helden mit dem Nachteil Jagdwildgeruch an. Als Raubtiere gelten beispielsweise Jaguare und Würgeschlangen, auf keinen Fall aber reine Pflanzenfresser. Welche Tiere von dem Geruch genau angelockt werden, entscheidet der Meister.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Bestiarium , Seite 121"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Unvertr_glichkeit_gegen_ber_Alkohol",
+    "category": "disadvantages",
+    "name": "Unverträglichkeit gegenüber Alkohol",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Unvertr%C3%A4glichkeit+gegen%C3%BCber+Alkohol",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Wer über diesen Nachteil verfügt, für den verdoppeln sich die Auswirkungen nach Giftproben beim Konsum von Alkohol. Würde der Held beispielsweise 1 Stufe Berauscht erleiden, erhält er stattdessen direkt 2 Stufen des Zustands.",
+      "Voraussetzung": "Keine Sonderfertigkeit Kampftrinker",
+      "AP-Wert": "-2 Abenteuerpunkte",
+      "Publikation(en)": "Kneipen & Tavernen (Meisterschirmbegleitheft) , Seite 13"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Gl_sern",
+    "category": "disadvantages",
+    "name": "Gläsern",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Gl%C3%A4sern",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Die Wundschwelle des Helden sinkt durch den Nachteil um 1.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Kompendium , Seite 133"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Kein_Vertrauter",
+    "category": "disadvantages",
+    "name": "Kein Vertrauter (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Kein+Vertrauter+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann die Sonderfertigkeit Vertrautenbindung nicht erwerben. Dadurch wird die Sonderfertigkeit Tradition (Hexen) um 10 AP billiger.",
+      "Voraussetzung": "Vorteil Zauberer, Zauberertradition kann Sonderfertigkeit Vertrautenbindung wählen",
+      "AP-Wert": "-25 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_K_rpergebundene_Kraft",
+    "category": "disadvantages",
+    "name": "Körpergebundene Kraft",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=K%C3%B6rpergebundene+Kraft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Sobald der Held, aus welchem Grunde auch immer, einen Teil seiner Haarpracht einbüßt (z. B. durch Abschneiden, Feuer etc.; unabhängig von der Länge), verliert er sofort 10 Astralpunkte (bis zu einem Minimum von 0). Diese können normal regeneriert werden. Der normale menschliche Haarverlust zählt nicht als Verlust der Haarpracht.",
+      "Voraussetzung": "Vorteil Zauberer, Spezies des Zauberers muss über Haare verfügen",
+      "AP-Wert": "-5 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Wahrer_Name",
+    "category": "disadvantages",
+    "name": "Wahrer Name",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Wahrer+Name",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Wenn ein Zauberer einen Zauberspruch gegen ein Ziel einsetzt, dessen Wahren Namen er kennt (und der über diesen Nachteil verfügt), verschlechtert sich die Seelenkraft und die Zähigkeit des Ziels um 4, womit es leichter zu verzaubern ist.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Pers_nlichkeitsschw_che",
+    "category": "disadvantages",
+    "name": "Persönlichkeitsschwäche",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Pers%C3%B6nlichkeitsschw%C3%A4che",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "In passenden Situationen kann der Meister durchaus für die angegebenen Fertigkeiten eine Erschwernis von 1 aussprechen, wenn er dies für angemessen hält. Es dürfen bis zu zwei Persönlichkeitsschwächen pro Held gewählt werden. Beispiele: # Arroganz : Der Held hält sich für etwas Besseres und lässt dies jeden spüren. Mögliche Erschwernisse: auf Handeln (Feilschen) und Gesellschaftstalente außer Einschüchtern und Willenskraft AP-Wert : –10 Abenteuerpunkte # Eitelkeit : Der Held hasst es, nicht standesgemäß gekleidet und frisiert oder sonst wie in seinem Auftreten beeinträchtigt zu sein. Mögliche Erschwernisse: auf alle Gesellschaftstalente AP-Wert : –10 Abenteuerpunkte # Neid : Ein Held mit dieser Persönlichkeitsschwäche begehrt den Reichtum, die Frau oder die Waffe anderer. Mögliche Erschwernisse: auf Handeln (Feilschen) und Gesellschaftstalente außer Einschüchtern und Willenskraft AP-Wert : –5 Abenteuerpunkte # Streitsucht : Jeder streitet sich mal, doch dieser Held macht sich unbeliebt, da er ständig und über den nichtigsten Grund mit anderen in Auseinandersetzungen gerät. Mögliche Erschwernisse: auf Handeln (Feilschen) und Gesellschaftstalente außer Einschüchtern und Willenskraft AP-Wert : –10 Abenteuerpunkte # Unheimlich : Von dem Helden geht eine unangenehme Aura aus. Dies kann ein stechender Blick, seine mürrische Art oder ein unerklärbares Gefühl für seine Gefährlichkeit sein. Mögliche Erschwernisse: alle Gesellschaftstalente außer Einschüchtern und Willenskraft AP-Wert : –8 Abenteuerpunkte # Verwöhnt : Verwöhnte Helden lassen sich gerne bedienen, sind faul und vermeiden jegliche Anstrengung. Ohne die nötigen Annehmlichkeiten wird der Held schnell unausstehlich, weinerlich oder aggressiv. Mögliche Erschwernisse: auf alle Gesellschaftstalente AP-Wert : –10 Abenteuerpunkte # Vorurteile : Manche Helden haben starke Vorteile gegen Nichtmenschen, Frauen, Männer, Zauberer, bestimmte Kulte oder andere Gruppen. Interaktion mit diesen Personen ist für diesen Helden eine echte Herausforderung. Vorurteile können mehrfach gewählt werden, allerdings erhält man nur einmal den AP-Wert. Mögliche Erschwernisse: auf Handeln (Feilschen) und Gesellschaftstalente außer Einschüchtern und Willenskraft AP-Wert : –5 Abenteuerpunkte # Weltfremd : Der Held kennt sich mit vielen Aspekten des täglichen Lebens auf Dere kaum aus: Er hat keine Ahnung von Geld oder gesellschaftlichen Verhaltensweisen, die Regeln der Etikette sind ihm völlig unbekannt oder er hat kein Gefühl für die Errungenschaften der Zivilisation. Wie bei Vorurteile muss diese Schlechte Eigenschaft auf bestimmte Bereiche begrenzt werden, z.B. Adel, Besitz, Fortschritt, Geld, Götter, Hierarchien, Religion, Welt außerhalb der eigenen Kultur. Weltfremd kann mehrfach gewählt werden, allerdings erhält man nur für zwei Bereiche jeweils den AP-Wert (also insgesamt –20 AP). Mögliche Erschwernisse: auf Handeln (Feilschen) und alle Gesellschaftstalente AP-Wert : –10 Abenteuerpunkte",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "je nach Persönlichkeitsschwäche (siehe Beispiele in \"Regel\")",
+      "Publikation(en)": "Regelwerk , Seite 174f."
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Friedlos",
+    "category": "disadvantages",
+    "name": "Friedlos",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Friedlos",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Friedlose gelten bei den Thorwalern als Ausgestoßene. Alle Proben auf Bekehren & Überzeugen, Etikette, Handel und Überreden erhalten gegenüber Thorwalern eine Erschwernis von –1. Diese Erschwernis gilt nicht gegenüber Nicht- Thorwalern. Der soziale Stand eines Friedlosen ist zudem immer Stufe I (siehe Regelwerk Seite 338).",
+      "Voraussetzung": "Der Held muss der Kultur Thorwaler angehören.",
+      "AP-Wert": "20 Abenteuerpunkte",
+      "Publikation(en)": "Die Gestade des Gottwals - Thorwal und das Gjalskerland , Seite 141"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_K_lteempfindlich",
+    "category": "disadvantages",
+    "name": "Kälteempfindlich",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=K%C3%A4lteempfindlich",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Kältestufen werden für den Helden um 1 Stufe erhöht, sobald er mindestens unter Kältestufe 1 leidet.",
+      "Voraussetzung": "Kein Vorteil Kälteresistenz",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Empfindlichkeit_unedle_Metalle",
+    "category": "disadvantages",
+    "name": "Empfindlichkeit (unedle Metalle) (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Empfindlichkeit+%28unedle+Metalle%29+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Verliert der Held Lebenspunkte durch Metallwaffen, steigen die Schadenspunkte um 4. Eine einfache Berührung mit entsprechenden Metallen richtet 1 Schadenspunkt pro 5 vollen Minuten an. Bei Unterbrechungen addieren sich die Teilzeiten auf, solange die Unterbrechungen die Dauer von 1 Stunde nicht überschreiten. Diese Empfindlichkeit gilt gegen unedle Metalle (z. B: Eisen, Stahl, Blei, Kupfer) nicht aber gegen magische Metalle oder Edelmetalle.",
+      "Voraussetzung": "Spezies Nachalben",
+      "AP-Wert": "-30 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Helden des Wolfsfrosts , Seite 31 Klingen der Nacht , Seite 106"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schwacher_Astralk_rper",
+    "category": "disadvantages",
+    "name": "Schwacher Astralkörper",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schwacher+Astralk%C3%B6rper",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Jedes Mal, wenn der Held Astralpunkte ausgibt, verliert er einen Astralpunkt zusätzlich.",
+      "Voraussetzung": "Vorteil Zauberer",
+      "AP-Wert": "-15 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Unfrei",
+    "category": "disadvantages",
+    "name": "Unfrei",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Unfrei",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann eine Erschwernis erhalten, wenn er als Unfreier Höhergestellte mit Gesellschaftstalenten überzeugen will. In seiner Kultur hat er zudem mit Unterdrückung zu kämpfen, genießt fast keinen rechtlichen Schutz und gilt als Besitz eines Höhergestellten.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-8 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Keine_Flugsalbe",
+    "category": "disadvantages",
+    "name": "Keine Flugsalbe (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Keine+Flugsalbe+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann die Sonderfertigkeit Flugsalbe nicht erwerben. Dadurch wird die Sonderfertigkeit Tradition (Hexen) um 10 AP billiger.",
+      "Voraussetzung": "Vorteil Zauberer, Zauberertradition kann Sonderfertigkeit Flugsalbe wählen",
+      "AP-Wert": "-25 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Odemwaffe",
+    "category": "disadvantages",
+    "name": "Odemwaffe",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Odemwaffe",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held kann einen Flammen- oder Eisstrahl aus seinem Mund speien. Das Ziel muss sich in einer Reichweite von 8 Schritt befinden. Der Held legt eine Probe auf Kraftakt ab. Das getroffene Ziel erleidet 1W6+QS TP. Der Strahl trifft automatisch, wenn das Ziel sich nicht verteidigt, ansonsten zählt der Strahl als Fernkampfangriff mit einer Schusswaffe (erschwert um -4) und kann entsprechend mit einer Schilde-PA verteidigt werden, auch ein Ausweichen ist möglich. An Schilden erzeugt er Strukturschaden , wenn er auf sie trifft. Ziele erleiden bei 1-3 auf 1W6 den Status Brennend auf kleiner Fläche (unabhängig von ihrer Größenkategorie). Diese Fähigkeit kostet 1 Aktion. Der Held erleidet 1 Stufe Betäubung . ➤ Allgemeines zum Ahnenblut (Drachen)",
+      "Voraussetzung": "Vorteil Drachenblut (alle)",
+      "AP-Wert": "15 Abenteuerpunkte",
+      "Anmerkung": "Bei Gletscherwurm-Drachenblütigen ist es Eis, bei den übrigen Feuer.",
+      "Publikation(en)": "Geschuppte Tyrannen , Seite 154"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Herausragende_Kampftechnik",
+    "category": "disadvantages",
+    "name": "Herausragende Kampftechnik",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Herausragende+Kampftechnik",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Durch den Vorteil Herausragende Kampftechnik verschiebt sich das Maximum in einer Kampftechnik um 1 nach oben, sowohl beim Maximum der Heldenerschaffung als auch beim endgültigen Maximum (abhängig von der Leiteigenschaft). Zwar erhält der Held nicht automatisch einen Kampftechnikpunkt dazu, aber er kann zu Spielbeginn zum Beispiel bei Erfahrungsgrad Erfahren mit einem Wert von 13 starten (anstatt 12) und auch das absolute Maximum in der Kampftechnik ist um 1 erhöht. Der Vorteil kann bis zu zweimal gewählt werden, wobei jede Kampftechnik nur einmal gewählt werden kann.",
+      "AP-Wert": "B-/C-/D-Kampftechnik: 8/12/16 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 166"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Zahlreiche_Visionen_I-II",
+    "category": "disadvantages",
+    "name": "Zahlreiche Visionen I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Zahlreiche+Visionen+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Bei Stufe I kann der Zelot 4 Vision-Sonderfertigkeiten beherrschen, bei Stufe II sogar 5.",
+      "Voraussetzung": "Vorteil Visionär",
+      "AP-Wert": "8 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Aventurisches Götterwirken , Seite 227"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Elementare_Verteidigung",
+    "category": "disadvantages",
+    "name": "Elementare Verteidigung",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Elementare+Verteidigung",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held kann sich schnell bewegen oder mit elementaren Ablenkungen seinen Gegner verwirren, sodass er einen Bonus von +2 auf AW erhält. Er muss dafür 1 freie Aktion einsetzen, die Wirkung hält 10 KR und danach erleidet er selbst 1 Stufe Verwirrung .",
+      "Voraussetzung": "Vorteil Dschinnenblut (Eisdschinn, Erzdschinn, Feuerdschinn, Humusdschinn, Luftdschinn oder Wasserdschinn)",
+      "AP-Wert": "12 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Elementarium , Seite 143"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Nat_rliche_Waffe_Biss",
+    "category": "disadvantages",
+    "name": "Natürliche Waffe (Biss) (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Nat%C3%BCrliche+Waffe+%28Biss%29+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Das Wesen kann den Vorteil Biss erhalten und diesen mit einer Raufen-AT einsetzen. Dieser Angriff ersetzt den sonst üblichen Waffenlosen Raufen-Angriff.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Vorteil als automatischen oder empfohlenen Vorteil aufweisen.",
+      "AP-Wert": "5 Abenteuerpunkte",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 28 f. Orks - Hauer & Schwarzer Pelz , Seite 30"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Zahlreiche_Predigten_I-II",
+    "category": "disadvantages",
+    "name": "Zahlreiche Predigten I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Zahlreiche+Predigten+I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Bei Stufe I kann der Zelot 4 Predigt-Sonderfertigkeiten beherrschen, bei Stufe II sogar 5.",
+      "Voraussetzung": "Vorteil Prediger",
+      "AP-Wert": "8 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Aventurisches Götterwirken , Seite 227"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Nat_rlicher_R_stungsschutz_I-II",
+    "category": "disadvantages",
+    "name": "Natürlicher Rüstungsschutz I-II (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Nat%C3%BCrlicher+R%C3%BCstungsschutz+I-II+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Das Wesen verfügt pro Stufe des Vorteils über einen natürlichen Rüstungsschutz, der mit anderen Rüstungen kombiniert werden kann.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Natürlicher Rüstungsschutz als automatischen oder empfohlenen Vorteil aufweisen.",
+      "AP-Wert": "20 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 29 Aventurisches Bestiarium II , Seite 117 Mysterien des Wolfsfrosts , Seite Vorsatz Orks - Hauer & Schwarzer Pelz , Seite 30"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Affinit_t_zu_Elementaren",
+    "category": "disadvantages",
+    "name": "Affinität zu Elementaren",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Affinit%C3%A4t+zu+Elementaren",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Der Held kann Elementare leichter zu einem Dienst überreden, wenn er sie selbst beschworen hat. Das Elementar erfüllt ihm einen zusätzlichen Dienst auch über das Maximum von 6 Diensten hinaus.",
+      "Voraussetzung": "Vorteil Zauberer, Kein Vorteil Affinität zu Dämonen",
+      "AP-Wert": "10 Abenteuerpunkte",
+      "Publikation(en)": "Aventurische Magie , Seite 225 Kodex der Magie , Seite 379",
+      "Errata": "Aventurische Magie - 4. Auflage: Beschränkung der Dienste auf max 6 aufgehoben"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Waffenbegabung",
+    "category": "disadvantages",
+    "name": "Waffenbegabung",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Waffenbegabung",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Eine Waffenbegabung erlaubt bei Kritischen Erfolgen und Patzern bei einer Probe auf eine Kampftechnik eine Wiederholung des Bestätigungswurfs.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "5/10/15 Abenteuerpunkte ((B-/C-/D-Kampftechnik))",
+      "Publikation(en)": "Regelwerk , Seite 169"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Nat_rliche_Waffe_Schwanz",
+    "category": "disadvantages",
+    "name": "Natürliche Waffe (Schwanz) (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Nat%C3%BCrliche+Waffe+%28Schwanz%29+%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Das Wesen kann den Vorteil Schwanzschlag erhalten und diesen mit einer Raufen-AT einsetzen. Dieser Angriff ersetzt den sonst üblichen waffenlosen Raufen-Angriff.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Vorteil als automatischen oder empfohlenen Vorteil aufweisen.",
+      "AP-Wert": "5 Abenteuerpunkte",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 29"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_K_ltestarre",
+    "category": "disadvantages",
+    "name": "Kältestarre (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=K%C3%A4ltestarre+(%2A)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Statt Kälteschaden zu erleiden, versetzt sich der Körper eines Achaz automatisch in eine Kältestarre. Er bekommt jede Minute bei Temperaturen, in denen er Kälteschaden erleiden würde, 1 Stufe Paralyse und bei der IV Stufe zusätzlich den Status Bewusstlos . In der Kältestarre kann er 1W20 Jahre überleben. Gelangt er wieder in eine wärmere Gegend, so bauen sich die Stufen Paralyse alle volle 30 Minuten um 1 Stufe ab. Ab Stufe III verliert er den Status Bewusstlos .",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Vorteil als automatischen oder empfohlenen Vorteil aufweisen.",
+      "AP-Wert": "-15 Abenteuerpunkte",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 29"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_verweichlicht",
+    "category": "disadvantages",
+    "name": "Verweichlicht",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=verweichlicht",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Bei der Probe auf Selbstbeherrschung (Handlungsfähigkeit bewahren oder Störungen ignorieren) bei Wundeffekten bekommt die Heldin eine Erschwernis von 2.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-3 Abenteuerpunkte",
+      "Publikation(en)": "Aventurisches Kompendium , Seite 133"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Eigenschaft",
+    "category": "disadvantages",
+    "name": "Schlechte Eigenschaft",
+    "url": "https://dsa.ulisses-regelwiki.de/SchlechteEigenschaft.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "[ergänzend zum Nachteil Schlechte Eigenschaft im Regelwerk ]\n\n# Exhibitionismus: Die Heldin zeigt gern, was sie hat und präsentiert sich nicht nur in äußerst freizügiger Gewandung. Sie nutzt fast jede sich bietende Gelegenheit, sich ganz oder Teilweise zu entblößen und genießt die Aufmerksamkeit, Verunsicherung oder Erregung ihres Publikums. AP-Wert: –10 Abenteuerpunkte\n\n# Lüsternheit: Der Held ist dauergeil und es fällt ihm oft schwer, sich zu beherrschen. Attraktivität des Gegenübers spielt dabei meist keine große Rolle. Findet er keinen Partner, legt er notfalls selbst Hand an, um sich Linderung zu verschaffen. AP-Wert: –10 Abenteuerpunkte\n\n# Voyeurismus: Der Held schaut anderen Menschen gerne bei sexuellen Handlungen zu. Dieser Drang ist so groß, dass er sich dafür auch in Schwierigkeiten oder in Gefahr begibt. AP-Wert: –10 Abenteuerpunkte\n\nPublikation(en): Wege der Vereinigungen, Seite 153",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Verpflichtungen_I-III",
+    "category": "disadvantages",
+    "name": "Verpflichtungen I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Verpflichtungen%20I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held muss Anweisungen desjenigen befolgen, dem er verpflichtet ist, oder mit den Konsequenzen leben. Ein Held kann mehreren Institutionen oder Personen verpflichtet sein, er bekommt jedoch nur einmal Abenteuerpunkte für den Nachteil (und zwar für die höchste Verpflichtungsstufe).",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Krankheitsanf_llig_I-II",
+    "category": "disadvantages",
+    "name": "Krankheitsanfällig I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Krankheitsanf%C3%A4llig%20I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Eine Krankheitsanfälligkeit verschlechtert Zähigkeit und Seelenkraft um 1 pro Stufe, wenn es darum geht, Krankheiten zu widerstehen.",
+      "Voraussetzung": "Kein Vorteil Krankheitsresistenz",
+      "AP-Wert": "-5 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Eingeschr_nkter_Sinn",
+    "category": "disadvantages",
+    "name": "Eingeschränkter Sinn",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Eingeschr%C3%A4nkter%20Sinn",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Wer über einen Eingeschränkten Sinn verfügt, dessen Proben auf Sinnesschärfe sind um 2 erschwert, wenn die Probe den entsprechenden Sinn betrifft. Eingeschränkte Sicht erschwert zudem Proben auf Fernkampf um 2. Folgende Sinne können gewählt werden: Sicht, Gehör, Geruch & Geschmack, Tastsinn. Ein Held kann bis zu zwei eingeschränkte Sinne besitzen.",
+      "Voraussetzung": "Kein Vorteil Herausragender Sinn für den gleichen Sinn, Kein Nachteil Blind (bei Sicht), Kein Nachteil Taub (bei Gehör)",
+      "AP-Wert": "–15 Abenteuerpunkte (Sicht), –10 Abenteuerpunkte (Gehör), –6 Abenteuerpunkte (Geruch & Geschmack), –2 Abenteuerpunkte (Tastsinn)",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_beh_big",
+    "category": "disadvantages",
+    "name": "Behäbig",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=beh%C3%A4big",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch Behäbig verliert ein Held 1 Punkt von seinem Geschwindigkeit-Grundwert.",
+      "Voraussetzung": "Kein Vorteil Flink",
+      "AP-Wert": "-4 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Sensibler_Geruchssinn",
+    "category": "disadvantages",
+    "name": "Sensibler Geruchssinn (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Sensibler%20Geruchssinn%20%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Solange der Held dem Geruch ausgesetzt ist, erleidet er eine Stufe Verwirrung .",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Sensibler Geruchssinn als automatischen oder empfohlenen Nachteil besitzen., Kein Eingeschränkter Sinn (Geruch)",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_sensibler_geruchssinn",
+    "category": "disadvantages",
+    "name": "Sensibler Geruchssinn (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=sensibler%20geruchssinn%20%28%2A%29",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Solange der Held dem Geruch ausgesetzt ist, erleidet er eine Stufe Verwirrung .",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Sensibler Geruchssinn als automatischen oder empfohlenen Nachteil besitzen., Kein Eingeschränkter Sinn (Geruch)",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_H_sslich_I-II",
+    "category": "disadvantages",
+    "name": "Hässlich I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=H%C3%A4sslich%20I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch jede Stufe dieses Nachteils erleidet der Held eine Erschwernis von 1 auf Betören (Anbändeln, Liebeskünste), Überreden (Manipulieren, Schmeicheln) und Handel (Feilschen).",
+      "Voraussetzung": "Kein Vorteil Gutaussehend",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 172"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Zauberanf_llig_I-II",
+    "category": "disadvantages",
+    "name": "Zauberanfällig I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Zauberanf%C3%A4llig%20I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Gegen Magie sind Seelenkraft und Zähigkeit um 1 pro Stufe schlechter als üblich.",
+      "Voraussetzung": "Kein Vorteil Schwer zu verzaubern",
+      "AP-Wert": "-12 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Giftanf_llig_I-II",
+    "category": "disadvantages",
+    "name": "Giftanfällig I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Giftanf%C3%A4llig%20I-II",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Eine Giftanfälligkeit verschlechtert Zähigkeit und Seelenkraft um 1 pro Stufe, wenn es darum geht, Giften zu widerstehen.",
+      "Voraussetzung": "Kein Vorteil Giftresistenz",
+      "AP-Wert": "-5 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 171"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Sensibler_Geruchssinn",
+    "category": "disadvantages",
+    "name": "Sensibler Geruchssinn (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Sensibler+Geruchssinn+(%2A)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Solange der Held dem Geruch ausgesetzt ist, erleidet er eine Stufe Verwirrung .",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Sensibler Geruchssinn als automatischen oder empfohlenen Nachteil besitzen., Kein Eingeschränkter Sinn (Geruch)",
+      "AP-Wert": "-10 Abenteuerpunkte",
+      "Anmerkung": "(*) Kann nur gewählt werden, wenn in Spezies, Kultur oder Profession als ein automatischer oder (dringend) empfohlener Vor- oder Nachteil aufgelistet ist.",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Regeneration_Lebensenergie_I-III",
+    "category": "disadvantages",
+    "name": "Schlechte Regeneration (Lebensenergie) I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte+Regeneration+(Lebensenergie)+I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Für jede Stufe des Nachteils muss der Held beim Regenerationswurf 1 Punkt abziehen (bis zu einem Minimum von 0).",
+      "Voraussetzung": "Kein Vorteil Verbesserte Regeneration (Lebensenergie)",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 177"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Eigenschaft",
+    "category": "disadvantages",
+    "name": "Schlechte Eigenschaft",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte%20Eigenschaft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "In jeder Situation, in der der Held mit einem potenziellen Auslöser seiner Schlechten Eigenschaft konfrontiert wird, muss er eine Probe auf Willenskraft bestehen, um sich zu beherrschen. Gelingt ihm diese Probe, ist alles in Ordnung, ansonsten muss er entsprechend der Schlechten Eigenschaft agieren. Seine Schlechte Eigenschaft hat ihn so lange im Griff, wie er dem Auslöser ausgesetzt ist. Der Meister kann für die Probe auf Willenskraft entsprechend der Stärke des Auslösers Erschwernisse oder Erleichterungen aussprechen. Es dürfen bis zu zwei Schlechte Eigenschaften pro Held gewählt werden. Kombinationen, die sich ausschließen (z. B. Geiz und Verschwendungssucht), dürfen nicht gewählt werden. Das letzte Wort darüber hat der Spielleiter. Beispiele: # Aberglaube: Der Held weicht vor schwarzen Katzen, Unglückszahlen und anderen schlechten Omen zurück. AP-Wert: –5 Abenteuerpunkte # Autoritätsglaube: Der Held zweifelt nicht an den Worten höhergestellter Personen, selbst wenn sie unlogische Befehle erteilen oder unglaubwürdig sind. AP-Wert: –5 Abenteuerpunkte # Geiz: Wenn der Held erst einmal Gold oder andere Wertgegenstände besitzt, gibt er sie nur ungerne wieder her. Lieber schränkt er sich selbst und andere finanziell ein, und er geht sogar unnötige Risiken ein, um Geld zu sparen. AP-Wert: –5 Abenteuerpunkte # Goldgier: Goldgierige Helden lassen alle Vorsicht fallen, wenn es darum geht, eine Schatztruhe oder andere wertvolle Gegenstände zu untersuchen und an sich zu nehmen. AP-Wert: –5 Abenteuerpunkte # Jähzorn: Der Held ist sehr reizbar und neigt zu Wutausbrüchen, die meist nur kurz anhalten, aber zu gewalttätigem Verhalten führen können. AP-Wert: –10 Abenteuerpunkte # Kleptomanie: Manche Abenteurer stehlen um des Stehlens willen, egal ob das Diebesgut einen nennenswerten Wert hat oder nicht, ohne über die Konsequenzen nachzudenken. AP-Wert: –10 Abenteuerpunkte # Naiv: Der Held ist gutherzig und naiv, vertraut den falschen Leuten und kann sich kaum vorstellen, dass man manche Leute es nicht gut mit ihm meinen. Er wird auch durch Enttäuschungen nicht vorsichtiger. AP-Wert: –10 Abenteuerpunkte # Neugier: Jeder Abenteurer ist neugierig, aber einige Abenteurer werden so von ihrer Neugierde getrieben, dass sie unnötige Risiken eingehen, um sie zu befriedigen. AP-Wert: –5 Abenteuerpunkte # Rachsucht: Während jähzornige Helden sofort ihrer Wut freien Lauf lassen, sind rachsüchtige besonnener und planen langfristig, wie sie sich für Kränkungen, egal wie gering, rächen können. AP-Wert: –5 Abenteuerpunkte # Spielsucht: Spielsüchtige lassen sich leicht zu riskanten Glücksspielen und Wetten verleiten. Oft führt die Spielsucht zu hohen Spielschulden. AP-Wert: –5 Abenteuerpunkte # Verschwendungssucht: Geld bleibt nicht lange im Besitz des Helden. Er gibt es mit vollen Händen (für sinnlose Dinge) aus. AP-Wert: –5 Abenteuerpunkte # Sikaryan-Durst (nur für Sikaryan-Räuber; automatisch vergeben bei Zustand Sikaryan-Verlust ): Diese Schlechte Eigenschaft sorgt dafür, dass ein Sikaryan-Räuber seinen Hunger stillen will. Je höher sein Sikaryan-Verlust ist, desto eindringlicher will er dem Verlangen nachgehen und ist bereit, seine Tarnung aufzugeben und sich auf den nächsten Kulturschaffenden zu stürzen.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "je nach Schlechter Eigenschaft",
+      "Anmerkung": "\"Sikaryan-Durst\" als weitere Ausgestaltung der \"Schlechte Eigenschaft\" eingeführt in: Aventurisches Bestiarium II, Seite 118 / Aventurisches Götterwirken II, Seite 182",
+      "Publikation(en)": "Regelwerk , Seite 176ff. Aventurisches Bestiarium II , Seite 118"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_schlechte_eigenschaft",
+    "category": "disadvantages",
+    "name": "Schlechte Eigenschaft",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=schlechte%20eigenschaft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "In jeder Situation, in der der Held mit einem potenziellen Auslöser seiner Schlechten Eigenschaft konfrontiert wird, muss er eine Probe auf Willenskraft bestehen, um sich zu beherrschen. Gelingt ihm diese Probe, ist alles in Ordnung, ansonsten muss er entsprechend der Schlechten Eigenschaft agieren. Seine Schlechte Eigenschaft hat ihn so lange im Griff, wie er dem Auslöser ausgesetzt ist. Der Meister kann für die Probe auf Willenskraft entsprechend der Stärke des Auslösers Erschwernisse oder Erleichterungen aussprechen. Es dürfen bis zu zwei Schlechte Eigenschaften pro Held gewählt werden. Kombinationen, die sich ausschließen (z. B. Geiz und Verschwendungssucht), dürfen nicht gewählt werden. Das letzte Wort darüber hat der Spielleiter. Beispiele: # Aberglaube: Der Held weicht vor schwarzen Katzen, Unglückszahlen und anderen schlechten Omen zurück. AP-Wert: –5 Abenteuerpunkte # Autoritätsglaube: Der Held zweifelt nicht an den Worten höhergestellter Personen, selbst wenn sie unlogische Befehle erteilen oder unglaubwürdig sind. AP-Wert: –5 Abenteuerpunkte # Geiz: Wenn der Held erst einmal Gold oder andere Wertgegenstände besitzt, gibt er sie nur ungerne wieder her. Lieber schränkt er sich selbst und andere finanziell ein, und er geht sogar unnötige Risiken ein, um Geld zu sparen. AP-Wert: –5 Abenteuerpunkte # Goldgier: Goldgierige Helden lassen alle Vorsicht fallen, wenn es darum geht, eine Schatztruhe oder andere wertvolle Gegenstände zu untersuchen und an sich zu nehmen. AP-Wert: –5 Abenteuerpunkte # Jähzorn: Der Held ist sehr reizbar und neigt zu Wutausbrüchen, die meist nur kurz anhalten, aber zu gewalttätigem Verhalten führen können. AP-Wert: –10 Abenteuerpunkte # Kleptomanie: Manche Abenteurer stehlen um des Stehlens willen, egal ob das Diebesgut einen nennenswerten Wert hat oder nicht, ohne über die Konsequenzen nachzudenken. AP-Wert: –10 Abenteuerpunkte # Naiv: Der Held ist gutherzig und naiv, vertraut den falschen Leuten und kann sich kaum vorstellen, dass man manche Leute es nicht gut mit ihm meinen. Er wird auch durch Enttäuschungen nicht vorsichtiger. AP-Wert: –10 Abenteuerpunkte # Neugier: Jeder Abenteurer ist neugierig, aber einige Abenteurer werden so von ihrer Neugierde getrieben, dass sie unnötige Risiken eingehen, um sie zu befriedigen. AP-Wert: –5 Abenteuerpunkte # Rachsucht: Während jähzornige Helden sofort ihrer Wut freien Lauf lassen, sind rachsüchtige besonnener und planen langfristig, wie sie sich für Kränkungen, egal wie gering, rächen können. AP-Wert: –5 Abenteuerpunkte # Spielsucht: Spielsüchtige lassen sich leicht zu riskanten Glücksspielen und Wetten verleiten. Oft führt die Spielsucht zu hohen Spielschulden. AP-Wert: –5 Abenteuerpunkte # Verschwendungssucht: Geld bleibt nicht lange im Besitz des Helden. Er gibt es mit vollen Händen (für sinnlose Dinge) aus. AP-Wert: –5 Abenteuerpunkte # Sikaryan-Durst (nur für Sikaryan-Räuber; automatisch vergeben bei Zustand Sikaryan-Verlust ): Diese Schlechte Eigenschaft sorgt dafür, dass ein Sikaryan-Räuber seinen Hunger stillen will. Je höher sein Sikaryan-Verlust ist, desto eindringlicher will er dem Verlangen nachgehen und ist bereit, seine Tarnung aufzugeben und sich auf den nächsten Kulturschaffenden zu stürzen.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "je nach Schlechter Eigenschaft",
+      "Anmerkung": "\"Sikaryan-Durst\" als weitere Ausgestaltung der \"Schlechte Eigenschaft\" eingeführt in: Aventurisches Bestiarium II, Seite 118 / Aventurisches Götterwirken II, Seite 182",
+      "Publikation(en)": "Regelwerk , Seite 176ff. Aventurisches Bestiarium II , Seite 118"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_eigenschaft",
+    "category": "disadvantages",
+    "name": "Schlechte Eigenschaft",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte%20eigenschaft",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "In jeder Situation, in der der Held mit einem potenziellen Auslöser seiner Schlechten Eigenschaft konfrontiert wird, muss er eine Probe auf Willenskraft bestehen, um sich zu beherrschen. Gelingt ihm diese Probe, ist alles in Ordnung, ansonsten muss er entsprechend der Schlechten Eigenschaft agieren. Seine Schlechte Eigenschaft hat ihn so lange im Griff, wie er dem Auslöser ausgesetzt ist. Der Meister kann für die Probe auf Willenskraft entsprechend der Stärke des Auslösers Erschwernisse oder Erleichterungen aussprechen. Es dürfen bis zu zwei Schlechte Eigenschaften pro Held gewählt werden. Kombinationen, die sich ausschließen (z. B. Geiz und Verschwendungssucht), dürfen nicht gewählt werden. Das letzte Wort darüber hat der Spielleiter. Beispiele: # Aberglaube: Der Held weicht vor schwarzen Katzen, Unglückszahlen und anderen schlechten Omen zurück. AP-Wert: –5 Abenteuerpunkte # Autoritätsglaube: Der Held zweifelt nicht an den Worten höhergestellter Personen, selbst wenn sie unlogische Befehle erteilen oder unglaubwürdig sind. AP-Wert: –5 Abenteuerpunkte # Geiz: Wenn der Held erst einmal Gold oder andere Wertgegenstände besitzt, gibt er sie nur ungerne wieder her. Lieber schränkt er sich selbst und andere finanziell ein, und er geht sogar unnötige Risiken ein, um Geld zu sparen. AP-Wert: –5 Abenteuerpunkte # Goldgier: Goldgierige Helden lassen alle Vorsicht fallen, wenn es darum geht, eine Schatztruhe oder andere wertvolle Gegenstände zu untersuchen und an sich zu nehmen. AP-Wert: –5 Abenteuerpunkte # Jähzorn: Der Held ist sehr reizbar und neigt zu Wutausbrüchen, die meist nur kurz anhalten, aber zu gewalttätigem Verhalten führen können. AP-Wert: –10 Abenteuerpunkte # Kleptomanie: Manche Abenteurer stehlen um des Stehlens willen, egal ob das Diebesgut einen nennenswerten Wert hat oder nicht, ohne über die Konsequenzen nachzudenken. AP-Wert: –10 Abenteuerpunkte # Naiv: Der Held ist gutherzig und naiv, vertraut den falschen Leuten und kann sich kaum vorstellen, dass man manche Leute es nicht gut mit ihm meinen. Er wird auch durch Enttäuschungen nicht vorsichtiger. AP-Wert: –10 Abenteuerpunkte # Neugier: Jeder Abenteurer ist neugierig, aber einige Abenteurer werden so von ihrer Neugierde getrieben, dass sie unnötige Risiken eingehen, um sie zu befriedigen. AP-Wert: –5 Abenteuerpunkte # Rachsucht: Während jähzornige Helden sofort ihrer Wut freien Lauf lassen, sind rachsüchtige besonnener und planen langfristig, wie sie sich für Kränkungen, egal wie gering, rächen können. AP-Wert: –5 Abenteuerpunkte # Spielsucht: Spielsüchtige lassen sich leicht zu riskanten Glücksspielen und Wetten verleiten. Oft führt die Spielsucht zu hohen Spielschulden. AP-Wert: –5 Abenteuerpunkte # Verschwendungssucht: Geld bleibt nicht lange im Besitz des Helden. Er gibt es mit vollen Händen (für sinnlose Dinge) aus. AP-Wert: –5 Abenteuerpunkte # Sikaryan-Durst (nur für Sikaryan-Räuber; automatisch vergeben bei Zustand Sikaryan-Verlust ): Diese Schlechte Eigenschaft sorgt dafür, dass ein Sikaryan-Räuber seinen Hunger stillen will. Je höher sein Sikaryan-Verlust ist, desto eindringlicher will er dem Verlangen nachgehen und ist bereit, seine Tarnung aufzugeben und sich auf den nächsten Kulturschaffenden zu stürzen.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "je nach Schlechter Eigenschaft",
+      "Anmerkung": "\"Sikaryan-Durst\" als weitere Ausgestaltung der \"Schlechte Eigenschaft\" eingeführt in: Aventurisches Bestiarium II, Seite 118 / Aventurisches Götterwirken II, Seite 182",
+      "Publikation(en)": "Regelwerk , Seite 176ff. Aventurisches Bestiarium II , Seite 118"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_niedrige_lebenskraft_i-vii",
+    "category": "disadvantages",
+    "name": "Niedrige Lebenskraft I-VII",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=niedrige%20lebenskraft%20i-vii",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der LE-Grundwert sinkt durch diesen Nachteil um 1 Punkt pro Stufe des Nachteils.",
+      "Voraussetzung": "Kein Vorteil Hohe Lebenskraft",
+      "AP-Wert": "-4 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Niedrige_Lebenskraft_I-VII",
+    "category": "disadvantages",
+    "name": "Niedrige Lebenskraft I-VII",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Niedrige%20Lebenskraft%20I-VII",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der LE-Grundwert sinkt durch diesen Nachteil um 1 Punkt pro Stufe des Nachteils.",
+      "Voraussetzung": "Kein Vorteil Hohe Lebenskraft",
+      "AP-Wert": "-4 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 174"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Unerotische_Stimme",
+    "category": "disadvantages",
+    "name": "Unerotische Stimme",
+    "url": "https://dsa.ulisses-regelwiki.de/UnerotischeStimme.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Proben auf Betören (Anbändeln) und ebenso Proben auf Betören (Liebeskünste) , wenn der Held die Sexpraktik Verbalerotik einsetzt\n\nVoraussetzungen: kein Vorteil Erotische Stimme , kein Nachteil Stumm",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Impotent",
+    "category": "disadvantages",
+    "name": "Impotent",
+    "url": "https://dsa.ulisses-regelwiki.de/Impotent.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Bei Proben auf Betören (Liebeskünste) hat der Held eine Erschwernis von 5. Ausnahmen können bei Sexpraktiken auftreten, wo ein erigiertes Glied nicht notwendig ist. Die Erschwernis kann hier nach Meisterentscheid niedriger ausfallen oder ganz wegfallen.\n\nDer Held kann zudem nie mehr als 1 Stufe Erregung erhalten.\n\nVoraussetzungen: kein Vorteil Ausdauernde/r Liebhaber/in oder Potent , kein Nachteil Frigide oder Verstümmelt (Eunuch)",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechter_Geschmack",
+    "category": "disadvantages",
+    "name": "Schlechter Geschmack",
+    "url": "https://dsa.ulisses-regelwiki.de/SchlechterGeschmack.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Wenn die Heldin sich mittels einer Probe auf Betören (Aufhübschen) zurechtmachen will, erhält sie eine Erschwernis von 1.\n\nVoraussetzungen: kein Vorteil Guter Geschmack , keine Sonderfertigkeit Erotische Stilsicherheit",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Verfr_hter_H_hepunkt",
+    "category": "disadvantages",
+    "name": "Verfrühter Höhepunkt",
+    "url": "https://dsa.ulisses-regelwiki.de/Verfr%C3%BChterH%C3%B6hepunkt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held bekommt seinen Höhepunkt bereits bei Erregung Stufe III. Erregung Stufe III wird bei ihm wie Erregung Stufe IV behandelt.\n\nVoraussetzungen: kein Vorteil Ausdauernde/r Liebhaber/in",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Sex-Nachteile",
+    "category": "disadvantages",
+    "name": "Sex-Nachteile",
+    "url": "https://dsa.ulisses-regelwiki.de/Sex-Nachteile.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Wege der Vereinigungen - ab 18 Jahre"
+  },
+  {
+    "id": "disadvantages_zerbrechlich",
+    "category": "disadvantages",
+    "name": "Zerbrechlich",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=zerbrechlich",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Erschwernisse durch den Zustand Schmerz werden wie bei einer Stufe höher behandelt. Die Handlungsunfähigkeit tritt somit bereits bei Stufe III ein.",
+      "Voraussetzung": "Kein Vorteil Zäher Hund",
+      "AP-Wert": "-20 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 179"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Regeneration_Karmaenergie_I-III",
+    "category": "disadvantages",
+    "name": "Schlechte Regeneration (Karmaenergie) I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Schlechte%20Regeneration%20%28Karmaenergie%29%20I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Für jede Stufe des Nachteils muss der Held beim Regenerationswurf 1 Punkt abziehen (bis zu einem Minimum von 0).",
+      "Voraussetzung": "Vorteil Geweihter, Kein Vorteil Verbesserte Regeneration (Karmaenergie)",
+      "AP-Wert": "-10 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 176"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Arm_I-III",
+    "category": "disadvantages",
+    "name": "Arm I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=Arm%20I-III",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch den Nachteil Arm erhält ein Held bei der Generierung 250 Silbertaler weniger pro Stufe. Wählt er also 3 Stufen Arm, beginnt er ohne Startkapital und besitzt nur ein Kleiderpaket der Kategorie arm.",
+      "Voraussetzung": "Kein Vorteil Reich",
+      "AP-Wert": "-1 Abenteuerpunkt (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 170"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_unfrei",
+    "category": "disadvantages",
+    "name": "Unfrei",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=unfrei",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Der Held kann eine Erschwernis erhalten, wenn er als Unfreier Höhergestellte mit Gesellschaftstalenten überzeugen will. In seiner Kultur hat er zudem mit Unterdrückung zu kämpfen, genießt fast keinen rechtlichen Schutz und gilt als Besitz eines Höhergestellten.",
+      "Voraussetzung": "Keine",
+      "AP-Wert": "-8 Abenteuerpunkte",
+      "Publikation(en)": "Regelwerk , Seite 178"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_arm_i-iii",
+    "category": "disadvantages",
+    "name": "Arm I-III",
+    "url": "https://dsa.ulisses-regelwiki.de/nachteil.html?nachteil=arm%20i-iii",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Nachteile"
+    ],
+    "properties": {
+      "Regel": "Durch den Nachteil Arm erhält ein Held bei der Generierung 250 Silbertaler weniger pro Stufe. Wählt er also 3 Stufen Arm, beginnt er ohne Startkapital und besitzt nur ein Kleiderpaket der Kategorie arm.",
+      "Voraussetzung": "Kein Vorteil Reich",
+      "AP-Wert": "-1 Abenteuerpunkt (pro Stufe)",
+      "Publikation(en)": "Regelwerk , Seite 170"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Nat_rlicher_R_stungsschutz_I-II",
+    "category": "disadvantages",
+    "name": "Natürlicher Rüstungsschutz I-II (*)",
+    "url": "https://dsa.ulisses-regelwiki.de/vorteil.html?vorteil=Nat%C3%BCrlicher+R%C3%BCstungsschutz+I-II+(%2A)",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile",
+      "Vorteil"
+    ],
+    "properties": {
+      "Regel": "Das Wesen verfügt pro Stufe des Vorteils über einen natürlichen Rüstungsschutz, der mit anderen Rüstungen kombiniert werden kann.",
+      "Voraussetzung": "Spezies, Kultur oder Profession muss Natürlicher Rüstungsschutz als automatischen oder empfohlenen Vorteil aufweisen.",
+      "AP-Wert": "20 Abenteuerpunkte (pro Stufe)",
+      "Publikation(en)": "Achaz - Schuppenkleid & Lange Zungen , Seite 29 Aventurisches Bestiarium II , Seite 117 Mysterien des Wolfsfrosts , Seite Vorsatz Orks - Hauer & Schwarzer Pelz , Seite 30"
+    },
+    "description": "",
+    "subcategory": "Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Abneigung_Sexpraktik_I-IV",
+    "category": "disadvantages",
+    "name": "Abneigung (Sexpraktik) I-IV",
+    "url": "https://dsa.ulisses-regelwiki.de/AbneigungSexpraktik.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held hat eine Abneigung für eine bestimmte Sexpraktik. Pro Stufe ist die Probe auf Betören (Liebeskünste) für andere Teilnehmer des Liebesspiels um 1 erschwert, wenn sie diese Sexpraktik bei dem Helden einsetzen.\n\nEin Held kann maximal über zwei Abneigungen verfügen.\n\nVoraussetzungen: kein Vorteil Vorliebe für die ausgewählte Sexpraktik",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Fixierung",
+    "category": "disadvantages",
+    "name": "Fixierung",
+    "url": "https://dsa.ulisses-regelwiki.de/Fixierung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Sollte die Fixierung beim Liebesspiel fehlen, sind Proben auf Betören (Liebeskünste) um 2 erschwert. Eine Heldin kann maximal über zwei Fixierungen verfügen.\n\nAP-Wert: –3 Abenteuerpunkte pro Fixierung\n\n# Adrenalin: Nur, wenn Gefahr für Leib und Leben droht, läuft die Heldin beim Liebesspiel zu Hochtouren auf.\n\n# Altersfetisch: Die Partnerin muss deutlich älter sein als der Held oder im letzten Lebensdrittel, wenn der Held selbst schon recht betagt ist. Auch eine extreme Fixierung auf langlebige Spezies wie Elfen oder Zwerge ist möglich.\n\n# Arkanophil: Ohne magische Glyphen, Artefakte, Magierstab oder (vorgebliches) Ritualpentagramm geht für diese Heldin nichts. Am besten ist der Auserwählte gleich ein Zauberer.\n\n# Eigenschaften oder Körperteile des Partners: Die Heldin steht z. B. auf Füße, Hände, lange oder extrem kurze Haare, große oder sehr kleine Brüste, extreme Körperbehaarung, starkes Übergewicht, glattrasierten Intimbereich oder Bärte.\n\n# Elfenfreund: Nur Elfen und maximal noch Halbelfen werden als sexuell erregend empfunden. Kann alternativ auch für eine andere Spezies gewählt werden außer die eigene.\n\n# Fesselungen: Irgendjemand muss gefesselt sein, ob mit detailverliebt verknoteten Seilen, Seidenschals, strammen Lederbändern oder eisernen Handschellen.\n\n# Gegenstände: Ein bestimmter Gegenstand muss ins Liebesspiel eingebunden werden. Denkbar sind nicht nur Liebesspielzeuge, sondern auch Kutschen, Schwerter, Holzbeine und Po-Stöpsel mit Tierschwänzen.\n\n# Glaubensfetisch: Geweihte oder sehr fromme Personen, gesegnete und geweihte Gegenstände, oder Liturgien und Gottesdienste bringen den Helden in Wallungen.\n\n# Kleidung: Die Heldin wird durch bestimmte Kleidung oder ein bestimmtes Kleidungsstück erregt, z. B. Reizwäsche, Korsetts, Lederkleidung, Pelze, Kettenhemden aber auch Sandalen oder Flügelhelme kommen infrage.\n\n# Masochismus: Der Held liebt es, sich seiner Partnerin zu unterwerfen, gedemütigt zu werden und wenn man ihm Schmerzen zufügt.\n\n# Rollenspiele: Der Held kommt nur richtig in Fahrt, wenn er den Schwertkönig Raidri Conchobair geben darf oder seine Partnerin in eine andere Rolle schlüpft, etwa die der fürsorglichen Perainegeweihten, der widerspenstigen Adelstochter oder der lüsternen Trosshure. Verkleidungen sind dabei optional.\n\n# Sadismus: Die Heldin liebt es, ihren Partner zu demütigen, zu unterwerfen und ihm Schmerzen zuzufügen.\n\n# Sexpraktik: Jede Art von regeltechnischer Sexpraktik kann auch als Fixierung dienen.",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Frigide",
+    "category": "disadvantages",
+    "name": "Frigide",
+    "url": "https://dsa.ulisses-regelwiki.de/Frigide.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Möchte jemand den Helden beim Liebesspiel Erregung verschaffen, so ist die Probe auf Betören (Liebeskünste) für ihn um 3 erschwert.\n\nEin frigider Held kann zudem keinen ekstatischen Höhepunkt erlangen.\n\nVoraussetzungen: kein Vorteil Ausdauernde/r Liebhaber/in , Begabte/r Aufreißer/in oder Rahjageküsst , kein Nachteil Impotent",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Homophobie_Heterophobie_I-II",
+    "category": "disadvantages",
+    "name": "Homophobie/Heterophobie I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/HomophobieHeterophobie.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Gegenüber Homo- und Bisexuellen hat die Heldin bei Proben auf Gesellschaftstalente (außer auf Einschüchtern und Willenskraft ) eine Erschwernis von 2 (Stufe I) bzw. 4 (Stufe II). Voraussetzung ist, dass die Heldin die sexuelle Orientierung ihres Gegenübers kennt, ansonsten kommt keine Erschwernis zu tragen. Gegenüber anderen Aventuriern, die weder homophob noch homo- oder bisexuell sind, erleidet die Heldin immer noch Erschwernisse von 1 bzw. 2., wenn ihr Gegenüber ihre Homophobie bemerkt.\n\nDie extrem seltene Heterophobie folgt den gleichen Regeln, nur dass die Heldin Heterosexuelle nicht leiden kann.",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Pers_nlichkeitsschw_che",
+    "category": "disadvantages",
+    "name": "Persönlichkeitsschwäche",
+    "url": "https://dsa.ulisses-regelwiki.de/Pers%C3%B6nlichkeitsschw%C3%A4che.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "[ergänzend zum Nachteil Persönlichkeitsschwäche im Regelwerk ]\n\n# Anzügliches Verhalten: Ständig starrt die Heldin auf anderer Leute körperliche Vorzüge, macht dreckige Witze oder Anspielungen und greift auch mal beherzt zu. Sie selbst präsentiert sich meist offenherzig und hat so wenig Scheu, über sexuelle Dinge zu reden, dass es ihren Kameraden öfters die Schamesröte ins Gesicht treibt. AP-Wert: –5 Abenteuerpunkte\n\n# Eifersucht: Die Heldin reagiert extrem eifersüchtig, wenn es um ihre(n) Auserwählte(n) geht. Schmollen oder hässliche Szenen sind an der Tagesordnung, selbst wenn ihr Partner gar nichts dafür kann, dass er Aufmerksamkeit bekommt – oder er nicht einmal ihr Partner ist, sondern es sich lediglich um einen Schwarm handelt. AP-Wert: –5 Abenteuerpunkte\n\n# Busenkomplexe: Obwohl der Busen der Heldin möglicherweise perfekt sitzt und eine optimale Größe aufweist, hat sie ständig Komplexe und findet ihn zu groß oder zu klein. Und sie wird ihren Gefährten dies bei jeder sich bietenden Gelegenheit auch mitteilen. AP-Wert: –5 Abenteuerpunkte\n\n# Peniskomplexe: Der Held fühlt sich unzulänglich bestückt, ganz egal wie groß oder klein sein bestes Stück geraten ist. Er beneidet seine Kameraden und auch sonst ist er nicht sonderlich gut auf seine Männlichkeit zu sprechen, jammert ausdauernd oder leidet still vor sich hin. AP-Wert: –5 Abenteuerpunkte\n\n# Stimmungsschwankungen: Gleich aus welchem Grund, die Stimmung der Heldin kann von einem auf den anderen Moment umschlagen. Dieser Nachteil ist hervorragend geeignet, um den Monatszyklus oder eine Schwangerschaft zu untermalen. Allerdings gibt es selbstverständlich auch männliche Helden, die unter solchen Schwankungen leiden. AP-Wert: –5 Abenteuerpunkte\n\nPublikation(en): Wege der Vereinigungen, Seite 152",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Schlechte_Angewohnheit",
+    "category": "disadvantages",
+    "name": "Schlechte Angewohnheit",
+    "url": "https://dsa.ulisses-regelwiki.de/SchlechteAngewohnheit.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "[ergänzend zum Nachteil Schlechte Angewohnheit im Regelwerk ]\n\n# Anspielungen: Der Charakter setzt das, was er hört, ständig in einen sexuellen Kontext, entdeckt Anspielungen wo keine sind und geht damit allen gehörig auf den Sack.\n\n# Lauter Liebhaber: Der Held ist laut beim Liebesspiel. So laut, dass es nicht nur sein Umfeld nervt, sondern manchmal sogar seine Liebhaber.\n\n# Miese Anmache: Anmachsprüche des Helden sind immer irgendwie unpassend, seien sie eine Spur zu derb, nicht komisch oder schlicht wahnsinnig abgedroschen.\n\n# Nur im Dunkeln: Der Held schämt sich aus irgendeinem Grund für seinen Körper oder das, was er tut und mag daher nicht beim Sex gesehen werden. Deshalb findet bei ihm der Liebesakt nur im Dunkeln statt.\n\n# Prüde: Der Held ist nicht nur außerordentlich verklemmt, er lässt es auch jeden wissen, sei es durch andauerndes Schmollen, beständige Vorwürfe oder Belehrungen. Häufig wird er rot, reagiert entsetzt, verschüchtert, verärgert oder ihm fehlen die Worte, wenn das Gespräch auf Nacktheit, Sex oder ähnliche Themen kommt.\n\n# Schamlos: Die Heldin zieht sich in vielen unpassenden Situationen aus, auch wenn es nicht angebracht ist. Sie hat keine Probleme, barbusig vor Freunden oder dem Baron herumzulaufen, oder sogar sexuelle Handlungen in der Öffentlichkeit vorzunehmen.\n\n# Schwärmerei: Der Held verliebt sich nicht immer unsterblich, aber immer wieder neu. Ständig schwärmt er für das (wechselnde) Objekt seiner Begierde, bewundert es unglücklich aus der Ferne, minnt, buhlt oder begibt sich sogar in Gefahr, um es zu beeindrucken. Neben den Hochphasen der Schwärmerei durchlebt er auch häufig Tiefs, zweifelt an sich und seiner Bestimmung und ist untröstlich, wenn seine Leidenschaft unerwidert bleibt.\n\nPublikation(en): Wege der Vereinigungen, Seite 152",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Unfruchtbar",
+    "category": "disadvantages",
+    "name": "Unfruchtbar",
+    "url": "https://dsa.ulisses-regelwiki.de/Unfruchtbar.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held ist nicht in der Lage, ein Kind zu zeugen. Eine unfruchtbare Heldin hingegen kann keine Kinder bekommen. Ein Wurf auf die Zeugungs- oder Empfängnistabelle ist deshalb nicht notwendig.\n\nDieser Nachteil ist nicht zur todsicheren Verhütung gedacht, der Held sollte, wenn dieser gewählt wird, auch entsprechend unter diesem Umstand leiden. Der Meister kann in passenden Situationen diesen Nachteil wie eine Persönlichkeitsschwäche behandeln und eine Erschwernis von 1 auf Fertigkeitsproben vergeben.\n\nVoraussetzungen: kein Vorteil Fruchtbar oder Levthangeküsst , kein Nachteil Verstümmelt (Eunuch)",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Untreu_I-II",
+    "category": "disadvantages",
+    "name": "Untreu I-II",
+    "url": "https://dsa.ulisses-regelwiki.de/Untreu.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin erhält bei Proben auf Willenskraft (Betören widerstehen) eine Erschwernis von 1 pro Stufe der Sonderfertigkeit.",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Verst_mmelt_Eunuch_I_II",
+    "category": "disadvantages",
+    "name": "Verstümmelt (Eunuch I/II)",
+    "url": "https://dsa.ulisses-regelwiki.de/Verst%C3%BCmmelt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Vor- und Nachteile",
+      "Sex-Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Viele Fertigkeitsproben können durch die Verstümmelung erschwert oder unmöglich sein. Die Entscheidung hierüber obliegt dem Meister je nach Situation.\n\n# Eunuch I: Die Hoden des Helden wurden entfernt. Er hat automatisch den Nachteil Unfruchtbar .\n\nProben auf Betören (Liebeskünste) sind um 1 erschwert.\n\nProben auf Willenskraft (Betören widerstehen) sind für ihn um 1 erleichtert.\n\nMit diesem Nachteil kann man aber noch eine Erektion bekommen.\n\n# Eunuch II: Das ganze Geschlechtsteil des Helden wurde entfernt. Er hat automatisch den Nachteil Impotent und Unfruchtbar .\n\nProben auf Betören (Liebeskünste) sind um 2 erschwert. Bei einigen Sexpraktiken kann die Erschwernis höher ausfallen oder ganz unmöglich sein.\n\nProben auf Willenskraft (Betören widerstehen) sind für ihn um 2 erleichtert.\n\nVoraussetzungen: Person mit Penis (ehemals), kein Nachteil Unfruchtbar (dieser ist bei Eunuch I automatisch vorhanden); bei Eunuch II zusätzlich kein Nachteil Impotent (dieser ist bei Eunuch II automatisch vorhanden)\n\nAP-Wert: Eunuch I: –10 Abenteuerpunkte; Eunuch II: –30 Abenteuerpunkte",
+    "subcategory": "WdV - Vor- und Nachteile"
+  },
+  {
+    "id": "disadvantages_Wolfsgebiss",
+    "category": "disadvantages",
+    "name": "Wolfsgebiss",
+    "url": "https://dsa.ulisses-regelwiki.de/ahn_wolfsgebiss.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Der Held kann sich innerhalb 1 Aktion ein Wolfsgebiss wachsen lassen und damit im Nahkampf mehr Schaden verursachen. Er benutzt dazu eine Raufen-AT und richtet +1 TP im Waffenlosen Kampf an. Zudem kann er die Sonderfertigkeit Verbeißen einsetzen. Die Rückverwandlung zu einem normalen Gebiss dauert ebenfalls 1 Aktion. Außerdem erzielt er, während die Verwandlung andauert, bei Proben auf Einschüchtern +1 FP (bis zu einem Maximum von 18 FP).\n\nPublikationen: Aventurische Magie 3, Seite 208",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "disadvantages_Wolfskind",
+    "category": "disadvantages",
+    "name": "Wolfskind",
+    "url": "https://dsa.ulisses-regelwiki.de/ahn_wolfskind.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Vor- und Nachteile"
+    ],
+    "properties": {},
+    "description": "Regel: Die Heldin kann sich in einen Grimwolf verwandeln (siehe Aventurischer Almanach Seite 168). Dazu benötigt sie 4 Aktionen. Während der Wirkungsdauer verwendet die Heldin die körperlichen Werte des Tieres, einschließlich seiner Eigenschaften, Talente und Kampfwerte. Eine niedrige LE wird bei der Verwandlung anteilsmäßig angerechnet, gleiches geschieht bei der Rückverwandlung. Die geistigen Werte der Heldin bleiben ebenso wie ihr Bewusstsein erhalten. Die Verwandlung betrifft nur die Heldin selbst, nicht ihre Kleidung oder Ausrüstung. Die Wirkungsdauer beträgt 1 Stunde. Die Heldin kann sich nicht willentlich zurückverwandeln. Am Ende der Wirkungsdauer erleidet die Heldin 1 Stufe Betäubung.\n\nPublikationen: Aventurische Magie 3, Seite 208",
+    "subcategory": "DSA Regel-Wiki"
+  }
+]

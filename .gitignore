@@ -1,2 +1,9 @@
 node_modules/
 .env
+DSA5WikiScraper/__pycache__
+DSA5WikiScraper/.playwright-cli
+DSA5WikiScraper/dsa_scraper_v3/__pycache__
+DSA5WikiScraper/dsa_scraper_v3/data/html/*
+DSA5WikiScraper/dsa_scraper_v3/data_backup_20260316_144550
+DSA5WikiScraper/dsa_scraper_v3_sample_validation
+DSA5WikiScraper/dsa_scraper_v3_sitemap_validation

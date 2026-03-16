@@ -1,0 +1,1796 @@
+[
+  {
+    "id": "poisons_and_illnesses_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/GR_Gifte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "poisons_and_illnesses_Krankheiten",
+    "category": "poisons_and_illnesses",
+    "name": "Krankheiten",
+    "url": "https://dsa.ulisses-regelwiki.de/GR_Krankheiten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "poisons_and_illnesses_Gr_nes_Leiden",
+    "category": "poisons_and_illnesses",
+    "name": "Grünes Leiden",
+    "url": "https://dsa.ulisses-regelwiki.de/GR_Krankheiten/gruenes-leiden.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Der Übergebrauch des Rauschmittels Grüner Nektar führt zur Sucht, die regeltechnisch einer Krankheit gleicht.\n\nStufe: 3 Verlauf: In den ersten drei Tagen breitet sich Schimmel äußerlich (Haut) und innerlich (Atemwege, Herz) unter leichten Schmerzen aus. Letztere verstärken sich ab dem vierten Tag deutlich. Dazu ist der Erkrankte über Husten mit Sporenauswurf ansteckend (1–6 auf 1W20).\n\nSchaden: Die ersten 3 Tage jeweils 1W6 –1 SP und 1 Stufe Verwirrung , danach täglich 2W6 SP / 1W3 –1 SP und 1 Stufe Verwirrung\n\nUrsachen: Abhängigkeit vom Grüner Nektar , ab 3 Dosen innerhalb 12 Stunden. Ein Süchtiger muss alle 2 Tage 1 Anwendung einnehmen.\n\nBehandlung: Bei leichten Fällen kann das chirurgische Entfernen von Schleim und Haut helfen.\n\nGegenmittel: eine Mischung aus Joruga , Waldmeister und Lungenkraut (Berufsgeheimnis: 8 AP, Voraussetzung Heilkunde Krankheiten 10)\n\nAnmerkungen: Auch Tiere können am Grünen Leiden erkranken.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Wundfieber",
+    "category": "poisons_and_illnesses",
+    "name": "Wundfieber",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Wundfieber.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Am ersten Tag treten Verwirrung und Artikulationsschwierigkeiten auf, danach Fieber und starke Mattigkeit. Manche Erkrankten dämmern dauerhaft in einem unruhigen Halbschlaf.\n\nSchaden: am ersten Tag 2 Stufen Verwirrung , ab dem zweiten Tag 2 Stufen Betäubung und 1W6 SP pro Tag / am ersten Tag 1 Stufe Verwirrung , ab dem zweiten Tag 1 Stufe Betäubung , dazu 1W3 SP pro Tag\n\nUrsachen: Bisse von Aasfressern und Verwundungen mit stark verschmutzten Waffen, schlechte oder keine Wundversorgung (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe und Fieberfürsorge (1 SP weniger pro Tag)\n\nGegenmittel: keines; die Perainekirche kennt Liturgien, um das Wundfieber zu stoppen.\n\nPublikation: Aventurischer Almanach Seite 129",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Sumpffieber",
+    "category": "poisons_and_illnesses",
+    "name": "Sumpffieber",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Sumpffieber.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Wahnvorstellungen, panische Angst, dann nach einigen Stunden einsetzender, lang andauernder Halbschlaf, Fieberschübe, die am dritten Tage ihren Zenit erreichen und danach wieder abflauen. Der Kranke ist die meiste Zeit bewusstlos.\n\nSchaden: Am 1. Tag 1W6 SP, am 2. Tag 2W6 SP, am dritten Tag 3W6 SP, am vierten Tag 2W6 SP und am fünften Tag 1W6 SP. Der Kranke erleidet pro 3 Stunden eine Stufe Betäubung . Am ersten Tag werden eventuell Ängste (siehe Nachteil) ausgelöst.\n\nUrsachen: Bisse von Sumpfgeziefer (1 auf W20, 5 %), Moskitostiche (1 auf W20, 5 %), Pflege eines Erkrankten (1 auf W20, 5 %)\n\nBesonderheiten: Am Sumpffieber kann man nur einmal im Leben erkranken. Danach erhält der Held kostenlos den Vorteil Immunität (Sumpffieber).\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger)\n\nGegenmittel: frische oder getrocknete und wieder aufgeweichte Donfstengel zerkauen (Dauer –2 Tage)",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Lutanas",
+    "category": "poisons_and_illnesses",
+    "name": "Lutanas",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Lutanas.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Erkrankte erleidet starke Beklemmung, Atemnot und Angstzustände.\n\nSchaden: 1W6 SP pro Tag, Angstzustände (1 Stufe Furcht pro 6 Stunden) / 1 SP pro Tag, (1 Stufe Furcht )\n\nUrsachen: Biss eines Erkrankten (1-6 auf W20, 30 %)\n\nBehandlung: seelische Betreuung, Heilkunde Seele , erschwert um Krankheitsstufe, pro 3 FP sinkt die Furcht um eine Stufe\n\nGegenmittel: Blütenstaub einer Lulanie als Trank: War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe der Krankheit misslungen, wird die Krankheit sofort geheilt.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Tollwut",
+    "category": "poisons_and_illnesses",
+    "name": "Tollwut",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Tollwut.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Am ersten Tag treten Schluckbeschwerden auf, danach starke Anfälle von Atemnot. Ab dem dritten Tag kommen steigendes Fieber, Wahnvorstellungen, Sinnestrübungen und häufige Anfälle von Raserei (pro Stunde 1 auf W20, 5 %) hinzu. Während dieser Anfälle erhält der Erkrankte den Status Blutrausch .\n\nInkubationszeit: 2 Monate, in seltenen Fällen bis zu einem Jahr\n\nSchaden: ab dem dritten Tag 1 Stufe Verwirrung und 2W6+2 SP pro Tag / ab dem dritten Tag 1 Stufe Verwirrung , dazu 1W6+1 SP pro Tag\n\nUrsachen: Biss eines tollwütigen Tieres oder eines Kranken (1-16 auf W20, 80 %)\n\nBehandlung: Bettruhe und Fieberfürsorge (1 SP weniger pro Tag), Fixierung zum Schutz des Erkrankten und seiner Umwelt\n\nGegenmittel: Einnahme einer Dosis von Joruga-Öl schützt für 4 Monate vor einer Infektion, die dreifache Menge innerhalb von 4 Stunden nach dem Biss eingenommen senkt die Infektionswahrscheinlichkeit auf 20 % (1-4 auf W20).\n\nPublikation(en): Aventurischer Almanach, Seite 129",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Dumpfsch_del",
+    "category": "poisons_and_illnesses",
+    "name": "Dumpfschädel",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Dumpfsch%C3%A4del.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Mattigkeit, Schwäche und Schwindelgefühle treten auf, einhergehend mit Fieber, Husten und Schnupfen. In seltenen Fällen kann Dumpfschädel zu einer Erkrankung an Blauer Keuche führen (1-2 auf W20, 10 %).\n\nSchaden: 1 Stufe Betäubung , 1 Stufe Verwirrung , dazu 1 SP pro Tag / 1 Stufe Betäubung. Zwerge, die unter Dumpfschädel leiden, werden üblicherweise ausgesprochen unleidlich und erhalten die Schlechte Eigenschaft Jähzorn, solange die Krankheit andauert.\n\nUrsachen: Lügen und Unwahrheiten verbreiten in einem Praios- oder Hesindetempel (1 auf W20, 5 %), Nähe eines Kranken (1-2 auf W20, 10 %), Unterkühlung (mindestens eine Unterkühlungsstufe erlitten, 1-8 auf W20, 40 %)\n\nBehandlung: Durch Bettruhe wird die Krankheitsdauer um 1 Tag reduziert.\n\nGegenmittel: Traschbart (wirkt sofort, der Erkrankte verliert keine LeP durch den Krankheitsverlauf mehr)\n\nPublikation: Aventurischer Almanach Seite 128",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Flinker_Difar",
+    "category": "poisons_and_illnesses",
+    "name": "Flinker Difar",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_FlinkerDifar.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Beim Flinken Difar, auch Darmfraisch genannt, handelt es sich um eine Durchfallerkrankung, die mit Mattigkeit einhergeht.\n\nSchaden: 1W3 SP pro Tag, Mattigkeit (1 Stufe Betäubung ) / 1 SP pro Tag\n\nUrsachen: verdorbene Lebensmittel (1-16 auf W20, 80 %), dauerhaft mangelnde Hygiene (1 auf W20, 5 %), Nähe eines Kranken (1-5 auf W20, 25 %)\n\nBehandlung: Bettruhe, Hausmittel, viel Flüssigkeit, dadurch wird der Verlauf um 1 Tag reduziert",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_WdV_-_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "WdV - Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV_GK_Gifte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Wege der Vereinigungen - ab 18 Jahre"
+  },
+  {
+    "id": "poisons_and_illnesses_Triefnase",
+    "category": "poisons_and_illnesses",
+    "name": "Triefnase",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Triefnase.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Die Nase ist gerötet, verstopft und sondert ständig Sekret ab. Der Erkrankte muss häufig niesen. Manchmal können auch leichte Kopfschmerzen und Fieber auftreten.\n\nUrsachen: Körper längere Zeit unterkühlt (1-4 auf W20, 20 %), Kontakt mit einem Kranken (1-5 auf W20, 25 %)\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger)\n\nPublikation(en): Aventurisches Kompendium 2 Seite 22",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_WdV_-_Gifte_und_Krankheiten",
+    "category": "poisons_and_illnesses",
+    "name": "WdV - Gifte und Krankheiten",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV-Gifte_Krankheiten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "poisons_and_illnesses_Gilbe",
+    "category": "poisons_and_illnesses",
+    "name": "Gilbe",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Gilbe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Starkes Fieber, begleitet durch Krampfschübe und Leibschmerzen. Zum Ende hin Gelbfärbung der Lippen. Bei Elfen verläuft die Gilbe immer schwer (die Krankheitsprobe gilt für die Gilbe immer als gelungen). In manchen Fällen kann Gilbe zu einer Erkrankung an Jahresfieber führen (1-2 auf W20, 10 %).\n\nSchaden: 1 Stufe Schmerz und 1W6 SP pro Tag / 1 Stufe Schmerz , dazu 1 SP pro Tag\n\nUrsachen: verunreinigte Wunden, besonders auf Schlachtfeldern (1-4 auf 1W20, 20 %), Nähe eines Kranken (1 auf W20, 5 %)\n\nBehandlung: Bettruhe und Fieberfürsorge (1 SP weniger pro Tag)\n\nGegenmittel: Alkoholischer Sud aus Joruga und Gulmond verkürzt die Krankheit um 2 Tage, Traschbartsalbe verhindert eine Folgeerkrankung mit Jahresfieber.\n\nPublikation: Aventurischer Almanach Seite 128",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Omrais",
+    "category": "poisons_and_illnesses",
+    "name": "Omrais",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Omrais.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1W6–1 SP pro KR, Brennen am ganzen Körper (1 Stufe Schmerz ) / 1W3–1 SP pro KR, leichtes Brennen\n\nPublikation: Aventurischer Almanach Seite 131",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Lykanthropie_magische_Krankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Lykanthropie (magische Krankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/lykanthropie.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: An den ersten Tagen nach der Ansteckung blutet der Erkrankte aus der Wunde oder verschiedenen Körperöffnungen. Die Verletzungen lassen sich selbst durch Magie oder Liturgien nicht richtig schließen und schmerzen. Ab dem ersten Vollmond setzt die erste Verwandlung ein.\n\nSchaden: Am ersten Tag nach der Ansteckung 1W6+2 SP durch Blutungen, am zweiten Tage 1W6+1 SP, am dritten Tag 1W6 SP, bis zum Ende des dritten Tags 1 Stufe Schmerz / Am ersten Tag nach der Ansteckung 1W3+2 SP durch Blutungen, am zweiten Tage 1W3+1 SP, am dritten Tag 1W3 SP\n\nUrsachen: Biss von Kyriaka / Anpa-Tonku, der SP verursacht (1-19 auf W20, 95 %), Biss eines Lykanthropen, der SP verursacht (W20, wird Menge der SP eines einzelnen Angriffs oder niedriger gewürfelt, erfolgt die Ansteckung), schicksalsträchtige Sternenkonstellation und Fluch eines Gottes (Meisterentscheid)\n\nGegenmittel: Roter Drachenschlund kann die Krankheit stoppen, bevor sich der Erkrankte zum ersten Mal verwandelt. Danach ist die Heilungsaussicht durch den Roten Drachenschlund deutlich geringer.\n\nPublikation: Aventurisches Bestiairum 2, Seite 124f",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Schwarze_Wut",
+    "category": "poisons_and_illnesses",
+    "name": "Schwarze Wut",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_SchwarzeWut.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Am ersten Tag treten Schluckbeschwerden auf, danach Anfälle von Atemnot. Ab dem dritten Tag kommen leichtes Fieber, Wahnvorstellungen, Sinnestrübungen und häufig Anfälle von Raserei (pro Stunde 1-2 auf W20, 10 %) hinzu. Während dieser Anfälle erhält der Erkrankte den Status Blutrausch . Zudem bilden sich am ganzen Körper kleine, schwarze Schuppen, die nach der Heilung manchmal (1-2 auf W20, 10 %) schwarze Wundmale hinterlassen.\n\nSchaden: ab dem dritten Tag 1 Stufe Verwirrung und 1W6+2 SP pro Tag / ab dem dritten Tag 1 Stufe Verwirrung , dazu 1W6 SP pro Tag\n\nUrsachen: Pflege bzw. Biss eines Tollwutkranken (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe und Fieberfürsorge (1 SP weniger pro Tag), Fixierung zum Schutz des Erkrankten und seiner Umwelt\n\nGegenmittel: Einnahme einer Dosis Joruga-Öl schützt für 4 Monate vor einer Infektion, die dreifache Menge innerhalb eines Tages nach dem Biss eingenommen senkt die Infektionswahrscheinlichkeit auf 5 % (1 auf W20).\n\nPublikation: Aventurischer Almanach Seite 129",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Brabacudagift",
+    "category": "poisons_and_illnesses",
+    "name": "Brabacudagift",
+    "url": "https://dsa.ulisses-regelwiki.de/brba.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Bestiarium Seite 93",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Sunsura",
+    "category": "poisons_and_illnesses",
+    "name": "Sunsura",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Sunsura.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1W6+4 SP, Vergifteter erhält den Status Blutrausch für 5 KR, danach insgesamt 4 Stufen Betäubung / 1W3+2 SP, Vergifteter würfelt mit 1W20, bei 1-10 erhält er den Status Blutrausch.\n\nPublikation: Aventurischer Almanach Seite 131",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Blaue_Keuche",
+    "category": "poisons_and_illnesses",
+    "name": "Blaue Keuche",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_BlaueKeuche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Ab dem ersten Tag treten schwere Schmerzen im Brustkorb und Fieber auf, der Schlaf ist unruhig und die Atmung flach. Ab dem zweiten Tag folgen Hustenanfälle mit blauem bis violettem Auswurf. Die Haut ist blass, ab dem zweiten Tag im Gesicht teilweise leicht bläulich, dazu kommt häufig die Blaufärbung von Lippen und Zunge. Bei längerem Verlauf folgt zunehmende Ermattung bis zur völligen Entkräftung.\n\nSchaden: Am ersten Tag 1 Stufe Schmerz (der nur am ersten Tag auftritt), ab dem zweiten Tag 1 Stufe Betäubung , alle 3 Tage, dazu 2 SP pro Tag / 1 Stufe Schmerz (der nur am ersten Tag auftritt) , dazu 1 SP pro Tag\n\nUrsachen: Folge einer Erkrankung an Blutigem Rotz oder Dumpfschädel (1-2 auf W20, 10 %), längerer Kontakt mit einem Kranken (1 auf W20, 5 %)\n\nBehandlung: Bettruhe, Hausmittel und die Aufnahme von viel Flüssigkeit halbieren die Dauer der Erkrankung.\n\nGegenmittel: Keines; die Perainekirche kennt Liturgien, um die Blaue Keuche zu stoppen.\n\nPublikation: Aventurischer Almanach Seite 127",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Jahresfieber",
+    "category": "poisons_and_illnesses",
+    "name": "Jahresfieber",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Jahresfieber.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Ohne erkennbare Vorzeichen bricht das Jahresfieber unregelmäßig (pro Monat 1 auf W20, 5 %) für 3 Tage aus. Die Symptome sind schweres Fieber, begleitet von starkem Leibgrimmen.\n\nSchaden: 1 Stufe Schmerz , dazu 1 Stufe Betäubung und 2 SP pro Tag / 1 Stufe Schmerz\n\nDauer: 3 Tage pro Ausbruch, Jahresfieber selbst bis zum Lebensende / 3 Tage pro Ausbruch, Jahresfieber selbst bis zum Lebensende\n\nUrsachen: Folgeerkrankung der Gilbe (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe und Fieberfürsorge (1 SP weniger pro Tag)\n\nGegenmittel: Ein Sud aus Sansaro, Quinja und Donf verhindert für 5 Monate einen weiteren Ausbruch, ein Heilmittel ist nicht bekannt. Die Perainekirche kennt außerdem Liturgien, um das Jahresfieber zu stoppen.\n\nPublikation: Aventurischer Almanach Seite 129",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Aussatz",
+    "category": "poisons_and_illnesses",
+    "name": "Aussatz",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Aussatz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Als sehr langsam fortschreitendes Leiden beginnt Aussatz mit rötlichen Flecken auf der Haut, die sich taub anfühlen und sich innerhalb von mehrerenWochen ausbreiten. Die  Flecken werden zunehmend knotig und innerhalb weniger Monate beginnen sich\n\nGesicht und Extremitäten zu zersetzen. Durch Aussatz erleidet der Erkrankte nicht den Verlust der Regeneration durch den Status Krank . Bei einer Heilung der Krankheit in einem späten Stadium bleiben die Knoten und Zersetzungen zurück.\n\nInkubationszeit: 3 Monate, in seltenen Fällen bis zu mehreren Jahren\n\nSchaden: Erkrankte verlieren zwei Stufen ihres Aussehens: Wer normal aussieht, erhält den Nachteil Hässlich II, Gutaussehend I wird durch Hässlich I ersetzt usw. Nach Wahl des Spielleiters verliert der Erkrankte in jedem weiteren Monat, den die Krankheit andauert, kleinere Extremitäten wie Finger oder Zehen. Pro Jahr erhält er eine Variante des Nachteils Verstümmelt, das erste Mal nach einem Jahr Krankheitsdauer. / Erkrankte verlieren eine Stufe ihres Aussehens. Nach Abklingen der Krankheit bleiben keine Schäden zurück und auch die herabgesetzte Stufe des Aussehens regeneriert sich nach 1W6 Tagen.\n\nDauer: bis zur Genesung oder dem Tod / 20 Tage\n\nUrsachen: Kontakt mit Erkrankten (1 auf W20, 5 %)\n\nBehandlung: Regelmäßige Bäder in heißem Essig und Kräuterabsuden verlangsamen die Auswirkungen der Krankheit um die Hälfte.\n\nGegenmittel: Keines; die Perainekirche kennt Liturgien, um den Aussatz zu stoppen.\n\nPublikation: Aventurischer Almanach Seite 127",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Kukris",
+    "category": "poisons_and_illnesses",
+    "name": "Kukris",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Kukris.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Art: Einnahme- und Waffengift, pflanzlich\n\nWirkung: 1W6–1 SP pro KR, Juckreiz (1 Stufe Verwirrung ), Krämpfe (1 Stufe Schmerz ) / 1W3–1 SP; Krämpfe (1 Stufe Schmerz )\n\nBeginn: 10 KR (Schaden und Juckreiz), 15 (Krämpfe)\n\nPublikation: Aventurischer Almanach Seite 131",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Morfugift",
+    "category": "poisons_and_illnesses",
+    "name": "Morfugift",
+    "url": "https://dsa.ulisses-regelwiki.de/Morfuguft.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Anzahl der getroffenen Nadeln in SP / Anzahl der getroffenen Nadeln / 2 in SP\n\nPublikation: Aventurisches Bestiarium Seite 55",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Kelmon",
+    "category": "poisons_and_illnesses",
+    "name": "Kelmon",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Kelmon.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Art: Kontakt- und Waffengift, pflanzlich\n\nWirkung: 4W6 SP; 4 Stufen Paralyse / 2W6 SP; 1 Stufe Paralyse",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Zorganpocken",
+    "category": "poisons_and_illnesses",
+    "name": "Zorganpocken",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Zorganpocken.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: An den ersten beiden Tagen helle, erbsengroße Pocken am ganzen Körper, danach Rotfärbung der Pocken, steigendes Fieber, Übelkeit, körperliche Schwäche. Anschwellen der Pocken mit eitriger Flüssigkeit. Am 13. Tag Aufbrechen der Pocken mit gleichzeitigem starken Fieberschub. Übersteht der Erkrankte diese Phase, heilen die Pocken ab und bilden Narben.\n\nSchaden: Ab dem 3. Tag 1W6 SP pro Tag, Körperliche Schwäche (3 Stufen Betäubung ). Am 13. Tag 2W6 SP / Ab dem 3. Tag 1W6 SP pro Tag, Körperliche Schwäche (2 Stufen Betäubung )\n\nUrsachen: gilt als Fluch des namenlosen, Kontakt mit einem Kranken (1-2 auf W20, 10 %), Pflege eines Kranken (1-10 auf W20, 50 %) An Zorganpocken kann man nur einmal im Leben erkranken. Bei schwerem Verlauf senken die Narben das Aussehen des Erkrankten um eine Stufe (z.B. von normal auf Hässlich I oder von Gutaussehend II auf Gutaussehend I ).\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger), Gulmondtee senkt die Schadenswirkung am 13. Tag auf 1W6 SP\n\nGegenmittel: Bestreichen der Pocken mit Xordaiabsud. War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe misslungen, wird die Krankheit sofortgeheilt und die Pocken heilen ab.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Angstgift",
+    "category": "poisons_and_illnesses",
+    "name": "Angstgift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_angstgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Wie der Name bereits sagt, löst dieses Gift große Panik bei demjenigen aus, der mit einer vergifteten Waffe getroffen wird. Die Wirkung des Angstgifts ist dabei allerdings nicht kumulativ. Wer durch das Gift Zustandsstufen Furcht erlitten hat, kann erst wieder am Ende der Wirkungsdauer davon betroffen sein.\n\nWirkung: 2 Stufen Furcht / 1 Stufe Furcht\n\nWert/Preis: 60 Silbertaler pro Stufe / 80 Silbertaler pro Stufe\n\nTypische Ingredenzien: Alraune, Bärenfett, Haifischzähne, Hasenohren, Höllenkraut, Speichel eines Berserkers, Staub aus einer Gruft, Vitriol\n\nKosten der Ingredenzien: 60 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 4 AP (Voraussetzungen: Alchimie 8)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 89 Kodex der Magie, Seite 384 [reduzierte Angaben]",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Mantikorgift",
+    "category": "poisons_and_illnesses",
+    "name": "Mantikorgift",
+    "url": "https://dsa.ulisses-regelwiki.de/Mantigift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1W6 SP, 1 Stufe Paralyse / 1W3 SP\n\nDie Wirkung ist kumulativ. Der Mantikor kann das Gift pro Tag 10 x einsetzen.\n\nPublikation: Aventurisches Bestiarium Seite 49",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Tulmadron",
+    "category": "poisons_and_illnesses",
+    "name": "Tulmadron",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Tulamdron.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Mineralische Gifte"
+    ],
+    "properties": {},
+    "description": "Art: Einnahme- und Waffengift, mineralisch\n\nWirkung: 1W6 SP/KR, Halluzinationen (1 Stufe Verwirrung ), Schmerzen (2 Stufen Schmerz ) / 1W3 SP/KR; leichte Schmerzen (1 Stufe Schmerz )",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Blutiger_Rotz",
+    "category": "poisons_and_illnesses",
+    "name": "Blutiger Rotz",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_BlutigerRotz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Mund- und Rachenschleimhäute schwellen an, rötlichbrauner Schleim wird abgesondert, begleitet von Hustenanfällen und leichtem Fieber. In manchen Fällen kann blutiger Rotz zu einer Erkrankung an Blauer Keuche führen (1-2 auf W20, 10 %).\n\nSchaden: alle drei Tage 1 Stufe Betäubung , 1 SP pro Tag / 1 Stufe Betäubung , dazu 1 SP pro Tag\n\nUrsachen: langer Aufenthalt im Regenwald, mindestens 2 Wochen (1-2 auf W20, 10 %), Nähe eines Kranken (1-5 auf W20, 25 %)\n\nBehandlung: Bettruhe, Hausmittel, dadurch wird der Verlauf um 2 Tage reduziert.\n\nGegenmittel: eine geheime Mischung aus verschiedenen Kräutern des Regengebirges (nur bei Schamanen und Animisten der Waldmenschenstämme bekannt)\n\nPublikation: Aventurischer Almanach Seite 127",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Gelbschwanzskorpiongift",
+    "category": "poisons_and_illnesses",
+    "name": "Gelbschwanzskorpiongift",
+    "url": "https://dsa.ulisses-regelwiki.de/gelbsch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift des Gelbschwanzskorpions schmerzt, ist aber für einen gesunden Menschen nicht tödlich. Die Wirkung kann nur einmal am Tag eintreten. Es kann weiterverarbeitet werden zu Gonede .\n\nArt: Einnahme- und Waffengift , tierisch\n\nDauer: Der Schaden entsteht in der 1., 4. und 10. KR nach dem Stich.\n\nArchiv der Kreaturen, Seite 221 Aventurisches Bestiarium, Seite 95 Aventurisches Kompendium 2, Seite 14 Brandans Pakt 2: Bande aus Silber, Seite 56 Das Wüstenreich (2023), 90 Heldenwerk-Archiv VI, Seite 89 Kodex des Schwertes, Seiten 95, 386 Vielfarbene Verderbnis, Seite 46",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Tierische_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "Tierische Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_tier.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Mineralische_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "Mineralische Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_mineral.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Alchimistische_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "Alchimistische Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_alchimie.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte"
+    ],
+    "properties": {},
+    "description": "Alchimistische Gifte sind über einen alchimistischen Brauvorgang erzeugte oder verstärkte Gifte. Ihre Herstellung funktioniert wie bei Elixieren und ihre Anwendung folgt den Regeln für Gift (siehe Regelwerk ab Seite 341). Bei einigen Rezepten für alchimistische Gifte können, ebenso wie bei Elixieren, Ingredienzien gemäß der alchimistischen Äquivalenzlehre ersetzt werden. Der Raum für Experimente ist hier jedoch geringer, da eine Hauptingredienz in ihrer bereits bestehenden Giftwirkung bei manchen Rezepten nur verstärkt wird, also beim Brauprozess nicht im strengen Sinne eine völlig neue Substanz entsteht. Das letzte Wort hat hierbei die Meisterin.\n\nPublikation(en): Aventurisches Herbarium, Seite 83",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Pflanzliche_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "Pflanzliche Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_pflanzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte"
+    ],
+    "properties": {},
+    "description": "Pflanzliche Gifte werden durch einfaches Abkochen oder anderweitiges Herauslösen aus einer bestimmten Pflanze gewonnen. Die Regeln des Vorgangs gleichen der Herstellung eines pflanzlichen Hilfsmittels mit einer Verarbeitungsschwierigkeit als Erschwernis in Höhe der halben Giftstufe (es wird zugunsten des Helden gerundet). Durch diesen Prozess gewinnt das Gift der Pflanze an Konzentration und damit an Wirkkraft, allerdings wird es dadurch möglich, mit Seelenkraft oder Zähigkeit Widerstand zu leisten. Bei erfolgreichem Widerstand gilt die schwächere Wirkung des Giftes. Aus einer Anwendung der Pflanze wird jeweils eine Anwendung des Giftes gewonnen.\n\nPublikation(en): Aventurisches Herbarium, Seite 76",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Charyb_Yzz_Traum",
+    "category": "poisons_and_illnesses",
+    "name": "Charyb’Yzz’ Traum",
+    "url": "https://dsa.ulisses-regelwiki.de/Charyb_Yzz_Traum.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: +2 KO, +2 KK, Proben auf Selbstbeherrschung um 2 erleichtert, +2 Verwirrung, 1W6 SP / +1 KO, +1 KK, Proben auf Selbstbeherrschung um 1 erleichtert, +1 Verwirrung, 1W3 SP\n\nPublikation: Havena - Versunkene Geheimnisse, Seite 91",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Gonede",
+    "category": "poisons_and_illnesses",
+    "name": "Gonede",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Gonede.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Gonede ist das weiterverarbeitete Gift des Gelbschwanzskorpions . Es erfreut sich vor allem bei Wüstenräubern und einigen novadischen Sippen großer Beliebtheit.\n\nWirkung: 1W6 SP nach jeweils 5 Minuten, Krämpfe, Zuckungen und Atemnot (2 Stufen Betäubung ) / 1W3 SP nach jeweils 5 Minuten, leichte Krämpfe und Zuckungen (1 Stufe Betäubung )\n\nAventurisches Kompendium 2, Seite 14 Das Wüstenreich (2023), Seite 167 Kodex des Schwertes, Seiten 95, 386",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Lotos_l",
+    "category": "poisons_and_illnesses",
+    "name": "Lotosöl",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_lotosoel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Eine Neuentwicklung des Namenlosenkults stellt das aus der Pflanze gewonnene und alchimistisch verstärkte Lotosöl dar, welches Dienern der Zwölfgötter schadet.\n\nWert/Preis: 360 Silbertaler pro Stufe / 500 Silbertaler pro Stufe *) nur bei Personen mit dem Vorteil Geweihter und einer Tradition, die nicht Namenloser Kult ist\n\nTypische Ingredenzien: Alraune, Feengebein, Karfunkelsteinabsud, Purpurschneckensaft, Purpurner Lotos, andere Lotosarten\n\nKosten der Ingredenzien: 60 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 3 AP (Voraussetzungen: Alchimie 6)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 90",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Ton_Kemla",
+    "category": "poisons_and_illnesses",
+    "name": "Ton’Kemla",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_alchimie/ton-kemla.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Die vielbeinige Kreatur verliert sofort 5W6+10 AsP und kann 1W3+3 Tage lang keine AsP regenerieren, 4W6 SP; 3 Stufen Paralyse / Die vielbeinige Kreatur verliert sofort 3W6+6 AsP und kann 1W2+1 Tage lang keine AsP regenerieren, 2W6 SP, 2 Stufen Paralyse\n\nWert/Preis: 60 S pro Stufe / 80 S pro Stufe\n\nTypische Ingredienzien: Asche, Bernsteinstaub, Blüte eines Cheria-Kaktus, Blut eines Falken, Chitin einer Gigantulae, Kamelfett, Tränen eines Kulturschaffenden, Wasser einer Khômknolle, Zwiedestillat\n\nKosten der Ingredienzienstufe: 30 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 4 AP (Voraussetzungen: Alchimie 10)\n\nQualitätsstufen: Giftstufe entspricht der QS.\n\nAnmerkung: Ton’Kemla wirkt nur gegen Vielbeinige (Insekten, Spinnentiere) ab der Größenkategorie groß .",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schlafgift",
+    "category": "poisons_and_illnesses",
+    "name": "Schlafgift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_schlafgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezepttyp: Physische Wirkung, Psychische Wirkung\n\nRezeptbeschreibung: Das bekannte Schlafgift wird aus unterschiedlichsten Ingredienzienmischungen hergestellt und kann in Flüssigkeit aufgelöst heimlich verabreicht werden. Im Vergleich zu ähnlichen, mineralischen Giften, etwa „Marbos Ruhe“, wirkt es weniger sicher und schnell, ist dafür aber kostengünstiger.\n\nWirkung: Status Bewusstlos / 1 Stufe Betäubung\n\nWert/Preis: 90 Silbertaler pro Stufe / 120 Silbertaler pro Stufe\n\nTypische Ingredenzien: Alraune, Boronwein (Vragieswurzel), Daunenfedern, Fell eines Siebenschläfers, Fledermausflügel, Rauschkräuter, Stoff eines weißen Kissens, Schwarzer Mohn\n\nKosten der Ingredenzien: 60 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 3 AP (Voraussetzungen: Alchimie 8)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 91",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Halbgift",
+    "category": "poisons_and_illnesses",
+    "name": "Halbgift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_halbgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Das exotische Halbgift sorgt dafür, dass ein Gegner kurzfristig kleiner wird und durch die ungewohnten Änderungen seines Körperbaus Schwierigkeiten bei Angriffen und der Verteidigung hat.\n\nWirkung: AT und VW sinken um jeweils 50 %, Proben auf Körpertalente (außer Selbstbeherrschung und Sinnesschärfe) –2, das Opfer schrumpft auf etwa die Hälfte seiner Größe, dies bedeutet, dass sich seine Größenkategorie um eine Stufe reduziert (z. B. von mittel zu klein) / AT und VW sinken um jeweils 25 %, Proben auf Körpertalente (außer Selbstbeherrschung und Sinnesschärfe) –1, das Opfer schrumpft auf etwa drei Viertel seiner Größe, dies hat jedoch keine Auswirkung auf die Größenkategorie\n\nWert/Preis: 100 Silbertaler pro Stufe / 150 Silbertaler pro Stufe\n\nTypische Ingredenzien: Alraune, Brabaker Vitriol, Holz von einem durch einen Blitz gespaltenen Baum, Roter Lotos\n\nKosten der Ingredenzien: 100 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 4 AP (Voraussetzungen: Alchimie 8)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 90",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Bet_ubungsgift",
+    "category": "poisons_and_illnesses",
+    "name": "Betäubungsgift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_betaeubungsgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Betäubungsgift ist ein Waffengift, welches bei seinem Opfer Müdigkeit und Trägheit verursacht. Die Wirkung des Betäubungsgifts ist dabei allerdings nicht kumulativ. Wer durch das Gift Zustandsstufen Betäubung erlitten hat, kann erst wieder am Ende der Wirkungsdauer davon betroffen sein.\n\nWirkung: 2 Stufen Betäubung, 2 Stufen Paralyse / 1 Stufe Betäubung, 1 Stufe Paralyse\n\nWert/Preis: 150 Silbertaler pro Stufe / 200 Silbertaler pro Stufe\n\nTypische Ingredenzien: Alraune, Asche von sieben schwarzen Gänsedaunen, Boronwein (Vragieswurzel), Rauschkräuter\n\nKosten der Ingredenzien: 150 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 4 AP (Voraussetzungen: Alchimie 8)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 89 ff.",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Drachenspeichel",
+    "category": "poisons_and_illnesses",
+    "name": "Drachenspeichel",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Drachenspeichel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Art: Waffen- und Einnahmegift, alchimistisch\n\nWirkung: 1W6 SP pro angefangenen 5 Minuten, Schwindel, Schmerzen, Schwellungen (1 Stufe Betäubung, 1 Stufe Schmerz) / 1W3 SP pro angefangenen 5 Minuten, Schwindel und Schwellungen (1 Stufe Betäubung)\n\nKosten: 80 Silbertaler pro Stufe / 120 Silbertaler pro Stufe\n\nTypische Ingredienzien: Birkenasche, Brabaker Vitriol, Ebenholzasche, Quecksilber, Rubinsplitter, Unauer Salzlake, Vipernblut, Wolfsrattendung\n\nKosten der Ingredienzienstufe: 80 Silbertaler pro Stufe\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 13",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Merach-Extrakt",
+    "category": "poisons_and_illnesses",
+    "name": "Merach-Extrakt",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_merach_extrakt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Das aus der Merach-Frucht hergestellte Gift ist geruchsund geschmackslos und kann somit unauffällig in Getränke und unter das Essen gemischt werden.\n\nWert/Preis: 100 Silbertaler pro Stufe / 150 Silbertaler pro Stufe\n\nTypische Ingredenzien: Alkohol, Honig, Merach-Früchte , Orazal\n\nKosten der Ingredenzien: 60 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 3 AP (Voraussetzungen: Alchimie 6)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nArchiv der Kräuter, Seite 174 Aventurisches Herbarium, Seite 91 Das Wüstenreich (2023), Seite 167",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Purpurblitz",
+    "category": "poisons_and_illnesses",
+    "name": "Purpurblitz",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_purpurblitz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Purpurblitz gilt als das gefährlichste und heimtückischste Gift ganz Aventuriens. Es handelt sich um ein geruchund geschmackloses Pulver, dass sich ausgezeichnet in jeder Flüssigkeit lösen lässt. Es lässt sich nach dem Tod des Opfers nicht mehr nachweisen. Die einzigen Anzeichen für die Vergiftung sind die purpurnen Nebelschleier, die das Opfer vor seinen Augen sieht.\n\nWiderstand: Seelenkraft oder Zähigkeit, je nachdem, welcher Wert niedriger ist\n\nWirkung: 1W6 SP pro KR, purpurner Nebel vor den Augen (1 Stufe Verwirrung) / 1W3 SP pro KR, purpurner Nebel vor den Augen (1 Stufe Verwirrung)\n\nWert/Preis: 2.500 Silbertaler / vielfaches des Wertes (Untergrundmärkte)\n\nTypische Ingredenzien: Brabaker Vitriol, Haut einer Koschkröte, Purpurner Lotos, Stachel einer siebenjährigen Maraske, Eitriger Krötenschemel, Tran der Salzarele, Zinnober\n\nKosten der Ingredenzien: 200 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 5 AP (Voraussetzungen: Alchimie 12)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 91",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Alkohol",
+    "category": "poisons_and_illnesses",
+    "name": "Alkohol",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Alkohol.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: je nach Alkohol / je nach Alkohol\n\nBeginn: nach dem Genuss einer Grundeinheit Alkohol\n\nDauer: bis Betäubung und/oder Berauscht abgebaut ist\n\nPublikation: Kneipen und Tavernen, Seite 12",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Freundfeind",
+    "category": "poisons_and_illnesses",
+    "name": "Freundfeind",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_freundfeind.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "Rezepttyp: Physische Wirkung, Psychische Wirkung, Übernatürlich\n\nRezeptbeschreibung: Dieses seltene alchimistische Gift wird vor allem in den Schattenlanden hergestellt, da dort eine der wichtigsten Ingredienzien, der Eiterfarn, wächst. Das Freundfeind-Gift wird gerne auch gegen die eigenen Schattenlande-Soldaten eingesetzt, um sie in einen Kampfrausch zu versetzen. Wird oft zu schlichten Pastillen gepresst.\n\nArt: Einnahmegift, Waffengift, alchimistisch\n\nWirkung: sofort 1W6+1 SP, Status Blutrausch, nach Ende der Wirkung 1 Stufe Verwirrung für 1 Stunde, während derer sich der Anwender nicht an Freunde oder andere geliebte Bezugspersonen erinnern kann\n\nWert/Preis: 120 Silbertaler pro Stufe / 160 Silbertaler pro Stufe\n\nTypische Ingredenzien: reiner Alkohol, Alraune, Bärenfett, Blut eines Berserkers, Eiterfarn, Finger eines Korgeweihten, Katzenhaare, Stutenmilch\n\nKosten der Ingredenzien: 120 Silbertaler pro Stufe\n\nAP-Wert (Berufsgeheimnis): 4 AP (Voraussetzungen: Alchimie 8)\n\nQualitätsstufen: Die Giftstufe entspricht der QS.\n\nPublikation(en): Aventurisches Herbarium, Seite 90",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Kuss_des_Frevlers",
+    "category": "poisons_and_illnesses",
+    "name": "Kuss des Frevlers",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_alchimie/kuss-des-frevlers.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Alchimistische Gifte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Wurara",
+    "category": "poisons_and_illnesses",
+    "name": "Wurara",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Wurara.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Art: Einnahme- und Waffengift, pflanzlich\n\nWirkung: 1W6 SP/Stunde, Sinnestäuschungen (2 Stufen Verwirrung ) / 1W3 SP/Stunde, leichte Sinnestäuschungen (1 Stufe Verwirrung )",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schattenneblergift",
+    "category": "poisons_and_illnesses",
+    "name": "Schattenneblergift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Schattenneblergift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Kosten: – (kann nicht als Gift gewonnen werden; Wirkung verflüchtig sich nach 5 Minuten)",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schwarzer_Lotos",
+    "category": "poisons_and_illnesses",
+    "name": "Schwarzer Lotos",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Schwarzer_Lotos.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Halluzinationen (2 Stufen Verwirrung) und nach jeweils 5 Minuten 1W6+2 SP / leichte Halluzinationen (1 Stufe Verwirrung) und nach jeweils 5 Minuten 1W3+1 SP\n\nPublikation(en): Aventurisches Kompendium 2 Seite 15",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Rattenpilzgift",
+    "category": "poisons_and_illnesses",
+    "name": "Rattenpilzgift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Rattenpilzgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Art: Pilz (pflanzlich) / Atem (Sporen) oder Einnahme\n\nWirkung: Das Opfer erhält den Status Hörigkeit , wenn es nicht bereits Geweihter des Namenlosen ist. Die Hörigkeit kann für die Wirkungsdauer des Giftes nicht beendet werden. Für die Wirkungsdauer ist das Opfer von Zweifeln an seiner Weltsicht geplagt, so es nicht bereits dem Rattenkind huldigt, und wird von verheißungsvollen Visionen heimgesucht. Will es angesichts der Einflüsterungen nicht in Versuchung geraten, kann der Meister Proben auf Willenskraft (Bekehren & Überzeugen widerstehen) verlangen./ Zweifel überkommen das Opfer, aber es erhält nicht den Status Hörigkeit .\n\nPublikation: Offenbarung des Himmels Seite 45, Aventurischer Almanach Seite 174",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Margolaschabf_hrmittel",
+    "category": "poisons_and_illnesses",
+    "name": "Margolaschabführmittel",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Margolaschabf%C3%BChrmittel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Die Siebenwindküste, Seite 95",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schwarzkorn",
+    "category": "poisons_and_illnesses",
+    "name": "Schwarzkorn",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Schwarzkorn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Nach zwei Wochen dauerhaften Verzehrs führt es zu 1 Stufe Betäubung, nach vier Wochen zu einer weiteren. Mehr als 2 Stufen Betäubung kann man durch Schwarzkorn nicht erleiden. Wer sich dauerhaft davon ernährt, baut die Stufen nicht ab.\n\nDauer: bis Schwarzkorn abgesetzt wird, danach 2 Wochen für 1 Stufe Betäubung / bis Schwarzkorn abgesetzt wird, danach 1 Woche für 1 Stufe Betäubung\n\nKosten: in Yol-Ghurmak und den Schattenlanden ca. 3 Heller, anderorts ein etwa 3 Silbertaler",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Boabungaha",
+    "category": "poisons_and_illnesses",
+    "name": "Boabungaha",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Boabungaha.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Von den Waldmenschen im Süden stammendes, gefährliches Atemgift. Es führt zum Ersticken.\n\nWirkung: 1 Stufe Betäubung, 1 Stufe Schmerz / 1 Stufe Betäubung Alle volle 5 KR muss dem Helden eine Probe auf Selbstbeherrschung (Handlungsfähigkeit bewahren) gelingen, ansonsten erleidet er erneut die Giftwirkung. Wird der Held während der Wirkungsdauer durch den Zustand Betäubung handlungsunfähig, erleidet er für 2W6+6 Minuten den Status Bewusstlos und beginnt zu ersticken (siehe Regelwerk Seite 341). Der Status kann, mit Ausnahme von übernatürlichen Effekten (Zauber, Götterwirken), nicht aufgehoben werden.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 13",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Hollbeerenbrechmittel",
+    "category": "poisons_and_illnesses",
+    "name": "Hollbeerenbrechmittel",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Hollbeere.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Hollbeere sorgt für leichte Übelkeit. Das Opfer muss sich übergeben und es erholt sich nur langsam.\n\nWirkung: Opfer übergibt sich, keine nächtliche Regeneration / Opfer übergibt sich\n\nDauer: 5 Minuten (Brechen), bis zum Ende der nächsten Regenerationsphase",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Mandragora",
+    "category": "poisons_and_illnesses",
+    "name": "Mandragora",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Mandragora.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1W6 SP, Brechreiz (1 Stufe Betäubung ) / 1W3 SP, flauer Magen\n\nPublikation: Aventurischer Almanach Seite 131",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Gardistenkeuche",
+    "category": "poisons_and_illnesses",
+    "name": "Gardistenkeuche",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Gardistenkeuche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Gardistenkeuche besteht aus dem konzentrierten Blütenstaub des Roten Lotos. Um das Pulver auf ein Opfer zu werfen, muss eine Probe auf die Kampftechnik Wurfwaffen gelingen, die wie üblich modifiziert wird (Reichweite: 3/4/5, wenn als Pulver in der Hand; 5/10/15, wenn als Beutelchen). Um dem geworfenen Staub auszuweichen, muss dem Beworfenen eine Probe auf Ausweichen gelingen. Auch hier gelten die üblichen Modifikatoren für Ausweichen im Fernkampf. Es spielt dabei keine Rolle, ob sich das Pulver in der Hand des Werfenden befindet oder in einem sich beim Aufprall öffnenden Säckchen. Um das Pulver nach einem erfolgreichen Angriff nicht einzuatmen, ist eine Probe auf Selbstbeherrschung –2 nötig.\n\nWirkung: Hustenreiz (1 Stufe Betäubung), starkes Schnappen nach Luft (Erschwernis von –2 auf Körpertalente) / –\n\nWert/Preis: 50 Silbertaler / 65 Silbertaler\n\nPublikation(en): Aventurisches Herbarium, Seite 80",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Goldleim",
+    "category": "poisons_and_illnesses",
+    "name": "Goldleim",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Goldleim.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Goldleim ist ein aus der Naftanstaude gewonnenes, konzentriertes Gift, das man auf Metallwaffen auftragen kann, um bei einem Treffer zusätzlichen Schaden durch Säure anzurichten. Goldleim eignet sich zudem als Kontaktgift, beispielsweise, um es auf Metallklinken von Türen aufzutragen.\n\nArt: Kontaktgift, Waffengift, pflanzlich\n\nWirkung: Status Brennend auf kleiner Fläche\n\nWert/Preis: 300 Silbertaler / 360 Silbertaler\n\nPublikation(en): Aventurisches Herbarium, Seite 80",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Purpurner_Lotosstaub",
+    "category": "poisons_and_illnesses",
+    "name": "Purpurner Lotosstaub",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Purpurner_Lotosstaub.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Purpurner Lotosstaub wird vor allem als Ingredienz für alchimistische Elixiere (u. a. für das berüchtigte Gift Purpurblitz) verwendet. Eingeatmet kann der Staub zudem als schwaches Gift Verwendung finden, dass eine leicht betäubende Wirkung aufweist. Um das Pulver auf ein Opfer zu werfen, muss eine Probe auf die Kampftechnik Wurfwaffen gelingen, die wie üblich modifiziert wird (Reichweite: 3/4/5, wenn als Pulver in der Hand; 5/10/15, wenn als Beutelchen). Um geworfenem Staub auszuweichen, muss dem Beworfenen eine Probe auf Ausweichen gelingen. Auch hier gelten die üblichen Modifikatoren für Ausweichen im Fernkampf. Es spielt dabei keine Rolle, ob sich das Pulver in der Hand des Werfenden befindet oder in einem sich beim Aufprall öffnenden Säckchen. Um das Pulver nach einem erfolgreichen Angriff nicht einzuatmen, ist eine Probe auf Selbstbeherrschung –2 nötig.\n\nWirkung: zu Beginn einmalig 1W6+2 SP, danach bis zum Ende der Wirkung 1 Stufe Betäubung / zu Beginn einmalig 1W3+1 SP, die Wirkungsdauer erhöht sich kumulativ\n\nWert/Preis: 50 Silbertaler / 60 Silbertaler\n\nPublikation(en): Aventurisches Herbarium, Seite 80",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Kr_tenschemelgift",
+    "category": "poisons_and_illnesses",
+    "name": "Krötenschemelgift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Kr%C3%B6tenschemelgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Rezeptbeschreibung: Das Krötenschemelgift wird aus dem Pilz Eitriger Krötenschemel gewonnen. Das Gift verursacht Übelkeit und Erbrechen. Charakteristisch ist die Blaufärbung von Zunge und Händen. Die Wirkung des Giftes ist nicht kumulativ, solange das Opfer noch unter der Giftwirkung leidet.\n\nArt: Einnahmegift, Waffengift, pflanzlich\n\nWirkung: heftige Magenkrämpfe und Erbrechen (1W6+2 SP pro angefangener Stunde), Blaufärbung der Hände und des Gesichts / Magenkrämpfe und Erbrechen (1W3+1 SP pro angefangener Stunde), Blaufärbung der Hände und des Gesichts\n\nWert/Preis: 400 Silbertaler / 480 Silbertaler\n\nPublikation(en): Aventurisches Herbarium, Seite 80",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_H_hlenbovistgift",
+    "category": "poisons_and_illnesses",
+    "name": "Höhlenbovistgift",
+    "url": "https://dsa.ulisses-regelwiki.de/H%C3%B6hlenbovistgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Pflanzliche Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Sinnestäuschung (1 Stufe Verwirrung) und Antriebslosigkeit (Erschwernis von 1 auf alle Körpertalente)/ Sinnestäuschung (1 Stufe Verwirrung)\n\nPublikation: Katakomben & Ruinen Seite 30",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_G_nsepusteln_Kinderkrankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Gänsepusteln (Kinderkrankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Gaensepusteln.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Es bilden sich zahlreiche kleine, eitrige Pickel im Gesicht und an den Händen. Die Haut rötet sich an diesen Stellen leicht.\n\nSchaden: 1W3 SP pro Tag, das Aussehen des Erkrankten sinkt um eine Stufe (z. B. von normal auf Hässlich I oder von Gutaussehend II auf Gutaussehend I) / 1 SP pro Tag, das Aussehen des Erkrankten sinkt um eine Stufe (z. B. von normal auf Hässlich I oder von Gutaussehend II auf Gutaussehend I)\n\nUrsachen: dauerhaft mangelnde Hygiene über mindestens drei Monate (1-4 auf W20, 20 %), Kontakt mit einem Kranken (1-2 auf W20, 10 %)\n\nBehandlung: Hausmittel (z. B. in Milch getränkte Tücher auf Gesicht und Hände legen, Dauer –1 Tag)\n\nGegenmittel: Eine Salbe aus zerdrückten Alraunen und Wirselkrautblättern auf die Haut auftragen. War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe der Krankheit misslungen, bilden sich die Pusteln sofort zurück und die Krankheit endet.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 19",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Efferd-_oder_Kerkersieche",
+    "category": "poisons_and_illnesses",
+    "name": "Efferd- oder Kerkersieche",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Efferdsieche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Das langsame Siechtum beginnt mit Sinnestrübungen und Mattigkeit, die dann in Sehstörungen und Halluzinationen übergehen.\n\nSchaden: 1 Stufe Verwirrung pro 5 Tage / 1 Stufe Verwirrung\n\nDauer: bis das Schiff oder der Kerker verlassen wird (Krankheit hört sofort auf)\n\nUrsachen: Mindestens 5 Wochen auf See oder im Gefängnis (ab der sechsten Woche jede Woche 1 auf W20, 5 %)\n\nBehandlung: Fixierung, damit sich der Erkrankte durch die Halluzinationen nicht selbst gefährdet\n\nGegenmittel: Siehe Dauer. Frisches Sansaro verhindert, dass die Erkrankung schlimmer wird (keine weiteren Stufen Verwirrung ). Nach zwei Wochen der Einnahme ist die Krankheit geheilt. Die Einnahme von frischem Neckerkraut verhindert für eine Woche eine Erkrankung.\n\nPublikation: Aventurischer Almanach Seite 128",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Halluzinationsgift",
+    "category": "poisons_and_illnesses",
+    "name": "Halluzinationsgift",
+    "url": "https://dsa.ulisses-regelwiki.de/GIFT_Tier_Halluzinationsgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift verursacht leichte Halluzinationen. Die Wirkung ist nicht kumulativ.\n\nWirkung : 2 Stufen Verwirrung / 1 Stufe Verwirrung\n\nAnmerkung : Das Gift kann nicht extrahiert werden.\n\nPublikation(en): Aventurische Magie II, Seite 21 Kodex der Magie, Seite 369",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Mur_nenbiss",
+    "category": "poisons_and_illnesses",
+    "name": "Muränenbiss",
+    "url": "https://dsa.ulisses-regelwiki.de/Muraenenbiss.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1 SP/KR, schwere und düstere Halluzinationen (3 Stufen Verwirrung) / keine SP, düstere Halluzinationen (1 Stufe Verwirrung)\n\nPublikation: Havena - Versunkene Geheimnisse, Seite 91",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_W_stenskorpiongift",
+    "category": "poisons_and_illnesses",
+    "name": "Wüstenskorpiongift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_tier/wuestenskorpiongift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift des Wüstenskorpions ist schmerzhaft und sehr gefährlich. Die Wirkung kann auch bei mehrfachen Stichen nur einmal am Tag entstehen.\n\nArt: Einnahme- und Waffengift , tierisch\n\nWirkung: 4W6 SP / 2W6 SP (der ausgewürfelte Schaden verteilt sich über mehrere KR; pro KR 1 SP)",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Ghulgift",
+    "category": "poisons_and_illnesses",
+    "name": "Ghulgift",
+    "url": "https://dsa.ulisses-regelwiki.de/Ghulgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Der Erkrankte verwandelt sich binnen 1W3 Tagen in einen Ghul / 1 Stufe Paralyse.\n\nKosten: nicht extrahierbar, deshalb auch kein Preis\n\nDer Speichel der Ghule enthält ein magisches Gift, das das Opfer selbst in einen Ghul verwandelt. Das Gift ist nur durch magische und karmale Heilmethoden oder eine Probe auf Heilkunde Gift (tierisches Gift) erschwert um 5 heilbar. Allerdings nur solange man noch kein Ghul ist. Voraussetzung für die Probe ist ein Aderlass (2W6 SP beim Patienten) und der Einsatz von Misteln.\n\nPublikation: Aventurisches Bestiarium Seite 25",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_K_nigsskorpiongift",
+    "category": "poisons_and_illnesses",
+    "name": "Königsskorpiongift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Koenigsskorpiongift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Die Wirkung ist kumulativ, allerdings kann man dadurch nicht mehr als 2 Stufen Paralyse erhalten.\n\nWirkung: eine Stufe Paralyse / keine Auswirkungen\n\nKosten (Kauf/Verkauf): 300 Silbertaler / 75 Silbertaler\n\nPublikation(en): Das Dornenreich, Seite 85",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Hexenkr_tengift",
+    "category": "poisons_and_illnesses",
+    "name": "Hexenkrötengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Hexenkroetengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Hexenkröten ist ein leichtes Halluzinogen. Es wirkt nicht auf Hexen, es sei denn, die Hexe möchte willentlich, dass das Gift bei ihr wirkt. Die Zustandsstufen durch das Gift wirken kumulativ, maximal lassen sich so 3 Stufen ansammeln.\n\nPublikation(en): Grimorum Cantiones, Seite 500",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Quallengift",
+    "category": "poisons_and_illnesses",
+    "name": "Quallengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Quallengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Qualle wirkt paralysierend. Der Schaden ist kumulativ.\n\nStufe: 3 Art: Kontaktgift, tierisch Widerstand: Zähigkeit Wirkung: 1 Stufe Paralyse / – Beginn: sofort Dauer: bis zum Ende der lähmenden Wirkung (eine halbe Stunde pro Stufe des Zustands Paralyse ) Kosten: 100 Silbertaler\n\nPublikation(en): Divinarium Liturgia, Seite 448 Unendlichkeit und Tiefenrausch, Seite 19",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Karmesin_Kinderkrankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Karmesin (Kinderkrankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Karmesin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Entzündung im Hals und Rachen, die Schleimhäute sind rot gefärbt und die Zunge ist geschwollen. Schlucken und Reden sind sehr schmerzhaft.\n\nSchaden: 1W3 SP pro Tag. Nachteil Stumm / 1W3–1 SP pro Tag\n\nUrsachen: Körper längere Zeit unterkühlt (1 auf W20, 5 %), Küssen eines Kranken (1-16 auf W20, 80 %), Kontakt mit einem Kranken (1-5 auf W20, 25 %)\n\nGegenmittel: Einnahme eines Tees aus getrockneten Gulmondblättern (Dauer –2 Tage)\n\nPublikation(en): Aventurisches Kompendium 2 Seite 20",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Leichenbl_sse_magische_Krankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Leichenblässe (magische Krankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Leichenblaesse.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Erkrankte erwacht am ersten Krankheitstag erschöpft, mit extrem bleicher Haut, starken, dunklen Augenringen und einem generell fahlen Erscheinungsbild. Auch die Stimme ist betroffen: Sie ist zittrig, leise und schwach.\n\nSchaden: 1W3 SP pro Tag und 1 Stufe Betäubung. In manchen Situationen kann der Erkrankte für einen Untoten gehalten werden. / 1 SP pro Tag.\n\nUrsachen: Grabfrevel (nach Meisterentscheid, dann 1-4 auf W20, 20 %), Biss einer Katze (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe (1 SP weniger pro Tag)\n\nGegenmittel: keines; die Perainekirche kennt Liturgien, um die Leichenblässe zu stoppen.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 20ff.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Marder-_oder_Orkenkr_tze",
+    "category": "poisons_and_illnesses",
+    "name": "Marder- oder Orkenkrätze",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Orkenkraetze.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Juckreiz und Hautirritationen. Danach haben sich die Parasiten satt gefressen und lassen vom Opfer ab.\n\nSchaden: Die Würmer sind zum Darm vorgedrungen. Juckreiz und Hautirritationen (1 Stufe Verwirrung) und Bauchkrämpfe (1 Stufe Schmerz) sowie 1W3 SP pro Tag. / Die Würmer haben nur die Haut befallen. Juckreiz und Hautirritationen (1 Stufe Verwirrung).\n\nUrsachen: intensiver Hautkontakt mit Orks (bei 1 auf W20, 5 %, ist der Ork ein Überträger des Parasiten, bei 1 auf W20 bei einem weiteren Wurf, 5 %, kommt es zu einer Übertragung), Kontakt mit einem Kranken (1-2 auf W20, 10 %), Übernachtung in einer schäbigen Unterkunft (1-2 auf W20, 10 %), Pflege eines Erkrankten (1 auf W20, 5 %)\n\nBehandlung: Wird der Körper täglich mit Egelschrecksalbe eingerieben, wird der Juckreiz unterdrückt (keine Stufe Verwirrung für diesen Tag). Ein Tee aus getrocknetem Egelschreck lindert die Bauchkrämpfe (nur 1 SP für diesen Tag).\n\nGegenmittel: Ein heißer Trank bestehend aus Sansaro und Gulmond erzeugt 1W6 SP und starken Durchfall, beendet den Parasitenbefall jedoch am selben Tag.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 21",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Urkaritgift",
+    "category": "poisons_and_illnesses",
+    "name": "Urkaritgift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Urkaritgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Mineralische Gifte"
+    ],
+    "properties": {},
+    "description": "Dieses Gift wird aus dem zerstoßenem Urkarit-Erz gewonnen und lässt sich zu einer Paste verarbeiten.\n\nW irkung: 1W6+2 SP pro KR / 1W3+1 SP pro KR\n\nPublikation(en): Aventurisches Kompendium 2 Seite 15",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schwarze-Witwen-Gift",
+    "category": "poisons_and_illnesses",
+    "name": "Schwarze-Witwen-Gift",
+    "url": "https://dsa.ulisses-regelwiki.de/GIFT_SchwarzeWitwenGift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Schwarzen Witwe ist für einen gesunden Menschen nicht sehr gefährlich, allerdings kann die Spinne mehrfach zubeißen. Der Schaden ist dabei kumulativ.\n\nStufe : 3 Art : Waffengift, tierisch Widerstand : Zähigkeit Wirkung : 1W6 SP / 1W3 SP (bei 4+ SP 1 Stufe Verwirrung) Beginn : sofort Dauer : sofort\n\nAnmerkung : Das Gift kann nicht extrahiert werden.\n\nPublikation(en): Aventurische Magie II, Seite 224 Aventurische Tiergefährten, Seite 113 Kodex der Magie, Seite 378",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Tinzal",
+    "category": "poisons_and_illnesses",
+    "name": "Tinzal",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Tinzal.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Bei Tinzal handelt es sich um das destillierte Gift der Nesselviper.\n\nWirkung: Atemnot, 1W6 SP pro angefangenen 5 Minuten (alle Proben, die körperliche Anstrengung erfordern –2) / 1W3 SP pro angefangenen 5 Minuten (alle Proben, die körperliche Anstrengung erfordern –1)\n\nPublikation(en): Aventurisches Kompendium 2 Seite 15",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Blutkr_chzen",
+    "category": "poisons_and_illnesses",
+    "name": "Blutkrächzen",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Blutkraechzen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Ab dem ersten Tag Halsschmerzen und Heiserkeit. Starker, blutiger Husten und Kopfschmerzen setzen ab dem zweiten Tag ein.\n\nSchaden: 1W3 SP pro Tag. Ab dem zweiten Tag 1 Stufe Betäubung / 1 SP pro Tag. Ab dem zweiten Tag 1 Stufe Betäubung\n\nUrsachen: Moskitostiche (1-3 auf W20, 15 %), Biss einer Ratte (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe (1 SP weniger pro Tag)\n\nGegenmittel: Einnahme eines Tees aus getrockneten Gulmondblättern (Dauer –2 Tage)\n\nPublikation(en): Aventurisches Kompendium 2 Seite 18",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Brabaker_Schwei",
+    "category": "poisons_and_illnesses",
+    "name": "Brabaker Schweiß",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_BrabakerSchwei%C3%9F.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Feuerzunge",
+    "category": "poisons_and_illnesses",
+    "name": "Feuerzunge",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Feuerzunge.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1W6–1 SP pro angefangener Stunde, geschwollene Zunge (Sprechen ist unmöglich) / 1W3–1 SP pro angefangener Stunde, leicht geschwollene Zunge (alle Proben, die Sprache erfordern –2)\n\nPublikation: Aventurisches Kompendium 2, Seite 13f",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Visarnetgift",
+    "category": "poisons_and_illnesses",
+    "name": "Visarnetgift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Visarnetgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Mineralische Gifte"
+    ],
+    "properties": {},
+    "description": "Visarnetgift ist ein aus einem uthurischen Erz gewonnenes Gift. Mittlerweile ist es auch in Meridiana verbreitet, da es vielseitig einsetzbar ist und im Kampf einen schnellen Vorteil verschafft.\n\nArt: Kontakt- und Waffengift, mineralisch\n\nWirkung: 1W6 SP pro KR, Benommenheit (1 Stufe Betäubung) / 1W3 SP pro KR\n\nPublikation(en): Aventurisches Kompendium 2 Seite 15",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Basiliskenblick_oder_Paralyse_magische_Krankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Basiliskenblick oder Paralyse (magische Krankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Paralye.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Körper ist am ersten Tag leicht gelähmt, ab dem zweiten Tag beginnt jedoch ein tatsächlicher Versteinerungsprozess. Auch die Augenmuskulatur ist von Beginn an von der Lähmung betroffen, wodurch der Blick starr und bewegungslos wird (der Erkrankte bekommt einen ‚Basiliskenblick‘). Nachdem innerhalb weniger Tage die gesamte Körperoberfläche zu Stein erstarrt ist, beginnt anschließend die Versteinerung der inneren Organe. Wird der Krankheitsverlauf überlebt, bildet sich die Versteinerung innerhalb eines Tages vollständig zurück.\n\nSchaden: Am ersten Tag 1 Stufe Paralyse. Ab dem zweiten Tag jeweils eine Probe auf Selbstbeherrschung mit einer Erschwernis gleich der Anzahl der vergangenen Krankheitstage, bei Misslingen der Probe 1 Stufe Paralyse zusätzlich. Nachdem 4 Stufen Paralyse erreicht werden, erleidet der Erkrankte 2W6 SP pro weiterem Tag und erhält den Status Versteinert. / Am ersten Tag 1 Stufe Paralyse. Ab dem zweiten Tag jeweils eine Probe auf Selbstbeherrschung, bei Misslingen der Probe 1 Stufe Paralyse zusätzlich. Nachdem 4 Stufen Paralyse erreicht werden, erleidet der Erkrankte 1W6 SP pro weiterem Tag und erhält den Status Versteinert. Die angesammelten Stufen Paralyse bauen sich bei beiden Verläufen erst nach dem Ende der Krankheit wieder ab und verbleiben bis dahin dauerhaft.\n\nUrsachen: Schaden durch Untote (1-2 auf W20, 10 %), Aufenthalt in einer Basiliskenbrache (pro Tag, 1-4 auf W20, 20 %), Blickkontakt mit einem Erkranktem* (1 auf W20, 5 %)\n\nGegenmittel: Zerkauen von frischen oder eingelegten Donfstengeln. War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe der Krankheit misslungen, wird der Krankheitsverlauf innerhalb eines Tages gestoppt, die bisherigen Auswirkungen der Paralyse bleiben jedoch bis zum Ende der Krankheitsdauer bestehen. *) Die Dauer beträgt hierbei aber, gleich ob die Krankheitsprobe ge- oder misslungen ist, nur 1 Tag.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 17ff.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Arax",
+    "category": "poisons_and_illnesses",
+    "name": "Arax",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Arax.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 2 Stufen Paralyse / 1 Stufe Paralyse",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Arachnae",
+    "category": "poisons_and_illnesses",
+    "name": "Arachnae",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Arachnae.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Arachnae ist ein aus dem Verdauungssekret der Höhlenspinne gewonnenes Gift. Bei einer mehrfachen Vergiftung durch Arachnae ist die Wirkung nicht kumulativ, sondern es zählen die höheren Abzüge. Wenn bei einer mehrfachen Vergiftung die niedrigeren Abzüge eine längere Wirkungsdauer aufweisen, so kommen diese erst nach dem Ablauf der Wirkungsdauer der höheren Abzüge zum Tragen, jedoch nur mit der verbleibenden Dauer in Minuten.\n\nWirkung: –2 AT, –2 FK, –2 VW / –1 AT, –1 FK, –1 VW\n\nPublikation(en): Aventurisches Kompendium 2 Seite 13",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Seilschlangengift",
+    "category": "poisons_and_illnesses",
+    "name": "Seilschlangengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Seilschlangengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Stufe : 3 Art : Waffengift, tierisch Widerstand : Zähigkeit\n\nBeginn : 2 KR Dauer : sofort Kosten : keine, Gift kann nicht extrahiert werden\n\n[Anmerkung: Die Wirkung durch mehrere Bisse ist kumulativ. / siehe auch Seilschlange ]\n\nPublikation(en): Aventurische Magie Seite 23 Bannschwert, Stab & Magierkugel, Seite 14",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Grasse",
+    "category": "poisons_and_illnesses",
+    "name": "Grasse",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Grasse.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Ab dem ersten Tag Gliederschmerzen, Schwindelgefühle, Benommenheit, Übelkeit und Fieber.\n\nSchaden: 1W3 SP pro Tag und 1 Stufe Schmerz / 1W3–1 SP pro Tag und 1 Stufe Betäubung Die Stufen Schmerz und Betäubung bauen sich bei beiden Verläufen erst nach dem Ende der Krankheit wieder ab und verbleiben bis dahin dauerhaft.\n\nUrsachen: Körper längere Zeit unterkühlt (1-2 auf W20, 10 %), Kontakt mit einem Kranken (1-4 auf W20, 20 %)\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger)\n\nGegenmittel: Einnahme eines Tees aus getrockneten Wirselkrautblättern (Dauer –2 Tage)\n\nPublikation(en): Aventurisches Kompendium 2 Seite 19",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Zibiljabienengift",
+    "category": "poisons_and_illnesses",
+    "name": "Zibiljabienengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Zibiljabienengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Stufe : 3 Art : Waffengift, tierisch Widerstand : Zähigkeit Wirkung : 1W6–1 SP / 1W3–1 SP Beginn : sofort Dauer : sofort\n\nAnmerkung : Das Gift kann nicht extrahiert werden.\n\nPublikation(en): Aventurische Magie 3, Seite 49 Kodex der Magie, Seite 206",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Herbstpocken_Kinderkrankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Herbstpocken (Kinderkrankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Herbstpocken.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Es entstehen Bläschen und trockene Stellen auf der Haut, die furchtbar jucken. Durch Kratzen können diese aufplatzen, die dadurch entstehenden Wunden können bei schlechter Versorgung lebenslang Narben hinterlassen. Außerdem leidet der Erkrankte an Fieber.\n\nSchaden: Pro Tag eine Probe auf Selbstbeherrschung, bei Misslingen wird dem Juckreiz nachgegeben (1 SP). Fieber (1 Stufe Betäubung), 1W3 SP pro Tag. / Pro Tag eine Probe auf Selbstbeherrschung erleichtert um 2, bei Misslingen wird dem Juckreiz nachgegeben (1 SP). Fieber (1 Stufe Betäubung), 1 SP pro Tag.\n\nUrsachen: dauerhaft mangelnde Hygiene über mindestens drei Monate (1-4 auf W20, 20 %), Kontakt mit einem Kranken (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger)\n\nGegenmittel: Eine Salbe aus Gulmondblättern auf die Haut aufgetragen lindert den Juckreiz (keine Probe auf Selbstbeherrschung nötig und kein Schaden durch Kratzen).\n\nPublikation(en): Aventurisches Kompendium 2 Seite 19",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Augenpest",
+    "category": "poisons_and_illnesses",
+    "name": "Augenpest",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Augenpest.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Erkrankte erblindet oder sieht zumindest sehr schlecht.\n\nSchaden: Status Blind / Nachteil Eingeschränkter Sinn (Sicht)\n\nUrsachen: dauerhafter Schlafmangel über mindestens eine Woche (1-2 auf W20, 10 %), Biss eines Maulwurfs (1 auf W20, 5 %), Tempelfrevel an Praios (1 auf W20, 5 %)\n\nGegenmittel: Auftragen einer Salbe aus Praiosblumenkernöl, Wirselkrautblättern und Gulmond auf die Augenlider. War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe der Krankheit misslungen, endet die Krankheit augenblicklich.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 17",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Speikobragift",
+    "category": "poisons_and_illnesses",
+    "name": "Speikobragift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Speikobragift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Speikobra ist nicht besonders schmerzhaft, aber es kann Fleisch zersetzen. Es wirkt auch mehrmalig, sodass sich die Dauer jedes Mal um 2W6 bzw. 1W6 verlängert.\n\nPublikation(en): Aventurisches Bestiarium II, Seite 115 Das Dornenreich, Seite 89 Anmerkung: In Aventurische Magie (Seite 25) gibt es abweichende Angaben innerhalb des Stabzaubers Tierwandlung (Speikobra) .",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Krankheiten",
+    "category": "poisons_and_illnesses",
+    "name": "Krankheiten",
+    "url": "https://dsa.ulisses-regelwiki.de/Aventurische_Krankheiten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Grundregeln"
+    ],
+    "properties": {},
+    "description": "Die Regeln zu Krankheiten funktionieren ähnlich wie die von Giften. Bei einer Infektion legt der Spielleiter für die Krankheit eine Krankheitsprobe ab. Bei dieser Probe kommt es besonders auf die Stufe der Krankheit an: Die drei Eigenschaften der Krankheit sind jeweils 10+Stufe und der Fertigkeitswert der Krankheit entspricht ihrer Stufe. Modifiziert wird die Probe durch die Seelenkraft oder Zähigkeit des Opfers, je nachdem, was bei der jeweiligen Krankheit angegeben ist. Gelingt die Krankheitsprobe, kommen die vollen Auswirkungen der Krankheit zum Tragen. Bei Misslingen werden die Symptome abgeschwächt und die Angaben hinter dem Schrägstrich der Krankheitswerte benutzt. Die Krankheit bricht immer erst nach einer bestimmten Zeit, der sogenannten Inkubationszeit aus. Dies ist der Zeitraum zwischen Ansteckung und Ausbruch der Krankheit. Ein kranker Held erhält den Status Krank .\n\nVerlauf: der Krankheitsverlauf im Detail\n\nWiderstand: Zähigkeit oder Seelenkraft als Modifikator für die Krankheit\n\nInkubationszeit: Nach welchem Zeitraum nach der Ansteckung bricht die Krankheit aus?\n\nSchaden: Schaden, der durch die Krankheit verursacht wird\n\nUrsachen: Durch was wird die Krankheit verursacht? Hier kann der Meister mit einem W20 würfeln, um festzustellen, ob sich ein Held infiziert. Ist der Wurf erfolgreich, ist der Held von der Krankheit infiziert und es erfolgt eine Krankheitsprobe.\n\nBehandlung: Methoden, um den Krankheitsverlauf abzumildern\n\nGegenmittel: Gegenmittel, um die Krankheit zu stoppen\n\nFür magische und karmale Krankheiten gelten einigezusätzliche Regeln, die die Aussagen aus dem Regelwerk von Seite 343 ergänzen.\n\n# Übernatürliche Krankheiten können nicht durch Zauber und Liturgien geheilt werden, es sei denn, dies wird extra erwähnt.\n\n# Alle übernatürlichen Krankheiten sind komplexe Krankheiten, sodass man ein Berufsgeheimnis braucht, um das Wissen um ein Gegenmittel zu kennen.\n\nNicht jede Krankheit ist für Erwachsene gefährlich. Gerade Kinderkrankheiten sind eher harmlos.\n\n# Erwachsene Menschen haben gegen Kinderkrankheiten +3 ZK.\n\n# Für Orks und Goblins gilt unabhängig von dem Ergebnis der Krankheitsprobe immer der schlimmere Verlauf der Krankheit, die Dauer wird verdoppelt und die SP werden verdreifacht (sofern die Krankheit SP verursacht).\n\n# Alle Kinderkrankheiten zählen zusammen als ein Anwendungsgebiet des Talents Heilkunde Krankheiten.\n\nDa es viele Ursachen für Krankheiten gibt, wollen wir dir hier einige immer wieder auftretende Ursachen genauer vorstellen, damit du weißt, wann der richtige Zeitpunkt für einen Wurf gekommen ist (siehe Regelwerk Seite 343 ).\n\nBiss / Moskitostiche: Wenn ein Held mindestens 1 SP durch einen Biss-Angriff eines bestimmten Wesens oder einen Moskitostich erleidet, muss die Ansteckung überprüft werden. Wenn nichts anderes angegeben ist, muss jedes Mal gewürfelt werden, wenn auf diese Weise SP verursacht werden.\n\nBlickkontakt: Ein Blick des Erkrankten, der sich länger als 1 Sekunde mit dem Blick eines anderen Kulturschaffenden trifft, reicht aus, um einen Wurf zu verlangen, um zu sehen, ob er sich angesteckt hat. Im Zweifelsfall kann der Held eine Probe auf Körperbeherrschung erleichtert um 2 ablegen, um rechtzeitig wegzuschauen. Es reicht nicht aus, wenn der Erkrankte jemand anderem in die Augen blickt. Das Opfer muss den Blick erwidern.\n\nKontakt: Mit Kontakt zu einer bestimmten Person oder einem Wesen ist ein häufiger körperlicher Kontakt (etwa Händeschütteln, benutzen des gleichen Essbestecks oder des gleichen Aborts) gemeint. Üblicherweise würfelt der Meister einmal pro Tag, wenn diese Voraussetzung eintritt. Ausnahmen sind bei der Krankheit angegeben.\n\nKörper längere Zeit unterkühlt: Ein Held, der an Unterkühlung im regeltechnischen Sinn (siehe Regelwerk Seite 346) leidet, kann von dieser Ursache betroffen sein. Üblicherweise würfelt der Meister einmal pro Tag, wenn diese Voraussetzung eintritt. Ausnahmen sind bei der Krankheit angegeben.\n\nMangelnde Hygiene: Sollte der Held sich nie waschen, in unhygienischen Zuständen leben und umgeben von Unrat sein, so kann der Meister immer zu Beginn eines bestimmten Intervalls mit einem Wurf prüfen, ob der Held sich angesteckt hat. Eine kurzzeitige Verbesserung des Zustands reicht meist nicht aus, aber sollte sich die Lage für den Helden mindestens für eine Woche verbessern, ist das Intervall abgebrochen.\n\nPflege eines Erkrankten: Dazu zählt die Versorgung von Kranken, sei es, um eine Behandlung auszuführen oder ein Gegenmittel zu verabreichen. Üblicherweise würfelt der Meister einmal pro Tag, wenn diese Voraussetzung eintritt. Ausnahmen sind bei der Krankheit angegeben.\n\nSchaden durch …: Der Held muss mindestens 1 SP durch einen körperlichen Angriff eines bestimmten Wesens erleiden (z. B. Biss, Krallen oder Hände). Wenn nichts anderes angegeben ist, muss jedes Mal gewürfelt werden, wenn auf diese Weise SP verursacht werden.\n\nSchlafen/Übernachtung oder Aufenthalt in einem bestimmten Gebiet: Sollte sich ein Held länger als 30 Minuten in dem entsprechenden Gebiet aufhalten, so kann der Meister mit einem Wurf prüfen, ob dieser erkrankt. Üblicherweise würfelt der Meister einmal pro Tag, wenn diese Voraussetzung eintritt. Ausnahmen sind bei der Krankheit angegeben.\n\nSchlafmangel: Sollte der Held keinen Schlaf finden, so kann der Meister immer zu Beginn eines bestimmten Intervalls mit einem Wurf prüfen, ob dieser erkrankt.\n\nTempelfrevel: Verübt ein Held eine Handlung, die die Kirche oder der Kult eines bestimmten Gottes als Frevel betrachtet, kommt diese Ursache zum Tragen.\n\nTrinken von verunreinigten Wasser: Sollte der Held einen kleinen Schluck oder mehr von verunreinigtem Wasser trinken, so kann er sich an der Krankheit anstecken. Üblicherweise würfelt der Meister einmal pro Tag, wenn diese Voraussetzung eintritt. Ausnahmen sind bei der Krankheit angegeben.\n\nUngeschützter sexueller Kontakt mit Erkrankten: Der Held kann sich anstecken, wenn er sexuelle Handlung ohne einen entsprechenden Schutz vornimmt.\n\nDie hier vorgestellten Krankheiten sind prinzipiell Krankheiten der Menschen. Auch auf die Krankheiten aus dem Regelwerk und dem Aventurischen Almanach trifft dies zu. Praktisch alle Krankheiten sind jedoch auch bei den anderen kulturschaffenden Völkern bekannt bzw. deren Angehörige können sich wie Menschen daran anstecken. Dies gilt insbesondere für Elfen, Zwerge, Orks, Goblins, für Halbelfen und Halborks, es gibt jedoch auch bestimmte Ausnahmen. Einige Krankheiten haben einen schwereren oder leichteren Verlauf bei bestimmten Spezies, oder Angehörige einer Spezies sind besonders häufig immun gegen die Krankheit. Dies sollte über die Vorteile Immunität gegen (Krankheit) und Krankheitsresistenz sowie den Nachteil Krankheitsanfällig dargestellt werden. An dieser Stelle wollen wir dir einige verbreitete Besonderheiten aufzeigen:\n\n# Wenn Zwerge unter Dumpfschädel (siehe Aventurischer Almanach Seite 128) leiden, erhalten sie bis zum Ende der Krankheit die Schlechte Eigenschaft Jähzorn (leiden sie bereits unter Jähzorn, ist die Probe auf Willenskraft um 1 erschwert). # Bei Elfen nimmt die Gilbe (siehe Aventurischer Almanach Seite 128) immer den schweren Verlauf. Viele Elfen sind immun gegen Lykanthropie (siehe Aventurisches Bestiarium II Seite 124), Schwarze Wut (siehe Aventurischer Almanach Seite 129) und Tollwut (siehe Aventurischer Almanach Seite 129).\n\n# Die Schlafkrankheit erzeugt bei Elfen die Besonderheit, dass sie plötzlich aufwachen und schlafwandeln, bis sie ebenso plötzlich wieder in einen Tiefschlaf versinken.\n\n# Viele Waldmenschen und Utulus sind gegen Blutiger Rotz (siehe Aventurischer Almanach Seite 127) immun.\n\nPublikation(en): Regelwerk Seite 343 Aventurisches Kompendium 2 Seite 16ff.",
+    "subcategory": "Regeln"
+  },
+  {
+    "id": "poisons_and_illnesses_Rascher_Wahn",
+    "category": "poisons_and_illnesses",
+    "name": "Rascher Wahn",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_RascherWahn.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Am ersten Tag heftiges, unkontrolliertes Zucken, darauf folgend Anfälle grundlosen Zorns und ungezielter Gewaltausbrüche. Am zweiten Tag Raserei mit anschließendem Koma.\n\nSchaden: 1W3 SP pro Tag, am ersten Tag Schüttellähmung (1 Stufe Paralyse ) Proben auf Willenskraft bei den Schlechten Eigenschaften Rachsucht und Jähzorn sind um 5 erschwert. Ab dem zweiten Tag Raserei (der Held bekommt, so lange er an Raschem Wahn leidet, die Schlechte Eigenschaft Jähzorn; außerdem den Nachteil Blutrausch ; leidet der Held bereits unter Jähzorn, sind seine Proben auf Willenskraft, um nicht in Jähzorn zu verfallen, um zusätzlich 2 erschwert), Koma (1 Stufe Betäubung pro 3 Stunden) / 1 SP pro Tag, Schüttellähmung (1 Stufe Paralyse ) und es misslingen Proben auf Willenskraft bei den Schlechten Eigenschaften Rachsucht und Jähzorn automatisch.\n\nUrsachen: Tempelfrevel (1 auf W20, 5 %), Tempelfrevel an Hesinde (1-4 auf W20, 20 %)\n\nBehandlung: Fürbitten durch Geweihte, insbesondere die Hesindes. Fixierung des Erkrankten.\n\nGegenmittel: Blütenstaub einer Lulanie als Trank: War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe der Krankheit misslungen, wird die Krankheit sofort geheilt.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Schattenrochengift",
+    "category": "poisons_and_illnesses",
+    "name": "Schattenrochengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Gift_Schattenrochengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift des Schattenrochens ist schmerzhaft und lähmend. Der Schaden ist kumulativ.\n\nStufe: 4 Art: Einnahme- und Waffengift, tierisch Widerstand: Zähigkeit Wirkung: 1W6 SP, +1 Betäubung / 1W3 SP Beginn: sofort Dauer : bis zum Ende der lähmenden Wirkung (3 Stunden pro Stufe des Zustands Betäubung ) Kosten: 200 Silbertaler\n\nPublikation(en): Divinarium Liturgia, Seite 450, 457 Unendlichkeit und Tiefenrausch, Seite 9",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schlafkrankheit_magische_Krankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Schlafkrankheit (magische Krankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Schlafkrankheit.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Nach einer kurzen Phase der Kraftlosigkeit und aufkommender Schwindelanfälle setzt ein Tiefschlaf ein, aus dem der Erkrankte auch nach mehreren Stunden und Tagen nicht erwacht. Dabei ist sowohl die Atmung als auch der Herzschlag sehr schwach.\n\nSchaden: 1 Stufe Betäubung pro vollen 30 Minuten, nach 2 Stunden zusätzlich der Status Bewusstlos. Der Tiefschlaf hat keine direkten Folgen, bei langer Schlafdauer könnte jedoch fälschlicherweise der Tod diagnostiziert werden oder der Schlafende langsam verdursten bzw. verhungern. Leiden Elfen an der Schlafkrankheit, Schlafwandeln sie teilweise bis zu 8 Stunden am Tag. Der Meister hat hier das letzte Wort.\n\nDauer: geringe Wahrscheinlichkeit zu erwachen (pro Tag, 1-2 auf W20, 10 %) / hohe Wahrscheinlichkeit zu erwachen (pro Tag, 1-5 auf W20, 25 %)\n\nUrsachen: Frevel an einer geweihten Grabstätte (1-4 auf W20, 20 %), Kontakt mit Untoten (1-2 auf W20, 10 %), Biss einer Fledermaus / Biss von Ungeziefer (1 auf W20, 5 %)\n\nBehandlung: Wird die Krankheit als solche erkannt, sollte bei längerer Dauer die Zufuhr von Nahrungsmitteln und Wasser gewährleistet werden, damit der Erkrankte überlebt.\n\nGegenmittel: Auftragen von Öl einer Yagannuss auf die Augenlieder. War die Krankheitsprobe erfolgreich und nahm die Krankheit den schlimmeren Verlauf, nimmt sie nach der Verabreichung den weniger schlimmen Verlauf; war die Probe der Krankheit misslungen, wird der Tiefschlaf sofort beendet.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 21ff.",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Rotbacke_Kinderkrankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Rotbacke (Kinderkrankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Rotbacke.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Im Gesicht bildet sich ein rötlicher Ausschlag, der rasch größer wird und sich über den gesamten Körper ausbreitet. Der Erkrankte leidet während des gesamten Krankheitsverlaufs an Fieber.\n\nSchaden: 1W3 SP pro Tag, hohes Fieber (2 Stufen Betäubung) / 1 SP pro Tag, Fieber (1 Stufe Betäubung)\n\nUrsachen: Biss einer Fledermaus / Biss von Ungeziefer (1-2 auf W20, 10 %), Kontakt mit einem Kranken (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger)\n\nGegenmittel: keines; die Perainekirche kennt Liturgien, um die Rotbacke zu stoppen.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 21",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Hexenhornissengift",
+    "category": "poisons_and_illnesses",
+    "name": "Hexenhornissengift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_hexenhornissengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Das Gift kann nicht extrahiert werden; [...]\n\nPublikation(en): Aventurische Magie II, Seite 111 Grimorum Cantiones, Seite 499",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Schlachtfeldfieber",
+    "category": "poisons_and_illnesses",
+    "name": "Schlachtfeldfieber",
+    "url": "https://dsa.ulisses-regelwiki.de/Krank_Schlaftfeldfieber.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurischer Almanach Seite 128",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Ilaris-Sucht",
+    "category": "poisons_and_illnesses",
+    "name": "Ilaris-Sucht",
+    "url": "https://dsa.ulisses-regelwiki.de/krank_Ilaris_Sucht.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Die gefürchtete Ilaris-Sucht, die regeltechnisch wie eine Krankheit behandelt wird, entsteht durch Feuerschlickkonsum (1-4 auf 1W20, Probe bei jeder Anwendung ab der 2. fällig; 1 Anwendung alle 1W3 Tage).\n\nVerlauf: Träume mit ketzerischen Inhalten wider die Götter.\n\nPublikation(en): Aventurisches Herbarium, Seite 156 Das Dornenreich, Seite 94",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Hexenspinnengift",
+    "category": "poisons_and_illnesses",
+    "name": "Hexenspinnengift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_hexenspinnengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Hexenspinne ist für einen gesunden Menschen nicht sehr gefährlich, allerdings kann die Spinne mehrfach zubeißen. Der Schaden ist dabei kumulativ.\n\nWirkung: 1W6 SP / 1W3 SP (bei 4+ SP 1 Stufe Verwirrung )\n\nAnmerkung: Das Gift kann nicht extrahiert werden; [...]\n\nPublikation(en): Aventurische Magie II, Seite 120 Grimorum Cantiones, Seite 501",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Serpentialisgift",
+    "category": "poisons_and_illnesses",
+    "name": "Serpentialisgift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_serpentialisgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Dieses Gift ist ein starkes Lähmungsgift. Die Wirkung durch mehrere Bisse ist kumulativ.\n\nArt: Waffengift, tierisch; das Gift kommt nur zum Tragen, wenn durch eine Raufen AT mindestens 1 SP verursacht wird.\n\nWirkung: 1W6–1 SP, 1 Stufe Paralyse / 1W3–1 SP, 1 Stufe Paralyse\n\nDauer: Die entstandenen Stufen der Paralyse bauen sich pro Stunde um 1 Stufe ab.\n\nAnmerkung: Das Gift kann nicht extrahiert werden.\n\nPublikation(en): Aventurische Magie II, Seite 119",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Guruk-Phaor_magische_Krankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Guruk-Phaor (magische Krankheit)",
+    "url": "https://dsa.ulisses-regelwiki.de/krank_Guruk_Phaor.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Held verwandelt sich in einen Menschenbaum. Er erhält den Status Baumartig .\n\nWiderstand: Seelenkraft oder Zähigkeit (je nachdem, was niedriger ist)\n\nSchaden: verwandelt sich in 1W6 Tagen / verwandelt sich in 2W6 Tagen\n\nUrsachen: Dämonenharz des Arkhobal (1-6 auf W20, 30 %)\n\nGegenmittel: Blütenblätter einer Alveranie\n\nAnmerkungen: Wie alle magischen Krankheiten, ist Guruk-Phaor eine komplexe Krankheit, sodass man ein Berufsgeheimnis braucht, um das Wissen um ein Gegenmittel zu kennen. Der Erkrankte erhält nicht den Status Krank (siehe Regelwerk Seite 36), sondern bekommt am Ende der Verwandlung permanent den Status Baumartig .\n\nPublikation(en): Aventurisches Herbarium, Seite 158 Aventurisches Pandämonium, Seite 125",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Hexenschlangengift",
+    "category": "poisons_and_illnesses",
+    "name": "Hexenschlangengift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_hexenschlangengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Anmerkung : Das Gift kann nicht extrahiert werden.\n\nPublikation(en): Aventurische Magie III, Seite 117 ff. Die Streitenden Königreiche, Seite 166 Grimorum Cantiones, Seite 501",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Pilzflechte",
+    "category": "poisons_and_illnesses",
+    "name": "Pilzflechte",
+    "url": "https://dsa.ulisses-regelwiki.de/krank_Pilzflechte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Unter der Haut des Erkrankten bildet sich eine grünlich schimmernde Pilzflechte\n\nSchaden: 1 SP pro Tag, 1 Stufe Verwirrung durch Jucken / 1 SP pro 2 Tage Dauer: 14 Tage\n\nUrsachen: Kontakt mit Sporen des reifen Orkland-Bovisten (1-12 auf W20, 60 %)\n\nBehandlung: betroffene Hautstelle unterkühlen (halbiert die Krankheitsdauer)\n\nAnmerkungen: Auch Tiere können am Pilzflechte erkranken.\n\nPublikation(en): Aventurisches Herbarium, Seite 158",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Lungenpilz",
+    "category": "poisons_and_illnesses",
+    "name": "Lungenpilz",
+    "url": "https://dsa.ulisses-regelwiki.de/krank_Lungenpilz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Pilzsporen setzen sich in der Lunge fest, behindern dort schmerzhaft die Atmung und beeinträchtigen die Konstitution der Erkrankten.\n\nSchaden: LE-Maximum sinkt um 2W6 LeP, 2 Stufen Paralyse / LE-Maximum sinkt um 1W6 LeP, 1 Stufe Paralyse\n\nUrsachen: Einatmen von Sporen des reifen Orkland-Bovisten (13-18 auf W20, 35 %)\n\nBehandlung: Inhalieren von ätherischen Dämpfen (unterdrückt die Paralyse für 1 Stunde)\n\nGegenmittel: Bei täglicher Einnahme von Gulmondtee darf die Krankheitsprobe alle drei Tage wiederholt werden, um die Krankheit vom schweren in den leichten Verlauf übergehen zu lassen. Dabei steigt die ZK mit jeder durch den Tee wiederholten Probe nach der ersten um 1 Punkt an. Aus dem schwächeren Verlauf klingt die Krankheit innerhalb von einer Woche vollständig ab.\n\nAnmerkungen: Auch Tiere können am Lungenpilz erkranken.\n\nPublikation(en): Aventurisches Herbarium, Seite 158",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Klapperschlangengift",
+    "category": "poisons_and_illnesses",
+    "name": "Klapperschlangengift",
+    "url": "https://dsa.ulisses-regelwiki.de/gift_tier/klapperschlangengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der aventurischen Klapperschlange ist nicht besonders gefährlich, aber schmerzhaft. Die SP durch mehrere Bisse sind kumulativ, nicht jedoch die Schmerzstufen .\n\nArt: Einnahme- und Waffengift , tierisch\n\nWirkung: 2 SP, 1 Stufe Schmerz / 1 SP, 1 Stufe Schmerz",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Bleiche_Sieche",
+    "category": "poisons_and_illnesses",
+    "name": "Bleiche Sieche",
+    "url": "https://dsa.ulisses-regelwiki.de/BSieche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Erkrankte erbleicht und sein Urin färbt  sich grünlich, was mit Dauer der Krankheit beides immer intensiver wird. Zudem hat der Betroffene vor allem nachts, wenn die Assel aktiv ist, stechende Schmerzen an verschiedenen Stellen im Leib, von denen er  erwacht.\n\nSchaden: Regeneration von LeP während der Regenerationsphase um 2 vermindert (Minimum der Regeneration  beträgt  0  LeP);  nachts  für  1  Stunde  Schmerzen (2 Stufen Schmerz )  /  Regeneration  von  LeP  während der Regenerationsphase um 1 vermindert; nachts für 1 Stunde Schmerzen (1 Stufe Schmerz )\n\nUrsachen: Steinassel-Biss (1 auf W20, 5 %), Schlafen in  asselverseuchten Gebieten in Arivor (1-4 auf W20, 20 %)\n\nBehandlung: Bettruhe und verschiedene Kräutertees reduzieren die Krankheitsdauer um 2 Tage.\n\nGegenmittel: Egelschreck verhindert 3 Tage eine Ansteckung an Bleicher Sieche (siehe Regelwerk Seite 345 ). Ein FULMINICTUS (egal, wie viel Schaden er anrichtet), der auf den Erkrankten gesprochen wird, tötet den Parasiten ab. Die Perainekirche kennt Liturgien, um die Bleiche Sieche zu stoppen.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 18 Der Tag danach Seite 19",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_H_hlenspinnengift",
+    "category": "poisons_and_illnesses",
+    "name": "Höhlenspinnengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Hoehlenspin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: eine Stufe Paralyse / keine Auswirkungen\n\nKosten (Kauf/Verkauf): 300 Silbertaler / 75 Silbertaler\n\nPublikation: Aventurischer Almanach Seite 159",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Kvillottergift",
+    "category": "poisons_and_illnesses",
+    "name": "Kvillottergift",
+    "url": "https://dsa.ulisses-regelwiki.de/Kvillo.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 2 SP, 1 Stufe Paralyse / 1 SP, 1 Stufe Paralyse\n\nDauer: Die entstandenen Stufen der Paralyse bauen sich pro Stunde um 1 Stufe wieder ab.\n\nDie Wirkung durch mehrere Bisse ist kumulativ.\n\nPublikation: Aventurisches Bestiarium Seite 104",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Marbos_Ruhe",
+    "category": "poisons_and_illnesses",
+    "name": "Marbos Ruhe",
+    "url": "https://dsa.ulisses-regelwiki.de/MarbosRuhe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Mineralische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: Status Bewusstlos / 1 Stufe Betäubung\n\nPublikation(en): Drachenwerk & Rauberpack Seite 55 Niobaras Vermächtnis Seite 21 Seelanders Eleven Seite 11 Aventurisches Kompendium 2 Seite 15",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Stabschlangengift",
+    "category": "poisons_and_illnesses",
+    "name": "Stabschlangengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Stabschlangengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Stabschlange ist ausgesprochen schmerzhaft. Die Wirkung durch mehrere Bisse ist kumulativ.\n\nStufe : 5 Art : Waffengift, tierisch Widerstand : Zähigkeit Wirkung : einmalig 1W6 SP, 2 Stufen Schmerz / 1W3 SP, 1 Stufe Schmerz Beginn : 2 KR Dauer : 30 Minuten / 15 Minuten Kosten : keine, Gift kann nicht extrahiert werden\n\nPublikation(en): Divinarium Liturgia, Seite 451",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Totenbleiche",
+    "category": "poisons_and_illnesses",
+    "name": "Totenbleiche",
+    "url": "https://dsa.ulisses-regelwiki.de/Totenbleiche.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Wirkung: 1 Stufe Verwirrung pro zwei Tage, W6 SP pro Tag / 1 Stufe Verwirrung pro vier Tage, 1 SP pro Tag\n\nDauer: bis zum Tod bzw. bis keine weitere Einnahme erfolgt\n\nPublikation: Havena - Versunkene Geheimnisse, Seite 91",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Vogelspinnengift",
+    "category": "poisons_and_illnesses",
+    "name": "Vogelspinnengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Vogelspin.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Vogelspinne ist für einen gesunden Menschen nicht sehr gefährlich. Der Schaden ist kumulativ.\n\nPublikation(en): Aventurisches Bestiarium Seite 117 Aventurisches Kompendium 2 Seite 15",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_WdV_-_Tierische_Gifte",
+    "category": "poisons_and_illnesses",
+    "name": "WdV - Tierische Gifte",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV-Gifte_TierischeGifte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten",
+      "Gifte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "WdV - Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Erregungsgift",
+    "category": "poisons_and_illnesses",
+    "name": "Erregungsgift",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV-TierGift_Erregungsgift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Die Wirkung ist nicht kumulativ, man kann während der Wirkung des Giftes nicht noch ein weiteres Mal davon betroffen sein.\n\nWirkung: 1W20-Wurf auf Tabelle / keine Wirkung\n\nAnmerkung: Das Gift kann nicht extrahiert werden. [siehe Zauberspruch Feuchte Erregung ]\n\nPublikation(en): Wege der Vereinigungen, Seite 178ff",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Krankheiten",
+    "category": "poisons_and_illnesses",
+    "name": "Krankheiten",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV_GK_Krankheiten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Wege der Vereinigungen - ab 18 Jahre"
+  },
+  {
+    "id": "poisons_and_illnesses_Juckfieber",
+    "category": "poisons_and_illnesses",
+    "name": "Juckfieber",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV_Krankheit_Juckfieber.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf : Am ersten Tag bekommt der Kranke einen fleckigen Ausschlag, der unangenehm juckt. Zusätzlich beginnt ab dem zweiten Krankheitstag ein leichtes Fieber.\n\nSchaden : 1W3 SP pro Tag, ab dem zweiten Tag 1 Stufe Verwirrung, die erst mit dem Ende der Krankheit abgebaut wird / 1 SP pro Tag, ab dem zweiten Tag 1 Stufe Verwirrung, die erst mit dem Ende der Krankheit abgebaut wird\n\nUrsachen : Nachfolgekrankheit bei Dumpfschädel (1-2 auf W20, 10 %), Nachfolgekrankheit bei Schamlausbefall (1-4 auf W20, 20 %), Pflege eines Erkrankten (1 auf W20, 5 %), ungeschützter sexueller Kontakt mit Erkrankten (1-15 auf W20, 75 %)\n\nBehandlung : Bettruhe und Fieberfürsorge (1 SP weniger pro Tag, bis zu einem Minimum von 0 SP)\n\nGegenmittel : frische oder getrocknete und wieder aufgeweichte Donfstengel zerkauen (Dauer –1 Tag)\n\nPublikation(en): Wege der Vereinigungen, Seite 117",
+    "subcategory": "WdV - Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Kr_tze",
+    "category": "poisons_and_illnesses",
+    "name": "Krätze",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV_Krankheit_Kraetze.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf : Ab dem ersten Tag der Krätze ist der Betroffene von einem starken Juckreiz befallen, der es ihm schwermacht, sich auf etwas anderes als das Jucken zu konzentrieren. Jeden Tag muss er eine Probe auf Selbstbeherrschung ablegen. Am ersten Tag ist sie nicht erschwert, am zweiten um 1, am dritten um 2 usw. Misslingt die Probe, muss sich der Erkrankte so heftig kratzen, dass er dabei seine Haut aufkratzt und 1W6 SP erleidet. Nach dem Misslingen muss keine weitere Probe auf Selbstbeherrschung für das Jucken abgelegt werden. Am Ende der Dauer verlassen die Parasiten den Erkrankten wieder.\n\nSchaden : 2 SP pro Tag, 1 Stufe Betäubung, die erst mit dem Ende der Krankheit abgebaut wird / 1 SP, 1 Stufe Betäubung, die erst mit dem Ende der Krankheit abgebaut\n\nUrsachen : längerer Aufenthalt in einer/m schäbigen Unterkunft/Bordell (Q1: 1-2 auf W20, 10 %, Q2: 1 auf W20, 5 %), längerer Aufenthalt in unhygienischer Umgebung (1-6 auf W20, 30 %), Pflege eines Erkrankten (1-2 auf W20, 10 %), ungeschützter (sexueller) Kontakt mit Erkrankten (1-5 auf W20, 25 %)\n\nBehandlung : chirurgisches Entfernen der Parasiten (Probe auf Heilkunde Wunden –2, 7 SP – QS, Dauer 1 Stunde)\n\nGegenmittel : tägliches Einreiben mit Sansarosalbe (Dauer –2 Tage)\n\nPublikation(en): Wege der Vereinigungen, Seite 117 f.",
+    "subcategory": "WdV - Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Schamlausbefall",
+    "category": "poisons_and_illnesses",
+    "name": "Schamlausbefall",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV_Krankheit_Schamlausbefall.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf : Einen Tag, nachdem sich das Opfer die Schamläuse eingefangen hat, beginnt es die Auswirkungen zu spüren. Ein ständiges Jucken und Beißen im Schambereich sorgt für eine dauerhafte Ablenkung. Am Ende der Dauer verlassen die Parasiten den Erkrankten wieder.\n\nSchaden : keiner, aber das Opfer der Schamläuse erleidet bis zum Ende der Dauer eine Erschwernis von 1 auf alle Fertigkeitsproben / keiner, aber das Opfer der Schamläuse erleidet eine Erschwernis von 1 auf alle Teilproben von GE bei Fertigkeitsproben\n\nUrsachen : längerer Aufenthalt in einer/m schäbigen Unterkunft/Bordell (Q2: 1 auf W20, 5 %; Q1: 1-2 auf W20, 10 %), längerer Aufenthalt in unhygienischer Umgebung (1-4 auf W20, 20 %), Pflege eines Erkrankten (1-4 auf W20, 20 %), ungeschützter sexueller Kontakt mit Erkrankten (1-10 auf W20, 50 %)\n\nBesonderheiten : Bei Schamlausbefall besteht die Gefahr sich als Nachfolgekrankheit das Juckfieber zuzuziehen (1-4 auf W20, 20 %). Das Opfer der Krankheit erleidet nicht den Status Krank. Personen ohne Schamhaar können nicht von Schamläusen befallen werden.\n\nBehandlung : tägliches Waschen des befallenen Bereichs mit Wasser und Seife (Dauer –2 Tage), Intimrasur (Läuse verbleiben noch 1 Tag, bevor sie vom Opfer ablassen)\n\nGegenmittel : Einreiben des betroffenen Bereiches mit Egelschrecksalbe (sofortiges Läusesterben und Ende der Krankheit)\n\nPublikation(en): Wege der Vereinigungen, Seite 118",
+    "subcategory": "WdV - Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Efferdsbrennen",
+    "category": "poisons_and_illnesses",
+    "name": "Efferdsbrennen",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV_Krankheit_Efferdsbrennen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre",
+      "WdV - Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf : Während der gesamten Dauer der Krankheit hat der Erkrankte Schmerzen beim Wasserlassen, die sich wie ein heftiges Brennen anfühlen.\n\nSchaden : 1 Stufe Schmerz nach dem Wasserlassen für 10 Minuten / 1 Stufe Schmerz nach dem Wasserlassen für 5 Minuten\n\nUrsachen : halbes Jahr lang nicht im Schambereich gewaschen (1-5 auf W20, 25 %), längerer Aufenthalt in schmutzigem oder verseuchtem Wasser (1-4 auf W20, 20 %), ungeschützter sexueller Kontakt mit Erkrankten (1-12 auf W20, 60 %)\n\nBehandlung : Eine gründliche Säuberung mit Seife und Kräuteressenzen (Kosten: 10 S) verkürzt die Krankheitsdauer um 2 Tage.\n\nGegenmittel : keines; die Perainekirche kennt Liturgien, um das Efferdsbrennen zu stoppen\n\nPublikation(en): Wege der Vereinigungen, Seite 116",
+    "subcategory": "WdV - Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Wolfsspinnengift",
+    "category": "poisons_and_illnesses",
+    "name": "Wolfsspinnengift",
+    "url": "https://dsa.ulisses-regelwiki.de/Wolfsspinnengift.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Wolfsspinne ist für einen gesunden Menschen nicht sehr gefährlich, allerdings kann die Spinne mehrfach zubeißen. Der Schaden ist kumulativ.\n\nStufe : 4 Art : Einnahme- und Waffengift, tierisch Widerstand : Zähigkeit Wirkung : 1W6 SP / 1W3 SP (bei 4+ SP 1 Stufe Paralyse) Beginn : sofort Dauer : sofort Kosten : 100 Silbertaler\n\nPublikation(en): Aventurisches Götterwirken, Seite 127 Divinarium Liturgia, Seite 452",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Horasierkrankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Horasierkrankheit",
+    "url": "https://dsa.ulisses-regelwiki.de/gk_Horasierkrankheit.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Am ersten Tag ist die Körperstelle, wo es zur Übertragung der Krankheit gekommen ist, gerötet und eine wässrige Flüssigkeit tritt aus. Ab dem zweiten Tag kommt ein leichtes Fieber hinzu, ab dem dritten Tag Hautauschlag und kleine, kupferfarbene Knötchen.\n\nIn vielen Fällen bricht die Krankheit alle 1W6+2 Monate erneut aus (1-10 auf W20, 50 %). Wenn dies geschieht, muss die Krankheit erneut eine Krankheitsprobe ablegen. Sie kehrt dann solange alle 1W6+2 Monate wieder, bis das Gegenmittel verabreicht wurde.\n\nSchaden: am ersten Tag 1W3+1 SP, am zweiten Tag 2W3+2 SP, am dritten Tag 3W3+3 SP; ab dem zweiten Tag 1 Stufe Verwirrung , die erst mit dem Ende der Krankheit abgebaut wird / am ersten Tag 1W3 SP, am zweiten Tag 2W3 SP, am dritten Tag 3W3 SP; ab dem zweiten Tag 1 Stufe Betäubung , die erst mit dem Ende der Krankheit abgebaut wird\n\nBei schwerem Verlauf senken der Ausschlag und die Knötchen das Aussehen des Erkrankten um eine Stufe (z. B. von normal auf Hässlich I oder von Gutaussehend II auf Gutaussehend I ).\n\nBeim 13. Krankheitsausbruch verbleibt die Stufe Verwirrung permanent. Danach erhält der Erkrankte jedes Mal bei einem weiteren Ausbruch 1 permanente Stufe Verwirrung . Bei 4 permanenten Stufen verstirbt er.\n\nUrsachen: Moskitostiche (1 auf W20, 5 %), Pflege eines Erkrankten (1-3 auf W20, 15 %), ungeschützter sexueller Kontakt mit Erkrankten (1-15 auf W20, 75 %)\n\nBehandlung: Bettruhe und allgemeine Fieberfürsorge (1 SP pro Tag weniger)\n\nGegenmittel: Eine Salbe aus Donf, Rahjalieb, Sansaro und Traschbart verhindert den Wiederausbruch der Horasierkrankheit. Den aktuellen Verlauf kann die Salbe aber nicht aufhalten.\n\nPublikation(en): Aventurisches Kompendium 2, Seite 19 f. Wege der Vereinigungen, Seite 117",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_H_henkrankheit",
+    "category": "poisons_and_illnesses",
+    "name": "Höhenkrankheit",
+    "url": "https://dsa.ulisses-regelwiki.de/hoehenkrankheit.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Der Erkrankte erleidet Kopfschmerzen und Schwindel. Häufig kommen Übelkeit und Müdigkeit hinzu, sowie allgemeine Schwäche. Bisweilen treten auch Atemnot und Benommenheit auf.\n\nSchaden: 2 Stufen Betäubung / 1 Stufe Betäubung\n\nUrsachen: Aufenthalt in großen Höhen, verschärft durch körperliche Belastung; Aufenthalt in einer Höhe von 5.000 Schritt (1 auf W20, 5%), Aufenthalt in einer Höhe ab 7.500 Schritt (1-2 auf W20, 10%), Aufenthalt in einer Höhe von 10.000 und mehr Schritt (1-3 auf W20, 15%)\n\nBehandlung: Mindestens ein Tag Ruhezeit senkt den schweren Verlauf zu leichtem Verlauf ab.\n\nGegenmittel: Abstieg auf mäßige Höhen und dort mindestens drei Tage Ruhezeit",
+    "subcategory": "Gifte und Krankheiten"
+  },
+  {
+    "id": "poisons_and_illnesses_Kr_tengift",
+    "category": "poisons_and_illnesses",
+    "name": "Krötengift",
+    "url": "https://dsa.ulisses-regelwiki.de/kroeten.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Gifte",
+      "Tierische Gifte"
+    ],
+    "properties": {},
+    "description": "Das Gift der Koschkröte ist ein leichtes Halluzinogen. Es wirkt nicht auf Hexen, es sei denn, die Hexe möchte willentlich, dass das Gift bei ihr wirkt.\n\nStufe: 4 Art: Kontakt- und Waffengift, tierisch Wirkung: 1 Stufe Verwirrung /– Beginn: 5 KR Dauer: 30 Minuten/–\n\nPublikation(en): Regelwerk Seite 361 Aventurische Tiergefährten, Seite 112 Kodex der Magie, Seite 376",
+    "subcategory": "Gifte"
+  },
+  {
+    "id": "poisons_and_illnesses_Rei_wasserseuche",
+    "category": "poisons_and_illnesses",
+    "name": "Reißwasserseuche",
+    "url": "https://dsa.ulisses-regelwiki.de/rwasser.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Gifte und Krankheiten",
+      "Krankheiten"
+    ],
+    "properties": {},
+    "description": "Verlauf: Eine Krankheit, die mit Bauchkrämpfen, Erbrechen, Durchfall, Kopfschmerzen und Fieber einhergeht.\n\nSchaden: 1W6+1 SP pro Tag, / 1W3+1 SP pro Tag\n\nUrsachen: Trinken von verunreinigten Wasser (1-2 auf W20, 10 %)\n\nBehandlung: Bettruhe senkt den Schaden pro Tag um 1 SP; ein Tee aus Donf und Gulmond sogar um 2 SP pro Tag. Bettruhe und Tee zusammen senken den Schaden um 3 SP pro Tag (jeweils immer bis zu einem Minimum von 1 SP pro Tag)\n\nGegenmittel: keines; die Perainekirche kennt Liturgien, um die Reißwasserseuche zu stoppen.\n\nPublikation(en): Aventurisches Kompendium 2 Seite 21 Der Tag danach Seite 19",
+    "subcategory": "Gifte und Krankheiten"
+  }
+]

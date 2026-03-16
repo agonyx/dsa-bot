@@ -33,6 +33,8 @@ Create a `.env` file with:
 - `GUILD_ID` - Discord server ID (for guild command deployment)
 - `SUPABASE_URL` - Supabase project URL (e.g., `https://yourproject.supabase.co`)
 - `SUPABASE_ANON_KEY` - Supabase anonymous key from project settings
+- `SUPABASE_SERVICE_KEY` - Supabase service role key (for DB writes / import scripts)
+- `OPENAI_API_KEY` - OpenAI API key (for generating embeddings)
 
 ## Code Organization
 
@@ -43,7 +45,9 @@ Create a `.env` file with:
 ├── commands/             # Slash command definitions (one file per command)
 ├── events/               # Discord event handlers
 ├── handlers/             # Business logic (combat, interactions)
-└── utils/                # Utility functions (dice, components)
+├── utils/                # Utility functions (dice, components, rules search)
+├── scripts/              # CLI tools (import, query, embed)
+└── DSA5WikiScraper/      # Regelwiki scraper pipeline (Python)
 ```
 
 ## Key Patterns
@@ -185,3 +189,90 @@ Key database tables:
 - `combatants` - Participants in a combat session
 - `action_modifications` - Combat maneuvers/skills with modifiers
 - `talents` - DSA talent definitions
+- `rule_pages` - Canonical rule documents from Regelwiki scraper (7,196 pages)
+- `rule_chunks` - Chunked rule text with vector embeddings for semantic search (10,426 chunks)
+- `rule_documents` - **Legacy** single-table rule store (deprecated, kept for fallback)
+
+## Rules Vector Database
+
+The bot has a **pgvector-powered semantic search** system for looking up DSA 5e rules from the [Regelwiki](https://dsa.ulisses-regelwiki.de/). This is the knowledge base for all DSA rules, spells, talents, creatures, etc.
+
+### How to Look Up a DSA Rule
+
+**From CLI** (fastest way to check a rule):
+
+```bash
+node scripts/query-rules.js "Wie funktioniert eine Finte im Kampf"
+node scripts/query-rules.js "Drache Kampfwerte"
+node scripts/query-rules.js "Wundschwelle Schmerz"
+```
+
+**From code** (in bot commands/handlers):
+
+```javascript
+const { searchRules, getRulesByCategory, getRuleByTitle } = require('../utils/rulesClient');
+
+// Semantic search — returns top matches with similarity scores
+const results = await searchRules('bleeding damage rules', { limit: 3, threshold: 0.5 });
+
+// Category lookup — returns all rules in a category
+const spells = await getRulesByCategory('spells', 10);
+
+// Exact title lookup
+const rule = await getRuleByTitle('Finte I-III');
+```
+
+### Architecture
+
+```
+DSA5WikiScraper/dsa_scraper_v3/   →  Scrapes Regelwiki HTML, parses to JSON
+  ↓ export_embeddings.py
+data/embeddings/
+  canonical_documents.jsonl        →  8,027 page-level documents
+  chunks.jsonl                     →  11,370 text chunks for embedding
+  ↓ scripts/import-rules-v3.js
+Supabase
+  rule_pages                       →  7,196 canonical documents (unresolved filtered)
+  rule_chunks                      →  10,426 chunks with vector(1536) embeddings
+  match_rule_chunks()              →  Semantic search RPC function
+  ↓ utils/rulesClient.js
+Bot runtime                        →  searchRules(), getRulesByCategory(), getRuleByTitle()
+```
+
+### Key Files
+
+| File                              | Purpose                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------ |
+| `utils/rulesClient.js`            | Rules search API — `searchRules()`, `getRulesByCategory()`, `getRuleByTitle()` |
+| `utils/ruleImportTransforms.js`   | Transforms scraper JSONL into Supabase row shapes                              |
+| `scripts/import-rules-v3.js`      | Imports scraper output into Supabase + generates embeddings                    |
+| `scripts/query-rules.js`          | CLI tool to test semantic search                                               |
+| `scripts/embed-rules.js`          | Legacy markdown-based embedding script (deprecated)                            |
+| `DSA5WikiScraper/dsa_scraper_v3/` | The scraper pipeline (Python)                                                  |
+| `RULES_VECTOR_DB.md`              | Detailed architecture doc for the vector DB system                             |
+
+### Embedding Model
+
+- **Model**: `text-embedding-3-large` (OpenAI) with `dimensions: 1536`
+- **Vector column**: `rule_chunks.embedding` — `vector(1536)` with HNSW index (cosine distance)
+- **Search function**: `match_rule_chunks(query_embedding, match_threshold, match_count, filter_category, include_unresolved)`
+- **Default threshold**: 0.5 similarity (scores typically range 0.55–0.70 for relevant matches)
+
+### Re-importing Rules
+
+After a new scraper run or to re-embed with a different model:
+
+```bash
+# Full import (reads JSONL, inserts pages+chunks, generates embeddings via OpenAI)
+npm run import:rules
+
+# Dry run to check counts without writing
+node scripts/import-rules-v3.js --dry-run
+
+# Include unresolved/ambiguous pages
+node scripts/import-rules-v3.js --include-unresolved
+```
+
+### Current Integration Status
+
+The rules search infrastructure is **fully operational** but **not yet wired into Discord commands**. The `rulesClient.js` functions are ready to be imported by any command or handler. No Discord command currently exposes rule lookup to users.

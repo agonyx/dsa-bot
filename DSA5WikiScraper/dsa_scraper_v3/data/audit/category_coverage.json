@@ -1,0 +1,191 @@
+{
+  "advantages": {
+    "discovered": 29,
+    "fetched": 29,
+    "parsed": 29,
+    "resolved": 29,
+    "emitted": 29,
+    "failed": 0,
+    "thin_content": 29
+  },
+  "bestiarium": {
+    "discovered": 758,
+    "fetched": 758,
+    "parsed": 758,
+    "resolved": 758,
+    "emitted": 758,
+    "failed": 0,
+    "thin_content": 61
+  },
+  "cultures": {
+    "discovered": 56,
+    "fetched": 56,
+    "parsed": 56,
+    "resolved": 56,
+    "emitted": 56,
+    "failed": 0,
+    "thin_content": 12
+  },
+  "disadvantages": {
+    "discovered": 131,
+    "fetched": 131,
+    "parsed": 131,
+    "resolved": 131,
+    "emitted": 131,
+    "failed": 0,
+    "thin_content": 114
+  },
+  "götterwirken": {
+    "discovered": 443,
+    "fetched": 443,
+    "parsed": 443,
+    "resolved": 443,
+    "emitted": 443,
+    "failed": 0,
+    "thin_content": 39
+  },
+  "herbarium": {
+    "discovered": 288,
+    "fetched": 288,
+    "parsed": 288,
+    "resolved": 288,
+    "emitted": 288,
+    "failed": 0,
+    "thin_content": 20
+  },
+  "magic": {
+    "discovered": 775,
+    "fetched": 775,
+    "parsed": 775,
+    "resolved": 775,
+    "emitted": 775,
+    "failed": 0,
+    "thin_content": 74
+  },
+  "poisons_and_illnesses": {
+    "discovered": 123,
+    "fetched": 123,
+    "parsed": 123,
+    "resolved": 123,
+    "emitted": 123,
+    "failed": 0,
+    "thin_content": 14
+  },
+  "professions": {
+    "discovered": 274,
+    "fetched": 274,
+    "parsed": 274,
+    "resolved": 274,
+    "emitted": 274,
+    "failed": 0,
+    "thin_content": 32
+  },
+  "ruestkammer_armor": {
+    "discovered": 80,
+    "fetched": 80,
+    "parsed": 80,
+    "resolved": 80,
+    "emitted": 80,
+    "failed": 0,
+    "thin_content": 25
+  },
+  "ruestkammer_artifacts": {
+    "discovered": 79,
+    "fetched": 79,
+    "parsed": 79,
+    "resolved": 79,
+    "emitted": 79,
+    "failed": 0,
+    "thin_content": 34
+  },
+  "ruestkammer_equipment": {
+    "discovered": 152,
+    "fetched": 152,
+    "parsed": 152,
+    "resolved": 152,
+    "emitted": 152,
+    "failed": 0,
+    "thin_content": 24
+  },
+  "ruestkammer_helmets": {
+    "discovered": 14,
+    "fetched": 14,
+    "parsed": 14,
+    "resolved": 14,
+    "emitted": 14,
+    "failed": 0,
+    "thin_content": 3
+  },
+  "ruestkammer_weapons": {
+    "discovered": 406,
+    "fetched": 406,
+    "parsed": 406,
+    "resolved": 406,
+    "emitted": 406,
+    "failed": 0,
+    "thin_content": 86
+  },
+  "rules": {
+    "discovered": 1123,
+    "fetched": 1123,
+    "parsed": 1123,
+    "resolved": 1123,
+    "emitted": 1123,
+    "failed": 0,
+    "thin_content": 227
+  },
+  "special_abilities_animal": {
+    "discovered": 132,
+    "fetched": 132,
+    "parsed": 132,
+    "resolved": 132,
+    "emitted": 132,
+    "failed": 0,
+    "thin_content": 2
+  },
+  "special_abilities_karmale": {
+    "discovered": 601,
+    "fetched": 601,
+    "parsed": 601,
+    "resolved": 601,
+    "emitted": 601,
+    "failed": 0,
+    "thin_content": 231
+  },
+  "special_abilities_magical": {
+    "discovered": 1178,
+    "fetched": 1178,
+    "parsed": 1178,
+    "resolved": 1178,
+    "emitted": 1178,
+    "failed": 0,
+    "thin_content": 365
+  },
+  "special_abilities_profane": {
+    "discovered": 544,
+    "fetched": 544,
+    "parsed": 544,
+    "resolved": 544,
+    "emitted": 544,
+    "failed": 0,
+    "thin_content": 10
+  },
+  "species": {
+    "discovered": 10,
+    "fetched": 10,
+    "parsed": 10,
+    "resolved": 10,
+    "emitted": 10,
+    "failed": 0,
+    "thin_content": 0
+  },
+  "unresolved": {
+    "discovered": 1137,
+    "fetched": 1080,
+    "parsed": 831,
+    "resolved": 0,
+    "emitted": 831,
+    "failed": 57,
+    "thin_content": 346
+  }
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "species_Zwerg",
+    "category": "species",
+    "name": "Zwerg",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Zwerge.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen: KO und KK +1; CH oder GE –2\n\nDringend empfohlene Vor- und Nachteile: Folgende Vor- und Nachteile zeichnen aventurische Zwerge im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit dem Spielleiter abgestimmt werden, warum darauf verzichtet wird: Dunkelsicht I, Immunität gegen Tulmadron, Unfähig (Schwimmen)\n\nÜbliche Kulturen: Ambosszwerge, Brillantzwerge, Erzzwerge, Hügelzwerge\n\nTypische Vorteile: Dunkelsicht II, Hitzeresistenz, Hohe Zähigkeit, Krankheitsresistenz, Richtungssinn, Schwer zu verzaubern, Zäher Hund, Zwergennase\n\nUntypische Vorteile: Schlangenmensch, Wohlklang, Zauberer\n\nUntypische Nachteile: Hitzeempfindlich, Nachtblind, Niedrige Seelenkraft, Niedrige Zähigkeit, Zerbrechlich",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Orks",
+    "category": "species",
+    "name": "Orks",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Orks.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen : MU +1 und KO +1, KL –1 oder CH –1\n\nÜbliche Kulturen : Orkland, Räuberbande, Svellttal, Thorwal\n\nDringend empfohlene Vor- und Nachteile : Folgende Vor- und Nachteile zeichnen aventurische Orks im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit der Spielleiterin abgestimmt werden, warum darauf verzichtet wird: Biss I, Dunkelsicht I, Kälteresistenz, Natürliche Waffe (Biss), Natürlicher Rüstungsschutz I, Zäher Hund / Niedrige Seelenkraft, Schlechte Eigenschaft (Aberglaube, Jähzorn)\n\nTypische Vorteile : Dunkelsicht II, Hohe Zähigkeit, Richtungssinn\n\nTypische Nachteile : Blutrausch, Stechender Orkgeruch\n\nUntypische Vorteile : Angenehmer Geruch, Wohlklang\n\nUntypische Nachteile : Nachtblind, Niedrige Zähigkeit, Zerbrechlich\n\nPublikation(en) : Orks - Hauer & Schwarzer Pelz, Seite 18",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Halbelfen",
+    "category": "species",
+    "name": "Halbelfen",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Halbelfen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen: eine beliebige Eigenschaft nach Wahl +1\n\nÜbliche Kulturen: Andergaster, Auelfen, Bornländer, Firnelfen, Horasier, Mittelreicher, Nivesen, Nordaventurier, Nostrier, Svellttaler, Thorwaler, Waldelfen\n\nTypische Vorteile: Begabung (Singen, Musizieren), Beidhändig, Dunkelsicht I, Flink, Gutaussehend, Herausragender Sinn (Gehör oder Sicht), Schlangenmensch, Wohlklang, Zauberer, Zweistimmiger Gesang\n\nTypische Nachteile: Sensibler Geruchssinn, Wahrer Name\n\nUntypische Vorteile: Schwer zu verzaubern, Zwergennase\n\nUntypische Nachteile: Blutrausch, Fettleibig, Krankheitsanfällig",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Goblins",
+    "category": "species",
+    "name": "Goblins",
+    "url": "https://dsa.ulisses-regelwiki.de/spezies/goblins.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen: FF +1 und GE +1, MU -1 oder KL -1\n\nÜbliche Kulturen: Bornland, Nordaventurien, Räuberbande, Stammesgoblins\n\nAutomatische Vorteile: Dunkelsicht 1 (10 AP), Herausragender Sinn (Gehör) (12 AP), Herausragender Sinn (Geruch & Geschmack) (6 AP), Krankheitsresistenz I (10 AP)\n\nDringend empfohlene Vor- und Nachteile: Folgende Vor- und Nachteile zeichnen aventurische Goblins im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit dem Spielleiter abgestimmt werden, warum darauf verzichtet wird: Biss I/II, Flink, Kälteresistenz, Natürliche Waffen (Biss), Natülicher Rüstungsschutz I, Schlechte Eigenschaft I (Aberglaube, Neugier)\n\nTypische Vorteile: Dunkelsicht II, Richtungssinn\n\nTypische Nachteile: Niedrige Seelenkraft\n\nUntypische Nachteile: Nachtblind, Niedrige Zähigkeit",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Elfen",
+    "category": "species",
+    "name": "Elfen",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Elfen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen: IN und GE +1; KL oder KK –2\n\nÜbliche Kulturen: Auelfen, Firnelfen, Waldelfen\n\nAutomatischer Vorteil: Zauberer, Zweistimmiger Gesang\n\nVerbrauchte AP für Vorteile/Nachteile: Vorteile: 30 AP, Nachteile 0 AP\n\nDringend empfohlene Vor- und Nachteile: Folgende Vor- und Nachteile zeichnen aventurische Elfen im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit dem Spielleiter abgestimmt werden, warum darauf verzichtet wird: Altersresistenz, Dunkelsicht I, Nichtschläfer, Sensibler Geruchssinn, Unfähig (Zechen)\n\nTypische Vorteile: Begabung (Singen, Musizieren), Beidhändig, Dunkelsicht II, Flink, Giftresistenz, Gutaussehend, Herausragender Sinn (Gehör oder Sicht), Immunität gegen (Schwarze Wut, Tollwut, Lykanthropie), Krankheitsresistenz, Richtungssinn, Schlangenmensch, Verbesserte Regeneration (Astralenergie), Wohlklang\n\nTypische Nachteile: Körpergebundene Kraft, Lästige Mindergeister, Wahrer Name\n\nUntypische Vorteile: Hitzeresistenz, Schwer zu verzaubern, Zwergennase\n\nUntypische Nachteile: Blutrausch, Eingeschränkter Sinn, Fettleibig, Nachtblind\n\nAnmerkung: Als Wesen, dass automatisch über den Vorteil Zauberer verfügt, besitzt ein Elf 20 AsP.",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Achaz",
+    "category": "species",
+    "name": "Achaz",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Achaz.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen : IN und KO +1; MU oder KK –1\n\nÜbliche Kulturen : Achaz-Rha, Ctki’Ssrr, Stammesachaz\n\nAutomatischer Vorteile : Dunkelsicht I (10 AP), Zusätzliche Gliedmaße (Schwanz) (5 AP)\n\nAutomatische Nachteile : Kältestarre (–15 AP)\n\nVerbrauchte AP für Vorteile/Nachteile : Vorteile: 15 AP, Nachteile –15 AP\n\nDringend empfohlene Vor- und Nachteile : Folgende Vor- und Nachteile zeichnen aventurische Achaz im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit der Spielleiterin abgestimmt werden, warum darauf verzichtet wird: Begabung Schwimmen, Herausragender Sinn (Geschmack & Geruch), Natürliche Waffe (Biss), Natürliche Waffen (Schwanz), Natürlicher Rüstungsschutz I/II, Richtungssinn / Angst vor … (Dunkelheit) I, Eingeschränkter Sinn (Gehör), Unfähig Musizieren, Unfähig Singen\n\nTypische Vorteile : Greifschwanz, Hauttasche, Hohe Zähigkeit, Schlangenmensch, Zeitgefühl\n\nUntypische Vorteile : Angenehmer Geruch, Blutrausch, Wohlklang\n\nUnterschiedliche Achaz-Arten: # Echsensumpf-Achaz : keine Änderungen # Maraskan-Achaz : GE + 1 statt KO +1, Beidhändigkeit als dringend empfohlener Vorteil # Orkland-Achaz : FF +1 statt KO +1, keine Kältestarre bei den automatischen Vorteilen. # Regenwald-Achaz : KK +1 statt IN +1, IN –1 statt KK –1 # Waldinsel-Achaz : GE +1 statt IN +1, FF –1 statt KK –1\n\nPublikation(en) : Achaz - Schuppenkleid & Lange Zungen, Seite 18",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Mensch",
+    "category": "species",
+    "name": "Mensch",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Menschen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen: eine beliebige Eigenschaft nach Wahl +1\n\nÜbliche Kulturen: # Mittelländer: Andergaster, Bornländer, Horasier, Maraskaner, Mittelreicher, Nordaventurier, Nostrier, Südaventurier, Svellttaler, Zyklopäer # Nivesen: Bornländer, Nivesen, Nordaventurier, Svellttaler # Norbarden: Bornländer, Norbarden, Nordaventurier # Thorwaler: Fjarninger, Nordaventurier, Thorwaler # Tulamiden: Aranier, Maraskaner, Mhanadistani, Novadis, Südaventurier # Waldmenschen: Aranien, Mhanadistan, Novadis, Südaventurien, Utulus, Waldmenschen # Utulus: Aranien, Mhanadistan, Novadis, Südaventurien, Utulus, Waldmenschen\n\nTypische Vorteile: # Nivesen: Entfernungssinn, Kälteresistenz # Thorwaler: Hohe Zähigkeit, Zäher Hund # Tulamiden: Hitzeresistenz # Waldmenschen und Utulus : Angenehmer Geruch, Hitzeresistenz, Immunität gegen Wurara, Immunität gegen Flinken Difar und Brabaker Schweiß\n\nTypische Nachteile: # Nivesen: Hitzeempfindlich # Thorwaler: Blutrausch, Niedrige Seelenkraft # Tulamiden , Waldmenschen , Utulus: Kälteempfindlich",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Halborks",
+    "category": "species",
+    "name": "Halborks",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Halborks.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Übliche Kulturen : Orkland, Räuberbande, Svellttal, Thorwal\n\nAutomatischer Vorteile : Zäher Hund (20 AP)\n\nVerbrauchte AP für Vorteile/Nachteile : Vorteile: 20 AP, Nachteile 0 AP\n\nDringend empfohlene Vor- und Nachteile : Folgende Vor- und Nachteile zeichnen aventurische Halborks im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit der Spielleiterin abgestimmt werden, warum darauf verzichtet wird: Biss I, Dunkelsicht I, Kälteresistenz / Niedrige Seelenkraft\n\nTypische Vorteile : Dunkelsicht II, Hohe Zähigkeit, Richtungssinn\n\nTypische Nachteile : Blutrausch, Niedrige Seelenkraft, Stechender Orksgeruch\n\nUntypische Vorteile : Angenehmer Geruch, Wohlklang\n\nUntypische Nachteile : Nachtblind, Niedrige Zähigkeit, Zerbrechlich\n\nPublikation(en) : Orks - Hauer & Schwarzer Pelz, Seite 17",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Nachtalb",
+    "category": "species",
+    "name": "Nachtalb",
+    "url": "https://dsa.ulisses-regelwiki.de/spezies/nachtalb.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Eigenschaftsänderungen: IN und GE +1; KL oder KK -2\n\nAutomatischer Vorteil: Zauberer , Zweistimmiger Gesang\n\nVerbrauchte AP für Vorteile/Nachteile: Vorteile: 30 AP, Nachteile 0 AP\n\nDringend empfohlene Vor- und Nachteile: Folgende Vor- und Nachteile zeichnen Nachtalben im besonderen Maße aus. Diese Vor- und Nachteile sollten gewählt werden oder es muss mit der Spielleiterin abgestimmt werden, warum darauf verzichtet wird: Altersresistenz , Dunkelsicht I , Nichtschläfer , Sensibler Geruchssinn , Unfähig (Zechen)\n\nTypische Vorteile: Beidhändig , Dunkelsicht II , Flink , Giftresistenz , Gutaussehend , Herausragender Sinn (Gehör oder Sicht) , Immunität gegen (Schwarze Wut, Tollwut, Lykanthropie) , Kälteresistenz , Krankheitsresistenz , Richtungssinn , Schlangenmensch , Verbesserte Regeneration (Astralenergie) , Wohlklang\n\nTypische Nachteile: Blutrausch , Empfindlichkeit (unedle Metalle) , Hitzeempfindlich , Körpergebundene Kraft , Lichtempfindlich , Raubtiergeruch , Wahrer Name\n\nUntypische Vorteile: Hitzeresistenz , Schwer zu verzaubern , Zwergennase\n\nUntypische Nachteile: Kälteempfindlich , Eingeschränkter Sinn , Fettleibig , Nachtblind\n\nAnmerkung: Als Wesen, das automatisch über den Vorteil Zauberer verfügt, besitzt ein Nachtalb 20 AsP.\n\nHaarfarbe (1W20) blauschwarz (1), violettschwarz (2–3), aschgrau (4–5), silbern (6–8), fahlweiß (9–14), weißblond (15–17), hellblond (18–19), goldblond (20)\n\nAugenfarbe* (1W20) violett (1-3), amethystviolett (4–6), tiefblau (7–9), schwarz (10–15), schwarz mit violetten Sprenkeln (16–17), schwarz mit roten Sprenkeln (18–19), glutrot (20)\n\n*Die Augenfarbe bezieht sich bei Nachtalben auf das gesamte Auge, es gibt keine individuell erkennbare Iris.",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "species_Holberker",
+    "category": "species",
+    "name": "Holberker",
+    "url": "https://dsa.ulisses-regelwiki.de/Spez_Holberker.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Spezies"
+    ],
+    "properties": {},
+    "description": "Übliche Kulturen : Holberk, Nordaventurien, Svellttal\n\nAutomatischer Vorteile : Zäher Hund (20 AP)\n\nVerbrauchte AP für Vorteile/Nachteile : Vorteile: 20 AP, Nachteile 0 AP\n\nTypische Vorteile : Dunkelsicht I, Hohe Zähigkeit, Richtungssinn, Zauberer\n\nTypische Nachteile : Niedrige Seelenkraft\n\nUntypische Vorteile : Angenehmer Geruch, Wohlklang\n\nUntypische Nachteile : Nachtblind, Niedrige Zähigkeit, Zerbrechlich\n\nPublikation(en) : Orks - Hauer & Schwarzer Pelz, Seite 19",
+    "subcategory": "DSA Regel-Wiki"
+  }
+]

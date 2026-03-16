@@ -1,0 +1,1221 @@
+[
+  {
+    "id": "ruestkammer_armor_Kettenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Kettenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Schuppenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Schuppenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/schuppenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Schuppenrüstung ist eine Variante der Kettenrüstung.",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Lederr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Lederrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/lederruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Regul_re_Lederr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Reguläre Lederrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/lederruestung/regulaere-lederruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Regul_re_Plattenr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Reguläre Plattenrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/regulaere-plattenruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Regul_re_Kettenr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Reguläre Kettenrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/regulaere-kettenruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_WdV_-_Ausr_stung_und_R_stkammer",
+    "category": "ruestkammer_armor",
+    "name": "WdV - Ausrüstung und Rüstkammer",
+    "url": "https://dsa.ulisses-regelwiki.de/WdV-AusruestungRuestkammer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Wege der Vereinigungen - ab 18 Jahre"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "ruestkammer_armor_Turnierr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Turnierrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/turnierruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Turnierrüstung ist ein eigener Rüstungstyp. Auf einem Pferd können von einer Turnierrüstung 2 BE statt nur 1 BE abgezogen werden.\n\nArchiv der Ausrüstung, Seiten 190, 306 Aventurisches Kompendium, Seite 96 Aventurische Rüstkammer 2, Seite 95 Rüstkammer der Streitenden Königreiche, Seite 15 Kodex des Schwertes, Seite 170 Straßenstaub & Halsabschneider, Seite 36",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Gestechr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Gestechrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/gestechruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Gestechrüstung ist ein eigener Rüstungstyp.\n\nArchiv der Ausrüstung, Seiten 156, 302 Aventurische Rüstkammer II, Seite 79 Kodex des Schwertes, Seite 170 Straßenstaub & Halsabschneider, Seite 35",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Krustenpanzer",
+    "category": "ruestkammer_armor",
+    "name": "Krustenpanzer",
+    "url": "https://dsa.ulisses-regelwiki.de/RS_Ruestung/krustenpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Schuppenrüstung",
+      "Reguläre Schuppenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Krustenpanzer ist eine Variante der Schuppenrüstung .\n\nRüstungsvorteil: Gegen Fernkampfwaffen schützt der Krustenpanzer mit RS 8.\n\nRüstungsnachteil: Proben auf Sinnesschärfe , um einen Träger des Krustenpanzers zu bemerken, sind um +3 erleichtert.",
+    "subcategory": "Schuppenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Tracht_der_Gesichtslosen",
+    "category": "ruestkammer_armor",
+    "name": "Tracht der Gesichtslosen",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/tracht-der-gesichtslosen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Tracht der Gesichtslosen ist eine Variante der Schuppenrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Armbrüste , Bögen , Hiebwaffen und Zweihandhiebwaffen schützt die Tracht der Gesichtslosen mit RS 6. Proben auf Einschüchtern (Drohung oder Verhör) sind für den Träger um +1 erleichtert\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Dolche schützt die Tracht der Gesichtslosen mit RS 3.",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Zorganer_Ringelpanzer_Shidaresh",
+    "category": "ruestkammer_armor",
+    "name": "Zorganer Ringelpanzer (Shidaresh)",
+    "url": "https://dsa.ulisses-regelwiki.de/Ruestung_ZorganerRingelpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Zorganer Ringelpanzer ist eine Variante der Kettenrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Armbrüste , Bögen und Schwerter schützt der Zorganer Ringelpanzer mit RS 5. Bei Fertigkeitsproben auf Klettern , Körperbeherrschung , Tanzen und Verbergen kommt die BE des Zorganer Ringelpanzers nur mit 1 Punkt zum Tragen.\n\nRüstungsnachteil: Sinnesschärfe -Proben, um einen Kettenhemdträger zu bemerken, sind um +1 erleichtert und aufgrund ihres offensichtlichen Reichtums sind Träger der Rüstung bevorzugte Ziele von Dieben.\n\nDas Dornenreich, Seite 148 Helden des Dornenreichs, Seite 69 Rüstkammer des Dornenreiches, Seite 15",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Reiterharnisch",
+    "category": "ruestkammer_armor",
+    "name": "Reiterharnisch",
+    "url": "https://dsa.ulisses-regelwiki.de/reiterharnisch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Reiterharnisch ist eine Variante der Plattenrüstung . Auf einem Pferd können von einem Reiterharnisch 2 BE statt nur 1 BE abgezogen werden\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt der Reiterharnisch mit RS 8.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt der Reiterharnisch mit RS 4.\n\nAventurische Rüstkammer 2, Seite 91 Archiv der Ausrüstung, Seiten 183, 305 Straßenstaub & Halsabschneider, 36",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Zyklopische_Kettenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Zyklopische Kettenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/zyklopische-kettenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Zyklopische Kettenrüstung hat typische Rüstungsverbesserungen für eine Kettenrüstung aus einer zyklopischen Schmiede .",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Neethaner_Reiterharnisch",
+    "category": "ruestkammer_armor",
+    "name": "Neethaner Reiterharnisch",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/neethaner-reiterharnisch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Reiterharnisch ist eine Variante der Plattenrüstung. Auf einem Pferd können von einem Reiterharnisch 2 BE statt nur 1 BE abgezogen werden\n\nRüstungsvorteil: Gegen Waffen der Kampftechnik Fechtwaffen schützt der Reiterharnisch mit RS 8.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen, Kettenwaffen und Zweihandhiebwaffen schützt der Reiterharnisch mit RS 4.\n\nDie Sonnenküste, Seite 160 Rüstkammer der Sonnenküste, Seite 15",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Sewerischer_Fl_gelharnisch",
+    "category": "ruestkammer_armor",
+    "name": "Sewerischer Flügelharnisch",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/sewerischer-fluegelharnisch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Sewerische Flügelharnisch ist eine Variante der Plattenrüstung . Auf einem Pferd können von einem Sewerischen Flügelharnisch 2 BE statt nur 1 BE abgezogen werden.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche , Fechtwaffen und Schwerter schützt der Sewerische Flügelharnisch mit RS 7. Proben auf Reiten sind für den Träger um +1 erleichtert.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt der Sewerische Flügelharnisch mit RS 4.",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Pantherr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Pantherrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/pantherruestung-6475.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Pantherrüstung ist eine Variante der Plattenrüstung . Die KO-Teilprobe bei Kraftakt ist beim Tragen einer Pantherrüstung nicht durch BE erschwert. Rüstung ist nur von Korgeweihten erwerbbar.\n\nRüstungsvorteile: Gegen Waffen der Kampftechniken Zweihandhiebwaffen schützt die Rüstung nur mit RS 7\n\nRüstungsnachteile: Gegen Waffen der Kampftechniken Fechtwaffen schützt die Rüstung nur mit RS 5.\n\nArchiv der Ausrüstung, Seiten 223, 304 Aventurisches Götterwirken, Seite 235",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Amazonenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Amazonenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/amazonenruestung-6443.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Amazonenrüstung ist eine Variante der Plattenrüstung . Die GE-Teilprobe bei Reiten ist beim Tragen einer Amazonenrüstung nicht um die BE erschwert.\n\nRüstungsnachteil: Bei einem Treffer muss zusätzlich mit 1W6 gewürfelt werden. Bei einer 1 besteht nur ein RS von 0, bei einer 2 ein RS von 2 und bei einer 3 ein RS von 4. Bei einem Ergebnis von 4-6 schützte die Amazonenrüstung wie gewohnt mit RS 6\n\nArchiv der Ausrüstung, Seiten 159, 302 Aventurische Rüstkammer II, Seite 72 Aventurisches Götterwirken, Seite 234 Straßenstaub & Halsabschneider, Seite 35",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Nordm_rker_Ritterr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Nordmärker Ritterrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/nordmaerker-ritterruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Gestechrüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Nordmärker Ritterrüstung ist eine Variante der Gestechrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche , Fechtwaffen , Hiebwaffen , Raufen und Schwerter schützt die Nordmärker Ritterrüstung mit einem RS von 8.\n\nRüstungsnachteil: Als Fußkämpfer erleidet der Träger einer Nordmärker Ritterrüstung zusätzliche Abzüge von jeweils -1 auf GS und INI.\n\nDie Flusslande (2018), Seite 147 Helden der Flusslande, Seite 70 Rüstkammer der Flusslande, Seite 14",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Shakagra-Plattenr_stung_Shakri_tar",
+    "category": "ruestkammer_armor",
+    "name": "Shakagra-Plattenrüstung (Shakri’tar)",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/shakagra-plattenruestung-shakri-tar.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Shakagra-Plattenrüstung ist eine Variante der Plattenrüstung. Die Rüstung ignoriert 1 Punkt Abzüge durch BE auf INI und GS. Träger erleiden ggf. den Zustand Eiskalte Einflüsterung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt die Shakagra-Plattenrüstung mit RS 7.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt die Shakagra-Plattenrüstung nur mit RS 5.",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Isnatoscher_Kettengeflecht",
+    "category": "ruestkammer_armor",
+    "name": "Isnatoscher Kettengeflecht",
+    "url": "https://dsa.ulisses-regelwiki.de/isnatoscher-kettengeflecht.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Das Isnatoscher Kettengeflecht ist eine Variante der Kettenrüstung . Um die Rüstung bei der Heldenerschaffung zu erwerben, muss der Held der Kultur Erzzwerge angehören.\n\nRüstungsvorteil: Gegen Ungeheuer verfügt das Isnatoscher Kettengeflecht über einen RS von 5. Einbußen auf GS und INI durch BE oder zusätzliche Abzüge von Rüstungen werden halbiert (abgerundet).\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt das Isnatoscher Kettengeflecht nur mit RS 3. Sinnesschärfe-Probe , um den Träger eines Isnatoscher Kettengeflechts zu bemerken, sind um +1 erleichtert.\n\nHelden der Flusslande, Seite 75 Rüstkammer der Flusslande, Seite 19",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Selemer_Spiegelpanzer",
+    "category": "ruestkammer_armor",
+    "name": "Selemer Spiegelpanzer",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/selemer-spiegelpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_K_rass",
+    "category": "ruestkammer_armor",
+    "name": "Kürass",
+    "url": "https://dsa.ulisses-regelwiki.de/kuerass.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Kürass ist eine Variante der Plattenrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt der Kürass mit RS 7.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt der Kürass nur mit RS 3. Gegenüber Angriffen von hinten schützt der Kürass nur mit einem RS von 1.",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Ringelpanzer",
+    "category": "ruestkammer_armor",
+    "name": "Ringelpanzer",
+    "url": "https://dsa.ulisses-regelwiki.de/Ruestung_Ringelpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Ringelpanzer ist eine Variante der Kettenrüstung. Die erste GE-Teilprobe bei Körperbeherrschung ist beim Tragen eines Ringelpanzers nicht durch BE erschwert.\n\nPublikation(en): Aventurisches Götterwirken II, Seite 181",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Spiegelpanzer",
+    "category": "ruestkammer_armor",
+    "name": "Spiegelpanzer",
+    "url": "https://dsa.ulisses-regelwiki.de/spiegelpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Spiegelpanzer ist eine Variante der Kettenrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Schwerter und Zweihandschwerter schützt der Spiegelpanzer mit RS 5.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen und Zweihandhiebwaffen schützt der Spiegelpanzer mit RS 2.\n\nAventurische Rüstkammer, Seite 111 Rüstkammer des Wüstenreichs, Seite 16 Archiv der Ausrüstung, Seiten 188, 305 Das Wüstenreich (2023), Seite 166 Straßenstaub & Halsabschneider, Seite 36",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Albenhuser_Plattenharnisch",
+    "category": "ruestkammer_armor",
+    "name": "Albenhuser Plattenharnisch",
+    "url": "https://dsa.ulisses-regelwiki.de/albenhuser-plattenharnisch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Albenhuser Plattenharnisch ist eine Variante der Plattenrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche, Fechtwaffen und Lanzen schützt der Albenhuser Plattenharnisch mit einem RS von 7.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Kettenwaffen und Zweihandhiebwaffen schützt der Albenhuser Plattenharnisch nur mit einem RS von 3. Gegenüber Angriffen von hinten schützt der Albenhuser Plattenharnisch nur mit einem RS von 1.\n\nDie Flusslande (2018), Seite 147 Rüstkammer der Flusslande, Seite 13",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Leichte_Shakagra-Platte_Shakri",
+    "category": "ruestkammer_armor",
+    "name": "Leichte Shakagra-Platte (Shakri)",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/leichte-shakagra-platte-shakri.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Leichte Shakagra-Platte ist eine Variante der Plattenrüstung. Träger erleiden ggf. den Zustand Eiskalte Einflüsterung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt die Leichte Shakagra-Platte mit RS 6.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt die Leichte Shakagra-Platte nur mit RS 3.\n\nHelden des Wolfsfrosts, Seite 82 Klingen der Nacht, Seite 105 Sternenträger 2: Der Klang des Feyraasal, Seite 62 Sternenträger 3: Der Abgesang Ometheons, Seite 57",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Baburischer_Spiegelpanzer_Alkadoresh",
+    "category": "ruestkammer_armor",
+    "name": "Baburischer Spiegelpanzer (Alkadoresh)",
+    "url": "https://dsa.ulisses-regelwiki.de/Ruestung_BaburischerSpiegelpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Baburischer Spiegelpanzer ist eine Variante der Kettenrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Schwerter und Stangenwaffen schützt der Baburische Spiegelpanzer mit RS 5.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt der Baburische Spiegelpanzer mit RS 3.\n\nDas Dornenreich (2019), Seite 148 Helden des Dornenreichs, Seite 69 Rüstkammer des Dornenreiches, Seite 15",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Leichte_Platte",
+    "category": "ruestkammer_armor",
+    "name": "Leichte Platte",
+    "url": "https://dsa.ulisses-regelwiki.de/leichte-platte.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Leichte Platte ist eine Variante der Plattenrüstung .\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt die Leichte Platte mit RS 7.\n\nRüstungsnachteil: Gegenüber Angriffen von hinten schützt die Leichte Platte nur mit einem RS von 1.\n\nArchiv der Ausrüstung, Seiten 180, 304 Aventurische Rüstkammer 1, Seite 109 Straßenstaub & Halsabschneider, 36",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Stoffr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Stoffrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/stoffruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Schwere_Kleidung_Winterkleidung",
+    "category": "ruestkammer_armor",
+    "name": "Schwere Kleidung/Winterkleidung",
+    "url": "https://dsa.ulisses-regelwiki.de/schwere-kleidung-winterkleidung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Plattenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Plattenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Normale_Kleidung_Felle_Nackt",
+    "category": "ruestkammer_armor",
+    "name": "Normale Kleidung/Felle/Nackt",
+    "url": "https://dsa.ulisses-regelwiki.de/normale-kleidung-felle-nackt.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_R_stung",
+    "category": "ruestkammer_armor",
+    "name": "Rüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/RS_Ruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "DSA Regel-Wiki"
+  },
+  {
+    "id": "ruestkammer_armor_Kettenhemd",
+    "category": "ruestkammer_armor",
+    "name": "Kettenhemd",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenhemd.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Das Kettenhemd ist eine Variante der Kettenrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Armbrüste, Bögen, Dolche und Schwerter schützt das Kettenhemd mit RS 5.\n\nRüstungsnachteil: Sinnesschärfe-Proben, um einen Kettenhemdträger zu bemerken, sind um 1 erleichtert.",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Seltene_Einmalige_Helme",
+    "category": "ruestkammer_armor",
+    "name": "Seltene & Einmalige Helme",
+    "url": "https://dsa.ulisses-regelwiki.de/ruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Artefakte"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Unterkleidung_f_r_Metallr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Unterkleidung für Metallrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/unterkleidung-fuer-metallruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstungsausstattung"
+    ],
+    "properties": {},
+    "description": "Regel: Wer unter einer Metallrüstung Unterkleidung trägt, erleidet keine Abschürfungen. Bei Komplettrüstungen ist Unterkleidung, sofern sie notwendig ist, bereits enthalten.\n\nAbschürfungen Ohne Unterkleidung sorgen Metallrüstungen für Abschürfungen. Wer eine solche Rüstung länger als 1 volle Stunde pro Tag trägt, muss mit 1W6 würfeln. Bei einer 1 erleidet er Abschürfungen (AT und PA –1), die erst nach einem Tag wieder verschwinden (allerdings nur, wenn in der Zwischenzeit auf das Tragen der Rüstung verzichtet wird). Abzüge durch Abschürfungen fallen nur einmal an, mehrere Abschürfungen summieren ihre Abzüge nicht auf.\n\nPublikation(en): Aventurische Rüstkammer, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Hornr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Hornrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/hornruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Hornrüstung ist eine Variante der Lederrüstung.\n\nPublikation(en) : Aventurische Rüstkammer II, Seite 82 Orks - Hauer & Schwarzer Pelz, Seite 54",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Mherweder_Ringelpanzer",
+    "category": "ruestkammer_armor",
+    "name": "Mherweder Ringelpanzer",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/regulaere-kettenruestungen/mherweder-ringelpanzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Rüstungsvorteil: Gegen Waffen der Kampftechniken Dolche , Bögen und Schwerter schützt der Ringelpanzer mit RS 5.\n\nRüstungsnachteil: Proben auf Sinnesschärfe , um den Träger des Ringelpanzers zu bemerken, sind um +1 erleichtert.\n\nDas Wüstenreich (2023), Seite 166 Rüstkammer des Wüstenreichs, Seite 15",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Fellr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Fellrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/fellruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Normale Kleidung/Felle/Nackt"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Fellrüstung ist eine Variante der normalen Kleidung.\n\nRüstungsvorteil: Die Fellrüstung bietet eine Kälteschutzstufe.\n\nRüstungsnachteil: Der Träger der Fellrüstung erhält einen Abzug von 1 auf INI.",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Schuppenbeutel",
+    "category": "ruestkammer_armor",
+    "name": "Schuppenbeutel",
+    "url": "https://dsa.ulisses-regelwiki.de/Ausruestung_Schuppenbeutel.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Kleidung (Arten & Einzelstücke)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Achaz - Schuppenkleid & Lange Zungen, Seite 43 Kodex der Magie, Seite 132",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Akademie_der_magischen_R_stung_zu_Gareth",
+    "category": "ruestkammer_armor",
+    "name": "Akademie der magischen Rüstung zu Gareth",
+    "url": "https://dsa.ulisses-regelwiki.de/akademie-der-magischen-ruestung-zu-gareth.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Fokusregeln",
+      "Unterricht",
+      "Gildenmagische Unterrichtspläne"
+    ],
+    "properties": {},
+    "description": "Leitlinie: traditionell Wahlzauberpaket: Analys, Attributo (Körperkraft), Balsam Salabunde, Blitz dich find, Duplicatus, Einflussbann, Flim Flam, Hellsichtbann, Ignifaxius, Ignorantia, Odem, Paralysis, Psychostabilis, Sapefacta, Silentium Eingeschränkte Zauber: keine borbaradianischen Zauber, keine Zauber mit dem Merkmal Dämonisch oder Dämonenbeschwörungen, Bannbaladin, Horriphobus, Imperavi, Karnifilo, Plumbumbarum, Respondami, Somnigravis.\n\nPfad des Leibwächters (297 AP) Zauberänderungen: Hellsichtbann 4 statt Illusionsbann 4 Fertigkeiten (+): Menschenkenntnis 4 statt 3 Fertigkeiten (–): –\n\nPfad des Beraters (294 AP) Zauberänderungen: Einflussbann 4 statt Illusionsbann 4 Fertigkeiten (+): Menschenkenntnis 5 statt 3 Fertigkeiten (–): Stangenwaffen 8 statt 10\n\nPublikation(en): Aventurische Magie II, Seite 48 Kodex der Magie, Seite 272",
+    "subcategory": "Unterricht"
+  },
+  {
+    "id": "ruestkammer_armor_Seltene_Einmalige_Holzr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Seltene & Einmalige Holzrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/holzruestung/seltene-einmalige-holzruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Holzrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Elburische_Tuchr_stung_Elburesh",
+    "category": "ruestkammer_armor",
+    "name": "Elburische Tuchrüstung (Elburesh)",
+    "url": "https://dsa.ulisses-regelwiki.de/Ruestung_ElburischeTuchruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Stoffrüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Elburische Tuchrüstung ist eine Variante der Stoffrüstung.\n\nRüstungsvorteil : Bei Fertigkeitsproben auf Klettern , Körperbeherrschung und Verbergen kommt die BE der Elburischen Tuchrüstung nicht zum Tragen.\n\nRüstungsnachteil : Gegen Waffen der Kampftechniken Dolche , Schwerter und Zweihandschwerter schützt die Elburische Tuchrüstung mit RS 1.\n\nPublikation(en): Das Dornenreich, Seite 148 Rüstkammer des Dornenreiches, Seite 14",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Regul_re_Holzr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Reguläre Holzrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/holzruestung/regulaere-holzruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Holzrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Brigantina",
+    "category": "ruestkammer_armor",
+    "name": "Brigantina",
+    "url": "https://dsa.ulisses-regelwiki.de/RS_Ruestung/brigantina.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Stoffrüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Brigantina ist eine Variante der Stoffrüstung. Um eine Brigantina als Rüstung zu erkennen, ist für einen Unwissenden eine Probe auf Sinnesschärfe (Suchen oder Wahrnehmen) erschwert um –2 notwendig.\n\nRüstungsvorteil : Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt die Brigantina mit RS 3.\n\nRüstungsnachteil : Die Brigantina verursacht einen Abzug von 1 auf INI.",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Iryanr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Iryanrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/iryanruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Iryanrüstung ist eine Variante der Lederrüstung.\n\nRüstungsvorteil: Die Iryanrüstung ist feuerfest. Ein Held erleidet keine SP durch Feuer und Flammenangriffe.\n\nRüstungsnachteil: Die Iryanrüstung benötigt jede Woche mindestens 8 Stunden Pflege, sonst steigen die zusätzlichen Abzüge auf –2 GS, –2 INI an.\n\nAnmerkung: Die Iryanrüstung ist eine Variante der Lederrüstung.\n\nRüstungsvorteil: Die Iryanrüstung ist feuerfest. Ein Held erleidet keine SP durch Feuer und Flammenangriffe. Der Held erleidet zudem keine zusätzlichen Abzüge auf INI.\n\nRüstungsnachteil: Die Iryanrüstung benötigt jede Woche mindestens 8 Stunden Pflege, sonst steigen die zusätzlichen Abzüge auf –2 GS, –2 INI an.\n\nPublikation(en) : Achaz - Schuppenkleid & Lange Zungen, Seite 60 Aventurische Rüstkammer, Seite 105",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Auripraedes-Kettenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Auripraedes-Kettenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/auripraedes-kettenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Seltene & Einmalige Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Abzüge auf INI durch BE können ignoriert werden. Die Rüstung ist praiosgeweiht und mit der Liturgie Goldene Rüstung belegt, die 1 x pro Woche mit einem Stoßgebet an Praios mit FW 12 ausgelöst werden kann und den RS der Rüstung für QS x 3 Minuten um +2 Punkte erhöht.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen , Raufen , Schwerter , Stangenwaffen , Zweihandhiebwaffen und Zweihandschwerter schützt die Rüstung mit RS 6.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Armbrüste , Bögen , Dolche , Fechtwaffen , Lanzen und Spießwaffen schützt die Rüstung nur mit RS 4. Sinnesschärfe-Proben , um den Träger des Kettenhemds zu bemerken, sind um +2 erleichtert.\n\nZustand: Die Rüstung ist antik, aber gut erhalten, der Stabilitätswert beträgt 13, sie weist 1 Stufe Beschädigung auf.\n\nKaiser Retos Waffenkammer, Seite 29, 151",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Seltene_Einmalige_Kettenr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Seltene & Einmalige Kettenrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenruestung/seltene-einmalige-kettenruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Genau_die_Richtige_Ausr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Genau die Richtige Ausrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/OR_RichtigeAusruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Regeln",
+      "Optionale Regeln"
+    ],
+    "properties": {},
+    "description": "Optionale Regel > keiner Grund- oder Fokusregel zugeordnet\n\nMöchte deine Spielrunde nicht für jeden einzelnen Ausrüstungsgegenstand entscheiden, ob sie ihn eingekauft hat, so kannst du folgende Optionalregel benutzen: Jedes Mal, wenn ein Held einen Gegenstand auf der Reise oder in der Gruft benötigt, wird eine Probe auf Wildnisleben gewürfelt. Je nach Nützlichkeit (Fackel in der Dunkelheit, Proviant, wenn das Essen knapp wird) kannst du die Probe um 1-5 Punkte erschweren. Bei einfachen Dingen und in weniger wichtigen Situationen kannst du die Probe auch erleichtern. Bei Gelingen, ist der Gegenstand eingekauft worden. Die Helden müssen sich entsprechend die Kosten des Gegenstands + zusätzlich 25 % abziehen. Die Mehrkosten spiegeln die geringere Zeit fürs Feilschen und einen Ausgleich für diese Optionalregel dar. Wie voll die Rucksäcke der Helden sind, entscheidet der Meister.\n\nDiese Optionalregel macht das Spiel weder komplexer noch einfacher, erspart aber einigen buchhalterischen Aufwand bei der Planung der Expedition.\n\nPublikation: Verräter und Geächtete, Seite 26",
+    "subcategory": "Regeln"
+  },
+  {
+    "id": "ruestkammer_armor_Anaurak",
+    "category": "ruestkammer_armor",
+    "name": "Anaurak",
+    "url": "https://dsa.ulisses-regelwiki.de/RS_Ruestung/anaurak.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Anaurak ist eine Variante der Lederrüstung. Er bietet 3 Kälteschutzstufen .\n\nRüstungsvorteil: Gegen übernatürlichen Kälteschaden schützt der Anaurak mit RS 4\n\nRüstungsnachteil: Der Träger eines Anauraks erhält einen Abzug von -2 auf INI.",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Gladiatorenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Gladiatorenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/gladiatorenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Gladiatorenrüstung ist eine Variante der Lederrüstung.\n\nRüstungsvorteil: Der Träger der Gladiatorenrüstung kann beide zusätzlichen Abzüge durch die Rüstung ignorieren.\n\nRüstungsnachteil: Bei einem Treffer muss zusätzlich mit 1W6 gewürfelt werden. Bei einer 1 besteht nur ein RS von 0, bei einer 2 ein RS von 1. Bei einem Ergebnis von 3-6 schützt die Gladiatorenrüstung wie gewohnt mit RS 3.",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Skorpionr_stung_Pamaresh",
+    "category": "ruestkammer_armor",
+    "name": "Skorpionrüstung (Pamaresh)",
+    "url": "https://dsa.ulisses-regelwiki.de/Ruestung_Skorpionruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Skorpionrüstung ist eine Variante der Lederrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Raufen schützt die Skorpionrüstung mit RS 4.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen sowie alle Fernkampftechniken, verfügt die Skorpionrüstung nur über RS 2.\n\nPublikation(en): Das Dornenreich, Seite 148 Rüstkammer des Dornenreiches, Seite 19",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Hartholzharnisch_-_Sammlerst_ck",
+    "category": "ruestkammer_armor",
+    "name": "Hartholzharnisch - Sammlerstück",
+    "url": "https://dsa.ulisses-regelwiki.de/holzruestung/seltene-einmalige-holzruestungen/hartholzharnisch-sammlerstueck.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Holzrüstung",
+      "Seltene & Einmalige Holzrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Hartholzharnisch ist eine Variante der Holzrüstung .\n\nRüstungsvorteil: Der Träger bleibt aufgrund der Lackierung der Rüstung von kleinen Plagegeistern wie Parasiten und Moskitos verschont.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen und Zweihandhiebwaffen schützt die Rüstung mit RS 2.\n\nZustand: Die Rüstung ist gebraucht, aber gut erhalten. Der Stabilitätswert beträgt 9.\n\nKaiser Retos Waffenkammer, Seiten 63, 152\n\nErrata: Korretur des Preises und des Sammlerwerts um Faktor 3 , da eine Rüstungsverbesserung vorgenommen wurde im Vergleich zum regulären Hartholzharnisch .",
+    "subcategory": "Holzrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Echsenhaube",
+    "category": "ruestkammer_armor",
+    "name": "Echsenhaube",
+    "url": "https://dsa.ulisses-regelwiki.de/Ausruestung_Echsenhaube.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Achaz - Schuppenkleid & Lange Zungen, Seite 43 Kodex der Magie, Seite 138",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Krallenkette",
+    "category": "ruestkammer_armor",
+    "name": "Krallenkette",
+    "url": "https://dsa.ulisses-regelwiki.de/Ausruestung_Krallenkette.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Kodex der Magie, Seite 48 Orks - Hauer & Schwarzer Pelz, Seite 41",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Holzr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Holzrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/holzruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "Publikation: Aventurisches Kompendium, Seite 229",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Maraskanische_Hartholzr_stung_Flugger_t",
+    "category": "ruestkammer_armor",
+    "name": "Maraskanische Hartholzrüstung (Fluggerät)",
+    "url": "https://dsa.ulisses-regelwiki.de/holzruestung-fluggeraet.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Ausrüstung",
+      "Fluggeräte (Hexen)"
+    ],
+    "properties": {},
+    "description": "Publikation(en): Aventurische Magie II, Seite 234 Kodex der Magie, Seite 130",
+    "subcategory": "Ausrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Knochenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Knochenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/knochenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Lederr_stung_der_Beni_Geraut_Schie",
+    "category": "ruestkammer_armor",
+    "name": "Lederrüstung der Beni Geraut Schie",
+    "url": "https://dsa.ulisses-regelwiki.de/lederruestung/regulaere-lederruestungen/lederruestung-der-beni-geraut-schie.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Rüstungsvorteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen , Raufen , Schilde , Stangenwaffen und Zweihandhiebwaffen schützt die Rüstung mit einem RS von 4.\n\nRüstungsnachteil: Proben auf GE sind um -1 erschwert.\n\nDas Wüstenreich (2023), Seite 166 Rüstkammer des Wüstenreichs, Seite 15",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Seekriegerr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Seekriegerrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/lederruestung/seekriegerruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Reguläre Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Seekriegerrüstung ist eine Variante der Lederrüstung.\n\nRüstungsvorteil: Beim Talent Schwimmen kann die BE der Rüstung ignoriert werden.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen, Kettenwaffen und Zweihandhiebwaffen schützt die Rüstung nur mit RS 2.",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Ferkina-Fellr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Ferkina-Fellrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/normale-kleidung-felle-nackt/ferkina-fellruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Normale Kleidung/Felle/Nackt"
+    ],
+    "properties": {},
+    "description": "Rüstungsvorteil: Die Fellrüstung bietet eine Kälteschutzstufe .\n\nRüstungsnachteil: Der Träger der Fellrüstung erhält einen Abzug von -1 auf INI.\n\nDas Wüstenreich (2023), Seite 166 Rüstkammer des Wüstenreichs, Seite 14",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Heilender_Kurbul",
+    "category": "ruestkammer_armor",
+    "name": "Heilender Kurbul",
+    "url": "https://dsa.ulisses-regelwiki.de/lederruestung/seltene-einmalige-lederruestungen/heilender-kurbul.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung",
+      "Seltene & Einmalige Lederrüstungen"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Lederrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Argul-Vhor",
+    "category": "ruestkammer_armor",
+    "name": "Argul-Vhor",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/argul-vhor.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Seltene & Einmalige Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Argul-Vhor ist eine Variante der Plattenrüstung . Die Rüstung ist magisch. Der Träger kann einen Abzug von -1 auf INI aufgrund der BE ignorieren. Die auf ihr liegenden dämonischen Zauber wirken teilweise noch fort und führen dazu, dass in einem Radius von 32 Schritt um die Rüstungsteile herum Zauber mit dem Merkmal Elementar um -1 erschwert zu wirken sind und bei Misslingen zu chaotischen Effekten führen.\n\nZustand: Die Rüstung weist deutliche Gebrauchsspuren auf, was aufgrund ihrer Natur erstaunlich ist. Ihr Stabilitätswert beträgt 19. Sie weist 2 Stufen Verschleiß auf.\n\nKaiser Retos Waffenkammer, Seite 124, 151",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Seltene_Einmalige_Lederr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Seltene & Einmalige Lederrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/lederruestung/seltene-einmalige-lederruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Lederrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Epharit-R_stung_Gumijok-Tepe",
+    "category": "ruestkammer_armor",
+    "name": "Epharit-Rüstung (Gumijok-Tepe)",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/epharit-ruestung-gumijok-tepe.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Epharit-Rüstung ist eine Variante der Plattenrüstung .\n\nRüstungsvorteil: Die beiden GE-Teilproben bei Körperbeherrschung sind beim Tragen einer Epharit-Rüstung nicht um die BE erschwert.\n\nRüstungsnachteil: Immer, wenn der Träger einer Epharit-Rüstung TP erleidet, muss mit einem 1W6 gewürfelt werden. Bei einer 1 liegt der RS der getroffenen Stelle bei 0, bei 2 bei 4 und bei 3-6 liegt er bei 6.\n\nDie Dampfenden Dschungel, Seite 147 Rüstkammer der Dampfenden Dschungel, Seite 16",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Seltene_Einmalige_Schuppenr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Seltene & Einmalige Schuppenrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/schuppenruestung/seltene-einmalige-schuppenruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Schuppenrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Seltene_Einmalige_Plattenr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Seltene & Einmalige Plattenrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/seltene-einmalige-plattenruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Regul_re_Schuppenr_stungen",
+    "category": "ruestkammer_armor",
+    "name": "Reguläre Schuppenrüstungen",
+    "url": "https://dsa.ulisses-regelwiki.de/schuppenruestung/regulaere-schuppenruestungen.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Schuppenrüstung"
+    ],
+    "properties": {},
+    "description": "",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_G_ldener_Panzer",
+    "category": "ruestkammer_armor",
+    "name": "Güldener Panzer",
+    "url": "https://dsa.ulisses-regelwiki.de/schuppenruestung/gueldener-panzer.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Schuppenrüstung",
+      "Seltene & Einmalige Schuppenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Rüstung ist eine Variante der Schuppenrüstung . Die Rüstung ist feuerfest. Gegen Feuer und Flammenangriffe schützt sie mit RSx 4.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Hiebwaffen und Zweihandhiebwaffen schützt die Rüstung mit RS 7.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Dolche schützt die Rüstung mit RS 2.\n\nZustand: Die Rüstung ist alt, aber neuwertig. Der Stabilitätswert der Rüstung beträgt 14.\n\nKaiser Retos Waffenkammer, Seiten 38, 152",
+    "subcategory": "Schuppenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_R_stungspflegeset",
+    "category": "ruestkammer_armor",
+    "name": "Rüstungspflegeset",
+    "url": "https://dsa.ulisses-regelwiki.de/ruestungspflegeset.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstungsausstattung"
+    ],
+    "properties": {},
+    "description": "Regel: Das Rüstungspflegeset hat nur einen regeltechnischen Effekt, wenn du mit Rüstungsstabilität spielst. Mit einem Rüstungspflegeset kann ein Held die erste Stufe Verschleiß einer Rüstung aufheben. Er muss dazu nicht die Fähigkeit besitzen, die Rüstung herstellen zu können, aber er muss eine Probe auf das Herstellungstalent, beispielsweise Metall- oder Holzbearbeitung , ablegen. Die Probe ist um die BE der Rüstung erschwert. Gelingt die Probe, so wird die Verschleißstufe aufgehoben. Sollte die Rüstung mehr als nur 1 Stufe Verschleiß aufweisen, kann der Held nicht von der Wirkung des Rüstungspflegesets profitieren. Für jede Rüstungsart, also beispielsweise Lederrüstungen oder Kettenrüstungen, existiert ein eigenes Pflegeset.\n\nPublikation(en): Aventurische Rüstkammer, Seite 120",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_R_stungsstacheln",
+    "category": "ruestkammer_armor",
+    "name": "Rüstungsstacheln",
+    "url": "https://dsa.ulisses-regelwiki.de/ruestungsstacheln.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstungsausstattung"
+    ],
+    "properties": {},
+    "description": "Regel: Wessen Rüstung Rüstungsstacheln aufweist, der kann seinen Gegner damit eventuell verletzen. Greift ein Gegner mit einer kurzen Waffe an und sein Angriff ist erfolgreich, muss er mit 1W6 würfeln. Bei 5-6 hat er sich an den Stacheln verletzt und erleidet 1 SP. Dies gilt auch für Tiere mit Angriffen auf kurzer Reichweite. Allerdings erleidet der Träger einer mit Rüstungsstacheln ausgestatteten Rüstung bei einem bestätigten oder unbestätigten Patzer bei Attacke oder Parade (zusätzlich zu sonstigen potenziellen Patzerauswirkungen) 1 SP.\n\nRüstungen: Knochenrüstung, Hornrüstung, Lederrüstung, Plattenrüstung, Schuppenrüstung\n\nPublikation(en): Aventurische Rüstkammer, Seite 121",
+    "subcategory": "Rüstkammer"
+  },
+  {
+    "id": "ruestkammer_armor_Ritter-der-Krone-Plattenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Ritter-der-Krone-Plattenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/seltene-einmalige-plattenruestungen/ritter-der-krone-plattenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Seltene & Einmalige Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Ritter-der-Krone-Plattenrüstung ist eine Variante der Plattenrüstung .\n\nZustand: Die Rüstung ist gebraucht und in einem schlechten Zustand. Der Stabilitätswert beträgt 11. Sie weist 3 Stufen Verschleiß auf und ist unbrauchbar, bis sie repariert wurde.\n\nKaiser Retos Waffenkammer, Seiten 110, 152",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Flussgarde-Plattenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Flussgarde-Plattenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/plattenruestung/flussgarde-plattenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Seltene & Einmalige Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Flussgarde-Plattenrüstung ist eine Variante der Plattenrüstung .\n\nZustand: Die Rüstung ist neuwertig. Der Stabilitätswert beträgt 11.\n\nKaiser Retos Waffenkammer, Seiten 110, 151",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Knochenr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Knochenrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/stoffruestung/knochenruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Stoffrüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Knochenrüstung ist eine Variante der Tuchrüstung .\n\nRüstungsvorteil: Die Probe auf Einschüchtern (Drohung) bei der Sonderfertigkeit Drohgebärden ist um +1 erleichtert.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Zweihandhiebwaffen und Zweihandschwerter schützt die Rüstung nur mit RS 1.\n\nArchiv der Ausrüstung, Seiten 223, 303 Aventurisches Kompendium, Seite 229 Kodex des Schwertes, Seite 383",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Tuchr_stung",
+    "category": "ruestkammer_armor",
+    "name": "Tuchrüstung",
+    "url": "https://dsa.ulisses-regelwiki.de/tuchruestung.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Stoffrüstung"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Tuchrüstung ist eine Variante der Stoffrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Hiebwaffen und Zweihandhiebwaffen schützt die Tuchrüstung mit RS 3.\n\nRüstungsnachteil: Gerät eine Tuchrüstung in Flammen, so ist die Probe auf Körperbeherrschung zum Löschen des Feuers zusätzlich 2 erschwert (siehe Regelwerk Seite 341).",
+    "subcategory": "Rüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Bronzeharnisch",
+    "category": "ruestkammer_armor",
+    "name": "Bronzeharnisch",
+    "url": "https://dsa.ulisses-regelwiki.de/bronzeharnisch.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Plattenrüstung",
+      "Reguläre Plattenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Der Bronzeharnisch ist eine Variante der Plattenrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Dolche und Fechtwaffen schützt der Bronzeharnisch mit RS 7.\n\nRüstungsnachteil: Gegen Waffen der Kampftechniken Hiebwaffen , Kettenwaffen und Zweihandhiebwaffen schützt der Bronzeharnisch nur mit RS 3. Proben auf Körperbeherrschung (Kampfmanöver) sind um 1 erschwert.",
+    "subcategory": "Plattenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Kettenweste",
+    "category": "ruestkammer_armor",
+    "name": "Kettenweste",
+    "url": "https://dsa.ulisses-regelwiki.de/kettenweste.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Die Kettenweste ist eine Variante der Kettenrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Armbrüste, Bögen, Dolche und Schwerter schützt die Kettenweste mit RS 5.\n\nRüstungsnachteil: Sinnesschärfe-Proben, um einen Kettenwestenträger zu bemerken, sind um 1 erleichtert. Bei einem Treffer muss zusätzlich mit 1W6 gewürfelt werden. Bei einer 1 besteht nur ein RS von 1, bei einer 2 ein RS von 2. Bei einem Ergebnis von 3-6 schützt die Kettenweste wie gewohnt mit RS 4.",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Langes_Kettenhemd",
+    "category": "ruestkammer_armor",
+    "name": "Langes Kettenhemd",
+    "url": "https://dsa.ulisses-regelwiki.de/langes-kettenhemd.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Das Lange Kettenhemd ist eine Variante der Kettenrüstung.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Armbrüste, Bögen, Dolche und Schwerter schützt das Lange Kettenhemd mit RS 5. Bei einem Treffer mit einer Waffe einer anderen Kampftechnik muss zusätzlich mit 1W6 gewürfelt werden. Bei einer 5 und 6 besteht ein RS von 5 (nicht nur gegen die beschriebenen Kampftechniken).\n\nRüstungsnachteil: Sinnesschärfe-Proben, um einen Träger des Langen Kettenhemds zu bemerken, sind um 1 erleichtert. Proben auf GE sind um 1 erschwert.",
+    "subcategory": "Kettenrüstung"
+  },
+  {
+    "id": "ruestkammer_armor_Skorpionhemd",
+    "category": "ruestkammer_armor",
+    "name": "Skorpionhemd",
+    "url": "https://dsa.ulisses-regelwiki.de/skorpionhemd.html",
+    "breadcrumbs": [
+      "DSA Regel-Wiki",
+      "Rüstkammer",
+      "Rüstung",
+      "Kettenrüstung",
+      "Reguläre Kettenrüstungen"
+    ],
+    "properties": {},
+    "description": "Anmerkung: Das Skorpionhemd ist eine Variante der Kettenrüstung. Die Rüstung ist nur von Korgeweihten erwerbbar.\n\nRüstungsvorteil: Gegen Waffen der Kampftechniken Armbrüste, Bögen, Dolche und Schwerter schützt das Skorpionhemd mit RS 5. Bei einem Treffer mit einer Waffe einer anderen Kampftechnik muss zusätzlich mit 1W6 gewürfelt werden. Bei einer 5 und 6 besteht ein RS von 5 (nicht nur gegen die beschriebenen Kampftechniken).\n\nRüstungsnachteil: Sinnesschärfe-Proben, um einen Träger des Skorpionhemds zu bemerken, sind um 1 erleichtert. Die INI des Trägers sinkt um 1.",
+    "subcategory": "Kettenrüstung"
+  }
+]
