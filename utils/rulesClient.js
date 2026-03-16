@@ -178,8 +178,44 @@ async function getRuleByTitle(title) {
     return normalizePageResult(response.data);
 }
 
+/**
+ * Get autocomplete-ready page title records from rule_pages.
+ * Returns lightweight rows with normalized lowercase fields for fast filtering.
+ * Falls back to legacy rule_documents table if rule_pages is unavailable.
+ * @returns {Promise<Array<{doc_id: string, title: string, title_lower: string, category: string, resolved_category: string|null, source_url: string}>>}
+ */
+async function getRulePageTitles() {
+    let response = await supabase
+        .from('rule_pages')
+        .select('doc_id, title, category, resolved_category, source_url')
+        .is('deleted_at', null)
+        .order('title');
+
+    if (response.error && isMissingDbObject(response.error)) {
+        response = await supabase
+            .from('rule_documents')
+            .select('id, title, category, source_url, metadata')
+            .order('title');
+    }
+
+    if (response.error) {
+        throw response.error;
+    }
+
+    // Normalize to consistent shape with lowercase fields for fast filtering
+    return (response.data || []).map(row => ({
+        doc_id: row.doc_id || row.id?.toString() || '',
+        title: row.title || '',
+        title_lower: (row.title || '').toLowerCase(),
+        category: row.category || '',
+        resolved_category: row.resolved_category || row.metadata?.resolved_category || null,
+        source_url: row.source_url || '',
+    }));
+}
+
 module.exports = {
     searchRules,
     getRulesByCategory,
     getRuleByTitle,
+    getRulePageTitles,
 };

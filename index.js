@@ -15,6 +15,7 @@ const client = new Client({
 client.commands = new Collection();
 client.activeCombats = new Map();
 client.pendingCombatActions = new Map();
+client.rulePageTitleCache = [];
 
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -48,6 +49,23 @@ for (const file of eventFiles) {
 const combatHandler = require('./handlers/combatHandler'); // Assuming CommonJS
 const { supabase, callEdgeFunction } = require('./utils/supabaseClient');
 const { sessionToMemory } = require('./utils/transforms');
+const { getRulePageTitles } = require('./utils/rulesClient');
+
+const RULE_PAGE_CACHE_REFRESH_MS = 15 * 60 * 1000; // 15 minutes
+
+/**
+ * Refreshes the rule page title cache. Preserves existing cache on failure.
+ * @param {Client} client The Discord client instance.
+ */
+async function refreshRulePageTitleCache(client) {
+    try {
+        const titles = await getRulePageTitles();
+        client.rulePageTitleCache = titles;
+        log.info({ count: titles.length }, 'Refreshed rule page title cache');
+    } catch (error) {
+        log.error({ error: error.message }, 'Failed to refresh rule page title cache, preserving existing cache');
+    }
+}
 
 /**
  * Recovers active or paused combat sessions from the database on bot startup.
@@ -258,6 +276,19 @@ client.on(Events.InteractionCreate, async interaction => {
 // Event listener for when the client is ready
 client.once(Events.ClientReady, async readyClient => {
     log.info({ tag: readyClient.user.tag }, 'Ready! Logged in');
+
+    // Initialize rule page title cache (non-blocking)
+    refreshRulePageTitleCache(readyClient).catch(err => {
+        log.error({ error: err.message }, 'Initial rule page title cache load failed');
+    });
+
+    // Schedule periodic cache refresh every 15 minutes
+    setInterval(() => {
+        refreshRulePageTitleCache(readyClient).catch(err => {
+            log.error({ error: err.message }, 'Scheduled rule page title cache refresh failed');
+        });
+    }, RULE_PAGE_CACHE_REFRESH_MS);
+
     await recoverActiveCombats(readyClient);
 });
 

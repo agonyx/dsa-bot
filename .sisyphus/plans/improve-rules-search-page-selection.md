@@ -105,14 +105,14 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
 - Wave 1 -> 4 tasks -> `quick`, `unspecified-low`
 - Wave 2 -> 4 tasks -> `quick`, `unspecified-high`
-- Final Verification -> 4 tasks -> `oracle`, `unspecified-high`, `deep`
+- Final Verification -> 4 tasks -> `oracle` subagent, `unspecified-high`, `deep`
 
 ## TODOs
 
 > Implementation + Test = ONE task. Never separate.
 > EVERY task MUST have: Agent Profile + Parallelization + QA Scenarios.
 
-- [ ]   1. Add a rule-page autocomplete dataset and cache lifecycle
+- [x]   1. Add a rule-page autocomplete dataset and cache lifecycle
 
     **What to do**: Add a read helper in `utils/rulesClient.js` that returns active rule-page title records needed for autocomplete (`doc_id`, `title`, `category`, `resolved_category`, `source_url`). Initialize `client.rulePageTitleCache` in the existing ready hook in `index.js`, store normalized lowercase fields for fast filtering, and refresh the cache every 15 minutes while preserving the previous snapshot on refresh failure. Log refresh failures without crashing bot startup.
     **Must NOT do**: Do not add Redis, new env vars, or a new background worker. Do not fetch chunk rows for autocomplete. Do not block `client.login()` on repeated retries.
@@ -451,10 +451,37 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
 ## Final Verification Wave (4 parallel agents, ALL must APPROVE)
 
-- [ ] F1. Plan Compliance Audit - oracle
+- [ ] F1. Plan Compliance Audit - `oracle` subagent
+
+    **What to verify**: Confirm the implemented work matches this plan's locked decisions: cached autocomplete, exact-first hybrid orchestration, selected-page preview, local collector picker, no new infrastructure, and preserved semantic search.
+    **Tool**: `task(subagent_type="oracle")`
+    **Steps**: Review changed files against `.sisyphus/plans/improve-rules-search-page-selection.md`, focusing on `index.js`, `utils/rulesClient.js`, `commands/regel.js`, and the new Jest coverage.
+    **Expected**: Oracle explicitly approves that the implementation follows the planned architecture and did not introduce out-of-scope infrastructure or alternate UX.
+    **Evidence**: `.sisyphus/evidence/f1-plan-compliance.txt`
+
 - [ ] F2. Code Quality Review - unspecified-high
+
+    **What to verify**: Confirm code quality, edge-case handling, cleanup behavior, and test adequacy for the feature slice.
+    **Tool**: `task(category="unspecified-high")`
+    **Steps**: Review the changed files plus test suite output, checking for brittle mocks, collector leaks, duplicate result handling, and unreadable command logic.
+    **Expected**: Reviewer approves code quality with no blocking maintainability or correctness concerns.
+    **Evidence**: `.sisyphus/evidence/f2-code-quality.txt`
+
 - [ ] F3. Real Manual QA - unspecified-high (+ playwright if UI)
+
+    **What to verify**: Confirm the end-user `/regel` flow works from autocomplete through post-search page selection using agent-executed validation only.
+    **Tool**: `task(category="unspecified-high")` plus mocked command tests; use Playwright only if a Discord web session is already available.
+    **Steps**: Review `tests/regel.test.js` coverage, rerun the full verification stack, and if authenticated Discord access already exists, exercise `/regel suche:wuch...` in a guild to confirm autocomplete and picker behavior against the deployed command.
+    **Expected**: Reviewer approves that either the live Discord flow was validated or, if live Discord access was unavailable, the mocked interaction coverage and command registration smoke fully cover the user path without unresolved gaps.
+    **Evidence**: `.sisyphus/evidence/f3-user-flow.txt`
+
 - [ ] F4. Scope Fidelity Check - deep
+
+    **What to verify**: Confirm the implementation stayed inside scope boundaries and that any skipped items were truly out of scope rather than silently dropped requirements.
+    **Tool**: `task(category="deep")`
+    **Steps**: Compare the delivered files and behavior to the original request, interview summary, Metis guardrails, and success criteria in this plan.
+    **Expected**: Deep reviewer explicitly approves that the delivered feature solves the user request and that omissions are intentional scope boundaries, not misses.
+    **Evidence**: `.sisyphus/evidence/f4-scope-fidelity.txt`
 
 ## Commit Strategy
 
