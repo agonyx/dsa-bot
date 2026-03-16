@@ -322,7 +322,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `feat(regel): add cached title autocomplete` | Files: `commands/regel.js`, `tests/regel.test.js`
 
-- [ ]   6. Rebuild `/regel` responses around a selected page preview plus exact and semantic result sections
+- [x]   6. Rebuild `/regel` responses around a selected page preview plus exact and semantic result sections
 
     **What to do**: Refactor `/regel` execution to call the new hybrid helper and render a primary embed for the selected page. Use the embed description for a preview truncated to 1500 characters at a word boundary from `normalized_content`/`chunk_text`, add at most one `Exakte Treffer` field (up to 3 linked titles) and one `Semantische Treffer` field (up to the requested `anzahl` linked titles with relevance labels), and add a `ButtonStyle.Link` button for the selected page's `source_url`. Keep the current `visible` behavior and preserve the no-results and missing-API-key branches.
     **Must NOT do**: Do not dump full page text into multiple embeds. Do not remove semantic context when an exact page exists. Do not regress the current ephemeral/public visibility option.

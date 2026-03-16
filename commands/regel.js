@@ -1,5 +1,5 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { searchRules, getRuleByTitle, getRankedTitleMatches } = require('../utils/rulesClient');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { hybridSearch, getRankedTitleMatches } = require('../utils/rulesClient');
 const { createLogger } = require('../utils/logger');
 
 const log = createLogger('regel');
@@ -27,8 +27,6 @@ const CATEGORY_LABELS = {
     species: 'Spezies',
 };
 
-const MAX_FIELD_LENGTH = 400;
-
 function formatCategoryLabel(category) {
     return CATEGORY_LABELS[category] || category;
 }
@@ -38,48 +36,6 @@ function truncate(text, maxLength) {
     const truncated = text.substring(0, maxLength);
     const lastSpace = truncated.lastIndexOf(' ');
     return (lastSpace > maxLength * 0.6 ? truncated.substring(0, lastSpace) : truncated) + '…';
-}
-
-function extractDescription(chunkText) {
-    if (!chunkText) return '';
-
-    const descMatch = chunkText.match(/Description:\n([\s\S]+?)(?=\n\n[A-Z]|\n\n$|$)/);
-    if (descMatch) return descMatch[1].trim();
-
-    const propMatch = chunkText.match(/Properties:\n([\s\S]+?)(?=\n\nDescription|\n\n[A-Z]|\n\n$|$)/);
-    if (propMatch) return propMatch[1].trim();
-
-    const lines = chunkText.split('\n').filter(line => {
-        return (
-            line.trim() &&
-            !line.startsWith('Title:') &&
-            !line.startsWith('Category:') &&
-            !line.startsWith('Breadcrumbs:') &&
-            !line.startsWith('Subcategory:')
-        );
-    });
-
-    return lines.join('\n').trim();
-}
-
-function buildResultField(result, index) {
-    const similarity = Math.round((result.similarity || 0) * 100);
-    const category = formatCategoryLabel(result.resolved_category || result.category);
-    const sourceUrl = result.source_url;
-    const content = result.chunk_text || result.content || '';
-
-    const description = extractDescription(content);
-    const displayText = truncate(description, MAX_FIELD_LENGTH);
-
-    const titleLine = sourceUrl ? `[${result.title}](${sourceUrl})` : result.title;
-
-    const header = `${titleLine}\n*${category}* · ${similarity}% Relevanz`;
-
-    return {
-        name: `${index + 1}.`,
-        value: `${header}\n\n${displayText || '*Kein Inhalt verfügbar.*'}`,
-        inline: false,
-    };
 }
 
 module.exports = {
@@ -158,13 +114,15 @@ module.exports = {
         await interaction.deferReply({ ephemeral: !visible });
 
         try {
-            const results = await searchRules(query, {
+            const cache = interaction.client.rulePageTitleCache || [];
+            const { selectedPage, exactMatches, semanticMatches } = await hybridSearch(query, cache, {
                 category,
                 limit,
                 threshold: 0.4,
             });
 
-            if (!results.length) {
+            // No results at all
+            if (!selectedPage) {
                 const noResultEmbed = new EmbedBuilder()
                     .setColor(0x95a5a6)
                     .setTitle('📖 Regelsuche')
@@ -176,22 +134,77 @@ module.exports = {
                 return interaction.editReply({ embeds: [noResultEmbed] });
             }
 
-            const fields = results.map((result, index) => buildResultField(result, index));
+            // Build primary embed for selected page
+            const pageTitle = selectedPage.title || 'Unbenannt';
+            const pageContent =
+                selectedPage.chunk_text || selectedPage.normalized_content || selectedPage.content || '';
+            const pageSourceUrl = selectedPage.source_url;
 
-            const resultEmbed = new EmbedBuilder()
+            // Truncate preview to 1500 chars at word boundary
+            const preview = truncate(pageContent, 1500);
+
+            const primaryEmbed = new EmbedBuilder()
                 .setColor(0x8b4513)
-                .setTitle('📖 Regelsuche')
-                .setDescription(
-                    `**${results.length}** Ergebnis${results.length !== 1 ? 'se' : ''} für **„${query}"**${category ? ` in *${formatCategoryLabel(category)}*` : ''}`
-                )
-                .addFields(fields)
+                .setTitle(pageSourceUrl ? `[${pageTitle}](${pageSourceUrl})` : pageTitle)
+                .setDescription(preview || '*Kein Inhalt verfügbar.*');
+
+            // Add fields for exact and semantic matches
+            const fields = [];
+
+            // Exact matches field (up to 3 linked titles)
+            if (exactMatches.length > 0) {
+                const exactLines = exactMatches.map(match => {
+                    return match.source_url ? `[${match.title}](${match.source_url})` : match.title;
+                });
+                fields.push({
+                    name: '🎯 Exakte Treffer',
+                    value: exactLines.join('\n'),
+                    inline: false,
+                });
+            }
+
+            // Semantic matches field with relevance labels
+            if (semanticMatches.length > 0) {
+                const semanticLines = semanticMatches.map(match => {
+                    const similarity = Math.round((match.similarity || 0) * 100);
+                    const titleLink = match.source_url ? `[${match.title}](${match.source_url})` : match.title;
+                    return `${titleLink} (${similarity}%)`;
+                });
+                fields.push({
+                    name: '🔍 Semantische Treffer',
+                    value: semanticLines.join('\n'),
+                    inline: false,
+                });
+            }
+
+            if (fields.length > 0) {
+                primaryEmbed.addFields(fields);
+            }
+
+            primaryEmbed
                 .setFooter({
                     text: `DSA 5 Regelwiki · ${interaction.user.username}`,
                     iconURL: interaction.user.avatarURL(),
                 })
                 .setTimestamp();
 
-            return interaction.editReply({ embeds: [resultEmbed] });
+            // Build response with optional link button
+            const components = [];
+
+            if (pageSourceUrl) {
+                const linkButton = new ButtonBuilder()
+                    .setLabel('Im Regelwiki öffnen')
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(pageSourceUrl);
+
+                const actionRow = new ActionRowBuilder().addComponents(linkButton);
+                components.push(actionRow);
+            }
+
+            return interaction.editReply({
+                embeds: [primaryEmbed],
+                components: components.length > 0 ? components : undefined,
+            });
         } catch (error) {
             log.error({ error, query, category }, 'Regel search failed');
 
