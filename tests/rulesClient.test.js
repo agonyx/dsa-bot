@@ -1,10 +1,15 @@
-const { getRulePageTitles, getRankedTitleMatches } = require('../utils/rulesClient');
+const { getRulePageTitles, getRankedTitleMatches, hybridSearch } = require('../utils/rulesClient');
+
+// Set required environment variable before importing
+process.env.OPENAI_API_KEY = 'test-api-key';
 
 // Mock OpenAI before it's imported by rulesClient
 jest.mock('openai', () => {
     return jest.fn().mockImplementation(() => ({
         embeddings: {
-            create: jest.fn(),
+            create: jest.fn().mockResolvedValue({
+                data: [{ embedding: new Array(1536).fill(0) }],
+            }),
         },
     }));
 });
@@ -13,6 +18,7 @@ jest.mock('openai', () => {
 jest.mock('../utils/supabaseClient', () => ({
     supabase: {
         from: jest.fn(),
+        rpc: jest.fn(),
     },
 }));
 
@@ -329,5 +335,259 @@ describe('getRankedTitleMatches', () => {
         expect(result).toHaveLength(3);
         expect(result[0].title).toBe('Finte I');
         expect(result[0].match_type).toBe('prefix');
+    });
+});
+
+describe('hybridSearch', () => {
+    const mockCache = [
+        {
+            doc_id: 'doc_1',
+            title: 'Wuchtschlag',
+            title_lower: 'wuchtschlag',
+            category: 'combat',
+            resolved_category: 'kampf',
+            source_url: 'https://example.com/wuchtschlag',
+        },
+        {
+            doc_id: 'doc_2',
+            title: 'Wuchtschlag II',
+            title_lower: 'wuchtschlag ii',
+            category: 'combat',
+            resolved_category: 'kampf',
+            source_url: 'https://example.com/wuchtschlag-ii',
+        },
+        {
+            doc_id: 'doc_3',
+            title: 'Finte I',
+            title_lower: 'finte i',
+            category: 'combat',
+            resolved_category: 'kampf',
+            source_url: 'https://example.com/finte-i',
+        },
+    ];
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    test('keeps exact page first while preserving semantic matches', async () => {
+        // Mock searchRules to return semantic results
+        const mockSemanticResults = [
+            {
+                page_id: 'page-1',
+                doc_id: 'doc_1',
+                title: 'Wuchtschlag',
+                category: 'combat',
+                resolved_category: 'kampf',
+                source_url: 'https://example.com/wuchtschlag',
+                chunk_text: 'Wuchtschlag content...',
+                similarity: 0.85,
+            },
+            {
+                page_id: 'page-4',
+                doc_id: 'doc_4',
+                title: 'Attacke',
+                category: 'combat',
+                resolved_category: 'kampf',
+                source_url: 'https://example.com/attacke',
+                chunk_text: 'Attacke content...',
+                similarity: 0.75,
+            },
+        ];
+
+        // Mock the supabase RPC call for searchRules
+        supabase.rpc.mockResolvedValue({
+            data: mockSemanticResults,
+            error: null,
+        });
+
+        const result = await hybridSearch('Wuchtschlag', mockCache, { limit: 3 });
+
+        // Selected page should be the exact match
+        expect(result.selectedPage).not.toBeNull();
+        expect(result.selectedPage.title).toBe('Wuchtschlag');
+        expect(result.selectedPage.match_type).toBe('exact');
+
+        // Exact matches should contain the Wuchtschlag entries
+        expect(result.exactMatches).toHaveLength(2);
+        expect(result.exactMatches[0].match_type).toBe('exact');
+        expect(result.exactMatches[0].title).toBe('Wuchtschlag');
+
+        // Semantic matches should still be present (deduplicated)
+        expect(result.semanticMatches.length).toBeGreaterThan(0);
+        expect(result.semanticMatches[0].match_type).toBe('semantic');
+    });
+
+    test('deduplicates semantic matches by page', async () => {
+        // Multiple chunks from the same page
+        const mockSemanticResults = [
+            {
+                page_id: 'page-1',
+                doc_id: 'doc_1',
+                title: 'Wuchtschlag',
+                category: 'combat',
+                chunk_text: 'Wuchtschlag chunk 1...',
+                similarity: 0.9,
+            },
+            {
+                page_id: 'page-1', // Same page as first result
+                doc_id: 'doc_1',
+                title: 'Wuchtschlag',
+                category: 'combat',
+                chunk_text: 'Wuchtschlag chunk 2...',
+                similarity: 0.85,
+            },
+            {
+                page_id: 'page-2',
+                doc_id: 'doc_2',
+                title: 'Finte',
+                category: 'combat',
+                chunk_text: 'Finte content...',
+                similarity: 0.8,
+            },
+        ];
+
+        supabase.rpc.mockResolvedValue({
+            data: mockSemanticResults,
+            error: null,
+        });
+
+        const result = await hybridSearch('test', mockCache, { limit: 5 });
+
+        // Semantic results should be deduplicated to one per page
+        const pageIds = result.semanticMatches.map(r => r.page_id);
+        const uniquePageIds = new Set(pageIds);
+        expect(pageIds.length).toBe(uniquePageIds.size);
+
+        // Should only have 2 unique pages
+        expect(result.semanticMatches).toHaveLength(2);
+        expect(result.semanticMatches[0].page_id).toBe('page-1');
+        expect(result.semanticMatches[1].page_id).toBe('page-2');
+    });
+
+    test('selects first semantic result when no exact match exists', async () => {
+        const mockSemanticResults = [
+            {
+                page_id: 'page-1',
+                doc_id: 'doc_1',
+                title: 'Combat Rules',
+                category: 'combat',
+                chunk_text: 'Combat content...',
+                similarity: 0.8,
+            },
+            {
+                page_id: 'page-2',
+                doc_id: 'doc_2',
+                title: 'Magic Rules',
+                category: 'magic',
+                chunk_text: 'Magic content...',
+                similarity: 0.7,
+            },
+        ];
+
+        supabase.rpc.mockResolvedValue({
+            data: mockSemanticResults,
+            error: null,
+        });
+
+        // Query that won't match any titles exactly
+        const result = await hybridSearch('kampf regeln', mockCache, { limit: 3 });
+
+        // No exact matches
+        expect(result.exactMatches).toHaveLength(0);
+
+        // Selected page should be the first semantic result
+        expect(result.selectedPage).not.toBeNull();
+        expect(result.selectedPage.title).toBe('Combat Rules');
+        expect(result.selectedPage.match_type).toBe('semantic');
+    });
+
+    test('respects category filter for both exact and semantic matches', async () => {
+        const mockSemanticResults = [
+            {
+                page_id: 'page-1',
+                doc_id: 'doc_1',
+                title: 'Combat Rule',
+                category: 'combat',
+                chunk_text: 'Combat content...',
+                similarity: 0.8,
+            },
+        ];
+
+        supabase.rpc.mockResolvedValue({
+            data: mockSemanticResults,
+            error: null,
+        });
+
+        // Filter by 'creatures' category which has no matches in mockCache
+        const result = await hybridSearch('Wuchtschlag', mockCache, {
+            category: 'creatures',
+            limit: 3,
+        });
+
+        // No exact matches in creatures category
+        expect(result.exactMatches).toHaveLength(0);
+    });
+
+    test('caps exact matches at 3 entries', async () => {
+        const largeCache = [
+            { doc_id: 'doc_1', title: 'Test I', title_lower: 'test i', category: 'test' },
+            { doc_id: 'doc_2', title: 'Test II', title_lower: 'test ii', category: 'test' },
+            { doc_id: 'doc_3', title: 'Test III', title_lower: 'test iii', category: 'test' },
+            { doc_id: 'doc_4', title: 'Test IV', title_lower: 'test iv', category: 'test' },
+            { doc_id: 'doc_5', title: 'Test V', title_lower: 'test v', category: 'test' },
+        ];
+
+        supabase.rpc.mockResolvedValue({ data: [], error: null });
+
+        const result = await hybridSearch('Test', largeCache, { limit: 3 });
+
+        // Exact matches capped at 3
+        expect(result.exactMatches.length).toBeLessThanOrEqual(3);
+    });
+
+    test('returns null selectedPage when no matches exist', async () => {
+        supabase.rpc.mockResolvedValue({ data: [], error: null });
+
+        const result = await hybridSearch('nonexistent query', [], { limit: 3 });
+
+        expect(result.selectedPage).toBeNull();
+        expect(result.exactMatches).toHaveLength(0);
+        expect(result.semanticMatches).toHaveLength(0);
+    });
+
+    test('preserves semantic results when query matches exact title', async () => {
+        // Exact match query should still return semantic results
+        const mockSemanticResults = [
+            {
+                page_id: 'page-1',
+                doc_id: 'doc_1',
+                title: 'Wuchtschlag',
+                category: 'combat',
+                chunk_text: 'Wuchtschlag content...',
+                similarity: 0.9,
+            },
+            {
+                page_id: 'page-2',
+                doc_id: 'doc_4',
+                title: 'Related Combat Rule',
+                category: 'combat',
+                chunk_text: 'Related content...',
+                similarity: 0.7,
+            },
+        ];
+
+        supabase.rpc.mockResolvedValue({
+            data: mockSemanticResults,
+            error: null,
+        });
+
+        const result = await hybridSearch('Wuchtschlag', mockCache, { limit: 3 });
+
+        // Should have exact match as selected page
+        expect(result.selectedPage.match_type).toBe('exact');
+
+        // Should still have semantic matches (not just the exact match page)
+        expect(result.semanticMatches.length).toBeGreaterThan(0);
     });
 });

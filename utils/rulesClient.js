@@ -264,10 +264,98 @@ function getRankedTitleMatches(query, cache = [], options = {}) {
     return ranked.slice(0, 3);
 }
 
+/**
+ * Deduplicate semantic chunk results by page identifier.
+ * Keeps the first (highest similarity) chunk for each unique page.
+ * @param {Array} semanticResults - Array of semantic search results
+ * @param {number} limit - Maximum results to return after deduplication
+ * @returns {Array} Deduplicated semantic results with match_type annotation
+ */
+function deduplicateSemanticResults(semanticResults, limit) {
+    const seenPageIds = new Set();
+    const seenDocIds = new Set();
+    const deduped = [];
+
+    for (const result of semanticResults) {
+        const docKey = result.doc_id;
+
+        // Skip if we've already seen this page
+        if ((result.page_id && seenPageIds.has(result.page_id)) || seenDocIds.has(docKey)) {
+            continue;
+        }
+
+        // Track this page
+        if (result.page_id) {
+            seenPageIds.add(result.page_id);
+        }
+        if (docKey) {
+            seenDocIds.add(docKey);
+        }
+
+        // Add with match_type annotation
+        deduped.push({
+            ...result,
+            match_type: 'semantic',
+        });
+
+        if (deduped.length >= limit) {
+            break;
+        }
+    }
+
+    return deduped;
+}
+
+/**
+ * Hybrid search orchestrator that runs exact title lookup and semantic search in parallel.
+ * Exact matches are prioritized, semantic results are deduplicated by page.
+ * @param {string} query - Search query (natural language or partial title)
+ * @param {Array} cache - Array of page title records (from client.rulePageTitleCache)
+ * @param {Object} options - Search options
+ * @param {string} [options.category] - Filter by category
+ * @param {number} [options.limit=3] - Maximum semantic results
+ * @param {number} [options.threshold=0.5] - Semantic similarity threshold
+ * @param {boolean} [options.includeUnresolved=false] - Include unresolved documents
+ * @returns {Promise<{selectedPage: Object|null, exactMatches: Array, semanticMatches: Array}>}
+ */
+async function hybridSearch(query, cache = [], options = {}) {
+    const { category = null, limit = 3, threshold = 0.5, includeUnresolved = false } = options;
+
+    // Run exact title lookup and semantic search in parallel
+    const [exactMatches, semanticResults] = await Promise.all([
+        // Exact/prefix/contains title matches are synchronous
+        Promise.resolve(getRankedTitleMatches(query, cache, { category })),
+        // Semantic search is async
+        searchRules(query, { category, threshold, limit: limit * 2, includeUnresolved }),
+    ]);
+
+    // Deduplicate semantic results by page
+    const dedupedSemantic = deduplicateSemanticResults(semanticResults, limit);
+
+    // Determine the selected page
+    // Priority: first exact match > first semantic match > null
+    let selectedPage = null;
+
+    if (exactMatches.length > 0) {
+        // Use the first exact match as the selected page
+        selectedPage = { ...exactMatches[0] };
+    } else if (dedupedSemantic.length > 0) {
+        // Fall back to the first semantic match
+        selectedPage = { ...dedupedSemantic[0] };
+    }
+
+    return {
+        selectedPage,
+        exactMatches: exactMatches.slice(0, 3),
+        semanticMatches: dedupedSemantic,
+    };
+}
+
 module.exports = {
     searchRules,
     getRulesByCategory,
     getRuleByTitle,
     getRulePageTitles,
     getRankedTitleMatches,
+    hybridSearch,
 };

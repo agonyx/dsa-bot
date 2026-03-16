@@ -197,7 +197,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `feat(rules): add ranked page title lookup` | Files: `utils/rulesClient.js`, `tests/rulesClient.test.js`
 
-- [ ]   3. Add exact-first hybrid search orchestration with semantic deduplication
+- [x]   3. Add exact-first hybrid search orchestration with semantic deduplication
 
     **What to do**: Add a new orchestrator in `utils/rulesClient.js` that runs ranked page-title lookup and existing semantic `searchRules()` in parallel, removes semantic duplicates by page/doc identifier, annotates results with `match_type`, and returns a single response object containing `selectedPage`, `exactMatches`, and `semanticMatches`. Cap `exactMatches` at 3 entries, keep `semanticMatches` capped by the existing `/regel anzahl` value (1-5), and when no exact match exists set `selectedPage` to the first semantic result. Exact matches must always be placed ahead of semantic matches, but semantic results must still be returned even when the query is an exact title.
     **Must NOT do**: Do not change the public behavior or signature of the existing `searchRules()` helper. Do not mix title matches into chunk text summaries without first normalizing them into page records.
