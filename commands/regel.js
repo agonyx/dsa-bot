@@ -1,4 +1,12 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const {
+    SlashCommandBuilder,
+    EmbedBuilder,
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    StringSelectMenuBuilder,
+    ComponentType,
+} = require('discord.js');
 const { hybridSearch, getRankedTitleMatches } = require('../utils/rulesClient');
 const { createLogger } = require('../utils/logger');
 
@@ -36,6 +44,80 @@ function truncate(text, maxLength) {
     const truncated = text.substring(0, maxLength);
     const lastSpace = truncated.lastIndexOf(' ');
     return (lastSpace > maxLength * 0.6 ? truncated.substring(0, lastSpace) : truncated) + '…';
+}
+
+/**
+ * Build embed for a selected page with match type indicators
+ * @param {Object} page - The page to build embed for
+ * @param {Array} exactMatches - List of exact matches
+ * @param {Array} semanticMatches - List of semantic matches
+ * @param {Object} user - Discord user for footer
+ * @returns {EmbedBuilder} The built embed
+ */
+function buildPageEmbed(page, exactMatches, semanticMatches, user) {
+    const pageTitle = page.title || 'Unbenannt';
+    const pageContent = page.chunk_text || page.normalized_content || page.content || '';
+    const pageSourceUrl = page.source_url;
+    const preview = truncate(pageContent, 1500);
+
+    const embed = new EmbedBuilder()
+        .setColor(0x8b4513)
+        .setTitle(pageSourceUrl ? `[${pageTitle}](${pageSourceUrl})` : pageTitle)
+        .setDescription(preview || '*Kein Inhalt verfügbar.*');
+
+    const fields = [];
+
+    // Exact matches field
+    if (exactMatches.length > 0) {
+        const exactLines = exactMatches.map(match => {
+            return match.source_url ? `[${match.title}](${match.source_url})` : match.title;
+        });
+        fields.push({
+            name: '🎯 Exakte Treffer',
+            value: exactLines.join('\n'),
+            inline: false,
+        });
+    }
+
+    // Semantic matches field
+    if (semanticMatches.length > 0) {
+        const semanticLines = semanticMatches.map(match => {
+            const similarity = Math.round((match.similarity || 0) * 100);
+            const titleLink = match.source_url ? `[${match.title}](${match.source_url})` : match.title;
+            return `${titleLink} (${similarity}%)`;
+        });
+        fields.push({
+            name: '🔍 Semantische Treffer',
+            value: semanticLines.join('\n'),
+            inline: false,
+        });
+    }
+
+    if (fields.length > 0) {
+        embed.addFields(fields);
+    }
+
+    embed
+        .setFooter({
+            text: `DSA 5 Regelwiki · ${user.username}`,
+            iconURL: user.avatarURL(),
+        })
+        .setTimestamp();
+
+    return embed;
+}
+
+/**
+ * Build link button action row if URL exists
+ * @param {string|null} sourceUrl - URL for the link button
+ * @returns {ActionRowBuilder|null} The action row or null
+ */
+function buildLinkButtonRow(sourceUrl) {
+    if (!sourceUrl) return null;
+
+    const linkButton = new ButtonBuilder().setLabel('Im Regelwiki öffnen').setStyle(ButtonStyle.Link).setURL(sourceUrl);
+
+    return new ActionRowBuilder().addComponents(linkButton);
 }
 
 module.exports = {
@@ -135,76 +217,116 @@ module.exports = {
             }
 
             // Build primary embed for selected page
-            const pageTitle = selectedPage.title || 'Unbenannt';
-            const pageContent =
-                selectedPage.chunk_text || selectedPage.normalized_content || selectedPage.content || '';
+            const primaryEmbed = buildPageEmbed(selectedPage, exactMatches, semanticMatches, interaction.user);
             const pageSourceUrl = selectedPage.source_url;
 
-            // Truncate preview to 1500 chars at word boundary
-            const preview = truncate(pageContent, 1500);
-
-            const primaryEmbed = new EmbedBuilder()
-                .setColor(0x8b4513)
-                .setTitle(pageSourceUrl ? `[${pageTitle}](${pageSourceUrl})` : pageTitle)
-                .setDescription(preview || '*Kein Inhalt verfügbar.*');
-
-            // Add fields for exact and semantic matches
-            const fields = [];
-
-            // Exact matches field (up to 3 linked titles)
-            if (exactMatches.length > 0) {
-                const exactLines = exactMatches.map(match => {
-                    return match.source_url ? `[${match.title}](${match.source_url})` : match.title;
-                });
-                fields.push({
-                    name: '🎯 Exakte Treffer',
-                    value: exactLines.join('\n'),
-                    inline: false,
-                });
+            // Build combined list for page picker (exact first, then semantic)
+            const allPages = [...exactMatches, ...semanticMatches];
+            const uniquePages = [];
+            const seenDocIds = new Set();
+            for (const page of allPages) {
+                if (!seenDocIds.has(page.doc_id)) {
+                    seenDocIds.add(page.doc_id);
+                    uniquePages.push(page);
+                }
             }
 
-            // Semantic matches field with relevance labels
-            if (semanticMatches.length > 0) {
-                const semanticLines = semanticMatches.map(match => {
-                    const similarity = Math.round((match.similarity || 0) * 100);
-                    const titleLink = match.source_url ? `[${match.title}](${match.source_url})` : match.title;
-                    return `${titleLink} (${similarity}%)`;
-                });
-                fields.push({
-                    name: '🔍 Semantische Treffer',
-                    value: semanticLines.join('\n'),
-                    inline: false,
+            // Only show picker if more than one page available
+            if (uniquePages.length <= 1) {
+                const components = [];
+                const linkRow = buildLinkButtonRow(pageSourceUrl);
+                if (linkRow) components.push(linkRow);
+
+                return interaction.editReply({
+                    embeds: [primaryEmbed],
+                    components: components.length > 0 ? components : undefined,
                 });
             }
 
-            if (fields.length > 0) {
-                primaryEmbed.addFields(fields);
-            }
+            // Build page picker select menu
+            const selectOptions = uniquePages.slice(0, 25).map(page => ({
+                label: page.title || 'Unbenannt',
+                value: page.doc_id,
+                description:
+                    page.match_type === 'exact'
+                        ? 'Exakter Treffer'
+                        : `Semantisch (${Math.round((page.similarity || 0) * 100)}%)`,
+            }));
 
-            primaryEmbed
-                .setFooter({
-                    text: `DSA 5 Regelwiki · ${interaction.user.username}`,
-                    iconURL: interaction.user.avatarURL(),
-                })
-                .setTimestamp();
+            const selectMenu = new StringSelectMenuBuilder()
+                .setCustomId('regel_page_select')
+                .setPlaceholder('Andere Seite auswählen...')
+                .addOptions(selectOptions);
 
-            // Build response with optional link button
-            const components = [];
+            const selectRow = new ActionRowBuilder().addComponents(selectMenu);
 
-            if (pageSourceUrl) {
-                const linkButton = new ButtonBuilder()
-                    .setLabel('Im Regelwiki öffnen')
-                    .setStyle(ButtonStyle.Link)
-                    .setURL(pageSourceUrl);
+            // Build initial components
+            const components = [selectRow];
+            const linkRow = buildLinkButtonRow(pageSourceUrl);
+            if (linkRow) components.push(linkRow);
 
-                const actionRow = new ActionRowBuilder().addComponents(linkButton);
-                components.push(actionRow);
-            }
-
-            return interaction.editReply({
+            const message = await interaction.editReply({
                 embeds: [primaryEmbed],
-                components: components.length > 0 ? components : undefined,
+                components,
+                fetchReply: true,
             });
+
+            // Set up collector for page selection
+            const collector = message.createMessageComponentCollector({
+                componentType: ComponentType.StringSelect,
+                filter: i => i.user.id === interaction.user.id,
+                time: 60000,
+            });
+
+            collector.on('collect', async i => {
+                const selectedDocId = i.values[0];
+                const selectedPageData = uniquePages.find(p => p.doc_id === selectedDocId);
+
+                if (!selectedPageData) {
+                    await i.reply({ content: '❌ Seite nicht gefunden.', ephemeral: true });
+                    return;
+                }
+
+                // Rebuild embed with selected page as primary
+                // Update match lists: selected page moves to top if it was in the lists
+                const newExactMatches = exactMatches.filter(m => m.doc_id !== selectedDocId);
+                const newSemanticMatches = semanticMatches.filter(m => m.doc_id !== selectedDocId);
+
+                const newEmbed = buildPageEmbed(
+                    selectedPageData,
+                    newExactMatches,
+                    newSemanticMatches,
+                    interaction.user
+                );
+
+                // Update components with new link button
+                const newComponents = [selectRow];
+                const newLinkRow = buildLinkButtonRow(selectedPageData.source_url);
+                if (newLinkRow) newComponents.push(newLinkRow);
+
+                await i.update({
+                    embeds: [newEmbed],
+                    components: newComponents,
+                });
+            });
+
+            collector.on('end', (collected, reason) => {
+                if (reason === 'time') {
+                    // Remove select menu but keep embed and link button
+                    const cleanupComponents = [];
+                    const linkRowCleanup = buildLinkButtonRow(pageSourceUrl);
+                    if (linkRowCleanup) cleanupComponents.push(linkRowCleanup);
+
+                    interaction
+                        .editReply({
+                            embeds: [primaryEmbed],
+                            components: cleanupComponents.length > 0 ? cleanupComponents : [],
+                        })
+                        .catch(() => {});
+                }
+            });
+
+            return message;
         } catch (error) {
             log.error({ error, query, category }, 'Regel search failed');
 

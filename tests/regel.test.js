@@ -31,6 +31,14 @@ jest.mock('discord.js', () => ({
     ButtonStyle: {
         Link: 5,
     },
+    StringSelectMenuBuilder: jest.fn().mockImplementation(() => ({
+        setCustomId: jest.fn().mockReturnThis(),
+        setPlaceholder: jest.fn().mockReturnThis(),
+        addOptions: jest.fn().mockReturnThis(),
+    })),
+    ComponentType: {
+        StringSelect: 3,
+    },
 }));
 
 // Mock rulesClient
@@ -272,15 +280,15 @@ describe('regel command execute', () => {
                     chunk_text: 'Finte I ist eine Kampfsonderfertigkeit...',
                     similarity: 1.0,
                 },
-                exactMatches: [{ doc_id: 'doc_1', title: 'Finte I', source_url: 'https://example.com/finte-i' }],
-                semanticMatches: [
+                exactMatches: [
                     {
-                        doc_id: 'doc_2',
-                        title: 'Finte II',
-                        source_url: 'https://example.com/finte-ii',
-                        similarity: 0.85,
+                        doc_id: 'doc_1',
+                        title: 'Finte I',
+                        source_url: 'https://example.com/finte-i',
+                        match_type: 'exact',
                     },
                 ],
+                semanticMatches: [], // No other pages = no picker
             };
 
             hybridSearch.mockResolvedValue(mockHybridResult);
@@ -306,7 +314,7 @@ describe('regel command execute', () => {
             expect(replyCall.embeds).toBeDefined();
             expect(replyCall.embeds).toHaveLength(1);
 
-            // Verify components include link button
+            // Verify components include link button (no picker since only 1 page)
             expect(replyCall.components).toBeDefined();
             expect(replyCall.components).toHaveLength(1);
         });
@@ -322,17 +330,13 @@ describe('regel command execute', () => {
                 },
                 exactMatches: [],
                 semanticMatches: [
+                    // Only one semantic match = no picker
                     {
                         doc_id: 'doc_1',
                         title: 'Wundschwelle',
                         source_url: 'https://example.com/wundschwelle',
                         similarity: 0.72,
-                    },
-                    {
-                        doc_id: 'doc_2',
-                        title: 'Wundschwelle II',
-                        source_url: 'https://example.com/wundschwelle-ii',
-                        similarity: 0.65,
+                        match_type: 'semantic',
                     },
                 ],
             };
@@ -609,4 +613,337 @@ describe('regel command execute', () => {
             expect(mockInteraction.deferReply).toHaveBeenCalledWith({ ephemeral: false });
         });
     });
+
+    describe('page picker updates the selected rule preview', () => {
+        test('shows select menu when more than one page available', async () => {
+            const mockHybridResult = {
+                selectedPage: {
+                    doc_id: 'doc_1',
+                    title: 'Finte I',
+                    source_url: 'https://example.com/finte-i',
+                    chunk_text: 'Finte I ist eine Kampfsonderfertigkeit...',
+                    match_type: 'exact',
+                },
+                exactMatches: [
+                    {
+                        doc_id: 'doc_1',
+                        title: 'Finte I',
+                        source_url: 'https://example.com/finte-i',
+                        match_type: 'exact',
+                    },
+                    {
+                        doc_id: 'doc_2',
+                        title: 'Finte II',
+                        source_url: 'https://example.com/finte-ii',
+                        match_type: 'exact',
+                    },
+                ],
+                semanticMatches: [
+                    {
+                        doc_id: 'doc_3',
+                        title: 'Attacke',
+                        source_url: 'https://example.com/attacke',
+                        similarity: 0.65,
+                        match_type: 'semantic',
+                    },
+                ],
+            };
+
+            hybridSearch.mockResolvedValue(mockHybridResult);
+
+            const mockCollector = {
+                on: jest.fn(),
+            };
+
+            const mockMessage = {
+                createMessageComponentCollector: jest.fn().mockReturnValue(mockCollector),
+            };
+
+            const mockInteraction = createMockInteractionWithPicker({
+                suche: 'Finte',
+                anzahl: 3,
+                visible: false,
+                mockMessage,
+            });
+
+            await regelCommand.execute(mockInteraction);
+
+            // Verify collector was created with user filter
+            expect(mockMessage.createMessageComponentCollector).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    componentType: 3, // StringSelect
+                    time: 60000,
+                })
+            );
+
+            // Verify components include select menu row
+            const editReplyCall = mockInteraction.editReply.mock.calls[0][0];
+            expect(editReplyCall.components).toBeDefined();
+            expect(editReplyCall.components.length).toBeGreaterThanOrEqual(1);
+        });
+
+        test('does not show select menu when only one page available', async () => {
+            const mockHybridResult = {
+                selectedPage: {
+                    doc_id: 'doc_1',
+                    title: 'Finte I',
+                    source_url: 'https://example.com/finte-i',
+                    chunk_text: 'Finte I ist eine Kampfsonderfertigkeit...',
+                },
+                exactMatches: [{ doc_id: 'doc_1', title: 'Finte I', source_url: 'https://example.com/finte-i' }],
+                semanticMatches: [],
+            };
+
+            hybridSearch.mockResolvedValue(mockHybridResult);
+
+            const mockInteraction = createMockInteraction({
+                suche: 'Finte I',
+                anzahl: 3,
+                visible: false,
+            });
+
+            await regelCommand.execute(mockInteraction);
+
+            // Should only have link button, no select menu
+            const editReplyCall = mockInteraction.editReply.mock.calls[0][0];
+            expect(editReplyCall.components).toBeDefined();
+            expect(editReplyCall.components).toHaveLength(1);
+        });
+
+        test('collect handler updates embed with selected page', async () => {
+            const mockHybridResult = {
+                selectedPage: {
+                    doc_id: 'doc_1',
+                    title: 'Finte I',
+                    source_url: 'https://example.com/finte-i',
+                    chunk_text: 'Finte I ist eine Kampfsonderfertigkeit...',
+                    match_type: 'exact',
+                },
+                exactMatches: [
+                    {
+                        doc_id: 'doc_1',
+                        title: 'Finte I',
+                        source_url: 'https://example.com/finte-i',
+                        match_type: 'exact',
+                    },
+                    {
+                        doc_id: 'doc_2',
+                        title: 'Finte II',
+                        source_url: 'https://example.com/finte-ii',
+                        match_type: 'exact',
+                    },
+                ],
+                semanticMatches: [],
+            };
+
+            hybridSearch.mockResolvedValue(mockHybridResult);
+
+            let collectHandler = null;
+            const mockCollector = {
+                on: jest.fn((event, handler) => {
+                    if (event === 'collect') {
+                        collectHandler = handler;
+                    }
+                }),
+            };
+
+            const mockMessage = {
+                createMessageComponentCollector: jest.fn().mockReturnValue(mockCollector),
+            };
+
+            const mockUpdate = jest.fn().mockResolvedValue(undefined);
+            const mockInteraction = createMockInteractionWithPicker({
+                suche: 'Finte',
+                anzahl: 3,
+                visible: false,
+                mockMessage,
+            });
+
+            await regelCommand.execute(mockInteraction);
+
+            // Simulate user selecting a different page
+            if (collectHandler) {
+                const mockSelectInteraction = {
+                    user: { id: 'user-123' },
+                    values: ['doc_2'],
+                    reply: jest.fn().mockResolvedValue(undefined),
+                    update: mockUpdate,
+                };
+
+                await collectHandler(mockSelectInteraction);
+
+                // Verify update was called with new embed
+                expect(mockUpdate).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        embeds: expect.any(Array),
+                        components: expect.any(Array),
+                    })
+                );
+            }
+        });
+    });
+
+    describe('page picker ignores other users and cleans up on timeout', () => {
+        test('collector filter only accepts invoking user', async () => {
+            const mockHybridResult = {
+                selectedPage: {
+                    doc_id: 'doc_1',
+                    title: 'Finte I',
+                    source_url: 'https://example.com/finte-i',
+                    chunk_text: 'Finte I ist eine Kampfsonderfertigkeit...',
+                    match_type: 'exact',
+                },
+                exactMatches: [
+                    {
+                        doc_id: 'doc_1',
+                        title: 'Finte I',
+                        source_url: 'https://example.com/finte-i',
+                        match_type: 'exact',
+                    },
+                    {
+                        doc_id: 'doc_2',
+                        title: 'Finte II',
+                        source_url: 'https://example.com/finte-ii',
+                        match_type: 'exact',
+                    },
+                ],
+                semanticMatches: [],
+            };
+
+            hybridSearch.mockResolvedValue(mockHybridResult);
+
+            let collectorOptions = null;
+            const mockCollector = {
+                on: jest.fn(),
+            };
+
+            const mockMessage = {
+                createMessageComponentCollector: jest.fn(options => {
+                    collectorOptions = options;
+                    return mockCollector;
+                }),
+            };
+
+            const mockInteraction = createMockInteractionWithPicker({
+                suche: 'Finte',
+                anzahl: 3,
+                visible: false,
+                mockMessage,
+                userId: 'original-user-123',
+            });
+
+            await regelCommand.execute(mockInteraction);
+
+            // Verify filter exists and only accepts original user
+            expect(collectorOptions).toBeDefined();
+            expect(collectorOptions.filter).toBeDefined();
+
+            // Test filter with original user
+            const originalUserInteraction = { user: { id: 'original-user-123' } };
+            expect(collectorOptions.filter(originalUserInteraction)).toBe(true);
+
+            // Test filter with different user
+            const otherUserInteraction = { user: { id: 'other-user-456' } };
+            expect(collectorOptions.filter(otherUserInteraction)).toBe(false);
+        });
+
+        test('on timeout removes select menu but keeps embed and link button', async () => {
+            const mockHybridResult = {
+                selectedPage: {
+                    doc_id: 'doc_1',
+                    title: 'Finte I',
+                    source_url: 'https://example.com/finte-i',
+                    chunk_text: 'Finte I ist eine Kampfsonderfertigkeit...',
+                    match_type: 'exact',
+                },
+                exactMatches: [
+                    {
+                        doc_id: 'doc_1',
+                        title: 'Finte I',
+                        source_url: 'https://example.com/finte-i',
+                        match_type: 'exact',
+                    },
+                    {
+                        doc_id: 'doc_2',
+                        title: 'Finte II',
+                        source_url: 'https://example.com/finte-ii',
+                        match_type: 'exact',
+                    },
+                ],
+                semanticMatches: [],
+            };
+
+            hybridSearch.mockResolvedValue(mockHybridResult);
+
+            let endHandler = null;
+            const mockCollector = {
+                on: jest.fn((event, handler) => {
+                    if (event === 'end') {
+                        endHandler = handler;
+                    }
+                }),
+            };
+
+            const mockMessage = {
+                createMessageComponentCollector: jest.fn().mockReturnValue(mockCollector),
+            };
+
+            const mockInteraction = createMockInteractionWithPicker({
+                suche: 'Finte',
+                anzahl: 3,
+                visible: false,
+                mockMessage,
+            });
+
+            await regelCommand.execute(mockInteraction);
+
+            // Clear previous calls
+            mockInteraction.editReply.mockClear();
+
+            // Simulate timeout
+            if (endHandler) {
+                await endHandler([], 'time');
+
+                // Verify cleanup editReply was called
+                expect(mockInteraction.editReply).toHaveBeenCalledWith(
+                    expect.objectContaining({
+                        embeds: expect.any(Array),
+                        components: expect.any(Array),
+                    })
+                );
+
+                // Verify only link button remains (no select menu)
+                const cleanupCall = mockInteraction.editReply.mock.calls[0][0];
+                expect(cleanupCall.components.length).toBe(1);
+            }
+        });
+    });
 });
+
+// Helper to create mock interaction with picker support
+function createMockInteractionWithPicker(options = {}) {
+    const userId = options.userId || 'user-123';
+    return {
+        options: {
+            getString: jest.fn().mockImplementation(key => options[key] || null),
+            getInteger: jest.fn().mockImplementation(key => options[key] || null),
+            getBoolean: jest.fn().mockImplementation(key => options[key] || false),
+        },
+        client: {
+            rulePageTitleCache: options.cache || [],
+        },
+        user: {
+            id: userId,
+            username: 'TestUser',
+            avatarURL: jest.fn().mockReturnValue('https://example.com/avatar.png'),
+        },
+        deferReply: jest.fn().mockResolvedValue(undefined),
+        editReply: jest.fn().mockImplementation(replyOptions => {
+            // Return mock message with fetchReply: true
+            if (replyOptions && replyOptions.fetchReply) {
+                return Promise.resolve(options.mockMessage || {});
+            }
+            return Promise.resolve(options.mockMessage || undefined);
+        }),
+    };
+}

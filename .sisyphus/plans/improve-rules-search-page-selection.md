@@ -365,7 +365,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `feat(regel): show selected rule preview and grouped results` | Files: `commands/regel.js`, `tests/regel.test.js`
 
-- [ ]   7. Add a post-search page picker that updates the selected preview in-place
+- [x]   7. Add a post-search page picker that updates the selected preview in-place
 
     **What to do**: Add a conditional `StringSelectMenuBuilder` to the `/regel` reply when there is more than one selectable page across exact and semantic groups. Populate the menu with exact matches first and then semantic matches, using short deterministic option values (`doc_id`) and capping the menu at the combined exact+semantic set already returned by the hybrid helper. Scope the collector to the invoking user and original reply. When the user selects a page, rebuild the embed/button state in-place so the newly selected page becomes primary while the rest stay available. On timeout, remove the select menu row but keep the final embed and link button visible.
     **Must NOT do**: Do not add a central interaction router or global handler for this flow. Do not use full URLs in `custom_id` or menu values. Do not leave stale collectors running after timeout.
