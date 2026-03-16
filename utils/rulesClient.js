@@ -213,9 +213,61 @@ async function getRulePageTitles() {
     }));
 }
 
+/**
+ * Ranked page-title lookup for exact, prefix, and contains matches.
+ * Uses in-memory cache for fast filtering without database queries.
+ * @param {string} query - Title or partial title to search
+ * @param {Array} cache - Array of page title records (from client.rulePageTitleCache)
+ * @param {Object} options - Lookup options
+ * @param {string} [options.category] - Filter by category
+ * @returns {Array<{doc_id: string, title: string, title_lower: string, category: string, resolved_category: string|null, source_url: string, match_type: 'exact'|'prefix'|'contains'}>}
+ */
+function getRankedTitleMatches(query, cache = [], options = {}) {
+    if (!query || !cache.length) {
+        return [];
+    }
+
+    const queryLower = query.toLowerCase();
+    const { category } = options;
+
+    // Filter by category if provided
+    const filteredCache = category ? cache.filter(page => page.category === category) : cache;
+
+    const exactMatches = [];
+    const prefixMatches = [];
+    const containsMatches = [];
+    const seenDocIds = new Set();
+
+    for (const page of filteredCache) {
+        // Skip duplicates
+        if (seenDocIds.has(page.doc_id)) {
+            continue;
+        }
+
+        const titleLower = page.title_lower;
+
+        if (titleLower === queryLower) {
+            exactMatches.push({ ...page, match_type: 'exact' });
+            seenDocIds.add(page.doc_id);
+        } else if (titleLower.startsWith(queryLower)) {
+            prefixMatches.push({ ...page, match_type: 'prefix' });
+            seenDocIds.add(page.doc_id);
+        } else if (titleLower.includes(queryLower)) {
+            containsMatches.push({ ...page, match_type: 'contains' });
+            seenDocIds.add(page.doc_id);
+        }
+    }
+
+    // Combine ranked results: exact first, then prefix, then contains
+    // Limit to 3 total results
+    const ranked = [...exactMatches, ...prefixMatches, ...containsMatches];
+    return ranked.slice(0, 3);
+}
+
 module.exports = {
     searchRules,
     getRulesByCategory,
     getRuleByTitle,
     getRulePageTitles,
+    getRankedTitleMatches,
 };

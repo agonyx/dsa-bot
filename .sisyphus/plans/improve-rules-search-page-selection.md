@@ -155,7 +155,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `feat(rules): add cached autocomplete title dataset` | Files: `utils/rulesClient.js`, `index.js`, `tests/rulesClient.test.js`
 
-- [ ]   2. Add ranked page-title lookup for exact, prefix, and contains matches
+- [x]   2. Add ranked page-title lookup for exact, prefix, and contains matches
 
     **What to do**: Add a dedicated page-title lookup helper in `utils/rulesClient.js` that searches only rule pages, ranks matches as exact title > prefix title > contains title, applies optional category filtering, and returns up to 3 deduped page records with a `match_type` annotation. Normalize comparisons case-insensitively and keep the return shape page-oriented so it can drive post-search page picking.
     **Must NOT do**: Do not add database migrations, pg_trgm indexes, or SQL functions. Do not use chunk rows or embedding similarity for this helper.
