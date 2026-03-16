@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { searchRules, getRuleByTitle } = require('../utils/rulesClient');
+const { searchRules, getRuleByTitle, getRankedTitleMatches } = require('../utils/rulesClient');
 const { createLogger } = require('../utils/logger');
 
 const log = createLogger('regel');
@@ -91,6 +91,7 @@ module.exports = {
                 .setName('suche')
                 .setDescription('Suchbegriff (z.B. "Finte", "Drache Kampfwerte", "Wundschwelle")')
                 .setRequired(true)
+                .setAutocomplete(true)
                 .setMaxLength(200)
         )
         .addStringOption(option =>
@@ -128,6 +129,25 @@ module.exports = {
                 .setMaxValue(5)
         )
         .addBooleanOption(option => option.setName('visible').setDescription('Ergebnis für alle sichtbar machen')),
+
+    async autocomplete(interaction) {
+        const focusedValue = interaction.options.getFocused();
+        const category = interaction.options.getString('kategorie');
+        const cache = interaction.client.rulePageTitleCache || [];
+
+        try {
+            const matches = getRankedTitleMatches(focusedValue, cache, { category });
+            const choices = matches.slice(0, 25).map(page => ({
+                name: page.title,
+                value: page.title,
+            }));
+
+            await interaction.respond(choices);
+        } catch (error) {
+            log.error({ error, focusedValue, category }, 'Autocomplete error');
+            await interaction.respond([]);
+        }
+    },
 
     async execute(interaction) {
         const query = interaction.options.getString('suche');

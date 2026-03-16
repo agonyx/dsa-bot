@@ -239,7 +239,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `feat(rules): add exact-first hybrid rule search` | Files: `utils/rulesClient.js`, `tests/rulesClient.test.js`
 
-- [ ]   4. Add Jest coverage for cache loading and hybrid search helpers
+- [x]   4. Add Jest coverage for cache loading and hybrid search helpers
 
     **What to do**: Create or extend `tests/rulesClient.test.js` with mocked `openai` and mocked Supabase client behavior covering cache loading, ranked title search, hybrid orchestration, deduplication, category filtering, and failure handling. Keep fixtures small and deterministic, following the repo's current direct-object assertion style.
     **Must NOT do**: Do not call live OpenAI or Supabase services. Do not hide broken behavior behind broad snapshot tests.
@@ -280,7 +280,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `test(rules): cover hybrid and cache helpers` | Files: `tests/rulesClient.test.js`, `utils/rulesClient.js`
 
-- [ ]   5. Enable `/regel` autocomplete with cached title filtering and category awareness
+- [x]   5. Enable `/regel` autocomplete with cached title filtering and category awareness
 
     **What to do**: Update `commands/regel.js` so the existing `suche` option uses `.setAutocomplete(true)` and add an `autocomplete(interaction)` handler. Filter `interaction.client.rulePageTitleCache` in memory, prefer exact/prefix ordering over contains ordering, respect the currently selected `kategorie` option, and return up to 25 `{ name, value }` pairs where `value` is the chosen page title string submitted back to `/regel` execution.
     **Must NOT do**: Do not query Supabase or OpenAI from the autocomplete handler. Do not return IDs that make the slash option unreadable to users. Do not exceed 25 results.
