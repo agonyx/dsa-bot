@@ -407,7 +407,7 @@ Wave 2: `/regel` UX and interaction flow (`commands/regel.js`, mocked command te
 
     **Commit**: YES | Message: `feat(regel): add in-message rule picker` | Files: `commands/regel.js`, `tests/regel.test.js`
 
-- [ ]   8. Add command-level verification, lint/test smoke, and guild-command deployment checks
+- [x]   8. Add command-level verification, lint/test smoke, and guild-command deployment checks
 
     **What to do**: Create `tests/regel.test.js` (or extend an existing command test file if one already exists by implementation time) with mocked interaction coverage for autocomplete, execute payloads, and page-picker collector behavior. Finish by running the full local verification stack (`npm test -- --runInBand`, `npm run lint`, `node -e "require('./commands/regel')"`) and, when Discord env vars are present, `node deploy-commands.js guild` to confirm the updated slash-command schema registers cleanly.
     **Must NOT do**: Do not skip linting. Do not claim guild deployment success without running the command when credentials are present. Do not introduce brittle snapshot-only tests.
