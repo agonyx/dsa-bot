@@ -7,7 +7,7 @@ const {
     StringSelectMenuBuilder,
     ComponentType,
 } = require('discord.js');
-const { hybridSearch, getRankedTitleMatches } = require('../utils/rulesClient');
+const { hybridSearch, getRankedTitleMatches, fetchPageContent } = require('../utils/rulesClient');
 const { createLogger } = require('../utils/logger');
 
 const log = createLogger('regel');
@@ -289,26 +289,30 @@ module.exports = {
                     return;
                 }
 
+                // Fetch full content if not available (cache rows lack content)
+                let pageData = selectedPageData;
+                if (!selectedPageData.normalized_content && !selectedPageData.chunk_text && !selectedPageData.content) {
+                    const fullPage = await fetchPageContent(selectedDocId);
+                    if (fullPage) {
+                        pageData = { ...selectedPageData, ...fullPage };
+                    }
+                }
+
                 // Rebuild embed with selected page as primary
                 // Update match lists: selected page moves to top if it was in the lists
                 const newExactMatches = exactMatches.filter(m => m.doc_id !== selectedDocId);
                 const newSemanticMatches = semanticMatches.filter(m => m.doc_id !== selectedDocId);
 
-                const newEmbed = buildPageEmbed(
-                    selectedPageData,
-                    newExactMatches,
-                    newSemanticMatches,
-                    interaction.user
-                );
+                const newEmbed = buildPageEmbed(pageData, newExactMatches, newSemanticMatches, interaction.user);
 
                 // Update components with new link button
                 const newComponents = [selectRow];
-                const newLinkRow = buildLinkButtonRow(selectedPageData.source_url);
+                const newLinkRow = buildLinkButtonRow(pageData.source_url);
                 if (newLinkRow) newComponents.push(newLinkRow);
 
                 // Update current state for timeout handler
                 currentEmbed = newEmbed;
-                currentSourceUrl = selectedPageData.source_url;
+                currentSourceUrl = pageData.source_url;
 
                 await i.update({
                     embeds: [newEmbed],

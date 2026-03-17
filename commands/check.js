@@ -30,20 +30,12 @@ module.exports = {
         .setName('check')
         .setDescription('Perform a talent check (Talentprobe)')
         .addStringOption(option =>
-            option
-                .setName('talent')
-                .setDescription('The talent to check')
-                .setRequired(true)
-                .setAutocomplete(true)
+            option.setName('talent').setDescription('The talent to check').setRequired(true).setAutocomplete(true)
         )
         .addIntegerOption(option =>
-            option
-                .setName('modifier')
-                .setDescription('Modifier to apply to FtW (e.g., -2 for difficult, +3 for easy)')
+            option.setName('modifier').setDescription('Modifier to apply to FtW (e.g., -2 for difficult, +3 for easy)')
         )
-        .addBooleanOption(option =>
-            option.setName('visible').setDescription('Make the roll visible to everyone')
-        ),
+        .addBooleanOption(option => option.setName('visible').setDescription('Make the roll visible to everyone')),
 
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
@@ -85,9 +77,7 @@ module.exports = {
                     value: pt.talent.id.toString(),
                 }));
 
-            const filtered = choices.filter(c =>
-                c.name.toLowerCase().includes(focusedValue.toLowerCase())
-            );
+            const filtered = choices.filter(c => c.name.toLowerCase().includes(focusedValue.toLowerCase()));
 
             await interaction.respond(filtered.slice(0, 25));
         } catch (error) {
@@ -95,7 +85,9 @@ module.exports = {
             log.error({ error }, 'Autocomplete error');
             try {
                 await interaction.respond([]);
-            } catch {}
+            } catch {
+                // Ignore - interaction may have expired
+            }
         }
     },
 

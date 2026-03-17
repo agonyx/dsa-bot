@@ -47,17 +47,18 @@ jest.mock('../utils/rulesClient', () => ({
     getRuleByTitle: jest.fn(),
     getRankedTitleMatches: jest.fn(),
     hybridSearch: jest.fn(),
+    fetchPageContent: jest.fn(),
 }));
 
 // Mock logger
 jest.mock('../utils/logger', () => ({
     createLogger: jest.fn(() => ({
-        error: jest.fn((data, msg) => console.error('LOG ERROR:', data, msg)),
+        error: jest.fn(),
         info: jest.fn(),
     })),
 }));
 
-const { getRankedTitleMatches, hybridSearch } = require('../utils/rulesClient');
+const { getRankedTitleMatches, hybridSearch, fetchPageContent } = require('../utils/rulesClient');
 
 describe('regel command autocomplete', () => {
     beforeEach(() => {
@@ -302,10 +303,6 @@ describe('regel command execute', () => {
             });
 
             await regelCommand.execute(mockInteraction);
-
-            // Debug: log mock calls
-            console.log('editReply calls:', mockInteraction.editReply.mock.calls);
-            console.log('hybridSearch calls:', hybridSearch.mock.calls);
 
             expect(hybridSearch).toHaveBeenCalledWith('Finte I', [], {
                 category: null,
@@ -743,6 +740,14 @@ describe('regel command execute', () => {
             };
 
             hybridSearch.mockResolvedValue(mockHybridResult);
+
+            // Mock fetchPageContent to return content for doc_2
+            fetchPageContent.mockResolvedValue({
+                doc_id: 'doc_2',
+                title: 'Finte II',
+                source_url: 'https://example.com/finte-ii',
+                normalized_content: 'Finte II ist eine verbesserte Kampfsonderfertigkeit...',
+            });
 
             let collectHandler = null;
             const mockCollector = {

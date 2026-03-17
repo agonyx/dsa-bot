@@ -352,6 +352,10 @@ async function hybridSearch(query, cache = [], options = {}) {
     // Deduplicate semantic results by page
     const dedupedSemantic = deduplicateSemanticResults(semanticResults, limit);
 
+    // Filter semantic matches to exclude pages already in exact matches
+    const exactDocIds = new Set(exactMatches.map(m => m.doc_id));
+    const filteredSemantic = dedupedSemantic.filter(m => !exactDocIds.has(m.doc_id));
+
     // Determine the selected page
     // Priority: first exact match > first semantic match > null
     let selectedPage = null;
@@ -361,15 +365,15 @@ async function hybridSearch(query, cache = [], options = {}) {
         const fullPage = await fetchPageContent(exactMatches[0].doc_id);
         // Preserve match_type from the exact match
         selectedPage = fullPage ? { ...fullPage, match_type: 'exact' } : { ...exactMatches[0] };
-    } else if (dedupedSemantic.length > 0) {
+    } else if (filteredSemantic.length > 0) {
         // Fall back to the first semantic match
-        selectedPage = { ...dedupedSemantic[0] };
+        selectedPage = { ...filteredSemantic[0] };
     }
 
     return {
         selectedPage,
         exactMatches: exactMatches.slice(0, 3),
-        semanticMatches: dedupedSemantic,
+        semanticMatches: filteredSemantic,
     };
 }
 
@@ -380,4 +384,5 @@ module.exports = {
     getRulePageTitles,
     getRankedTitleMatches,
     hybridSearch,
+    fetchPageContent,
 };
