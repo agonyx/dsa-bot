@@ -368,6 +368,28 @@ describe('hybridSearch', () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
+        // Mock fetchPageContent chain for exact matches
+        const mockPageQuery = {
+            select: jest.fn().mockReturnThis(),
+            eq: jest.fn().mockReturnThis(),
+            single: jest.fn().mockResolvedValue({
+                data: {
+                    doc_id: 'doc_1',
+                    title: 'Wuchtschlag',
+                    normalized_content: 'Wuchtschlag content...',
+                    category: 'combat',
+                    resolved_category: 'kampf',
+                    source_url: 'https://example.com/wuchtschlag',
+                },
+                error: null,
+            }),
+        };
+        supabase.from.mockImplementation(table => {
+            if (table === 'rule_pages') {
+                return mockPageQuery;
+            }
+            return { select: jest.fn().mockReturnThis() };
+        });
     });
 
     test('keeps exact page first while preserving semantic matches', async () => {

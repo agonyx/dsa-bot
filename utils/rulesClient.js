@@ -220,6 +220,7 @@ async function getRulePageTitles() {
  * @param {Array} cache - Array of page title records (from client.rulePageTitleCache)
  * @param {Object} options - Lookup options
  * @param {string} [options.category] - Filter by category
+ * @param {number} [options.limit=3] - Maximum results to return (up to 25 for autocomplete)
  * @returns {Array<{doc_id: string, title: string, title_lower: string, category: string, resolved_category: string|null, source_url: string, match_type: 'exact'|'prefix'|'contains'}>}
  */
 function getRankedTitleMatches(query, cache = [], options = {}) {
@@ -228,7 +229,7 @@ function getRankedTitleMatches(query, cache = [], options = {}) {
     }
 
     const queryLower = query.toLowerCase();
-    const { category } = options;
+    const { category, limit = 3 } = options;
 
     // Filter by category if provided
     const filteredCache = category ? cache.filter(page => page.category === category) : cache;
@@ -259,9 +260,8 @@ function getRankedTitleMatches(query, cache = [], options = {}) {
     }
 
     // Combine ranked results: exact first, then prefix, then contains
-    // Limit to 3 total results
     const ranked = [...exactMatches, ...prefixMatches, ...containsMatches];
-    return ranked.slice(0, 3);
+    return ranked.slice(0, limit);
 }
 
 /**
@@ -307,6 +307,26 @@ function deduplicateSemanticResults(semanticResults, limit) {
 }
 
 /**
+ * Fetch full page content for a doc_id from rule_pages.
+ * Cache rows only have metadata, not content fields.
+ * @param {string} docId - The doc_id to fetch
+ * @returns {Promise<Object|null>} Page with content or null
+ */
+async function fetchPageContent(docId) {
+    const response = await supabase
+        .from('rule_pages')
+        .select('doc_id, title, normalized_content, category, resolved_category, source_url, metadata')
+        .eq('doc_id', docId)
+        .single();
+
+    if (response.error) {
+        return null;
+    }
+
+    return normalizePageResult(response.data);
+}
+
+/**
  * Hybrid search orchestrator that runs exact title lookup and semantic search in parallel.
  * Exact matches are prioritized, semantic results are deduplicated by page.
  * @param {string} query - Search query (natural language or partial title)
@@ -337,8 +357,10 @@ async function hybridSearch(query, cache = [], options = {}) {
     let selectedPage = null;
 
     if (exactMatches.length > 0) {
-        // Use the first exact match as the selected page
-        selectedPage = { ...exactMatches[0] };
+        // Fetch full content for exact match (cache rows lack content fields)
+        const fullPage = await fetchPageContent(exactMatches[0].doc_id);
+        // Preserve match_type from the exact match
+        selectedPage = fullPage ? { ...fullPage, match_type: 'exact' } : { ...exactMatches[0] };
     } else if (dedupedSemantic.length > 0) {
         // Fall back to the first semantic match
         selectedPage = { ...dedupedSemantic[0] };

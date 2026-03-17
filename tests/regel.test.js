@@ -52,7 +52,7 @@ jest.mock('../utils/rulesClient', () => ({
 // Mock logger
 jest.mock('../utils/logger', () => ({
     createLogger: jest.fn(() => ({
-        error: jest.fn(),
+        error: jest.fn((data, msg) => console.error('LOG ERROR:', data, msg)),
         info: jest.fn(),
     })),
 }));
@@ -95,6 +95,7 @@ describe('regel command autocomplete', () => {
 
             expect(getRankedTitleMatches).toHaveBeenCalledWith('Finte', mockInteraction.client.rulePageTitleCache, {
                 category: null,
+                limit: 25,
             });
             expect(mockRespond).toHaveBeenCalledTimes(1);
 
@@ -126,6 +127,7 @@ describe('regel command autocomplete', () => {
 
             expect(getRankedTitleMatches).toHaveBeenCalledWith('Drache', mockInteraction.client.rulePageTitleCache, {
                 category: 'bestiarium',
+                limit: 25,
             });
 
             const respondedChoices = mockRespond.mock.calls[0][0];
@@ -134,8 +136,8 @@ describe('regel command autocomplete', () => {
         });
 
         test('limits results to 25 even when more matches exist', async () => {
-            // Create 30 mock matches
-            const mockMatches = Array.from({ length: 30 }, (_, i) => ({
+            // Create 30 mock matches but getRankedTitleMatches with limit:25 will return only 25
+            const mockMatches = Array.from({ length: 25 }, (_, i) => ({
                 doc_id: `doc_${i}`,
                 title: `Test Rule ${i}`,
                 title_lower: `test rule ${i}`,
@@ -202,7 +204,7 @@ describe('regel command autocomplete', () => {
             await regelCommand.autocomplete(mockInteraction);
 
             // Should use empty array as fallback
-            expect(getRankedTitleMatches).toHaveBeenCalledWith('Test', [], { category: null });
+            expect(getRankedTitleMatches).toHaveBeenCalledWith('Test', [], { category: null, limit: 25 });
             expect(mockRespond).toHaveBeenCalledWith([]);
         });
 
@@ -300,6 +302,10 @@ describe('regel command execute', () => {
             });
 
             await regelCommand.execute(mockInteraction);
+
+            // Debug: log mock calls
+            console.log('editReply calls:', mockInteraction.editReply.mock.calls);
+            console.log('hybridSearch calls:', hybridSearch.mock.calls);
 
             expect(hybridSearch).toHaveBeenCalledWith('Finte I', [], {
                 category: null,

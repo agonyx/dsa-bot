@@ -174,8 +174,8 @@ module.exports = {
         const cache = interaction.client.rulePageTitleCache || [];
 
         try {
-            const matches = getRankedTitleMatches(focusedValue, cache, { category });
-            const choices = matches.slice(0, 25).map(page => ({
+            const matches = getRankedTitleMatches(focusedValue, cache, { category, limit: 25 });
+            const choices = matches.map(page => ({
                 name: page.title,
                 value: page.title,
             }));
@@ -218,7 +218,9 @@ module.exports = {
 
             // Build primary embed for selected page
             const primaryEmbed = buildPageEmbed(selectedPage, exactMatches, semanticMatches, interaction.user);
-            const pageSourceUrl = selectedPage.source_url;
+            // Track current state for timeout handler
+            let currentEmbed = primaryEmbed;
+            let currentSourceUrl = selectedPage.source_url;
 
             // Build combined list for page picker (exact first, then semantic)
             const allPages = [...exactMatches, ...semanticMatches];
@@ -234,7 +236,7 @@ module.exports = {
             // Only show picker if more than one page available
             if (uniquePages.length <= 1) {
                 const components = [];
-                const linkRow = buildLinkButtonRow(pageSourceUrl);
+                const linkRow = buildLinkButtonRow(selectedPage.source_url);
                 if (linkRow) components.push(linkRow);
 
                 return interaction.editReply({
@@ -262,7 +264,7 @@ module.exports = {
 
             // Build initial components
             const components = [selectRow];
-            const linkRow = buildLinkButtonRow(pageSourceUrl);
+            const linkRow = buildLinkButtonRow(currentSourceUrl);
             if (linkRow) components.push(linkRow);
 
             const message = await interaction.editReply({
@@ -304,6 +306,10 @@ module.exports = {
                 const newLinkRow = buildLinkButtonRow(selectedPageData.source_url);
                 if (newLinkRow) newComponents.push(newLinkRow);
 
+                // Update current state for timeout handler
+                currentEmbed = newEmbed;
+                currentSourceUrl = selectedPageData.source_url;
+
                 await i.update({
                     embeds: [newEmbed],
                     components: newComponents,
@@ -314,12 +320,12 @@ module.exports = {
                 if (reason === 'time') {
                     // Remove select menu but keep embed and link button
                     const cleanupComponents = [];
-                    const linkRowCleanup = buildLinkButtonRow(pageSourceUrl);
+                    const linkRowCleanup = buildLinkButtonRow(currentSourceUrl);
                     if (linkRowCleanup) cleanupComponents.push(linkRowCleanup);
 
                     interaction
                         .editReply({
-                            embeds: [primaryEmbed],
+                            embeds: [currentEmbed],
                             components: cleanupComponents.length > 0 ? cleanupComponents : [],
                         })
                         .catch(() => {});
@@ -328,7 +334,10 @@ module.exports = {
 
             return message;
         } catch (error) {
-            log.error({ error, query, category }, 'Regel search failed');
+            log.error(
+                { error, query, category, errorMessage: error?.message, errorStack: error?.stack },
+                'Regel search failed'
+            );
 
             if (error.message?.includes('OPENAI_API_KEY')) {
                 return interaction.editReply({
