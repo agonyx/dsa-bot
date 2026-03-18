@@ -52,7 +52,7 @@ async function executeStartCombat(interaction) {
         const sessionId = session.id;
         log.info({ sessionId }, 'Combat session created successfully');
 
-        const setupEmbed = createSetupEmbed(sessionId, dmUsername, []);
+        const setupEmbed = createSetupEmbed(sessionId, dmUsername, [], false);
         const initialActionRows = createSetupActionRows(sessionId, false);
 
         const setupMessage = await interaction.editReply({
@@ -67,7 +67,10 @@ async function executeStartCombat(interaction) {
             .eq('id', sessionId);
 
         if (updateError) {
-            log.error({ error: updateError, sessionId, messageId: setupMessage.id }, 'Failed to update session with message ID');
+            log.error(
+                { error: updateError, sessionId, messageId: setupMessage.id },
+                'Failed to update session with message ID'
+            );
             await interaction.followUp({
                 content: '⚠️ Session created, but failed to store message link. Combat might not update correctly.',
                 ephemeral: true,

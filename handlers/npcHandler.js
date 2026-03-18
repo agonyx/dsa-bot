@@ -10,7 +10,7 @@ const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder
 const { ButtonBuilder } = require('@discordjs/builders');
 
 const { createLogger } = require('../utils/logger');
-const { getOrLoadSession, resolveCombatAction } = require('./combatTurnHandler');
+const { getOrLoadSession, resolveCombatAction, createManagementActionRow } = require('./combatTurnHandler');
 
 const log = createLogger('npc-handler');
 
@@ -39,18 +39,7 @@ function createNpcDmActionRow(sessionId, npcActorId) {
             .setEmoji({ name: '⏩' })
     );
 
-    const managementRow = new ActionRowBuilder().addComponents(
-        new ButtonBuilder()
-            .setCustomId(`park_combat_${sessionId}`)
-            .setLabel('Park Session')
-            .setStyle(ButtonStyle.Secondary)
-            .setEmoji({ name: '🅿️' }),
-        new ButtonBuilder()
-            .setCustomId(`end_combat_${sessionId}`)
-            .setLabel('End Session')
-            .setStyle(ButtonStyle.Danger)
-            .setEmoji({ name: '🛑' })
-    );
+    const managementRow = createManagementActionRow(sessionId);
 
     return [actionRow, managementRow];
 }

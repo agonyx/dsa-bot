@@ -945,11 +945,63 @@ async function nextTurn(client, channelId) {
 }
 
 /**
+ * Creates an ASCII health bar.
+ * @param {number} currentHP - Current health points.
+ * @param {number} maxHP - Maximum health points.
+ * @param {number} length - The number of segments for the bar.
+ * @returns {string} The formatted health bar string.
+ */
+function createHealthBar(currentHP, maxHP, length = 5) {
+    if (maxHP <= 0) return 'HP [-----] ?/?';
+    const percentage = Math.max(0, Math.min(1, currentHP / maxHP));
+    const filledSegments = Math.round(percentage * length);
+    const emptySegments = length - filledSegments;
+
+    const bar = '█'.repeat(filledSegments) + '-'.repeat(emptySegments);
+
+    return `HP [${bar}] ${currentHP}/${maxHP}`;
+}
+
+/**
+ * Determines the embed color based on the player party's average health and combat state.
+ * @param {string} state - The current combat state ('RUNNING', 'PAUSED', 'ENDED').
+ * @param {Array<object>} combatants - The list of combatants in the session.
+ * @returns {number} A hex color code.
+ */
+function getEmbedColor(state, combatants) {
+    if (state === 'PAUSED') return 0x4c6a92;
+    if (state === 'ENDED') return 0x6c757d;
+
+    const players = combatants.filter(c => c.allegiance === 'PLAYER_SIDE' && c.maxHP > 0);
+    if (players.length === 0) return 0x6c757d; // Default to grey if no players
+
+    const totalCurrentHP = players.reduce((sum, p) => sum + p.currentHP, 0);
+    const totalMaxHP = players.reduce((sum, p) => sum + p.maxHP, 0);
+
+    if (totalMaxHP === 0) return 0x6c757d;
+
+    const averageHpPercentage = totalCurrentHP / totalMaxHP;
+
+    if (averageHpPercentage < 0.25) return 0xc92a2a; // running-critical
+    if (averageHpPercentage < 0.5) return 0xd97706; // running-strained
+    return 0x2f9e44; // running-healthy
+}
+
+/**
+ * Truncates a name to 24 characters with ellipsis suffix if needed.
+ * @param {string} name - The name to truncate.
+ * @returns {string} Truncated name or original if within limit.
+ */
+function truncateName(name) {
+    if (!name) return 'Unknown';
+    if (name.length <= 24) return name;
+    return name.substring(0, 21) + '...';
+}
+
+/**
  * Creates the embed displaying the current state of a running combat.
  */
 function createCombatEmbed(session) {
-    const sessionIdShort = session?.id?.substring(0, 8) || '???';
-
     if (!session || typeof session !== 'object') {
         log.error('Invalid or missing session object in createCombatEmbed');
         return new EmbedBuilder()
@@ -964,71 +1016,127 @@ function createCombatEmbed(session) {
     const currentTurnIndex =
         typeof session.currentTurnIndex === 'number' && session.currentTurnIndex >= 0 ? session.currentTurnIndex : -1;
 
-    log.debug(
-        {
-            sessionId: sessionIdShort,
-            state: session.state,
-            turnIndex: currentTurnIndex,
-            combatantCount: combatants.length,
-        },
-        'Creating combat embed'
-    );
+    const activeCombatant = turnOrder[currentTurnIndex]
+        ? combatants.find(c => c.id === turnOrder[currentTurnIndex])
+        : null;
 
     const combatEmbed = new EmbedBuilder()
-        .setColor(session.state === 'ENDED' ? 0x808080 : 0xe74c3c)
-        .setTitle(`⚔️ Combat ${session.state}! (Session: ${sessionIdShort}) ⚔️`)
+        .setColor(getEmbedColor(session.state, combatants))
+        .setTitle(`Combat Status - ${session.state}`)
         .setTimestamp();
 
-    let turnOrderString = '*Turn order empty or error.*';
-    if (turnOrder.length > 0 && combatants.length > 0) {
-        const mappedStrings = turnOrder.map((combatantId, index) => {
-            const combatant = combatants.find(c => c.id === combatantId);
-            if (!combatant) return `${index + 1}. *ERR: Combatant Data Missing*`;
-
-            const name = combatant.name || `*Unknown*`;
-            const hp =
-                combatant.currentHP !== undefined && combatant.maxHP !== undefined
-                    ? `(${combatant.currentHP}/${combatant.maxHP} HP)`
-                    : '';
-            const roll =
-                combatant.initiativeRoll !== null && combatant.initiativeRoll !== undefined
-                    ? `[INI: ${combatant.initiativeRoll}]`
-                    : '';
-            const status = combatant.currentHP !== undefined && combatant.currentHP <= 0 ? '~~' : '';
-
-            if (session.state === 'RUNNING' && index === currentTurnIndex) {
-                return `**➡️ ${index + 1}. ${status}${name}${status} ${hp} ${roll}**`;
-            } else {
-                const indent = '\u2002\u2002\u2002\u2002';
-                return `${indent}${index + 1}. ${status}${name}${status} ${hp} ${roll}`;
-            }
-        });
-        turnOrderString = mappedStrings.join('\n');
-        if (turnOrderString.length > 1020) {
-            turnOrderString = turnOrderString.substring(0, 1020) + '\n...';
-        }
-    }
-
-    combatEmbed.addFields({ name: 'Turn Order', value: turnOrderString || '*Empty*', inline: false });
-
-    let recentLogs = '- No events yet -';
-    if (combatLog.length > 0) {
-        recentLogs = combatLog.slice(-5).join('\n');
-        if (recentLogs.length > 1000) {
-            recentLogs = '...\n' + recentLogs.slice(recentLogs.length - 1000);
-        }
-    }
-
-    combatEmbed.addFields({ name: 'Recent Events', value: `\`\`\`markdown\n${recentLogs}\n\`\`\``, inline: false });
-
-    if (session.state === 'RUNNING' && currentTurnIndex >= 0 && currentTurnIndex < turnOrder.length) {
-        const activeCombatant = combatants.find(c => c.id === turnOrder[currentTurnIndex]);
-        combatEmbed.setFooter({
-            text: activeCombatant ? `Current Turn: ${activeCombatant.name}` : `Current Turn: Error!`,
-        });
+    // Description
+    const descriptionLines = [];
+    if (session.state === 'RUNNING' && activeCombatant) {
+        descriptionLines.push(`**Active Turn:** ${truncateName(activeCombatant.name)}`);
+        descriptionLines.push(`Next action uses the buttons below.`);
+    } else if (session.state === 'RUNNING' && !activeCombatant) {
+        descriptionLines.push('Combat is starting...');
+    } else if (session.state === 'PAUSED') {
+        descriptionLines.push('Combat is paused. Use `/resumecombat` to continue.');
     } else if (session.state === 'ENDED') {
-        combatEmbed.setFooter({ text: `Combat Ended` });
+        descriptionLines.push('This combat has concluded.');
     }
+    combatEmbed.setDescription(descriptionLines.join('\n') || ' ');
+
+    // Field 1: Turn Summary
+    if (session.state === 'RUNNING' && activeCombatant) {
+        const summaryValue = `
+            **Combatant:** ${truncateName(activeCombatant.name)}
+            **Side:** ${activeCombatant.allegiance === 'PLAYER_SIDE' ? 'Heroes' : 'Hostiles'}
+            **Initiative:** ${activeCombatant.initiativeRoll}
+            **Health:** ${createHealthBar(activeCombatant.currentHP, activeCombatant.maxHP)}
+        `.replace(/^\s+/gm, ''); // Remove leading whitespace
+        combatEmbed.addFields({ name: 'Turn Summary', value: summaryValue });
+    }
+
+    const formatCombatantLine = (c, isCurrent) => {
+        const turnIndicator = isCurrent ? '> ' : '';
+        const name = truncateName(c.name);
+        const initiative = `INI ${c.initiativeRoll}`;
+        const hpBar = createHealthBar(c.currentHP, c.maxHP);
+        const status = c.currentHP <= 0 ? ' | DOWN' : '';
+        return `${turnIndicator}${name} | ${initiative} | ${hpBar}${status}`;
+    };
+
+    /**
+     * Formats a side's combatants with overflow handling.
+     * Shows max 6 combatants: first 5 by initiative + summary line if >6 total.
+     * @param {Array} sideCombatants - Combatants on this side
+     * @param {Object} activeCombatant - Currently active combatant (if any)
+     * @returns {string} Formatted combatant list for the field
+     */
+    const formatSideWithOverflow = (sideCombatants, activeCombatant) => {
+        const MAX_VISIBLE = 6;
+        const MAX_DETAILED = 5;
+
+        if (sideCombatants.length === 0) return 'None';
+
+        // Sort by initiative (highest first)
+        const sorted = [...sideCombatants].sort((a, b) => b.initiativeRoll - a.initiativeRoll);
+
+        if (sorted.length <= MAX_VISIBLE) {
+            // No overflow needed - show all
+            return sorted.map(c => formatCombatantLine(c, activeCombatant && c.id === activeCombatant.id)).join('\n');
+        }
+
+        // Overflow: show first 5 + summary line
+        const visible = sorted.slice(0, MAX_DETAILED);
+        const overflowCount = sorted.length - MAX_DETAILED;
+        const activeCount = sorted.filter(c => c.currentHP > 0).length;
+        const downCount = sorted.filter(c => c.currentHP <= 0).length;
+
+        const lines = visible.map(c => formatCombatantLine(c, activeCombatant && c.id === activeCombatant.id));
+        lines.push(`+${overflowCount} more | active ${activeCount} | down ${downCount}`);
+
+        return lines.join('\n');
+    };
+
+    const playerCombatants = combatants.filter(c => c.allegiance === 'PLAYER_SIDE');
+    const hostileCombatants = combatants.filter(c => c.allegiance === 'HOSTILE');
+
+    // Field 2: Heroes
+    if (playerCombatants.length > 0) {
+        const playerString = formatSideWithOverflow(playerCombatants, activeCombatant);
+        combatEmbed.addFields({ name: 'Heroes', value: '```markdown\n' + playerString + '\n```', inline: false });
+    }
+
+    // Field 3: Hostiles
+    if (hostileCombatants.length > 0) {
+        const hostileString = formatSideWithOverflow(hostileCombatants, activeCombatant);
+        combatEmbed.addFields({ name: 'Hostiles', value: '```markdown\n' + hostileString + '\n```', inline: false });
+    }
+
+    // Field 4: Recent Events
+    // Truncate each line to 120 chars, keep newest 5, cap total at 900 chars
+    let recentLogs = 'No events yet.';
+    if (combatLog.length > 0) {
+        const MAX_LINE_LENGTH = 120;
+        const MAX_LINES = 5;
+        const MAX_TOTAL_LENGTH = 900;
+
+        let processedLines = combatLog
+            .slice(-MAX_LINES)
+            .map(line => (line.length > MAX_LINE_LENGTH ? line.substring(0, MAX_LINE_LENGTH - 3) + '...' : line));
+
+        // Ensure total doesn't exceed 900 chars
+        let combined = processedLines.join('\n');
+        while (combined.length > MAX_TOTAL_LENGTH && processedLines.length > 1) {
+            // Remove oldest line if we exceed the limit
+            processedLines = processedLines.slice(1);
+            combined = processedLines.join('\n');
+        }
+
+        // Final truncation if a single line still exceeds limit
+        if (combined.length > MAX_TOTAL_LENGTH) {
+            combined = combined.substring(0, MAX_TOTAL_LENGTH - 3) + '...';
+        }
+
+        recentLogs = combined;
+    }
+    combatEmbed.addFields({ name: 'Recent Events', value: `\`\`\`\n${recentLogs}\n\`\`\``, inline: false });
+
+    combatEmbed.setFooter({ text: `Session ID: ${session.id?.substring(0, 8) || '???'}` });
 
     return combatEmbed;
 }
@@ -1053,6 +1161,26 @@ function createPlayerActionRow(sessionId, actorCombatantId) {
             .setLabel('End Turn')
             .setStyle(ButtonStyle.Secondary)
             .setEmoji({ name: '⏩' })
+    );
+}
+
+/**
+ * Creates shared management action row with park/end session buttons.
+ * @param {string} sessionId - The combat session ID.
+ * @returns {ActionRowBuilder}
+ */
+function createManagementActionRow(sessionId) {
+    return new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId(`park_combat_${sessionId}`)
+            .setLabel('Park Session')
+            .setStyle(ButtonStyle.Secondary)
+            .setEmoji({ name: '🅿️' }),
+        new ButtonBuilder()
+            .setCustomId(`end_combat_${sessionId}`)
+            .setLabel('End Session')
+            .setStyle(ButtonStyle.Danger)
+            .setEmoji({ name: '🛑' })
     );
 }
 
@@ -1112,7 +1240,10 @@ async function updateCombatDisplay(client, channelId, freshSessionData = null) {
             if (activeCombatant && activeCombatant.currentHP > 0) {
                 log.debug({ combatantName: activeCombatant.name, type: activeCombatant.type }, 'Current turn');
                 if (activeCombatant.type === 'PLAYER') {
-                    actionRows = [createPlayerActionRow(sessionId, activeCombatantId)];
+                    actionRows = [
+                        createPlayerActionRow(sessionId, activeCombatantId),
+                        createManagementActionRow(sessionId),
+                    ];
                 } else if (activeCombatant.type === 'NPC') {
                     const { createNpcDmActionRow } = require('./npcHandler');
                     actionRows = createNpcDmActionRow(sessionId, activeCombatantId);
@@ -1161,5 +1292,6 @@ module.exports = {
     nextTurn,
     createCombatEmbed,
     createPlayerActionRow,
+    createManagementActionRow,
     updateCombatDisplay,
 };

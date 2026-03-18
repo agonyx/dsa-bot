@@ -4,26 +4,58 @@ const { EmbedBuilder } = require('@discordjs/builders');
 const { ButtonStyle } = require('discord.js');
 
 // --- Helper function to build the Setup Embed ---
-function createSetupEmbed(sessionId, dmUsername, participants = []) {
-    const playerList = participants
-        .filter(p => p.type === 'PLAYER')
-        .map(p => `- ${p.name || 'Unknown Player'}`)
-        .join('\n');
-    const npcList = participants
-        .filter(p => p.type === 'NPC')
-        .map(p => `- ${p.name || 'Unknown Mob'}`)
-        .join('\n');
+function createSetupEmbed(sessionId, dmUsername, participants = [], canStart = false) {
+    const players = participants.filter(p => p.type === 'PLAYER');
+    const hostiles = participants.filter(p => p.type === 'NPC'); // Assuming all NPCs are hostile for now
+
+    const truncate = name => (name.length > 24 ? `${name.substring(0, 21)}...` : name);
+
+    const formatParticipantList = list => {
+        if (list.length === 0) return 'None';
+        const displayList = list.slice(0, 8).map(p => `• ${truncate(p.name || 'Unknown')}`);
+        if (list.length > 8) {
+            displayList.push(`*+${list.length - 8} more...*`);
+        }
+        return displayList.join('\n');
+    };
+
+    const playerList = formatParticipantList(players);
+    const hostileList = formatParticipantList(hostiles);
+
+    const readinessDescription = canStart ? '✅ Ready to start!' : '⏳ Waiting for more participants...';
+
+    const nextActions = canStart
+        ? 'DM: Press "Start Fight" to begin combat.'
+        : 'Players: Use "Join Combat" to enter the lobby.\nDM: Use "Add Mob" to add hostiles.';
 
     const embed = new EmbedBuilder()
-        // *** FIX: Use the numeric color value ***
-        .setColor(39423) // Decimal for #0099FF
-        .setTitle('⚔️ Combat Setup Initiated ⚔️')
-        .setDescription(
-            `Combat initiated by **${dmUsername}**.\n\nPlayers, click "Join Combat"!\nDM, use "Manage Participants".`
+        .setColor(canStart ? 0x2f9e44 : 0xd97706) // Green when ready, Amber when not
+        .setTitle('Combat Lobby')
+        .setDescription(`*Organized by ${dmUsername}*\n${readinessDescription}`)
+        .addFields(
+            {
+                name: 'Status',
+                value: `**${participants.length}** participants. Need at least 1 player and 1 hostile, minimum 2 total.`,
+                inline: false,
+            },
+            {
+                name: `Players (${players.length})`,
+                value: playerList,
+                inline: true,
+            },
+            {
+                name: `Hostiles (${hostiles.length})`,
+                value: hostileList,
+                inline: true,
+            },
+            {
+                name: 'Next Actions',
+                value: nextActions,
+                inline: false,
+            }
         )
-        .setFooter({ text: `Session ID: ${sessionId.substring(0, 8)}...` });
-    embed.addFields({ name: '👤 Players Joined', value: playerList || 'None yet.', inline: true });
-    embed.addFields({ name: '👾 Mobs Added', value: npcList || 'None yet.', inline: true });
+        .setFooter({ text: `Session ID: ${sessionId.substring(0, 8)}` });
+
     return embed;
 }
 

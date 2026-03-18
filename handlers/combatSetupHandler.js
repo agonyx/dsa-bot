@@ -164,8 +164,13 @@ async function updateSetupMessage(client, sessionId) {
             const dmUser = await client.users.fetch(updatedSession.dm_user_id).catch(() => null);
             const dmUsername = dmUser ? dmUser.username : updatedSession.dm_user_id;
 
-            const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants);
-            const canStart = updatedSession.state === 'SETUP' && updatedSession.combatants?.length >= 2;
+            // Compute readiness: at least 1 player AND 1 hostile, minimum 2 total
+            const hasPlayers = updatedSession.combatants?.some(c => c.allegiance === 'PLAYER_SIDE');
+            const hasHostiles = updatedSession.combatants?.some(c => c.allegiance === 'HOSTILE');
+            const canStart =
+                updatedSession.state === 'SETUP' && updatedSession.combatants?.length >= 2 && hasPlayers && hasHostiles;
+
+            const newEmbed = createSetupEmbed(sessionId, dmUsername, updatedSession.combatants, canStart);
             const newActionRows = createSetupActionRows(sessionId, canStart);
 
             await originalMessage.edit({
