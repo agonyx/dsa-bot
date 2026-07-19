@@ -1,16 +1,11 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { createLogger } = require('../utils/logger');
-const {
-    RESOURCE_TYPES,
-    getPlayerWithStats,
-    spendResource,
-    restoreResource,
-    createResourceEmbed,
-} = require('../utils/resourceUtils');
+const { getResource, spendResource, restoreResource, RESOURCE_TYPES } = require('../services/resources');
+const { createResourceEmbed } = require('../utils/resourceUtils');
 const log = createLogger('kap');
 
-const RESOURCE = RESOURCE_TYPES.KAP;
-const STATS_SELECT = 'id, kap_current, kap_max';
+const TYPE = 'kap';
+const META = RESOURCE_TYPES.kap;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -49,96 +44,57 @@ module.exports = {
 
         const subcommand = interaction.options.getSubcommand();
         const targetUser = interaction.options.getUser('target');
-        const targetId = targetUser?.id || interaction.user.id;
-        const isSelf = targetId === interaction.user.id;
+        const targetDiscordId = targetUser?.id;
+        const isSelf = !targetUser || targetUser.id === interaction.user.id;
+        const ctx = { discordId: interaction.user.id };
 
         try {
-            const result = await getPlayerWithStats(targetId, STATS_SELECT);
+            if (subcommand === 'show') {
+                const { characterName, current, max } = await getResource(ctx, { type: TYPE, targetDiscordId });
+                if (max === 0) {
+                    return interaction.editReply({
+                        content: '❌ This character has no Karmalkraft. Only Geweihte (blessed) have KaP.',
+                    });
+                }
+                const embed = createResourceEmbed(characterName, META, current, current, max, 'show')
+                    .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                    .setTimestamp();
+                return interaction.editReply({ embeds: [embed] });
+            }
 
-            if (!result) {
+            if (subcommand === 'spend') {
+                const amount = interaction.options.getInteger('amount');
+                const { characterName, oldValue, newValue, max } = await spendResource(ctx, { type: TYPE, amount, targetDiscordId });
+                const embed = createResourceEmbed(characterName, META, oldValue, newValue, max, 'spend')
+                    .setFooter({ text: `Used by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                    .setTimestamp();
+                return interaction.editReply({ embeds: [embed] });
+            }
+
+            if (subcommand === 'restore') {
+                const amount = interaction.options.getInteger('amount');
+                const { characterName, oldValue, newValue, actualAmount, max } = await restoreResource(ctx, { type: TYPE, amount, targetDiscordId });
+                if (actualAmount === 0) {
+                    return interaction.editReply({ content: `ℹ️ Already at maximum Karmapunkte (${oldValue}/${max})` });
+                }
+                const embed = createResourceEmbed(characterName, META, oldValue, newValue, max, 'restore')
+                    .setFooter({ text: `Restored by ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                    .setTimestamp();
+                return interaction.editReply({ embeds: [embed] });
+            }
+        } catch (error) {
+            if (error.status === 404) {
                 return interaction.editReply({
                     content: isSelf
                         ? '❌ No character selected! Use `/choose-character` first.'
                         : '❌ Target has no selected character.',
                 });
             }
-
-            const { player, stats } = result;
-            const current = stats.kap_current;
-            const max = stats.kap_max;
-
-            // Characters without Karmaenergie have kap_max = 0
-            if (max === 0) {
-                return interaction.editReply({
-                    content: '❌ This character has no Karmaenergie. Only Geweihte (blessed) have KaP.',
-                });
+            if (error.status === 400) {
+                return interaction.editReply({ content: `❌ ${error.data?.error || error.message}` });
             }
-
-            if (subcommand === 'show') {
-                const embed = createResourceEmbed(player.name, RESOURCE, current, current, max, 'show')
-                    .setFooter({
-                        text: `Requested by ${interaction.user.username}`,
-                        iconURL: interaction.user.avatarURL(),
-                    })
-                    .setTimestamp();
-
-                return interaction.editReply({ embeds: [embed] });
-            }
-
-            if (subcommand === 'spend') {
-                const amount = interaction.options.getInteger('amount');
-                const { newValue, error } = await spendResource(stats.id, RESOURCE, amount, current);
-
-                if (error) {
-                    return interaction.editReply({
-                        content: `❌ Not enough Karmapunkte! (Current: ${current}/${max})`,
-                    });
-                }
-
-                const embed = createResourceEmbed(player.name, RESOURCE, current, newValue, max, 'spend')
-                    .setFooter({
-                        text: `Used by ${interaction.user.username}`,
-                        iconURL: interaction.user.avatarURL(),
-                    })
-                    .setTimestamp();
-
-                return interaction.editReply({ embeds: [embed] });
-            }
-
-            if (subcommand === 'restore') {
-                const amount = interaction.options.getInteger('amount');
-                const { newValue, actualAmount, error } = await restoreResource(
-                    stats.id,
-                    RESOURCE,
-                    amount,
-                    current,
-                    max
-                );
-
-                if (error) {
-                    return interaction.editReply({ content: `❌ ${error}` });
-                }
-
-                if (actualAmount === 0) {
-                    return interaction.editReply({
-                        content: `ℹ️ Already at maximum Karmapunkte (${current}/${max})`,
-                    });
-                }
-
-                const embed = createResourceEmbed(player.name, RESOURCE, current, newValue, max, 'restore')
-                    .setFooter({
-                        text: `Restored by ${interaction.user.username}`,
-                        iconURL: interaction.user.avatarURL(),
-                    })
-                    .setTimestamp();
-
-                return interaction.editReply({ embeds: [embed] });
-            }
-        } catch (error) {
             log.error({ error }, 'KaP command error');
-            return interaction.editReply({
-                content: `❌ An error occurred: ${error.message}`,
-            });
+            return interaction.editReply({ content: `❌ An error occurred: ${error.message}` });
         }
     },
 };

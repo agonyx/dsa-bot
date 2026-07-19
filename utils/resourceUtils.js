@@ -1,156 +1,10 @@
 const { EmbedBuilder } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, stats } = require('../db/schema');
-const { createLogger } = require('./logger');
-const log = createLogger('resourceUtils');
 
 /**
- * Resource type definitions for DSA 5e character resources.
- * Easily extensible — add new entries here and they'll work with all helper functions.
- *
- * Future Schicksalspunkte mechanics (Neuer Wurf, Qualität verbessern, Schicksalspunkt
- * zurückgewinnen, etc.) will hook into spendResource() by wrapping it with
- * game-specific logic in the command layer.
+ * Presentation helpers for resource embeds. The DB-touching logic
+ * (getPlayerWithStats/spendResource/restoreResource/setResource + RESOURCE_TYPES)
+ * now lives in services/resources.ts; this file is Discord-rendering only.
  */
-const RESOURCE_TYPES = {
-    SCHICKSALSPUNKTE: {
-        key: 'schicksalspunkte',
-        currentCol: 'schicksalspunkte_current',
-        maxCol: 'schicksalspunkte_max',
-        label: 'Schicksalspunkte',
-        emoji: '🎲',
-        color: 0xffd700, // gold
-    },
-    ASP: {
-        key: 'asp',
-        currentCol: 'asp_current',
-        maxCol: 'asp_max',
-        label: 'Astralpunkte',
-        emoji: '✨',
-        color: 0x9b59b6, // purple
-    },
-    KAP: {
-        key: 'kap',
-        currentCol: 'kap_current',
-        maxCol: 'kap_max',
-        label: 'Karmapunkte',
-        emoji: '🙏',
-        color: 0xf1c40f, // warm yellow
-    },
-};
-
-/**
- * Fetches the selected player and their stats for a given Discord user.
- * @param {string} discordId - Discord user ID
- * @param {string} _selectColumns - unused (kept for API compat); always returns the full stats row
- * @returns {Promise<{player: object, stats: object}|null>} Player and stats, or null if not found
- */
-async function getPlayerWithStats(discordId, _selectColumns = '*') {
-    const [player] = await db
-        .select({ id: players.id, name: players.name })
-        .from(players)
-        .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
-        .limit(1);
-
-    if (!player) {
-        log.debug({ discordId }, 'No selected player found');
-        return null;
-    }
-
-    const [statsRow] = await db.select().from(stats).where(eq(stats.player_id, player.id)).limit(1);
-    if (!statsRow) {
-        log.debug({ discordId }, 'No stats found for selected player');
-        return null;
-    }
-
-    return { player, stats: statsRow };
-}
-
-/**
- * Spends a resource (decrements current value).
- * @param {string} statsId - Stats row ID
- * @param {object} resourceType - Entry from RESOURCE_TYPES
- * @param {number} amount - Amount to spend
- * @param {number} currentValue - Current resource value
- * @returns {Promise<{newValue: number, error: string|null}>}
- */
-async function spendResource(statsId, resourceType, amount, currentValue) {
-    if (currentValue < amount) {
-        return {
-            newValue: currentValue,
-            error: `Not enough ${resourceType.label}! (Current: ${currentValue})`,
-        };
-    }
-
-    const newValue = currentValue - amount;
-
-    try {
-        await db
-            .update(stats)
-            .set({ [resourceType.currentCol]: newValue })
-            .where(eq(stats.id, statsId));
-    } catch (error) {
-        log.error({ error, statsId, resource: resourceType.key }, 'Failed to spend resource');
-        return { newValue: currentValue, error: `Database error: ${error.message}` };
-    }
-
-    return { newValue, error: null };
-}
-
-/**
- * Restores a resource (increments current value, capped at max).
- * @param {string} statsId - Stats row ID
- * @param {object} resourceType - Entry from RESOURCE_TYPES
- * @param {number} amount - Amount to restore
- * @param {number} currentValue - Current resource value
- * @param {number} maxValue - Maximum resource value
- * @returns {Promise<{newValue: number, actualAmount: number, error: string|null}>}
- */
-async function restoreResource(statsId, resourceType, amount, currentValue, maxValue) {
-    const newValue = Math.min(currentValue + amount, maxValue);
-    const actualAmount = newValue - currentValue;
-
-    if (actualAmount === 0) {
-        return { newValue: currentValue, actualAmount: 0, error: null };
-    }
-
-    try {
-        await db
-            .update(stats)
-            .set({ [resourceType.currentCol]: newValue })
-            .where(eq(stats.id, statsId));
-    } catch (error) {
-        log.error({ error, statsId, resource: resourceType.key }, 'Failed to restore resource');
-        return { newValue: currentValue, actualAmount: 0, error: `Database error: ${error.message}` };
-    }
-
-    return { newValue, actualAmount, error: null };
-}
-
-/**
- * Sets a resource to an exact value (DM override). Clamped between 0 and max.
- * @param {string} statsId - Stats row ID
- * @param {object} resourceType - Entry from RESOURCE_TYPES
- * @param {number} value - Value to set
- * @param {number} maxValue - Maximum resource value
- * @returns {Promise<{newValue: number, error: string|null}>}
- */
-async function setResource(statsId, resourceType, value, maxValue) {
-    const newValue = Math.max(0, Math.min(value, maxValue));
-
-    try {
-        await db
-            .update(stats)
-            .set({ [resourceType.currentCol]: newValue })
-            .where(eq(stats.id, statsId));
-    } catch (error) {
-        log.error({ error, statsId, resource: resourceType.key }, 'Failed to set resource');
-        return { newValue: value, error: `Database error: ${error.message}` };
-    }
-
-    return { newValue, error: null };
-}
 
 /**
  * Creates a visual resource bar string.
@@ -168,7 +22,7 @@ function createResourceBar(current, max, length = 10) {
 /**
  * Creates a Discord embed for a resource change.
  * @param {string} playerName - Character name
- * @param {object} resourceType - Entry from RESOURCE_TYPES
+ * @param {object} resourceType - Entry from RESOURCE_TYPES (services/resources)
  * @param {number} oldValue - Value before change
  * @param {number} newValue - Value after change
  * @param {number} maxValue - Maximum value
@@ -213,11 +67,6 @@ function createResourceEmbed(playerName, resourceType, oldValue, newValue, maxVa
 }
 
 module.exports = {
-    RESOURCE_TYPES,
-    getPlayerWithStats,
-    spendResource,
-    restoreResource,
-    setResource,
     createResourceBar,
     createResourceEmbed,
 };
