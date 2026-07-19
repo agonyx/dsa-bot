@@ -5,9 +5,7 @@ const {
     ButtonStyle,
     PermissionFlagsBits,
 } = require('discord.js');
-const { db } = require('../db');
-const { eq } = require('drizzle-orm');
-const { mobs } = require('../db/schema');
+const { getMob, deleteMob, listMobs } = require('../services/mobs');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('delete-mob');
 
@@ -28,15 +26,10 @@ module.exports = {
 
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
-
         try {
-            const mobRows = await db.select({ name: mobs.name }).from(mobs).orderBy(mobs.name);
-
+            const mobRows = await listMobs({ discordId: interaction.user.id });
             const choices = (mobRows || []).map(m => ({ name: m.name, value: m.name }));
-            const filtered = choices.filter(c =>
-                c.name.toLowerCase().includes(focusedValue.toLowerCase())
-            );
-
+            const filtered = choices.filter(c => c.name.toLowerCase().includes(focusedValue.toLowerCase()));
             await interaction.respond(filtered.slice(0, 25));
         } catch (error) {
             log.error({ error }, 'Autocomplete error');
@@ -46,17 +39,12 @@ module.exports = {
 
     async execute(interaction) {
         const mobName = interaction.options.getString('name');
+        const ctx = { discordId: interaction.user.id };
 
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const [mob] = await db.select().from(mobs).where(eq(mobs.name, mobName)).limit(1);
-
-            if (!mob) {
-                return interaction.editReply({
-                    content: `Mob template **${mobName}** not found.`,
-                });
-            }
+            const mob = await getMob(ctx, mobName);
 
             const confirmButton = new ButtonBuilder()
                 .setCustomId(`deletemob_confirm_${mob.id}`)
@@ -71,7 +59,8 @@ module.exports = {
             const row = new ActionRowBuilder().addComponents(confirmButton, cancelButton);
 
             const message = await interaction.editReply({
-                content: `Delete mob template **${mob.name}**?\n` +
+                content:
+                    `Delete mob template **${mob.name}**?\n` +
                     `HP: ${mob.base_max_hp} | INI: ${mob.base_initiative} | AT: ${mob.base_attack_value} | PA: ${mob.base_parry_value} | RS: ${mob.base_armor_soak} | TP: ${mob.base_damage_tp}`,
                 components: [row],
             });
@@ -87,17 +76,11 @@ module.exports = {
                     collector.stop();
                 } else if (i.customId.startsWith('deletemob_confirm_')) {
                     try {
-                        await db.delete(mobs).where(eq(mobs.id, mob.id));
-                        await i.update({
-                            content: `Mob template **${mob.name}** has been deleted.`,
-                            components: [],
-                        });
+                        await deleteMob(ctx, mob.id);
+                        await i.update({ content: `Mob template **${mob.name}** has been deleted.`, components: [] });
                     } catch (error) {
                         log.error({ error }, 'Delete mob error');
-                        await i.update({
-                            content: `Failed to delete mob: ${error.message}`,
-                            components: [],
-                        });
+                        await i.update({ content: `❌ ${error.data?.error || error.message}`, components: [] });
                     }
                     collector.stop();
                 }
@@ -105,19 +88,15 @@ module.exports = {
 
             collector.on('end', (collected, reason) => {
                 if (reason === 'time') {
-                    interaction
-                        .editReply({
-                            content: 'Deletion timed out.',
-                            components: [],
-                        })
-                        .catch(() => {});
+                    interaction.editReply({ content: 'Deletion timed out.', components: [] }).catch(() => {});
                 }
             });
         } catch (error) {
+            if (error.status === 404) {
+                return interaction.editReply({ content: `Mob template **${mobName}** not found.` });
+            }
             log.error({ error }, 'Delete mob error');
-            interaction.editReply({
-                content: 'Failed to delete mob template.',
-            });
+            interaction.editReply({ content: 'Failed to delete mob template.' });
         }
     },
 };

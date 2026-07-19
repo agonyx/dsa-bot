@@ -1,6 +1,5 @@
-const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
-const { db } = require('../db');
-const { mobs } = require('../db/schema');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { listMobs } = require('../services/mobs');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('list-mobs');
 
@@ -14,12 +13,10 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const mobRows = await db.select().from(mobs).orderBy(mobs.name);
+            const mobRows = await listMobs({ discordId: interaction.user.id });
 
             if (!mobRows || mobRows.length === 0) {
-                await interaction.editReply(
-                    'ℹ️ No mob templates have been defined yet. Use `/add-mob` to create some.'
-                );
+                await interaction.editReply('ℹ️ No mob templates have been defined yet. Use `/add-mob` to create some.');
                 return;
             }
 

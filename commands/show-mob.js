@@ -1,7 +1,5 @@
-const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
-const { db } = require('../db');
-const { eq } = require('drizzle-orm');
-const { mobs } = require('../db/schema');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { getMob, listMobs } = require('../services/mobs');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-mob');
 
@@ -21,15 +19,10 @@ module.exports = {
 
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
-
         try {
-            const mobRows = await db.select({ name: mobs.name }).from(mobs).orderBy(mobs.name);
-
+            const mobRows = await listMobs({ discordId: interaction.user.id });
             const choices = (mobRows || []).map(m => ({ name: m.name, value: m.name }));
-            const filtered = choices.filter(c =>
-                c.name.toLowerCase().includes(focusedValue.toLowerCase())
-            );
-
+            const filtered = choices.filter(c => c.name.toLowerCase().includes(focusedValue.toLowerCase()));
             await interaction.respond(filtered.slice(0, 25));
         } catch (error) {
             log.error({ error }, 'Autocomplete error');
@@ -39,17 +32,10 @@ module.exports = {
 
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
-
         const mobName = interaction.options.getString('name');
 
         try {
-            const [mob] = await db.select().from(mobs).where(eq(mobs.name, mobName)).limit(1);
-
-            if (!mob) {
-                return interaction.editReply({
-                    content: `❌ Mob template named **${mobName}** not found. Check the spelling or use \`/list-mobs\`.`,
-                });
-            }
+            const mob = await getMob({ discordId: interaction.user.id }, mobName);
 
             const mobEmbed = new EmbedBuilder()
                 .setColor(0x8b4513)
@@ -71,6 +57,11 @@ module.exports = {
 
             await interaction.editReply({ embeds: [mobEmbed] });
         } catch (error) {
+            if (error.status === 404) {
+                return interaction.editReply({
+                    content: `❌ Mob template named **${mobName}** not found. Check the spelling or use \`/list-mobs\`.`,
+                });
+            }
             log.error({ error, mobName }, 'Error executing /show-mob');
             await interaction.editReply({ content: `❌ Error: ${error.message || 'Failed to fetch mob details.'}` });
         }

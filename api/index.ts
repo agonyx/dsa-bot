@@ -7,6 +7,7 @@ import { characterRoutes } from './routes/characters';
 import { inventoryRoutes } from './routes/inventory';
 import { talentRoutes } from './routes/talents';
 import { resourceRoutes } from './routes/resources';
+import { mobRoutes } from './routes/mobs';
 
 /**
  * The API app. Mounted under /api by server.ts. Discord commands call the same
@@ -52,4 +53,5 @@ function registerProtectedRoutes(app: Hono<AppEnv>) {
     app.route('/', inventoryRoutes);
     app.route('/talents', talentRoutes);
     app.route('/', resourceRoutes);
+    app.route('/mobs', mobRoutes);
 }

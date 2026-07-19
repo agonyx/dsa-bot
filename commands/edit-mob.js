@@ -9,47 +9,17 @@ const {
     ButtonBuilder,
     ButtonStyle,
     PermissionFlagsBits,
-    Interaction,
 } = require('discord.js');
-const { db } = require('../db');
-const { eq } = require('drizzle-orm');
-const { mobs } = require('../db/schema');
+const { getMob, updateMob, listMobs } = require('../services/mobs');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-mob');
 
 const MOB_STAT_CONFIG = [
     { key: 'hp', backendKey: 'base_max_hp', label: 'Max HP', type: 'integer', min: 1, style: TextInputStyle.Short },
-    {
-        key: 'initiative',
-        backendKey: 'base_initiative',
-        label: 'Initiative',
-        type: 'integer',
-        style: TextInputStyle.Short,
-    },
-    {
-        key: 'attack',
-        backendKey: 'base_attack_value',
-        label: 'Attack (AT)',
-        type: 'integer',
-        min: 0,
-        style: TextInputStyle.Short,
-    },
-    {
-        key: 'parry',
-        backendKey: 'base_parry_value',
-        label: 'Parry (PA)',
-        type: 'integer',
-        min: 0,
-        style: TextInputStyle.Short,
-    },
-    {
-        key: 'armor',
-        backendKey: 'base_armor_soak',
-        label: 'Armor (RS)',
-        type: 'integer',
-        min: 0,
-        style: TextInputStyle.Short,
-    },
+    { key: 'initiative', backendKey: 'base_initiative', label: 'Initiative', type: 'integer', style: TextInputStyle.Short },
+    { key: 'attack', backendKey: 'base_attack_value', label: 'Attack (AT)', type: 'integer', min: 0, style: TextInputStyle.Short },
+    { key: 'parry', backendKey: 'base_parry_value', label: 'Parry (PA)', type: 'integer', min: 0, style: TextInputStyle.Short },
+    { key: 'armor', backendKey: 'base_armor_soak', label: 'Armor (RS)', type: 'integer', min: 0, style: TextInputStyle.Short },
     {
         key: 'damage',
         backendKey: 'base_damage_tp',
@@ -58,13 +28,7 @@ const MOB_STAT_CONFIG = [
         validationRegex: /^\d+w\d+(\s*\+\s*\d+)?$/i,
         style: TextInputStyle.Short,
     },
-    {
-        key: 'description',
-        backendKey: 'description',
-        label: 'Description',
-        type: 'string_long',
-        style: TextInputStyle.Paragraph,
-    },
+    { key: 'description', backendKey: 'description', label: 'Description', type: 'string_long', style: TextInputStyle.Paragraph },
 ];
 
 module.exports = {
@@ -84,15 +48,10 @@ module.exports = {
 
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
-
         try {
-            const mobRows = await db.select({ name: mobs.name }).from(mobs).orderBy(mobs.name);
-
+            const mobRows = await listMobs({ discordId: interaction.user.id });
             const choices = (mobRows || []).map(m => ({ name: m.name, value: m.name }));
-            const filtered = choices.filter(c =>
-                c.name.toLowerCase().includes(focusedValue.toLowerCase())
-            );
-
+            const filtered = choices.filter(c => c.name.toLowerCase().includes(focusedValue.toLowerCase()));
             await interaction.respond(filtered.slice(0, 25));
         } catch (error) {
             log.error({ error }, 'Autocomplete error');
@@ -102,20 +61,12 @@ module.exports = {
 
     async execute(interaction) {
         const mobNameToEdit = interaction.options.getString('name');
-        const instanceId = interaction.id;
+        const ctx = { discordId: interaction.user.id };
 
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const [mob] = await db.select().from(mobs).where(eq(mobs.name, mobNameToEdit)).limit(1);
-
-            if (!mob) {
-                return interaction.editReply({
-                    content: `❌ Mob template named **${mobNameToEdit}** not found.`,
-                });
-            }
-
-            let currentMob = mob;
+            let currentMob = await getMob(ctx, mobNameToEdit);
 
             const createMobStatSelect = currentMobData =>
                 new StringSelectMenuBuilder()
@@ -191,17 +142,10 @@ module.exports = {
 
                     if (currentMob[statConfig.backendKey] === validatedValue) return;
 
-                    await db.update(mobs)
-                        .set({ [statConfig.backendKey]: validatedValue })
-                        .where(eq(mobs.id, currentMob.id));
-
-                    const [refreshedData] = await db
-                        .select()
-                        .from(mobs)
-                        .where(eq(mobs.id, currentMob.id))
-                        .limit(1);
-
-                    currentMob = refreshedData;
+                    currentMob = await updateMob(ctx, {
+                        id: currentMob.id,
+                        patch: { [statConfig.backendKey]: validatedValue },
+                    });
 
                     await interaction.editReply({
                         embeds: [createMobStatsEmbed(currentMob)],
@@ -211,7 +155,7 @@ module.exports = {
                         ],
                     });
                 } catch (error) {
-                    log.error({ error, instanceId }, 'Modal handler error');
+                    log.error({ error }, 'Modal handler error');
                 }
             };
 
@@ -265,6 +209,19 @@ module.exports = {
                 interaction.client.removeListener('interactionCreate', modalHandler);
             });
         } catch (error) {
+            if (error.status === 404) {
+                const msg = `❌ Mob template named **${mobNameToEdit}** not found.`;
+                try {
+                    if (!interaction.deferred && !interaction.replied) {
+                        await interaction.reply({ content: msg, ephemeral: true });
+                    } else {
+                        await interaction.editReply({ content: msg });
+                    }
+                } catch (replyError) {
+                    log.error({ error: replyError }, 'Error sending not-found reply');
+                }
+                return;
+            }
             log.error({ error, interactionId: interaction.id }, 'EditMob main error');
             const errorMsg = '❌ Failed to initialize mob editor!';
             try {
