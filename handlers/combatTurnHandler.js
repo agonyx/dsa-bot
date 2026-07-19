@@ -42,7 +42,7 @@ const {
 } = require('../utils/conditionUtils');
 
 const log = createLogger('combat-turn');
-const { resolveAttackAction, advanceTurn } = require('../services/combat');
+const { resolveAttackAction, advanceTurn, endCombatSession, parkCombat, resumeCombat, getCombatSession } = require('../services/combat');
 
 /**
  * Helper to get session data from memory or load from DB if missing.
@@ -447,28 +447,23 @@ async function handleParkCombatInteraction(interaction, sessionId) {
     await interaction.deferReply({ ephemeral: true });
 
     const channelId = interaction.channelId;
-    const dmUserId = interaction.user.id;
+    const ctx = { discordId: interaction.user.id };
 
     try {
         const sessionData = interaction.client.activeCombats.get(channelId);
         if (!sessionData || sessionData.id !== sessionId) {
             return interaction.editReply('❌ Could not find active combat data.');
         }
-        if (sessionData.dmUserId !== dmUserId) {
-            return interaction.editReply('❌ Only the DM can park the combat.');
-        }
-        if (sessionData.state !== 'RUNNING') {
-            return interaction.editReply(`❌ Combat is not running. Current state: ${sessionData.state}.`);
-        }
 
+        let parked;
         try {
-            await db.update(combatSessions).set({ state: 'PAUSED' }).where(eq(combatSessions.id, sessionId));
+            // service.parkCombat validates DM + RUNNING state, transitions to PAUSED.
+            parked = await parkCombat(ctx, sessionId);
         } catch (error) {
-            log.error({ error: error.message, sessionId }, 'Error parking combat');
-            return interaction.editReply('❌ Failed to park combat in database.');
+            return interaction.editReply(`❌ ${error.data?.error || error.message}`);
         }
 
-        sessionData.state = 'PAUSED';
+        sessionData.state = parked.state;
         await updateCombatDisplay(interaction.client, channelId);
         interaction.client.activeCombats.delete(channelId);
 
@@ -492,46 +487,25 @@ async function handleEndCombatInteraction(interaction, sessionId) {
     await interaction.deferReply({ ephemeral: true });
 
     const channelId = interaction.channelId;
-    const dmUserId = interaction.user.id;
+    const ctx = { discordId: interaction.user.id };
 
     try {
         const sessionData = interaction.client.activeCombats.get(channelId);
         if (!sessionData || sessionData.id !== sessionId) {
             return interaction.editReply('❌ Could not find active combat data.');
         }
-        if (sessionData.dmUserId !== dmUserId) {
-            return interaction.editReply('❌ Only the DM can end the combat.');
-        }
 
-        const reason = 'Ended by the DM.';
-        const logEntry = `--- Combat Ended: ${reason} ---`;
-
-        const [currentSession] = await db
-            .select({ combat_log: combatSessions.combat_log })
-            .from(combatSessions)
-            .where(eq(combatSessions.id, sessionId))
-            .limit(1);
-
-        if (!currentSession) {
-            log.error({ sessionId }, 'Error fetching session for end combat');
-            return interaction.editReply('❌ Failed to fetch session data.');
-        }
-
-        const updatedLog = [...(currentSession.combat_log || []), logEntry];
-
+        let ended;
         try {
-            await db
-                .update(combatSessions)
-                .set({ state: 'ENDED', combat_log: updatedLog })
-                .where(eq(combatSessions.id, sessionId));
-        } catch (updateError) {
-            log.error({ error: updateError.message, sessionId }, 'Error ending combat');
-            return interaction.editReply('❌ Failed to end combat in database.');
+            // service.endCombatSession validates DM + not-already-ended, clears active
+            // flags, transitions to ENDED, appends the log entry.
+            ended = await endCombatSession(ctx, { sessionId, reason: 'Ended by the DM.' });
+        } catch (error) {
+            return interaction.editReply(`❌ ${error.data?.error || error.message}`);
         }
 
-        sessionData.state = 'ENDED';
-        if (!sessionData.combatLog) sessionData.combatLog = [];
-        sessionData.combatLog.push(logEntry);
+        sessionData.state = ended.state;
+        sessionData.combatLog = Array.isArray(ended.combat_log) ? ended.combat_log.slice(-20) : sessionData.combatLog;
 
         await updateCombatDisplay(interaction.client, channelId);
         interaction.client.activeCombats.delete(channelId);
@@ -556,41 +530,24 @@ async function handleResumeSessionSelect(interaction) {
     log.info({ sessionId, userId: interaction.user.id }, 'Handling Resume Session Select');
 
     await interaction.deferReply({ ephemeral: true });
+    const ctx = { discordId: interaction.user.id };
 
     try {
-        const [sessionToResume] = await db
-            .select()
-            .from(combatSessions)
-            .where(eq(combatSessions.id, sessionId))
-            .limit(1);
-
-        if (!sessionToResume || !sessionToResume.id) {
-            return interaction.editReply({ content: '❌ Error: Could not find the selected session data.' });
-        }
-        if (sessionToResume.dm_user_id !== interaction.user.id) {
-            return interaction.editReply({ content: '❌ You are not the DM of this combat session.' });
-        }
-        if (sessionToResume.state !== 'PAUSED') {
-            return interaction.editReply({
-                content: `❌ This combat session is not paused. Current state: ${sessionToResume.state}.`,
-            });
-        }
         if (interaction.client.activeCombats?.has(interaction.channelId)) {
             return interaction.editReply({ content: '❌ There is already another active combat in this channel.' });
         }
 
-        const resumeCombatants = await db.select().from(combatants).where(eq(combatants.session_id, sessionId));
-        sessionToResume.combatants = resumeCombatants;
-
+        // service.resumeCombat validates DM + PAUSED state and transitions to RUNNING.
         try {
-            await db.update(combatSessions).set({ state: 'RUNNING' }).where(eq(combatSessions.id, sessionId));
-        } catch (updateError) {
-            log.error({ error: updateError.message, sessionId }, 'Error updating state');
-            return interaction.editReply({ content: '❌ Failed to update session state.' });
+            await resumeCombat(ctx, sessionId);
+        } catch (error) {
+            return interaction.editReply({ content: `❌ ${error.data?.error || error.message}` });
         }
 
-        const memorySession = sessionToMemory(sessionToResume);
-        memorySession.state = 'RUNNING';
+        // Load the now-RUNNING session + combatants into the in-memory mirror.
+        const { session, combatants: combatantRows } = await getCombatSession(ctx, sessionId);
+        session.combatants = combatantRows;
+        const memorySession = sessionToMemory(session);
 
         if (!interaction.client.activeCombats) {
             interaction.client.activeCombats = new Map();

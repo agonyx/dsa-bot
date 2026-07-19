@@ -25,6 +25,7 @@ const { eq, and } = require('drizzle-orm');
 const { players, stats: statsTable, mobs, combatSessions, combatants } = require('../db/schema');
 const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents');
 const { createLogger } = require('../utils/logger');
+const { beginCombat } = require('../services/combat');
 
 const log = createLogger('combat-setup');
 
@@ -448,120 +449,36 @@ async function handleRemoveParticipantSelectInteraction(interaction, sessionId) 
 async function handleStartFightInteraction(interaction, sessionId) {
     log.info({ sessionId, userId: interaction.user.id }, 'Handling Start Fight');
     await interaction.deferReply({ ephemeral: true });
+    const ctx = { discordId: interaction.user.id };
 
-    const { rollDice } = require('../utils/combatUtils');
     const { sessionToMemory } = require('../utils/transforms');
     const { addLogEntry, updateCombatDisplay } = require('./combatTurnHandler');
 
     try {
-        const [session] = await db
-            .select()
-            .from(combatSessions)
-            .where(eq(combatSessions.id, sessionId))
-            .limit(1);
-
-        if (!session?.id) {
-            return interaction.editReply({ content: '❌ Could not fetch setup details.' });
+        // service.beginCombat validates DM + SETUP state + counts/sides, rolls
+        // initiative, transitions to RUNNING, sets turn order + first active,
+        // and initializes current_round.
+        let started;
+        try {
+            started = await beginCombat(ctx, sessionId);
+        } catch (error) {
+            return interaction.editReply({ content: `❌ ${error.data?.error || error.message}` });
         }
 
-        const sessionCombatants = await db
-            .select()
-            .from(combatants)
-            .where(eq(combatants.session_id, sessionId));
-        session.combatants = sessionCombatants;
-
-        if (session.dm_user_id !== interaction.user.id) {
-            return interaction.editReply({ content: '❌ Only the DM can start the fight.' });
-        }
-        if (session.state !== 'SETUP') {
-            return interaction.editReply({ content: `❌ Cannot start. Current state: ${session.state}.` });
-        }
-
-        // Local reference to the session's combatant list. Named `combatantList`
-        // (not `combatants`) to avoid shadowing the imported `combatants` schema
-        // table used in the .from(combatants) query above within the same scope.
-        const combatantList = session.combatants;
-
-        if (!combatantList || combatantList.length < 2) {
-            return interaction.editReply({ content: '❌ Need at least 2 participants.' });
-        }
-
-        const hasPlayers = combatantList.some(c => c.allegiance === 'PLAYER_SIDE');
-        const hasHostiles = combatantList.some(c => c.allegiance === 'HOSTILE');
-        if (!hasPlayers || !hasHostiles) {
-            return interaction.editReply({ content: '❌ Need participants from opposing sides.' });
-        }
-
-        log.debug({ sessionId }, 'Rolling initiative');
-        combatantList.forEach(c => {
-            const baseIni = c.initiative_base ?? 0;
-            c.initiativeRoll = rollDice(6) + baseIni;
-            log.debug({ combatant: c.name, roll: c.initiativeRoll, base: baseIni }, 'Initiative rolled');
-        });
-
-        combatantList.sort((a, b) => {
-            if (b.initiativeRoll !== a.initiativeRoll) {
-                return b.initiativeRoll - a.initiativeRoll;
-            }
-            return (b.initiative_base ?? 0) - (a.initiative_base ?? 0);
-        });
-
-        const turnOrder = combatantList.map(c => c.id);
-        const combatantInitiatives = combatantList.map(c => ({
-            combatantId: c.id,
-            initiativeRoll: c.initiativeRoll,
-        }));
-
-        log.debug({ turnOrder }, 'Turn order determined');
-
-        const startPayload = {
-            sessionId: sessionId,
-            turnOrder: turnOrder,
-            combatantInitiatives: combatantInitiatives,
-        };
-
-        log.debug({ sessionId }, 'Calling start-combat Edge Function');
-        const {
-            data: updatedSessionData,
-            status,
-            error: startError,
-        } = await callEdgeFunction('start-combat', startPayload);
-
-        if (startError || (status !== 200 && status !== 201)) {
-            log.error({ status, error: startError?.message }, 'Edge function failed');
-            return interaction.editReply({ content: `❌ ${startError?.message || 'Failed to start combat.'}` });
-        }
-
-        log.info({ sessionId }, 'Combat started successfully');
-
-        if (typeof updatedSessionData.current_round !== 'number' || updatedSessionData.current_round < 1) {
-            try {
-                await db
-                    .update(combatSessions)
-                    .set({ current_round: 1 })
-                    .where(eq(combatSessions.id, sessionId));
-            } catch (roundUpdateError) {
-                log.error({ sessionId, error: roundUpdateError.message }, 'Failed to initialize combat round');
-                return interaction.editReply({ content: '❌ Failed to initialize combat round.' });
-            }
-
-            updatedSessionData.current_round = 1;
-        }
-
-        const memorySession = sessionToMemory(updatedSessionData);
-        memorySession.currentRound = memorySession.currentRound || 1;
+        const memorySession = sessionToMemory(started);
+        memorySession.currentRound = started.current_round || 1;
 
         if (!interaction.client.activeCombats) {
             interaction.client.activeCombats = new Map();
         }
-        interaction.client.activeCombats.set(session.channel_id, memorySession);
+        interaction.client.activeCombats.set(started.channel_id, memorySession);
 
         const firstCombatantName =
-            updatedSessionData.combatants.find(c => c.id === updatedSessionData.turn_order[0])?.name || 'Unknown';
-        await addLogEntry(interaction.client, session.channel_id, sessionId, `--- Combat Started! ---`);
-        await addLogEntry(interaction.client, session.channel_id, sessionId, `--- ${firstCombatantName}'s Turn ---`);
+            started.combatants.find(c => c.id === started.turn_order[0])?.name || 'Unknown';
+        await addLogEntry(interaction.client, started.channel_id, sessionId, `--- Combat Started! ---`);
+        await addLogEntry(interaction.client, started.channel_id, sessionId, `--- ${firstCombatantName}'s Turn ---`);
 
-        await updateCombatDisplay(interaction.client, session.channel_id, memorySession);
+        await updateCombatDisplay(interaction.client, started.channel_id, memorySession);
 
         await interaction.editReply({ content: '✅ Combat started!' });
         setTimeout(() => {
