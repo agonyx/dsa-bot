@@ -9,6 +9,7 @@ import { talentRoutes } from './routes/talents';
 import { resourceRoutes } from './routes/resources';
 import { mobRoutes } from './routes/mobs';
 import { ruleRoutes } from './routes/rules';
+import { combatRoutes } from './routes/combat';
 
 /**
  * The API app. Mounted under /api by server.ts. Discord commands call the same
@@ -56,4 +57,5 @@ function registerProtectedRoutes(app: Hono<AppEnv>) {
     app.route('/', resourceRoutes);
     app.route('/mobs', mobRoutes);
     app.route('/rules', ruleRoutes);
+    app.route('/combat', combatRoutes);
 }
