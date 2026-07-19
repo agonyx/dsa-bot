@@ -47,7 +47,9 @@ for (const file of eventFiles) {
 }
 
 const combatHandler = require('./handlers/combatHandler'); // Assuming CommonJS
-const { supabase, callEdgeFunction } = require('./utils/supabaseClient');
+const { db, callEdgeFunction } = require('./db');
+const { eq, inArray } = require('drizzle-orm');
+const { combatSessions, combatants, players } = require('./db/schema');
 const { sessionToMemory } = require('./utils/transforms');
 const { getRulePageTitles } = require('./utils/rulesClient');
 
@@ -74,20 +76,25 @@ async function refreshRulePageTitleCache(client) {
 async function recoverActiveCombats(client) {
     log.info('Starting active combat session recovery...');
     try {
-        // Fetch sessions that are RUNNING or PAUSED with their combatants
-        const { data: sessions, error } = await supabase
-            .from('combat_sessions')
-            .select('*, combatants(*)')
-            .in('state', ['RUNNING', 'PAUSED']);
+        // Fetch sessions that are RUNNING or PAUSED, then their combatants (2 queries).
+        const sessions = await db
+            .select()
+            .from(combatSessions)
+            .where(inArray(combatSessions.state, ['RUNNING', 'PAUSED']));
 
-        if (error) {
-            log.error({ error }, 'Database error during session recovery');
+        if (!sessions.length) {
+            log.info('No active or paused sessions found to recover');
             return;
         }
 
-        if (!sessions || sessions.length === 0) {
-            log.info('No active or paused sessions found to recover');
-            return;
+        const allCombatants = await db
+            .select()
+            .from(combatants)
+            .where(inArray(combatants.session_id, sessions.map((s) => s.id)));
+        const combatantsBySession = new Map();
+        for (const c of allCombatants) {
+            if (!combatantsBySession.has(c.session_id)) combatantsBySession.set(c.session_id, []);
+            combatantsBySession.get(c.session_id).push(c);
         }
 
         log.info({ count: sessions.length }, 'Found sessions to recover');
@@ -97,6 +104,9 @@ async function recoverActiveCombats(client) {
                 log.warn({ session }, 'Skipping session with missing channel_id or id');
                 continue;
             }
+
+            // Attach combatants (snake_case) so sessionToMemory can map them.
+            session.combatants = combatantsBySession.get(session.id) || [];
 
             // Convert snake_case to camelCase for in-memory compatibility
             const memorySession = sessionToMemory(session);
@@ -145,13 +155,12 @@ client.on(Events.InteractionCreate, async interaction => {
         const discordId = interaction.user.id;
 
         try {
-            const { data: player, error: fetchError } = await supabase
-                .from('players')
-                .select('name')
-                .eq('id', selectedPlayerId)
-                .single();
+            const [player] = await db
+                .select({ name: players.name })
+                .from(players)
+                .where(eq(players.id, Number(selectedPlayerId)));
 
-            if (fetchError) throw fetchError;
+            if (!player) throw new Error('Player not found');
 
             await callEdgeFunction('set-selected-player', {
                 playerId: parseInt(selectedPlayerId),
