@@ -32,6 +32,7 @@ async function resumeSingleCombat(interaction, sessionToResume) {
         combatLog: updatedSession.combat_log,
         turnOrder: updatedSession.turn_order,
         currentTurnIndex: updatedSession.current_turn_index,
+        currentRound: updatedSession.current_round,
         combatants:
             updatedSession.combatants?.map(c => ({
                 ...c,
@@ -46,6 +47,7 @@ async function resumeSingleCombat(interaction, sessionToResume) {
                 isActiveTurn: c.is_active_turn,
             })) || [],
     };
+    memorySession.currentRound = memorySession.currentRound || 1;
     client.activeCombats.set(channelId, memorySession);
 
     await updateCombatDisplay(client, channelId);

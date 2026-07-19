@@ -87,7 +87,43 @@ module.exports = {
                         ].join('\n'),
                         inline: true,
                     }
-                )
+                );
+
+            // Build resource lines
+            const resourceLines = [];
+
+            // Schicksalspunkte (always)
+            const schipsBar =
+                '■'.repeat(Math.round((stats.schicksalspunkte_current / Math.max(1, stats.schicksalspunkte_max)) * 5)) +
+                '□'.repeat(
+                    5 - Math.round((stats.schicksalspunkte_current / Math.max(1, stats.schicksalspunkte_max)) * 5)
+                );
+            resourceLines.push(
+                `🎲 **SchP:** ${schipsBar} ${stats.schicksalspunkte_current}/${stats.schicksalspunkte_max}`
+            );
+
+            // AsP (only if spellcaster)
+            if (stats.asp_max > 0) {
+                const aspBar =
+                    '■'.repeat(Math.round((stats.asp_current / stats.asp_max) * 10)) +
+                    '□'.repeat(10 - Math.round((stats.asp_current / stats.asp_max) * 10));
+                resourceLines.push(`✨ **AsP:** ${aspBar} ${stats.asp_current}/${stats.asp_max}`);
+            }
+
+            // KaP (only if blessed)
+            if (stats.kap_max > 0) {
+                const kapBar =
+                    '■'.repeat(Math.round((stats.kap_current / stats.kap_max) * 10)) +
+                    '□'.repeat(10 - Math.round((stats.kap_current / stats.kap_max) * 10));
+                resourceLines.push(`🙏 **KaP:** ${kapBar} ${stats.kap_current}/${stats.kap_max}`);
+            }
+
+            statsEmbed
+                .addFields({
+                    name: '📊 Resources',
+                    value: resourceLines.join('\n'),
+                    inline: false,
+                })
                 .setFooter({
                     text: `Requested by ${interaction.user.username}`,
                     iconURL: interaction.user.avatarURL(),

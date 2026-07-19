@@ -23,6 +23,13 @@ const { supabase } = require('../utils/supabaseClient');
 const { sessionToMemory } = require('../utils/transforms');
 const { createLogger } = require('../utils/logger');
 const { resolveAttack, parseAndRollDamage, applySoak, resolveDefense, rollDice } = require('../utils/combatUtils');
+const {
+    calculatePainLevel,
+    getConditionEmoji,
+    getStatusEmoji,
+    CONDITION_LABELS,
+    STATUS_LABELS,
+} = require('../utils/conditionUtils');
 
 const log = createLogger('combat-turn');
 
@@ -864,8 +871,13 @@ async function nextTurn(client, channelId) {
     const numCombatants = turnOrder.length;
 
     let nextIndex = sessionData.currentTurnIndex;
+    const previousTurnIndex = sessionData.currentTurnIndex;
     let nextActiveCombatant = null;
     let checkedCount = 0;
+
+    if (typeof sessionData.currentRound !== 'number' || sessionData.currentRound < 1) {
+        sessionData.currentRound = 1;
+    }
 
     log.debug({ currentTurnIndex: sessionData.currentTurnIndex }, 'Starting search for next turn');
 
@@ -924,6 +936,10 @@ async function nextTurn(client, channelId) {
         } else {
             sessionData.currentTurnIndex = nextIndex;
 
+            if (nextIndex <= previousTurnIndex) {
+                sessionData.currentRound += 1;
+            }
+
             if (nextActiveCombatant.effects) {
                 log.debug({ combatantName: nextActiveCombatant.name }, 'Clearing temporary effects');
                 nextActiveCombatant.effects = nextActiveCombatant.effects.filter(eff => !eff.isTemporary);
@@ -932,7 +948,10 @@ async function nextTurn(client, channelId) {
             log.debug({ sessionId, newIndex: nextIndex, combatantName: nextActiveCombatant.name }, 'Turn advanced');
 
             try {
-                await supabase.from('combat_sessions').update({ current_turn_index: nextIndex }).eq('id', sessionId);
+                await supabase
+                    .from('combat_sessions')
+                    .update({ current_turn_index: nextIndex, current_round: sessionData.currentRound })
+                    .eq('id', sessionId);
             } catch (e) {
                 log.error({ error: e.message, sessionId }, 'Failed to update turn index in Supabase');
             }
@@ -999,7 +1018,127 @@ function truncateName(name) {
 }
 
 /**
+ * Builds a spotlight field for the active combatant - state-first display.
+ * @param {Object} activeCombatant - The currently active combatant.
+ * @returns {Object|null} Embed field object or null if no active combatant.
+ */
+function buildActiveActorSpotlight(activeCombatant) {
+    if (!activeCombatant) return null;
+
+    const side = activeCombatant.allegiance === 'PLAYER_SIDE' ? '🛡️ Heroes' : '⚔️ Hostiles';
+    const typeIcon = activeCombatant.type === 'PLAYER' ? '👤' : '👹';
+    const hpBar = createHealthBar(activeCombatant.currentHP, activeCombatant.maxHP, 8);
+    const hpStatus = activeCombatant.currentHP <= 0 ? ' ⚠️ DOWN' : '';
+
+    // Pain level display
+    const painLevel =
+        activeCombatant.maxHP > 0 ? calculatePainLevel(activeCombatant.currentHP, activeCombatant.maxHP) : 0;
+    const painDisplay = painLevel > 0 ? `\n⚡ Schmerz Stufe ${painLevel} (-${painLevel} on all tests)` : '';
+
+    // Active conditions
+    let conditionDisplay = '';
+    if (Array.isArray(activeCombatant.conditions) && activeCombatant.conditions.length > 0) {
+        const condLines = activeCombatant.conditions.map(cond => {
+            const label = CONDITION_LABELS[cond.condition_type] || cond.condition_type;
+            return `${getConditionEmoji(cond.condition_type)} ${label} ${cond.level}`;
+        });
+        conditionDisplay = '\n' + condLines.join(' | ');
+    }
+
+    // Active statuses
+    let statusDisplay = '';
+    if (Array.isArray(activeCombatant.statuses) && activeCombatant.statuses.length > 0) {
+        const statusLines = activeCombatant.statuses.map(s => {
+            const label = STATUS_LABELS[s.status_type] || s.status_type;
+            return `${getStatusEmoji(s.status_type)} ${label}`;
+        });
+        statusDisplay = '\n' + statusLines.join(' | ');
+    }
+
+    const value = [
+        `**${typeIcon} ${truncateName(activeCombatant.name)}**`,
+        `${side} • INI ${activeCombatant.initiativeRoll}`,
+        `${hpBar}${hpStatus}${painDisplay}${conditionDisplay}${statusDisplay}`,
+    ].join('\n');
+
+    return {
+        name: '🎯 Active Turn',
+        value,
+    };
+}
+
+/**
+ * Builds a compact preview of the next combatants in the turn order.
+ * @param {Array} turnOrder - Array of combatant IDs.
+ * @param {Array} combatants - Array of combatant objects.
+ * @param {number} currentIndex - Current turn index.
+ * @returns {Object|null} Embed field object or null if no next combatant.
+ */
+function buildUpNextPreview(turnOrder, combatants, currentIndex) {
+    if (!turnOrder || turnOrder.length === 0 || currentIndex < 0) return null;
+
+    const numCombatants = turnOrder.length;
+    let nextIndex = currentIndex;
+    let checked = 0;
+    const upcomingCombatants = [];
+
+    while (checked < numCombatants && upcomingCombatants.length < 3) {
+        nextIndex = (nextIndex + 1) % numCombatants;
+        const candidate = combatants.find(c => c.id === turnOrder[nextIndex]);
+        if (candidate && candidate.currentHP > 0) {
+            upcomingCombatants.push(candidate);
+        }
+        checked++;
+    }
+
+    if (upcomingCombatants.length === 0) return null;
+
+    const previewLines = upcomingCombatants.map((combatant, index) => {
+        const side = combatant.allegiance === 'PLAYER_SIDE' ? '🛡️' : '⚔️';
+        const hpDisplay = `${combatant.currentHP}/${combatant.maxHP}`;
+        const slotLabels = ['Next', 'On Deck', 'Then'];
+        return `${slotLabels[index]}: ${side} ${truncateName(combatant.name)} • INI ${combatant.initiativeRoll} • HP ${hpDisplay}`;
+    });
+
+    return {
+        name: '⏭️ Up Next',
+        value: previewLines.join('\n'),
+    };
+}
+
+/**
+ * Normalizes verbose combat log entries for the compact recent-events field.
+ * @param {string} line - Raw log line.
+ * @returns {string} Compact display line.
+ */
+function formatRecentEventLine(line) {
+    if (!line) return '';
+
+    const trimmed = line.trim();
+    const turnBannerMatch = trimmed.match(/^---\s+(.+?)'s Turn\s+---$/);
+    if (turnBannerMatch) {
+        return `Turn: ${turnBannerMatch[1]}`;
+    }
+
+    if (trimmed === '--- Combat Started! ---') return 'Combat started';
+    if (trimmed === '--- Combat Resumed ---') return 'Combat resumed';
+
+    const combatEndedMatch = trimmed.match(/^---\s+Combat Ended:\s+(.+?)\s+---$/);
+    if (combatEndedMatch) {
+        return `Combat ended: ${combatEndedMatch[1]}`;
+    }
+
+    return trimmed
+        .replace(/\*\*/g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/\.\s+\|/g, ' |')
+        .replace(/\s+\|\s+/g, ' | ')
+        .trim();
+}
+
+/**
  * Creates the embed displaying the current state of a running combat.
+ * State-first layout: spotlight active actor, up-next preview, compact rosters, condensed events.
  */
 function createCombatEmbed(session) {
     if (!session || typeof session !== 'object') {
@@ -1020,51 +1159,78 @@ function createCombatEmbed(session) {
         ? combatants.find(c => c.id === turnOrder[currentTurnIndex])
         : null;
 
+    let title = `Combat Status - ${session.state}`;
+    if (typeof session.currentRound === 'number' && session.currentRound > 0) {
+        title += ` | Round ${session.currentRound}`;
+    }
+
     const combatEmbed = new EmbedBuilder()
         .setColor(getEmbedColor(session.state, combatants))
-        .setTitle(`Combat Status - ${session.state}`)
+        .setTitle(title)
         .setTimestamp();
 
-    // Description
+    // Description - minimal now, spotlight field carries the active turn info
     const descriptionLines = [];
-    if (session.state === 'RUNNING' && activeCombatant) {
-        descriptionLines.push(`**Active Turn:** ${truncateName(activeCombatant.name)}`);
-        descriptionLines.push(`Next action uses the buttons below.`);
+    if (session.state === 'PAUSED') {
+        descriptionLines.push('⏸️ Combat is paused. Use `/resumecombat` to continue.');
+    } else if (session.state === 'ENDED') {
+        descriptionLines.push('🏁 This combat has concluded.');
     } else if (session.state === 'RUNNING' && !activeCombatant) {
         descriptionLines.push('Combat is starting...');
-    } else if (session.state === 'PAUSED') {
-        descriptionLines.push('Combat is paused. Use `/resumecombat` to continue.');
-    } else if (session.state === 'ENDED') {
-        descriptionLines.push('This combat has concluded.');
     }
-    combatEmbed.setDescription(descriptionLines.join('\n') || ' ');
+    if (descriptionLines.length > 0) {
+        combatEmbed.setDescription(descriptionLines.join('\n'));
+    }
 
-    // Field 1: Turn Summary
+    // Field 1: Active Actor Spotlight (state-first for RUNNING)
     if (session.state === 'RUNNING' && activeCombatant) {
-        const summaryValue = `
-            **Combatant:** ${truncateName(activeCombatant.name)}
-            **Side:** ${activeCombatant.allegiance === 'PLAYER_SIDE' ? 'Heroes' : 'Hostiles'}
-            **Initiative:** ${activeCombatant.initiativeRoll}
-            **Health:** ${createHealthBar(activeCombatant.currentHP, activeCombatant.maxHP)}
-        `.replace(/^\s+/gm, ''); // Remove leading whitespace
-        combatEmbed.addFields({ name: 'Turn Summary', value: summaryValue });
+        const spotlightField = buildActiveActorSpotlight(activeCombatant);
+        if (spotlightField) {
+            combatEmbed.addFields(spotlightField);
+        }
+
+        // Field 2: Up Next Preview
+        const upNextField = buildUpNextPreview(turnOrder, combatants, currentTurnIndex);
+        if (upNextField) {
+            combatEmbed.addFields(upNextField);
+        }
     }
 
     const formatCombatantLine = (c, isCurrent) => {
-        const turnIndicator = isCurrent ? '> ' : '';
+        const turnIndicator = isCurrent ? '▸ ' : '';
         const name = truncateName(c.name);
-        const initiative = `INI ${c.initiativeRoll}`;
-        const hpBar = createHealthBar(c.currentHP, c.maxHP);
+        const initiative = c.initiativeRoll;
+        const hpPercent = c.maxHP > 0 ? Math.round((c.currentHP / c.maxHP) * 100) : 0;
+        const hpDisplay = `${c.currentHP}/${c.maxHP}`;
         const status = c.currentHP <= 0 ? ' | DOWN' : '';
-        return `${turnIndicator}${name} | ${initiative} | ${hpBar}${status}`;
+
+        // Pain level indicator (derived from HP thresholds)
+        const painLevel = c.maxHP > 0 ? calculatePainLevel(c.currentHP, c.maxHP) : 0;
+        const painIndicator = painLevel > 0 ? ` P${painLevel}` : '';
+
+        // Condition/status indicators (if loaded on combatant)
+        let effectIndicators = '';
+        if (Array.isArray(c.conditions) && c.conditions.length > 0) {
+            const condAbbrevs = c.conditions.map(cond => {
+                const label = CONDITION_LABELS[cond.condition_type] || cond.condition_type;
+                return `${label.substring(0, 3)}${cond.level}`;
+            });
+            effectIndicators += ' ' + condAbbrevs.join(',');
+        }
+        if (Array.isArray(c.statuses) && c.statuses.length > 0) {
+            const statusAbbrevs = c.statuses.map(s => {
+                const label = STATUS_LABELS[s.status_type] || s.status_type;
+                return label.substring(0, 3);
+            });
+            effectIndicators += ' ' + statusAbbrevs.join(',');
+        }
+
+        return `${turnIndicator}${name} [INI ${initiative}] HP ${hpDisplay} (${hpPercent}%)${painIndicator}${effectIndicators}${status}`;
     };
 
     /**
-     * Formats a side's combatants with overflow handling.
+     * Formats a side's combatants with overflow handling (compact version).
      * Shows max 6 combatants: first 5 by initiative + summary line if >6 total.
-     * @param {Array} sideCombatants - Combatants on this side
-     * @param {Object} activeCombatant - Currently active combatant (if any)
-     * @returns {string} Formatted combatant list for the field
      */
     const formatSideWithOverflow = (sideCombatants, activeCombatant) => {
         const MAX_VISIBLE = 6;
@@ -1076,7 +1242,6 @@ function createCombatEmbed(session) {
         const sorted = [...sideCombatants].sort((a, b) => b.initiativeRoll - a.initiativeRoll);
 
         if (sorted.length <= MAX_VISIBLE) {
-            // No overflow needed - show all
             return sorted.map(c => formatCombatantLine(c, activeCombatant && c.id === activeCombatant.id)).join('\n');
         }
 
@@ -1095,48 +1260,46 @@ function createCombatEmbed(session) {
     const playerCombatants = combatants.filter(c => c.allegiance === 'PLAYER_SIDE');
     const hostileCombatants = combatants.filter(c => c.allegiance === 'HOSTILE');
 
-    // Field 2: Heroes
+    // Field: Heroes (compact tactical roster)
     if (playerCombatants.length > 0) {
         const playerString = formatSideWithOverflow(playerCombatants, activeCombatant);
-        combatEmbed.addFields({ name: 'Heroes', value: '```markdown\n' + playerString + '\n```', inline: false });
+        combatEmbed.addFields({ name: '🛡️ Heroes', value: '```\n' + playerString + '\n```', inline: true });
     }
 
-    // Field 3: Hostiles
+    // Field: Hostiles (compact tactical roster)
     if (hostileCombatants.length > 0) {
         const hostileString = formatSideWithOverflow(hostileCombatants, activeCombatant);
-        combatEmbed.addFields({ name: 'Hostiles', value: '```markdown\n' + hostileString + '\n```', inline: false });
+        combatEmbed.addFields({ name: '⚔️ Hostiles', value: '```\n' + hostileString + '\n```', inline: true });
     }
 
-    // Field 4: Recent Events
-    // Truncate each line to 120 chars, keep newest 5, cap total at 900 chars
+    // Field: Recent Events (compact and normalized)
     let recentLogs = 'No events yet.';
     if (combatLog.length > 0) {
-        const MAX_LINE_LENGTH = 120;
-        const MAX_LINES = 5;
-        const MAX_TOTAL_LENGTH = 900;
+        const MAX_LINE_LENGTH = 80;
+        const MAX_LINES = 4;
+        const MAX_TOTAL_LENGTH = 400;
 
         let processedLines = combatLog
             .slice(-MAX_LINES)
-            .map(line => (line.length > MAX_LINE_LENGTH ? line.substring(0, MAX_LINE_LENGTH - 3) + '...' : line));
+            .map(formatRecentEventLine)
+            .filter(Boolean)
+            .map(line => (line.length > MAX_LINE_LENGTH ? line.substring(0, MAX_LINE_LENGTH - 1) + '…' : line));
 
-        // Ensure total doesn't exceed 900 chars
         let combined = processedLines.join('\n');
         while (combined.length > MAX_TOTAL_LENGTH && processedLines.length > 1) {
-            // Remove oldest line if we exceed the limit
             processedLines = processedLines.slice(1);
             combined = processedLines.join('\n');
         }
 
-        // Final truncation if a single line still exceeds limit
         if (combined.length > MAX_TOTAL_LENGTH) {
-            combined = combined.substring(0, MAX_TOTAL_LENGTH - 3) + '...';
+            combined = combined.substring(0, MAX_TOTAL_LENGTH - 1) + '…';
         }
 
         recentLogs = combined;
     }
-    combatEmbed.addFields({ name: 'Recent Events', value: `\`\`\`\n${recentLogs}\n\`\`\``, inline: false });
+    combatEmbed.addFields({ name: '📜 Recent Events', value: `\`\`\`\n${recentLogs}\n\`\`\``, inline: false });
 
-    combatEmbed.setFooter({ text: `Session ID: ${session.id?.substring(0, 8) || '???'}` });
+    combatEmbed.setFooter({ text: `Session ${session.id?.substring(0, 8) || '???'}` });
 
     return combatEmbed;
 }

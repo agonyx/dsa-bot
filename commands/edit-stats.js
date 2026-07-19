@@ -27,6 +27,12 @@ const STAT_CONFIG = [
     { key: 'initiative', label: 'Initiative' },
     { key: 'ruestungsschutz', label: 'Armor (RS)' },
     { key: 'ausweichen', label: 'Ausweichen' },
+    { key: 'schicksalspunkte_current', label: 'SchP (Current)' },
+    { key: 'schicksalspunkte_max', label: 'SchP (Max)' },
+    { key: 'asp_current', label: 'AsP (Current)' },
+    { key: 'asp_max', label: 'AsP (Max)' },
+    { key: 'kap_current', label: 'KaP (Current)' },
+    { key: 'kap_max', label: 'KaP (Max)' },
 ];
 
 module.exports = {
@@ -194,7 +200,9 @@ module.exports = {
                     });
 
                     setTimeout(async () => {
-                        await successMsg.delete().catch(err => log.error({ error: err }, 'Failed to delete success message'));
+                        await successMsg
+                            .delete()
+                            .catch(err => log.error({ error: err }, 'Failed to delete success message'));
                     }, 2000);
                 } catch (error) {
                     log.error({ error }, 'Modal error');

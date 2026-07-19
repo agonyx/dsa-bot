@@ -8,11 +8,11 @@ const {
 } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
 const { createLogger } = require('../utils/logger');
-const log = createLogger('manage-skills');
+const log = createLogger('edit-skills');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('manage-skills')
+        .setName('edit-skills')
         .setDescription('Assign or unassign special combat skills for your character.'),
 
     async execute(interaction) {
@@ -144,7 +144,7 @@ module.exports = {
                 }
             });
         } catch (error) {
-            log.error({ error }, 'Error in /manage-skills');
+            log.error({ error }, 'Error in /edit-skills');
             interaction.editReply('❌ An error occurred while managing skills.');
         }
     },

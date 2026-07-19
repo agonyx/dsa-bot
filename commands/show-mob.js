@@ -1,16 +1,16 @@
 const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
 const { supabase } = require('../utils/supabaseClient');
 const { createLogger } = require('../utils/logger');
-const log = createLogger('view-mob');
+const log = createLogger('show-mob');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('view-mob')
-        .setDescription('Displays the details of a specific mob template.')
+        .setName('show-mob')
+        .setDescription('Display the details of a specific mob template.')
         .addStringOption(option =>
             option
                 .setName('name')
-                .setDescription('The exact name of the mob template to view.')
+                .setDescription('The exact name of the mob template to show.')
                 .setRequired(true)
                 .setMaxLength(100)
                 .setAutocomplete(true)
@@ -72,7 +72,7 @@ module.exports = {
 
             await interaction.editReply({ embeds: [mobEmbed] });
         } catch (error) {
-            log.error({ error, mobName }, 'Error executing /view-mob');
+            log.error({ error, mobName }, 'Error executing /show-mob');
             await interaction.editReply({ content: `❌ Error: ${error.message || 'Failed to fetch mob details.'}` });
         }
     },

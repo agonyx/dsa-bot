@@ -257,7 +257,9 @@ client.on(Events.InteractionCreate, async interaction => {
             customId === 'select-character' ||
             customId === 'skill_select_menu' ||
             customId === 'confirm_skill_selection' ||
-            customId.startsWith('edit_')
+            customId.startsWith('edit_') ||
+            customId.startsWith('edititem_') ||
+            customId.startsWith('editweapon_')
         ) {
             // *** Explicitly ignore these IDs in the central handler ***
             log.debug({ customId }, 'Ignoring interaction in central handler (handled by specific command)');
@@ -291,5 +293,19 @@ client.once(Events.ClientReady, async readyClient => {
 
     await recoverActiveCombats(readyClient);
 });
+
+// Optional HTTP server (Hono) for /health + /ready probes and a future API seam.
+// Guarded so the bot can still boot without DATABASE_URL during the Supabase→Postgres
+// transition. Phase 3 removes this guard once Supabase is fully removed.
+if (process.env.DATABASE_URL) {
+    try {
+        const { startServer } = require('./server');
+        startServer();
+    } catch (err) {
+        log.error({ error: err.message }, 'Failed to start HTTP server');
+    }
+} else {
+    log.warn('DATABASE_URL not set — Drizzle layer + HTTP server disabled (still using Supabase).');
+}
 
 client.login(process.env.DISCORD_TOKEN);

@@ -60,6 +60,7 @@ function sessionToMemory(session) {
         combatLog: session.combat_log,
         turnOrder: session.turn_order,
         currentTurnIndex: session.current_turn_index,
+        currentRound: session.current_round,
         combatants: session.combatants?.map(combatantToMemory) || [],
     };
 }
@@ -79,6 +80,7 @@ function sessionToDb(session) {
         combat_log: session.combatLog,
         turn_order: session.turnOrder,
         current_turn_index: session.currentTurnIndex,
+        current_round: session.currentRound,
     };
 }
 

@@ -9,7 +9,7 @@ Feature audit and development roadmap for becoming a complete DSA 5th Edition ta
 ### Character Management
 | Feature | Command(s) | Details |
 |---------|-----------|----------|
-| Character Registration | `/register` | Creates player with name |
+| Character Creation | `/create-character` | Creates player with name |
 | Character Selection | `/choose-character` | Multi-character support per Discord user |
 | Character Deletion | `/delete-character` | Remove characters |
 | Avatar Upload | `/upload-avatar` | Custom character portraits (Supabase storage) |
@@ -27,11 +27,11 @@ Feature audit and development roadmap for becoming a complete DSA 5th Edition ta
 ### Talent Probes (3d20 System)
 | Feature | Location | Details |
 |---------|----------|---------|
-| Full Probe Resolution | `/check` | 3d20 against 3 attributes |
+| Full Probe Resolution | `/probe` | 3d20 against 3 attributes |
 | FtW (Fertigkeitswert) | `player_talents.ftw` | Talent skill value |
-| QS Calculation | `check.js` | Quality Level 1-6 based on remaining FtW |
-| Modifiers | `/check modifier:` | +/- modifiers to FtW |
-| Autocomplete | `/check talent:` | Fuzzy talent search |
+| QS Calculation | `probe.js` | Quality Level 1-6 based on remaining FtW |
+| Modifiers | `/probe modifier:` | +/- modifiers to FtW |
+| Autocomplete | `/probe talent:` | Fuzzy talent search |
 
 ### Combat System
 | Feature | Location | Details |
@@ -76,14 +76,14 @@ Feature audit and development roadmap for becoming a complete DSA 5th Edition ta
 |---------|-----------|----------|
 | Mob Creation | `/add-mob` | HP, INI, AT, PA, RS, TP |
 | List Mobs | `/list-mobs` | DM reference |
-| View Mob Details | `/view-mob` | Full stat block with autocomplete |
+| View Mob Details | `/show-mob` | Full stat block with autocomplete |
 | Edit Mobs | `/edit-mob` | Update templates with autocomplete |
 | Add to Combat | Setup phase modal | Instantiates from template |
 
 ### Skills/Combat Maneuvers
 | Feature | Command(s) | Details |
 |---------|-----------|----------|
-| Skill Assignment | `/manage-skills` | Multi-select interface |
+| Skill Assignment | `/edit-skills` | Multi-select interface |
 | View Skills | `/show-skills` | List learned maneuvers |
 | Use in Combat | `/use-skill` | Applies AT/PA/damage mods |
 

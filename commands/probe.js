@@ -3,7 +3,7 @@ const { supabase } = require('../utils/supabaseClient');
 const { rollDice } = require('../utils/rollUtil');
 const { createLogger } = require('../utils/logger');
 
-const log = createLogger('check');
+const log = createLogger('probe');
 
 const STAT_DISPLAY_NAMES = {
     MU: 'Mut',
@@ -27,10 +27,10 @@ function calculateQS(remainingFtw) {
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('check')
-        .setDescription('Perform a talent check (Talentprobe)')
+        .setName('probe')
+        .setDescription('Perform a talent probe (Talentprobe)')
         .addStringOption(option =>
-            option.setName('talent').setDescription('The talent to check').setRequired(true).setAutocomplete(true)
+            option.setName('talent').setDescription('The talent to probe').setRequired(true).setAutocomplete(true)
         )
         .addIntegerOption(option =>
             option.setName('modifier').setDescription('Modifier to apply to FtW (e.g., -2 for difficult, +3 for easy)')
@@ -208,9 +208,9 @@ module.exports = {
                 ephemeral: !visible,
             });
         } catch (error) {
-            log.error({ error }, 'Check command error');
+            log.error({ error }, 'Probe command error');
             return interaction.reply({
-                content: '❌ Failed to perform talent check!',
+                content: '❌ Failed to perform talent probe!',
                 ephemeral: true,
             });
         }

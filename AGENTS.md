@@ -187,6 +187,8 @@ Key database tables:
 - `mobs` - NPC templates for combat
 - `combat_sessions` - Combat encounter state
 - `combatants` - Participants in a combat session
+- `combatant_conditions` - Active conditions (Zustände) per combatant — leveled (Stufe I-IV), with duration tracking
+- `combatant_statuses` - Active status effects per combatant — binary (on/off), with duration tracking
 - `action_modifications` - Combat maneuvers/skills with modifiers
 - `talents` - DSA talent definitions
 - `rule_pages` - Canonical rule documents from Regelwiki scraper (7,196 pages)

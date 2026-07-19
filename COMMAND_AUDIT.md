@@ -1,25 +1,3 @@
-# Command Audit & Roadmap
-
-Generated 2026-03-16. Comprehensive audit of all 34 slash commands — naming, gaps, and priorities.
-
-## Naming Issues
-
-| Command                | Status | Issue                                                                                                    | Suggestion                                      |
-| ---------------------- | ------ | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `register`             | Fix    | Vague — register for what?                                                                               | `create-character`                              |
-| `check`                | Fix    | Too generic — check what?                                                                                | `talent-check` or `probe`                       |
-| `attack`               | Accept | Standalone attack vs button-based combat attack — slightly confusing but both serve distinct purposes    | —                                               |
-| `evade`                | OK     | Clear                                                                                                    | —                                               |
-| `heal`                 | OK     | Clear                                                                                                    | —                                               |
-| `roll`                 | OK     | Universal                                                                                                | —                                               |
-| `help`                 | OK     | Standard                                                                                                 | —                                               |
-| `regel`                | Accept | Only German command in an English bot. Fine if group is German.                                          | —                                               |
-| `show-*` vs `view-mob` | Fix    | `show-stats`, `show-weapons`, `show-items`, `show-skills` use `show-` prefix but `view-mob` uses `view-` | Pick one prefix everywhere. Recommend `show-` . |
-| `manage-skills`        | Fix    | Doesn't match edit pattern. Other editing uses `edit-*`                                                  | `edit-skills` or `assign-skills`                |
-| `choose-character`     | Minor  | Wordy                                                                                                    | `switch-character` or `select-character`        |
-
-**Naming convention:** `verb-noun` with kebab-case. Mostly consistent, 5-6 commands drift from the pattern.
-
 ## Redundancies
 
 None. Every command serves a distinct purpose. Closest overlaps:
@@ -30,22 +8,27 @@ None. Every command serves a distinct purpose. Closest overlaps:
 
 ## Missing Commands
 
-### Tier 1 — CRUD Gaps (broken workflows)
+### Tier 1 — CRUD Gaps (broken workflows) ✅ FIXED
 
-| Command       | Problem                                                                    |
-| ------------- | -------------------------------------------------------------------------- |
-| `edit-weapon` | Can add & delete weapons, but can't fix a typo without delete + re-add     |
-| `edit-item`   | Same — can't change quantity or fix description                            |
-| `delete-mob`  | Can create/edit/view mobs, but can't remove them. They accumulate forever. |
+| Command       | Status  | Notes                                                                              |
+| ------------- | ------- | ---------------------------------------------------------------------------------- |
+| `edit-weapon` | ✅ Done | Interactive editor for weapon properties (name, type, tp, at, pa, equipped, slot)  |
+| `edit-item`   | ✅ Done | Interactive editor for item properties (name, type, quantity, effect, description) |
+| `delete-mob`  | ✅ Done | Delete mob templates with confirmation (DM-only)                                   |
 
-### Tier 2 — Core DSA Mechanics Not Covered
+### Tier 2 — Core DSA Mechanics ✅ DONE
 
-| Feature                            | Why it matters                                                                                                               |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Schicksalspunkte** (Fate Points) | Core DSA resource — reroll checks, avoid death. Every character has them. Needs: track, spend, restore.                      |
-| **Astral/Karma Points** (AsP/KaP)  | Spellcasters and clerics literally can't function without these. Needs: track, spend, regenerate.                            |
-| **Conditions/Status Effects**      | Stunned, prone, poisoned, bleeding — combat has no way to track these. Every major TTRPG bot has this.                       |
-| **Rest/Regeneration**              | No way to recover HP/AsP/KaP between encounters. Currently only manual `/heal`. Needs short rest / long rest / custom regen. |
+| Command              | Status  | Notes                                                                                     |
+| -------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| `/schicksalspunkte`  | ✅ Done | Subcommands: spend, restore, set, show. Tracks fate points (default 3/3).                 |
+| `/asp`               | ✅ Done | Subcommands: spend, restore, show. Astralpunkte for Zauberer (max 0 = non-caster).        |
+| `/kap`               | ✅ Done | Subcommands: spend, restore, show. Karmapunkte for Geweihte (max 0 = non-blessed).        |
+| `/condition`         | ✅ Done | Subcommands: add, remove, list. Leveled conditions (Schmerz, Betäubung, etc.) in combat.  |
+| `/status`            | ✅ Done | Subcommands: add, remove, list. Binary status effects (Blutend, Liegend, etc.) in combat. |
+| `/regeneration`      | ✅ Done | Regenerationsphase — rolls 1W6 per energy type (LeP, AsP if caster, KaP if blessed).      |
+| `show-stats` updated | ✅ Done | Displays SchP, AsP, KaP resource bars.                                                    |
+| `edit-stats` updated | ✅ Done | All new resource fields editable.                                                         |
+| Combat display       | ✅ Done | Pain levels (P1-P4), condition/status indicators in roster and spotlight.                 |
 
 ### Tier 3 — Session Quality of Life
 
@@ -81,7 +64,7 @@ The most direct DSA 5e Discord bot competitor. Features they have that we don't:
 
 The playing cards system is what our planned canvas integration could rival.
 
-## Current Command Inventory (34 commands)
+## Current Command Inventory (43 commands)
 
 ### Character Management (6)
 
@@ -103,17 +86,19 @@ The playing cards system is what our planned canvas integration could rival.
 - `/heal` — Restore HP
 - `/use-skill` — Execute combat maneuver
 
-### Equipment & Weapons (4)
+### Equipment & Weapons (5)
 
 - `/add-weapon` — Create weapon
 - `/show-weapons` — List weapons
 - `/equip-weapon` — Assign weapon to slot
+- `/edit-weapon` — Modify weapon properties
 - `/delete-weapon` — Remove weapon
 
-### Items & Inventory (4)
+### Items & Inventory (5)
 
 - `/add-item` — Add inventory item
 - `/show-items` — List inventory
+- `/edit-item` — Modify item properties
 - `/use-item` — Consume item
 - `/remove-item` — Delete inventory item
 
@@ -123,12 +108,22 @@ The playing cards system is what our planned canvas integration could rival.
 - `/manage-skills` — Assign combat skills
 - `/show-skills` — List assigned skills
 
-### Mob Management (4)
+### Mob Management (5)
 
 - `/add-mob` — Create mob template
 - `/edit-mob` — Modify mob template
+- `/delete-mob` — Delete mob template
 - `/list-mobs` — View all templates
 - `/view-mob` — View specific template
+
+### Resources & Conditions (6) — NEW (Tier 2)
+
+- `/schicksalspunkte` — Manage fate points (spend/restore/set/show)
+- `/asp` — Manage Astralpunkte (spend/restore/show)
+- `/kap` — Manage Karmapunkte (spend/restore/show)
+- `/condition` — Add/remove/list conditions on combatants
+- `/status` — Add/remove/list status effects on combatants
+- `/regeneration` — Roll Regenerationsphase (1W6 per energy type)
 
 ### Regelwiki (1)
 
@@ -147,8 +142,8 @@ The playing cards system is what our planned canvas integration could rival.
 ## Implementation Priority
 
 1. **Fix naming** (Tier 0) — rename `register`, `check`, `view-mob`, `manage-skills`
-2. **CRUD gaps** (Tier 1) — `edit-weapon`, `edit-item`, `delete-mob`
-3. **Core DSA resources** (Tier 2) — fate points, astral/karma points, conditions, rest/regen
+2. ~~**CRUD gaps** (Tier 1) — `edit-weapon`, `edit-item`, `delete-mob`~~ ✅ DONE
+3. ~~**Core DSA resources** (Tier 2) — fate points, astral/karma points, conditions, rest/regen~~ ✅ DONE
 4. **DM tools** (Tier 3) — loot tables, combat log command, maneuver library
 5. **Canvas integration** — visual character cards, combat display, stat blocks
 6. **Advanced features** (Tier 4) — spells, advantages/disadvantages, XP, encumbrance

@@ -43,6 +43,7 @@ module.exports = {
                     combatLog: data.combat_log,
                     turnOrder: data.turn_order,
                     currentTurnIndex: data.current_turn_index,
+                    currentRound: data.current_round,
                     combatants:
                         data.combatants?.map(c => ({
                             ...c,
@@ -57,6 +58,7 @@ module.exports = {
                             isActiveTurn: c.is_active_turn,
                         })) || [],
                 };
+                sessionData.currentRound = sessionData.currentRound || 1;
 
                 if (!interaction.client.activeCombats) interaction.client.activeCombats = new Map();
                 interaction.client.activeCombats.set(channelId, sessionData);

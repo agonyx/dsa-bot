@@ -1,12 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { callEdgeFunction } = require('../utils/supabaseClient');
 const { createLogger } = require('../utils/logger');
-const log = createLogger('register');
+const log = createLogger('create-character');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('register')
-        .setDescription('Registers a new player with a specified name.')
+        .setName('create-character')
+        .setDescription('Create a new character with a specified name.')
         .addStringOption(option =>
             option.setName('name').setDescription('The name of your character.').setRequired(true)
         ),
@@ -23,15 +23,15 @@ module.exports = {
             });
 
             if (status === 201) {
-                await interaction.editReply({ content: `Successfully registered new player ${name}` });
+                await interaction.editReply({ content: `Successfully created character ${name}` });
             } else {
-                log.error({ data }, 'Failed to register player');
-                await interaction.editReply({ content: 'Failed to register new player. Please try again later.' });
+                log.error({ data }, 'Failed to create character');
+                await interaction.editReply({ content: 'Failed to create character. Please try again later.' });
             }
         } catch (error) {
-            log.error({ error }, 'Error registering player');
+            log.error({ error }, 'Error creating character');
             const errorMessage = error.data?.error || error.message || 'An unknown error occurred';
-            await interaction.editReply({ content: `An error occurred while registering the player: ${errorMessage}` });
+            await interaction.editReply({ content: `An error occurred while creating character: ${errorMessage}` });
         }
     },
 };

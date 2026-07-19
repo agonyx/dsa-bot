@@ -1,9 +1,4 @@
-const {
-    combatantToMemory,
-    combatantToDb,
-    sessionToMemory,
-    sessionToDb,
-} = require('../utils/transforms');
+const { combatantToMemory, combatantToDb, sessionToMemory, sessionToDb } = require('../utils/transforms');
 
 describe('combatantToMemory', () => {
     test('converts snake_case to camelCase', () => {
@@ -164,9 +159,16 @@ describe('sessionToMemory', () => {
         expect(result.combatLog).toEqual(['turn 1', 'turn 2']);
         expect(result.turnOrder).toEqual(['a', 'b', 'c']);
         expect(result.currentTurnIndex).toBe(0);
+        expect(result.currentRound).toBeUndefined();
         expect(result.combatants).toHaveLength(2);
         expect(result.combatants[0].maxHP).toBe(20);
         expect(result.combatants[1].maxHP).toBe(30);
+    });
+
+    test('maps current_round to currentRound', () => {
+        const result = sessionToMemory({ id: 'session-1', current_round: 3 });
+
+        expect(result.currentRound).toBe(3);
     });
 
     test('handles empty combatants array', () => {
@@ -232,6 +234,13 @@ describe('sessionToDb', () => {
         expect(result.combat_log).toEqual(['turn 1']);
         expect(result.turn_order).toEqual(['a', 'b']);
         expect(result.current_turn_index).toBe(1);
+        expect(result.current_round).toBeUndefined();
+    });
+
+    test('maps currentRound to current_round', () => {
+        const result = sessionToDb({ id: 'session-1', currentRound: 5 });
+
+        expect(result.current_round).toBe(5);
     });
 
     test('returns null for null input', () => {

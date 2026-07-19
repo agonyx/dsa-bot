@@ -7,3 +7,9 @@ DSA5WikiScraper/dsa_scraper_v3/data/html/*
 DSA5WikiScraper/dsa_scraper_v3/data_backup_20260316_144550
 DSA5WikiScraper/dsa_scraper_v3_sample_validation
 DSA5WikiScraper/dsa_scraper_v3_sitemap_validation
+
+# Runtime data (avatars written by the bot)
+uploads/
+
+# Local agent/tool state
+.sisyphus/

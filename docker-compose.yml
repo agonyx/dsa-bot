@@ -1,0 +1,41 @@
+# PostgreSQL 16 + pgvector for DSANewBot.
+#
+# Turnkey: on first boot the init script creates the `vector` extension, applies the
+# Drizzle schema (./drizzle/*.sql), and the rules search function (db/sql/rules_vector.sql).
+# So `docker compose up -d` yields a fully-schemed, ready-to-use database.
+#
+# Usage:
+#   1. Copy this file + ./drizzle + ./db to the server (or the whole DSANewBot dir).
+#   2. Create a .env next to this file (see .env.example) — set POSTGRES_PASSWORD etc.
+#   3. docker compose up -d
+#   4. Point the bot at DATABASE_URL (defaults to localhost:5432 when co-located).
+#
+# Schema is only auto-applied on the FIRST boot (empty volume). For later changes,
+# run `npm run db:push` from the app.
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: dsa-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-dsabot}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # Persistent data — survives container recreation. Remove the volume only to reset.
+      - dsa_pgdata:/var/lib/postgresql/data
+      # Schema + init assets, mounted read-only (kept in sync with the repo).
+      - ./drizzle:/schema:ro
+      - ./db/sql:/rules-sql:ro
+      - ./db/docker-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-dsabot}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  dsa_pgdata:

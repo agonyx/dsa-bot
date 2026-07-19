@@ -514,7 +514,22 @@ async function handleStartFightInteraction(interaction, sessionId) {
 
         log.info({ sessionId }, 'Combat started successfully');
 
+        if (typeof updatedSessionData.current_round !== 'number' || updatedSessionData.current_round < 1) {
+            const { error: roundUpdateError } = await supabase
+                .from('combat_sessions')
+                .update({ current_round: 1 })
+                .eq('id', sessionId);
+
+            if (roundUpdateError) {
+                log.error({ sessionId, error: roundUpdateError.message }, 'Failed to initialize combat round');
+                return interaction.editReply({ content: '❌ Failed to initialize combat round.' });
+            }
+
+            updatedSessionData.current_round = 1;
+        }
+
         const memorySession = sessionToMemory(updatedSessionData);
+        memorySession.currentRound = memorySession.currentRound || 1;
 
         if (!interaction.client.activeCombats) {
             interaction.client.activeCombats = new Map();

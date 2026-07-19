@@ -38,7 +38,7 @@ module.exports = {
             .addFields(
                 {
                     name: '👤 Character',
-                    value: '`/register` `/choose-character` `/show-stats` `/edit-stats` `/upload-avatar` `/delete-character`',
+                    value: '`/create-character` `/choose-character` `/show-stats` `/edit-stats` `/upload-avatar` `/delete-character`',
                     inline: false,
                 },
                 {
@@ -58,12 +58,12 @@ module.exports = {
                 },
                 {
                     name: '📋 Skills',
-                    value: '`/show-skills` `/manage-skills`',
+                    value: '`/show-skills` `/edit-skills`',
                     inline: false,
                 },
                 {
                     name: '👾 Mobs (DM Only)',
-                    value: '`/add-mob` `/edit-mob` `/view-mob` `/list-mobs`',
+                    value: '`/add-mob` `/edit-mob` `/show-mob` `/list-mobs`',
                     inline: false,
                 },
                 {
@@ -90,7 +90,7 @@ function getCategoryHelp(category) {
             .setTitle('👤 Character Commands')
             .setDescription('Manage your DSA character')
             .addFields(
-                { name: '/register', value: 'Create a new character' },
+                { name: '/create-character', value: 'Create a new character' },
                 { name: '/choose-character', value: 'Select which of your characters to play' },
                 { name: '/show-stats', value: "View your character's stats and health" },
                 { name: '/edit-stats', value: 'Interactively edit your stats' },
@@ -141,7 +141,7 @@ function getCategoryHelp(category) {
             .setDescription('Combat skills and maneuvers')
             .addFields(
                 { name: '/show-skills', value: 'View your assigned combat skills' },
-                { name: '/manage-skills', value: 'Assign or unassign combat skills' }
+                { name: '/edit-skills', value: 'Assign or unassign combat skills' }
             ),
 
         mobs: new EmbedBuilder()
@@ -151,7 +151,7 @@ function getCategoryHelp(category) {
             .addFields(
                 { name: '/add-mob', value: 'Create a new mob template' },
                 { name: '/edit-mob', value: 'Edit an existing mob template' },
-                { name: '/view-mob', value: 'View mob template details' },
+                { name: '/show-mob', value: 'View mob template details' },
                 { name: '/list-mobs', value: 'List all available mob templates' }
             ),
 
