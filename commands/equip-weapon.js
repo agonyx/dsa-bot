@@ -1,7 +1,5 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
-const { db, callEdgeFunction } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, weapons } = require('../db/schema');
+const { listWeapons, equipWeapon } = require('../services/inventory');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('equip-weapon');
 
@@ -14,31 +12,25 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const [player] = await db
-                .select({ id: players.id })
-                .from(players)
-                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
-                .limit(1);
-
-            if (player) {
-                player.weapons = await db
-                    .select()
-                    .from(weapons)
-                    .where(eq(weapons.player_id, player.id));
+            let weaponsList;
+            try {
+                weaponsList = await listWeapons({ discordId: interaction.user.id });
+            } catch (error) {
+                if (error.status === 404) {
+                    return interaction.editReply({ content: 'No selected character!', components: [] });
+                }
+                throw error;
             }
 
-            if (!player?.weapons?.length) {
-                return interaction.editReply({
-                    content: player ? 'No weapons available!' : 'No selected character!',
-                    components: [],
-                });
+            if (!weaponsList?.length) {
+                return interaction.editReply({ content: 'No weapons available!', components: [] });
             }
 
             const weaponMenu = new StringSelectMenuBuilder()
                 .setCustomId('weapon_select')
                 .setPlaceholder('Select a weapon')
                 .addOptions(
-                    player.weapons.map(weapon => ({
+                    weaponsList.map(weapon => ({
                         label: weapon.name,
                         description: `${weapon.type} | TP: ${weapon.tp}`,
                         value: weapon.id.toString(),
@@ -83,10 +75,10 @@ module.exports = {
                     const slot = slotInteraction.values[0];
 
                     try {
-                        await callEdgeFunction('equip-weapon', {
-                            weaponId: parseInt(weaponId),
-                            equippedSlot: slot,
-                        });
+                        await equipWeapon(
+                            { discordId: interaction.user.id },
+                            { weaponId: parseInt(weaponId), equippedSlot: slot }
+                        );
 
                         await interaction.editReply({
                             content: `✅ Successfully equipped ${weaponInteraction.component.options.find(o => o.value === weaponId).label} in ${slot} slot!`,
@@ -95,7 +87,7 @@ module.exports = {
                     } catch (error) {
                         log.error({ error }, 'Equip error');
                         await interaction.editReply({
-                            content: '❌ Failed to equip weapon!',
+                            content: `❌ ${error.data?.error || error.message || 'Failed to equip weapon!'}`,
                             components: [],
                         });
                     } finally {

@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, weapons } = require('../db/schema');
+const { listWeapons, deleteWeapon } = require('../services/inventory');
+const { getSelectedPlayer } = require('../services/characters');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('delete-weapon');
 
@@ -12,24 +11,10 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const [player] = await db
-                .select({ id: players.id, name: players.name })
-                .from(players)
-                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
-                .limit(1);
+            const player = await getSelectedPlayer({ discordId: interaction.user.id });
+            const weaponsList = await listWeapons({ discordId: interaction.user.id });
 
-            if (!player) {
-                return interaction.editReply({
-                    content: 'No selected character! Use /choose-character first',
-                });
-            }
-
-            player.weapons = await db
-                .select()
-                .from(weapons)
-                .where(eq(weapons.player_id, player.id));
-
-            if (!player.weapons || player.weapons.length === 0) {
+            if (!weaponsList || weaponsList.length === 0) {
                 return interaction.editReply({
                     content: 'Your character has no weapons to delete.',
                 });
@@ -39,7 +24,7 @@ module.exports = {
                 .setCustomId('delete_weapon_select')
                 .setPlaceholder('Select a weapon to delete')
                 .addOptions(
-                    player.weapons.map(w => ({
+                    weaponsList.map(w => ({
                         label: w.name,
                         description: `${w.type} | TP: ${w.tp} | AT: ${w.at} | PA: ${w.pa}`,
                         value: w.id.toString(),
@@ -61,14 +46,21 @@ module.exports = {
             collector.on('collect', async i => {
                 if (i.customId === 'delete_weapon_select') {
                     const weaponId = i.values[0];
-                    const weapon = player.weapons.find(w => w.id.toString() === weaponId);
+                    const weapon = weaponsList.find(w => w.id.toString() === weaponId);
 
-                    await db.delete(weapons).where(eq(weapons.id, parseInt(weaponId)));
-
-                    await i.update({
-                        content: `✅ **${weapon.name}** has been deleted from **${player.name}**.`,
-                        components: [],
-                    });
+                    try {
+                        await deleteWeapon({ discordId: interaction.user.id }, parseInt(weaponId));
+                        await i.update({
+                            content: `✅ **${weapon.name}** has been deleted from **${player.name}**.`,
+                            components: [],
+                        });
+                    } catch (error) {
+                        log.error({ error }, 'Delete weapon confirm error');
+                        await i.update({
+                            content: `❌ ${error.data?.error || error.message}`,
+                            components: [],
+                        });
+                    }
                     collector.stop();
                 }
             });
@@ -84,6 +76,9 @@ module.exports = {
                 }
             });
         } catch (error) {
+            if (error.status === 404) {
+                return interaction.editReply({ content: 'No selected character! Use /choose-character first' });
+            }
             log.error({ error }, 'Delete weapon error');
             interaction.editReply({
                 content: '❌ Failed to delete weapon.',

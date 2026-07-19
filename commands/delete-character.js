@@ -1,7 +1,5 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { db } = require('../db');
-const { eq } = require('drizzle-orm');
-const { players } = require('../db/schema');
+const { listCharacters, deleteCharacter } = require('../services/characters');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('delete-character');
 
@@ -16,14 +14,7 @@ module.exports = {
         const discordId = interaction.user.id;
 
         try {
-            const playerRows = await db
-                .select({
-                    id: players.id,
-                    name: players.name,
-                    selected: players.selected,
-                })
-                .from(players)
-                .where(eq(players.discord_id, discordId));
+            const playerRows = await listCharacters({ discordId });
 
             if (!playerRows || playerRows.length === 0) {
                 return interaction.editReply('❌ You do not have any characters to delete.');
@@ -59,14 +50,21 @@ module.exports = {
                         await i.update({ content: '❌ Deletion cancelled.', components: [] });
                         collector.stop();
                     } else if (i.customId.startsWith('delete_confirm_')) {
-                        const playerId = i.customId.replace('delete_confirm_', '');
+                        const playerId = Number(i.customId.replace('delete_confirm_', ''));
 
-                        await db.delete(players).where(eq(players.id, Number(playerId)));
-
-                        await i.update({
-                            content: `✅ Character **${player.name}** has been permanently deleted.`,
-                            components: [],
-                        });
+                        try {
+                            await deleteCharacter({ discordId }, playerId);
+                            await i.update({
+                                content: `✅ Character **${player.name}** has been permanently deleted.`,
+                                components: [],
+                            });
+                        } catch (error) {
+                            log.error({ error }, 'Delete character confirm error');
+                            await i.update({
+                                content: `❌ ${error.data?.error || error.message}`,
+                                components: [],
+                            });
+                        }
                         collector.stop();
                     }
                 });
@@ -131,15 +129,22 @@ module.exports = {
                         await i.update({ content: '❌ Deletion cancelled.', components: [] });
                         collector.stop();
                     } else if (i.customId.startsWith('delete_confirm_')) {
-                        const playerId = i.customId.replace('delete_confirm_', '');
+                        const playerId = Number(i.customId.replace('delete_confirm_', ''));
                         const player = playerRows.find(p => p.id === playerId);
 
-                        await db.delete(players).where(eq(players.id, Number(playerId)));
-
-                        await i.update({
-                            content: `✅ Character **${player.name}** has been permanently deleted.`,
-                            components: [],
-                        });
+                        try {
+                            await deleteCharacter({ discordId }, playerId);
+                            await i.update({
+                                content: `✅ Character **${player.name}** has been permanently deleted.`,
+                                components: [],
+                            });
+                        } catch (error) {
+                            log.error({ error }, 'Delete character confirm error');
+                            await i.update({
+                                content: `❌ ${error.data?.error || error.message}`,
+                                components: [],
+                            });
+                        }
                         collector.stop();
                     }
                 });

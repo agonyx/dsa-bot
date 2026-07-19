@@ -1,7 +1,5 @@
 const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ComponentType } = require('discord.js');
-const { db } = require('../db');
-const { eq } = require('drizzle-orm');
-const { players } = require('../db/schema');
+const { listCharacters } = require('../services/characters');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('choose-character');
 
@@ -13,14 +11,7 @@ module.exports = {
         const discordId = interaction.user.id;
 
         try {
-            const playerRows = await db
-                .select({
-                    id: players.id,
-                    name: players.name,
-                    selected: players.selected,
-                })
-                .from(players)
-                .where(eq(players.discord_id, discordId));
+            const playerRows = await listCharacters({ discordId });
 
             if (!playerRows || playerRows.length === 0) {
                 return interaction.reply({

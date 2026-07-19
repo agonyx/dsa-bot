@@ -4,6 +4,7 @@ const { Client, Events, GatewayIntentBits, Collection, Partials } = require('dis
 const fs = require('node:fs');
 const path = require('node:path');
 const { createLogger } = require('./utils/logger');
+const { selectCharacter, listCharacters } = require('./services/characters');
 const log = createLogger('index');
 
 const client = new Client({
@@ -155,20 +156,13 @@ client.on(Events.InteractionCreate, async interaction => {
         const discordId = interaction.user.id;
 
         try {
-            const [player] = await db
-                .select({ name: players.name })
-                .from(players)
-                .where(eq(players.id, Number(selectedPlayerId)));
+            await selectCharacter({ discordId }, Number(selectedPlayerId));
 
-            if (!player) throw new Error('Player not found');
-
-            await callEdgeFunction('set-selected-player', {
-                playerId: parseInt(selectedPlayerId),
-                discordId: discordId,
-            });
+            const characters = await listCharacters({ discordId });
+            const selected = characters.find(c => c.id === Number(selectedPlayerId));
 
             await interaction.update({
-                content: `You have selected the character: ${player.name}.`,
+                content: `You have selected the character: ${selected?.name ?? 'Unknown'}.`,
                 components: [],
             });
         } catch (error) {

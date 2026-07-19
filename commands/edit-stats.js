@@ -9,9 +9,7 @@ const {
     ButtonBuilder,
     ButtonStyle,
 } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, stats: statsTable } = require('../db/schema');
+const { getCharacterSheet, updateStat } = require('../services/characters');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-stats');
 
@@ -45,27 +43,11 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const [player] = await db
-                .select({ id: players.id, name: players.name, avatar: players.avatar })
-                .from(players)
-                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
-                .limit(1);
-
-            if (!player) {
-                return interaction.editReply('❌ No character stats found! Select a character first.');
-            }
-
-            const [stats] = await db
-                .select()
-                .from(statsTable)
-                .where(eq(statsTable.player_id, player.id))
-                .limit(1);
+            const { stats } = await getCharacterSheet({ discordId: interaction.user.id });
 
             if (!stats) {
                 return interaction.editReply('❌ No character stats found! Select a character first.');
             }
-
-            const currentPlayer = player;
 
             const createStatSelect = statsData =>
                 new StringSelectMenuBuilder()
@@ -180,10 +162,7 @@ module.exports = {
                         return;
                     }
 
-                    await db
-                        .update(statsTable)
-                        .set({ [statKey]: parsedValue })
-                        .where(eq(statsTable.player_id, currentPlayer.id));
+                    await updateStat({ discordId: interaction.user.id }, { statKey, value: parsedValue });
 
                     stats[statKey] = parsedValue;
 
@@ -208,7 +187,7 @@ module.exports = {
                 } catch (error) {
                     log.error({ error }, 'Modal error');
                     const errorMsg = await modalInteraction.reply({
-                        content: '❌ Failed to update stat!',
+                        content: `❌ ${error.data?.error || error.message || 'Failed to update stat!'}`,
                         ephemeral: true,
                     });
                     setTimeout(() => errorMsg.delete(), 3000);

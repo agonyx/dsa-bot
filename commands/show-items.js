@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, items } = require('../db/schema');
+const { listItems } = require('../services/inventory');
+const { getSelectedPlayer } = require('../services/characters');
 const { readAvatar } = require('../utils/avatarStorage');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-items');
@@ -25,30 +24,11 @@ module.exports = {
         ),
 
     async execute(interaction) {
+        const visible = interaction.options.getBoolean('visible', false);
+
         try {
-            const discordId = interaction.user.id;
-            const visible = interaction.options.getBoolean('visible', false);
-
-            const [playerRow] = await db
-                .select({ id: players.id, name: players.name, avatar: players.avatar })
-                .from(players)
-                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
-                .limit(1);
-
-            if (!playerRow || !playerRow.id) {
-                return interaction.reply({
-                    content:
-                        'You have not selected a player yet. Use the /choose-character command to select a player.',
-                    ephemeral: true,
-                });
-            }
-
-            // Separate query for the items relation (Drizzle can't nest like PostgREST).
-            const playerItems = await db.select().from(items).where(eq(items.player_id, playerRow.id));
-
-            const player = { ...playerRow, items: playerItems };
-
-            const itemsList = player.items;
+            const player = await getSelectedPlayer({ discordId: interaction.user.id });
+            const itemsList = await listItems({ discordId: interaction.user.id });
 
             if (!itemsList || itemsList.length === 0) {
                 return interaction.reply({
@@ -74,7 +54,6 @@ module.exports = {
                 groupedItems[type].push(item);
             });
 
-            // Add fields for each type group
             Object.entries(groupedItems).forEach(([type, typeItems]) => {
                 const emoji = TYPE_EMOJIS[type] || '📦';
                 const value = typeItems
@@ -99,9 +78,9 @@ module.exports = {
                 });
             });
 
-            if (playerRow.avatar) {
+            if (player.avatar) {
                 try {
-                    const avatarBuffer = await readAvatar(playerRow.avatar);
+                    const avatarBuffer = await readAvatar(player.avatar);
                     if (avatarBuffer) {
                         const attachment = new AttachmentBuilder(avatarBuffer, { name: 'avatar.png' });
                         itemsEmbed.setThumbnail('attachment://avatar.png');
@@ -114,6 +93,13 @@ module.exports = {
 
             return interaction.reply({ embeds: [itemsEmbed], ephemeral: !visible });
         } catch (error) {
+            if (error.status === 404) {
+                return interaction.reply({
+                    content:
+                        'You have not selected a player yet. Use the /choose-character command to select a player.',
+                    ephemeral: true,
+                });
+            }
             log.error({ error }, 'Error showing items');
             return interaction.reply({
                 content: 'There was an error while fetching your items.',

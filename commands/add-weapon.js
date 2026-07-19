@@ -1,7 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, weapons } = require('../db/schema');
+const { addWeapon } = require('../services/inventory');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('add-weapon');
 
@@ -40,51 +38,18 @@ module.exports = {
         ),
     async execute(interaction) {
         try {
-            const discordId = interaction.user.id;
-            const weaponData = {
-                name: interaction.options.getString('name'),
-                type: interaction.options.getString('type'),
-                tp: interaction.options.getString('tp'),
-                at: interaction.options.getInteger('at'),
-                pa: interaction.options.getInteger('pa'),
-                is_equipped: interaction.options.getString('equipped') || 'N',
-                equipped_slot: interaction.options.getString('slot') || null,
-            };
-
-            if (!/^\d+[wW]\d+(\s*[+-]\s*\d+)?$/.test(weaponData.tp)) {
-                return interaction.reply({
-                    content: 'Invalid TP format! Use format like 1w6+3, 1W6-2, or W6',
-                    ephemeral: true,
-                });
-            }
-
-            if (weaponData.is_equipped === 'Y' && !weaponData.equipped_slot) {
-                return interaction.reply({
-                    content: 'You must select a slot when equipping a weapon!',
-                    ephemeral: true,
-                });
-            }
-
-            const [player] = await db
-                .select({ id: players.id })
-                .from(players)
-                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
-                .limit(1);
-
-            if (!player) {
-                return interaction.reply({
-                    content: 'No selected character! Use /choose-character first',
-                    ephemeral: true,
-                });
-            }
-
-            const [weapon] = await db
-                .insert(weapons)
-                .values({
-                    ...weaponData,
-                    player_id: player.id,
-                })
-                .returning();
+            const weapon = await addWeapon(
+                { discordId: interaction.user.id },
+                {
+                    name: interaction.options.getString('name'),
+                    type: interaction.options.getString('type'),
+                    tp: interaction.options.getString('tp'),
+                    at: interaction.options.getInteger('at'),
+                    pa: interaction.options.getInteger('pa'),
+                    is_equipped: interaction.options.getString('equipped') || 'N',
+                    equipped_slot: interaction.options.getString('slot') || null,
+                }
+            );
 
             const embed = new EmbedBuilder()
                 .setColor(0x00ff00)
@@ -102,10 +67,8 @@ module.exports = {
             interaction.reply({ embeds: [embed] });
         } catch (error) {
             log.error({ error }, 'Add weapon error');
-            interaction.reply({
-                content: 'Failed to add weapon. Please check your input and try again.',
-                ephemeral: true,
-            });
+            const message = error.data?.error || error.message || 'Failed to add weapon.';
+            interaction.reply({ content: `❌ ${message}`, ephemeral: true });
         }
     },
 };

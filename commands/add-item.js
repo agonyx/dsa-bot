@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, items } = require('../db/schema');
+const { addItem } = require('../services/inventory');
+const { getSelectedPlayer } = require('../services/characters');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('add-item');
 
@@ -44,17 +43,7 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const [player] = await db
-                .select({ id: players.id, name: players.name })
-                .from(players)
-                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
-                .limit(1);
-
-            if (!player) {
-                return interaction.editReply({
-                    content: 'No selected character! Use /choose-character first',
-                });
-            }
+            const player = await getSelectedPlayer({ discordId: interaction.user.id });
 
             const name = interaction.options.getString('name');
             const type = interaction.options.getString('type') || 'MISC';
@@ -62,56 +51,30 @@ module.exports = {
             const description = interaction.options.getString('description');
             const quantity = interaction.options.getInteger('quantity') || 1;
 
-            // Check for existing item with same name and type (stacking)
-            const [existingItem] = await db
-                .select()
-                .from(items)
-                .where(and(eq(items.player_id, player.id), eq(items.name, name), eq(items.type, type)))
-                .limit(1);
+            // addItem stacks onto an existing same-name+type item, else creates one.
+            const item = await addItem(
+                { discordId: interaction.user.id },
+                { name, type, effect, description, quantity }
+            );
 
-            if (existingItem) {
-                // Stack: increment quantity
-                const newQuantity = (existingItem.quantity || 1) + quantity;
-
-                const [updatedItem] = await db
-                    .update(items)
-                    .set({ quantity: newQuantity })
-                    .where(eq(items.id, existingItem.id))
-                    .returning();
-
-                const embed = new EmbedBuilder()
-                    .setColor(0x57f287)
-                    .setTitle('📦 Items Stacked')
-                    .setDescription(`Added **${quantity}** to existing **${name}** in **${player.name}**'s inventory`)
-                    .addFields(
-                        { name: 'Name', value: updatedItem.name, inline: true },
-                        { name: 'Type', value: updatedItem.type, inline: true },
-                        { name: 'New Quantity', value: newQuantity.toString(), inline: true }
-                    );
-
-                return interaction.editReply({ embeds: [embed] });
-            }
-
-            // Create new item
-            const itemData = {
-                name,
-                type,
-                effect,
-                description,
-                quantity,
-                player_id: player.id,
-            };
-
-            const [item] = await db.insert(items).values(itemData).returning();
+            const stacked = item.quantity > quantity;
 
             const embed = new EmbedBuilder()
                 .setColor(0x57f287)
-                .setTitle('📦 Item Added')
-                .setDescription(`Added item to **${player.name}**'s inventory`)
+                .setTitle(stacked ? '📦 Items Stacked' : '📦 Item Added')
+                .setDescription(
+                    stacked
+                        ? `Added **${quantity}** to existing **${name}** in **${player.name}**'s inventory`
+                        : `Added item to **${player.name}**'s inventory`
+                )
                 .addFields(
                     { name: 'Name', value: item.name, inline: true },
                     { name: 'Type', value: item.type, inline: true },
-                    { name: 'Quantity', value: item.quantity.toString(), inline: true }
+                    {
+                        name: stacked ? 'New Quantity' : 'Quantity',
+                        value: item.quantity.toString(),
+                        inline: true,
+                    }
                 );
 
             if (item.effect) {
@@ -124,9 +87,8 @@ module.exports = {
             return interaction.editReply({ embeds: [embed] });
         } catch (error) {
             log.error({ error }, 'Add item error');
-            return interaction.editReply({
-                content: `❌ Failed to add item: ${error.message}`,
-            });
+            const message = error.data?.error || error.message || 'Failed to add item.';
+            return interaction.editReply({ content: `❌ ${message}` });
         }
     },
 };
