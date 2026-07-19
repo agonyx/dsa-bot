@@ -7,7 +7,7 @@ const {
     StringSelectMenuBuilder,
     ComponentType,
 } = require('discord.js');
-const { hybridSearch, getRankedTitleMatches, fetchPageContent } = require('../utils/rulesClient');
+const { searchRules, getRulePage, suggestRuleTitles } = require('../services/rules');
 const { createLogger } = require('../utils/logger');
 
 const log = createLogger('regel');
@@ -174,7 +174,10 @@ module.exports = {
         const cache = interaction.client.rulePageTitleCache || [];
 
         try {
-            const matches = getRankedTitleMatches(focusedValue, cache, { category, limit: 25 });
+            const matches = await suggestRuleTitles(
+                { discordId: interaction.user.id },
+                { query: focusedValue, category, cache }
+            );
             const choices = matches.map(page => ({
                 name: page.title,
                 value: page.title,
@@ -197,11 +200,10 @@ module.exports = {
 
         try {
             const cache = interaction.client.rulePageTitleCache || [];
-            const { selectedPage, exactMatches, semanticMatches } = await hybridSearch(query, cache, {
-                category,
-                limit,
-                threshold: 0.4,
-            });
+            const { selectedPage, exactMatches, semanticMatches } = await searchRules(
+                { discordId: interaction.user.id },
+                { query, category, limit, threshold: 0.4, cache }
+            );
 
             // No results at all
             if (!selectedPage) {
@@ -292,9 +294,11 @@ module.exports = {
                 // Fetch full content if not available (cache rows lack content)
                 let pageData = selectedPageData;
                 if (!selectedPageData.normalized_content && !selectedPageData.chunk_text && !selectedPageData.content) {
-                    const fullPage = await fetchPageContent(selectedDocId);
-                    if (fullPage) {
+                    try {
+                        const fullPage = await getRulePage({ discordId: interaction.user.id }, selectedDocId);
                         pageData = { ...selectedPageData, ...fullPage };
+                    } catch {
+                        // page not found — keep the cached metadata
                     }
                 }
 
