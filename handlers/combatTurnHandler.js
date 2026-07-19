@@ -43,7 +43,7 @@ const {
 } = require('../utils/conditionUtils');
 
 const log = createLogger('combat-turn');
-const { resolveAttackAction } = require('../services/combat');
+const { resolveAttackAction, advanceTurn } = require('../services/combat');
 
 /**
  * Helper to get session data from memory or load from DB if missing.
@@ -826,96 +826,36 @@ async function nextTurn(client, channelId) {
     }
 
     const sessionId = sessionData.id;
-    const turnOrder = sessionData.turnOrder;
-    const numCombatants = turnOrder.length;
 
-    let nextIndex = sessionData.currentTurnIndex;
-    const previousTurnIndex = sessionData.currentTurnIndex;
-    let nextActiveCombatant = null;
-    let checkedCount = 0;
-
-    if (typeof sessionData.currentRound !== 'number' || sessionData.currentRound < 1) {
-        sessionData.currentRound = 1;
-    }
-
-    log.debug({ currentTurnIndex: sessionData.currentTurnIndex }, 'Starting search for next turn');
-
-    while (checkedCount < numCombatants) {
-        nextIndex = (nextIndex + 1) % numCombatants;
-        const nextCombatantId = turnOrder[nextIndex];
-        const potentialCombatant = sessionData.combatants.find(c => c.id === nextCombatantId);
-
-        log.debug(
-            {
-                index: nextIndex,
-                combatantId: nextCombatantId,
-                found: !!potentialCombatant,
-                hp: potentialCombatant?.currentHP,
-            },
-            'Checking combatant'
-        );
-
-        if (potentialCombatant && potentialCombatant.currentHP > 0) {
-            nextActiveCombatant = potentialCombatant;
-            log.debug({ combatantName: nextActiveCombatant.name, index: nextIndex }, 'Found next active combatant');
-            break;
+    let result;
+    try {
+        // Delegates turn advancement (next conscious combatant, victory/draw detection,
+        // round bump, active-flag + log update) to the transactional service. The bot
+        // auto-advances after each action, so authorize as the session DM.
+        result = await advanceTurn({ discordId: sessionData.dmUserId }, sessionId);
+    } catch (error) {
+        log.error({ error: error.message, sessionId }, 'service.advanceTurn failed');
+        const channel = await client.channels.fetch(channelId).catch(() => null);
+        if (channel) {
+            await channel.send('⚠️ **Warning:** failed to advance the combat turn.').catch(() => {});
         }
-
-        checkedCount++;
+        return;
     }
 
-    if (!nextActiveCombatant) {
-        log.info({ sessionId }, 'No active combatants remaining - draw/mutual defeat');
-        sessionData.state = 'ENDED';
-        sessionData.currentTurnIndex = -1;
-        await addLogEntry(client, channelId, sessionId, '--- Combat Ended: No survivors! ---');
-    } else {
-        const consciousCombatants = sessionData.combatants.filter(c => c.currentHP > 0);
-        const uniqueAllegiances = [...new Set(consciousCombatants.map(c => c.allegiance))];
+    // Sync the in-memory mirror (display cache) from the service result.
+    sessionData.state = result.session.state;
+    sessionData.currentTurnIndex = result.ended ? -1 : result.session.current_turn_index ?? -1;
+    sessionData.currentRound = result.session.current_round ?? sessionData.currentRound ?? 1;
+    sessionData.combatLog = Array.isArray(result.session.combat_log)
+        ? result.session.combat_log.slice(-20)
+        : sessionData.combatLog || [];
 
-        if (uniqueAllegiances.length === 1) {
-            log.info({ sessionId, winner: uniqueAllegiances[0] }, 'Victory condition met');
-            sessionData.state = 'ENDED';
-            sessionData.currentTurnIndex = -1;
-            const winner = uniqueAllegiances[0] === 'PLAYER_SIDE' ? 'The players' : 'The hostile forces';
-            await addLogEntry(client, channelId, sessionId, `--- Combat Ended: ${winner} are victorious! ---`);
-
-            try {
-                await db.update(combatSessions).set({ state: 'ENDED' }).where(eq(combatSessions.id, sessionId));
-                log.debug({ sessionId }, 'DB state updated to ENDED');
-            } catch (error) {
-                log.error({ error: error.message, sessionId }, 'Failed to update DB state to ENDED');
-                const channel = await client.channels.fetch(channelId).catch(() => null);
-                if (channel) {
-                    await channel.send(
-                        '⚠️ **Warning:** Combat has ended, but there was an error saving this to the database.'
-                    );
-                }
-            }
-        } else {
-            sessionData.currentTurnIndex = nextIndex;
-
-            if (nextIndex <= previousTurnIndex) {
-                sessionData.currentRound += 1;
-            }
-
-            if (nextActiveCombatant.effects) {
-                log.debug({ combatantName: nextActiveCombatant.name }, 'Clearing temporary effects');
-                nextActiveCombatant.effects = nextActiveCombatant.effects.filter(eff => !eff.isTemporary);
-            }
-
-            log.debug({ sessionId, newIndex: nextIndex, combatantName: nextActiveCombatant.name }, 'Turn advanced');
-
-            try {
-                await db
-                    .update(combatSessions)
-                    .set({ current_turn_index: nextIndex, current_round: sessionData.currentRound })
-                    .where(eq(combatSessions.id, sessionId));
-            } catch (e) {
-                log.error({ error: e.message, sessionId }, 'Failed to update turn index in DB');
-            }
-
-            await addLogEntry(client, channelId, sessionId, `--- ${nextActiveCombatant.name}'s Turn ---`);
+    // Clear temporary in-memory effects on the new active combatant (effects aren't persisted).
+    if (!result.ended && sessionData.currentTurnIndex >= 0) {
+        const activeId = sessionData.turnOrder[sessionData.currentTurnIndex];
+        const activeCombatant = sessionData.combatants.find(c => c.id === activeId);
+        if (activeCombatant && Array.isArray(activeCombatant.effects)) {
+            activeCombatant.effects = activeCombatant.effects.filter(eff => !eff.isTemporary);
         }
     }
 
