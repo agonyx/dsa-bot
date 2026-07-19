@@ -12,6 +12,7 @@
         "query:rules": "tsx scripts/query-rules.ts",
         "db:generate": "drizzle-kit generate",
         "db:push": "drizzle-kit push",
+        "db:seed": "tsx scripts/seed.ts",
         "db:studio": "drizzle-kit studio",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
