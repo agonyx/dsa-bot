@@ -3,6 +3,7 @@ import type { Context } from 'hono';
 import type { Ctx } from '../services/_ctx';
 import { apiOnError } from './middleware/error';
 import { authRoutes, resolveJwtCtx } from './auth';
+import { characterRoutes } from './routes/characters';
 
 /**
  * The API app. Mounted under /api by server.ts. Discord commands call the same
@@ -44,4 +45,5 @@ export function createApiApp(opts: CreateApiOptions = {}) {
  */
 function registerProtectedRoutes(app: Hono<AppEnv>) {
     app.get('/me', (c) => c.json({ discordId: c.get('ctx').discordId }));
+    app.route('/characters', characterRoutes);
 }

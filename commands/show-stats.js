@@ -1,7 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const { db } = require('../db');
-const { eq, and } = require('drizzle-orm');
-const { players, stats: statsTable } = require('../db/schema');
+const { getCharacterSheet } = require('../services/characters');
 const { readAvatar } = require('../utils/avatarStorage');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-stats');
@@ -13,27 +11,9 @@ module.exports = {
         .addBooleanOption(option => option.setName('visible').setDescription('Make the response visible to everyone')),
     async execute(interaction) {
         try {
-            const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible') || false;
 
-            const [player] = await db
-                .select({ id: players.id, name: players.name, avatar: players.avatar })
-                .from(players)
-                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
-                .limit(1);
-
-            if (!player) {
-                return interaction.reply({
-                    content: '❌ No character selected! Use `/choose-character` first.',
-                    ephemeral: true,
-                });
-            }
-
-            const [stats] = await db
-                .select()
-                .from(statsTable)
-                .where(eq(statsTable.player_id, player.id))
-                .limit(1);
+            const { player, stats } = await getCharacterSheet({ discordId: interaction.user.id });
 
             if (!stats) {
                 return interaction.reply({
@@ -148,6 +128,12 @@ module.exports = {
                 ephemeral: !visible,
             });
         } catch (error) {
+            if (error.status === 404) {
+                return interaction.reply({
+                    content: '❌ No character selected! Use `/choose-character` first.',
+                    ephemeral: true,
+                });
+            }
             log.error({ error }, 'Showstats error');
             return interaction.reply({
                 content: '❌ Failed to retrieve character stats!',
