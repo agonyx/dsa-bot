@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, stats, talents, playerTalents } = require('../db/schema');
 const { rollDice } = require('../utils/rollUtil');
 const { createLogger } = require('../utils/logger');
 
@@ -42,39 +44,32 @@ module.exports = {
         const { user } = interaction;
 
         try {
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select('id')
-                .eq('discord_id', user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id })
+                .from(players)
+                .where(and(eq(players.discord_id, user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player) {
+            if (!player) {
                 await interaction.respond([]);
                 return;
             }
 
-            const { data: playerTalents, error: talentsError } = await supabase
-                .from('player_talents')
-                .select(
-                    `
-                    ftw,
-                    talent:talents(id, name)
-                `
-                )
-                .eq('player_id', player.id);
+            const ptRows = await db
+                .select({
+                    ftw: playerTalents.ftw,
+                    talent_id: talents.id,
+                    talent_name: talents.name,
+                })
+                .from(playerTalents)
+                .innerJoin(talents, eq(playerTalents.talent_id, talents.id))
+                .where(eq(playerTalents.player_id, player.id));
 
-            if (talentsError) {
-                log.error({ talentsError }, 'Failed to fetch talents');
-                await interaction.respond([]);
-                return;
-            }
-
-            const choices = (playerTalents || [])
-                .filter(pt => pt.talent)
+            const choices = ptRows
+                .filter(pt => pt.talent_id != null)
                 .map(pt => ({
-                    name: `${pt.talent.name} (FtW: ${pt.ftw})`,
-                    value: pt.talent.id.toString(),
+                    name: `${pt.talent_name} (FtW: ${pt.ftw})`,
+                    value: pt.talent_id.toString(),
                 }));
 
             const filtered = choices.filter(c => c.name.toLowerCase().includes(focusedValue.toLowerCase()));
@@ -98,53 +93,65 @@ module.exports = {
         const visible = interaction.options.getBoolean('visible') || false;
 
         try {
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    stats:stats(*)
-                `
-                )
-                .eq('discord_id', discordId)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({
+                    id: players.id,
+                    name: players.name,
+                })
+                .from(players)
+                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player?.stats) {
+            const [playerStats] = player
+                ? await db
+                      .select()
+                      .from(stats)
+                      .where(eq(stats.player_id, player.id))
+                      .limit(1)
+                : [];
+
+            if (!player || !playerStats) {
                 return interaction.reply({
                     content: '❌ No character selected! Use `/choose-character` first.',
                     ephemeral: true,
                 });
             }
 
-            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
-
-            const { data: playerTalent, error: talentError } = await supabase
-                .from('player_talents')
-                .select(
-                    `
-                    ftw,
-                    talent:talents(id, name, stat1, stat2, stat3)
-                `
+            const [playerTalent] = await db
+                .select({
+                    ftw: playerTalents.ftw,
+                    talent_id: talents.id,
+                    talent_name: talents.name,
+                    talent_stat1: talents.stat1,
+                    talent_stat2: talents.stat2,
+                    talent_stat3: talents.stat3,
+                })
+                .from(playerTalents)
+                .innerJoin(talents, eq(playerTalents.talent_id, talents.id))
+                .where(
+                    and(eq(playerTalents.player_id, player.id), eq(playerTalents.talent_id, parseInt(talentId)))
                 )
-                .eq('player_id', player.id)
-                .eq('talent_id', parseInt(talentId))
-                .single();
+                .limit(1);
 
-            if (talentError || !playerTalent?.talent) {
+            if (!playerTalent || playerTalent.talent_id == null) {
                 return interaction.reply({
                     content: '❌ Talent not found or not learned!',
                     ephemeral: true,
                 });
             }
 
-            const talent = playerTalent.talent;
+            const talent = {
+                id: playerTalent.talent_id,
+                name: playerTalent.talent_name,
+                stat1: playerTalent.talent_stat1,
+                stat2: playerTalent.talent_stat2,
+                stat3: playerTalent.talent_stat3,
+            };
             const baseFtw = playerTalent.ftw;
             const effectiveFtw = baseFtw + modifier;
 
             const statKeys = [talent.stat1, talent.stat2, talent.stat3].map(s => s.toLowerCase());
-            const attrValues = statKeys.map(key => stats[key] || 8);
+            const attrValues = statKeys.map(key => playerStats[key] || 8);
 
             const rolls = [rollDice(20), rollDice(20), rollDice(20)];
             let remainingFtw = effectiveFtw;

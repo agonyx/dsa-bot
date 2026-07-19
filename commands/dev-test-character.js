@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db, callEdgeFunction } = require('../db');
+const { eq } = require('drizzle-orm');
+const { stats, weapons, items } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('dev-test-character');
 
@@ -20,23 +22,22 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const { callEdgeFunction } = require('../utils/supabaseClient');
             const { data: result } = await callEdgeFunction('create-player', {
                 name: 'Test Character',
                 discordId: discordId,
             });
 
             const player = result?.player || result;
-            const stats = result?.stats;
+            const statsRow = result?.stats;
 
             if (!player?.id) {
                 throw new Error('Failed to create player');
             }
 
-            if (stats?.id) {
-                await supabase
-                    .from('stats')
-                    .update({
+            if (statsRow?.id) {
+                await db
+                    .update(stats)
+                    .set({
                         mu: 10,
                         kl: 10,
                         in: 10,
@@ -51,10 +52,10 @@ module.exports = {
                         ruestungsschutz: 2,
                         ausweichen: 5,
                     })
-                    .eq('id', stats.id);
+                    .where(eq(stats.id, statsRow.id));
             }
 
-            await supabase.from('weapons').insert([
+            await db.insert(weapons).values([
                 {
                     name: 'Test Sword',
                     type: 'MELEE',
@@ -76,7 +77,7 @@ module.exports = {
                 },
             ]);
 
-            await supabase.from('items').insert([
+            await db.insert(items).values([
                 {
                     name: 'Health Potion',
                     description: 'Restores 1d6+4 health.',

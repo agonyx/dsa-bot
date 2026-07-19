@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ComponentType } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq } = require('drizzle-orm');
+const { players } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('choose-character');
 
@@ -11,21 +13,23 @@ module.exports = {
         const discordId = interaction.user.id;
 
         try {
-            const { data: players, error } = await supabase
-                .from('players')
-                .select('id, name, selected')
-                .eq('discord_id', discordId);
+            const playerRows = await db
+                .select({
+                    id: players.id,
+                    name: players.name,
+                    selected: players.selected,
+                })
+                .from(players)
+                .where(eq(players.discord_id, discordId));
 
-            if (error) throw error;
-
-            if (!players || players.length === 0) {
+            if (!playerRows || playerRows.length === 0) {
                 return interaction.reply({
                     content: 'You do not have any characters to choose from.',
                     ephemeral: true,
                 });
             }
 
-            const options = players.map(player => ({
+            const options = playerRows.map(player => ({
                 label: player.name + (player.selected === 'YES' ? ' (Selected)' : ''),
                 value: player.id.toString(),
             }));

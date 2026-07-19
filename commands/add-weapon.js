@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, weapons } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('add-weapon');
 
@@ -63,30 +65,26 @@ module.exports = {
                 });
             }
 
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select('id')
-                .eq('discord_id', discordId)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id })
+                .from(players)
+                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player) {
+            if (!player) {
                 return interaction.reply({
                     content: 'No selected character! Use /choose-character first',
                     ephemeral: true,
                 });
             }
 
-            const { data: weapon, error: weaponError } = await supabase
-                .from('weapons')
-                .insert({
+            const [weapon] = await db
+                .insert(weapons)
+                .values({
                     ...weaponData,
                     player_id: player.id,
                 })
-                .select()
-                .single();
-
-            if (weaponError) throw weaponError;
+                .returning();
 
             const embed = new EmbedBuilder()
                 .setColor(0x00ff00)

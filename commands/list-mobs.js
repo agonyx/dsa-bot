@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { mobs } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('list-mobs');
 
@@ -13,11 +14,9 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: mobs, error } = await supabase.from('mobs').select('*').order('name');
+            const mobRows = await db.select().from(mobs).orderBy(mobs.name);
 
-            if (error) throw error;
-
-            if (!mobs || mobs.length === 0) {
+            if (!mobRows || mobRows.length === 0) {
                 await interaction.editReply(
                     'ℹ️ No mob templates have been defined yet. Use `/add-mob` to create some.'
                 );
@@ -27,10 +26,10 @@ module.exports = {
             const listEmbed = new EmbedBuilder()
                 .setColor(0x5865f2)
                 .setTitle('👾 Available Mob Templates 👾')
-                .setDescription(`Found ${mobs.length} mob template(s).`)
+                .setDescription(`Found ${mobRows.length} mob template(s).`)
                 .setTimestamp();
 
-            const fieldsToShow = mobs.slice(0, 15).map(mob => {
+            const fieldsToShow = mobRows.slice(0, 15).map(mob => {
                 const hp = mob.base_max_hp ?? 'N/A';
                 const ini = mob.base_initiative ?? 'N/A';
                 const atk = mob.base_attack_value ?? 'N/A';
@@ -49,10 +48,10 @@ module.exports = {
             });
             listEmbed.addFields(fieldsToShow);
 
-            if (mobs.length > 15) {
-                listEmbed.setFooter({ text: `Displaying ${fieldsToShow.length} of ${mobs.length} total mobs.` });
+            if (mobRows.length > 15) {
+                listEmbed.setFooter({ text: `Displaying ${fieldsToShow.length} of ${mobRows.length} total mobs.` });
             } else {
-                listEmbed.setFooter({ text: `Total mobs: ${mobs.length}` });
+                listEmbed.setFooter({ text: `Total mobs: ${mobRows.length}` });
             }
 
             await interaction.editReply({ embeds: [listEmbed] });

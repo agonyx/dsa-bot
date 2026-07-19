@@ -9,7 +9,9 @@ const {
     ButtonBuilder,
     ButtonStyle,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, items } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-item');
 
@@ -32,22 +34,22 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select(`
-                    id,
-                    name,
-                    items:items(*)
-                `)
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [playerRow] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player) {
+            if (!playerRow) {
                 return interaction.editReply({
                     content: 'No selected character! Use /choose-character first',
                 });
             }
+
+            // Separate query for the items relation (Drizzle can't nest like PostgREST).
+            const playerItems = await db.select().from(items).where(eq(items.player_id, playerRow.id));
+
+            const player = { ...playerRow, items: playerItems };
 
             if (!player.items || player.items.length === 0) {
                 return interaction.editReply({
@@ -139,20 +141,18 @@ module.exports = {
 
                     if (currentItem[statConfig.backendKey] === validatedValue) return;
 
-                    const { error: updateError } = await supabase
-                        .from('items')
-                        .update({ [statConfig.backendKey]: validatedValue })
-                        .eq('id', currentItem.id);
+                    await db
+                        .update(items)
+                        .set({ [statConfig.backendKey]: validatedValue })
+                        .where(eq(items.id, currentItem.id));
 
-                    if (updateError) throw updateError;
+                    const [refreshedData] = await db
+                        .select()
+                        .from(items)
+                        .where(eq(items.id, currentItem.id))
+                        .limit(1);
 
-                    const { data: refreshedData, error: refreshError } = await supabase
-                        .from('items')
-                        .select('*')
-                        .eq('id', currentItem.id)
-                        .single();
-
-                    if (refreshError) throw refreshError;
+                    if (!refreshedData) return;
                     currentItem = refreshedData;
 
                     await interaction.editReply({

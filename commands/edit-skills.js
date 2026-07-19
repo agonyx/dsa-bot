@@ -6,7 +6,9 @@ const {
     ButtonStyle,
     ComponentType,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, actionModifications, playerActionModifications } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-skills');
 
@@ -21,27 +23,30 @@ module.exports = {
         const { user, client } = interaction;
 
         try {
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select('id, name')
-                .eq('discord_id', user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player) {
+            if (!player) {
                 return interaction.editReply('❌ You need to select a character first with `/choose-character`.');
             }
 
-            const [allSkillsResult, playerSkillsResult] = await Promise.all([
-                supabase.from('action_modifications').select('id, name, description'),
-                supabase
-                    .from('player_action_modifications')
-                    .select('action_modification_id')
-                    .eq('player_id', player.id),
+            const [allSkills, playerSkills] = await Promise.all([
+                db
+                    .select({
+                        id: actionModifications.id,
+                        name: actionModifications.name,
+                        description: actionModifications.description,
+                    })
+                    .from(actionModifications),
+                db
+                    .select({ action_modification_id: playerActionModifications.action_modification_id })
+                    .from(playerActionModifications)
+                    .where(eq(playerActionModifications.player_id, player.id)),
             ]);
 
-            const allSkills = allSkillsResult.data;
-            const playerSkills = playerSkillsResult.data;
             const playerSkillIds = new Set(playerSkills.map(s => s.action_modification_id));
 
             if (!allSkills || allSkills.length === 0) {
@@ -82,8 +87,8 @@ module.exports = {
 
             let lastSelectedValues = [...playerSkillIds];
 
-            const buildPromises = (selectedSkillIds, skillsToAdd, skillsToRemove) => {
-                const promises = [];
+            const applySkillChanges = async (skillsToAdd, skillsToRemove) => {
+                const ops = [];
 
                 if (skillsToAdd.length > 0) {
                     const insertData = skillsToAdd.map(skillId => ({
@@ -91,20 +96,23 @@ module.exports = {
                         action_modification_id: skillId,
                         ftw: 0,
                     }));
-                    promises.push(supabase.from('player_action_modifications').insert(insertData));
+                    ops.push(db.insert(playerActionModifications).values(insertData));
                 }
 
                 for (const skillId of skillsToRemove) {
-                    promises.push(
-                        supabase
-                            .from('player_action_modifications')
-                            .delete()
-                            .eq('player_id', player.id)
-                            .eq('action_modification_id', skillId)
+                    ops.push(
+                        db
+                            .delete(playerActionModifications)
+                            .where(
+                                and(
+                                    eq(playerActionModifications.player_id, player.id),
+                                    eq(playerActionModifications.action_modification_id, skillId)
+                                )
+                            )
                     );
                 }
 
-                return promises;
+                await Promise.all(ops);
             };
 
             collector.on('collect', async i => {
@@ -118,12 +126,10 @@ module.exports = {
                     const skillsToAdd = [...selectedSkillIds].filter(id => !playerSkillIds.has(id));
                     const skillsToRemove = [...playerSkillIds].filter(id => !selectedSkillIds.has(id));
 
-                    const promises = buildPromises(selectedSkillIds, skillsToAdd, skillsToRemove);
-                    const results = await Promise.all(promises);
-
-                    const errors = results.filter(r => r && r.error);
-                    if (errors.length > 0) {
-                        log.error({ errors }, 'Database errors during skill update');
+                    try {
+                        await applySkillChanges(skillsToAdd, skillsToRemove);
+                    } catch (err) {
+                        log.error({ err }, 'Database errors during skill update');
                         return i.editReply({
                             content: '❌ Some database operations failed. Please try again.',
                             components: [],

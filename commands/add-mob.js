@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, PermissionFlagsBits, Interaction } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq } = require('drizzle-orm');
+const { mobs } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('add-mob');
 
@@ -88,17 +90,15 @@ module.exports = {
         };
 
         try {
-            const { data, error } = await supabase.from('mobs').insert(mobData).select().single();
-
-            if (error) {
-                if (error.code === '23505') {
-                    return interaction.reply({
-                        content: `❌ Failed: A mob template named **${name}** already exists. Choose a unique name.`,
-                        ephemeral: true,
-                    });
-                }
-                throw error;
+            const existing = await db.select({ id: mobs.id }).from(mobs).where(eq(mobs.name, name));
+            if (existing.length) {
+                return interaction.reply({
+                    content: `❌ Failed: A mob template named **${name}** already exists. Choose a unique name.`,
+                    ephemeral: true,
+                });
             }
+
+            await db.insert(mobs).values(mobData);
 
             await interaction.reply({ content: `✅ Mob template **${name}** created successfully!`, ephemeral: true });
         } catch (error) {

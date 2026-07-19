@@ -1,5 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, stats: statsTable } = require('../db/schema');
+const { readAvatar } = require('../utils/avatarStorage');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-stats');
 
@@ -13,28 +16,24 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible') || false;
 
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    avatar,
-                    stats:stats(*)
-                `
-                )
-                .eq('discord_id', discordId)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name, avatar: players.avatar })
+                .from(players)
+                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player?.stats) {
+            if (!player) {
                 return interaction.reply({
                     content: '❌ No character selected! Use `/choose-character` first.',
                     ephemeral: true,
                 });
             }
 
-            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            const [stats] = await db
+                .select()
+                .from(statsTable)
+                .where(eq(statsTable.player_id, player.id))
+                .limit(1);
 
             if (!stats) {
                 return interaction.reply({
@@ -132,14 +131,10 @@ module.exports = {
             const files = [];
             if (player.avatar) {
                 try {
-                    const { data: avatarData, error: avatarError } = await supabase.storage
-                        .from('avatars')
-                        .download(player.avatar);
+                    const avatarBuffer = await readAvatar(player.avatar);
 
-                    if (!avatarError && avatarData) {
-                        files.push(
-                            new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), { name: 'avatar.png' })
-                        );
+                    if (avatarBuffer) {
+                        files.push(new AttachmentBuilder(avatarBuffer, { name: 'avatar.png' }));
                         statsEmbed.setThumbnail('attachment://avatar.png');
                     }
                 } catch (e) {

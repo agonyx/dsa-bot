@@ -1,5 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
-const { supabase } = require('./supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, stats } = require('../db/schema');
 const { createLogger } = require('./logger');
 const log = createLogger('resourceUtils');
 
@@ -41,30 +43,28 @@ const RESOURCE_TYPES = {
 /**
  * Fetches the selected player and their stats for a given Discord user.
  * @param {string} discordId - Discord user ID
- * @param {string} selectColumns - Additional stats columns to select (comma-separated)
+ * @param {string} _selectColumns - unused (kept for API compat); always returns the full stats row
  * @returns {Promise<{player: object, stats: object}|null>} Player and stats, or null if not found
  */
-async function getPlayerWithStats(discordId, selectColumns = '*') {
-    const { data: player, error } = await supabase
-        .from('players')
-        .select(
-            `
-            id,
-            name,
-            stats:stats(id, ${selectColumns})
-        `
-        )
-        .eq('discord_id', discordId)
-        .eq('selected', 'YES')
-        .single();
+async function getPlayerWithStats(discordId, _selectColumns = '*') {
+    const [player] = await db
+        .select({ id: players.id, name: players.name })
+        .from(players)
+        .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
+        .limit(1);
 
-    if (error || !player?.stats) {
-        log.debug({ discordId, error }, 'No selected player found');
+    if (!player) {
+        log.debug({ discordId }, 'No selected player found');
         return null;
     }
 
-    const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
-    return { player, stats };
+    const [statsRow] = await db.select().from(stats).where(eq(stats.player_id, player.id)).limit(1);
+    if (!statsRow) {
+        log.debug({ discordId }, 'No stats found for selected player');
+        return null;
+    }
+
+    return { player, stats: statsRow };
 }
 
 /**
@@ -85,13 +85,13 @@ async function spendResource(statsId, resourceType, amount, currentValue) {
 
     const newValue = currentValue - amount;
 
-    const { error } = await supabase
-        .from('stats')
-        .update({ [resourceType.currentCol]: newValue })
-        .eq('id', statsId);
-
-    if (error) {
-        log.error({ error, statsId, resourceType: resourceType.key }, 'Failed to spend resource');
+    try {
+        await db
+            .update(stats)
+            .set({ [resourceType.currentCol]: newValue })
+            .where(eq(stats.id, statsId));
+    } catch (error) {
+        log.error({ error, statsId, resource: resourceType.key }, 'Failed to spend resource');
         return { newValue: currentValue, error: `Database error: ${error.message}` };
     }
 
@@ -115,13 +115,13 @@ async function restoreResource(statsId, resourceType, amount, currentValue, maxV
         return { newValue: currentValue, actualAmount: 0, error: null };
     }
 
-    const { error } = await supabase
-        .from('stats')
-        .update({ [resourceType.currentCol]: newValue })
-        .eq('id', statsId);
-
-    if (error) {
-        log.error({ error, statsId, resourceType: resourceType.key }, 'Failed to restore resource');
+    try {
+        await db
+            .update(stats)
+            .set({ [resourceType.currentCol]: newValue })
+            .where(eq(stats.id, statsId));
+    } catch (error) {
+        log.error({ error, statsId, resource: resourceType.key }, 'Failed to restore resource');
         return { newValue: currentValue, actualAmount: 0, error: `Database error: ${error.message}` };
     }
 
@@ -139,13 +139,13 @@ async function restoreResource(statsId, resourceType, amount, currentValue, maxV
 async function setResource(statsId, resourceType, value, maxValue) {
     const newValue = Math.max(0, Math.min(value, maxValue));
 
-    const { error } = await supabase
-        .from('stats')
-        .update({ [resourceType.currentCol]: newValue })
-        .eq('id', statsId);
-
-    if (error) {
-        log.error({ error, statsId, resourceType: resourceType.key }, 'Failed to set resource');
+    try {
+        await db
+            .update(stats)
+            .set({ [resourceType.currentCol]: newValue })
+            .where(eq(stats.id, statsId));
+    } catch (error) {
+        log.error({ error, statsId, resource: resourceType.key }, 'Failed to set resource');
         return { newValue: value, error: `Database error: ${error.message}` };
     }
 

@@ -9,7 +9,9 @@ const {
     ButtonBuilder,
     ButtonStyle,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, weapons } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-weapon');
 
@@ -32,22 +34,22 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select(`
-                    id,
-                    name,
-                    weapons:weapons(*)
-                `)
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player) {
+            if (!player) {
                 return interaction.editReply({
                     content: 'No selected character! Use /choose-character first',
                 });
             }
+
+            player.weapons = await db
+                .select()
+                .from(weapons)
+                .where(eq(weapons.player_id, player.id));
 
             if (!player.weapons || player.weapons.length === 0) {
                 return interaction.editReply({
@@ -153,20 +155,18 @@ module.exports = {
 
                     if (currentWeapon[statConfig.backendKey] === validatedValue) return;
 
-                    const { error: updateError } = await supabase
-                        .from('weapons')
-                        .update({ [statConfig.backendKey]: validatedValue })
-                        .eq('id', currentWeapon.id);
+                    await db
+                        .update(weapons)
+                        .set({ [statConfig.backendKey]: validatedValue })
+                        .where(eq(weapons.id, currentWeapon.id));
 
-                    if (updateError) throw updateError;
+                    const [refreshedData] = await db
+                        .select()
+                        .from(weapons)
+                        .where(eq(weapons.id, currentWeapon.id))
+                        .limit(1);
 
-                    const { data: refreshedData, error: refreshError } = await supabase
-                        .from('weapons')
-                        .select('*')
-                        .eq('id', currentWeapon.id)
-                        .single();
-
-                    if (refreshError) throw refreshError;
+                    if (!refreshedData) throw new Error('Weapon not found after update');
                     currentWeapon = refreshedData;
 
                     await interaction.editReply({

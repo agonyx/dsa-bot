@@ -1,5 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, items } = require('../db/schema');
+const { readAvatar } = require('../utils/avatarStorage');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-items');
 
@@ -26,21 +29,13 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible', false);
 
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    avatar,
-                    items:items(*)
-                `
-                )
-                .eq('discord_id', discordId)
-                .eq('selected', 'YES')
-                .single();
+            const [playerRow] = await db
+                .select({ id: players.id, name: players.name, avatar: players.avatar })
+                .from(players)
+                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player || !player.id) {
+            if (!playerRow || !playerRow.id) {
                 return interaction.reply({
                     content:
                         'You have not selected a player yet. Use the /choose-character command to select a player.',
@@ -48,9 +43,14 @@ module.exports = {
                 });
             }
 
-            const items = player.items;
+            // Separate query for the items relation (Drizzle can't nest like PostgREST).
+            const playerItems = await db.select().from(items).where(eq(items.player_id, playerRow.id));
 
-            if (!items || items.length === 0) {
+            const player = { ...playerRow, items: playerItems };
+
+            const itemsList = player.items;
+
+            if (!itemsList || itemsList.length === 0) {
                 return interaction.reply({
                     content: 'Your selected player does not have any items.',
                     ephemeral: true,
@@ -60,7 +60,7 @@ module.exports = {
             const itemsEmbed = new EmbedBuilder()
                 .setColor(0x0099ff)
                 .setTitle(`🎒 ${player.name} - Inventory`)
-                .setDescription(`**${items.length} item${items.length !== 1 ? 's' : ''} in inventory**`)
+                .setDescription(`**${itemsList.length} item${itemsList.length !== 1 ? 's' : ''} in inventory**`)
                 .setFooter({
                     text: `Requested by ${interaction.user.username}`,
                     iconURL: interaction.user.avatarURL(),
@@ -68,7 +68,7 @@ module.exports = {
 
             // Group items by type
             const groupedItems = {};
-            items.forEach(item => {
+            itemsList.forEach(item => {
                 const type = item.type || 'MISC';
                 if (!groupedItems[type]) groupedItems[type] = [];
                 groupedItems[type].push(item);
@@ -99,21 +99,16 @@ module.exports = {
                 });
             });
 
-            if (player.avatar) {
+            if (playerRow.avatar) {
                 try {
-                    const { data: avatarData, error: avatarError } = await supabase.storage
-                        .from('avatars')
-                        .download(player.avatar);
-
-                    if (!avatarError && avatarData) {
-                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), {
-                            name: 'avatar.png',
-                        });
+                    const avatarBuffer = await readAvatar(playerRow.avatar);
+                    if (avatarBuffer) {
+                        const attachment = new AttachmentBuilder(avatarBuffer, { name: 'avatar.png' });
                         itemsEmbed.setThumbnail('attachment://avatar.png');
                         return interaction.reply({ embeds: [itemsEmbed], files: [attachment], ephemeral: !visible });
                     }
                 } catch (e) {
-                    // Avatar fetch failed, continue without
+                    // Avatar fetch failed, continue without it
                 }
             }
 

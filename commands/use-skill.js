@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, playerActionModifications, actionModifications } = require('../db/schema');
 const { resolveCombatAction } = require('../handlers/combatHandler');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('use-skill');
@@ -22,27 +24,30 @@ module.exports = {
         const { client, user } = interaction;
 
         try {
-            const { data: player } = await supabase
-                .from('players')
-                .select('id')
-                .eq('discord_id', user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id })
+                .from(players)
+                .where(and(eq(players.discord_id, user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
             if (!player) return await interaction.respond([]);
 
-            const { data: skills } = await supabase
-                .from('player_action_modifications')
-                .select(
-                    `
-                    action_modification:action_modifications(id, name, action_type)
-                `
+            const skillRows = await db
+                .select({
+                    skill_id: actionModifications.id,
+                    skill_name: actionModifications.name,
+                    skill_action_type: actionModifications.action_type,
+                })
+                .from(playerActionModifications)
+                .innerJoin(
+                    actionModifications,
+                    eq(playerActionModifications.action_modification_id, actionModifications.id)
                 )
-                .eq('player_id', player.id);
+                .where(eq(playerActionModifications.player_id, player.id));
 
-            const meleeSkills = (skills || [])
-                .map(s => s.action_modification)
-                .filter(s => s && s.action_type === 'MELEE');
+            const meleeSkills = skillRows
+                .filter(s => s.skill_id != null && s.skill_action_type === 'MELEE')
+                .map(s => ({ id: s.skill_id, name: s.skill_name, action_type: s.skill_action_type }));
 
             const choices = meleeSkills.map(skill => ({ name: skill.name, value: skill.id }));
             const filtered = choices.filter(choice => choice.name.toLowerCase().startsWith(focusedValue.toLowerCase()));
@@ -81,14 +86,18 @@ module.exports = {
             return interaction.editReply('❌ The specified target is not in this combat.');
         }
 
-        const { data: playerSkill, error: skillError } = await supabase
-            .from('player_action_modifications')
-            .select('id')
-            .eq('player_id', attackerCombatant.player_id)
-            .eq('action_modification_id', maneuverId)
-            .single();
+        const [playerSkill] = await db
+            .select({ id: playerActionModifications.id })
+            .from(playerActionModifications)
+            .where(
+                and(
+                    eq(playerActionModifications.player_id, attackerCombatant.player_id),
+                    eq(playerActionModifications.action_modification_id, maneuverId)
+                )
+            )
+            .limit(1);
 
-        if (skillError || !playerSkill) {
+        if (!playerSkill) {
             return interaction.editReply('❌ You do not have access to this skill or it does not exist.');
         }
 

@@ -9,7 +9,9 @@ const {
     ButtonBuilder,
     ButtonStyle,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, stats: statsTable } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-stats');
 
@@ -43,25 +45,26 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    avatar,
-                    stats:stats(*)
-                `
-                )
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name, avatar: players.avatar })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player?.stats) {
+            if (!player) {
                 return interaction.editReply('❌ No character stats found! Select a character first.');
             }
 
-            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            const [stats] = await db
+                .select()
+                .from(statsTable)
+                .where(eq(statsTable.player_id, player.id))
+                .limit(1);
+
+            if (!stats) {
+                return interaction.editReply('❌ No character stats found! Select a character first.');
+            }
+
             const currentPlayer = player;
 
             const createStatSelect = statsData =>
@@ -177,12 +180,10 @@ module.exports = {
                         return;
                     }
 
-                    const { error: updateError } = await supabase
-                        .from('stats')
-                        .update({ [statKey]: parsedValue })
-                        .eq('player_id', currentPlayer.id);
-
-                    if (updateError) throw updateError;
+                    await db
+                        .update(statsTable)
+                        .set({ [statKey]: parsedValue })
+                        .where(eq(statsTable.player_id, currentPlayer.id));
 
                     stats[statKey] = parsedValue;
 

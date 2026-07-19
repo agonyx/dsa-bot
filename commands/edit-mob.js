@@ -11,7 +11,9 @@ const {
     PermissionFlagsBits,
     Interaction,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq } = require('drizzle-orm');
+const { mobs } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('edit-mob');
 
@@ -84,12 +86,9 @@ module.exports = {
         const focusedValue = interaction.options.getFocused();
 
         try {
-            const { data: mobs } = await supabase
-                .from('mobs')
-                .select('name')
-                .order('name');
+            const mobRows = await db.select({ name: mobs.name }).from(mobs).orderBy(mobs.name);
 
-            const choices = (mobs || []).map(m => ({ name: m.name, value: m.name }));
+            const choices = (mobRows || []).map(m => ({ name: m.name, value: m.name }));
             const filtered = choices.filter(c =>
                 c.name.toLowerCase().includes(focusedValue.toLowerCase())
             );
@@ -108,13 +107,9 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const { data: mob, error: fetchError } = await supabase
-                .from('mobs')
-                .select('*')
-                .eq('name', mobNameToEdit)
-                .single();
+            const [mob] = await db.select().from(mobs).where(eq(mobs.name, mobNameToEdit)).limit(1);
 
-            if (fetchError || !mob) {
+            if (!mob) {
                 return interaction.editReply({
                     content: `❌ Mob template named **${mobNameToEdit}** not found.`,
                 });
@@ -196,20 +191,16 @@ module.exports = {
 
                     if (currentMob[statConfig.backendKey] === validatedValue) return;
 
-                    const { error: updateError } = await supabase
-                        .from('mobs')
-                        .update({ [statConfig.backendKey]: validatedValue })
-                        .eq('id', currentMob.id);
+                    await db.update(mobs)
+                        .set({ [statConfig.backendKey]: validatedValue })
+                        .where(eq(mobs.id, currentMob.id));
 
-                    if (updateError) throw updateError;
+                    const [refreshedData] = await db
+                        .select()
+                        .from(mobs)
+                        .where(eq(mobs.id, currentMob.id))
+                        .limit(1);
 
-                    const { data: refreshedData, error: refreshError } = await supabase
-                        .from('mobs')
-                        .select('*')
-                        .eq('id', currentMob.id)
-                        .single();
-
-                    if (refreshError) throw refreshError;
                     currentMob = refreshedData;
 
                     await interaction.editReply({

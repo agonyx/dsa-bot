@@ -19,7 +19,18 @@ const {
 const { ButtonBuilder } = require('@discordjs/builders');
 const crypto = require('crypto');
 
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and, inArray } = require('drizzle-orm');
+const {
+    combatSessions,
+    combatants,
+    actionModifications,
+    playerActionModifications,
+    players,
+    stats,
+    weapons,
+    mobs,
+} = require('../db/schema');
 const { sessionToMemory } = require('../utils/transforms');
 const { createLogger } = require('../utils/logger');
 const { resolveAttack, parseAndRollDamage, applySoak, resolveDefense, rollDice } = require('../utils/combatUtils');
@@ -44,17 +55,19 @@ async function getOrLoadSession(client, channelId) {
     }
 
     log.debug({ channelId }, 'Session not in memory, loading from DB');
-    const { data: session, error } = await supabase
-        .from('combat_sessions')
-        .select('*, combatants(*)')
-        .eq('channel_id', channelId)
-        .in('state', ['RUNNING', 'PAUSED'])
-        .single();
+    const [session] = await db
+        .select()
+        .from(combatSessions)
+        .where(and(eq(combatSessions.channel_id, channelId), inArray(combatSessions.state, ['RUNNING', 'PAUSED'])))
+        .limit(1);
 
-    if (error || !session) {
-        log.error({ channelId, error: error?.message }, 'Failed to load session from DB');
+    if (!session) {
+        log.error({ channelId }, 'Failed to load session from DB');
         return null;
     }
+
+    const combatantRows = await db.select().from(combatants).where(eq(combatants.session_id, session.id));
+    session.combatants = combatantRows;
 
     const memorySession = sessionToMemory(session);
     client.activeCombats.set(channelId, memorySession);
@@ -130,18 +143,27 @@ async function handleCombatActionSkill(interaction, sessionId, actorId) {
             return interaction.editReply('❌ Invalid actor for this action.');
         }
 
-        const { data: playerSkills, error } = await supabase
-            .from('player_action_modifications')
-            .select('*, action_modifications(*)')
-            .eq('player_id', actorCombatant.playerId);
+        const playerSkills = await db
+            .select()
+            .from(playerActionModifications)
+            .where(eq(playerActionModifications.player_id, actorCombatant.playerId));
 
-        if (error) {
-            log.error({ error: error.message, playerId: actorCombatant.playerId }, 'Error fetching skills');
-            return interaction.editReply('❌ An error occurred while fetching your skills.');
+        const actionModIds = playerSkills.map(pam => pam.action_modification_id);
+        let actionModsMap = {};
+        if (actionModIds.length > 0) {
+            const actionMods = await db
+                .select()
+                .from(actionModifications)
+                .where(inArray(actionModifications.id, actionModIds));
+            for (const am of actionMods) actionModsMap[am.id] = am;
         }
+        const playerSkillsWithRel = playerSkills.map(pam => ({
+            ...pam,
+            action_modifications: actionModsMap[pam.action_modification_id],
+        }));
 
         const availableSkills =
-            playerSkills
+            playerSkillsWithRel
                 ?.filter(pam => pam.action_modifications && pam.action_modifications.action_type === 'MELEE')
                 .map(pam => pam.action_modifications) || [];
 
@@ -253,8 +275,12 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
 
     let maneuver = null;
     if (maneuverId && maneuverId !== 'null') {
-        const { data, error } = await supabase.from('action_modifications').select('*').eq('id', maneuverId).single();
-        if (!error && data) maneuver = data;
+        const [maneuverRow] = await db
+            .select()
+            .from(actionModifications)
+            .where(eq(actionModifications.id, maneuverId))
+            .limit(1);
+        if (maneuverRow) maneuver = maneuverRow;
     }
 
     const [attackerStats, targetStats] = await Promise.all([
@@ -285,17 +311,13 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
         const newAttackerHP = Math.max(0, attacker.currentHP - botchDamage);
         logMessage += ` -> **BOTCH!** ${attacker.name} injures themselves for ${botchDamage} damage!`;
 
-        const { error: botchUpdateError } = await supabase
-            .from('combatants')
-            .update({ current_hp: newAttackerHP })
-            .eq('id', attacker.id);
-
-        if (botchUpdateError) {
-            log.error({ error: botchUpdateError.message }, 'Failed to update attacker HP after botch');
-        } else {
+        try {
+            await db.update(combatants).set({ current_hp: newAttackerHP }).where(eq(combatants.id, attacker.id));
             attacker.currentHP = newAttackerHP;
             logMessage += ` | ${attacker.name} HP: ${newAttackerHP}/${attacker.maxHP}.`;
             if (newAttackerHP <= 0) logMessage += ` **Self-defeated!**`;
+        } catch (botchUpdateError) {
+            log.error({ error: botchUpdateError.message }, 'Failed to update attacker HP after botch');
         }
     } else if (attackResult.outcome === 'CRITICAL_SUCCESS') {
         hitConnected = true;
@@ -334,18 +356,14 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
         const newHP = Math.max(0, target.currentHP - finalDamage);
 
         if (newHP !== target.currentHP) {
-            const { error: updateError } = await supabase
-                .from('combatants')
-                .update({ current_hp: newHP })
-                .eq('id', target.id);
-
-            if (updateError) {
-                log.error({ error: updateError.message }, 'Failed to update combatant HP');
-                logMessage += ` | ⚠️ DB update failed!`;
-            } else {
+            try {
+                await db.update(combatants).set({ current_hp: newHP }).where(eq(combatants.id, target.id));
                 target.currentHP = newHP;
                 logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
                 if (newHP <= 0) logMessage += ` **Defeated!**`;
+            } catch (updateError) {
+                log.error({ error: updateError.message }, 'Failed to update combatant HP');
+                logMessage += ` | ⚠️ DB update failed!`;
             }
         }
     }
@@ -498,13 +516,13 @@ async function handleShowFullLogInteraction(interaction, sessionId) {
     await interaction.deferReply({ ephemeral: true });
 
     try {
-        const { data: session, error } = await supabase
-            .from('combat_sessions')
-            .select('combat_log')
-            .eq('id', sessionId)
-            .single();
+        const [session] = await db
+            .select({ combat_log: combatSessions.combat_log })
+            .from(combatSessions)
+            .where(eq(combatSessions.id, sessionId))
+            .limit(1);
 
-        if (error || !session || !session.combat_log) {
+        if (!session || !session.combat_log) {
             return interaction.editReply('❌ Could not retrieve combat log.');
         }
 
@@ -545,9 +563,9 @@ async function handleParkCombatInteraction(interaction, sessionId) {
             return interaction.editReply(`❌ Combat is not running. Current state: ${sessionData.state}.`);
         }
 
-        const { error } = await supabase.from('combat_sessions').update({ state: 'PAUSED' }).eq('id', sessionId);
-
-        if (error) {
+        try {
+            await db.update(combatSessions).set({ state: 'PAUSED' }).where(eq(combatSessions.id, sessionId));
+        } catch (error) {
             log.error({ error: error.message, sessionId }, 'Error parking combat');
             return interaction.editReply('❌ Failed to park combat in database.');
         }
@@ -590,25 +608,25 @@ async function handleEndCombatInteraction(interaction, sessionId) {
         const reason = 'Ended by the DM.';
         const logEntry = `--- Combat Ended: ${reason} ---`;
 
-        const { data: currentSession, error: fetchError } = await supabase
-            .from('combat_sessions')
-            .select('combat_log')
-            .eq('id', sessionId)
-            .single();
+        const [currentSession] = await db
+            .select({ combat_log: combatSessions.combat_log })
+            .from(combatSessions)
+            .where(eq(combatSessions.id, sessionId))
+            .limit(1);
 
-        if (fetchError) {
-            log.error({ error: fetchError.message, sessionId }, 'Error fetching session for end combat');
+        if (!currentSession) {
+            log.error({ sessionId }, 'Error fetching session for end combat');
             return interaction.editReply('❌ Failed to fetch session data.');
         }
 
         const updatedLog = [...(currentSession.combat_log || []), logEntry];
 
-        const { error: updateError } = await supabase
-            .from('combat_sessions')
-            .update({ state: 'ENDED', combat_log: updatedLog })
-            .eq('id', sessionId);
-
-        if (updateError) {
+        try {
+            await db
+                .update(combatSessions)
+                .set({ state: 'ENDED', combat_log: updatedLog })
+                .where(eq(combatSessions.id, sessionId));
+        } catch (updateError) {
             log.error({ error: updateError.message, sessionId }, 'Error ending combat');
             return interaction.editReply('❌ Failed to end combat in database.');
         }
@@ -642,13 +660,13 @@ async function handleResumeSessionSelect(interaction) {
     await interaction.deferReply({ ephemeral: true });
 
     try {
-        const { data: sessionToResume, error: fetchError } = await supabase
-            .from('combat_sessions')
-            .select('*, combatants(*)')
-            .eq('id', sessionId)
-            .single();
+        const [sessionToResume] = await db
+            .select()
+            .from(combatSessions)
+            .where(eq(combatSessions.id, sessionId))
+            .limit(1);
 
-        if (fetchError || !sessionToResume || !sessionToResume.id) {
+        if (!sessionToResume || !sessionToResume.id) {
             return interaction.editReply({ content: '❌ Error: Could not find the selected session data.' });
         }
         if (sessionToResume.dm_user_id !== interaction.user.id) {
@@ -663,12 +681,12 @@ async function handleResumeSessionSelect(interaction) {
             return interaction.editReply({ content: '❌ There is already another active combat in this channel.' });
         }
 
-        const { error: updateError } = await supabase
-            .from('combat_sessions')
-            .update({ state: 'RUNNING' })
-            .eq('id', sessionId);
+        const resumeCombatants = await db.select().from(combatants).where(eq(combatants.session_id, sessionId));
+        sessionToResume.combatants = resumeCombatants;
 
-        if (updateError) {
+        try {
+            await db.update(combatSessions).set({ state: 'RUNNING' }).where(eq(combatSessions.id, sessionId));
+        } catch (updateError) {
             log.error({ error: updateError.message, sessionId }, 'Error updating state');
             return interaction.editReply({ content: '❌ Failed to update session state.' });
         }
@@ -705,7 +723,7 @@ async function handleResumeSessionSelect(interaction) {
 }
 
 /**
- * Adds a log entry to in-memory state and persists to Supabase.
+ * Adds a log entry to in-memory state and persists to the database.
  */
 async function addLogEntry(client, channelId, sessionId, entry) {
     log.debug({ channelId, sessionId, entry }, 'Adding log entry');
@@ -725,14 +743,14 @@ async function addLogEntry(client, channelId, sessionId, entry) {
     }
 
     try {
-        const { data: session, error: fetchError } = await supabase
-            .from('combat_sessions')
-            .select('combat_log')
-            .eq('id', sessionId)
-            .single();
+        const [session] = await db
+            .select({ combat_log: combatSessions.combat_log })
+            .from(combatSessions)
+            .where(eq(combatSessions.id, sessionId))
+            .limit(1);
 
-        if (fetchError) {
-            log.error({ error: fetchError.message, sessionId }, 'Failed to fetch current log');
+        if (!session) {
+            log.error({ sessionId }, 'Failed to fetch current log');
             return;
         }
 
@@ -741,16 +759,13 @@ async function addLogEntry(client, channelId, sessionId, entry) {
         const MAX_LOG_LENGTH_DB = 20;
         const trimmedLog = updatedLog.slice(-MAX_LOG_LENGTH_DB);
 
-        const { error: updateError } = await supabase
-            .from('combat_sessions')
-            .update({ combat_log: trimmedLog })
-            .eq('id', sessionId);
-
-        if (updateError) {
-            log.error({ error: updateError.message, sessionId }, 'Failed to update log in Supabase');
+        try {
+            await db.update(combatSessions).set({ combat_log: trimmedLog }).where(eq(combatSessions.id, sessionId));
+        } catch (updateError) {
+            log.error({ error: updateError.message, sessionId }, 'Failed to update log in DB');
         }
     } catch (error) {
-        log.error({ error: error.message, sessionId }, 'Failed to send log entry to Supabase');
+        log.error({ error: error.message, sessionId }, 'Failed to send log entry to DB');
     }
 }
 
@@ -762,18 +777,24 @@ async function getEffectiveCombatStats(combatant) {
 
     if (combatant.type === 'PLAYER') {
         try {
-            const { data: player, error } = await supabase
-                .from('players')
-                .select('*, stats:stats(*), weapons:weapons(*)')
-                .eq('id', combatant.playerId)
-                .single();
+            const [player] = await db
+                .select()
+                .from(players)
+                .where(eq(players.id, combatant.playerId))
+                .limit(1);
 
-            if (error || !player) {
+            if (!player) {
                 throw new Error(`Failed to fetch player data for ID ${combatant.playerId}`);
             }
 
-            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
-            if (!stats || !player.weapons) {
+            const [statRow] = await db.select().from(stats).where(eq(stats.player_id, player.id)).limit(1);
+            const weaponRows = await db.select().from(weapons).where(eq(weapons.player_id, player.id));
+
+            player.stats = statRow;
+            player.weapons = weaponRows;
+
+            const statData = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            if (!statData || !player.weapons) {
                 throw new Error(`Incomplete player data for ID ${combatant.playerId}`);
             }
 
@@ -784,10 +805,10 @@ async function getEffectiveCombatStats(combatant) {
                 w => w.is_equipped === 'Y' && (w.equipped_slot === 'DEFENSE' || w.equipped_slot === 'ADAPTIVE')
             );
 
-            const at = offensiveWeapon ? offensiveWeapon.at : stats.attacke_basis || 8;
+            const at = offensiveWeapon ? offensiveWeapon.at : statData.attacke_basis || 8;
             const tp = offensiveWeapon ? offensiveWeapon.tp : '1w6';
-            let pa = defensiveWeapon ? defensiveWeapon.pa : stats.parade_basis || 6;
-            const rs = stats.ruestungsschutz || 0;
+            let pa = defensiveWeapon ? defensiveWeapon.pa : statData.parade_basis || 6;
+            const rs = statData.ruestungsschutz || 0;
 
             if (combatant.effects && Array.isArray(combatant.effects)) {
                 for (const effect of combatant.effects) {
@@ -806,13 +827,13 @@ async function getEffectiveCombatStats(combatant) {
         }
     } else if (combatant.type === 'NPC') {
         try {
-            const { data: mob, error } = await supabase
-                .from('mobs')
-                .select('*')
-                .eq('id', combatant.mobDefinitionId)
-                .single();
+            const [mob] = await db
+                .select()
+                .from(mobs)
+                .where(eq(mobs.id, combatant.mobDefinitionId))
+                .limit(1);
 
-            if (error || !mob) {
+            if (!mob) {
                 throw new Error(`Mob definition not found for ID ${combatant.mobDefinitionId}`);
             }
 
@@ -922,10 +943,10 @@ async function nextTurn(client, channelId) {
             await addLogEntry(client, channelId, sessionId, `--- Combat Ended: ${winner} are victorious! ---`);
 
             try {
-                await supabase.from('combat_sessions').update({ state: 'ENDED' }).eq('id', sessionId);
-                log.debug({ sessionId }, 'Supabase state updated to ENDED');
+                await db.update(combatSessions).set({ state: 'ENDED' }).where(eq(combatSessions.id, sessionId));
+                log.debug({ sessionId }, 'DB state updated to ENDED');
             } catch (error) {
-                log.error({ error: error.message, sessionId }, 'Failed to update Supabase state to ENDED');
+                log.error({ error: error.message, sessionId }, 'Failed to update DB state to ENDED');
                 const channel = await client.channels.fetch(channelId).catch(() => null);
                 if (channel) {
                     await channel.send(
@@ -948,12 +969,12 @@ async function nextTurn(client, channelId) {
             log.debug({ sessionId, newIndex: nextIndex, combatantName: nextActiveCombatant.name }, 'Turn advanced');
 
             try {
-                await supabase
-                    .from('combat_sessions')
-                    .update({ current_turn_index: nextIndex, current_round: sessionData.currentRound })
-                    .eq('id', sessionId);
+                await db
+                    .update(combatSessions)
+                    .set({ current_turn_index: nextIndex, current_round: sessionData.currentRound })
+                    .where(eq(combatSessions.id, sessionId));
             } catch (e) {
-                log.error({ error: e.message, sessionId }, 'Failed to update turn index in Supabase');
+                log.error({ error: e.message, sessionId }, 'Failed to update turn index in DB');
             }
 
             await addLogEntry(client, channelId, sessionId, `--- ${nextActiveCombatant.name}'s Turn ---`);

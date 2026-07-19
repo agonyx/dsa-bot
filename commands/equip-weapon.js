@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
-const { supabase, callEdgeFunction } = require('../utils/supabaseClient');
+const { db, callEdgeFunction } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, weapons } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('equip-weapon');
 
@@ -12,19 +14,20 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    weapons:weapons(*)
-                `
-                )
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player?.weapons?.length) {
+            if (player) {
+                player.weapons = await db
+                    .select()
+                    .from(weapons)
+                    .where(eq(weapons.player_id, player.id));
+            }
+
+            if (!player?.weapons?.length) {
                 return interaction.editReply({
                     content: player ? 'No weapons available!' : 'No selected character!',
                     components: [],

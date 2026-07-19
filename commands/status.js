@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { combatantStatuses } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const { STATUS_TYPES, STATUS_LABELS, getStatusEmoji } = require('../utils/conditionUtils');
 
@@ -75,14 +77,15 @@ function buildStatusEmbed(characterName, statuses, user) {
  * @returns {Promise<Array>}
  */
 async function fetchStatuses(combatantId) {
-    const { data, error } = await supabase
-        .from('combatant_statuses')
-        .select('status_type, source, duration_rounds')
-        .eq('combatant_id', combatantId)
-        .order('status_type');
-
-    if (error) throw error;
-    return data || [];
+    return db
+        .select({
+            status_type: combatantStatuses.status_type,
+            source: combatantStatuses.source,
+            duration_rounds: combatantStatuses.duration_rounds,
+        })
+        .from(combatantStatuses)
+        .where(eq(combatantStatuses.combatant_id, combatantId))
+        .orderBy(combatantStatuses.status_type);
 }
 
 // ---------------------------------------------------------------------------
@@ -98,18 +101,23 @@ async function handleAdd(interaction) {
     const { combatant, error: findError } = findCombatant(interaction, targetUser.id);
     if (findError) return interaction.editReply({ content: findError });
 
-    const { error: upsertError } = await supabase.from('combatant_statuses').upsert(
-        {
+    await db
+        .insert(combatantStatuses)
+        .values({
             combatant_id: combatant.id,
             status_type: statusType,
             source,
             duration_rounds: durationRounds,
-            updated_at: new Date().toISOString(),
-        },
-        { onConflict: 'combatant_id,status_type' }
-    );
-
-    if (upsertError) throw upsertError;
+            updated_at: new Date(),
+        })
+        .onConflictDoUpdate({
+            target: [combatantStatuses.combatant_id, combatantStatuses.status_type],
+            set: {
+                source,
+                duration_rounds: durationRounds,
+                updated_at: new Date(),
+            },
+        });
 
     const label = STATUS_LABELS[statusType] || statusType;
     log.info({ combatantId: combatant.id, statusType }, `Status added: ${label}`);
@@ -134,13 +142,16 @@ async function handleRemove(interaction) {
     const { combatant, error: findError } = findCombatant(interaction, targetUser.id);
     if (findError) return interaction.editReply({ content: findError });
 
-    const { error: deleteError, count } = await supabase
-        .from('combatant_statuses')
-        .delete()
-        .eq('combatant_id', combatant.id)
-        .eq('status_type', statusType);
-
-    if (deleteError) throw deleteError;
+    const deleted = await db
+        .delete(combatantStatuses)
+        .where(
+            and(
+                eq(combatantStatuses.combatant_id, combatant.id),
+                eq(combatantStatuses.status_type, statusType)
+            )
+        )
+        .returning({ id: combatantStatuses.id });
+    const count = deleted.length;
 
     const label = STATUS_LABELS[statusType] || statusType;
 

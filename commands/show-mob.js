@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, Interaction } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq } = require('drizzle-orm');
+const { mobs } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-mob');
 
@@ -21,12 +23,9 @@ module.exports = {
         const focusedValue = interaction.options.getFocused();
 
         try {
-            const { data: mobs } = await supabase
-                .from('mobs')
-                .select('name')
-                .order('name');
+            const mobRows = await db.select({ name: mobs.name }).from(mobs).orderBy(mobs.name);
 
-            const choices = (mobs || []).map(m => ({ name: m.name, value: m.name }));
+            const choices = (mobRows || []).map(m => ({ name: m.name, value: m.name }));
             const filtered = choices.filter(c =>
                 c.name.toLowerCase().includes(focusedValue.toLowerCase())
             );
@@ -44,9 +43,9 @@ module.exports = {
         const mobName = interaction.options.getString('name');
 
         try {
-            const { data: mob, error } = await supabase.from('mobs').select('*').eq('name', mobName).single();
+            const [mob] = await db.select().from(mobs).where(eq(mobs.name, mobName)).limit(1);
 
-            if (error || !mob) {
+            if (!mob) {
                 return interaction.editReply({
                     content: `❌ Mob template named **${mobName}** not found. Check the spelling or use \`/list-mobs\`.`,
                 });

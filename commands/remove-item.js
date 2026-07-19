@@ -5,7 +5,9 @@ const {
     ButtonBuilder,
     ButtonStyle,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, items } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('remove-item');
 
@@ -18,24 +20,22 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    items:items(*)
-                `
-                )
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [playerRow] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player) {
+            if (!playerRow) {
                 return interaction.editReply({
                     content: 'No selected character! Use /choose-character first',
                 });
             }
+
+            // Separate query for the items relation (Drizzle can't nest like PostgREST).
+            const playerItems = await db.select().from(items).where(eq(items.player_id, playerRow.id));
+
+            const player = { ...playerRow, items: playerItems };
 
             if (!player.items || player.items.length === 0) {
                 return interaction.editReply({
@@ -94,9 +94,7 @@ module.exports = {
                     const itemId = i.customId.replace('remove_confirm_', '');
                     const item = player.items.find(item => item.id.toString() === itemId);
 
-                    const { error: deleteError } = await supabase.from('items').delete().eq('id', itemId);
-
-                    if (deleteError) throw deleteError;
+                    await db.delete(items).where(eq(items.id, parseInt(itemId)));
 
                     await i.update({
                         content: `✅ **${item.name}** has been removed from **${player.name}**'s inventory.`,

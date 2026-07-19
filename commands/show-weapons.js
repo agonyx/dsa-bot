@@ -1,5 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, weapons } = require('../db/schema');
+const { readAvatar } = require('../utils/avatarStorage');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('show-weapons');
 
@@ -15,21 +18,13 @@ module.exports = {
             const discordId = interaction.user.id;
             const visible = interaction.options.getBoolean('visible', false);
 
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    avatar,
-                    weapons:weapons(*)
-                `
-                )
-                .eq('discord_id', discordId)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name, avatar: players.avatar })
+                .from(players)
+                .where(and(eq(players.discord_id, discordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player) {
+            if (!player) {
                 return interaction.reply({
                     content:
                         'You have not selected a player yet. Use the /choose-character command to select a player.',
@@ -37,9 +32,12 @@ module.exports = {
                 });
             }
 
-            const weapons = player.weapons;
+            player.weapons = await db
+                .select()
+                .from(weapons)
+                .where(eq(weapons.player_id, player.id));
 
-            if (!weapons || weapons.length === 0) {
+            if (!player.weapons || player.weapons.length === 0) {
                 return interaction.reply({
                     content: 'Your selected player does not have any weapons.',
                     ephemeral: true,
@@ -55,8 +53,8 @@ module.exports = {
                     iconURL: interaction.user.avatarURL(),
                 });
 
-            const meleeWeapons = weapons.filter(weapon => weapon.type === 'MELEE');
-            const rangedWeapons = weapons.filter(weapon => weapon.type === 'RANGED');
+            const meleeWeapons = player.weapons.filter(weapon => weapon.type === 'MELEE');
+            const rangedWeapons = player.weapons.filter(weapon => weapon.type === 'RANGED');
 
             let meleeColumn = '';
             let rangedColumn = '';
@@ -89,14 +87,9 @@ module.exports = {
 
             if (player.avatar) {
                 try {
-                    const { data: avatarData, error: avatarError } = await supabase.storage
-                        .from('avatars')
-                        .download(player.avatar);
-
-                    if (!avatarError && avatarData) {
-                        const attachment = new AttachmentBuilder(Buffer.from(await avatarData.arrayBuffer()), {
-                            name: 'avatar.png',
-                        });
+                    const avatarBuffer = await readAvatar(player.avatar);
+                    if (avatarBuffer) {
+                        const attachment = new AttachmentBuilder(avatarBuffer, { name: 'avatar.png' });
                         weaponEmbed.setThumbnail('attachment://avatar.png');
                         return interaction.reply({ embeds: [weaponEmbed], files: [attachment], ephemeral: !visible });
                     }

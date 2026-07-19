@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, weapons } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('delete-weapon');
 
@@ -10,24 +12,22 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    weapons:weapons(*)
-                `
-                )
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player) {
+            if (!player) {
                 return interaction.editReply({
                     content: 'No selected character! Use /choose-character first',
                 });
             }
+
+            player.weapons = await db
+                .select()
+                .from(weapons)
+                .where(eq(weapons.player_id, player.id));
 
             if (!player.weapons || player.weapons.length === 0) {
                 return interaction.editReply({
@@ -63,9 +63,7 @@ module.exports = {
                     const weaponId = i.values[0];
                     const weapon = player.weapons.find(w => w.id.toString() === weaponId);
 
-                    const { error: deleteError } = await supabase.from('weapons').delete().eq('id', weaponId);
-
-                    if (deleteError) throw deleteError;
+                    await db.delete(weapons).where(eq(weapons.id, parseInt(weaponId)));
 
                     await i.update({
                         content: `✅ **${weapon.name}** has been deleted from **${player.name}**.`,

@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, stats: statsTable } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('regeneration');
 const { rollRegeneration } = require('../utils/regenUtils');
@@ -20,20 +22,13 @@ module.exports = {
         const isSelf = targetDiscordId === interaction.user.id;
 
         try {
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    stats:stats(id, le_current, le_max, asp_current, asp_max, kap_current, kap_max)
-                `
-                )
-                .eq('discord_id', targetDiscordId)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, targetDiscordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player?.stats) {
+            if (!player) {
                 return interaction.editReply({
                     content: isSelf
                         ? '❌ No character selected! Use `/choose-character` first.'
@@ -41,7 +36,27 @@ module.exports = {
                 });
             }
 
-            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            const [stats] = await db
+                .select({
+                    id: statsTable.id,
+                    le_current: statsTable.le_current,
+                    le_max: statsTable.le_max,
+                    asp_current: statsTable.asp_current,
+                    asp_max: statsTable.asp_max,
+                    kap_current: statsTable.kap_current,
+                    kap_max: statsTable.kap_max,
+                })
+                .from(statsTable)
+                .where(eq(statsTable.player_id, player.id))
+                .limit(1);
+
+            if (!stats) {
+                return interaction.editReply({
+                    content: isSelf
+                        ? '❌ No character selected! Use `/choose-character` first.'
+                        : '❌ Target has no selected character.',
+                });
+            }
 
             // Check if already at full resources
             const isFullHp = stats.le_current >= stats.le_max;
@@ -77,9 +92,7 @@ module.exports = {
 
             // Update DB if anything changed
             if (Object.keys(updateObj).length > 0) {
-                const { error: updateError } = await supabase.from('stats').update(updateObj).eq('id', stats.id);
-
-                if (updateError) throw updateError;
+                await db.update(statsTable).set(updateObj).where(eq(statsTable.id, stats.id));
             }
 
             // Build embed

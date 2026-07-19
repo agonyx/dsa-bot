@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { callEdgeFunction } = require('../utils/supabaseClient');
+const { callEdgeFunction } = require('../db');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('create-character');
 

@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and, inArray } = require('drizzle-orm');
+const { combatSessions } = require('../db/schema');
 const { createSetupEmbed, createSetupActionRows } = require('../utils/combatComponents');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('start-combat');
@@ -17,12 +19,16 @@ async function executeStartCombat(interaction) {
     const dmUsername = interaction.user.username;
 
     try {
-        const { data: existingSession } = await supabase
-            .from('combat_sessions')
-            .select('id')
-            .eq('channel_id', channelId)
-            .in('state', ['SETUP', 'RUNNING', 'PAUSED'])
-            .single();
+        const [existingSession] = await db
+            .select()
+            .from(combatSessions)
+            .where(
+                and(
+                    eq(combatSessions.channel_id, channelId),
+                    inArray(combatSessions.state, ['SETUP', 'RUNNING', 'PAUSED'])
+                )
+            )
+            .limit(1);
 
         if (existingSession) {
             return interaction.editReply({
@@ -31,18 +37,17 @@ async function executeStartCombat(interaction) {
             });
         }
 
-        const { data: session, error } = await supabase
-            .from('combat_sessions')
-            .insert({
+        const [session] = await db
+            .insert(combatSessions)
+            .values({
                 channel_id: channelId,
                 dm_user_id: dmUserId,
                 state: 'SETUP',
             })
-            .select()
-            .single();
+            .returning();
 
-        if (error || !session) {
-            log.error({ error }, 'Failed to create session');
+        if (!session) {
+            log.error('Failed to create session');
             return interaction.editReply({
                 content: `Failed to create combat session.`,
                 ephemeral: true,
@@ -61,12 +66,12 @@ async function executeStartCombat(interaction) {
             fetchReply: true,
         });
 
-        const { error: updateError } = await supabase
-            .from('combat_sessions')
-            .update({ message_id: setupMessage.id })
-            .eq('id', sessionId);
-
-        if (updateError) {
+        try {
+            await db
+                .update(combatSessions)
+                .set({ message_id: setupMessage.id })
+                .where(eq(combatSessions.id, sessionId));
+        } catch (updateError) {
             log.error(
                 { error: updateError, sessionId, messageId: setupMessage.id },
                 'Failed to update session with message ID'

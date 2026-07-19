@@ -5,7 +5,9 @@ const {
     ButtonStyle,
     PermissionFlagsBits,
 } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq } = require('drizzle-orm');
+const { mobs } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('delete-mob');
 
@@ -28,12 +30,9 @@ module.exports = {
         const focusedValue = interaction.options.getFocused();
 
         try {
-            const { data: mobs } = await supabase
-                .from('mobs')
-                .select('name')
-                .order('name');
+            const mobRows = await db.select({ name: mobs.name }).from(mobs).orderBy(mobs.name);
 
-            const choices = (mobs || []).map(m => ({ name: m.name, value: m.name }));
+            const choices = (mobRows || []).map(m => ({ name: m.name, value: m.name }));
             const filtered = choices.filter(c =>
                 c.name.toLowerCase().includes(focusedValue.toLowerCase())
             );
@@ -51,13 +50,9 @@ module.exports = {
         try {
             await interaction.deferReply({ ephemeral: true });
 
-            const { data: mob, error: fetchError } = await supabase
-                .from('mobs')
-                .select('*')
-                .eq('name', mobName)
-                .single();
+            const [mob] = await db.select().from(mobs).where(eq(mobs.name, mobName)).limit(1);
 
-            if (fetchError || !mob) {
+            if (!mob) {
                 return interaction.editReply({
                     content: `Mob template **${mobName}** not found.`,
                 });
@@ -91,20 +86,16 @@ module.exports = {
                     await i.update({ content: 'Deletion cancelled.', components: [] });
                     collector.stop();
                 } else if (i.customId.startsWith('deletemob_confirm_')) {
-                    const { error: deleteError } = await supabase
-                        .from('mobs')
-                        .delete()
-                        .eq('id', mob.id);
-
-                    if (deleteError) {
-                        log.error({ error: deleteError }, 'Delete mob error');
-                        await i.update({
-                            content: `Failed to delete mob: ${deleteError.message}`,
-                            components: [],
-                        });
-                    } else {
+                    try {
+                        await db.delete(mobs).where(eq(mobs.id, mob.id));
                         await i.update({
                             content: `Mob template **${mob.name}** has been deleted.`,
+                            components: [],
+                        });
+                    } catch (error) {
+                        log.error({ error }, 'Delete mob error');
+                        await i.update({
+                            content: `Failed to delete mob: ${error.message}`,
                             components: [],
                         });
                     }

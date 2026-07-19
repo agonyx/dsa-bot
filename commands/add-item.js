@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, items } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('add-item');
 
@@ -42,14 +44,13 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         try {
-            const { data: player, error: playerError } = await supabase
-                .from('players')
-                .select('id, name')
-                .eq('discord_id', interaction.user.id)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, interaction.user.id), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (playerError || !player) {
+            if (!player) {
                 return interaction.editReply({
                     content: 'No selected character! Use /choose-character first',
                 });
@@ -62,26 +63,21 @@ module.exports = {
             const quantity = interaction.options.getInteger('quantity') || 1;
 
             // Check for existing item with same name and type (stacking)
-            const { data: existingItem, error: searchError } = await supabase
-                .from('items')
-                .select('*')
-                .eq('player_id', player.id)
-                .eq('name', name)
-                .eq('type', type)
-                .single();
+            const [existingItem] = await db
+                .select()
+                .from(items)
+                .where(and(eq(items.player_id, player.id), eq(items.name, name), eq(items.type, type)))
+                .limit(1);
 
-            if (existingItem && !searchError) {
+            if (existingItem) {
                 // Stack: increment quantity
                 const newQuantity = (existingItem.quantity || 1) + quantity;
 
-                const { data: updatedItem, error: updateError } = await supabase
-                    .from('items')
-                    .update({ quantity: newQuantity })
-                    .eq('id', existingItem.id)
-                    .select()
-                    .single();
-
-                if (updateError) throw updateError;
+                const [updatedItem] = await db
+                    .update(items)
+                    .set({ quantity: newQuantity })
+                    .where(eq(items.id, existingItem.id))
+                    .returning();
 
                 const embed = new EmbedBuilder()
                     .setColor(0x57f287)
@@ -106,9 +102,7 @@ module.exports = {
                 player_id: player.id,
             };
 
-            const { data: item, error: itemError } = await supabase.from('items').insert(itemData).select().single();
-
-            if (itemError) throw itemError;
+            const [item] = await db.insert(items).values(itemData).returning();
 
             const embed = new EmbedBuilder()
                 .setColor(0x57f287)

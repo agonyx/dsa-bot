@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { combatantConditions } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const {
     CONDITION_TYPES,
@@ -86,14 +88,17 @@ function buildConditionEmbed(characterName, conditions, user) {
  * @returns {Promise<Array>}
  */
 async function fetchConditions(combatantId) {
-    const { data, error } = await supabase
-        .from('combatant_conditions')
-        .select('condition_type, level, source, duration_type, duration_remaining')
-        .eq('combatant_id', combatantId)
-        .order('condition_type');
-
-    if (error) throw error;
-    return data || [];
+    return db
+        .select({
+            condition_type: combatantConditions.condition_type,
+            level: combatantConditions.level,
+            source: combatantConditions.source,
+            duration_type: combatantConditions.duration_type,
+            duration_remaining: combatantConditions.duration_remaining,
+        })
+        .from(combatantConditions)
+        .where(eq(combatantConditions.combatant_id, combatantId))
+        .orderBy(combatantConditions.condition_type);
 }
 
 // ---------------------------------------------------------------------------
@@ -111,20 +116,27 @@ async function handleAdd(interaction) {
     const { combatant, error: findError } = findCombatant(interaction, targetUser.id);
     if (findError) return interaction.editReply({ content: findError });
 
-    const { error: upsertError } = await supabase.from('combatant_conditions').upsert(
-        {
+    await db
+        .insert(combatantConditions)
+        .values({
             combatant_id: combatant.id,
             condition_type: conditionType,
             level,
             source,
             duration_type: durationType,
             duration_remaining: durationRemaining,
-            updated_at: new Date().toISOString(),
-        },
-        { onConflict: 'combatant_id,condition_type' }
-    );
-
-    if (upsertError) throw upsertError;
+            updated_at: new Date(),
+        })
+        .onConflictDoUpdate({
+            target: [combatantConditions.combatant_id, combatantConditions.condition_type],
+            set: {
+                level,
+                source,
+                duration_type: durationType,
+                duration_remaining: durationRemaining,
+                updated_at: new Date(),
+            },
+        });
 
     const label = CONDITION_LABELS[conditionType] || conditionType;
     log.info({ combatantId: combatant.id, conditionType, level }, `Condition added: ${label} ${level}`);
@@ -149,13 +161,16 @@ async function handleRemove(interaction) {
     const { combatant, error: findError } = findCombatant(interaction, targetUser.id);
     if (findError) return interaction.editReply({ content: findError });
 
-    const { error: deleteError, count } = await supabase
-        .from('combatant_conditions')
-        .delete()
-        .eq('combatant_id', combatant.id)
-        .eq('condition_type', conditionType);
-
-    if (deleteError) throw deleteError;
+    const deleted = await db
+        .delete(combatantConditions)
+        .where(
+            and(
+                eq(combatantConditions.combatant_id, combatant.id),
+                eq(combatantConditions.condition_type, conditionType)
+            )
+        )
+        .returning({ id: combatantConditions.id });
+    const count = deleted.length;
 
     const label = CONDITION_LABELS[conditionType] || conditionType;
 

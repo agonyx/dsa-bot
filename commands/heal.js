@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { supabase } = require('../utils/supabaseClient');
+const { db } = require('../db');
+const { eq, and } = require('drizzle-orm');
+const { players, stats: statsTable } = require('../db/schema');
 const { createLogger } = require('../utils/logger');
 const log = createLogger('heal');
 
@@ -30,20 +32,13 @@ module.exports = {
                 targetDiscordId = targetUser.id;
             }
 
-            const { data: player, error } = await supabase
-                .from('players')
-                .select(
-                    `
-                    id,
-                    name,
-                    stats:stats(id, le_max, le_current)
-                `
-                )
-                .eq('discord_id', targetDiscordId)
-                .eq('selected', 'YES')
-                .single();
+            const [player] = await db
+                .select({ id: players.id, name: players.name })
+                .from(players)
+                .where(and(eq(players.discord_id, targetDiscordId), eq(players.selected, 'YES')))
+                .limit(1);
 
-            if (error || !player?.stats) {
+            if (!player) {
                 return interaction.editReply({
                     content: isHealingSelf
                         ? '❌ No character selected! Use `/choose-character` first.'
@@ -51,7 +46,24 @@ module.exports = {
                 });
             }
 
-            const stats = Array.isArray(player.stats) ? player.stats[0] : player.stats;
+            const [stats] = await db
+                .select({
+                    id: statsTable.id,
+                    le_max: statsTable.le_max,
+                    le_current: statsTable.le_current,
+                })
+                .from(statsTable)
+                .where(eq(statsTable.player_id, player.id))
+                .limit(1);
+
+            if (!stats) {
+                return interaction.editReply({
+                    content: isHealingSelf
+                        ? '❌ No character selected! Use `/choose-character` first.'
+                        : '❌ Target has no selected character.',
+                });
+            }
+
             const currentHP = stats.le_current;
             const maxHP = stats.le_max;
             const newHP = Math.min(currentHP + amount, maxHP);
@@ -63,12 +75,7 @@ module.exports = {
                 });
             }
 
-            const { error: updateError } = await supabase
-                .from('stats')
-                .update({ le_current: newHP })
-                .eq('id', stats.id);
-
-            if (updateError) throw updateError;
+            await db.update(statsTable).set({ le_current: newHP }).where(eq(statsTable.id, stats.id));
 
             const healthBar =
                 '■'.repeat(Math.round((newHP / maxHP) * 10)) + '□'.repeat(10 - Math.round((newHP / maxHP) * 10));
