@@ -17,7 +17,6 @@ const {
     AttachmentBuilder,
 } = require('discord.js');
 const { ButtonBuilder } = require('@discordjs/builders');
-const crypto = require('crypto');
 
 const { db } = require('../db');
 const { eq, and, inArray } = require('drizzle-orm');
@@ -313,48 +312,17 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
 /**
  * Handles target selection for player combat actions.
  */
-async function handleCombatTargetSelectAttack(interaction, sessionId, actorIdFromCustomId, maneuverIdFromCustomId) {
+async function handleCombatTargetSelectAttack(interaction, sessionId, actorIdFromCustomId, _maneuverIdFromCustomId) {
     log.info({ sessionId }, 'Handling Target Select Attack');
     await interaction.update({ content: `⚔️ Resolving action...`, components: [] });
 
     try {
-        if (!interaction.client.pendingCombatActions) {
-            interaction.client.pendingCombatActions = new Map();
-        }
-
+        // The target id (and optional maneuver id) travel in the select option's
+        // value as "targetId" or "targetId:maneuverId" — stateless, no server-side
+        // nonce. Plain attacks send just the target id; maneuver attacks append it.
         const compositeValue = interaction.values[0];
-        const [targetId, nonce] = compositeValue.split(':');
-
-        let actorId;
-        let maneuverId;
-        let finalTargetId;
-
-        if (nonce) {
-            const pendingAction = interaction.client.pendingCombatActions.get(nonce);
-            if (!pendingAction) {
-                return interaction.editReply({
-                    content: '❌ This action has expired. Please try again.',
-                    components: [],
-                });
-            }
-            interaction.client.pendingCombatActions.delete(nonce);
-
-            if (actorIdFromCustomId !== pendingAction.actorId) {
-                log.error(
-                    { customIdActor: actorIdFromCustomId, nonceActor: pendingAction.actorId },
-                    'Actor ID mismatch'
-                );
-                return interaction.editReply({ content: '❌ Action data mismatch. Please try again.', components: [] });
-            }
-
-            actorId = pendingAction.actorId;
-            maneuverId = pendingAction.maneuverId;
-            finalTargetId = targetId;
-        } else {
-            actorId = actorIdFromCustomId;
-            maneuverId = maneuverIdFromCustomId;
-            finalTargetId = compositeValue;
-        }
+        const [finalTargetId, maneuverId] = compositeValue.split(':');
+        const actorId = actorIdFromCustomId;
 
         const sessionData = await getOrLoadSession(interaction.client, interaction.channelId);
         if (!sessionData || sessionData.id !== sessionId) {
@@ -419,18 +387,10 @@ async function handleCombatSkillManeuverSelect(interaction, sessionId, actorId) 
         return interaction.update({ content: 'There are no valid targets for this skill.', components: [] });
     }
 
-    const nonce = crypto.randomBytes(8).toString('hex');
-    interaction.client.pendingCombatActions.set(nonce, { actorId, maneuverId });
-    setTimeout(() => {
-        if (interaction.client.pendingCombatActions?.has(nonce)) {
-            log.debug({ nonce }, 'Auto-deleting expired pending action');
-            interaction.client.pendingCombatActions.delete(nonce);
-        }
-    }, 300000);
-
+    // Maneuver id rides in each option's value alongside the target id — no nonce map.
     const targetOptions = potentialTargets.map(target => ({
         label: `${target.name} (${target.currentHP}/${target.maxHP} HP)`.substring(0, 100),
-        value: `${target.id}:${nonce}`,
+        value: `${target.id}:${maneuverId}`,
     }));
 
     const targetSelectMenu = new StringSelectMenuBuilder()

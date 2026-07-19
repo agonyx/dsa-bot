@@ -161,7 +161,7 @@ Supports DSA notation: `XwY+Z` (X dice of Y sides plus Z bonus)
 
 6. **Collector vs Central Handler**: Some interactions (like editStats) use collectors that handle their own interactions. The central handler in `index.js` must NOT acknowledge these to avoid "interaction already acknowledged" errors.
 
-7. **Pending Combat Actions**: Skill attacks use a nonce system with `client.pendingCombatActions` Map to link skill selection with target selection across different interaction events.
+7. **Maneuver Target Selection**: Skill/maneuver attacks are stateless — the maneuver id rides in the combat target select option's value as `targetId:maneuverId` (parsed in `handleCombatTargetSelectAttack`). Plain attacks send just `targetId`. No server-side nonce map is used.
 
 ## Adding New Commands
 

@@ -135,10 +135,6 @@ async function handleCombatSelectMenu(interaction) {
     const customId = interaction.customId;
     log.debug({ customId, userId: interaction.user.id }, 'Routing select menu');
 
-    if (!interaction.client.pendingCombatActions) {
-        interaction.client.pendingCombatActions = new Map();
-    }
-
     // Target selection for player attacks/skills
     if (customId.startsWith('ctsa_')) {
         const parts = customId.split('_');

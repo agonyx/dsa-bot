@@ -15,7 +15,6 @@ const client = new Client({
 // Command handling
 client.commands = new Collection();
 client.activeCombats = new Map();
-client.pendingCombatActions = new Map();
 client.rulePageTitleCache = [];
 
 const commandsPath = path.join(__dirname, 'commands');
