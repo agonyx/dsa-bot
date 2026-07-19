@@ -318,7 +318,18 @@ export interface AttackResultOut {
 
 export async function resolveAttackAction(
     ctx: Ctx,
-    input: { sessionId: string; attackerId: string; targetId: string; maneuverId?: string | null }
+    input: {
+        sessionId: string;
+        attackerId: string;
+        targetId: string;
+        maneuverId?: string | null;
+        /**
+         * Optional parry bonus to add to the target's base PA (e.g. an in-memory
+         * `defend` effect the Discord handler tracks). Kept as an override so the
+         * service stays DB-clean until effects have a persisted home.
+         */
+        targetPaBonus?: number;
+    }
 ): Promise<AttackResultOut> {
     const { session, combatants: combatantRows } = await loadSession(input.sessionId);
     if (session.state !== 'RUNNING') throw httpError(400, 'Combat is not running');
@@ -345,7 +356,7 @@ export async function resolveAttackAction(
 
     const [att, tar] = await Promise.all([getEffectiveCombatStats(attacker), getEffectiveCombatStats(target)]);
     let atValue = att.at;
-    let paValue = tar.pa;
+    let paValue = tar.pa + (input.targetPaBonus ?? 0);
     let damageBonus = 0;
     if (maneuver?.rules && typeof maneuver.rules === 'object') {
         const r = maneuver.rules as { at_modifier?: number; opponent_pa_modifier?: number; damage_bonus?: number };

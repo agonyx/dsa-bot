@@ -43,6 +43,7 @@ const {
 } = require('../utils/conditionUtils');
 
 const log = createLogger('combat-turn');
+const { resolveAttackAction } = require('../services/combat');
 
 /**
  * Helper to get session data from memory or load from DB if missing.
@@ -272,103 +273,40 @@ async function resolveCombatAction(client, channelId, sessionId, actorId, target
 
     const attacker = sessionData.combatants.find(c => c.id === actorId);
     const target = sessionData.combatants.find(c => c.id === targetId);
+    if (!attacker || !target) return;
 
-    let maneuver = null;
-    if (maneuverId && maneuverId !== 'null') {
-        const [maneuverRow] = await db
-            .select()
-            .from(actionModifications)
-            .where(eq(actionModifications.id, maneuverId))
-            .limit(1);
-        if (maneuverRow) maneuver = maneuverRow;
-    }
+    // Preserve the in-memory parry (defend) bonus until effects have a persisted home.
+    const targetPaBonus = Array.isArray(target.effects)
+        ? target.effects.filter(e => e.type === 'defend').reduce((sum, e) => sum + (e.bonus || 0), 0)
+        : 0;
 
-    const [attackerStats, targetStats] = await Promise.all([
-        getEffectiveCombatStats(attacker),
-        getEffectiveCombatStats(target),
-    ]);
-
-    let atValue = attackerStats.currentAT;
-    let paValue = targetStats.currentPA;
-    let damageBonus = 0;
-    let logMessage = `${attacker.name} attacks ${target.name}.`;
-
-    if (maneuver) {
-        logMessage = `${attacker.name} uses **${maneuver.name}** to attack ${target.name}.`;
-        if (maneuver.rules?.at_modifier) atValue += maneuver.rules.at_modifier;
-        if (maneuver.rules?.opponent_pa_modifier) paValue += maneuver.rules.opponent_pa_modifier;
-        if (maneuver.rules?.damage_bonus) damageBonus += maneuver.rules.damage_bonus;
-    }
-
-    const attackResult = resolveAttack(atValue);
-    logMessage += ` (Roll: ${attackResult.roll}/${atValue})`;
-    if (attackResult.confirmRoll !== null) logMessage += ` (Confirm: ${attackResult.confirmRoll})`;
-
-    let hitConnected = false;
-
-    if (attackResult.outcome === 'BOTCH') {
-        const botchDamage = Math.max(1, Math.floor(parseAndRollDamage(attackerStats.currentTP) / 2));
-        const newAttackerHP = Math.max(0, attacker.currentHP - botchDamage);
-        logMessage += ` -> **BOTCH!** ${attacker.name} injures themselves for ${botchDamage} damage!`;
-
-        try {
-            await db.update(combatants).set({ current_hp: newAttackerHP }).where(eq(combatants.id, attacker.id));
-            attacker.currentHP = newAttackerHP;
-            logMessage += ` | ${attacker.name} HP: ${newAttackerHP}/${attacker.maxHP}.`;
-            if (newAttackerHP <= 0) logMessage += ` **Self-defeated!**`;
-        } catch (botchUpdateError) {
-            log.error({ error: botchUpdateError.message }, 'Failed to update attacker HP after botch');
-        }
-    } else if (attackResult.outcome === 'CRITICAL_SUCCESS') {
-        hitConnected = true;
-        logMessage += ` -> **CRITICAL!** Cannot be parried!`;
-    } else if (attackResult.outcome === 'NORMAL_HIT') {
-        hitConnected = true;
-        const defenseResult = resolveDefense(paValue);
-        logMessage += ` | ${target.name} Parry: ${defenseResult.roll}/${paValue}.`;
-        if (defenseResult.success) {
-            logMessage += ` **Parried!**`;
-            hitConnected = false;
-        } else {
-            logMessage += ` Parry Failed.`;
-        }
-    } else {
-        logMessage += ` -> **Miss!**`;
-    }
-
-    if (hitConnected) {
-        let rolledDamage = parseAndRollDamage(attackerStats.currentTP);
-        if (attackResult.outcome === 'CRITICAL_SUCCESS') {
-            rolledDamage *= 2;
-        }
-
-        const totalDamage = rolledDamage + damageBonus;
-        const finalDamage = applySoak(totalDamage, targetStats.currentRS);
-
-        let damageLog;
-        if (damageBonus > 0) {
-            damageLog = ` | ${rolledDamage} + ${damageBonus} (Skill) = ${totalDamage} TP`;
-        } else {
-            damageLog = ` | ${totalDamage} TP`;
-        }
-
-        logMessage += `${damageLog} - ${targetStats.currentRS} RS = **${finalDamage} DMG!**`;
-        const newHP = Math.max(0, target.currentHP - finalDamage);
-
-        if (newHP !== target.currentHP) {
-            try {
-                await db.update(combatants).set({ current_hp: newHP }).where(eq(combatants.id, target.id));
-                target.currentHP = newHP;
-                logMessage += ` | ${target.name} HP: ${newHP}/${target.maxHP}.`;
-                if (newHP <= 0) logMessage += ` **Defeated!**`;
-            } catch (updateError) {
-                log.error({ error: updateError.message }, 'Failed to update combatant HP');
-                logMessage += ` | ⚠️ DB update failed!`;
+    let result;
+    try {
+        // Delegates to the transactional, DB-source-of-truth service. The service
+        // loads effective AT/PA/RS/TP, applies maneuver mods + the parry bonus,
+        // resolves attack/defense/soak, and mutates combatant HP in one transaction.
+        result = await resolveAttackAction(
+            { discordId: '' },
+            {
+                sessionId,
+                attackerId: actorId,
+                targetId,
+                maneuverId: maneuverId && maneuverId !== 'null' ? maneuverId : null,
+                targetPaBonus,
             }
-        }
+        );
+    } catch (error) {
+        log.error({ error: error.message, sessionId, actorId, targetId }, 'resolveAttackAction failed');
+        return;
     }
 
-    await addLogEntry(client, channelId, sessionId, logMessage);
+    // Sync the in-memory mirror (display cache) from the service result.
+    attacker.currentHP = result.attackerHpAfter;
+    target.currentHP = result.targetHpAfter;
+    if (!Array.isArray(sessionData.combatLog)) sessionData.combatLog = [];
+    sessionData.combatLog.push(result.logMessage);
+    if (sessionData.combatLog.length > 20) sessionData.combatLog = sessionData.combatLog.slice(-20);
+
     await nextTurn(client, channelId);
 }
 
