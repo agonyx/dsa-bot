@@ -5,6 +5,7 @@ import { apiOnError } from './middleware/error';
 import { authRoutes, resolveJwtCtx } from './auth';
 import { characterRoutes } from './routes/characters';
 import { inventoryRoutes } from './routes/inventory';
+import { talentRoutes } from './routes/talents';
 
 /**
  * The API app. Mounted under /api by server.ts. Discord commands call the same
@@ -48,4 +49,5 @@ function registerProtectedRoutes(app: Hono<AppEnv>) {
     app.get('/me', (c) => c.json({ discordId: c.get('ctx').discordId }));
     app.route('/characters', characterRoutes);
     app.route('/', inventoryRoutes);
+    app.route('/talents', talentRoutes);
 }
