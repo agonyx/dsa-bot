@@ -28,15 +28,20 @@ export async function listCharacters(ctx: Ctx) {
     return db.select().from(players).where(eq(players.discord_id, ctx.discordId));
 }
 
-/** The caller's currently-selected character + its stats (the character sheet). */
-export async function getCharacterSheet(ctx: Ctx) {
+/** The caller's currently-selected character (throws 404 if none). */
+export async function getSelectedPlayer(ctx: Ctx) {
     const [player] = await db
         .select()
         .from(players)
         .where(and(eq(players.discord_id, ctx.discordId), eq(players.selected, 'YES')))
         .limit(1);
     if (!player) throw httpError(404, 'No selected character. Use /choose-character first.');
+    return player;
+}
 
+/** The caller's currently-selected character + its stats (the character sheet). */
+export async function getCharacterSheet(ctx: Ctx) {
+    const player = await getSelectedPlayer(ctx);
     const [statsRow] = await db.select().from(stats).where(eq(stats.player_id, player.id)).limit(1);
     return { player, stats: statsRow ?? null };
 }
